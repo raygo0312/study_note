@@ -1,0 +1,207 @@
+@media all {
+  body {
+    background-color: #808080;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    margin: 0px;
+    font-size: 13px;
+  }
+  header {
+    background-color: #00aa00;
+    background-attachment: scroll;
+    color: #000000;
+    padding-top: 5px;
+    padding-left: 10px;
+    border-bottom: solid #000000 3px;
+    clear: both;
+  }
+  h1 {
+    margin: 0px;
+    margin-left: 20px;
+    font-size: 25px;
+  }
+  h2 {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    background-color: #ddffdd;
+    border-left: solid #003300 10px;
+    color: #000000;
+    padding-left: 5px;
+    font-size: 20px;
+  }
+  h3 {
+    font-size: 20px;
+    padding-left: 5px;
+    border-left: solid #aaffaa 10px;
+    border-bottom: solid #aaffaa 3px;
+    margin: 8px 0px;
+  }
+  p {
+    margin: 10px;
+    text-indent: 1em;
+  }
+  p.noindent {
+    text-indent: 0em;
+  }
+  a:link {
+    color: #000000;
+    text-decoration: underline;
+  }
+  a:visited {
+    color: #222222;
+    text-decoration: none;
+  }
+  a:hover {
+    text-decoration: none;
+  }
+  a:active {
+    color: #ffffff;
+  }
+  img {
+    max-width: 95%;
+    height: auto;
+    margin: 10px;
+  }
+  main {
+    padding: 7px 5px;
+  }
+  article {
+    border: solid #000000 2px;
+    padding: 5px;
+    padding-bottom: 100px;
+    min-height: 1000px;
+    max-width: 800px;
+    background-color: #ffffff;
+  }
+  footer {
+    color: #808080;
+    background-color: #303030;
+    border-top: #ffffff 2px solid;
+    width: 100%;
+    clear: both;
+  }
+  dl {
+    background-color: #005000;
+    overflow: auto;
+    border-top: 3px #bb5511 solid;
+    border-left: 3px #bb5511 solid;
+    border-right: 3px #bb5511 solid;
+    border-bottom: 15px #aaaaaa solid;
+    margin: 10px;
+    padding: 10px;
+    color: #eeeeee;
+  }
+  dd {
+    margin: 0px;
+  }
+  aside {
+    margin: 15px 5px;
+    padding: 5px;
+    border: 2px #222222 solid;
+    background: #aaaaaa;
+    color: #000000;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
+    overflow: auto;
+  }
+  span.dash {
+    letter-spacing: -2px;
+  }
+  /* プルダウン */
+  details.parent {
+    margin: 5px;
+    border: 1px #222222 solid;
+    background-color: #ffffff;
+    color: #000000;
+  }
+  details.parent summary {
+    border: 1px #222222 solid;
+    background-color: #22aa55;
+    color: #ffffff;
+    margin: -1px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+  }
+  details.child {
+    margin: 5px;
+    border: 1px #222222 solid;
+    background-color: #ffffff;
+    color: #000000;
+  }
+  details.child summary {
+    border: 1px #222222 solid;
+    background-color: #cccccc;
+    color: #222222;
+    margin: -1px;
+    margin-bottom: 0px;
+    padding-left: 10px;
+  }
+  /* チャット */
+  .line-bc {
+    padding: 10px 5px;
+    text-align: right;
+    background: #7da4cd;
+    margin: 10px;
+  }
+  .yourcomment {
+    width: 100%;
+    margin: 10px 0;
+    overflow: hidden;
+  }
+  .yourcomment .faceicon {
+    float: left;
+    margin-right: -50px;
+    width: 28px;
+    border-radius: 50%;
+    margin: 0px;
+  }
+  .yourcomment .chat {
+    text-align: left;
+    float: left;
+    position: relative;
+    margin: 0 0 0 10px;
+    padding: 2px 5px;
+    max-width: 70%;
+    border-radius: 12px;
+    background: #edf1ee;
+    overflow: visible;
+  }
+  .chat:after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: -3px;
+    left: -13px;
+    border: 4px solid transparent;
+    border-right: 13px solid #edf1ee;
+    transform: rotate(35deg);
+  }
+  .mycomment {
+    text-align: left;
+    display: inline-block;
+    position: relative;
+    margin: 0 10px 0 0;
+    padding: 2px 5px;
+    max-width: 70%;
+    border-radius: 12px;
+    background: #30e852;
+    overflow: visible;
+  }
+  .mycomment:after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    right: -13px;
+    border: 4px solid transparent;
+    border-left: 13px solid #30e852;
+    transform: rotate(-35deg);
+  }
+}
+
+/* ＰＣ */
+@media screen and (min-width: 800px) {
+  article {
+    margin-left: 170px;
+  }
+}
