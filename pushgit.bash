@@ -1,4 +1,4 @@
 #!/bin/bash
 git add .
 git commit -am "make it better"
-git push origin main
+git push origin master
