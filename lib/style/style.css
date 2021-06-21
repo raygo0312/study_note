@@ -178,9 +178,9 @@
   }
   .mycomment {
     text-align: left;
-    display: inline-block;
+    display: table;
     position: relative;
-    margin: 0 10px 0 0;
+    margin: 5px 10px 5px auto;
     padding: 2px 5px;
     max-width: 70%;
     border-radius: 12px;
