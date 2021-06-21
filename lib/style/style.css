@@ -82,6 +82,9 @@
     width: 100%;
     clear: both;
   }
+  dfn {
+    font-weight: 100;
+  }
   dl {
     background-color: #005000;
     overflow: auto;
