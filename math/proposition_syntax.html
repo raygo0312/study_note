@@ -80,9 +80,39 @@
         </div>
       </div>
 
+      <h2>論理式を構成する記号</h2>
+      <p>
+        <dfn>原子論理式</dfn>はもうそれ以上分解できない論理式である．命題論理においては<dfn>原子命題</dfn>ともいい，つまり命題変数のことである．また，命題を引数に取る関数を<dfn>真理関数</dfn>とし，以下のものを用意する．
+      </p>
+      <dl>
+        <dt>原子命題</dt>
+        <dd>$$P,Q,R,S,\cdots$$</dd>
+        <dt>零項真理関数</dt>
+        <dd>$$\top,\bot$$</dd>
+        <dt>一項真理関数</dt>
+        <dd>$$\lnot$$</dd>
+        <dt>二項真理関数</dt>
+        <dd>$$\land,\lor,\implies$$</dd>
+      </dl>
+      <p>
+        真理関数を演算子として扱いたいので，<dfn>中置記法</dfn>(infix notation)で略記する．
+      </p>
+      <dl>
+        論理式$\phi,\psi$として，
+        <dd>$$\top\def\top\paren{}$$</dd>
+        <dd>$$\bot\def\bot\paren{}$$</dd>
+        <dd>$$\lnot\phi\def\top\paren{\phi}$$</dd>
+        <dd>$$\phi\lor\psi\def\lor\paren{\phi,\psi}$$</dd>
+        <dd>$$\phi\land\psi\def\land\paren{\phi,\psi}$$</dd>
+        <dd>$$\phi\implies\psi\def\implies\paren{\phi,\psi}$$</dd>
+      </dl>
+      <p>
+        これらの演算子を<dfn>論理演算子</dfn>(logical operation)という．
+      </p>
+
       <h2>論理演算子</h2>
       <p>
-        これだけでは命題を自由に扱うことが出来ない．そこで命題同士の演算を考える．この演算子を<dfn>論理演算子</dfn>(logical operation)という．人間の直感でわかりやすいように，論理演算子は自然言語でよくつかわれる言葉の意味のものを利用する．
+        統語論では論理式の意味を考えないが，意味がわからないと理解しずらいと思うので，参考までに自然言語としての意味を記載する．人間の直感でわかりやすいように，論理演算子は自然言語でよくつかわれる言葉が元になっている．
       </p>
       <dl>
         $\phi,\psi$を命題としたとき，
@@ -147,35 +177,6 @@
           <p>(3)$\paren{P\implies \paren{Q\implies P}}\iff Q$</p>
         </details>
       </details>
-      <h2>論理式を構成する記号</h2>
-      <p>
-        <dfn>原子論理式</dfn>はもうそれ以上分解できない論理式である．命題論理においては<dfn>原子命題</dfn>ともいい，つまり命題変数のことである．また，命題を引数に取る関数を<dfn>真理関数</dfn>とし，以下のものを用意する．
-      </p>
-      <dl>
-        <dt>原子命題</dt>
-        <dd>$$\top,\bot$$</dd>
-        <dt>零項真理関数</dt>
-        <dd>$$\top,\bot$$</dd>
-        <dt>一項真理関数</dt>
-        <dd>$$\lnot$$</dd>
-        <dt>二項真理関数</dt>
-        <dd>$$\land,\lor,\implies$$</dd>
-      </dl>
-      <p>
-        真理関数を論理演算子として扱いたいので，次のように略記する．
-      </p>
-      <dl>
-        論理式$\phi,\psi$として，
-        <dd>$$\top\def\top\paren{}$$</dd>
-        <dd>$$\bot\def\bot\paren{}$$</dd>
-        <dd>$$\lnot\phi\def\top\paren{\phi}$$</dd>
-        <dd>$$\phi\lor\psi\def\lor\paren{\phi,\psi}$$</dd>
-        <dd>$$\phi\land\psi\def\land\paren{\phi,\psi}$$</dd>
-        <dd>$$\phi\implies\psi\def\implies\paren{\phi,\psi}$$</dd>
-      </dl>
-      <p>
-        二項演算子のこの記法を<dfn>中置記法</dfn>(infix notation)という．
-      </p>
 
       <h2>論理式の集合</h2>
       <p>
