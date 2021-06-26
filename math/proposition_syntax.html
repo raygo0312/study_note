@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>study_note</title>
+  <link rel="stylesheet" href="../lib/style/style.css">
+  <meta name="description" content="理系の人がわかりやすいと感じるようなノートを作っています">
+  <meta name="author" content="raygo">
+  <script type="text/javascript" src="../lib/script/mathjax.js" defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>命題論理の統語論</h1>
+    <a href="../index.html">ホーム</a> -&gt; <a href="../mathematics.html">数学</a> -&gt; 命題論理の統語論
+  </header>
+  <main>
+    <article>
+      <h2>論理式を構成する記号</h2>
+      <p>
+        <dfn>原子論理式</dfn>はもうそれ以上分解できない論理式である．命題論理においては<dfn>原子命題</dfn>ともいい，つまり命題変数のことである．また，命題を引数に取る関数を<dfn>真理関数</dfn>とし，以下のものを用意する．
+      </p>
+      <dl>
+        <dt>原子命題</dt>
+        <dd>$$\top,\bot$$</dd>
+        <dt>零項真理関数</dt>
+        <dd>$$\top,\bot$$</dd>
+        <dt>一項真理関数</dt>
+        <dd>$$\lnot$$</dd>
+        <dt>二項真理関数</dt>
+        <dd>$$\land,\lor,\implies$$</dd>
+      </dl>
+      <p>
+        真理関数を論理演算子として扱いたいので，次のように略記する．
+      </p>
+      <dl>
+        論理式$\phi,\psi$として，
+        <dd>$$\top\def\top\paren{}$$</dd>
+        <dd>$$\bot\def\bot\paren{}$$</dd>
+        <dd>$$\lnot\phi\def\top\paren{\phi}$$</dd>
+        <dd>$$\phi\lor\psi\def\lor\paren{\phi,\psi}$$</dd>
+        <dd>$$\phi\land\psi\def\land\paren{\phi,\psi}$$</dd>
+        <dd>$$\phi\implies\psi\def\implies\paren{\phi,\psi}$$</dd>
+      </dl>
+      <p>
+        二項演算子のこの記法を<dfn>中置記法</dfn>(infix notation)という．
+      </p>
+
+      <h2>論理式の集合</h2>
+      <p>
+        命題論理における論理式の集合は以下のように定義される．
+      </p>
+      <dl>
+        <ol>
+          <li>原子命題は論理式である．</li>
+          <li>$\rho$が$n$項真理関数で，$\phi_1,\phi_2,\cdots,\phi_n$が論理式ならば，$\rho\paren{\phi_1,\phi_2,\cdots,\phi_n}$は論理式である．</li>
+          <li>上記以外は論理式ではない．</li>
+        </ol>
+      </dl>
+    </article>
+  </main>
+  <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
+</body>
+
+</html>
