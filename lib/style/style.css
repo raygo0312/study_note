@@ -204,12 +204,9 @@
     transform: rotate(-35deg);
   }
 }
-mjx-container[display="true"] {
+.MathJax {
   margin: 0 !important;
-  padding: 2px 0 4px 0 !important;
-}
-mjx-mid mjx-c::before {
-  padding-top: 0.13em !important;
+  padding: 2px 2px !important;
 }
 
 /* ＰＣ */
