@@ -32,7 +32,7 @@
         <img class="faceicon" src="../lib/img/teacher.jpg">
         <div class="chat">
           そうだね<br>
-          おかげで，たくさんのパラドックスが指摘されたんだ<br>
+          おかげで，たくさんの欠陥が指摘されたんだ<br>
           それをまずいと思った数学者たちが数学の基盤をつくろうとしてこの数理論理学が研究され始めた
         </div>
       </div>
@@ -41,20 +41,40 @@
       <dfn>定義</dfn>(definition)とは言い換えである．定義することで長い条件や回りくどい言い回しを簡潔に表すことが出来る．
       <dl>
         $\phi$を$\psi$で定義する
-        <dd>$\phi\def\psi$</dd>
+        <dd>$$\phi\def\psi$$</dd>
       </dl>
 
       <h2>推論</h2>
-      <dfn>推論</dfn>(inference)とは既知の事柄から未知の事柄を論理的に予想することである．
-      <div class="mycomment">論理的ってなに？</div>
+      <dfn>推論</dfn>(inference)とは既知の事柄から未知の事柄を予想し，論じることである．
+      推論は大きく分けて二つに分けることが出来る．<dfn>演繹</dfn>(deduction)と<dfn>帰納</dfn>(induction)である．数学における推論では演繹のみを採用し，演繹のことを推論という．
+      <dl>
+        <dt>推論</dt>
+        $\phi_1,\phi_2,\cdots,\phi_n$から結論$\psi$が導出されるとき
+        <dd>$$\phi_1,\phi_2,\cdots,\phi_n\infer\psi</dd>
+        $\phi_1,\phi_2,\cdots,\phi_n$を前提(premise)，$\psi$を帰結(consequence)という．
+      </dl>
+      演繹的推論では前提が正しければ，帰結も正しいことが保証される．この推論が妥当な推論であるとき，<dfn>証明</dfn>(proof)という．
+      <div class="mycomment">妥当な推論ってなに？</div>
       <div class="yourcomment">
         <img class="faceicon" src="../lib/img/teacher.jpg">
         <div class="chat">
           いい質問だね<br>
-          数学において，論理的はある規則に則ってという意味で使われる．
+          妥当な推論はある規則に則ってのみ行われる推論のことだよ．
         </div>
       </div>
-      推論は大きく分けて二つに分けることが出来る．<dfn>演繹</dfn>(deduction)と<dfn>帰納</dfn>(induction)である．数学における推論では演繹のみを採用し，演繹のことを推論という．
+      <div class="yourcomment">
+        <img class="faceicon" src="../lib/img/teacher.jpg">
+        <div class="chat">
+          次の章ではその規則の定義の種類についてみていくよ
+        </div>
+      </div>
+
+      <h2>論理体系</h2>
+      数理論理学では<dfn>論理体系</dfn>(logical system)というものを扱い，3つの論点からその論理体系を議論していく．論理体系はいくつかあり，<dfn>命題論理</dfn>(propositional
+      logic)，<dfn>一階述語論理</dfn>(first-order predicate logic)，<dfn>二階述語論理</dfn>(second-order predicate
+      logic)，…(<dfn>高階述語論理</dfn>(higher-order predicate
+      logic))である．3つの論点とは，<dfn>統語論</dfn>(syntax)，<dfn>意味論</dfn>(semantics)，<dfn>証明論</dfn>(proof
+      theory)がある．統語論はある論理体系の集合を定義し，文と構文を定義する．意味論は統語論で定義された文に意味を定義する．また，数理論理学では本来まだ定義されていない集合を用いるわけにはいかない．そこで証明論では数理論理学で定義されたことのみを用いて論理体系を定義する．
     </article>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
