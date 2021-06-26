@@ -76,9 +76,11 @@
       </p>
       <dl>
         <dt>推論</dt>
-        $\phi_1,\phi_2,\cdots,\phi_n$から結論$\psi$が導出されるとき
-        <dd>$$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi$$</dd>
-        $\phi_1,\phi_2,\cdots,\phi_n$を前提(premise)，$\psi$を帰結(consequence)という．
+        <dd>
+          $\phi_1,\phi_2,\cdots,\phi_n$から結論$\psi$が導出されるとき
+          $$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi$$
+          $\phi_1,\phi_2,\cdots,\phi_n$を前提(premise)，$\psi$を帰結(consequence)という．
+        </dd>
       </dl>
       <p>
         演繹的推論では前提が正しければ，帰結も正しいことが保証される．この推論が妥当な推論であるとき，<dfn>証明</dfn>(proof)という．
@@ -103,7 +105,10 @@
         数理論理学では<dfn>論理体系</dfn>(logical system)というものを扱い，3つの論点からその論理体系を議論していく．論理体系はいくつかあり，<dfn>命題論理</dfn>(propositional logic)，<dfn>一階述語論理</dfn>(first-order predicate logic)，<dfn>二階述語論理</dfn>(second-order predicate logic)，…(<dfn>高階述語論理</dfn>(higher-order predicate logic))である．
       </p>
       <p>
-        3つの論点とは，<dfn>統語論</dfn>(syntax)，<dfn>意味論</dfn>(semantics)，<dfn>証明論</dfn>(proof theory)がある．統語論はある論理体系の集合，文と構文を定める．数理論理学では<dfn>論理式</dfn>(logical formula)という論理体系が扱う文の範囲を設定する．意味論は統語論で定義された文に意味を与える．また，数理論理学では本来まだ定義されていない集合を用いるわけにはいかない．そこで証明論では数理論理学で定義されたことのみを用いて論理体系を定義する．
+        3つの論点とは，<dfn>統語論</dfn>(syntax)，<dfn>意味論</dfn>(semantics)，<dfn>証明論</dfn>(proof theory)がある．統語論はある論理体系の集合，文と構文を定める．<dfn>論理式</dfn>(logical formula)とは論理体系が扱う範囲の文のことをいい，数理論理学の統語論では論理式を決定する．意味論では統語論で定義された文に意味を与える．数理論理学の意味論では論理式に真(1)，偽(0)の値を定めることで意味を与える．
+      </p>
+      <p>
+        しかし，数理論理学は数学の一番基礎であるから，まだ定義されていない集合などを用いて定義するわけにはいかない．そこで証明論では<dfn>証明体系</dfn>というものを定めることで数理論理学の言葉だけで完結させた．
       </p>
     </article>
   </main>
