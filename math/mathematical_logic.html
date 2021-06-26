@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="../lib/style/style.css">
   <meta name="description" content="理系の人がわかりやすいと感じるようなノートを作っています">
   <meta name="author" content="raygo">
-  <script type="text/javascript" src="../lib/script/mathjax.js" defer></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" defer></script>
+  <script type="text/javascript" src="../lib/script/mathjax.js" Defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" Defer></script>
 </head>
 
 <body>
@@ -45,24 +45,35 @@
 
       <h2>定義</h2>
       <p>
-        <dfn>定義</dfn>(definition)とは意味付けである．定義することで長い条件や回りくどい言い回しを簡潔に表すことが出来る．
+        <dfn>定義</dfn>(Definition)とは意味付けである．定義することで長い条件や回りくどい言い回しを簡潔に表すことが出来る．
+      </p>
+      <aside>
+        <h4>定義の例</h4>
+        <ul>
+          <li>神とは万能な存在である．</li>
+          <li>正三角形はすべての辺の長さが等しい三角形である．</li>
+          <li>$\pi$は円周率である．</li>
+          <li>$e=\lim_{t\to0}\paren{1+t}^{\frac1t}$</li>
+        </ul>
+      </aside>
+      <p>
+        数式で定義するときは以下のように書く．
       </p>
       <dl>
-        <dt>$\phi$を$\psi$で定義する</dt>
-        <dd>$$\phi\def\psi$$</dd>
-        <dt>$\phi$と$\psi$は言い換え可能である</dt>
-        <dd>$$\phi\ie\psi$$</dd>
+        <dt>$\phi$とは$\psi$である．</dt>
+        <dd>$$\phi\Def\psi$$</dd>
+        <dt>$\phi$と$\psi$は言い換え可能である．</dt>
+        <dd>$$\phi\Iff\psi$$</dd>
       </dl>
-
 
       <h2>推論</h2>
       <p>
-        <dfn>推論</dfn>(inference)とは既知の事柄から未知の事柄を予想し，論じることである．推論は大きく分けて二つに分けることが出来る．<dfn>演繹</dfn>(deduction)と<dfn>帰納</dfn>(induction)である．数学における推論では演繹のみを採用し，演繹のことを推論という．
+        <dfn>推論</dfn>(Impliesence)とは既知の事柄から未知の事柄を予想し，論じることである．推論は大きく分けて二つに分けることが出来る．<dfn>演繹</dfn>(deduction)と<dfn>帰納</dfn>(induction)である．数学における推論では演繹のみを採用し，演繹のことを推論という．
       </p>
       <dl>
         <dt>推論</dt>
         $\phi_1,\phi_2,\cdots,\phi_n$から結論$\psi$が導出されるとき
-        <dd>$$\phi_1,\phi_2,\cdots,\phi_n\infer\psi$$</dd>
+        <dd>$$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi$$</dd>
         $\phi_1,\phi_2,\cdots,\phi_n$を前提(premise)，$\psi$を帰結(consequence)という．
       </dl>
       <p>
