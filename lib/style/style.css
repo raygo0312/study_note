@@ -204,7 +204,7 @@
     transform: rotate(-35deg);
   }
 }
-.MathJax[display="none"] {
+.MathJax[display="false"] {
   margin: 0 !important;
   padding: 2px 2px !important;
 }
