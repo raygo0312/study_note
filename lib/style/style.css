@@ -204,9 +204,8 @@
     transform: rotate(-35deg);
   }
 }
-.MathJax[display="false"] {
-  margin: 0 !important;
-  padding: 2px 2px !important;
+.MathJax {
+  padding: 2px 5px !important;
 }
 
 /* ＰＣ */
