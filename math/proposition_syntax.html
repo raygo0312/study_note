@@ -19,19 +19,6 @@
   </header>
   <main>
     <article>
-      <div class="mycomment">先生！</div>
-      <div class="mycomment">
-        数学を勉強していたら見たことない記号がたくさん出てきた<br>
-        $\lor$とか$\land$とか
-      </div>
-      <div class="yourcomment">
-        <img class="faceicon" src="../lib/img/teacher.jpg">
-        <div class="chat">
-          それは論理記号って言われるやつだね<br>
-          一緒に意味を見ていこうか
-        </div>
-      </div>
-
       <h2>命題</h2>
       <div class="yourcomment">
         <img class="faceicon" src="../lib/img/teacher.jpg">
@@ -44,7 +31,7 @@
         うまく説明できないなぁ
       </div>
       <p>
-        <dfn>命題</dfn>(proposition)は正しいか正しくないかがはっきりしているもののことである．ここで，正しいことを<dfn>真</dfn>(true)，正しくないことを<dfn>偽</dfn>(false)という．すなわち，命題とは<dfn>真偽</dfn>(truth)が定まるもののことである．
+        <dfn>命題</dfn>は正しいか正しくないかがはっきりしているもののことである．ここで，正しいことを<dfn>真</dfn>，正しくないことを<dfn>偽</dfn>という．すなわち，命題とは<dfn>真偽</dfn>が定まるもののことである．もちろん論理式も命題である．
       </p>
       <aside>
         <h4>命題の例</h4>
@@ -56,17 +43,8 @@
         </ul>
       </aside>
       <p>
-        しかし，数理論理学において命題の内容はどうでもよい．重要なのはその命題が真であるか偽であるかだけである．よって，<dfn>命題変数</dfn>(propositional variable)という真か偽のどちらかを値としてもつ変数を用いて議論していく．一方，真と偽は<dfn>命題定数</dfn>(propositional constant)と呼ばれる．
+        しかし，数理論理学において命題の内容はどうでもよい．重要なのはその命題が真であるか偽であるかだけである．よって，<dfn>命題変数</dfn>という真か偽のどちらかを値としてもつ変数を用いて議論していく．一方，真と偽は<dfn>命題定数</dfn>と呼ばれる．
       </p>
-      <dl>
-        <dt>命題変数</dt>
-        <dd>$$P,Q,R,S,\cdots$$</dd>
-        命題定数<br>
-        <dt>真</dt>
-        <dd>$$\top$$</dd>
-        <dt>偽</dt>
-        <dd>$$\bot$$</dd>
-      </dl>
       <div class="mycomment">
         どうして命題の内容は無視していいの？
       </div>
@@ -80,7 +58,7 @@
 
       <h2>論理式を構成する記号</h2>
       <p>
-        <dfn>原子論理式</dfn>(atomic logic formula)はもうそれ以上分解できない論理式である．命題論理においては<dfn>原子命題</dfn>(atomic proposition)ともいい，つまり命題変数のことである．また，命題を引数に取る関数を<dfn>真理関数</dfn>(truth function)とし，以下のものを用意する．
+        もうそれ以上分解できない論理式を<dfn>原子論理式</dfn>という．命題論理において<dfn>原子命題</dfn>ともいい，命題変数のことである．また，命題を引数に取る関数を<dfn>真理関数</dfn>とし，以下のものを用意する．
       </p>
       <dl>
         <dt>原子命題</dt>
@@ -93,7 +71,7 @@
         <dd>$$\land,\lor,\implies$$</dd>
       </dl>
       <p>
-        真理関数を演算子として扱いたいので，<dfn>中置記法</dfn>(infix notation)で略記する．
+        真理関数を演算子として扱うとき，<dfn>論理演算子</dfn>といい，以下のように略記する．二項演算子において，この記法を<dfn>中置記法</dfn>という．
       </p>
       <dl>
         論理式$\phi,\psi$として，
@@ -104,48 +82,44 @@
         <dd>$$\phi\land\psi\Def\land\paren{\phi,\psi}$$</dd>
         <dd>$$\phi\implies\psi\Def\implies\paren{\phi,\psi}$$</dd>
       </dl>
-      <p>
-        これらの演算子を<dfn>論理演算子</dfn>(logical operation)という．
-      </p>
 
       <h2>論理演算子</h2>
       <p>
-        統語論では論理式の意味を考えないが，意味がわからないと理解しずらいと思うので，参考までに自然言語としての意味を記載する．人間の直感でわかりやすいように，論理演算子は自然言語でよくつかわれる言葉が元になっている．
+        統語論では論理式の意味を考えないが，意味がわからないと理解しづらいと思うので，参考までに自然言語としての意味を記載する．人間の直感でわかりやすいように，論理演算子は自然言語でよくつかわれる言葉が元になっている．
       </p>
       <dl>
-        $\phi,\psi$を命題としたとき，
-        <dt>否定(negation)</dt>
+        論理式$\phi,\psi$として，
+        <dt>否定</dt>
         <dd>
           $\phi$ではない(not $\phi$)
           $$\lnot\phi$$
         </dd>
-        <dt>連言(conjunction)</dt>
+        <dt>連言</dt>
         <dd>
           $\phi$かつ$\psi$($\phi$ and $\psi$)
           $$\phi\land\psi$$
         </dd>
-        <dt>選言(disjunction)</dt>
+        <dt>選言</dt>
         <dd>
           $\phi$または$\psi$($\phi$ or $\psi$)
           $$\phi\lor\psi$$
         </dd>
-        <dt>含意(implication)</dt>
+        <dt>含意</dt>
         <dd>
           $\phi$ならば$\psi$(if $\phi$ then $\psi$)
           $$\phi\implies\psi$$
         </dd>
       </dl>
       <p>
-        命題論理ではこれらのほかにもう一つ演算子を用いる．
+        命題論理ではこれらのほかにもう一つ演算子を定義する．<dfn>同値</dfn>とは二つの論理式が命題として同じであることを意味し，便利である．
       </p>
       <dl>
-        $\phi,\psi$を命題としたとき，
-        <dt>同値(equivalence)</dt>
+        論理式$\phi,\psi$として，
+        <dt>同値</dt>
         <dd>
           $$\phi\iff\psi\Def\paren{\phi\implies\psi}\land\paren{\psi\implies\phi}$$
         </dd>
-      </dl>
-      同値$\phi\iff\psi$は$\phi,\psi$が命題として同じであることを主張しており，便利である．
+      </dl>．
 
       <h2>優先順位</h2>
       <p>
@@ -188,6 +162,27 @@
         </ol>
       </dl>
 
+      <h2>今回出てきた用語のまとめ</h2>
+      <aside>
+        <ul>
+          <li>命題 : proposition</li>
+          <li>真 : true</li>
+          <li>偽 : false</li>
+          <li>真偽 : truth</li>
+          <li>命題変数 : propositional variable</li>
+          <li>命題定数 : propositional constant</li>
+          <li>原子論理式 : atomic logic formula</li>
+          <li>原子命題 : atomic proposition</li>
+          <li>真理関数 : truth function</li>
+          <li>論理演算子 : logical operation</li>
+          <li>中置記法 : infix notation</li>
+          <li>否定 : negation</li>
+          <li>連言 : conjunction</li>
+          <li>選言 : disjunction</li>
+          <li>含意 : implication</li>
+          <li>同値 : equivalence</li>
+        </ul>
+      </aside>
     </article>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
