@@ -33,7 +33,7 @@
         <div class="chat">
           そうだね<br>
           おかげで，たくさんの欠陥が指摘されたんだ<br>
-          それをまずいと思った数学者たちが数学の基盤をつくろうとしてこの数理論理学が研究され始めたんだよ
+          それをまずいと思った数学者たちが数学の基盤をつくろうとしてこの<dfn>数理論理学</dfn>が研究され始めたんだよ
         </div>
       </div>
       <div class="yourcomment">
@@ -45,7 +45,7 @@
 
       <h2>定義</h2>
       <p>
-        <dfn>定義</dfn>(definition)とは意味付けである．定義することで長い条件や回りくどい言い回しを簡潔に表すことが出来る．
+        <dfn>定義</dfn>とは意味付けである．定義することで長い条件や回りくどい言い回しを簡潔に表すことが出来る．
       </p>
       <aside>
         <h4>定義の例</h4>
@@ -57,7 +57,7 @@
         </ul>
       </aside>
       <p>
-        数式で定義するときは以下のように書く．(論理式は後で述べる)
+        数式で定義するときは以下のように書く．(論理式については後で詳しく述べる)
       </p>
       <dl>
         論理式$\phi,\psi$のとき，
@@ -69,14 +69,14 @@
 
       <h2>推論</h2>
       <p>
-        <dfn>推論</dfn>(impliesence)とは既知の事柄から未知の事柄を予想し，論じることである．推論は大きく分けて二つに分けることが出来る．<dfn>演繹</dfn>(deduction)と<dfn>帰納</dfn>(induction)である．数学における推論では演繹のみを採用し，演繹のことを推論という．
+        <dfn>推論</dfn>とは既知の事柄から未知の事柄を予想し，論じることである．推論は大きく分けて二つに分けることが出来る．<dfn>演繹</dfn>と<dfn>帰納</dfn>である．数学における推論では演繹のみを採用し，演繹のことを推論という．演繹は
       </p>
       <dl>
         <dt>推論</dt>
         <dd>
           $\phi_1,\phi_2,\cdots,\phi_n$から結論$\psi$が導出されるとき
           $$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi$$
-          $\phi_1,\phi_2,\cdots,\phi_n$を前提(premise)，$\psi$を帰結(consequence)という．
+          $\phi_1,\phi_2,\cdots,\phi_n$を前提，$\psi$を帰結という．
         </dd>
       </dl>
       <aside>
@@ -87,7 +87,7 @@
         $$\phi_1,\phi_2\Implies\psi$$
       </aside>
       <p>
-        演繹的推論では前提が正しければ，帰結も正しいことが保証される．この推論が妥当な推論であるとき，<dfn>証明</dfn>(proof)という．
+        演繹的推論では前提が正しければ，帰結も正しいことが保証される．この推論が妥当な推論であるとき，<dfn>証明</dfn>という．
       </p>
       <div class="mycomment">妥当な推論ってなに？</div>
       <div class="yourcomment">
@@ -97,23 +97,52 @@
           妥当な推論はある規則に則ってのみ行われる推論のことだよ．
         </div>
       </div>
-      <div class="yourcomment">
-        <img class="faceicon" src="../lib/img/teacher.jpg">
-        <div class="chat">
-          次の章ではその規則の定義の種類についてみていくよ
-        </div>
-      </div>
+      <div class="mycomment">ルールを守ったときだけ，正しい推論って言えるんだね</div>
+
+      <h2>公理</h2>
+      <p>
+        <dfn>公理</dfn>とは推論における，最も基本的な仮定であり，公理を正しいと仮定して，それを前提に推論を行う．公理の集合を<dfn>公理系</dfn>という．公理は仮定であるから，それが正しかを議論することは出来ない．
+      </p>
 
       <h2>論理体系</h2>
       <p>
-        数理論理学では<dfn>論理体系</dfn>(logical system)というものを扱い，3つの論点からその論理体系を議論していく．論理体系はいくつかあり，<dfn>命題論理</dfn>(propositional logic)，<dfn>一階述語論理</dfn>(first-order predicate logic)，<dfn>二階述語論理</dfn>(second-order predicate logic)，…(<dfn>高階述語論理</dfn>(higher-order predicate logic))である．
+        数理論理学では<dfn>論理体系</dfn>というものを扱う．論理体系は数理論理学で扱う言語のようなもので，<dfn>論理式</dfn>というものを文に持つと思ってよい．
       </p>
       <p>
-        3つの論点とは，<dfn>統語論</dfn>(syntax)，<dfn>意味論</dfn>(semantics)，<dfn>証明論</dfn>(proof theory)がある．統語論はある論理体系の集合，文と構文を定める．<dfn>論理式</dfn>(logical formula)とは論理体系が扱う範囲の文のことをいい，数理論理学の統語論では論理式を決定する．意味論では統語論で定義された文に意味を与える．数理論理学の意味論では論理式に真(1)，偽(0)の値を定めることで意味を与える．
+        論理体系はいくつかあり，<dfn>命題論理</dfn>，<dfn>一階述語論理</dfn>，<dfn>二階述語論理</dfn>，……である．二階以上の述語論理を<dfn>高階述語論理</dfn>という．命題論理から始まり，段々と論理式の表現力が高くなっている．
       </p>
       <p>
-        しかし，数理論理学は数学の一番基礎であるから，まだ定義されていない集合などを用いて定義するわけにはいかない．そこで証明論では<dfn>証明体系</dfn>というものを定めることで数理論理学の言葉だけで完結させた．
+        論理体系の定義の仕方は2つあり，<dfn>統語論</dfn>と<dfn>意味論</dfn>，<dfn>証明論</dfn>である．統語論は言語学において構文を指し，数理論理学では論理体系が扱う論理式の構造と集合を定める．意味論は言語学において文の意味を指し，数理論理学では論理式に真，偽の値を定める．
       </p>
+      <p>
+        しかし，数理論理学は数学の一番基礎であるから，まっさらな状態で始めなければならない．そこで証明論では他の数学の分野の言葉を用いない方法で論理体系を定義した．
+      </p>
+      <p>
+        初学者はまず統語論と意味論から論理体系を理解してほしい．その後，証明論を用いて数学を1から作り上げていく流れを追ってもらいたい．
+      </p>
+
+      <h2>今回出てきた用語のまとめ</h2>
+      <aside>
+        <ul>
+          <li>数理論理学 : mathematical logic</li>
+          <li>定義 : definition</li>
+          <li>推論 : impliesence</li>
+          <li>演繹 : deduction</li>
+          <li>帰納 : induction</li>
+          <li>前提 : premise</li>
+          <li>帰納 : consequence</li>
+          <li>証明 : proof</li>
+          <li>論理体系 : logical system</li>
+          <li>論理式 : logical formula</li>
+          <li>命題論理 : propositional logic</li>
+          <li>一階述語論理 : first-order predicate logic</li>
+          <li>二階述語論理 : second-order predicate logic</li>
+          <li>高階述語論理 : higher-order predicate logic</li>
+          <li>統語論 : syntax</li>
+          <li>意味論 : semantics</li>
+          <li>証明論 : proof theory</li>
+        </ul>
+      </aside>
     </article>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
