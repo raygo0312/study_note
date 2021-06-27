@@ -42,6 +42,7 @@
     text-decoration: underline;
   }
   p {
+    margin: 10px;
     text-indent: 1em;
   }
   a:link {
