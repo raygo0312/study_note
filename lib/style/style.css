@@ -115,14 +115,13 @@
   ol li {
     list-style-type: none;
     counter-increment: cnt;
-    position: relative;
   }
 
   ol li::before {
-    content: "(" counter(cnt) ") ";
-    display:inline-block;
-    margin-left:-3em;
-    width: 3em;
+    content: "(" counter(cnt) ")\00a0";
+    display: inline-block;
+    margin-left: -3px;
+    width: 30px;
     text-align: right;
   }
   /* プルダウン */
