@@ -124,7 +124,7 @@
   ol li::before {
     content: "(" counter(cnt) ")\00a0";
     display:inline-block;
-    margin-left:-3em;
+    /* margin-left:-3em; */
     width: 3em;
     text-align: right;
     position: absolute;
