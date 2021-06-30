@@ -112,17 +112,24 @@
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
     overflow: auto;
   }
+  ol {
+    margin-left: 3.5em
+  }
   ol li {
     list-style-type: none;
     counter-increment: cnt;
+    position: relative;
   }
 
   ol li::before {
-    content: "(" counter(cnt) ")\00a0";
-    display: inline-block;
-    margin-left: -30px;
-    width: 30px;
+    content: "(" counter(cnt) ") ";
+    display:inline-block;
+    margin-left:-3em;
+    width: 3em;
     text-align: right;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   /* プルダウン */
   details.parent {
