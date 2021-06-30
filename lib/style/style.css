@@ -112,9 +112,6 @@
     box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4);
     overflow: auto;
   }
-  ol {
-    margin-left: 3.5em
-  }
   ol li {
     list-style-type: none;
     counter-increment: cnt;
@@ -127,9 +124,6 @@
     margin-left:-3em;
     width: 3em;
     text-align: right;
-    position: absolute;
-    top: 0;
-    left: 0;
   }
   /* プルダウン */
   details.parent {
