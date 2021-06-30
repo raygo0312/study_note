@@ -143,10 +143,12 @@
         <p>(3)$P\implies Q\implies P\iff Q$</p>
         <details class="child">
           <summary>解答</summary>
-          <p>優先順位が高い演算子から括弧をくくる．同順位の場合は右結合なら右側から，左結合なら左結合がから順に括弧をくくる．</p>
-          <p>(1)$\paren{\lnot P}\land Q$</p>
-          <p>(2)$\paren{\paren{P\land Q}\lor R}\implies\paren{P\lor\paren{\paren{\lnot Q}\land R}}$</p>
-          <p>(3)$\paren{P\implies \paren{Q\implies P}}\iff Q$</p>
+          <ol>
+            <li>優先順位が高い演算子から括弧をくくる．同順位の場合は右結合なら右側から，左結合なら左結合がから順に括弧をくくる．</li>
+            <li>$\paren{\lnot P}\land Q$</li>
+            <li>$\paren{\paren{P\land Q}\lor R}\implies\paren{P\lor\paren{\paren{\lnot Q}\land R}}$</li>
+            <li>$\paren{P\implies \paren{Q\implies P}}\iff Q$</li>
+          </ol>
         </details>
       </details>
 
@@ -158,7 +160,7 @@
         <ol>
           <li>原子命題は論理式である．</li>
           <li>$\rho$が$n$項真理関数で，$\phi_1,\phi_2,\cdots,\phi_n$が論理式ならば，$\rho\paren{\phi_1,\phi_2,\cdots,\phi_n}$は論理式である．</li>
-          <li>1,2以外は論理式ではない．</li>
+          <li>(1),(2)以外は論理式ではない．</li>
         </ol>
       </dl>
 
