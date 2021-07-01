@@ -43,7 +43,7 @@
         </ul>
       </aside>
       <p>
-        しかし，数理論理学において命題の内容はどうでもよい．重要なのはその命題が真であるか偽であるかだけである．よって，<dfn>命題変数</dfn>という真か偽のどちらかを値としてもつ変数を用いて議論していく．一方，真と偽は<dfn>命題定数</dfn>と呼ばれる．
+        しかし，数理論理学では命題の内容はどうでもよい．重要なのはその命題が真であるか偽であるかだけである．よって，<dfn>命題変数</dfn>という真か偽のどちらかを値としてもつものを用いて議論していく．一方，真と偽も命題であり，<dfn>命題定数</dfn>と呼ばれる．
       </p>
       <div class="mycomment">
         どうして命題の内容は無視していいの？
@@ -58,47 +58,57 @@
 
       <h2>命題論理</h2>
       <p>
-        命題とその演算を用いて数学を形式化していく論理体系を<dfn>命題論理</dfn>という．任意の論理式を表す記号として$\phi,\psi,\chi,\cdots$を用いることとする．また，命題を引数に取り，真偽を返す関数を<dfn>真理関数</dfn>いう．また，もうそれ以上分解できない論理式を<dfn>原子論理式</dfn>という．命題論理において<dfn>原子命題</dfn>ともいい，命題変数と命題定数のことである．命題論理では以下の記号を用いる．
+        命題と命題の演算を用いて数学を形式化していく論理体系を<dfn>命題論理</dfn>という．命題論理では2種類のものから構成されている．<dfn>原子命題</dfn>と<dfn>真理関数</dfn>である．それ以上分解できない論理式を<dfn>原子論理式</dfn>という．命題論理では原子論理式のことを原子命題という．原子命題は命題変数と命題定数のことである．真理関数は命題を引数に命題を変えす関数である．それぞれ以下の記号を用いる．
       </p>
       <dl>
         <dt>原子命題</dt>
         <dd>$$P,Q,R,\cdots$$</dd>
         <dt>真理関数</dt>
-        <dd>$$\rho$$</dd>
+        <dd>$$\rho,\cdots$$</dd>
       </dl>
 
       <h2>論理演算子</h2>
       <p>
-        統語論では論理式の意味を考えないが，意味がわからないと理解しづらいと思うので，参考までに自然言語としての意味と略記を記載する．人間の直感でわかりやすいように，真理関数は自然言語でよくつかわれる言葉が元になっている．
+        統語論では論理体系の意味を考えないが，意味がわからないと理解しづらいと思うので，参考までに自然言語としての意味を載せる．直感でわかりやすいように，真理関数は自然言語でよくつかわれる言葉が元になっている．今後は任意の論理式を表す記号として$\phi,\psi,\chi,\cdots$を用いることとする．
       </p>
       <dl>
-        論理式$\phi,\psi$において，
+        論理式$\phi,\psi$としたとき，
         <dt>否定</dt>
         <dd>
           $\phi$ではない(not $\phi$)
-          $$\lnot\phi\Def\lnot\paren{\phi}$$
+          $$\lnot\paren{\phi}$$
         </dd>
         <dt>連言</dt>
         <dd>
           $\phi$かつ$\psi$($\phi$ and $\psi$)
-          $$\phi\land\psi\Def\land\paren{\phi,\psi}$$
+          $$\land\paren{\phi,\psi}$$
         </dd>
         <dt>選言</dt>
         <dd>
           $\phi$または$\psi$($\phi$ or $\psi$)
-          $$\phi\lor\psi\Def\lor\paren{\phi,\psi}$$
+          $$\lor\paren{\phi,\psi}$$
         </dd>
         <dt>含意</dt>
         <dd>
           $\phi$ならば$\psi$(if $\phi$ then $\psi$)
-          $$\phi\implies\psi\Def\implies\paren{\phi,\psi}$$
+          $$\implies\paren{\phi,\psi}$$
         </dd>
       </dl>
       <p>
-        真理関数を演算子として扱うとき，<dfn>論理演算子</dfn>という．二項演算子において，この記法を<dfn>中置記法</dfn>という．命題論理ではこれらのほかにもう一つ演算子を定義する．
+        真理関数を演算子として扱うとき，<dfn>論理演算子</dfn>ともいう．このとき，次のように略記できる．
       </p>
       <dl>
-        論理式$\phi,\psi$において，
+        論理式$\phi,\psi$としたとき，
+        <dd>$$\lnot\phi\Def\lnot\paren{\phi}$$</dd>
+        <dd>$$\phi\land\psi\Def\land\paren{\phi,\psi}$$</dd>
+        <dd>$$\phi\lor\psi\Def\lor\paren{\phi,\psi}$$</dd>
+        <dd>$$\phi\implies\psi\Def\implies\paren{\phi,\psi}$$</dd>
+      </dl>
+      <p>
+        二項演算子のこの記法を<dfn>中置記法</dfn>という．命題論理ではこれらのほかにもう一つ演算子を定義する．
+      </p>
+      <dl>
+        論理式$\phi,\psi$としたとき，
         <dt>同値</dt>
         <dd>
           $$\phi\iff\psi\Def\paren{\phi\implies\psi}\land\paren{\psi\implies\phi}$$
@@ -107,7 +117,7 @@
 
       <h2>優先順位</h2>
       <p>
-        論理演算子を用いると，「$P$かつ$Q$のときのみ$P$ならば$P$または$Q$である」という複雑な命題に対しても$\paren{\paren{P\land Q}\iff P}\implies\paren{P\lor Q}$と結合も正確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に優先順位を定める．
+        論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という複雑な命題に対しても$\paren{\paren{\paren{\lnot P}\land Q}\iff P}\implies\paren{P\lor Q}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に優先順位を定める．
       </p>
       <dl>
         上から順に優先順位が高いとする．
@@ -119,6 +129,18 @@
           <li>$\iff$(左結合)</li>
         </ul>
       </dl>
+      <aside>
+        <h4>優先順位の例</h4>
+        命題$P,Q,R$とすると，
+        <ul>
+          <li>$$\lnot P\land Q\Iff\paren{\lnot P}\land Q$$</li>
+          <li>$$P\land Q\lor Q\land R\Iff\paren{P\land Q}\lor\paren{Q\land R}$$</li>
+          <li>$$\lnot\lnot P\Iff\lnot\paren{\lnot P}$$</li>
+          <li>$$P\lor Q\lor R\Iff\paren{P\lor Q}\lor R$$</li>
+          <li>$$P\implies Q\implies R\Iff P\implies\paren{Q\implies R}$$</li>
+          <li>$$\lnot\paren{P\lor Q}\land R\Iff\paren{\lnot\paren{P\lor Q}}\land R$$</li>
+        </ul>
+      </aside>
       <details class="parent">
         <summary>練習問題</summary>
         <p>
@@ -144,11 +166,11 @@
 
       <h2>命題論理の論理式</h2>
       <p>
-        命題論理における論理式を以下のように定義する．
+        命題を真偽で，真理関数を関数の言葉を用いて定義したが，本来，今の段階では真偽や関数の正体がわかっていない．そのため統語論では，よくわかっていない原子命題と呼ばれる記号$P$とよくわかっていない$\phi_1,\phi_2,\cdots,\phi_n$を引数に持つ$n$項真理関数と呼ばれる記号$\rho\paren{\phi_1,\phi_2,\cdots,\phi_n}$が存在して，ルールに則って並んでいるとき論理式であると言えるという流れで議論を見てほしい．命題論理における論理式を以下のように定義する．
       </p>
       <dl>
         <ol>
-          <li>原子命題は論理式である．</li>
+          <li>$P$が原子命題であるとき，$P$は論理式である．</li>
           <li>$\rho$が$n$項真理関数で，$\phi_1,\phi_2,\cdots,\phi_n$が論理式ならば，$\rho\paren{\phi_1,\phi_2,\cdots,\phi_n}$は論理式である．</li>
           <li>(1),(2)以外は論理式ではない．</li>
         </ol>
