@@ -58,60 +58,44 @@
 
       <h2>命題論理</h2>
       <p>
-        命題とその演算を用いて数学を形式化していく論理体系を<dfn>命題論理</dfn>という．任意の論理式を表す記号として$\phi,\psi,\chi,\cdots$を用いることとする．もうそれ以上分解できない論理式を<dfn>原子論理式</dfn>という．命題論理において<dfn>原子命題</dfn>ともいい，命題変数のことである．また，命題を引数に取る関数を<dfn>真理関数</dfn>とし，以下のものを用意する．
+        命題とその演算を用いて数学を形式化していく論理体系を<dfn>命題論理</dfn>という．任意の論理式を表す記号として$\phi,\psi,\chi,\cdots$を用いることとする．また，命題を引数に取り，真偽を返す関数を<dfn>真理関数</dfn>いう．また，もうそれ以上分解できない論理式を<dfn>原子論理式</dfn>という．命題論理において<dfn>原子命題</dfn>ともいい，命題変数と命題定数のことである．命題論理では以下の記号を用いる．
       </p>
       <dl>
         <dt>原子命題</dt>
         <dd>$$P,Q,R,\cdots$$</dd>
-        <dt>零項真理関数</dt>
-        <dd>$$\top,\bot$$</dd>
-        <dt>一項真理関数</dt>
-        <dd>$$\lnot$$</dd>
-        <dt>二項真理関数</dt>
-        <dd>$$\land,\lor,\implies$$</dd>
-      </dl>
-      <p>
-        真理関数を演算子として扱うとき，<dfn>論理演算子</dfn>といい，以下のように略記する．二項演算子において，この記法を<dfn>中置記法</dfn>という．
-      </p>
-      <dl>
-        論理式$\phi,\psi$において，
-        <dd>$$\top\Def\top\paren{}$$</dd>
-        <dd>$$\bot\Def\bot\paren{}$$</dd>
-        <dd>$$\lnot\phi\Def\top\paren{\phi}$$</dd>
-        <dd>$$\phi\lor\psi\Def\lor\paren{\phi,\psi}$$</dd>
-        <dd>$$\phi\land\psi\Def\land\paren{\phi,\psi}$$</dd>
-        <dd>$$\phi\implies\psi\Def\implies\paren{\phi,\psi}$$</dd>
+        <dt>真理関数</dt>
+        <dd>$$\rho$$</dd>
       </dl>
 
       <h2>論理演算子</h2>
       <p>
-        統語論では論理式の意味を考えないが，意味がわからないと理解しづらいと思うので，参考までに自然言語としての意味を記載する．人間の直感でわかりやすいように，論理演算子は自然言語でよくつかわれる言葉が元になっている．
+        統語論では論理式の意味を考えないが，意味がわからないと理解しづらいと思うので，参考までに自然言語としての意味と略記を記載する．人間の直感でわかりやすいように，真理関数は自然言語でよくつかわれる言葉が元になっている．
       </p>
       <dl>
         論理式$\phi,\psi$において，
         <dt>否定</dt>
         <dd>
           $\phi$ではない(not $\phi$)
-          $$\lnot\phi$$
+          $$\lnot\phi\Def\top\paren{\phi}$$
         </dd>
         <dt>連言</dt>
         <dd>
           $\phi$かつ$\psi$($\phi$ and $\psi$)
-          $$\phi\land\psi$$
+          $$\phi\lor\psi\Def\lor\paren{\phi,\psi}$$
         </dd>
         <dt>選言</dt>
         <dd>
           $\phi$または$\psi$($\phi$ or $\psi$)
-          $$\phi\lor\psi$$
+          $$\phi\land\psi\Def\land\paren{\phi,\psi}$$
         </dd>
         <dt>含意</dt>
         <dd>
           $\phi$ならば$\psi$(if $\phi$ then $\psi$)
-          $$\phi\implies\psi$$
+          $$\phi\implies\psi\Def\implies\paren{\phi,\psi}$$
         </dd>
       </dl>
       <p>
-        命題論理ではこれらのほかにもう一つ演算子を定義する．<dfn>同値</dfn>とは二つの論理式が一致することを意味し，便利である．
+        真理関数を演算子として扱うとき，<dfn>論理演算子</dfn>という．二項演算子において，この記法を<dfn>中置記法</dfn>という．命題論理ではこれらのほかにもう一つ演算子を定義する．
       </p>
       <dl>
         論理式$\phi,\psi$において，
@@ -158,9 +142,9 @@
         </details>
       </details>
 
-      <h2>論理式の集合</h2>
+      <h2>命題論理の論理式</h2>
       <p>
-        命題論理における論理式の集合は以下のように定義される．
+        命題論理における論理式を以下のように定義する．
       </p>
       <dl>
         <ol>
