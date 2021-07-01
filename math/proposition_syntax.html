@@ -111,7 +111,7 @@
         </dd>
       </dl>
       <p>
-        命題論理ではこれらのほかにもう一つ演算子を定義する．<dfn>同値</dfn>とは二つの論理式が命題として同じであることを意味し，便利である．
+        命題論理ではこれらのほかにもう一つ演算子を定義する．<dfn>同値</dfn>とは二つの論理式が一致することを意味し，便利である．
       </p>
       <dl>
         論理式$\phi,\psi$として，
@@ -137,7 +137,9 @@
       </dl>
       <details class="parent">
         <summary>練習問題</summary>
-        <p>次の括弧が省略された命題に括弧をつけろ．ただし，式全体の括弧は省略してよい．</p>
+        <p>
+          次の括弧が省略された命題に括弧をつけろ．ただし，式全体の括弧は省略してよい．
+        </p>
         <ol>
           <li>$\lnot P\land Q$</li>
           <li>$P\land Q\lor R\implies P\lor\lnot Q\land R$</li>
@@ -167,6 +169,28 @@
           <li>(1),(2)以外は論理式ではない．</li>
         </ol>
       </dl>
+      <details class="parent">
+        <summary>練習問題</summary>
+        <p>
+          次の式が命題論理における論理式であることを示せ．ただし，$P,Q,R$は原子命題とする．
+        </p>
+        <ol>
+          <li>$P$</li>
+          <li>$P\land Q\lor R\implies P\lor\lnot Q\land R$</li>
+          <li>$P\implies Q\implies P\iff Q$</li>
+        </ol>
+        <details class="child">
+          <summary>解答</summary>
+          <p>
+            優先順位が高い演算子から括弧をくくる．同順位の場合は右結合なら右側から，左結合なら左結合がから順に括弧をくくる．
+          </p>
+          <ol>
+            <li>$\paren{\lnot P}\land Q$</li>
+            <li>$\paren{\paren{P\land Q}\lor R}\implies\paren{P\lor\paren{\paren{\lnot Q}\land R}}$</li>
+            <li>$\paren{P\implies \paren{Q\implies P}}\iff Q$</li>
+          </ol>
+        </details>
+      </details>
 
       <h2>今回出てきた用語のまとめ</h2>
       <aside>

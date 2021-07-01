@@ -20,22 +20,45 @@
   <main>
     <article>
       <aside>
-        二次関数$f\paren{x}=x^2+ax+b$が次の条件を満たす$a,b$の条件を求めよ．
+        二次関数$f\paren{x}=ax^2+bx+c$が次の条件を満たす$a,b,c$の必要十分条件を求めよ．
         <ol>
           <li>すべての$x$で$f\paren{x}\gt0$を満たす．</li>
-          <li>$f\paren{x}\lt0$を満たす$x$が存在する．</li>
+          <li>$f\paren{x}\gt0$を満たす$x$が存在する．</li>
         </ol>
       </aside>
       <div class="mycomment">
-
+        数学でこんな問題が出てきたんだけど<br>
+        すべてと存在の違いって何？条件もよくわからない……
       </div>
       <div class="yourcomment">
         <img class="faceicon" src="../lib/img/teacher.jpg">
         <div class="chat">
-          まず，命題って知ってる？
+          このような数学の問題を表現するには命題論理の表現力だけでは不十分なんだ<br>
+          一階述語論理は今研究されている数学のほぼ全域を形式化する表現力を持っている一番重要な論理体系なんだ
         </div>
       </div>
 
+      <h2>命題の分解</h2>
+      <h3>定項と述語</h3>
+      <p>
+        原子命題を分解してもっと表現力をあげることを目標とする．例として「7は素数である」を考える．これを「7」という<dfn>定項</dfn>と「～は素数である」という<dfn>述語</dfn>に分解する．これを記号化して$P\paren{7}$であるとする．このとき，述語を<dfn>命題関数</dfn>，<dfn>条件</dfn>，<dfn>性質</dfn>，<dfn>概念</dfn>，<dfn>関係</dfn>と言ったりもする．
+      </p>
+      <h3>変項</h3>
+      <p>
+        $P\paren{7}$のほかにも，$P\paren{1},P\paren{2},P\paren{3},\cdots$などがあり様々な定項を入れることが出来る．ここで，定項に対して不特定のものを<dfn>変項</dfn>とよぶ．変項$x$に対し「$x$は素数である」を$P\paren{x}$と表すことが出来る．
+      </p>
+
+      <h2>量化</h2>
+      <p>
+        「$x$は素数である」は命題であるとは言えない．なぜなら$x$が1のときは偽となるけど，2のときは真となり，真偽が定まらないからである．ここで，量化という表現を導入する．論理式$F$に対して「すべての$x$について$F\paren{x}$である」を$\forall xF\paren{x}$と書き，<dfn>全称量化</dfn>という．また，「$F\paren{x}$となる$x$が存在する」を$\exists xF\paren{x}$と書き，<dfn>存在量化</dfn>という．
+      </p>
+      <div class="mycomment">
+        さっきの問題は
+        <ol>
+          <li>$\forall x,f\paren{x}\gt0</li>
+          <li>$\exists x,f\paren{x}\gt0</li>
+        </ol>
+      </div>
     </article>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
