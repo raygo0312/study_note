@@ -35,7 +35,6 @@ h2 {
   border-left: solid #007700 0.5rem;
   padding-left: 0.5rem;
   background-color: #ddffdd;
-  font-family: sans-serif;
 }
 
 h3 {
@@ -43,13 +42,11 @@ h3 {
   border-bottom: solid #aaddff 0.2rem;
   border-left: solid #aaddff 0.5rem;
   padding-left: 0.5rem;
-  font-family: sans-serif;
 
 }
 
 h4 {
   text-decoration: underline;
-  font-family: sans-serif;
 }
 
 p {
@@ -91,7 +88,6 @@ dl {
 
 dt {
   margin-top: 0.5rem;
-  font-family: sans-serif;
 }
 
 dd {
@@ -150,7 +146,6 @@ summary {
   padding-left: 0.5rem;
   background-color: #22aa55;
   color: #ffffff;
-  font-family: sans-serif;
 }
 
 summary+* {
