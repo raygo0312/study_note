@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta nayou="viewport" content="width=device-width, initial-scale=1">
+  <title>推論 | study_note</title>
+  <meta nayou="author" content="raygo">
+  <link rel="stylesheet" href="../lib/css/bootstrap-reboot.css">
+  <link rel="stylesheet" href="../lib/css/style.css">
+  <script type="text/javascript" src="../lib/js/mathjax_config.js" Defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" Defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>推論</h1>
+    <a href="../">ホーム</a> -&gt; <a href="../../">数学</a> -&gt; 推論
+  </header>
+  <main>
+    <h2>推論</h2>
+    <h3>演繹と帰納</h3>
+    <p>
+      <dfn>推論</dfn>とは論理的に説明することである．もうすこし具体的に言うと，<dfn>前提</dfn>から<dfn>結論</dfn>を論理的に導くことである．推論には大きく二つに分かれており，演繹と帰納である．<dfn>演繹</dfn>は前提を仮定して結論を得る方法である．このとき，結論のことを<dfn>帰結</dfn>という．演繹では使われた前提がすべて真であれば結論も真である．<dfn>帰納</dfn>は前提からそれらしい一般的事実を導く方法である．それらしい一般的事実を正確に定義するのは難しい．結論が真とは限らないことに注意が必要である．数学の証明では演繹しか用いないので，演繹のことを単に推論と言ったりもする．また，言葉に帰納を含むが，対象をすべて網羅している場合である数学的帰納法などは演繹の一種である．しかし，数学では演繹しか用いないため，これらを帰納といったりもする．推論(演繹)を次のように表す．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      任意の前提の集合$\Gamma$，帰結$\phi$としたとき，
+      <dt>$\Gamma$から$\phi$への推論</dt>
+      <dd>
+        $$\Gamma\Implies\phi$$
+      </dd>
+    </dl>
+    <div class="you">
+      帰納的定義も帰納ではなく演繹的な定義だよ
+    </div>
+    <div class="me">
+      数学的帰納法も帰納的定義も聞いたことないよ？
+    </div>
+    <div class="you">
+      聞いたことないなら，気にしなくていいよ
+    </div>
+    <h3>論理的帰結</h3>
+    <p>
+      意味論で定義される推論を<dfn>論理的帰結</dfn>といい，すべての前提が真であるとき，帰結が偽とならないことである．論理的帰結を次のように表す．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      命題の集合$\Gamma$，命題$\phi$としたとき，
+      <dt>$\Gamma$から$\phi$への論理的帰結</dt>
+      <dd>
+        $$\Gamma\models\phi$$
+      </dd>
+    </dl>
+
+    <h2>論理学のルール</h2>
+    <h3>公理</h3>
+    <p>
+      推論では前提が真でなければ帰結が真であると言えない．このため，何かしらの命題を真であるとしないと仮定しないと何も始まらない，この仮定された命題を<dfn>公理</dfn>という．
+    </p>
+
+    <h3>推論規則</h3>
+    <p>
+      一方，証明論では真偽の値を定めることが出来ない．そこで，どのような推論を許すかを定義することで真偽を定めずに推論できるようにした．この推論を<dfn>推論規則</dfn>という．
+    </p>
+
+
+    <h2>証明</h2>
+    <h3>証明体系</h3>
+    <p>
+      公理から推論規則を用いて新しい命題を推論していく．この公理と推論規則を定めた体系を<dfn>証明体系</dfn>という．公理と前提から推論規則で推論された命題を「前提からこの証明体系で<dfn>演繹可能</dfn>」という．公理を空の前提から演繹可能であるとする．このとき，空の前提から推論規則で推論された命題を「この証明体系で<dfn>証明可能</dfn>」という．また，証明可能な命題を<dfn>定理</dfn>，定理への演繹を<dfn>証明</dfn>という．これを次のように表す．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      論理体系$\kappa$，命題の集合$\Gamma$，命題$\phi$としたとき，
+      <dt>$\kappa$で$\Gamma$から$\phi$は演繹可能</dt>
+      <dd>
+        $$\Gamma\vdash_\kappa\phi$$
+      </dd>
+      <dt>$\kappa$で$\phi$は証明可能</dt>
+      <dd>
+        $$\vdash_\kappa\phi$$
+      </dd>
+    </dl>
+    <p>
+      証明体系が明らかなときは体系名を省略して$\vdash$を用いてよい．また，$a_1,a_2,\cdots,a_n$の集合を$\set{a_1,a_2,\cdots,a_n}$と表すが，集合の本来の記号を用いると，認識しづらくなるので次の表現を使う．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      命題の集合$\set{\phi_1,\phi_2,\cdots,\phi_n}$，命題$\phi$としたとき，
+      <dt>集合記号の省略</dt>
+      <dd>
+        $$\phi_1,\phi_2,\cdots,\phi_n\Implies\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\Implies\phi$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\models\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\models\phi$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\vdash\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\vdash\phi$$
+      </dd>
+    </dl>
+
+    <h2>命題定数</h2>
+    <h3>トートロジー</h3>
+    <p>
+      <dfn>トートロジー</dfn>とは意味論的には常に真である命題である．<dfn>恒真命題</dfn>ともいう．証明論的には証明された命題である．トートロジーを表す記号として次のを用いる．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      <dt>トートロジー</dt>
+      <dd>
+        $$\top$$
+      </dd>
+    </dl>
+
+    <h3>矛盾</h3>
+    <p>
+      <dfn>矛盾</dfn>とは意味論的には常に偽である命題である．<dfn>恒偽命題</dfn>ともいう．証明論的にはいくつかの推論規則があり，それによって矛盾の性質を作っている．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      <dt>矛盾</dt>
+      <dd>
+        $$\bot$$
+      </dd>
+    </dl>
+
+    <h2>今回出てきた用語のまとめ</h2>
+    <aside>
+      <ul>
+        <li>推論 : inference</li>
+        <li>前提 : premise</li>
+        <li>結論 : conclusion</li>
+        <li>演繹 : deduction</li>
+        <li>帰結 : consequence</li>
+        <li>帰納 : Induction</li>
+        <li>論理的帰結 : logical consequence, entailment</li>
+        <li>公理 : axiom</li>
+        <li>推論規則 : inference rule</li>
+        <li>証明体系 : proof system</li>
+        <li>演繹可能 : deducible</li>
+        <li>証明可能 : provable</li>
+        <li>定理 : theorem</li>
+        <li>証明 : proof</li>
+        <li>トートロジー : tautology</li>
+        <li>恒真命題 : tautology</li>
+        <li>矛盾 : contradiction</li>
+        <li>恒偽命題 : contradiction</li>
+      </ul>
+    </aside>
+  </main>
+  <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
+</body>
+
+</html>

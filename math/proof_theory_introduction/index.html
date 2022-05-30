@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta nayou="viewport" content="width=device-width, initial-scale=1">
+  <title>証明論導入 | study_note</title>
+  <meta nayou="author" content="raygo">
+  <link rel="stylesheet" href="../lib/css/bootstrap-reboot.css">
+  <link rel="stylesheet" href="../lib/css/style.css">
+  <script type="text/javascript" src="../lib/js/mathjax_config.js" Defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" Defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>証明論導入</h1>
+    <a href="../">ホーム</a> -&gt; <a href="../../">数学</a> -&gt; 証明論導入
+  </header>
+  <main>
+    <h2>定義</h2>
+    <p>
+      「定義とは物事に共通認識を持たせる行為である」と定義したが，数学を形式化するためには定義の形式化も必要である．そこで，次の表現を用いる．
+    </p>
+    <dl>
+      論理式$\phi,\psi$としたとき，
+      <dt>$\phi$を$\psi$で定義する</dt>
+      <dd>$$\phi\Def\psi$$</dd>
+      項$\xi,\zeta$としたとき，
+      <dt>$\xi$を$\zeta$で定義する</dt>
+      <dd>$$\xi\def\zeta$$</dd>
+    </dl>
+    <p>
+      と表し，それぞれ次の述語と同じ扱いができるとする．
+    </p>
+    <dl>
+      論理式$\phi,\psi$としたとき，
+      <dt>$\phi$と$\psi$は同値である</dt>
+      <dd>$$\phi\Iff\psi$$</dd>
+      項$\xi,\zeta$としたとき，
+      <dt>$\xi$と$\zeta$は相等である</dt>
+      <dd>$$\xi=\zeta$$</dd>
+    </dl>
+    <p>
+      同値や相等であることを<dfn>等しい</dfn>ともいう．同値や相等である関係を<dfn>相等関係</dfn>といい，相等関係が満たすべき性質を<dfn>等価性</dfn>という．等価性については今後述べる．
+    </p>
+    <div class="me">
+      同値と相等って何が違うの？
+    </div>
+    <div class="you">
+      えぇと，意味は同じだよ<br>
+      慣習的に論理としての値と，数値としての値が等しいことを区別して言い分けているよ
+    </div>
+
+    <h2>真理関数</h2>
+    <p>
+      命題論理や一階述語論理で定義される真理関数を用意する．
+    </p>
+    <dl>
+      <h4>用意</h4>
+      論理式$\phi,\psi$について，
+      <dt>否定</dt>
+      <dd>$$\lnot\paren{\phi}$$</dd>
+      <dt>連言</dt>
+      <dd>$$\land\paren{\phi,\psi}$$</dd>
+      <dt>選言</dt>
+      <dd>$$\lor\paren{\phi,\psi}$$</dd>
+      <dt>含意</dt>
+      <dd>$$\implies\paren{\phi,\psi}$$</dd>
+    </dl>
+    <p>
+      形式化する上では論理体系の意味を考えないが，意味がわからないと理解しづらいと思うので，参考までに自然言語としての意味を載せる．直感でわかりやすいように，真理関数は自然言語でよくつかわれる言葉が元になっている．
+    </p>
+    <aside>
+      <h4>真理関数の意味</h4>
+      論理式$\phi,\psi$について，
+      <ul>
+        <li>否定$\lnot\paren{\phi}$ : $\phi$ではない</li>
+        <li>連言$\land\paren{\phi,\psi}$ : $\phi$かつ$\psi$</li>
+        <li>選言$\lor\paren{\phi,\psi}$ : $\phi$または$\psi$</li>
+        <li>含意$\implies\paren{\phi,\psi}$ : $\phi$ならば$\psi$</li>
+      </ul>
+    </aside>
+    <p>
+      このままでは扱いづらいので，真理関数を演算子として扱いたい．このとき，<dfn>論理演算子</dfn>ともいう．次のように表す．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      論理式$\phi,\psi$としたとき，
+      <dt>$\lnot$演算子</dt>
+      <dd>$$\paren{\lnot\phi}\Def\lnot\paren{\phi}$$</dd>
+      <dt>$\lor$演算子</dt>
+      <dd>$$\paren{\phi\land\psi}\Def\land\paren{\phi,\psi}$$</dd>
+      <dt>$\land$演算子</dt>
+      <dd>$$\paren{\phi\lor\psi}\Def\lor\paren{\phi,\psi}$$</dd>
+      <dt>$\implies$演算子</dt>
+      <dd>$$\paren{\phi\implies\psi}\Def\implies\paren{\phi,\psi}$$</dd>
+    </dl>
+    <p>
+      二項演算子におけるこの記法を<dfn>中置記法</dfn>という．命題論理ではこれらのほかにもう二つ演算子を定義する．
+    </p>
+    <dl>
+      論理式$\phi,\psi$について，
+      <dt>同値</dt>
+      <dd>
+        $$\paren{\phi\iff\psi}\Def\paren{\paren{\phi\implies\psi}\land\paren{\psi\implies\phi}}$$
+      </dd>
+      <dt>排他的論理和</dt>
+      <dd>
+        $$\paren{\phi\veebar\psi}\Def\paren{\phi\land\paren{\lnot\psi}\lor\paren{\paren{\lnot\phi}\land\psi}}$$
+      </dd>
+    </dl>
+    <p>
+      <dfn>排他的論理和</dfn>はこの分野が発達してから生まれた概念で，どちらか一方のみであるという意味である．
+    </p>
+    <div class="me">
+      また同値！？<br>
+      同じ言葉だけど記号がちょっと違う
+    </div>
+    <div class="you">
+      どっちも本質的には同じなんだけどね<br>
+      $\Iff$は推論の意味でどっちからでも推論可能であることを示してるよ<br>
+      $\iff$は論理式として同じ値であることを示してるよ<br>
+    </div>
+
+    <h2>量化子</h2>
+    <aside>
+      <h4>例題</h4>
+      二次関数$f\paren{x}=ax^2+bx+c$が次の条件を満たす$a,b,c$の必要十分条件を求めよ．
+      <ol>
+        <li>すべての$x$で$f\paren{x}\gt0$を満たす．</li>
+        <li>$f\paren{x}\gt0$を満たす$x$が存在する．</li>
+      </ol>
+    </aside>
+    <div class="me">
+      数学でこんな問題が出てきたんだけど<br>
+      すべてと存在の違いって何？条件もよくわからない……
+    </div>
+    <div class="you">
+      前に量化という表現を導入したよね<br>
+      それに関係してるよ
+    </div>
+    <p>
+      二つの量化表現を導入する．論理式$F$に対して「すべての$x$について$F\paren{x}$である」を$\forall x\paren{F\paren{x}}$と表し，<dfn>全称量化</dfn>という．また，「$F\paren{x}$となる$x$が存在する」を$\exists x\paren{F\paren{x}}$と表し，<dfn>存在量化</dfn>という．
+    </p>
+    <div class="me">
+      さっきの問題は$F\paren{x}\Def f\paren{x}\gt0$としたとき，
+      <ol>
+        <li>$\forall x\paren{F\paren{x}}$</li>
+        <li>$\exists x\paren{F\paren{x}}$</li>
+      </ol>
+      って表せるね
+    </div>
+
+    <h2>述語</h2>
+    <p>
+      述語には$\in$と$=$を用いる．述語を演算子として扱うとき，<dfn>関係演算子</dfn>という．これも論理演算子と同様に中置記法で表す．この演算子の定義は集合論で行う．
+    </p>
+
+    <h2>略記</h2>
+    <h3>演算子の優先順位</h3>
+    <p>
+      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という複雑な命題に対しても$\paren{\paren{\paren{\lnot P}\land Q}\iff P}\implies\paren{P\lor Q}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に優先順位を定める．演算子の<dfn>優先順位</dfn>とは括弧がない場合に優先して計算される順番のことである．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      論理式$\phi$について，
+      <dt>全体括弧の省略</dt>
+      <dd>$$\phi\Def\paren{\phi}$$</dd>
+      $a,b,c$の演算$\rho_1$が$\rho_2$より優先順位が高いとき，
+      <dt>優先順位</dt>
+      <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def\paren{a\,\rho_1\,b}\,\rho_2\,c$$</dd>
+      $a,b,c$の演算$\rho_1$と$\rho_2$の優先順位が同じで左結合であるとき，
+      <dt>左結合</dt>
+      <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def\paren{a\,\rho_1\,b}\,\rho_2\,c$$</dd>
+      $a,b,c$の演算$\rho_1$と$\rho_2$の優先順位が同じで右結合であるとき，
+      <dt>右結合</dt>
+      <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def a\,\rho_1\,(b\,\rho_2\,c)$$</dd>
+    </dl>
+    <div class="you">
+      ここでいう論理式は最長一致であることに注意してね<br>
+      つまり，$\phi\Def\paren{\phi}$をつかって，次のように変形するのはダメだよ<br>
+      $$a\land\paren{b\lor c}\Iff a\land b\lor c$$
+    </div>
+    <p>
+      実際に使われる論理演算子の優先順位を定める．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      上から順に優先順位が高いとする．
+      <ul>
+        <li>$\lnot$(右結合)</li>
+        <li>$\veebar$(左結合)</li>
+        <li>$\land$(左結合)</li>
+        <li>$\lor$(左結合)</li>
+        <li>$\implies$(右結合)</li>
+        <li>$\iff$(左結合)</li>
+      </ul>
+    </dl>
+    <aside>
+      <h4>優先順位の例</h4>
+      命題$P,Q,R$について，
+      <ul>
+        $$\lnot P\land Q\Iff\paren{\lnot P}\land Q$$
+        $$P\land Q\lor Q\land R\Iff\paren{P\land Q}\lor\paren{Q\land R}$$
+        $$\lnot\lnot P\Iff\lnot\paren{\lnot P}$$
+        $$P\lor Q\lor R\Iff\paren{P\lor Q}\lor R$$
+        $$P\implies Q\implies R\Iff P\implies\paren{Q\implies R}$$
+        $$\lnot\paren{P\lor Q}\land R\Iff\paren{\lnot\paren{P\lor Q}}\land R$$
+      </ul>
+    </aside>
+    <details>
+      <summary>練習問題1</summary>
+      <p>
+        次の括弧が省略された命題に括弧をつけろ．ただし，式全体の括弧は省略してよい．
+      </p>
+      <ol>
+        <li>$\lnot P\land Q$</li>
+        <li>$P\land Q\lor R\implies P\lor\lnot Q\land R$</li>
+        <li>$P\implies Q\implies P\iff Q$</li>
+      </ol>
+      <details class="sub">
+        <summary>解答</summary>
+        <p>
+          優先順位が高い演算子から括弧をくくる．同順位の場合は右結合なら右側から，左結合なら左結合がから順に括弧をくくる．
+        </p>
+        <ol>
+          <li>$\paren{\lnot P}\land Q$</li>
+          <li>$\paren{\paren{P\land Q}\lor R}\implies\paren{P\lor\paren{\paren{\lnot Q}\land R}}$</li>
+          <li>$\paren{P\implies \paren{Q\implies P}}\iff Q$</li>
+        </ol>
+      </details>
+    </details>
+    <details>
+      <summary>練習問題2</summary>
+      <p>
+        次の式が命題論理における論理式であることを示せ．ただし，$P,Q$は原子命題とする．
+      </p>
+      <ol>
+        <li>$P\implies P$</li>
+        <li>$\lnot P\land Q$</li>
+        <li>$P\iff P$</li>
+      </ol>
+      <details class="sub">
+        <summary>解答</summary>
+        <p>
+          定義通り順に確認していけばよい．
+        </p>
+        <ol>
+          <li>
+            与式を変形する．
+            \begin{align*}
+            &P\implies P\\
+            \Iff&\implies\paren{P,P}\\
+            \end{align*}
+            よって，$P$は原子命題より$P$は論理式である．$\implies$は2項真理関数で$P$は論理式より$\implies\paren{P,P}$は論理式である．したがって，$P\implies P$は論理式である．
+          </li>
+          <li>
+            与式を変形する．
+            \begin{align*}
+            &\lnot P\land Q\\
+            \Iff&\paren{\paren{\lnot P}\land Q}\\
+            \Iff&\land\paren{\lnot\paren{P},Q}\\
+            \end{align*}
+            よって，$P$は原子命題より$P$は論理式である．$\lnot$は1項真理関数で$P$は論理式より$\lnot\paren{P}$は論理式である．また，$Q$は原子命題より$Q$は論理式である．よって，$\land$は2項真理関数で$\lnot\paren{P}$と$Q$は論理式より$\land\paren{\lnot\paren{P},Q}$は論理式である．したがって，$\lnot P\land Q$は論理式である．
+          </li>
+          <li>
+            与式を変形する．
+            \begin{align*}
+            &P\iff P\\
+            \Iff&\paren{P\implies P}\land\paren{P\implies P}\\
+            \Iff&\land\paren{P\implies P,P\implies P}\\
+            \end{align*}
+            (1)より$P\implies P$は論理式である．$\land$は2項真理関数で$P\implies P$は論理式より$\land\paren{P\implies P,P\implies P}$は論理式である．したがって，$P\iff P$は論理式である．
+          </li>
+        </ol>
+      </details>
+    </details>
+
+    <h3>量化子の略記</h3>
+    <p>
+      量化子は適用範囲を決める必要があり，その範囲を括弧で囲わなければならない．しかし，変項が増えると括弧が煩雑になってしまうため，省略を考える．他にも便利な記法として次のものを定める．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      量化子$\Lambda$について，
+      <dt>適用範囲の略記</dt>
+      <dd>$$\Lambda x,\phi\Def\Lambda x\paren{\phi}$$</dd>
+      <dt>変数列挙の略記</dt>
+      <dd>$$\Lambda x,y,\phi\Def\Lambda x,\Lambda y,\phi$$</dd>
+      論理式$\phi$，$1$項述語$F\paren{x}$，項$x,y$について，
+      <dt>$\forall$の条件の略記</dt>
+      <dd>$$\forall x\paren{F\paren{x}},\phi\Def\forall x,F\paren{x}\implies\phi$$</dd>
+      <dt>$\exists$の条件の略記</dt>
+      <dd>$$\exists x\paren{F\paren{x}},\phi\Def\exists x\phi\land F\paren{x}$$</dd>
+      <dt>唯一存在量化子</dt>
+      <dd>$$\exists! x,F\paren{x}\Def\paren{\exists x,F\paren{x}}\land\forall x\paren{F\paren{x}},y\paren{F\paren{y}},x=y$$</dd>
+    </dl>
+
+    <h3>否定の略記</h3>
+    <p>
+      否定した命題や述語はよく使われる．そのたびに，先頭に$\lnot$をつけて括弧でくくっていては，冗長的で認識しづらい．量化子や関係演算子に斜線を入れることで否定を表現する．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      量化子$\Lambda$，$x,y$の関係演算子$\rho$について，
+      <dt>量化子の否定</dt>
+      <dd>$$\cancel{\Lambda} x,\phi\Def\lnot\paren{\Lambda x,\phi}$$</dd>
+      <dt>関係演算子の否定</dt>
+      <dd>$$x\,\cancel{\rho}\,y\Def\lnot\paren{x\,\rho\,y}$$</dd>
+    </dl>
+
+    <h2>今回出てきた用語のまとめ</h2>
+    <aside>
+      <ul>
+        <li>同値 : equivalence</li>
+        <li>相等 : equality</li>
+        <li>等しい : equal</li>
+        <li>等価性 : equivalence</li>
+        <li>否定 : negation</li>
+        <li>連言 : conjunction</li>
+        <li>選言 : disjunction</li>
+        <li>含意 : implication</li>
+        <li>論理演算子 : logical operation</li>
+        <li>中置記法 : infix notation</li>
+        <li>排他的論理和 : exclusive or / exclusive disjunction</li>
+        <li>全称量化 : infix notation</li>
+        <li>存在量化 : infix notation</li>
+        <li>関係演算子 : infix notation</li>
+        <li>優先順位 : precedence</li>
+        <li>右結合 : right-associative</li>
+        <li>左結合 : left-associative</li>
+      </ul>
+    </aside>
+  </main>
+  <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
+</body>
+
+</html>

@@ -1,0 +1,186 @@
+body {
+  margin: 0px;
+  background-color: #dddddd;
+}
+header {
+  border-bottom: solid 0.2rem;
+  padding-left: 0.5rem;
+  background-color: #00aa00;
+}
+main {
+  margin: auto;
+  border: solid #aaaaaa 0.1rem;
+  padding: 0.5rem;
+  padding-bottom: 10rem;
+  min-height: 50rem;
+  max-width: 50rem;
+  background-color: #ffffff;
+}
+footer {
+  border: solid #ffffff 0.1rem;
+  background-color: #303030;
+  color: #808080;
+}
+h2 {
+  margin-top: 2rem;
+  border-left: solid #007700 0.5rem;
+  padding-left: 0.5rem;
+  background-color: #ddffdd;
+}
+h3 {
+  margin-top: 1rem;
+  border-bottom: solid #aaddff 0.2rem;
+  border-left: solid #aaddff 0.5rem;
+  padding-left: 0.5rem;
+}
+h4 {
+  text-decoration: underline;
+}
+p {
+  text-indent: 1rem;
+}
+a:link {
+  text-decoration: underline;
+  color: #000000;
+}
+a:visited {
+  text-decoration: none;
+  color: #333333;
+}
+a:hover {
+  text-decoration: none;
+}
+a:active {
+  color: #ffffff;
+}
+dfn {
+  font-weight: bold;
+}
+dl {
+  margin: 1rem;
+  border-top: solid #bb5511 0.2rem;
+  border-right: solid #bb5511 0.2rem;
+  border-bottom: solid #aaaaaa 1rem;
+  border-left: solid #bb5511 0.2rem;
+  padding: 0.5rem;
+  background-color: #005000;
+  color: #eeeeee;
+}
+dt {
+  margin-top: 0.5rem;
+}
+dd {
+  margin-left: 2rem;
+}
+aside {
+  margin: 1rem;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
+  border: solid #222222 0.1rem;
+  padding: 0.5rem;
+  background: #aaaaaa;
+}
+ol li {
+  list-style-type: none;
+  counter-increment: cnt;
+}
+ol li::before {
+  display:inline-block;
+  margin-left:-50px;
+  width: 50px;
+  text-align: right;
+  content: "(" counter(cnt) ")\00a0";
+}
+table {
+  border-spacing: 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+table th,table td {
+  padding: 0.5rem 0;
+  text-align: center;
+}
+table tr:nth-child(odd) {
+  background-color: #eeeeee
+}
+details {
+  margin: 0.5rem;
+  border: solid #222222 0.1rem;
+}
+details+details {
+  margin-top: -0.6rem;
+}
+summary {
+  margin-bottom: -0.1rem;
+  border-bottom: solid #222222 0.1rem;
+  padding-left: 0.5rem;
+  background-color: #22aa55;
+  color: #ffffff;
+}
+summary+* {
+  margin-top: 0.6rem;
+}
+details.sub summary {
+  background-color: #cccccc;
+  color: #222222;
+}
+/* チャット */
+.you::before {
+  position:absolute;
+  top: -0.5rem;
+  left: -3rem;
+  border-radius: 50%;
+  width:2.5em;
+  height:2.5em;
+  background:url("../img/teacher.jpg") no-repeat;
+  background-size:contain;
+  content:"";
+}
+.you {
+  display: table;
+  position: relative;
+  margin: 2.5rem auto 2rem 3rem;
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
+  padding-right: 0.3rem;
+  max-width: 70%;
+  background: #edf1ee;
+}
+.you::after {
+  position: absolute;
+  top: -0.1rem;
+  left: -1rem;
+  border: solid 0.3rem transparent;
+  border-right: solid 1rem #edf1ee;
+  transform: rotate(35deg);
+  content: "";
+}
+.you+.me {
+  margin-top: -1.5rem
+}
+.me {
+  display: table;
+  position: relative;
+  margin: 2rem 1rem 2rem auto;
+  border-radius: 1rem;
+  padding: 0.1rem 0.5rem;
+  padding-right: 0.3rem;
+  max-width: 70%;
+  background: #30e852;
+  text-align: left;
+}
+.me:after {
+  position: absolute;
+  top: -0.1rem;
+  right: -1rem;
+  border: solid 0.3rem transparent;
+  border-left: solid 1rem #30e852;
+  transform: rotate(-35deg);
+  content: "";
+}
+.me+.you {
+  margin-top: -1rem
+}
+.MathJax {
+  padding-right: 0.2rem !important;
+  padding-left: 0.2rem !important;
+}

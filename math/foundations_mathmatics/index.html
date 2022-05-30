@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>数学とは | study_note</title>
+  <meta name="author" content="raygo">
+  <link rel="stylesheet" href="../lib/css/bootstrap-reboot.css">
+  <link rel="stylesheet" href="../lib/css/style.css">
+  <script type="text/javascript" src="../lib/js/mathjax_config.js" Defer></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" Defer></script>
+</head>
+
+<body>
+  <header>
+    <h1>数学とは</h1>
+    <a href="../">ホーム</a> -&gt; <a href="../../">数学</a> -&gt; 数学とは
+  </header>
+  <main>
+    <div class="me">
+      証明難しいなぁ……<br>
+      そもそも正しい証明の仕方って教えてもらってなくない！？
+    </div>
+    <div class="you">
+      証明はね数学者たちも最近になるまでわかっていなく，それぞれの直感のみで証明を行ってきたんだよ
+    </div>
+    <div class="me">
+      え！？そしたら人によって証明のやり方がばらばらになっちゃうじゃん
+    </div>
+    <div class="you">
+      そうだね<br>
+      おかげで，たくさんの欠陥が指摘されたんだ<br>
+      それをまずいと思った数学者たちが数学の基盤をつくろうとしてこの<dfn>数学基礎論</dfn>が研究され始めたんだよ<br>
+      まず，議論をするのに最重要な言葉の意味を見ていこうか
+    </div>
+
+    <h2>定義</h2>
+    <p>
+      <dfn>定義</dfn>とは物事に共通認識を持たせる行為である．新たな概念を定義するとき，その説明を<dfn>定義文</dfn>といい，定義文によって定義される概念を<dfn>被定義項</dfn>という．ある言葉の定義文で使われている概念をその言葉を使って定義することを<dfn>循環定義</dfn>という．循環定義は論理的に間違いとされている．
+    </p>
+    <aside>
+      <h4>定義の例</h4>
+      <ul>
+        <li>神とは万能な存在である．</li>
+        <li>正三角形とはすべての辺の長さが等しい三角形である．</li>
+        <li>$\pi$を円周率とする．</li>
+        <li>$\d{e=\lim_{t\to0}\paren{1+t}^{\frac1t}}$</li>
+      </ul>
+    </aside>
+    <div class="me">
+      循環定義がよくわからない
+    </div>
+    <div class="you">
+      例えば，林檎を「皮が赤い果実」と定義したとき，赤を「林檎の皮の色」のような定義する<br>
+      この定義が循環定義<br>
+      「林檎」は，「赤」で定義され，「赤」も，「林檎」で定義されている．結局「赤い」と「林檎」の正体がわからないままでしょ？<br>
+    </div>
+    <div class="me">
+      ちゃんと定義できていないから循環定義はダメなんだね
+    </div>
+
+    <h2>数学とは</h2>
+    <div class="me">
+      定義の定義を知ったけど，定義で使われている言葉の定義を……って調べていったらすごく哲学っぽくなってきた
+    </div>
+    <div class="you">
+      確かに，この話はもともと哲学として議論されてきたものを利用して数学として作り直したものなんだ
+    </div>
+    <div class="me">
+      数学って数の学問なんじゃなかったの？いつこんなに哲学っぽくなっちゃったの
+    </div>
+    <p>
+      数学の範囲はあいまいになっている．近代までの数学では数や図形について考える学問であった．しかし，数学が発展して扱う対象が増えたせいで範囲が膨大になっている．ここでは，この数学基礎論で形式化することとされたものを数学とする．つまり，一般的に形式科学と呼ばれる範囲を数学とする．
+    </p>
+    <div class="you">
+      形式化については次で話すよ
+    </div>
+
+    <h2>数理論理学</h2>
+    <p>
+      <dfn>数理論理学</dfn>は数学の形式化を目的とする．<dfn>形式化</dfn>とは記号列で正確に表すことである．つまり，数学語を作ることを目的とする．形式化することで，規則に従って論理的に扱えるようになる．例えば，計算機にその規則を教えることで数学を計算することが出来る．また，自然言語の表現を避けることで厳密性を保つ．まず始めに論理の形式化を行う．論理の形式化の方法を<dfn>論理体系</dfn>という．論理体系で定められた記号列のことを<dfn>論理式</dfn>という．論理体系は数学を記述する言語で，その文が論理式である．そのため，論理式のことを単に<dfn>文</dfn>ともいう．
+    </p>
+    <div class="me">
+      論理体系と論理式？
+    </div>
+    <div class="you">
+      それらは数学語のようなもので<br>
+      論理体系は英語<br>
+      論理式は英文<br>
+      に対応していると思っていいよ
+    </div>
+
+    <h3>論理体系</h3>
+    <p>
+      論理体系はいくつかあり，<dfn>命題論理</dfn>，<dfn>一階述語論理</dfn>，<dfn>二階述語論理</dfn>，……などがある．二階以上の述語論理を<dfn>高階述語論理</dfn>とまとめたりする．命題論理から始まり，段々と表現力が高くなる．他にもたくさんの論理体系が考えられている．
+    </p>
+    <div class="me">
+      なんで何種類もあるの？
+    </div>
+    <div class="you">
+      言語には日本語と英語があるように，数学にも様々な言語があって，必要に応じて使い分けているんだ
+    </div>
+    <p>
+      論理体系の定義は2段階ある．それが統語論と意味論である．どちらも言語学の用語である．<dfn>統語論</dfn>は構文を指し，どの記号列を論理式とするかを定義する．<dfn>意味論</dfn>は文の意味を指し，論理式のふるまいや値を定義する．
+    </p>
+    <div class="me">
+      わかんない言葉たくさん出てきた
+    </div>
+    <div class="you">
+      統語論は意味は通らなくてもどれが日本語であるかを定義しているんだ<br>
+      例えば，「林檎は3を眼鏡で切る」って文はどう思う？
+    </div>
+    <div class="me">
+      何が言いたいの？って思う
+    </div>
+    <div class="you">
+      この文は日本語として意味が全く伝わらないけど，日本語ぽいことはわかるよね<br>
+      じゃあ「で鏡檎をる林は切眼3」はどう？
+    </div>
+    <div class="me">
+      もはや宇宙人が喋ってるように思う
+    </div>
+    <div class="you">
+      たとえ日本語の文字を使っていたとしても並びがめちゃくちゃなら日本語に見えない<br>
+      言語を定めるには文字と並びが大事で，それを定義しているのが統語論だよ<br>
+      意味論は言葉の通り，言語の意味を定義しているよ
+    </div>
+
+    <h3>意味論</h3>
+    <p>
+      意味論の定義の仕方はいくつか存在する．論理式に値を定める方法を<dfn>モデル理論的意味論</dfn>という．これを単に意味論ということもある．一方，論理式のふるまいを定める方法を<dfn>証明論的意味論</dfn>という．これを単に<dfn>証明論</dfn>ということもある．モデル理論的意味論は集合論の言葉を必要とするが，現代の集合論では論理式で定義されるため，循環定義になってしまう．
+    </p>
+
+    <h2>集合論</h2>
+    <p>
+      <dfn>集合論</dfn>では論理式に使われる単語の形式化を目的とする．単語のふるまいを論理式で表すことで形式化できる．素朴的には，<dfn>集合</dfn>とは物の集まりである．集合は数学において扱う対象すべてを表す概念であるから，実際は論理式を定義するときに無意識に集合の概念を用いている．そのため，循環定義ではないかと思われるかもしれないが，数学の範囲は形式化されたものであるため，形式化する前の議論はしない．そこの議論は哲学に任せることとする．
+    </p>
+
+    <h2>今回出てきた用語のまとめ</h2>
+    <aside>
+      <ul>
+        <li>定義 : definition</li>
+        <li>定義文 : definitional statement</li>
+        <li>被定義項 : defined term</li>
+        <li>循環定義 : circular definition</li>
+        <li>数学基礎論 : foundations of mathematics</li>
+        <li>数理論理学 : mathematical logic</li>
+        <li>形式化 : formalization</li>
+        <li>論理体系 : logical system</li>
+        <li>論理式 : logical formula</li>
+        <li>文 : sentence</li>
+        <li>命題論理 : propositional logic</li>
+        <li>一階述語論理 : first-order predicate logic</li>
+        <li>二階述語論理 : second-order predicate logic</li>
+        <li>高階述語論理 : higher-order predicate logic</li>
+        <li>統語論 : syntax</li>
+        <li>意味論 : semantics</li>
+        <li>モデル理論的意味論 : model theoretic semantics</li>
+        <li>証明論的意味論 : proof theoretic semantics</li>
+        <li>証明論 : proof theory</li>
+        <li>集合論 : set theory</li>
+        <li>集合 : set</li>
+      </ul>
+    </aside>
+  </main>
+  <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
+</body>
+
+</html>
