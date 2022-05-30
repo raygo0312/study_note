@@ -100,7 +100,7 @@
       <dd>$$\paren{\phi\implies\psi}\Def\implies\paren{\phi,\psi}$$</dd>
     </dl>
     <p>
-      二項演算子におけるこの記法を<dfn>中置記法</dfn>という．一方，前に置く記法を<dfn>前置記法</dfn>(<dfn>ポーランド記法</dfn>)という．後ろに置く記法を<dfn>後置記法</dfn>(<dfn>逆ポーランド記法</dfn>)という．命題論理ではこれらのほかにもう二つ演算子を定義する．
+      二項演算子におけるこの記法を<dfn>中置記法</dfn>という．一方，前に置く記法を<dfn>前置記法</dfn>(<dfn>ポーランド記法</dfn>)という．後ろに置く記法を<dfn>後置記法</dfn>(<dfn>逆ポーランド記法</dfn>)という．便利なのでこれらのほかにもう二つ演算子を定義する．
     </p>
     <dl>
       論理式$\phi,\psi$について，
@@ -123,7 +123,7 @@
     <div class="you">
       どっちも本質的には同じなんだけどね<br>
       $\Iff$は推論の意味でどっちからでも推論可能であることを示してるよ<br>
-      $\iff$は論理式として同じ値であることを示してるよ<br>
+      $\iff$は論理式として対称であることを示してるよ<br>
     </div>
 
     <h2>量化子</h2>
@@ -144,7 +144,18 @@
       それに関係してるよ
     </div>
     <p>
-      二つの量化表現を導入する．論理式$F$に対して「すべての$x$について$F\paren{x}$である」を$\forall x\paren{F\paren{x}}$と表し，<dfn>全称量化</dfn>という．また，「$F\paren{x}$となる$x$が存在する」を$\exists x\paren{F\paren{x}}$と表し，<dfn>存在量化</dfn>という．
+      二つの量化表現を導入する．
+    </p>
+    <dl>
+      <dt>全称量化</dt>
+      <dd>$$\forall$$</dd>
+      <dt>存在量化</dt>
+      <dd>
+        $$\exists$$
+      </dd>
+    </dl>
+    <p>
+      具体的には，論理式$F$に対して「すべての$x$について$F\paren{x}$である」を$\forall x\paren{F\paren{x}}$と表す．また，「$F\paren{x}$となる$x$が存在する」を$\exists x\paren{F\paren{x}}$と表す．
     </p>
     <div class="me">
       さっきの問題は$F\paren{x}\Def f\paren{x}\gt0$としたとき，
@@ -155,28 +166,28 @@
       って表せるね
     </div>
 
-    <h2>述語</h2>
+    <h2>項と述語</h2>
     <p>
-      述語には$\in$と$=$を用いる．述語を演算子として扱うとき，<dfn>関係演算子</dfn>という．これも論理演算子と同様に中置記法で表す．この演算子の定義は集合論で行う．
+      項は集合のみとする．述語には$\in$と$=$を用いる．述語を演算子として扱うとき，<dfn>関係演算子</dfn>という．これも論理演算子と同様に中置記法で表す．詳しくは集合論で扱う．
     </p>
 
     <h2>略記</h2>
     <h3>演算子の優先順位</h3>
     <p>
-      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という複雑な命題に対しても$\paren{\paren{\paren{\lnot P}\land Q}\iff P}\implies\paren{P\lor Q}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に優先順位を定める．演算子の<dfn>優先順位</dfn>とは括弧がない場合に優先して計算される順番のことである．
+      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$\paren{\paren{\paren{\lnot P}\land Q}\iff P}\implies\paren{P\lor Q}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<dfn>優先順位</dfn>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．
     </p>
     <dl>
       <h4>定義</h4>
       論理式$\phi$について，
       <dt>全体括弧の省略</dt>
       <dd>$$\phi\Def\paren{\phi}$$</dd>
-      $a,b,c$の演算$\rho_1$が$\rho_2$より優先順位が高いとき，
+      $a,b,c$の演算子$\rho_1$が$\rho_2$より優先順位が高いとき，
       <dt>優先順位</dt>
       <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def\paren{a\,\rho_1\,b}\,\rho_2\,c$$</dd>
-      $a,b,c$の演算$\rho_1$と$\rho_2$の優先順位が同じで左結合であるとき，
+      $a,b,c$の演算子$\rho_1$と$\rho_2$の優先順位が同じで左結合であるとき，
       <dt>左結合</dt>
       <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def\paren{a\,\rho_1\,b}\,\rho_2\,c$$</dd>
-      $a,b,c$の演算$\rho_1$と$\rho_2$の優先順位が同じで右結合であるとき，
+      $a,b,c$の演算子$\rho_1$と$\rho_2$の優先順位が同じで右結合であるとき，
       <dt>右結合</dt>
       <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def a\,\rho_1\,(b\,\rho_2\,c)$$</dd>
     </dl>
@@ -190,14 +201,14 @@
     </p>
     <dl>
       <h4>定義</h4>
-      上から順に優先順位が高いとする．
+      上から順に優先順位が高いとする．また，特に明記しない限り演算子は右結合とする．
       <ul>
-        <li>$\lnot$(右結合)</li>
-        <li>$\veebar$(左結合)</li>
-        <li>$\land$(左結合)</li>
-        <li>$\lor$(左結合)</li>
-        <li>$\implies$(右結合)</li>
-        <li>$\iff$(左結合)</li>
+        <li>$\lnot$</li>
+        <li>$\veebar$</li>
+        <li>$\land$</li>
+        <li>$\lor$</li>
+        <li>$\implies$</li>
+        <li>$\iff$</li>
       </ul>
     </dl>
     <aside>
@@ -286,18 +297,20 @@
     </p>
     <dl>
       <h4>定義</h4>
-      量化子$\Lambda$について，
+      量化子$\Lambda,\Lambda'$について，
       <dt>適用範囲の略記</dt>
       <dd>$$\Lambda x,\phi\Def\Lambda x\paren{\phi}$$</dd>
-      <dt>変数列挙の略記</dt>
-      <dd>$$\Lambda x,y,\phi\Def\Lambda x,\Lambda y,\phi$$</dd>
+      <dt>量化列挙の略記</dt>
+      <dd>$$\Lambda x\Lambda' y,\phi\Def\Lambda x,\Lambda' y,\phi$$</dd>
+      <dt>同量化の略記</dt>
+      <dd>$$\Lambda xy,\phi\Def\Lambda x\Lambda y,\phi$$</dd>
       論理式$\phi$，$1$項述語$F\paren{x}$，項$x,y$について，
       <dt>$\forall$の条件の略記</dt>
       <dd>$$\forall x\paren{F\paren{x}},\phi\Def\forall x,F\paren{x}\implies\phi$$</dd>
       <dt>$\exists$の条件の略記</dt>
       <dd>$$\exists x\paren{F\paren{x}},\phi\Def\exists x\phi\land F\paren{x}$$</dd>
       <dt>唯一存在量化子</dt>
-      <dd>$$\exists! x,F\paren{x}\Def\paren{\exists x,F\paren{x}}\land\forall x\paren{F\paren{x}},y\paren{F\paren{y}},x=y$$</dd>
+      <dd>$$\exists! x,F\paren{x}\Def\exists x\paren{F\paren{x}}\land\forall x\paren{F\paren{x}}y\paren{F\paren{y}},x=y$$</dd>
     </dl>
 
     <h3>否定の略記</h3>
@@ -306,11 +319,26 @@
     </p>
     <dl>
       <h4>定義</h4>
-      量化子$\Lambda$，$x,y$の関係演算子$\rho$について，
+      量化子$\Lambda$，変数$x,y$の関係演算子$\rho$について，
       <dt>量化子の否定</dt>
       <dd>$$\cancel{\Lambda} x,\phi\Def\lnot\paren{\Lambda x,\phi}$$</dd>
       <dt>関係演算子の否定</dt>
       <dd>$$x\,\cancel{\rho}\,y\Def\lnot\paren{x\,\rho\,y}$$</dd>
+    </dl>
+
+    <h3>逆向きの略記</h3>
+    <p>
+      向きがある関係を表す演算子は表現力を上げるために逆向きで書くことがある．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      変数$x,y$の関係演算子$\rho$について，
+      <dt>演算子の逆向き</dt>
+      <dd>$$y\reflectbox{\rho}x\Def x\rho y$$</dd>
+      <dt>$\implies$の逆向き</dt>
+      <dd>$$y\reflectbox{\implies}x\Def x\implies y$$</dd>
+      <dt>$\Implies$の逆向き</dt>
+      <dd>$$y\reflectbox{\Implies}x\Def x\Implies y$$</dd>
     </dl>
 
     <h2>今回出てきた用語のまとめ</h2>
