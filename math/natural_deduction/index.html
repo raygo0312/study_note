@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta nayou="viewport" content="width=device-width, initial-scale=1">
-  <title>推論規則導入 | study_note</title>
+  <title>自然演繹 | study_note</title>
   <meta nayou="author" content="raygo">
   <link rel="stylesheet" href="../../lib/css/bootstrap-reboot.css">
   <link rel="stylesheet" href="../../lib/css/style.css">
@@ -14,27 +14,36 @@
 
 <body>
   <header>
-    <h1>推論規則導入</h1>
-    <a href="../../">ホーム</a> -&gt; <a href="../">数学</a> -&gt; 推論規則導入
+    <h1>自然演繹</h1>
+    <a href="../../">ホーム</a> -&gt; <a href="../">数学</a> -&gt; 自然演繹
   </header>
   <main>
+    <h2>証明体系</h2>
+    <p>
+      証明体系は2つの方法を組み合わせることで作られている．1つ目は推論の方法についてであり，ヒルベルト流H，自然演繹N，シーケント計算Lの3つある．2つ目はどの推論規則を採用するかについてであり，最小論理M，直感主義論理J，古典論理Kの3つある．それぞれの組み合わせにより，HM，HJ，HK，NM，NJ，NK，LM，LJ，LKの9つの証明体系がよく知られている．現代の数学では古典論理が採用されていて，自然演繹が初学者にとって分かりやすいと考えているので証明体系NKを採用することにする．
+    </p>
+    <div class="you">
+      それぞれの略文字はドイツ語が由来だよ<br>
+      気になる人は調べてみてね
+    </div>
+
     <h2>自然演繹</h2>
     <h3>証明図</h3>
     <p>
-      証明の推論の流れの表し方を考える．<dfn>証明図</dfn>とは証明の構造を木のように表す図である．
+      推論の流れの表し方を考える．<dfn>推論図</dfn>とは推論の流れを木のように表す図である．ある推論規則では仮定を取り除く，<dfn>打ち消し</dfn>という操作がある．この操作や公理となる前提を用いることで，仮定とする前提がないとき，推論図を<dfn>証明図</dfn>という．
     </p>
     <dl>
       <h4>定義</h4>
       推論規則$\text{R}$が$\phi_1,\phi_2,\cdots,\phi_n\Implies\phi$であるとき，
-      <dt>証明図</dt>
+      <dt>推論図</dt>
       <dd>
-        $$\infer[R]{\phi}{\phi_1\quad\phi_2\quad\cdots\quad\phi_n}$$
+        $$R\infer{\phi}{\phi_1\quad\phi_2\quad\cdots\quad\phi_n}$$
       </dd>
     </dl>
 
     <h3>自然演繹</h3>
     <p>
-      <dfn>自然演繹</dfn>とは証明を見つけやすくために推論規則を定めた体系であり，証明図を使って論理式の演算(推論)を表していく．今回は，初学者に直感的でわかりやすい，自然演繹の古典論理という論理体系について扱う．主に各論理演算子についての挿入と除去の規則から成り立っている．
+      <dfn>自然演繹</dfn>とは証明を見つけやすく構造を視覚で理解しやすいようにするための体系である．証明図を使って論理式の演算(推論)を表していくことが特徴である．推論規則は各論理演算子についての挿入と除去の規則から成り立っている．
     </p>
 
     <h2>自然演繹の古典論理の推論規則</h2>
