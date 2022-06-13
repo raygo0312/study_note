@@ -45,7 +45,17 @@
       <dd>$$\xi=\zeta$$</dd>
     </dl>
     <p>
-      同値や相等であることを<dfn>等しい</dfn>ともいう．同値や相等である関係を<dfn>相等関係</dfn>といい，相等関係が満たすべき性質を<dfn>等価性</dfn>という．等価性については今後述べる．
+      <ruby><dfn>同値</dfn>
+        <rt>equivalence</rt>
+      </ruby>や<ruby><dfn>相等</dfn>
+        <rt>equality</rt>
+      </ruby>であることを<ruby><dfn>等しい</dfn>
+        <rt>equal</rt>
+      </ruby>ともいう．同値や相等である関係を<ruby><dfn>相等関係</dfn>
+        <rt>equality relation</rt>
+      </ruby>といい，相等関係が満たすべき性質を<ruby><dfn>等価性</dfn>
+        <rt>equivalence</rt>
+      </ruby>という．等価性については今後述べる．
     </p>
     <div class="me">
       同値と相等って何が違うの？
@@ -57,7 +67,15 @@
     <h2>一階述語論理で使われる文字</h2>
     <h3>真理関数</h3>
     <p>
-      命題論理や一階述語論理で一般に定義される真理関数を用意する．
+      命題論理や一階述語論理で一般に定義される真理関数を用意する．用意する真理関数は<ruby><dfn>否定</dfn>
+        <rt>negation</rt>
+      </ruby>，<ruby><dfn>連言</dfn>
+        <rt>conjunction</rt>
+      </ruby>，<ruby><dfn>選言</dfn>
+        <rt>disjunction</rt>
+      </ruby>，<ruby><dfn>含意</dfn>
+        <rt>implication</rt>
+      </ruby>である．
     </p>
     <dl>
       <h4>用意</h4>
@@ -85,7 +103,9 @@
       </ul>
     </aside>
     <p>
-      このままでは扱いづらいので，真理関数を演算子として扱いたい．このとき，<dfn>論理演算子</dfn>ともいう．次のように表す．
+      このままでは扱いづらいので，真理関数を演算子として扱いたい．このとき，<ruby><dfn>論理演算子</dfn>
+        <rt>logical operation</rt>
+      </ruby>ともいう．次のように表す．
     </p>
     <dl>
       <h4>定義</h4>
@@ -100,7 +120,17 @@
       <dd>$$\paren{\phi\implies\psi}\Def\implies\paren{\phi,\psi}$$</dd>
     </dl>
     <p>
-      二項演算子におけるこの記法を<dfn>中置記法</dfn>という．一方，前に置く記法を<dfn>前置記法</dfn>(<dfn>ポーランド記法</dfn>)という．後ろに置く記法を<dfn>後置記法</dfn>(<dfn>逆ポーランド記法</dfn>)という．便利なのでこれらのほかにもう2つ演算子を定義する．
+      二項演算子におけるこの記法を<ruby><dfn>中置記法</dfn>
+        <rt>infix notation</rt>
+      </ruby>という．一方，前に置く記法を<ruby><dfn>前置記法</dfn>
+        <rt>prefix notation</rt>
+      </ruby>(<ruby><dfn>ポーランド記法</dfn>
+        <rt>porlish notation</rt>
+      </ruby>)という．後ろに置く記法を<ruby><dfn>後置記法</dfn>
+        <rt>postfix notation</rt>
+      </ruby>(<ruby><dfn>逆ポーランド記法</dfn>
+        <rt>reverse polish notation</rt>
+      </ruby>)という．便利なのでこれらのほかにもう2つ演算子を定義する．
     </p>
     <dl>
       論理式$\phi,\psi$について，
@@ -114,7 +144,9 @@
       </dd>
     </dl>
     <p>
-      <dfn>排他的論理和</dfn>はどちらか一方のみであるという意味である．
+      <ruby><dfn>排他的論理和</dfn>
+        <rt>exclusive disjunction</rt>
+      </ruby>はどちらか一方のみであるという意味である．
     </p>
     <div class="me">
       また同値！？<br>
@@ -144,7 +176,11 @@
       それに関係してるよ
     </div>
     <p>
-      2つの量化表現を導入する．
+      2つの量化表現を導入する．<ruby><dfn>全称量化子</dfn>
+        <rt>universal quantifier</rt>
+      </ruby>と<ruby><dfn>全称量化子</dfn>
+        <rt>universal quantifier</rt>
+      </ruby>である．
     </p>
     <dl>
       <dt>全称量化子</dt>
@@ -155,7 +191,13 @@
       </dd>
     </dl>
     <p>
-      具体的には，論理式$F$に対して「すべての$x$について$F\paren{x}$である」を$\forall x\paren{F\paren{x}}$と表し，<dfn>全称量化</dfn>という．また，「$F\paren{x}$となる$x$が存在する」を$\exists x\paren{F\paren{x}}$と表し，<dfn>存在量化</dfn>という．
+      具体的には，論理式$F$に対して「すべての$x$について$F\paren{x}$である」を$\forall
+      x\paren{F\paren{x}}$と表し，<ruby><dfn>全称量化</dfn>
+        <rt>universal quantification</rt>
+      </ruby>という．また，「$F\paren{x}$となる$x$が存在する」を$\exists
+      x\paren{F\paren{x}}$と表し，<ruby><dfn>存在量化</dfn>
+        <rt>existential quantification</rt>
+      </ruby>という．
     </p>
     <div class="me">
       さっきの問題は$F\paren{x}\Def f\paren{x}\gt0$としたとき，
@@ -168,13 +210,23 @@
 
     <h3>項と述語</h3>
     <p>
-      項は集合のみとする．述語には$\in$と$=$を用いる．述語を演算子として扱うとき，<dfn>関係演算子</dfn>という．これも論理演算子と同様に中置記法で表す．詳しくは集合論で扱う．
+      項は集合のみとする．述語には$\in$と$=$を用いる．述語を演算子として扱うとき，<ruby><dfn>関係演算子</dfn>
+        <rt>relational operator</rt>
+      </ruby>という．これも論理演算子と同様に中置記法で表す．詳しくは集合論で扱う．
     </p>
 
     <h2>略記</h2>
     <h3>演算子の優先順位</h3>
     <p>
-      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$\paren{\paren{\paren{\lnot P}\land Q}\iff P}\implies\paren{P\lor Q}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<dfn>優先順位</dfn>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．
+      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$\paren{\paren{\paren{\lnot P}\land Q}\iff
+      P}\implies\paren{P\lor
+      Q}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<ruby><dfn>優先順位</dfn>
+        <rt>precedence</rt>
+      </ruby>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．<ruby><dfn>右結合</dfn>
+        <rt>right-associative</rt>
+      </ruby>は優先順位が同じ時に，右側の演算子を優先することである．左側の場合は<ruby><dfn>左結合</dfn>
+        <rt>left-associative</rt>
+      </ruby>である．
     </p>
     <dl>
       <h4>定義</h4>
@@ -288,7 +340,8 @@
             \Iff&\paren{\paren{\lnot P}\land Q}\\
             \Iff&\land\paren{\lnot\paren{P},Q}\\
             \end{align*}
-            よって，$P$は原子命題より$P$は論理式である．$\lnot$は1項真理関数で$P$は論理式より$\lnot\paren{P}$は論理式である．また，$Q$は原子命題より$Q$は論理式である．よって，$\land$は2項真理関数で$\lnot\paren{P}$と$Q$は論理式より$\land\paren{\lnot\paren{P},Q}$は論理式である．したがって，$\lnot P\land Q$は論理式である．
+            よって，$P$は原子命題より$P$は論理式である．$\lnot$は1項真理関数で$P$は論理式より$\lnot\paren{P}$は論理式である．また，$Q$は原子命題より$Q$は論理式である．よって，$\land$は2項真理関数で$\lnot\paren{P}$と$Q$は論理式より$\land\paren{\lnot\paren{P},Q}$は論理式である．したがって，$\lnot
+            P\land Q$は論理式である．
           </li>
           <li>
             与式を変形する．
@@ -297,7 +350,8 @@
             \Iff&\paren{P\implies P}\land\paren{P\implies P}\\
             \Iff&\land\paren{P\implies P,P\implies P}\\
             \end{align*}
-            (1)より$P\implies P$は論理式である．$\land$は2項真理関数で$P\implies P$は論理式より$\land\paren{P\implies P,P\implies P}$は論理式である．したがって，$P\iff P$は論理式である．
+            (1)より$P\implies P$は論理式である．$\land$は2項真理関数で$P\implies P$は論理式より$\land\paren{P\implies P,P\implies
+            P}$は論理式である．したがって，$P\iff P$は論理式である．
           </li>
         </ol>
       </details>
@@ -322,7 +376,8 @@
       <dt>$\exists$の条件の略記</dt>
       <dd>$$\exists x\paren{F\paren{x}},\phi\Def\exists x\phi\land F\paren{x}$$</dd>
       <dt>唯一存在量化子</dt>
-      <dd>$$\exists! x,F\paren{x}\Def\exists x\paren{F\paren{x}}\land\forall x\paren{F\paren{x}}y\paren{F\paren{y}},x=y$$</dd>
+      <dd>$$\exists! x,F\paren{x}\Def\exists x\paren{F\paren{x}}\land\forall
+        x\paren{F\paren{x}}y\paren{F\paren{y}},x=y$$</dd>
     </dl>
 
     <h3>否定の略記</h3>
@@ -352,7 +407,19 @@
     <h2>推論</h2>
     <h3>演繹と帰納</h3>
     <p>
-      <dfn>推論</dfn>とは論理的に説明することである．もうすこし具体的にいうと，<dfn>前提</dfn>から<dfn>結論</dfn>を論理的に導くことである．推論には大きく2つに分かれており，演繹と帰納である．<dfn>演繹</dfn>は前提を仮定して結論を得る方法である．このとき，結論のことを<dfn>帰結</dfn>という．演繹では使われた前提がすべて真であれば結論も真である．<dfn>帰納</dfn>は前提からそれらしい一般的事実を導く方法である．結論が真とは限らないことに注意が必要である．また，言葉に帰納を含むが，対象をすべて網羅している場合である数学的帰納法などは演繹の一種である．しかし，数学の証明では演繹しか用いないので，演繹のことを単に推論といったり，数学的帰納法を単に帰納といったりもする．推論を次のように表す．
+      <ruby><dfn>推論</dfn>
+        <rt>inference</rt>
+      </ruby>とは論理的に説明することである．もうすこし具体的にいうと，<ruby><dfn>前提</dfn>
+        <rt>premise</rt>
+      </ruby>から<ruby><dfn>結論</dfn>
+        <rt>conclusion</rt>
+      </ruby>を論理的に導くことである．推論には大きく2つに分かれており，演繹と帰納である．<ruby><dfn>演繹</dfn>
+        <rt>deduction</rt>
+      </ruby>は前提を仮定して結論を得る方法である．このとき，結論のことを<ruby><dfn>帰結</dfn>
+        <rt>consequence</rt>
+      </ruby>という．演繹では使われた前提がすべて真であれば結論も真である．<ruby><dfn>帰納</dfn>
+        <rt>induction</rt>
+      </ruby>は前提からそれらしい一般的事実を導く方法である．結論が真とは限らないことに注意が必要である．また，言葉に帰納を含むが，対象をすべて網羅している場合である数学的帰納法などは演繹の一種である．しかし，数学の証明では演繹しか用いないので，演繹のことを単に推論といったり，数学的帰納法を単に帰納といったりもする．推論を次のように表す．
     </p>
     <dl>
       <h4>定義</h4>
@@ -365,7 +432,9 @@
 
     <h3>論理的帰結</h3>
     <p>
-      前提がすべて真であるとき，帰結が偽となりえない，または真となることが必然的であるとき，<dfn>論理的帰結</dfn>といい，次のように表す．
+      前提がすべて真であるとき，帰結が偽となりえない，または真となることが必然的であるとき，<ruby><dfn>論理的帰結</dfn>
+        <rt>logical consequence</rt>
+      </ruby>といい，次のように表す．
     </p>
     <dl>
       <h4>定義</h4>
@@ -379,17 +448,31 @@
     <h2>証明</h2>
     <h3>公理</h3>
     <p>
-      推論では前提が真でなければ帰結が真であると言えない．このため，何かしらの命題を真であるとしないと仮定しないと何も始まらない，この仮定された命題を<dfn>公理</dfn>という．
+      推論では前提が真でなければ帰結が真であると言えない．このため，何かしらの命題を真であるとしないと仮定しないと何も始まらない，この仮定された命題を<ruby><dfn>公理</dfn>
+        <rt>axiom</rt>
+      </ruby>という．
     </p>
 
     <h3>推論規則</h3>
     <p>
-      証明論では真偽の値を考えることをしない．そこで，どのような推論を許すかを定義することで真偽を定めずに帰結を判断できるようにした．この推論を<dfn>推論規則</dfn>という．
+      証明論では真偽の値を考えることをしない．そこで，どのような推論を許すかを定義することで真偽を定めずに帰結を判断できるようにした．この推論を<ruby><dfn>推論規則</dfn>
+        <rt>inference rule</rt>
+      </ruby>という．
     </p>
 
     <h3>証明体系</h3>
     <p>
-      公理から推論規則を用いて新しい命題を推論していく．この公理と推論規則を定めた体系を<dfn>証明体系</dfn>という．公理と前提から推論規則で推論された命題を「前提から証明体系で<dfn>演繹可能</dfn>」という．公理を空の前提から演繹可能であるとする．このとき，空の前提から推論規則で推論された命題を「証明体系で<dfn>証明可能</dfn>」という．また，証明可能な命題を<dfn>定理</dfn>，定理への演繹を<dfn>証明</dfn>という．これを次のように表す．
+      公理から推論規則を用いて新しい命題を推論していく．この公理と推論規則を定めた体系を<ruby><dfn>証明体系</dfn>
+        <rt>proof system</rt>
+      </ruby>という．公理と前提から推論規則で推論された命題を「前提から証明体系で<ruby><dfn>演繹可能</dfn>
+        <rt>deducible</rt>
+      </ruby>」という．公理を空の前提から演繹可能であるとする．このとき，空の前提から推論規則で推論された命題を「証明体系で<ruby><dfn>証明可能</dfn>
+        <rt>proof system</rt>
+      </ruby>」という．また，証明可能な命題を<ruby><dfn>定理</dfn>
+        <rt>theorem</rt>
+      </ruby>，定理への演繹を<ruby><dfn>証明</dfn>
+        <rt>proof</rt>
+      </ruby>という．これを次のように表す．
     </p>
     <dl>
       <h4>定義</h4>
@@ -420,7 +503,9 @@
     <h2>命題定数</h2>
     <h3>トートロジー</h3>
     <p>
-      <dfn>トートロジー</dfn>(<dfn>恒真命題</dfn>)とは意味論的には常に真である命題である．証明論的には証明された命題である．トートロジーを表す文字として次のを用いる．
+      <ruby><dfn>トートロジー</dfn>
+        <rt>tautology</rt>
+      </ruby>(<dfn>恒真命題</dfn>)とは意味論的には常に真である命題である．証明論的には証明された命題である．トートロジーを表す文字として次のを用いる．
     </p>
     <dl>
       <h4>定義</h4>
@@ -432,7 +517,9 @@
 
     <h3>矛盾</h3>
     <p>
-      <dfn>矛盾</dfn>(<dfn>恒偽命題</dfn>)とは意味論的には常に偽である命題である．
+      <ruby><dfn>矛盾</dfn>
+        <rt>contradiction</rt>
+      </ruby>(<dfn>恒偽命題</dfn>)とは意味論的には常に偽である命題である．
     </p>
     <dl>
       <h4>定義</h4>
@@ -453,53 +540,6 @@
     <div class="you">
       あれは間違った証明をネタでやっているものだから，信じてはいけないよ
     </div>
-
-    <h2>今回出てきた用語まとめ</h2>
-    <aside>
-      <ul>
-        <li>同値 : equivalence</li>
-        <li>相等 : equality</li>
-        <li>等しい : equal</li>
-        <li>等価性 : equivalence</li>
-        <li>否定 : negation</li>
-        <li>連言 : conjunction</li>
-        <li>選言 : disjunction</li>
-        <li>含意 : implication</li>
-        <li>論理演算子 : logical operation</li>
-        <li>中置記法 : infix notation</li>
-        <li>前置記法 : prefix notation</li>
-        <li>ポーランド記法 : porlish notation</li>
-        <li>後置記法 : postfix notation</li>
-        <li>逆ポーランド記法 : reverse polish notation</li>
-        <li>排他的論理和 : exclusive or / exclusive disjunction</li>
-        <li>全称量化子 : universal quantifier</li>
-        <li>存在量化子 : existential quantifier</li>
-        <li>全称量化 : universal quantification</li>
-        <li>存在量化 : existential quantification</li>
-        <li>関係演算子 : relational operator</li>
-        <li>優先順位 : precedence</li>
-        <li>右結合 : right-associative</li>
-        <li>左結合 : left-associative</li>
-        <li>推論 : inference</li>
-        <li>前提 : premise</li>
-        <li>結論 : conclusion</li>
-        <li>演繹 : deduction</li>
-        <li>帰結 : consequence</li>
-        <li>帰納 : Induction</li>
-        <li>論理的帰結 : logical consequence</li>
-        <li>公理 : axiom</li>
-        <li>推論規則 : inference rule</li>
-        <li>証明体系 : proof system</li>
-        <li>演繹可能 : deducible</li>
-        <li>証明可能 : provable</li>
-        <li>定理 : theorem</li>
-        <li>証明 : proof</li>
-        <li>トートロジー : tautology</li>
-        <li>恒真命題 : tautology</li>
-        <li>矛盾 : contradiction</li>
-        <li>恒偽命題 : contradiction</li>
-      </ul>
-    </aside>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
