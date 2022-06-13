@@ -19,7 +19,7 @@
   </header>
   <main>
     <div class="you">
-      まだ証明論の議論をするのに言葉が足りないからここでいくつかの言葉について定義するね
+      まだ証明論の議論をするのに言葉が足りないからここでいくつかの言葉を定義するね
     </div>
     <h2>定義</h2>
     <p>
@@ -52,8 +52,8 @@
     <div class="you">
       定義で論理を破綻しないための条件を覚えてる？<br>
       循環定義はダメだったね<br>
-      でも，同値である分には，自己言及は許されている<br>
-      これを区別するために，表現も分けられている
+      でも，同値である分には，自己言及は許されてる<br>
+      これを区別するために，表現も分けられてる
     </div>
     <p>
       <ruby><dfn>同値</dfn>
@@ -73,7 +73,7 @@
     </div>
     <div class="you">
       意味は同じだよ<br>
-      慣習的に論理としての値と，数値としての値が等しいことを区別して言い分けているよ
+      慣習的に論理としての値と，数値としての値が等しいことを区別して言い分けてるよ
     </div>
     <h2>一階述語論理で使われる文字</h2>
     <h3>真理関数</h3>
@@ -344,7 +344,7 @@
             &P\implies P\\
             \Iff&\implies\paren{P,P}\\
             \end{align*}
-            よって，$P$は原子命題より$P$は論理式である．$\implies$は2項真理関数で$P$は論理式より$\implies\paren{P,P}$は論理式である．したがって，$P\implies P$は論理式である．
+            よって，$P$は原子命題より$P$は論理式である．$\implies$は二項真理関数で$P$は論理式より$\implies\paren{P,P}$は論理式である．したがって，$P\implies P$は論理式である．
           </li>
           <li>
             与式を変形する．
@@ -383,6 +383,8 @@
       <dd>$$\Lambda x\Lambda' y,\phi\Def\Lambda x,\Lambda' y,\phi$$</dd>
       <dt>同量化の略記</dt>
       <dd>$$\Lambda xy,\phi\Def\Lambda x\Lambda y,\phi$$</dd>
+      <dt>量化子の明記</dt>
+      <dd>$$^\Lambda x,\phi\Def\Lambda x,\phi$$</dd>
       論理式$\phi$，$1$項述語$F\paren{x}$，項$x,y$について，
       <dt>$\forall$の条件の略記</dt>
       <dd>$$\forall x\paren{F\paren{x}},\phi\Def\forall x,F\paren{x}\implies\phi$$</dd>
@@ -416,6 +418,44 @@
       <dt>$\implies$の反転</dt>
       <dd>$$\psi\rimplies\phi\Def \phi\implies \psi$$</dd>
     </dl>
+
+    <h2>命題の表現</h2>
+    <p>
+      $\phi\implies\psi$は重要な命題である．この命題が真であるとき，$\psi$を$\phi$に対して<ruby><dfn>必要条件</dfn>
+        <rt>necessary condition</rt>
+      </ruby>，$\phi$を$\psi$に対して<ruby><dfn>十分条件</dfn>
+        <rt>sufficient condition</rt>
+      </ruby>という．必要条件であり十分条件であるとき<ruby><dfn>必要十分条件</dfn>
+        <rt>necessary and sufficient condition</rt>
+      </ruby>という．また，この命題の<ruby><dfn>逆</dfn>
+        <rt>converse</rt>
+      </ruby>とは$\psi\implies\phi$のことであり，<ruby><dfn>裏</dfn>
+        <rt>inverse</rt>
+      </ruby>とは$\lnot\phi\implies\lnot\psi$のことであり，<ruby><dfn>対偶</dfn>
+        <rt>contraposition</rt>
+      </ruby>とは$\lnot\psi\implies\lnot\phi$のことである．
+    </p>
+    <aside>
+      <h4>命題で使う文</h4>
+      <ul>
+        <li>$\term{命題}$が成り立つ：$\term{命題}$は真である</li>
+        <li>$\term{条件1}$が$\term{条件2}$から従う：$\term{条件2}$ならば$\term{条件1}$である</li>
+        <li>$\term{条件1}$が$\term{条件2}$から導かれる：$\term{条件2}$ならば$\term{条件1}$である</li>
+        <li>$\term{条件1}$従って$\term{条件2}$：$\term{条件2}$ならば$\term{条件1}$</li>
+        <li>$\term{条件1}$よって$\term{条件2}$：$\term{条件2}$ならば$\term{条件1}$</li>
+        <li>$\term{条件1}$故に$\term{条件2}$：$\term{条件2}$ならば$\term{条件1}$</li>
+        <li>$\term{条件1}$が成り立つためには，$\term{条件2}$が必要：$\term{条件2}$は$\term{条件1}$の必要条件</li>
+        <li>$\term{条件1}$が成り立つためには，$\term{条件2}$は十分：$\term{条件2}$は$\term{条件1}$の十分条件</li>
+        <li>$\term{条件1}$なぜなら$\term{条件2}$から：$\term{条件1}$の必要条件は$\term{条件2}$である</li>
+        <li>$\term{条件}$ための条件：$\term{条件}$の必要十分条件</li>
+        <li>$\term{条件}$のときに限り：$\term{条件}$の必要十分条件</li>
+        <li>$\term{変数}$に対して：$\term{変数}$で</li>
+        <li>$\term{変数}$について：$\term{変数}$で</li>
+        <li>$\term{変数}$に関して：$\term{変数}$で</li>
+        <li>$\term{変数}$で$\term{条件}$を満たす：$\term{変数}$で$\term{条件}$が真である</li>
+        <li>$\term{変数}$で$\term{条件}$とは限らない：$\term{変数}$で$\term{条件}$が偽である$\term{変数}$が存在する</li>
+      </ul>
+    </aside>
 
     <h2>推論</h2>
     <h3>演繹と帰納</h3>
@@ -553,7 +593,7 @@
       でも，よく頭のいい人が$0=1$を証明してるよね
     </div>
     <div class="you">
-      あれは間違った証明をネタでやっているものだから，信じてはいけないよ
+      あれは間違った証明をネタでやってるものだから，信じてはいけないよ
     </div>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
