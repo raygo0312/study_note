@@ -30,7 +30,13 @@
     <h2>自然演繹</h2>
     <h3>証明図</h3>
     <p>
-      推論の流れの表し方を考える．<dfn>推論図</dfn>とは推論の流れを木のように表す図である．ある推論規則では仮定を取り除く，<dfn>打ち消し</dfn>という操作がある．この操作や公理となる前提を用いることで，仮定とする前提がないとき，推論図を<dfn>証明図</dfn>という．
+      推論の流れの表し方を考える．<ruby><dfn>推論図</dfn>
+        <rt>inference diagram</rt>
+      </ruby>とは推論の流れを木のように表す図である．ある推論規則では仮定を取り除く，<ruby><dfn>打ち消し</dfn>
+        <rt>discharge</rt>
+      </ruby>という操作がある．この操作や公理となる前提を用いることで，仮定とする前提がないとき，推論図を<ruby><dfn>証明図</dfn>
+        <rt>proof diagram</rt>
+      </ruby>という．
     </p>
     <dl>
       <h4>定義</h4>
@@ -43,7 +49,9 @@
 
     <h3>自然演繹</h3>
     <p>
-      <dfn>自然演繹</dfn>とは証明を見つけやすく構造を視覚で理解しやすいようにするための体系である．証明図を使って論理式の演算(推論)を表していくことが特徴である．推論規則は各論理演算子についての挿入と除去の規則から成り立っている．
+      <ruby><dfn>自然演繹</dfn>
+        <rt>natural deduction</rt>
+      </ruby>とは証明を見つけやすく構造を視覚で理解しやすいようにするための体系である．証明図を使って論理式の演算(推論)を表していくことが特徴である．推論規則は各論理演算子についての挿入と除去の規則から成り立っている．
     </p>
 
     <h2>自然演繹の古典論理の推論規則</h2>
@@ -53,7 +61,7 @@
       $$\phi,\phi\implies\psi\Implies\psi$$
       また，$\implies,\Implies$はそれぞれ同じ意味なので，
       $$\paren{\phi\Implies\psi}\Implies\paren{\Implies\phi\implies\psi}$$
-      を認めるとする．この推論規則を用いるときは，仮定に使った論理式の上に線を引くことで，使われた前提であることを表す．つまり，
+      を認めるとする．この推論規則を用いるときは，仮定に使った論理式を打ち消しする．つまり，
       $$\infer{\psi}{\infer{\vdots}{\phi}}\Implies\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$
       としてよい．まとめると，
     </p>
@@ -86,7 +94,7 @@
 
     <h3>$\lnot$の推論規則</h3>
     <p>
-      $\lnot\phi$は$\phi$でないことを意味する．これで推論規則を定めるには材料が足りなさすぎる．そこで，以前説明した矛盾命題$\bot$を用いる．ここで，背理法の論法を推論規則に定める．また，$\phi$とその否定$\lnot\phi$から矛盾$\bot$を演繹できるとする．まとめると，
+      $\lnot\phi$は$\phi$でないことを意味する．否定を生むここで，背理法の論法を推論規則に定める．また，$\phi$とその否定$\lnot\phi$から矛盾$\bot$を演繹できるとする．まとめると，
     </p>
     <dl>
       <h4>推論規則</h4>
@@ -117,13 +125,6 @@
       <dt>$\lor\text{E}$</dt>
       <dd>$$\infer{\psi}{\phi_1\lor\phi_2\quad\phi_1\implies\psi\quad\phi_2\implies\psi}$$</dd>
     </dl>
-
-    <h2>今回出てきた用語まとめ</h2>
-    <aside>
-      <ul>
-        <li>同値 : equivalence</li>
-      </ul>
-    </aside>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
