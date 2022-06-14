@@ -387,12 +387,12 @@
       <dd>$$^\Lambda x,\phi\Def\Lambda x,\phi$$</dd>
       論理式$\phi$，$1$項述語$F\paren{x}$，項$x,y$について，
       <dt>$\forall$の条件の略記</dt>
-      <dd>$$\forall x\paren{F\paren{x}},\phi\Def\forall x,F\paren{x}\implies\phi$$</dd>
+      <dd>$$\forall xF\paren{x},\phi\Def\forall x,F\paren{x}\implies\phi$$</dd>
       <dt>$\exists$の条件の略記</dt>
-      <dd>$$\exists x\paren{F\paren{x}},\phi\Def\exists x\phi\land F\paren{x}$$</dd>
+      <dd>$$\exists xF\paren{x},\phi\Def\exists x\phi\land F\paren{x}$$</dd>
       <dt>唯一存在量化子</dt>
-      <dd>$$\exists! x,F\paren{x}\Def\exists x\paren{F\paren{x}}\land\forall
-        x\paren{F\paren{x}}y\paren{F\paren{y}},x=y$$</dd>
+      <dd>$$\exists! x,F\paren{x}\Def\exists xF\paren{x}\land\forall
+        xF\paren{x}\forall F\paren{y}\paren{x=y}$$</dd>
     </dl>
 
     <h3>否定の略記</h3>
@@ -436,22 +436,24 @@
       </ruby>とは$\lnot\psi\implies\lnot\phi$のことである．
     </p>
     <aside>
-      <h4>命題で使う文</h4>
+      <h4>命題で表す文</h4>
       <ul>
         <li>$\term{命題}$が成り立つ：$\term{命題}$は真である</li>
         <li>$\term{条件1}$が$\term{条件2}$から従う：$\term{条件2}$ならば$\term{条件1}$である</li>
         <li>$\term{条件1}$が$\term{条件2}$から導かれる：$\term{条件2}$ならば$\term{条件1}$である</li>
-        <li>$\term{条件1}$従って$\term{条件2}$：$\term{条件2}$ならば$\term{条件1}$</li>
-        <li>$\term{条件1}$よって$\term{条件2}$：$\term{条件2}$ならば$\term{条件1}$</li>
-        <li>$\term{条件1}$故に$\term{条件2}$：$\term{条件2}$ならば$\term{条件1}$</li>
+        <li>$\term{条件1}$従って$\term{条件2}$：$\term{条件1}$ならば$\term{条件2}$</li>
+        <li>$\term{条件1}$よって$\term{条件2}$：$\term{条件1}$ならば$\term{条件2}$</li>
+        <li>$\term{条件1}$故に$\term{条件2}$：$\term{条件1}$ならば$\term{条件2}$</li>
         <li>$\term{条件1}$が成り立つためには，$\term{条件2}$が必要：$\term{条件2}$は$\term{条件1}$の必要条件</li>
         <li>$\term{条件1}$が成り立つためには，$\term{条件2}$は十分：$\term{条件2}$は$\term{条件1}$の十分条件</li>
         <li>$\term{条件1}$なぜなら$\term{条件2}$から：$\term{条件1}$の必要条件は$\term{条件2}$である</li>
-        <li>$\term{条件}$ための条件：$\term{条件}$の必要十分条件</li>
+        <li>$\term{条件}$のための条件：$\term{条件}$の必要十分条件</li>
+        <li>$\term{条件}$のとき：$\term{条件}$を前提として</li>
         <li>$\term{条件}$のときに限り：$\term{条件}$の必要十分条件</li>
-        <li>$\term{変数}$に対して：$\term{変数}$で</li>
-        <li>$\term{変数}$について：$\term{変数}$で</li>
-        <li>$\term{変数}$に関して：$\term{変数}$で</li>
+        <li>任意の$\term{変数}$について：すべての$\term{変数}$について</li>
+        <li>$\term{変数}$で：$\term{変数}$について</li>
+        <li>$\term{変数}$に対して：$\term{変数}$について</li>
+        <li>$\term{変数}$に関して：$\term{変数}$について</li>
         <li>$\term{変数}$で$\term{条件}$を満たす：$\term{変数}$で$\term{条件}$が真である</li>
         <li>$\term{変数}$で$\term{条件}$とは限らない：$\term{変数}$で$\term{条件}$が偽である$\term{変数}$が存在する</li>
       </ul>
