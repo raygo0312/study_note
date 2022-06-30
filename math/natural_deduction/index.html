@@ -90,7 +90,8 @@
     <aside>
       <h4>推論図を使った推論の例</h4>
       $A$，$A\implies B$，$A\implies B\implies C$を前提として推論をする．
-      $$\infer{C}{\infer{B}{A\quad A\implies B}\quad\infer{B\implies C}{A\quad A\implies B\implies C}}$$
+      $$\implies\text{E}\infer{C}{\implies\text{E}\infer{B}{A\quad A\implies B}\quad\implies\text{E}\infer{B\implies
+      C}{A\quad A\implies B\implies C}}$$
     </aside>
     <div class="me">
       分数みたいな棒の上から下に推論規則を適用させればいいんだね<br>
@@ -102,8 +103,9 @@
     </div>
     <aside>
       <h4>証明図を使った証明の例</h4>
-      $$\infer[2]{A\implies\paren{A\implies B}\implies B}{\infer[1]{\paren{A\implies B}\implies
-      B}{\infer{B}{\infer[2]{A}{}\quad\infer[1]{A\implies B}{}}}}$$
+      $$\implies\text{I}\infer[2]{A\implies\paren{A\implies B}\implies B}{\implies\text{I}\infer[1]{\paren{A\implies
+      B}\implies B}{\implies\text{E}\infer{B}{\implies\text{E}\infer[2]{A}{}\quad\implies\text{E}\infer[1]{A\implies
+      B}{}}}}$$
     </aside>
     <p>
       打ち消しに使った数字は数字である必要はなく，順序にも意味はない．打ち消し時の推論でどの打ち消し線が引かれたかが分かればどんな記号を用いてもよい．複数の前提が同じ論理式であるときは一度の推論で同時に打ち消すことも可能である．裏を返せば，使用していない前提を推論で導入することができる．また，使用した推論規則は明らかなので，明記する必要はない．
