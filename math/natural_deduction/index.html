@@ -58,7 +58,7 @@
       </ruby>の規則から成り立っている．
     </p>
 
-    <h2>自然演繹の古典論理の推論規則</h2>
+    <h2>自然演繹の推論規則</h2>
     <h3>$\implies$の推論規則</h3>
     <p>
       $\phi\implies\psi$は$\phi$ならば$\psi$であることを意味するが，言い直せば，$\phi$が成り立つときは$\psi$が成り立つ．これに$\phi$が成り立つという情報があれば，$\psi$が成り立つことがわかる．つまり次の推論が成り立つ．
@@ -119,7 +119,7 @@
       B}{\infer[\star]{A}{}\quad\infer[-1.5]{A\implies A\implies B}{}}}}}}$$
     </aside>
     <div class="you">
-      分かりづらいから，打ち消しで使う記号は特に理由のない限り，1から順番に使っていってね
+      分かりづらいから，1から順番に使ってね
     </div>
 
     <h3>$\land$と$\lor$の推論規則</h3>
@@ -132,13 +132,13 @@
     <dl>
       <h4>推論規則</h4>
       <dt>$\land\text{I}$</dt>
-      <dd>$$\infer{\phi_1\land\phi_2}{\phi_1\quad\phi_2}$$</dd>
+      <dd>$$\land\text{I}\infer{\phi_1\land\phi_2}{\phi_1\quad\phi_2}$$</dd>
       <dt>$\land\text{E}$</dt>
-      <dd>$$\infer{\phi_1}{\phi_1\land\phi_2}\qquad\infer{\phi_2}{\phi_1\land\phi_2}$$</dd>
+      <dd>$$\land\text{E}\infer{\phi_1}{\phi_1\land\phi_2}\qquad\infer{\phi_2}{\phi_1\land\phi_2}$$</dd>
       <dt>$\lor\text{I}$</dt>
-      <dd>$$\infer{\phi_1\lor\phi_2}{\phi_1}\qquad\infer{\phi_1\lor\phi_2}{\phi_1}$$</dd>
+      <dd>$$\lor\text{I}\infer{\phi_1\lor\phi_2}{\phi_1}\qquad\infer{\phi_1\lor\phi_2}{\phi_1}$$</dd>
       <dt>$\lor\text{E}$</dt>
-      <dd>$$\infer{\psi}{\phi_1\lor\phi_2\quad\phi_1\implies\psi\quad\phi_2\implies\psi}$$</dd>
+      <dd>$$\lor\text{E}\infer{\psi}{\phi_1\lor\phi_2\quad\phi_1\implies\psi\quad\phi_2\implies\psi}$$</dd>
     </dl>
 
     <h3>$\forall$と$\exists$の推論規則</h3>
@@ -146,7 +146,7 @@
       $\forall$はすべてについて成り立つという意味だが，これは対象の集合$\set{a_1,a_2,\cdots}$の元すべてで成り立つという意味である．また，$\exists$も成り立つ元が一つ以上あるという意味である．つまり，
       $$\forall F\paren{x}\Iff F\paren{a_1}\land F\paren{a_2}\land\cdots$$
       $$\exists F\paren{x}\Iff F\paren{a_1}\lor F\paren{a_2}\land\cdots$$
-      と書きたいが，これだと無限に列挙することになってしまうため量化子を用いて表しているに過ぎない．これをもとに推論を定義すると，
+      と書きたいが，これだと無限に列挙することになってしまうため量化子を用いて表しているに過ぎない．これをもとに推論規則を定義すると，
     </p>
     <dl>
       <h4>推論規則</h4>
@@ -168,7 +168,7 @@
 
     <h3>$\lnot$の推論規則</h3>
     <p>
-      $\lnot\phi$は$\phi$でないことを意味する．否定を生むここで，背理法の論法を推論規則に定める．また，$\phi$とその否定$\lnot\phi$から矛盾$\bot$を演繹できるとする．まとめると，
+      $\lnot\phi$は$\phi$でないことを意味する．背理法の論法を推論規則に定める．また，$\phi$とその否定$\lnot\phi$から矛盾$\bot$を演繹できるとする．まとめると，
     </p>
     <dl>
       <h4>推論規則</h4>
@@ -177,6 +177,12 @@
       <dt>$\lnot\text{E}$</dt>
       <dd>$$\infer{\bot}{\phi\quad\lnot\phi}$$</dd>
     </dl>
+    <p>
+      しかし，これは$\lnot\phi$が$\phi\implies\bot$と定義しているに過ぎない．実際に置き換えてみても自然である．
+    </p>
+
+    <h2>最小論理</h2>
+
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
