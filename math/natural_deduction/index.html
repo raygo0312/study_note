@@ -111,10 +111,10 @@
       打ち消しに使った数字は数字である必要はなく，順序にも意味はない．打ち消し時の推論でどの打ち消し線が引かれたかが分かればどんな記号を用いてもよい．複数の前提が同じ論理式であるときは一度の推論で同時に打ち消すことも可能である．裏を返せば，使用していない前提を推論で導入することができる．また，使用した推論規則は明らかなので，明記する必要はない．
     </p>
     <aside>
-      <h4>打ち消しルールの例</h4>
-      $$\infer[\star]{A\implies B\implies B}{\infer[0]{B\implies
-      B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\implies B}{\infer[\star]{A}{}\quad A\implies A\implies
-      B}}}}$$
+      <h4>ルールの例</h4>
+      $$\infer[-1.5]{\paren{A\implies A\implies B}\implies A\implies B\implies B}{\infer[\star]{A\implies B\implies
+      B}{\infer[0]{B\implies B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\implies
+      B}{\infer[\star]{A}{}\quad\infer[-1.5]{A\implies A\implies B}{}}}}}}$$
     </aside>
 
     <h3>$\land$と$\lor$の推論規則</h3>
