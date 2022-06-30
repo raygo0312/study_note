@@ -104,7 +104,7 @@
     <aside>
       <h4>証明図を使った証明の例</h4>
       $$\implies\text{I}\infer[2]{A\implies\paren{A\implies B}\implies B}{\implies\text{I}\infer[1]{\paren{A\implies
-      B}\implies B}{\implies\text{E}\infer{B}{\infer[2]{A}{}\quad \infer{A\implies
+      B}\implies B}{\implies\text{E}\infer{B}{\infer[2]{A}{}\quad \infer[1]{A\implies
       B}{}}}}$$
     </aside>
     <p>
@@ -113,8 +113,8 @@
     <aside>
       <h4>打ち消しルールの例</h4>
       $$\infer[\star]{A\implies B\implies B}{\infer[0]{B\implies
-      B}{\infer{B}{\infer{\infer[\star]{A}{}\quad\infer{A\implies B}{\infer[\star]{A}{}\quad A\implies A\implies
-      B}}}}}$$
+      B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\implies B}{\infer[\star]{A}{}\quad A\implies A\implies
+      B}}}}$$
     </aside>
 
     <h3>$\land$と$\lor$の推論規則</h3>
