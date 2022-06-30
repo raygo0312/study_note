@@ -73,10 +73,10 @@
     </p>
     <dl>
       <h4>推論規則</h4>
-      <dt>$\implies\text{E}$</dt>
-      <dd>$$\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\implies\text{E}\infer[i]{\phi}{}}}}$$</dd>
       <dt>$\implies\text{I}$</dt>
-      <dd>$$\implies\text{I}\infer{\psi}{\phi\quad\phi\implies\psi}$$</dd>
+      <dd>$$\implies\text{I}\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$</dd>
+      <dt>$\implies\text{E}$</dt>
+      <dd>$$\implies\text{E}\infer{\psi}{\phi\quad\phi\implies\psi}$$</dd>
     </dl>
     <div class="you">
       推論規則名のIとEはそれぞれInsert，Eraseを意味してるよ
