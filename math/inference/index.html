@@ -40,10 +40,10 @@
     <dl>
       <h4>定義</h4>
       論理式$\phi,\psi$としたとき，
-      <dt>$\phi$と$\psi$は同値である</dt>
+      <dt>$\phi$と$\psi$は等価である</dt>
       <dd>$$\phi\Iff\psi$$</dd>
       項$\xi,\zeta$としたとき，
-      <dt>$\xi$と$\zeta$は相等である</dt>
+      <dt>$\xi$と$\zeta$は恒等である</dt>
       <dd>$$\xi=\zeta$$</dd>
     </dl>
     <div class="me">
@@ -52,28 +52,31 @@
     <div class="you">
       定義で論理を破綻しないための条件を覚えてる？<br>
       循環定義はダメだったね<br>
-      でも，同値である分には，自己言及は許されてる<br>
+      でも，等価である分には，自己言及は許されてる<br>
       これを区別するために，表現も分けられてる
     </div>
     <p>
-      <ruby><dfn>同値</dfn>
+      <ruby><dfn>等価</dfn>
         <rt>equivalence</rt>
-      </ruby>や<ruby><dfn>相等</dfn>
+      </ruby>や<ruby><dfn>恒等</dfn>
         <rt>equality</rt>
       </ruby>であることを<ruby><dfn>等しい</dfn>
         <rt>equal</rt>
-      </ruby>ともいう．同値や相等である関係を<ruby><dfn>相等関係</dfn>
+      </ruby>ともいう．等価や恒等である関係を<ruby><dfn>相等関係</dfn>
         <rt>equality relation</rt>
       </ruby>といい，相等関係が満たすべき性質を<ruby><dfn>等価性</dfn>
         <rt>equivalence</rt>
       </ruby>という．等価性については今後述べる．
     </p>
+    <div class="you">
+      等価は普通同値って言われるけど，同値関係で使われる同値と区別するためにあえて別の言い方をしたよ
+    </div>
     <div class="me">
-      同値と相等って何が違うの？
+      等価と恒等って何が違うの？
     </div>
     <div class="you">
-      意味は同じだよ<br>
-      慣習的に論理としての値と，数値としての値が等しいことを区別して言い分けてるよ
+      本質は同じだよ<br>
+      論理としての値と，項としての値が等しいことを区別して言い分けてるよ
     </div>
     <h2>一階述語論理で使われる文字</h2>
     <h3>真理関数</h3>
@@ -146,7 +149,7 @@
     <dl>
       <h4>定義</h4>
       論理式$\phi,\psi$について，
-      <dt>同値</dt>
+      <dt>等価</dt>
       <dd>
         $$\paren{\phi\iff\psi}\Def\paren{\paren{\phi\implies\psi}\land\paren{\psi\implies\phi}}$$
       </dd>
@@ -161,7 +164,7 @@
       </ruby>はどちらか一方のみであるという意味である．
     </p>
     <div class="me">
-      また同値！？<br>
+      また等価！？<br>
       同じ言葉だけど文字がちょっと違う
     </div>
     <div class="you">
@@ -383,7 +386,7 @@
       <dd>$$\lambda x\lambda' y,\phi\Def\lambda x,\lambda' y,\phi$$</dd>
       <dt>同量化の略記</dt>
       <dd>$$\lambda xy,\phi\Def\lambda x\lambda y,\phi$$</dd>
-      <dt>量化子の明記</dt>
+      <dt>量化子の別記</dt>
       <dd>$$^\lambda x,\phi\Def\lambda x,\phi$$</dd>
       論理式$\phi$，$1$項述語$F\paren{x}$，項$x,y$について，
       <dt>$\forall$の条件の略記</dt>

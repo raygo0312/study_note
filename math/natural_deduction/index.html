@@ -20,7 +20,7 @@
   <main>
     <h2>証明体系</h2>
     <p>
-      証明体系は2つの方法を組み合わせることで作られている．1つ目は推論の方法についてであり，ヒルベルト流H，自然演繹N，シーケント計算Lの3つある．2つ目はどの推論規則を採用するかについてであり，最小論理M，直感主義論理J，古典論理Kの3つある．それぞれの組み合わせにより，HM，HJ，HK，NM，NJ，NK，LM，LJ，LKの9つの証明体系がよく知られている．今の数学では古典論理が採用されていて，自然演繹が初学者にとって分かりやすいと考えているので証明体系NKを採用することにする．
+      証明体系は2つの方法を組み合わせることで作られている．1つ目は推論の方法についてであり，ヒルベルト流H，自然演繹N，シーケント計算Lの3つある．2つ目はどの推論規則を採用するかについてであり，最小論理M，直感主義論理J，古典論理Kの3つある．それぞれの組み合わせにより，HM，HJ，HK，NM，NJ，NK，LM，LJ，LKの9つの証明体系がよく知られている．自然演繹が初学者にとって分かりやすいのでそれを採用することとする．
     </p>
     <div class="you">
       それぞれの略文字はドイツ語が由来だよ<br>
@@ -92,18 +92,6 @@
       <dd>$$\infer{\psi}{\phi_1\lor\phi_2\quad\phi_1\implies\psi\quad\phi_2\implies\psi}$$</dd>
     </dl>
 
-    <h3>$\lnot$の推論規則</h3>
-    <p>
-      $\lnot\phi$は$\phi$でないことを意味する．否定を生むここで，背理法の論法を推論規則に定める．また，$\phi$とその否定$\lnot\phi$から矛盾$\bot$を演繹できるとする．まとめると，
-    </p>
-    <dl>
-      <h4>推論規則</h4>
-      <dt>$\lnot\text{I}$</dt>
-      <dd>$$\infer{\lnot\phi}{\phi\implies\bot}$$</dd>
-      <dt>$\lnot\text{E}$</dt>
-      <dd>$$\infer{\bot}{\phi\quad\lnot\phi}$$</dd>
-    </dl>
-
     <h3>$\forall$と$\exists$の推論規則</h3>
     <p>
       $\forall$はすべてについて成り立つという意味だが，これは対象の集合$\set{a_1,a_2,\cdots}$の元すべてで成り立つという意味である．また，$\exists$も成り立つ元が一つ以上あるという意味である．つまり，
@@ -115,15 +103,30 @@
       <h4>推論規則</h4>
       <dt>$\forall\text{I}$</dt>
       <dd>
-        $$\infer{\forall x,F\paren{x}}{F\paren{x}}$$
-        ただし，自由変数$a$は
+        $$\infer{\forall x,F\paren{x}}{F\paren{a}}$$
+        ただし，自由変数$a$は$F\paren{a}$を導く仮定と$\forall x,F\paren{x}$の自由変数に含まれていない．
       </dd>
       <dt>$\forall\text{E}$</dt>
-      <dd>$$\infer{\phi_1}{\phi_1\land\phi_2}\qquad\infer{\phi_2}{\phi_1\land\phi_2}$$</dd>
-      <dt>$\lor\text{I}$</dt>
-      <dd>$$\infer{\phi_1\lor\phi_2}{\phi_1}\qquad\infer{\phi_1\lor\phi_2}{\phi_1}$$</dd>
-      <dt>$\lor\text{E}$</dt>
-      <dd>$$\infer{\psi}{\phi_1\lor\phi_2\quad\phi_1\implies\psi\quad\phi_2\implies\psi}$$</dd>
+      <dd>$$\infer{F\paren{t}}{\forall x,F\paren{x}}$$</dd>
+      <dt>$\exists\text{I}$</dt>
+      <dd>$$\infer{\exists x,F\paren{x}}{F\paren{t}\implies\phi}$$</dd>
+      <dt>$\exists\text{E}$</dt>
+      <dd>
+        $$\infer{\psi}{\exists x,F\paren{x}\quad F\paren{a}\implies\phi}$$
+        ただし，自由変数$a$は$F\paren{a}$から$\phi$を導く仮定と$\exists x,F\paren{x}$と$F\paren{t}$と$\phi$の自由変数に含まれていない．
+      </dd>
+    </dl>
+
+    <h3>$\lnot$の推論規則</h3>
+    <p>
+      $\lnot\phi$は$\phi$でないことを意味する．否定を生むここで，背理法の論法を推論規則に定める．また，$\phi$とその否定$\lnot\phi$から矛盾$\bot$を演繹できるとする．まとめると，
+    </p>
+    <dl>
+      <h4>推論規則</h4>
+      <dt>$\lnot\text{I}$</dt>
+      <dd>$$\infer{\lnot\phi}{\phi\implies\bot}$$</dd>
+      <dt>$\lnot\text{E}$</dt>
+      <dd>$$\infer{\bot}{\phi\quad\lnot\phi}$$</dd>
     </dl>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
