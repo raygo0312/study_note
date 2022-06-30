@@ -40,10 +40,10 @@
     </p>
     <dl>
       <h4>定義</h4>
-      推論規則$\mathrm{R}$が$\phi_1,\phi_2,\cdots,\phi_n\Implies\phi$であるとき，
+      推論規則$\text{R}$が$\phi_1,\phi_2,\cdots,\phi_n\Implies\phi$であるとき，
       <dt>推論図</dt>
       <dd>
-        $$\mathrm{R}\infer{\phi}{\phi_1\quad\phi_2\quad\cdots\quad\phi_n}$$
+        $$\text{R}\infer{\phi}{\phi_1\quad\phi_2\quad\cdots\quad\phi_n}$$
       </dd>
     </dl>
 
@@ -61,7 +61,7 @@
       $$\phi,\phi\implies\psi\Implies\psi$$
       これは<ruby><dfn>構成的仮言的三段論法</dfn>
         <rt>modus ponens</rt>
-      </ruby>という名前で知られる．また，$\implies,\Implies$はそれぞれ同じ意味なので，
+      </ruby>という名前で知られる．また，$\implies,\Implies$はそれぞれ同じ意味として扱いたいので，
       $$\paren{\phi\Implies\psi}\Implies\paren{\Implies\phi\implies\psi}$$
       を認めるとする．この推論規則を用いるときは，仮定に使った論理式を打ち消しする．つまり，
       $$\infer{\psi}{\infer{\vdots}{\phi}}\Implies\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$
@@ -70,9 +70,9 @@
     <dl>
       <h4>推論規則</h4>
       <dt>$\implies\text{I}$</dt>
-      <dd>$$\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$</dd>
+      <dd>$$\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\implies\text{I}\infer[i]{\phi}{}}}}$$</dd>
       <dt>$\implies\text{E}$</dt>
-      <dd>$$\infer{\psi}{\phi\quad\phi\implies\psi}$$</dd>
+      <dd>$$\implies\text{E}\infer{\psi}{\phi\quad\phi\implies\psi}$$</dd>
     </dl>
     <div class="me">
       結局推論規則ってどう使うの？
