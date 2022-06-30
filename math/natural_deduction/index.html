@@ -51,7 +51,11 @@
     <p>
       <ruby><dfn>自然演繹</dfn>
         <rt>natural deduction</rt>
-      </ruby>とは証明を見つけやすく構造を視覚で理解しやすいようにするための体系である．証明図を使って論理式の演算(推論)を表していくことが特徴である．推論規則は各論理演算子についての挿入と除去の規則から成り立っている．
+      </ruby>とは証明を見つけやすく構造を視覚で理解しやすいようにするための体系である．証明図を使って論理式の演算(推論)を表していくことが特徴である．推論規則は各論理演算子についての<ruby><dfn>挿入</dfn>
+        <rt>insert</rt>
+      </ruby>と<ruby><dfn>除去</dfn>
+        <rt>erase</rt>
+      </ruby>の規則から成り立っている．
     </p>
 
     <h2>自然演繹の古典論理の推論規則</h2>
@@ -69,11 +73,14 @@
     </p>
     <dl>
       <h4>推論規則</h4>
-      <dt>$\implies\text{I}$</dt>
-      <dd>$$\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\implies\text{I}\infer[i]{\phi}{}}}}$$</dd>
       <dt>$\implies\text{E}$</dt>
-      <dd>$$\implies\text{E}\infer{\psi}{\phi\quad\phi\implies\psi}$$</dd>
+      <dd>$$\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\implies\text{E}\infer[i]{\phi}{}}}}$$</dd>
+      <dt>$\implies\text{I}$</dt>
+      <dd>$$\implies\text{I}\infer{\psi}{\phi\quad\phi\implies\psi}$$</dd>
     </dl>
+    <div class="you">
+      推論規則名のIとEはそれぞれInsert，Eraseを意味してるよ
+    </div>
     <div class="me">
       結局推論規則ってどう使うの？
     </div>
@@ -99,7 +106,7 @@
       B}{\infer{B}{\infer[2]{A}{}\quad\infer[1]{A\implies B}{}}}}$$
     </aside>
     <p>
-      打ち消しに使った数字は数字である必要はなく，順序にも意味はない．打ち消し時の推論でどの打ち消し線が引かれたかが分かればどんな記号を用いてもよい．また，複数の前提が同じ論理式であるときは一度の推論で同時に打ち消すことも可能である．裏を返せば，使用していない前提を推論で導入することができる．
+      打ち消しに使った数字は数字である必要はなく，順序にも意味はない．打ち消し時の推論でどの打ち消し線が引かれたかが分かればどんな記号を用いてもよい．複数の前提が同じ論理式であるときは一度の推論で同時に打ち消すことも可能である．裏を返せば，使用していない前提を推論で導入することができる．また，使用した推論規則は明らかなので，明記する必要はない．
     </p>
     <aside>
       <h4>打ち消しルールの例</h4>
