@@ -92,6 +92,7 @@
       $A$，$A\implies B$，$A\implies B\implies C$を前提として推論をする．
       $$\implies\text{E}\infer{C}{\implies\text{E}\infer{B}{A\quad A\implies B}\quad\implies\text{E}\infer{B\implies
       C}{A\quad A\implies B\implies C}}$$
+      よって，$A,A\implies B,A\implies B\implies C\consequent C$である．
     </aside>
     <div class="me">
       分数みたいな棒の上から下に推論規則を適用させればいいんだね<br>
@@ -106,6 +107,7 @@
       $$\implies\text{I}\infer[2]{A\implies\paren{A\implies B}\implies B}{\implies\text{I}\infer[1]{\paren{A\implies
       B}\implies B}{\implies\text{E}\infer{B}{\infer[2]{A}{}\quad \infer[1]{A\implies
       B}{}}}}$$
+      よって，$\consequent A\implies\paren{A\implies B}\implies B$である．
     </aside>
     <p>
       打ち消しに使った数字は数字である必要はなく，順序にも意味はない．打ち消し時の推論でどの打ち消し線が引かれたかが分かればどんな記号を用いてもよい．複数の前提が同じ論理式であるときは一度の推論で同時に打ち消すことも可能である．裏を返せば，使用していない前提を推論で導入することができる．また，使用した推論規則は明らかなので，明記する必要はない．
@@ -116,6 +118,9 @@
       B}{\infer[0]{B\implies B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\implies
       B}{\infer[\star]{A}{}\quad\infer[-1.5]{A\implies A\implies B}{}}}}}}$$
     </aside>
+    <div class="you">
+      分かりづらいから，打ち消しで使う記号は特に理由のない限り，1から順番に使っていってね
+    </div>
 
     <h3>$\land$と$\lor$の推論規則</h3>
     <p>
