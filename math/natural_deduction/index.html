@@ -40,10 +40,10 @@
     </p>
     <dl>
       <h4>定義</h4>
-      推論規則$\text{R}$が$\phi_1,\phi_2,\cdots,\phi_n\Implies\phi$であるとき，
+      推論規則$\mathrm{R}$が$\phi_1,\phi_2,\cdots,\phi_n\Implies\phi$であるとき，
       <dt>推論図</dt>
       <dd>
-        $$R\infer{\phi}{\phi_1\quad\phi_2\quad\cdots\quad\phi_n}$$
+        $$\rm{R}\infer{\phi}{\phi_1\quad\phi_2\quad\cdots\quad\phi_n}$$
       </dd>
     </dl>
 
@@ -72,6 +72,29 @@
       <dt>$\implies\text{E}$</dt>
       <dd>$$\infer{\psi}{\phi\quad\phi\implies\psi}$$</dd>
     </dl>
+    <div class="me">
+      結局推論規則ってどう使うの？
+    </div>
+    <div class="you">
+      実際にこの推論規則のみを使って推論してみようか
+    </div>
+    <aside>
+      <h4>推論図を使った推論の例</h4>
+      $A$，$A\implies B$，$A\implies B\implies C$を前提として推論をする．
+      $$\infer{C}{\infer{B}{A\quad A\implies B}\quad\infer{B\implies C}{A\quad A\implies B\implies C}}$$
+    </aside>
+    <div class="me">
+      分数みたいな棒の上から下に推論規則を適用させればいいんだね<br>
+      もう一個の規則は使わないの？
+    </div>
+    <div class="you">
+      もう一個の規則は推論規則の中でも重要なもので唯一前提を消せるんだ<br>
+      これは証明図を書くときは絶対使うよ
+    </div>
+    <aside>
+      <h4>証明図を使った証明の例</h4>
+      $$\infer{}{}$$
+    </aside>
 
     <h3>$\land$と$\lor$の推論規則</h3>
     <p>
