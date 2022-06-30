@@ -57,9 +57,11 @@
     <h2>自然演繹の古典論理の推論規則</h2>
     <h3>$\implies$の推論規則</h3>
     <p>
-      $\phi\implies\psi$は$\phi$ならば$\psi$であることを意味するが，詳しく言い直せば，$\phi$が成り立つときは$\psi$が成り立つ．つまり次の推論が成り立つ．
+      $\phi\implies\psi$は$\phi$ならば$\psi$であることを意味するが，言い直せば，$\phi$が成り立つときは$\psi$が成り立つ．これに$\phi$が成り立つという情報があれば，$\psi$が成り立つことがわかる．つまり次の推論が成り立つ．
       $$\phi,\phi\implies\psi\Implies\psi$$
-      また，$\implies,\Implies$はそれぞれ同じ意味なので，
+      これは<ruby><dfn>構成的仮言的三段論法</dfn>
+        <rt>modus ponens</rt>
+      </ruby>という名前で知られる．また，$\implies,\Implies$はそれぞれ同じ意味なので，
       $$\paren{\phi\Implies\psi}\Implies\paren{\Implies\phi\implies\psi}$$
       を認めるとする．この推論規則を用いるときは，仮定に使った論理式を打ち消しする．つまり，
       $$\infer{\psi}{\infer{\vdots}{\phi}}\Implies\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$
@@ -95,6 +97,15 @@
       <h4>証明図を使った証明の例</h4>
       $$\infer[2]{A\implies\paren{A\implies B}\implies B}{\infer[1]{\paren{A\implies B}\implies
       B}{\infer{B}{\infer[2]{A}{}\quad\infer[1]{A\implies B}{}}}}$$
+    </aside>
+    <p>
+      打ち消しに使った数字は数字である必要はなく，順序にも意味はない．打ち消し時の推論でどの打ち消し線が引かれたかが分かればどんな記号を用いてもよい．また，複数の前提が同じ論理式であるときは一度の推論で同時に打ち消すことも可能である．裏を返せば，使用していない前提を推論で導入することができる．
+    </p>
+    <aside>
+      <h4>打ち消しルールの例</h4>
+      $$\infer[\star]{A\implies B\implies B}{\infer[0]{B\implies
+      B}{\infer{B}{\infer{\infer[\star]{A}{}\quad\infer{A\implies B}{\infer[\star]{A}{}\quad A\implies A\implies
+      B}}}}}$$
     </aside>
 
     <h3>$\land$と$\lor$の推論規則</h3>
