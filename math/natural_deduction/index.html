@@ -100,7 +100,7 @@
     </div>
     <div class="you">
       もう一個の規則は推論規則の中でも重要なもので唯一前提を消せるんだ<br>
-      これは証明図を書くときは絶対使うよ
+      これは証明図を書くときに絶対使うよ
     </div>
     <aside>
       <h4>証明図を使った証明の例</h4>
@@ -188,12 +188,61 @@
       これでも十分いろいろな命題を証明できるよ
     </div>
 
-    <h2>恒真命題</h2>
+    <h2>古典論理</h2>
     <p>
       これらの推論規則のみからなる論理体系を<ruby><dfn>最小論理</dfn>
         <rt>minimal logic</rt>
-      </ruby>という．この論理体系では今後紹介する双対性すら成り立たない．
+      </ruby>という．この論理体系では今後紹介する双対性すら成り立たない．これに，<ruby><dfn>選言的三段論法</dfn>
+        <rt>disjunctive syllogism</rt>
+      </ruby>を満たす公理を追加すると，<ruby><dfn>直感主義論理</dfn>
+        <rt>intuitionistic logic</rt>
+      </ruby>という論理体系になる．さらに，<ruby><dfn>排中律</dfn>
+        <rt>law of excluded middle</rt>
+      </ruby>という公理を追加すると，<ruby><dfn>古典論理</dfn>
+        <rt>classical logic</rt>
+      </ruby>という論理体系になる．直感主義論理は<dfn>直感論理</dfn>や<ruby><dfn>構成的論理</dfn>
+        <rt>constructive logic</rt>
+      </ruby>ともいう．一般的な数学では古典論理が採用されているため，これを<ruby><dfn>標準論理</dfn>
+        <rt>standard logic</rt>
+      </ruby>ともいう．これからは古典論理で成り立つ範囲について扱う．また，<ruby><dfn>二重否定の除去</dfn>
+        <rt>double negative elimination</rt>
+      </ruby>は「選言的三段論法かつ排中律」と同値な命題として知られているため，最小論理に二重否定の除去を推論規則として古典論理を構成することもある．同値であることの証明は後で行う．
     </p>
+    <dl>
+      <h4>公理</h4>
+      <dt>選言的三段論法</dt>
+      <dd>$$\paren{\phi\lor\psi}\land\lnot\psi\implies\phi$$</dd>
+      <dt>排中律</dt>
+      <dd>$$\phi\lor\lnot\psi$$</dd>
+      <dt>二重否定の除去</dt>
+      <dd>$$\lnot\lnot\phi\implies\phi$$</dd>
+    </dl>
+    <div class="me">
+      さっき，二重否定の除去は推論規則って言っていたのに，なんで公理として紹介してるの？<br>
+      あと，選言的三段論法も名前から推論規則のような感じがするんだけど
+    </div>
+    <div class="you">
+      いいところに気が付いたね<br>
+      そこに疑問を抱けるのはちゃんと感覚的でなく論理を追えている証拠よ<br>
+      実のところ，推論規則と$\implies$を含む公理は扱いが同じなんだ<br>
+      理由として次の命題を証明してみよう．
+    </div>
+    <p>
+      推論と命題を自由に変換するために，<ruby><dfn>演繹定理</dfn>
+        <rt>deduction theorem</rt>
+      </ruby>を用いる．
+    </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>演繹定理</dt>
+      <dd>$$\Gamma,\phi\sequent\psi\Iff\Gamma\sequent\phi\implies\psi$$</dd>
+    </dl>
+    <details>
+      <summary>演繹定理の証明</summary>
+      <p>
+        $\paren{\Implies}$
+      </p>
+    </details>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
