@@ -113,7 +113,7 @@
         <li>否定$\lnot\paren{\phi}$ : $\phi$ではない</li>
         <li>連言$\land\paren{\phi,\psi}$ : $\phi$かつ$\psi$</li>
         <li>選言$\lor\paren{\phi,\psi}$ : $\phi$または$\psi$</li>
-        <li>含意$\implies\paren{\phi,\psi}$ : $\phi$ならば$\psi$</li>
+        <li>含意$\to\paren{\phi,\psi}$ : $\phi$ならば$\psi$</li>
       </ul>
     </aside>
     <p>
@@ -130,8 +130,8 @@
       <dd>$$\paren{\phi\land\psi}\Def\land\paren{\phi,\psi}$$</dd>
       <dt>$\land$演算子</dt>
       <dd>$$\paren{\phi\lor\psi}\Def\lor\paren{\phi,\psi}$$</dd>
-      <dt>$\implies$演算子</dt>
-      <dd>$$\paren{\phi\implies\psi}\Def\implies\paren{\phi,\psi}$$</dd>
+      <dt>$\to$演算子</dt>
+      <dd>$$\paren{\phi\to\psi}\Def\to\paren{\phi,\psi}$$</dd>
     </dl>
     <p>
       二項演算子におけるこの記法を<ruby><dfn>中置記法</dfn>
@@ -151,7 +151,7 @@
       論理式$\phi,\psi$について，
       <dt>等価</dt>
       <dd>
-        $$\paren{\phi\iff\psi}\Def\paren{\paren{\phi\implies\psi}\land\paren{\psi\implies\phi}}$$
+        $$\paren{\phi\iff\psi}\Def\paren{\paren{\phi\to\psi}\land\paren{\psi\to\phi}}$$
       </dd>
       <dt>排他的論理和</dt>
       <dd>
@@ -235,7 +235,7 @@
     <h3>演算子の優先順位</h3>
     <p>
       論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$\paren{\paren{\paren{\lnot P}\land Q}\iff
-      P}\implies\paren{P\lor
+      P}\to\paren{P\lor
       Q}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<ruby><dfn>優先順位</dfn>
         <rt>precedence</rt>
       </ruby>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．<ruby><dfn>右結合</dfn>
@@ -275,12 +275,12 @@
         <li>$\veebar$</li>
         <li>$\land$</li>
         <li>$\lor$</li>
-        <li>$\implies$</li>
+        <li>$\to$</li>
         <li>$\iff$</li>
       </ul>
     </dl>
     <p>
-      また，各種演算子ごとの大まかな優先順位も定める．推論文字($\Implies,\Iff,\sequent,\models$)の優先順位は最下位とする，算術演算とは($+,-,\cup$など)数字や集合など同士の演算子である．
+      また，各種演算子ごとの大まかな優先順位も定める．推論文字($\To,\Iff,\sequent,\models$)の優先順位は最下位とする，算術演算とは($+,-,\cup$など)数字や集合など同士の演算子である．
     </p>
     <dl>
       <h4>定義</h4>
@@ -299,7 +299,7 @@
         $$P\land Q\lor Q\land R\Iff\paren{P\land Q}\lor\paren{Q\land R}$$
         $$\lnot\lnot P\Iff\lnot\paren{\lnot P}$$
         $$P\lor Q\lor R\Iff\paren{P\lor Q}\lor R$$
-        $$P\implies Q\implies R\Iff P\implies\paren{Q\implies R}$$
+        $$P\to Q\to R\Iff P\to\paren{Q\to R}$$
         $$\lnot\paren{P\lor Q}\land R\Iff\paren{\lnot\paren{P\lor Q}}\land R$$
       </ul>
     </aside>
@@ -310,8 +310,8 @@
       </p>
       <ol>
         <li>$\lnot P\land Q$</li>
-        <li>$P\land Q\lor R\implies P\lor\lnot Q\land R$</li>
-        <li>$P\implies Q\implies P\iff Q$</li>
+        <li>$P\land Q\lor R\to P\lor\lnot Q\land R$</li>
+        <li>$P\to Q\to P\iff Q$</li>
       </ol>
       <details class="sub">
         <summary>解答</summary>
@@ -320,8 +320,8 @@
         </p>
         <ol>
           <li>$\paren{\lnot P}\land Q$</li>
-          <li>$\paren{\paren{P\land Q}\lor R}\implies\paren{P\lor\paren{\paren{\lnot Q}\land R}}$</li>
-          <li>$\paren{P\implies \paren{Q\implies P}}\iff Q$</li>
+          <li>$\paren{\paren{P\land Q}\lor R}\to\paren{P\lor\paren{\paren{\lnot Q}\land R}}$</li>
+          <li>$\paren{P\to \paren{Q\to P}}\iff Q$</li>
         </ol>
       </details>
     </details>
@@ -331,7 +331,7 @@
         次の式が命題論理における論理式であることを示せ．ただし，$P,Q$は原子命題とする．
       </p>
       <ol>
-        <li>$P\implies P$</li>
+        <li>$P\to P$</li>
         <li>$\lnot P\land Q$</li>
         <li>$P\iff P$</li>
       </ol>
@@ -344,10 +344,10 @@
           <li>
             与式を変形する．
             \begin{align*}
-            &P\implies P\\
-            \Iff&\implies\paren{P,P}\\
+            &P\to P\\
+            \Iff&\to\paren{P,P}\\
             \end{align*}
-            よって，$P$は原子命題より$P$は論理式である．$\implies$は二項真理関数で$P$は論理式より$\implies\paren{P,P}$は論理式である．したがって，$P\implies P$は論理式である．
+            よって，$P$は原子命題より$P$は論理式である．$\to$は二項真理関数で$P$は論理式より$\to\paren{P,P}$は論理式である．したがって，$P\to P$は論理式である．
           </li>
           <li>
             与式を変形する．
@@ -363,10 +363,10 @@
             与式を変形する．
             \begin{align*}
             &P\iff P\\
-            \Iff&\paren{P\implies P}\land\paren{P\implies P}\\
-            \Iff&\land\paren{P\implies P,P\implies P}\\
+            \Iff&\paren{P\to P}\land\paren{P\to P}\\
+            \Iff&\land\paren{P\to P,P\to P}\\
             \end{align*}
-            (1)より$P\implies P$は論理式である．$\land$は2項真理関数で$P\implies P$は論理式より$\land\paren{P\implies P,P\implies
+            (1)より$P\to P$は論理式である．$\land$は2項真理関数で$P\to P$は論理式より$\land\paren{P\to P,P\to
             P}$は論理式である．したがって，$P\iff P$は論理式である．
           </li>
         </ol>
@@ -390,7 +390,7 @@
       <dd>$$^\lambda x,\phi\Def\lambda x,\phi$$</dd>
       論理式$\phi$，$1$項述語$F\paren{x}$，項$x,y$について，
       <dt>$\forall$の条件の略記</dt>
-      <dd>$$\forall F\paren{x},\phi\Def\forall x,F\paren{x}\implies\phi$$</dd>
+      <dd>$$\forall F\paren{x},\phi\Def\forall x,F\paren{x}\to\phi$$</dd>
       <dt>$\exists$の条件の略記</dt>
       <dd>$$\exists F\paren{x},\phi\Def\exists x\phi\land F\paren{x}$$</dd>
       <dt>唯一存在量化子</dt>
@@ -418,13 +418,13 @@
     <dl>
       <h4>定義</h4>
       論理式$\phi,\psi$について，
-      <dt>$\implies$の反転</dt>
-      <dd>$$\psi\rimplies\phi\Def \phi\implies \psi$$</dd>
+      <dt>$\to$の反転</dt>
+      <dd>$$\psi\rto\phi\Def \phi\to \psi$$</dd>
     </dl>
 
     <h2>命題の表現</h2>
     <p>
-      $\phi\implies\psi$は重要な命題である．この命題が真であるとき，$\psi$を$\phi$に対して<ruby><dfn>必要条件</dfn>
+      $\phi\to\psi$は重要な命題である．この命題が真であるとき，$\psi$を$\phi$に対して<ruby><dfn>必要条件</dfn>
         <rt>necessary condition</rt>
       </ruby>，$\phi$を$\psi$に対して<ruby><dfn>十分条件</dfn>
         <rt>sufficient condition</rt>
@@ -432,11 +432,11 @@
         <rt>necessary and sufficient condition</rt>
       </ruby>という．また，この命題の<ruby><dfn>逆</dfn>
         <rt>converse</rt>
-      </ruby>とは$\psi\implies\phi$のことであり，<ruby><dfn>裏</dfn>
+      </ruby>とは$\psi\to\phi$のことであり，<ruby><dfn>裏</dfn>
         <rt>inverse</rt>
-      </ruby>とは$\lnot\phi\implies\lnot\psi$のことであり，<ruby><dfn>対偶</dfn>
+      </ruby>とは$\lnot\phi\to\lnot\psi$のことであり，<ruby><dfn>対偶</dfn>
         <rt>contraposition</rt>
-      </ruby>とは$\lnot\psi\implies\lnot\phi$のことである．
+      </ruby>とは$\lnot\psi\to\lnot\phi$のことである．
     </p>
     <aside>
       <h4>命題で表す文</h4>
@@ -484,7 +484,7 @@
       任意の前提の集合$\Gamma$，帰結$\phi$としたとき，
       <dt>$\Gamma$から$\phi$への推論</dt>
       <dd>
-        $$\Gamma\Implies\phi$$
+        $$\Gamma\To\phi$$
       </dd>
     </dl>
 
@@ -554,7 +554,7 @@
       命題の集合$\set{\phi_1,\phi_2,\cdots,\phi_n}$，命題$\phi$としたとき，
       <dt>集合の省略</dt>
       <dd>
-        $$\phi_1,\phi_2,\cdots,\phi_n\Implies\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\Implies\phi$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\To\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\To\phi$$
         $$\phi_1,\phi_2,\cdots,\phi_n\models\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\models\phi$$
         $$\phi_1,\phi_2,\cdots,\phi_n\vdash\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\vdash\phi$$
       </dd>
@@ -567,9 +567,9 @@
       命題の集合$\phi_1,\phi_2,\cdots,\phi_n,\psi_1,\psi_2,\cdots,\psi_n$としたとき，
       <dt>集合の省略</dt>
       <dd>
-        $\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_1$かつ$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_2$かつ$\cdots$かつ$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_n$なら，
-        $$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_1,\psi_2,\cdots,\psi_n$$
-        $\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_1,\psi_2,\cdots,\psi_n$かつ$\psi_1,\psi_2,\cdots,\psi_n\Implies\psi_1,\psi_2,\cdots,\psi_n$のとき，
+        $\phi_1,\phi_2,\cdots,\phi_n\To\psi_1$かつ$\phi_1,\phi_2,\cdots,\phi_n\To\psi_2$かつ$\cdots$かつ$\phi_1,\phi_2,\cdots,\phi_n\To\psi_n$なら，
+        $$\phi_1,\phi_2,\cdots,\phi_n\To\psi_1,\psi_2,\cdots,\psi_n$$
+        $\phi_1,\phi_2,\cdots,\phi_n\To\psi_1,\psi_2,\cdots,\psi_n$かつ$\psi_1,\psi_2,\cdots,\psi_n\To\psi_1,\psi_2,\cdots,\psi_n$のとき，
         $$\phi_1,\phi_2,\cdots,\phi_n\Iff\psi_1,\psi_2,\cdots,\psi_n$$
         同様に，
         $$\phi_1,\phi_2,\cdots,\phi_n\models\psi_1,\psi_2,\cdots,\psi_n$$

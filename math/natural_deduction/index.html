@@ -40,7 +40,7 @@
     </p>
     <dl>
       <h4>定義</h4>
-      推論規則$\text{R}$が$\phi_1,\phi_2,\cdots,\phi_n\Implies\phi$であるとき，
+      推論規則$\text{R}$が$\phi_1,\phi_2,\cdots,\phi_n\To\phi$であるとき，
       <dt>推論図</dt>
       <dd>
         $$\text{R}\infer{\phi}{\phi_1\quad\phi_2\quad\cdots\quad\phi_n}$$
@@ -59,24 +59,24 @@
     </p>
 
     <h2>自然演繹の推論規則</h2>
-    <h3>$\implies$の推論規則</h3>
+    <h3>$\to$の推論規則</h3>
     <p>
-      $\phi\implies\psi$は$\phi$ならば$\psi$であることを意味するが，言い直せば，$\phi$が成り立つときは$\psi$が成り立つ．これに$\phi$が成り立つという情報があれば，$\psi$が成り立つことがわかる．つまり次の推論が成り立つ．
-      $$\phi,\phi\implies\psi\Implies\psi$$
+      $\phi\to\psi$は$\phi$ならば$\psi$であることを意味するが，言い直せば，$\phi$が成り立つときは$\psi$が成り立つ．これに$\phi$が成り立つという情報があれば，$\psi$が成り立つことがわかる．つまり次の推論が成り立つ．
+      $$\phi,\phi\to\psi\To\psi$$
       これは<ruby><dfn>構成的仮言的三段論法</dfn>
         <rt>modus ponens</rt>
-      </ruby>という名前で知られる．また，$\implies,\sequent$はそれぞれ同じ意味として扱いたいので，
-      $$\paren{\phi\sequent\psi}\Implies\paren{\sequent\phi\implies\psi}$$
+      </ruby>という名前で知られる．また，$\to,\sequent$はそれぞれ同じ意味として扱いたいので，
+      $$\paren{\phi\sequent\psi}\To\paren{\sequent\phi\to\psi}$$
       を認めるとする．この推論規則を用いるときは，仮定に使った論理式を打ち消しする．つまり，
-      $$\infer{\psi}{\infer{\vdots}{\phi}}\Implies\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$
+      $$\infer{\psi}{\infer{\vdots}{\phi}}\To\infer[i]{\phi\to\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$
       としてよい．まとめると，
     </p>
     <dl>
       <h4>推論規則</h4>
-      <dt>$\implies\text{I}$</dt>
-      <dd>$$\implies\text{I}\infer[i]{\phi\implies\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$</dd>
-      <dt>$\implies\text{E}$</dt>
-      <dd>$$\implies\text{E}\infer{\psi}{\phi\quad\phi\implies\psi}$$</dd>
+      <dt>$\to\text{I}$</dt>
+      <dd>$$\to\text{I}\infer[i]{\phi\to\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$</dd>
+      <dt>$\to\text{E}$</dt>
+      <dd>$$\to\text{E}\infer{\psi}{\phi\quad\phi\to\psi}$$</dd>
     </dl>
     <div class="you">
       推論規則名のIとEはそれぞれInsert，Eraseを意味してるよ
@@ -89,10 +89,10 @@
     </div>
     <aside>
       <h4>推論図を使った推論の例</h4>
-      $A$，$A\implies B$，$A\implies B\implies C$を前提として推論をする．
-      $$\implies\text{E}\infer{C}{\implies\text{E}\infer{B}{A\quad A\implies B}\quad\implies\text{E}\infer{B\implies
-      C}{A\quad A\implies B\implies C}}$$
-      よって，$A,A\implies B,A\implies B\implies C\sequent C$である．
+      $A$，$A\to B$，$A\to B\to C$を前提として推論をする．
+      $$\to\text{E}\infer{C}{\to\text{E}\infer{B}{A\quad A\to B}\quad\to\text{E}\infer{B\to
+      C}{A\quad A\to B\to C}}$$
+      よって，$A,A\to B,A\to B\to C\sequent C$である．
     </aside>
     <div class="me">
       分数みたいな棒の上から下に推論規則を適用させればいいんだね<br>
@@ -104,19 +104,19 @@
     </div>
     <aside>
       <h4>証明図を使った証明の例</h4>
-      $$\implies\text{I}\infer[2]{A\implies\paren{A\implies B}\implies B}{\implies\text{I}\infer[1]{\paren{A\implies
-      B}\implies B}{\implies\text{E}\infer{B}{\infer[2]{A}{}\quad \infer[1]{A\implies
+      $$\to\text{I}\infer[2]{A\to\paren{A\to B}\to B}{\to\text{I}\infer[1]{\paren{A\to
+      B}\to B}{\to\text{E}\infer{B}{\infer[2]{A}{}\quad \infer[1]{A\to
       B}{}}}}$$
-      よって，$\sequent A\implies\paren{A\implies B}\implies B$である．
+      よって，$\sequent A\to\paren{A\to B}\to B$である．
     </aside>
     <p>
       打ち消しに使った数字は数字である必要はなく，順序にも意味はない．打ち消し時の推論でどの打ち消し線が引かれたかが分かればどんな記号を用いてもよい．複数の前提が同じ論理式であるときは一度の推論で同時に打ち消すことも可能である．裏を返せば，使用していない前提を推論で導入することができる．また，使用した推論規則は明らかなので，明記する必要はない．
     </p>
     <aside>
       <h4>ルールの例</h4>
-      $$\infer[-1.5]{\paren{A\implies A\implies B}\implies A\implies B\implies B}{\infer[\star]{A\implies B\implies
-      B}{\infer[0]{B\implies B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\implies
-      B}{\infer[\star]{A}{}\quad\infer[-1.5]{A\implies A\implies B}{}}}}}}$$
+      $$\infer[-1.5]{\paren{A\to A\to B}\to A\to B\to B}{\infer[\star]{A\to B\to
+      B}{\infer[0]{B\to B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\to
+      B}{\infer[\star]{A}{}\quad\infer[-1.5]{A\to A\to B}{}}}}}}$$
     </aside>
     <div class="you">
       分かりづらいから，1から順番に使ってね
@@ -141,7 +141,7 @@
       <dt>$\lor\text{I}$</dt>
       <dd>$$\lor\text{I}\infer{\phi_1\lor\phi_2}{\phi_1}\qquad\infer{\phi_1\lor\phi_2}{\phi_1}$$</dd>
       <dt>$\lor\text{E}$</dt>
-      <dd>$$\lor\text{E}\infer{\psi}{\phi_1\lor\phi_2\quad\phi_1\implies\psi\quad\phi_2\implies\psi}$$</dd>
+      <dd>$$\lor\text{E}\infer{\psi}{\phi_1\lor\phi_2\quad\phi_1\to\psi\quad\phi_2\to\psi}$$</dd>
     </dl>
 
     <h3>$\forall$と$\exists$の推論規則</h3>
@@ -161,10 +161,10 @@
       <dt>$\forall\text{E}$</dt>
       <dd>$$\infer{F\paren{t}}{\forall x,F\paren{x}}$$</dd>
       <dt>$\exists\text{I}$</dt>
-      <dd>$$\infer{\exists x,F\paren{x}}{F\paren{t}\implies\phi}$$</dd>
+      <dd>$$\infer{\exists x,F\paren{x}}{F\paren{t}\to\phi}$$</dd>
       <dt>$\exists\text{E}$</dt>
       <dd>
-        $$\infer{\psi}{\exists x,F\paren{x}\quad F\paren{a}\implies\phi}$$
+        $$\infer{\psi}{\exists x,F\paren{x}\quad F\paren{a}\to\phi}$$
         ただし，自由変数$a$は$F\paren{a}$から$\phi$を導く仮定と$\exists x,F\paren{x}$と$F\paren{t}$と$\phi$の自由変数に含まれていない．
       </dd>
     </dl>
@@ -176,12 +176,12 @@
     <dl>
       <h4>推論規則</h4>
       <dt>$\lnot\text{I}$</dt>
-      <dd>$$\infer{\lnot\phi}{\phi\implies\bot}$$</dd>
+      <dd>$$\infer{\lnot\phi}{\phi\to\bot}$$</dd>
       <dt>$\lnot\text{E}$</dt>
       <dd>$$\infer{\bot}{\phi\quad\lnot\phi}$$</dd>
     </dl>
     <p>
-      しかし，これは$\lnot\phi$が$\phi\implies\bot$と定義しているに過ぎない．実際に置き換えてみても自然である．
+      しかし，これは$\lnot\phi$が$\phi\to\bot$と定義しているに過ぎない．実際に置き換えてみても自然である．
     </p>
     <div class="you">
       結局，$\bot$が何なのかわかってないから，$\lnot$もどういうものなのか分からないままなんだ<br>
@@ -211,11 +211,11 @@
     <dl>
       <h4>公理</h4>
       <dt>選言的三段論法</dt>
-      <dd>$$\paren{\phi\lor\psi}\land\lnot\psi\implies\phi$$</dd>
+      <dd>$$\paren{\phi\lor\psi}\land\lnot\psi\to\phi$$</dd>
       <dt>排中律</dt>
       <dd>$$\phi\lor\lnot\psi$$</dd>
       <dt>二重否定の除去</dt>
-      <dd>$$\lnot\lnot\phi\implies\phi$$</dd>
+      <dd>$$\lnot\lnot\phi\to\phi$$</dd>
     </dl>
     <div class="me">
       さっき，二重否定の除去は推論規則って言っていたのに，なんで公理として紹介してるの？<br>
@@ -224,7 +224,7 @@
     <div class="you">
       いいところに気が付いたね<br>
       そこに疑問を抱けるのはちゃんと感覚的でなく論理を追えている証拠よ<br>
-      実のところ，推論規則と$\implies$を含む公理は扱いが同じなんだ<br>
+      実のところ，推論規則と$\to$を含む公理は扱いが同じなんだ<br>
       理由として次の命題を証明してみよう
     </div>
     <p>
@@ -235,23 +235,23 @@
     <dl>
       <h4>定理</h4>
       <dt>演繹定理</dt>
-      <dd>$$\Gamma,\phi\sequent\psi\Iff\Gamma\sequent\phi\implies\psi$$</dd>
+      <dd>$$\Gamma,\phi\sequent\psi\Iff\Gamma\sequent\phi\to\psi$$</dd>
     </dl>
     <details>
       <summary>演繹定理の証明</summary>
       <p>
-        $\paren{\Implies}$$\implies\text{I}$そのものである．
+        $\paren{\To}$$\to\text{I}$そのものである．
       </p>
       <p>
-        $\paren{\rImplies}$前提に$\phi$を追加する．
-        $$\phi,\phi\implies\psi\Implies\psi$$
+        $\paren{\rTo}$前提に$\phi$を追加する．
+        $$\phi,\phi\to\psi\To\psi$$
         であるから，
         $$\Gamma,\phi\sequent\psi$$
         が成り立つ．
       </p>
       <p>
         よって，
-        $$\Gamma,\phi\sequent\psi\Iff\Gamma\sequent\phi\implies\psi$$
+        $$\Gamma,\phi\sequent\psi\Iff\Gamma\sequent\phi\to\psi$$
       </p>
     </details>
     <div class="me">
