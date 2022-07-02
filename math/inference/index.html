@@ -490,7 +490,7 @@
 
     <h3>論理的帰結</h3>
     <p>
-      前提がすべて真であるとき，帰結が偽となりえない，または真となることが必然的であるとき，<ruby><dfn>論理的帰結</dfn>
+      意味論による定義で前提がすべて真であるとき，帰結が偽となりえない，または真となることが必然的であるとき，<ruby><dfn>論理的帰結</dfn>
         <rt>logical consequence</rt>
       </ruby>といい，次のように表す．
     </p>
@@ -557,6 +557,25 @@
         $$\phi_1,\phi_2,\cdots,\phi_n\Implies\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\Implies\phi$$
         $$\phi_1,\phi_2,\cdots,\phi_n\models\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\models\phi$$
         $$\phi_1,\phi_2,\cdots,\phi_n\vdash\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\vdash\phi$$
+      </dd>
+    </dl>
+    <p>
+      また，これらを拡張した書き方も認めることとする．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      命題の集合$\phi_1,\phi_2,\cdots,\phi_n,\psi_1,\psi_2,\cdots,\psi_n$としたとき，
+      <dt>集合の省略</dt>
+      <dd>
+        $\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_1$かつ$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_2$かつ$\cdots$かつ$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_n$なら，
+        $$\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_1,\psi_2,\cdots,\psi_n$$
+        $\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_1,\psi_2,\cdots,\psi_n$かつ$\psi_1,\psi_2,\cdots,\psi_n\Implies\psi_1,\psi_2,\cdots,\psi_n$のとき，
+        $$\phi_1,\phi_2,\cdots,\phi_n\Iff\psi_1,\psi_2,\cdots,\psi_n$$
+        同様に，
+        $$\phi_1,\phi_2,\cdots,\phi_n\consequence\psi_1,\psi_2,\cdots,\psi_n$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\iffconsequence\psi_1,\psi_2,\cdots,\psi_n$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\sequence\psi_1,\psi_2,\cdots,\psi_n$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\iffsequence\psi_1,\psi_2,\cdots,\psi_n$$
       </dd>
     </dl>
 

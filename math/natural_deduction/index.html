@@ -225,7 +225,7 @@
       いいところに気が付いたね<br>
       そこに疑問を抱けるのはちゃんと感覚的でなく論理を追えている証拠よ<br>
       実のところ，推論規則と$\implies$を含む公理は扱いが同じなんだ<br>
-      理由として次の命題を証明してみよう．
+      理由として次の命題を証明してみよう
     </div>
     <p>
       推論と命題を自由に変換するために，<ruby><dfn>演繹定理</dfn>
@@ -240,9 +240,28 @@
     <details>
       <summary>演繹定理の証明</summary>
       <p>
-        $\paren{\Implies}$
+        $\paren{\Implies}$$\implies\text{I}$そのものである．
+      </p>
+      <p>
+        $\paren{\rImplies}$前提に$\phi$を追加する．
+        $$\phi,\phi\implies\psi\Implies\psi$$
+        であるから，
+        $$\Gamma,\phi\sequent\psi$$
+        が成り立つ．
+      </p>
+      <p>
+        よって，
+        $$\Gamma,\phi\sequent\psi\Iff\Gamma\sequent\phi\implies\psi$$
       </p>
     </details>
+    <div class="me">
+      せっかく証明図を勉強したのに，使わないで証明しちゃうの？
+    </div>
+    <div class="you">
+      これは$\sequent$が入っていて，対象が論理式ではないから，自然演繹では扱えないんだ<br>
+      この定理の証明は，今行っている体系を組み立てて，論理体系を定義し直した時に，初めて論理的に証明できるよ<br>
+      演繹定理を使わなくても複雑になるけど同じ命題を証明できるよ
+    </div>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
