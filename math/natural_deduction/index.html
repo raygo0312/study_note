@@ -66,7 +66,7 @@
       これは<ruby><dfn>構成的仮言的三段論法</dfn>
         <rt>modus ponens</rt>
       </ruby>という名前で知られる．また，$\to,\sequent$はそれぞれ同じ意味として扱いたいので，
-      $$\paren{\phi\sequent\psi}\To\paren{\sequent\phi\to\psi}$$
+      $$\p{\phi\sequent\psi}\To\p{\sequent\phi\to\psi}$$
       を認めるとする．この推論規則を用いるときは，仮定に使った論理式を打ち消しする．つまり，
       $$\infer{\psi}{\infer{\vdots}{\phi}}\To\infer[i]{\phi\to\psi}{\infer{\psi}{\infer{\vdots}{\infer[i]{\phi}{}}}}$$
       としてよい．まとめると，
@@ -104,17 +104,17 @@
     </div>
     <aside>
       <h4>証明図を使った証明の例</h4>
-      $$\to\text{I}\infer[2]{A\to\paren{A\to B}\to B}{\to\text{I}\infer[1]{\paren{A\to
+      $$\to\text{I}\infer[2]{A\to\p{A\to B}\to B}{\to\text{I}\infer[1]{\p{A\to
       B}\to B}{\to\text{E}\infer{B}{\infer[2]{A}{}\quad \infer[1]{A\to
       B}{}}}}$$
-      よって，$\sequent A\to\paren{A\to B}\to B$である．
+      よって，$\sequent A\to\p{A\to B}\to B$である．
     </aside>
     <p>
       打ち消しに使った数字は数字である必要はなく，順序にも意味はない．打ち消し時の推論でどの打ち消し線が引かれたかが分かればどんな記号を用いてもよい．複数の前提が同じ論理式であるときは一度の推論で同時に打ち消すことも可能である．裏を返せば，使用していない前提を推論で導入することができる．また，使用した推論規則は明らかなので，明記する必要はない．
     </p>
     <aside>
       <h4>ルールの例</h4>
-      $$\infer[-1.5]{\paren{A\to A\to B}\to A\to B\to B}{\infer[\star]{A\to B\to
+      $$\infer[-1.5]{\p{A\to A\to B}\to A\to B\to B}{\infer[\star]{A\to B\to
       B}{\infer[0]{B\to B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\to
       B}{\infer[\star]{A}{}\quad\infer[-1.5]{A\to A\to B}{}}}}}}$$
     </aside>
@@ -147,25 +147,25 @@
     <h3>$\forall$と$\exists$の推論規則</h3>
     <p>
       $\forall$はすべてについて成り立つという意味だが，これは対象の集合$\set{a_1,a_2,\cdots}$の元すべてで成り立つという意味である．また，$\exists$も成り立つ元が一つ以上あるという意味である．つまり，
-      $$\forall F\paren{x}\Iff F\paren{a_1}\land F\paren{a_2}\land\cdots$$
-      $$\exists F\paren{x}\Iff F\paren{a_1}\lor F\paren{a_2}\land\cdots$$
+      $$\forall F\p{x}\Iff F\p{a_1}\land F\p{a_2}\land\cdots$$
+      $$\exists F\p{x}\Iff F\p{a_1}\lor F\p{a_2}\land\cdots$$
       と書きたいが，これだと無限に列挙することになってしまうため量化子を用いて表しているに過ぎない．これをもとに推論規則を定義すると，
     </p>
     <dl>
       <h4>推論規則</h4>
       <dt>$\forall\text{I}$</dt>
       <dd>
-        $$\infer{\forall x,F\paren{x}}{F\paren{a}}$$
-        ただし，自由変数$a$は$F\paren{a}$を導く仮定と$\forall x,F\paren{x}$の自由変数に含まれていない．
+        $$\infer{\forall x,F\p{x}}{F\p{a}}$$
+        ただし，自由変数$a$は$F\p{a}$を導く仮定と$\forall x,F\p{x}$の自由変数に含まれていない．
       </dd>
       <dt>$\forall\text{E}$</dt>
-      <dd>$$\infer{F\paren{t}}{\forall x,F\paren{x}}$$</dd>
+      <dd>$$\infer{F\p{t}}{\forall x,F\p{x}}$$</dd>
       <dt>$\exists\text{I}$</dt>
-      <dd>$$\infer{\exists x,F\paren{x}}{F\paren{t}\to\phi}$$</dd>
+      <dd>$$\infer{\exists x,F\p{x}}{F\p{t}\to\phi}$$</dd>
       <dt>$\exists\text{E}$</dt>
       <dd>
-        $$\infer{\psi}{\exists x,F\paren{x}\quad F\paren{a}\to\phi}$$
-        ただし，自由変数$a$は$F\paren{a}$から$\phi$を導く仮定と$\exists x,F\paren{x}$と$F\paren{t}$と$\phi$の自由変数に含まれていない．
+        $$\infer{\psi}{\exists x,F\p{x}\quad F\p{a}\to\phi}$$
+        ただし，自由変数$a$は$F\p{a}$から$\phi$を導く仮定と$\exists x,F\p{x}$と$F\p{t}$と$\phi$の自由変数に含まれていない．
       </dd>
     </dl>
 
@@ -211,7 +211,7 @@
     <dl>
       <h4>公理</h4>
       <dt>選言的三段論法</dt>
-      <dd>$$\paren{\phi\lor\psi}\land\lnot\psi\to\phi$$</dd>
+      <dd>$$\p{\phi\lor\psi}\land\lnot\psi\to\phi$$</dd>
       <dt>排中律</dt>
       <dd>$$\phi\lor\lnot\psi$$</dd>
       <dt>二重否定の除去</dt>
@@ -240,10 +240,10 @@
     <details>
       <summary>演繹定理の証明</summary>
       <p>
-        $\paren{\To}$$\to\text{I}$そのものである．
+        $\p{\To}$$\to\text{I}$そのものである．
       </p>
       <p>
-        $\paren{\rTo}$前提に$\phi$を追加する．
+        $\p{\rTo}$前提に$\phi$を追加する．
         $$\phi,\phi\to\psi\To\psi$$
         であるから，
         $$\Gamma,\phi\sequent\psi$$

@@ -95,13 +95,13 @@
       <h4>用意</h4>
       論理式$\phi,\psi$について，
       <dt>否定</dt>
-      <dd>$$\lnot\paren{\phi}$$</dd>
+      <dd>$$\lnot\p{\phi}$$</dd>
       <dt>連言</dt>
-      <dd>$$\land\paren{\phi,\psi}$$</dd>
+      <dd>$$\land\p{\phi,\psi}$$</dd>
       <dt>選言</dt>
-      <dd>$$\lor\paren{\phi,\psi}$$</dd>
+      <dd>$$\lor\p{\phi,\psi}$$</dd>
       <dt>含意</dt>
-      <dd>$$\to\paren{\phi,\psi}$$</dd>
+      <dd>$$\to\p{\phi,\psi}$$</dd>
     </dl>
     <p>
       形式化する上では論理体系の意味を考えないが，意味がわからないと理解しづらいと思うので，参考までに自然言語としての意味を載せる．直感でわかりやすいように，真理関数は自然言語でよくつかわれる言葉が元になっている．
@@ -110,10 +110,10 @@
       <h4>真理関数の意味</h4>
       論理式$\phi,\psi$について，
       <ul>
-        <li>否定$\lnot\paren{\phi}$ : $\phi$ではない</li>
-        <li>連言$\land\paren{\phi,\psi}$ : $\phi$かつ$\psi$</li>
-        <li>選言$\lor\paren{\phi,\psi}$ : $\phi$または$\psi$</li>
-        <li>含意$\to\paren{\phi,\psi}$ : $\phi$ならば$\psi$</li>
+        <li>否定$\lnot\p{\phi}$ : $\phi$ではない</li>
+        <li>連言$\land\p{\phi,\psi}$ : $\phi$かつ$\psi$</li>
+        <li>選言$\lor\p{\phi,\psi}$ : $\phi$または$\psi$</li>
+        <li>含意$\to\p{\phi,\psi}$ : $\phi$ならば$\psi$</li>
       </ul>
     </aside>
     <p>
@@ -125,13 +125,13 @@
       <h4>定義</h4>
       論理式$\phi,\psi$としたとき，
       <dt>$\lnot$演算子</dt>
-      <dd>$$\paren{\lnot\phi}\Def\lnot\paren{\phi}$$</dd>
+      <dd>$$\p{\lnot\phi}\Def\lnot\p{\phi}$$</dd>
       <dt>$\lor$演算子</dt>
-      <dd>$$\paren{\phi\land\psi}\Def\land\paren{\phi,\psi}$$</dd>
+      <dd>$$\p{\phi\land\psi}\Def\land\p{\phi,\psi}$$</dd>
       <dt>$\land$演算子</dt>
-      <dd>$$\paren{\phi\lor\psi}\Def\lor\paren{\phi,\psi}$$</dd>
+      <dd>$$\p{\phi\lor\psi}\Def\lor\p{\phi,\psi}$$</dd>
       <dt>$\to$演算子</dt>
-      <dd>$$\paren{\phi\to\psi}\Def\to\paren{\phi,\psi}$$</dd>
+      <dd>$$\p{\phi\to\psi}\Def\to\p{\phi,\psi}$$</dd>
     </dl>
     <p>
       二項演算子におけるこの記法を<ruby><dfn>中置記法</dfn>
@@ -151,11 +151,11 @@
       論理式$\phi,\psi$について，
       <dt>等価</dt>
       <dd>
-        $$\paren{\phi\iff\psi}\Def\paren{\paren{\phi\to\psi}\land\paren{\psi\to\phi}}$$
+        $$\p{\phi\iff\psi}\Def\p{\p{\phi\to\psi}\land\p{\psi\to\phi}}$$
       </dd>
       <dt>排他的論理和</dt>
       <dd>
-        $$\paren{\phi\veebar\psi}\Def\paren{\phi\land\paren{\lnot\psi}\lor\paren{\paren{\lnot\phi}\land\psi}}$$
+        $$\p{\phi\veebar\psi}\Def\p{\phi\land\p{\lnot\psi}\lor\p{\p{\lnot\phi}\land\psi}}$$
       </dd>
     </dl>
     <p>
@@ -176,10 +176,10 @@
     <h3>量化子</h3>
     <aside>
       <h4>例題</h4>
-      二次関数$f\paren{x}=ax^2+bx+c$が次の条件を満たす$a,b,c$の必要十分条件を求めよ．
+      二次関数$f\p{x}=ax^2+bx+c$が次の条件を満たす$a,b,c$の必要十分条件を求めよ．
       <ol>
-        <li>すべての$x$で$f\paren{x}\gt0$を満たす．</li>
-        <li>$f\paren{x}\gt0$を満たす$x$が存在する．</li>
+        <li>すべての$x$で$f\p{x}\gt0$を満たす．</li>
+        <li>$f\p{x}\gt0$を満たす$x$が存在する．</li>
       </ol>
     </aside>
     <div class="me">
@@ -207,19 +207,19 @@
       </dd>
     </dl>
     <p>
-      具体的には，論理式$F$に対して「すべての$x$について$F\paren{x}$である」を$\forall
-      x\paren{F\paren{x}}$と表し，<ruby><dfn>全称量化</dfn>
+      具体的には，論理式$F$に対して「すべての$x$について$F\p{x}$である」を$\forall
+      x\p{F\p{x}}$と表し，<ruby><dfn>全称量化</dfn>
         <rt>universal quantification</rt>
-      </ruby>という．また，「$F\paren{x}$となる$x$が存在する」を$\exists
-      x\paren{F\paren{x}}$と表し，<ruby><dfn>存在量化</dfn>
+      </ruby>という．また，「$F\p{x}$となる$x$が存在する」を$\exists
+      x\p{F\p{x}}$と表し，<ruby><dfn>存在量化</dfn>
         <rt>existential quantification</rt>
       </ruby>という．
     </p>
     <div class="me">
       さっきの問題は，
       <ol>
-        <li>$\forall x\paren{f\paren{x}\gt0}$</li>
-        <li>$\exists x\paren{f\paren{x}\gt0}$</li>
+        <li>$\forall x\p{f\p{x}\gt0}$</li>
+        <li>$\exists x\p{f\p{x}\gt0}$</li>
       </ol>
       って表せるね
     </div>
@@ -234,8 +234,8 @@
     <h2>略記</h2>
     <h3>演算子の優先順位</h3>
     <p>
-      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$\paren{\paren{\paren{\lnot P}\land Q}\iff
-      P}\to\paren{P\lor
+      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$\p{\p{\p{\lnot P}\land Q}\iff
+      P}\to\p{P\lor
       Q}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<ruby><dfn>優先順位</dfn>
         <rt>precedence</rt>
       </ruby>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．<ruby><dfn>右結合</dfn>
@@ -248,21 +248,21 @@
       <h4>定義</h4>
       論理式$\phi$について，
       <dt>全体括弧の省略</dt>
-      <dd>$$\phi\Def\paren{\phi}$$</dd>
+      <dd>$$\phi\Def\p{\phi}$$</dd>
       $a,b,c$の演算子$\rho_1$が$\rho_2$より優先順位が高いとき，
       <dt>優先順位</dt>
-      <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def\paren{a\,\rho_1\,b}\,\rho_2\,c$$</dd>
+      <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def\p{a\,\rho_1\,b}\,\rho_2\,c$$</dd>
       $a,b,c$の演算子$\rho_1$と$\rho_2$の優先順位が同じで左結合であるとき，
       <dt>左結合</dt>
-      <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def\paren{a\,\rho_1\,b}\,\rho_2\,c$$</dd>
+      <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def\p{a\,\rho_1\,b}\,\rho_2\,c$$</dd>
       $a,b,c$の演算子$\rho_1$と$\rho_2$の優先順位が同じで右結合であるとき，
       <dt>右結合</dt>
       <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def a\,\rho_1\,(b\,\rho_2\,c)$$</dd>
     </dl>
     <div class="you">
       ここでいう論理式は最長一致であることに注意してね<br>
-      つまり，$\phi\Def\paren{\phi}$をつかって，次のように変形するのはダメだよ<br>
-      $$a\land\paren{b\lor c}\Iff a\land b\lor c$$
+      つまり，$\phi\Def\p{\phi}$をつかって，次のように変形するのはダメだよ<br>
+      $$a\land\p{b\lor c}\Iff a\land b\lor c$$
     </div>
     <p>
       実際に使われる論理演算子の優先順位を定める．
@@ -295,12 +295,12 @@
       <h4>優先順位の例</h4>
       命題$P,Q,R$について，
       <ul>
-        $$\lnot P\land Q\Iff\paren{\lnot P}\land Q$$
-        $$P\land Q\lor Q\land R\Iff\paren{P\land Q}\lor\paren{Q\land R}$$
-        $$\lnot\lnot P\Iff\lnot\paren{\lnot P}$$
-        $$P\lor Q\lor R\Iff\paren{P\lor Q}\lor R$$
-        $$P\to Q\to R\Iff P\to\paren{Q\to R}$$
-        $$\lnot\paren{P\lor Q}\land R\Iff\paren{\lnot\paren{P\lor Q}}\land R$$
+        $$\lnot P\land Q\Iff\p{\lnot P}\land Q$$
+        $$P\land Q\lor Q\land R\Iff\p{P\land Q}\lor\p{Q\land R}$$
+        $$\lnot\lnot P\Iff\lnot\p{\lnot P}$$
+        $$P\lor Q\lor R\Iff\p{P\lor Q}\lor R$$
+        $$P\to Q\to R\Iff P\to\p{Q\to R}$$
+        $$\lnot\p{P\lor Q}\land R\Iff\p{\lnot\p{P\lor Q}}\land R$$
       </ul>
     </aside>
     <details>
@@ -319,9 +319,9 @@
           優先順位が高い演算子から括弧をくくる．同順位の場合は右結合なら右側から，左結合なら左結合がから順に括弧をくくる．
         </p>
         <ol>
-          <li>$\paren{\lnot P}\land Q$</li>
-          <li>$\paren{\paren{P\land Q}\lor R}\to\paren{P\lor\paren{\paren{\lnot Q}\land R}}$</li>
-          <li>$\paren{P\to \paren{Q\to P}}\iff Q$</li>
+          <li>$\p{\lnot P}\land Q$</li>
+          <li>$\p{\p{P\land Q}\lor R}\to\p{P\lor\p{\p{\lnot Q}\land R}}$</li>
+          <li>$\p{P\to \p{Q\to P}}\iff Q$</li>
         </ol>
       </details>
     </details>
@@ -345,28 +345,28 @@
             与式を変形する．
             \begin{align*}
             &P\to P\\
-            \Iff&\to\paren{P,P}\\
+            \Iff&\to\p{P,P}\\
             \end{align*}
-            よって，$P$は原子命題より$P$は論理式である．$\to$は二項真理関数で$P$は論理式より$\to\paren{P,P}$は論理式である．したがって，$P\to P$は論理式である．
+            よって，$P$は原子命題より$P$は論理式である．$\to$は二項真理関数で$P$は論理式より$\to\p{P,P}$は論理式である．したがって，$P\to P$は論理式である．
           </li>
           <li>
             与式を変形する．
             \begin{align*}
             &\lnot P\land Q\\
-            \Iff&\paren{\paren{\lnot P}\land Q}\\
-            \Iff&\land\paren{\lnot\paren{P},Q}\\
+            \Iff&\p{\p{\lnot P}\land Q}\\
+            \Iff&\land\p{\lnot\p{P},Q}\\
             \end{align*}
-            よって，$P$は原子命題より$P$は論理式である．$\lnot$は1項真理関数で$P$は論理式より$\lnot\paren{P}$は論理式である．また，$Q$は原子命題より$Q$は論理式である．よって，$\land$は2項真理関数で$\lnot\paren{P}$と$Q$は論理式より$\land\paren{\lnot\paren{P},Q}$は論理式である．したがって，$\lnot
+            よって，$P$は原子命題より$P$は論理式である．$\lnot$は1項真理関数で$P$は論理式より$\lnot\p{P}$は論理式である．また，$Q$は原子命題より$Q$は論理式である．よって，$\land$は2項真理関数で$\lnot\p{P}$と$Q$は論理式より$\land\p{\lnot\p{P},Q}$は論理式である．したがって，$\lnot
             P\land Q$は論理式である．
           </li>
           <li>
             与式を変形する．
             \begin{align*}
             &P\iff P\\
-            \Iff&\paren{P\to P}\land\paren{P\to P}\\
-            \Iff&\land\paren{P\to P,P\to P}\\
+            \Iff&\p{P\to P}\land\p{P\to P}\\
+            \Iff&\land\p{P\to P,P\to P}\\
             \end{align*}
-            (1)より$P\to P$は論理式である．$\land$は2項真理関数で$P\to P$は論理式より$\land\paren{P\to P,P\to
+            (1)より$P\to P$は論理式である．$\land$は2項真理関数で$P\to P$は論理式より$\land\p{P\to P,P\to
             P}$は論理式である．したがって，$P\iff P$は論理式である．
           </li>
         </ol>
@@ -381,21 +381,21 @@
       <h4>定義</h4>
       量化子$\lambda,\lambda'$について，
       <dt>適用範囲の略記</dt>
-      <dd>$$\lambda x,\phi\Def\lambda x\paren{\phi}$$</dd>
+      <dd>$$\lambda x,\phi\Def\lambda x\p{\phi}$$</dd>
       <dt>量化列挙の略記</dt>
       <dd>$$\lambda x\lambda' y,\phi\Def\lambda x,\lambda' y,\phi$$</dd>
       <dt>同量化の略記</dt>
       <dd>$$\lambda xy,\phi\Def\lambda x\lambda y,\phi$$</dd>
       <dt>量化子の別記</dt>
       <dd>$$^\lambda x,\phi\Def\lambda x,\phi$$</dd>
-      論理式$\phi$，$1$項述語$F\paren{x}$，項$x,y$について，
+      論理式$\phi$，$1$項述語$F\p{x}$，項$x,y$について，
       <dt>$\forall$の条件の略記</dt>
-      <dd>$$\forall F\paren{x},\phi\Def\forall x,F\paren{x}\to\phi$$</dd>
+      <dd>$$\forall F\p{x},\phi\Def\forall x,F\p{x}\to\phi$$</dd>
       <dt>$\exists$の条件の略記</dt>
-      <dd>$$\exists F\paren{x},\phi\Def\exists x\phi\land F\paren{x}$$</dd>
+      <dd>$$\exists F\p{x},\phi\Def\exists x\phi\land F\p{x}$$</dd>
       <dt>唯一存在量化子</dt>
-      <dd>$$\exists! F\paren{x}\Def\exists F\paren{x}\land\forall
-        F\paren{x}\forall F\paren{y}\paren{x=y}$$</dd>
+      <dd>$$\exists! F\p{x}\Def\exists F\p{x}\land\forall
+        F\p{x}\forall F\p{y}\p{x=y}$$</dd>
     </dl>
 
     <h3>否定の略記</h3>
@@ -406,9 +406,9 @@
       <h4>定義</h4>
       量化子$\lambda$，変数$x,y$の関係演算子$\rho$について，
       <dt>量化子の否定</dt>
-      <dd>$$\cancel{\lambda} x,\phi\Def\lnot\paren{\lambda x,\phi}$$</dd>
+      <dd>$$\cancel{\lambda} x,\phi\Def\lnot\p{\lambda x,\phi}$$</dd>
       <dt>関係演算子の否定</dt>
-      <dd>$$x\,\cancel{\rho}\,y\Def\lnot\paren{x\,\rho\,y}$$</dd>
+      <dd>$$x\,\cancel{\rho}\,y\Def\lnot\p{x\,\rho\,y}$$</dd>
     </dl>
 
     <h3>反転の略記</h3>
