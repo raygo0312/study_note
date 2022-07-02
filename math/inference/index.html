@@ -101,7 +101,7 @@
       <dt>選言</dt>
       <dd>$$\lor\paren{\phi,\psi}$$</dd>
       <dt>含意</dt>
-      <dd>$$\implies\paren{\phi,\psi}$$</dd>
+      <dd>$$\to\paren{\phi,\psi}$$</dd>
     </dl>
     <p>
       形式化する上では論理体系の意味を考えないが，意味がわからないと理解しづらいと思うので，参考までに自然言語としての意味を載せる．直感でわかりやすいように，真理関数は自然言語でよくつかわれる言葉が元になっている．
@@ -280,7 +280,7 @@
       </ul>
     </dl>
     <p>
-      また，各種演算子ごとの大まかな優先順位も定める．推論文字($\Implies,\Iff,\sequent,\consequent$)の優先順位は最下位とする，算術演算とは($+,-,\cup$など)数字や集合など同士の演算子である．
+      また，各種演算子ごとの大まかな優先順位も定める．推論文字($\Implies,\Iff,\sequent,\models$)の優先順位は最下位とする，算術演算とは($+,-,\cup$など)数字や集合など同士の演算子である．
     </p>
     <dl>
       <h4>定義</h4>
@@ -572,10 +572,10 @@
         $\phi_1,\phi_2,\cdots,\phi_n\Implies\psi_1,\psi_2,\cdots,\psi_n$かつ$\psi_1,\psi_2,\cdots,\psi_n\Implies\psi_1,\psi_2,\cdots,\psi_n$のとき，
         $$\phi_1,\phi_2,\cdots,\phi_n\Iff\psi_1,\psi_2,\cdots,\psi_n$$
         同様に，
-        $$\phi_1,\phi_2,\cdots,\phi_n\consequence\psi_1,\psi_2,\cdots,\psi_n$$
-        $$\phi_1,\phi_2,\cdots,\phi_n\iffconsequence\psi_1,\psi_2,\cdots,\psi_n$$
-        $$\phi_1,\phi_2,\cdots,\phi_n\sequence\psi_1,\psi_2,\cdots,\psi_n$$
-        $$\phi_1,\phi_2,\cdots,\phi_n\iffsequence\psi_1,\psi_2,\cdots,\psi_n$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\models\psi_1,\psi_2,\cdots,\psi_n$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\iffmodels\psi_1,\psi_2,\cdots,\psi_n$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\sequent\psi_1,\psi_2,\cdots,\psi_n$$
+        $$\phi_1,\phi_2,\cdots,\phi_n\iffsequent\psi_1,\psi_2,\cdots,\psi_n$$
       </dd>
     </dl>
 
