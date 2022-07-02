@@ -413,13 +413,13 @@
 
     <h3>反転の略記</h3>
     <p>
-      向きがある関係を表す演算子は表現力を上げるために逆向きで書くことがある．また，他の演算子の反転については適宜定義していく．
+      向きがある関係を表す演算子は表現力を上げるために逆向きで書くことがある．
     </p>
     <dl>
       <h4>定義</h4>
-      論理式$\phi,\psi$について，
-      <dt>$\to$の反転</dt>
-      <dd>$$\psi\rto\phi\Def \phi\to \psi$$</dd>
+      関係演算子$\prec$に対して，
+      <dt>反転記法</dt>
+      <dd>$$\psi\succ\phi\Def\phi\prec\psi$$</dd>
     </dl>
 
     <h2>命題の表現</h2>
@@ -565,17 +565,12 @@
     <dl>
       <h4>定義</h4>
       命題の集合$\phi_1,\phi_2,\cdots,\phi_n,\psi_1,\psi_2,\cdots,\psi_n$としたとき，
-      <dt>集合の省略</dt>
+      <dt>$\To$記法の拡張</dt>
       <dd>
         $\phi_1,\phi_2,\cdots,\phi_n\To\psi_1$かつ$\phi_1,\phi_2,\cdots,\phi_n\To\psi_2$かつ$\cdots$かつ$\phi_1,\phi_2,\cdots,\phi_n\To\psi_n$なら，
         $$\phi_1,\phi_2,\cdots,\phi_n\To\psi_1,\psi_2,\cdots,\psi_n$$
         $\phi_1,\phi_2,\cdots,\phi_n\To\psi_1,\psi_2,\cdots,\psi_n$かつ$\psi_1,\psi_2,\cdots,\psi_n\To\psi_1,\psi_2,\cdots,\psi_n$のとき，
         $$\phi_1,\phi_2,\cdots,\phi_n\Iff\psi_1,\psi_2,\cdots,\psi_n$$
-        同様に，
-        $$\phi_1,\phi_2,\cdots,\phi_n\models\psi_1,\psi_2,\cdots,\psi_n$$
-        $$\phi_1,\phi_2,\cdots,\phi_n\iffmodels\psi_1,\psi_2,\cdots,\psi_n$$
-        $$\phi_1,\phi_2,\cdots,\phi_n\sequent\psi_1,\psi_2,\cdots,\psi_n$$
-        $$\phi_1,\phi_2,\cdots,\phi_n\iffsequent\psi_1,\psi_2,\cdots,\psi_n$$
       </dd>
     </dl>
 
