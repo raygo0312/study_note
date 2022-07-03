@@ -360,6 +360,10 @@
           この補題より$\psi\sequent\phi\to\psi$であり，必要としない命題を前提として追加してもよいという推論である．この$\psi$を$\bot$として利用する．
           $$\infer[2]{\bot\to\lnot\lnot\phi}{\infer{\lnot\lnot\phi}{\infer[1]{\lnot\phi\to\bot}{\infer{\bot}{\infer[1]{\phi}{}\quad\infer{\phi\to\bot}{\infer[2]{\bot}{}}}}}$$
         </p>
+        <p>
+          最小論理と選言的三段論法を用いて排中律を導出する．
+          $$\infer{\lnot\lnot\p{\phi\lor\lnot\phi}}{\infer[2]{\lnot\p{\phi\lor\lnot\phi}\to\bot}{\infer{\bot}{\infer{\phi\lor\lnot\phi}{\infer{\lnot\phi}{\infer[1]{\phi\to\bot}{\infer{\bot}{\infer{\phi\lor\lnot\phi}{\infer[1]{\phi}{}\quad\infer[2]{\lnot\p{\phi\lor\lnot\phi}}{}}}}\quad\infer[2]{\lnot\p{\phi\lor\lnot\phi}}{}}}}}}}
+        </p>
       </details>
     </details>
   </main>
