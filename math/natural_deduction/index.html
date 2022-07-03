@@ -352,17 +352,17 @@
         </p>
         <p>
           最小論理と爆発律と排中律を用いて二重否定の除去を導出する．
-          $$\infer[2]{\lnot\lnot\phi\to\phi}{\infer{\phi}{\phi\land\lnot\phi\quad\phi\to\phi\quad\infer[1]{\lnot\to\phi}{\infer{\phi}{\infer{\bot}{\infer[1]{\lnot\phi}{}\quad\infer[2]{\lnot\lnot\phi}{}}}}}}$$
+          $$\infer[2]{\lnot\lnot\phi\to\phi}{\infer{\phi}{\phi\land\lnot\phi\quad\phi\to\phi\quad\infer[1]{\lnot\phi\to\phi}{\infer{\phi}{\infer{\bot}{\infer[1]{\lnot\phi}{}\quad\infer[2]{\lnot\lnot\phi}{}}}}}}$$
         </p>
         <p>
-          最小論理と選言的三段論法を用いて爆発律を導出する．まず補題$\psi\to\phi\to\psi$を証明する．
+          最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$\psi\to\phi\to\psi$を証明する．
           $$\infer[2]{\psi\to\phi\to\psi}{\infer[1]{\phi\to\psi}{\infer{\psi}{\infer{\phi\land\psi}{\infer[1]{\phi}{}\quad\infer[2]{\psi}{}}}}}$$
           この補題より$\psi\sequent\phi\to\psi$であり，必要としない命題を前提として追加してもよいという推論である．この$\psi$を$\bot$として利用する．
           $$\infer[2]{\bot\to\lnot\lnot\phi}{\infer{\lnot\lnot\phi}{\infer[1]{\lnot\phi\to\bot}{\infer{\bot}{\infer[1]{\phi}{}\quad\infer{\phi\to\bot}{\infer[2]{\bot}{}}}}}}$$
         </p>
         <p>
-          最小論理と選言的三段論法を用いて排中律を導出する．
-          $$\infer{\lnot\lnot\p{\phi\lor\lnot\phi}}{\infer[2]{\lnot\p{\phi\lor\lnot\phi}\to\bot}{\infer{\bot}{\infer{\phi\lor\lnot\phi}{\infer{\lnot\phi}{\infer[1]{\phi\to\bot}{\infer{\bot}{\infer{\phi\lor\lnot\phi}{\infer[1]{\phi}{}\quad\infer[2]{\lnot\p{\phi\lor\lnot\phi}}{}}}}\quad\infer[2]{\lnot\p{\phi\lor\lnot\phi}}{}}}}}}}$$
+          最小論理と二重否定の除去を用いて排中律を導出する．
+          $$\infer{\phi\lor\lnot\phi}{\infer{\lnot\lnot\p{\phi\lor\lnot\phi}}{\infer[2]{\bot}{\infer{\lnot\p{\phi\lor\lnot\phi}\to\bot}{\infer{\bot}{\infer{\phi\lor\lnot\phi}{\infer{\lnot}{}}}}}}}$$
         </p>
       </details>
     </details>
