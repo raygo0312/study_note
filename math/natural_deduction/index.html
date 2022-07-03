@@ -242,19 +242,25 @@
     <details>
       <summary>演繹定理の証明</summary>
       <p>
-        $\p{\To}$$\to\text{I}$そのものである．
-      </p>
-      <p>
-        $\p{\rTo}$前提に$\phi$を追加する．
-        $$\phi,\phi\to\psi\To\psi$$
-        であるから，
-        $$\Gamma,\phi\sequent\psi$$
-        が成り立つ．
-      </p>
-      <p>
-        よって，
         $$\Gamma,\phi\sequent\psi\Iff\Gamma\sequent\phi\to\psi$$
       </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $\p{\To}$$\to\text{I}$そのものである．
+        </p>
+        <p>
+          $\p{\rTo}$前提に$\phi$を追加する．
+          $$\phi,\phi\to\psi\To\psi$$
+          であるから，
+          $$\Gamma,\phi\sequent\psi$$
+          が成り立つ．
+        </p>
+        <p>
+          よって，
+          $$\Gamma,\phi\sequent\psi\Iff\Gamma\sequent\phi\to\psi$$
+        </p>
+      </details>
     </details>
     <div class="you">
       この命題によって，$\phi$から$\psi$を演繹できたとき，$\phi\to\psi$って書けることを意味してるから，推論と$\to$が含まれる命題に違いがないことがわかるね
@@ -303,14 +309,14 @@
     <details>
       <summary>爆発律と選言的三段論法の同値性の証明</summary>
       <p>
-        最小論理の推論規則と公理を用いて，爆発律から選言的三段論法，選言的三段論法から爆発律をそれぞれ推論すればよい．
+        最小論理を用いて，爆発律から選言的三段論法，選言的三段論法から爆発律をそれぞれ推論すればよい．
       </p>
       <p>
-        最小論理の推論規則と公理と爆発律を用いて選言的三段論法を導出する．
+        最小論理と爆発律を用いて選言的三段論法を導出する．
         $$\infer[2]{\p{\phi\lor\psi}\land\lnot\psi\to\phi}{\infer{\phi}{\infer{\phi\lor\psi}{\infer[2]{\p{\phi\lor\psi}\land\lnot\psi}{}}\quad\phi\to\phi\quad\infer[1]{\psi\to\phi}{\infer{\phi}{\infer{\bot}{\infer[1]{\psi}{}\quad\infer{\lnot\psi}{\infer[2]{\p{\phi\lor\psi}\land\lnot\psi}{}}}}}}}$$
       </p>
       <p>
-        最小論理の推論規則と公理と選言的三段論法を用いて爆発律を導出する．
+        最小論理と選言的三段論法を用いて爆発律を導出する．
         $$\infer[1]{\bot\to\phi}{\infer{\phi}{\infer{\p{\phi\lor\bot}\land\lnot\bot}{\infer{\phi\lor\bot}{\infer[2]{\bot}{}}\quad\infer{\lnot}{\bot\to\bot}}\quad\p{\phi\lor\bot}\land\lnot\bot\to\phi}}$$
       </p>
     </details>
