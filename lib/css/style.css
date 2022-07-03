@@ -144,7 +144,7 @@ details+details {
 }
 
 summary {
-  margin-bottom: -0.1rem;
+  margin: -0.1rem;
   border-bottom: solid #222222 0.1rem;
   padding-left: 0.5rem;
   background-color: #22aa55;
