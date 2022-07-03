@@ -379,28 +379,58 @@
       以前に$=$と$\iff$は相等関係であると説明した．相当関係とは等価性を満たすものであるが，等価性は反射律かつ代入原理である．$=$は集合に対する相等関係と定義されているが，$\iff$は別の定義が既に存在しているので，その定義で相等関係となるかを調べる必要がある．
     </p>
     <dl>
-      <h4>定義</h4>
-      <dt>$iff$の反射律</dt>
+      <h4>定理</h4>
+      <dt>$\iff$の反射律</dt>
       <dd>
         任意の論理式$A$について，
         $$A\iff A$$
       </dd>
-      <dt>$iff$の代入原理</dt>
+      <dt>$\iff$の代入原理</dt>
       <dd>
-        任意の論理式$B_1,B_2$，任意の論理式を引数とする論理式$f\p{A}$について，
-        $$B_1\iff B_2,f\p{B_1}\To f\p{B_2}$$
+        任意の論理式$A,B$，任意の論理式を引数とする論理式$F\p{X}$について，
+        $$A\iff B,F\p{A}\To F\p{B}$$
       </dd>
+      <h4>定義</h4>
       <dt>$=$の反射律</dt>
       <dd>
         項$a$について，
-        $$a\iff a$$
+        $$a=a$$
       </dd>
-      <dt>$iff$の代入原理</dt>
+      <dt>$=$の代入原理</dt>
       <dd>
-        任意の論理式$B_1,B_2$，任意の論理式を引数とする論理式$f\p{A}$について，
-        $$B_1\iff B_2,f\p{B_1}\To f\p{B_2}$$
+        項$a,b$，算術演算子$f\p{x}$
+        $$\forall ab,a=b\To f\p{a}\iff\p{b}\$$
       </dd>
     </dl>
+    <details>
+      <summary>$\iff$が反射律を満たす証明</summary>
+      <p>
+        $$A\iff A$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          同一律より，$A\to A$であるから成り立つ．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>$\iff$が代入原理を満たす証明
+      </summary>
+      <p>
+        任意の論理式$A,B$，任意の論理式を引数とする論理式$f\p{X}$について，
+        $$A\iff B,f\p{A}\To f\p{B}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          論理式は再帰的定義によって定義されていたため，論理式$f$の数学的帰納法によって証明する．
+        </p>
+        <p>
+
+        </p>
+      </details>
+    </details>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
