@@ -41,10 +41,10 @@
       <h4>定義</h4>
       論理式$A,B$について，
       <dt>$A$と$B$は等価である</dt>
-      <dd>$$A\IffB$$</dd>
-      項$\xi,\zeta$について，
-      <dt>$\xi$と$\zeta$は恒等である</dt>
-      <dd>$$\xi=\zeta$$</dd>
+      <dd>$$A\Iff B$$</dd>
+      項$a,b$について，
+      <dt>$a$と$b$は恒等である</dt>
+      <dd>$$a=b$$</dd>
     </dl>
     <div class="me">
       同じ扱いができるならこの表記いらなくない？
@@ -125,13 +125,13 @@
       <h4>定義</h4>
       論理式$A,B$について，
       <dt>$\lnot$演算子</dt>
-      <dd>$$\p{\lnotA}\Def\lnot\p{A}$$</dd>
+      <dd>$$\p{\lnot A}\Def\lnot\p{A}$$</dd>
       <dt>$\lor$演算子</dt>
-      <dd>$$\p{A\landB}\Def\land\p{A,B}$$</dd>
+      <dd>$$\p{A\land B}\Def\land\p{A,B}$$</dd>
       <dt>$\land$演算子</dt>
-      <dd>$$\p{A\lorB}\Def\lor\p{A,B}$$</dd>
+      <dd>$$\p{A\lor B}\Def\lor\p{A,B}$$</dd>
       <dt>$\to$演算子</dt>
-      <dd>$$\p{A\toB}\Def\to\p{A,B}$$</dd>
+      <dd>$$\p{A\to B}\Def\to\p{A,B}$$</dd>
     </dl>
     <p>
       二項演算子におけるこの記法を<ruby><dfn>中置記法</dfn>
@@ -151,11 +151,11 @@
       論理式$A,B$について，
       <dt>等価</dt>
       <dd>
-        $$\p{A\iffB}\Def\p{\p{A\toB}\land\p{B\toA}}$$
+        $$\p{A\iff B}\Def\p{\p{A\to B}\land\p{B\to A}}$$
       </dd>
       <dt>排他的論理和</dt>
       <dd>
-        $$\p{A\veebarB}\Def\p{A\land\p{\lnotB}\lor\p{\p{\lnotA}\landB}}$$
+        $$\p{A\veebar B}\Def\p{A\land\p{\lnot B}\lor\p{\p{\lnot A}\landB}}$$
       </dd>
     </dl>
     <p>
@@ -247,6 +247,8 @@
     <dl>
       <h4>定義</h4>
       論理式$A$について，
+      <dt>二重括弧の省略</dt>
+      <dd>$$\p{A}\Def\p{\p{A}}$$</dd>
       <dt>全体括弧の省略</dt>
       <dd>$$A\Def\p{A}$$</dd>
       $a,b,c$の演算子$\rho_1$が$\rho_2$より優先順位が高いとき，
@@ -390,7 +392,7 @@
       <dd>$$^\lambda x,A\Def\lambda x,A$$</dd>
       論理式$A$，$1$項述語$F\p{x}$，項$x,y$について，
       <dt>$\forall$の条件の略記</dt>
-      <dd>$$\forall F\p{x},A\Def\forall x,F\p{x}\toA$$</dd>
+      <dd>$$\forall F\p{x},A\Def\forall x,F\p{x}\to A$$</dd>
       <dt>$\exists$の条件の略記</dt>
       <dd>$$\exists F\p{x},A\Def\exists xA\land F\p{x}$$</dd>
       <dt>唯一存在量化子</dt>
@@ -419,12 +421,12 @@
       <h4>定義</h4>
       関係演算子$\prec$に対して，
       <dt>反転記法</dt>
-      <dd>$$B\succA\DefA\precB$$</dd>
+      <dd>$$B\succ A\Def A\prec B$$</dd>
     </dl>
 
     <h2>命題の表現</h2>
     <p>
-      $A\toB$は重要な命題である．この命題が真であるとき，$B$を$A$に対して<ruby><dfn>必要条件</dfn>
+      $A\to B$は重要な命題である．この命題が真であるとき，$B$を$A$に対して<ruby><dfn>必要条件</dfn>
         <rt>necessary condition</rt>
       </ruby>，$A$を$B$に対して<ruby><dfn>十分条件</dfn>
         <rt>sufficient condition</rt>
@@ -432,11 +434,11 @@
         <rt>necessary and sufficient condition</rt>
       </ruby>という．また，この命題の<ruby><dfn>逆</dfn>
         <rt>converse</rt>
-      </ruby>とは$B\toA$のことであり，<ruby><dfn>裏</dfn>
+      </ruby>とは$B\to A$のことであり，<ruby><dfn>裏</dfn>
         <rt>inverse</rt>
-      </ruby>とは$\lnotA\to\lnotB$のことであり，<ruby><dfn>対偶</dfn>
+      </ruby>とは$\lnot A\to\lnot B$のことであり，<ruby><dfn>対偶</dfn>
         <rt>contraposition</rt>
-      </ruby>とは$\lnotB\to\lnotA$のことである．
+      </ruby>とは$\lnot B\to\lnot A$のことである．
     </p>
     <aside>
       <h4>命題で表す文</h4>
@@ -484,7 +486,7 @@
       任意の前提の集合$\Gamma$，帰結$A$について，
       <dt>$\Gamma$から$A$への推論</dt>
       <dd>
-        $$\Gamma\ToA$$
+        $$\Gamma\To A$$
       </dd>
     </dl>
 
@@ -499,7 +501,7 @@
       命題の集合$\Gamma$，命題$A$について，
       <dt>$\Gamma$から$A$への論理的帰結</dt>
       <dd>
-        $$\Gamma\modelsA$$
+        $$\Gamma\models A$$
       </dd>
     </dl>
 
@@ -539,11 +541,11 @@
       論理体系$\kappa$，命題の集合$\Gamma$，命題$A$について，
       <dt>$\kappa$で$\Gamma$から$A$は演繹可能</dt>
       <dd>
-        $$\Gamma\vdash_\kappaA$$
+        $$\Gamma\vdash_\kappa A$$
       </dd>
       <dt>$\kappa$で$A$は証明可能</dt>
       <dd>
-        $$\vdash_\kappaA$$
+        $$\vdash_\kappa A$$
       </dd>
     </dl>
     <p>
@@ -554,9 +556,9 @@
       命題の集合$\set{A_1,A_2,\cdots,A_n}$，命題$A$について，
       <dt>集合の省略</dt>
       <dd>
-        $$A_1,A_2,\cdots,A_n\ToA\Def\set{A_1,A_2,\cdots,A_n}\ToA$$
-        $$A_1,A_2,\cdots,A_n\modelsA\Def\set{A_1,A_2,\cdots,A_n}\modelsA$$
-        $$A_1,A_2,\cdots,A_n\vdashA\Def\set{A_1,A_2,\cdots,A_n}\vdashA$$
+        $$A_1,A_2,\cdots,A_n\To A\Def\set{A_1,A_2,\cdots,A_n}\To A$$
+        $$A_1,A_2,\cdots,A_n\models A\Def\set{A_1,A_2,\cdots,A_n}\models A$$
+        $$A_1,A_2,\cdots,A_n\vdash A\Def\set{A_1,A_2,\cdots,A_n}\vdash A$$
       </dd>
     </dl>
     <p>
@@ -567,10 +569,10 @@
       命題の集合$A_1,A_2,\cdots,A_n,B_1,B_2,\cdots,B_n$について，
       <dt>$\To$記法の拡張</dt>
       <dd>
-        「$A_1,A_2,\cdots,A_n\ToB_1$」かつ「$A_1,A_2,\cdots,A_n\ToB_2$」かつ$\cdots$かつ「$A_1,A_2,\cdots,A_n\ToB_n$」なら，
-        $$A_1,A_2,\cdots,A_n\ToB_1,B_2,\cdots,B_n$$
-        「$A_1,A_2,\cdots,A_n\ToB_1,B_2,\cdots,B_n$」かつ「$B_1,B_2,\cdots,B_n\ToB_1,B_2,\cdots,B_n$」のとき，
-        $$A_1,A_2,\cdots,A_n\IffB_1,B_2,\cdots,B_n$$
+        「$A_1,A_2,\cdots,A_n\To B_1$」かつ「$A_1,A_2,\cdots,A_n\To B_2$」かつ$\cdots$かつ「$A_1,A_2,\cdots,A_n\To B_n$」なら，
+        $$A_1,A_2,\cdots,A_n\To B_1,B_2,\cdots,B_n$$
+        「$A_1,A_2,\cdots,A_n\To B_1,B_2,\cdots,B_n$」かつ「$B_1,B_2,\cdots,B_n\To B_1,B_2,\cdots,B_n$」のとき，
+        $$A_1,A_2,\cdots,A_n\Iff B_1,B_2,\cdots,B_n$$
       </dd>
     </dl>
 
