@@ -303,22 +303,34 @@
     <details>
       <summary>同一律の証明</summary>
       <p>
-        $$\infer[1]{\phi\to\phi}{\infer[1]{\phi}{\phi}}$$
+        $$\phi\to\phi$$
       </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $$\infer[1]{\phi\to\phi}{\infer[1]{\phi}{\phi}}$$
+        </p>
+      </details>
     </details>
     <details>
       <summary>爆発律と選言的三段論法の同値性の証明</summary>
       <p>
-        最小論理を用いて，爆発律から選言的三段論法，選言的三段論法から爆発律をそれぞれ推論すればよい．
+        最小論理上で爆発律と選言的三段論法と等価な命題である．
       </p>
-      <p>
-        最小論理と爆発律を用いて選言的三段論法を導出する．
-        $$\infer[2]{\p{\phi\lor\psi}\land\lnot\psi\to\phi}{\infer{\phi}{\infer{\phi\lor\psi}{\infer[2]{\p{\phi\lor\psi}\land\lnot\psi}{}}\quad\phi\to\phi\quad\infer[1]{\psi\to\phi}{\infer{\phi}{\infer{\bot}{\infer[1]{\psi}{}\quad\infer{\lnot\psi}{\infer[2]{\p{\phi\lor\psi}\land\lnot\psi}{}}}}}}}$$
-      </p>
-      <p>
-        最小論理と選言的三段論法を用いて爆発律を導出する．
-        $$\infer[1]{\bot\to\phi}{\infer{\phi}{\infer{\p{\phi\lor\bot}\land\lnot\bot}{\infer{\phi\lor\bot}{\infer[2]{\bot}{}}\quad\infer{\lnot}{\bot\to\bot}}\quad\p{\phi\lor\bot}\land\lnot\bot\to\phi}}$$
-      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          最小論理を用いて，爆発律から選言的三段論法，選言的三段論法から爆発律をそれぞれ推論すればよい．
+        </p>
+        <p>
+          最小論理と爆発律を用いて選言的三段論法を導出する．
+          $$\infer[2]{\p{\phi\lor\psi}\land\lnot\psi\to\phi}{\infer{\phi}{\infer{\phi\lor\psi}{\infer[2]{\p{\phi\lor\psi}\land\lnot\psi}{}}\quad\phi\to\phi\quad\infer[1]{\psi\to\phi}{\infer{\phi}{\infer{\bot}{\infer[1]{\psi}{}\quad\infer{\lnot\psi}{\infer[2]{\p{\phi\lor\psi}\land\lnot\psi}{}}}}}}}$$
+        </p>
+        <p>
+          最小論理と選言的三段論法を用いて爆発律を導出する．
+          $$\infer[1]{\bot\to\phi}{\infer{\phi}{\infer{\p{\phi\lor\bot}\land\lnot\bot}{\infer{\phi\lor\bot}{\infer[2]{\bot}{}}\quad\infer{\lnot}{\bot\to\bot}}\quad\p{\phi\lor\bot}\land\lnot\bot\to\phi}}$$
+        </p>
+      </details>
     </details>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
