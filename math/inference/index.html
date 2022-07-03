@@ -27,10 +27,10 @@
     </p>
     <dl>
       <h4>定義</h4>
-      論理式$\phi,\psi$としたとき，
-      <dt>$\phi$を$\psi$で定義する</dt>
-      <dd>$$\phi\Def\psi$$</dd>
-      項$\xi,\zeta$としたとき，
+      論理式$A,B$について，
+      <dt>$A$を$B$で定義する</dt>
+      <dd>$$A\DefB$$</dd>
+      項$\xi,\zeta$について，
       <dt>$\xi$を$\zeta$で定義する</dt>
       <dd>$$\xi\def\zeta$$</dd>
     </dl>
@@ -39,10 +39,10 @@
     </p>
     <dl>
       <h4>定義</h4>
-      論理式$\phi,\psi$としたとき，
-      <dt>$\phi$と$\psi$は等価である</dt>
-      <dd>$$\phi\Iff\psi$$</dd>
-      項$\xi,\zeta$としたとき，
+      論理式$A,B$について，
+      <dt>$A$と$B$は等価である</dt>
+      <dd>$$A\IffB$$</dd>
+      項$\xi,\zeta$について，
       <dt>$\xi$と$\zeta$は恒等である</dt>
       <dd>$$\xi=\zeta$$</dd>
     </dl>
@@ -93,27 +93,27 @@
     </p>
     <dl>
       <h4>用意</h4>
-      論理式$\phi,\psi$について，
+      論理式$A,B$について，
       <dt>否定</dt>
-      <dd>$$\lnot\p{\phi}$$</dd>
+      <dd>$$\lnot\p{A}$$</dd>
       <dt>連言</dt>
-      <dd>$$\land\p{\phi,\psi}$$</dd>
+      <dd>$$\land\p{A,B}$$</dd>
       <dt>選言</dt>
-      <dd>$$\lor\p{\phi,\psi}$$</dd>
+      <dd>$$\lor\p{A,B}$$</dd>
       <dt>含意</dt>
-      <dd>$$\to\p{\phi,\psi}$$</dd>
+      <dd>$$\to\p{A,B}$$</dd>
     </dl>
     <p>
       形式化する上では論理体系の意味を考えないが，意味がわからないと理解しづらいと思うので，参考までに自然言語としての意味を載せる．直感でわかりやすいように，真理関数は自然言語でよくつかわれる言葉が元になっている．
     </p>
     <aside>
       <h4>真理関数の意味</h4>
-      論理式$\phi,\psi$について，
+      論理式$A,B$について，
       <ul>
-        <li>否定$\lnot\p{\phi}$ : $\phi$ではない</li>
-        <li>連言$\land\p{\phi,\psi}$ : $\phi$かつ$\psi$</li>
-        <li>選言$\lor\p{\phi,\psi}$ : $\phi$または$\psi$</li>
-        <li>含意$\to\p{\phi,\psi}$ : $\phi$ならば$\psi$</li>
+        <li>否定$\lnot\p{A}$ : $A$ではない</li>
+        <li>連言$\land\p{A,B}$ : $A$かつ$B$</li>
+        <li>選言$\lor\p{A,B}$ : $A$または$B$</li>
+        <li>含意$\to\p{A,B}$ : $A$ならば$B$</li>
       </ul>
     </aside>
     <p>
@@ -123,15 +123,15 @@
     </p>
     <dl>
       <h4>定義</h4>
-      論理式$\phi,\psi$としたとき，
+      論理式$A,B$について，
       <dt>$\lnot$演算子</dt>
-      <dd>$$\p{\lnot\phi}\Def\lnot\p{\phi}$$</dd>
+      <dd>$$\p{\lnotA}\Def\lnot\p{A}$$</dd>
       <dt>$\lor$演算子</dt>
-      <dd>$$\p{\phi\land\psi}\Def\land\p{\phi,\psi}$$</dd>
+      <dd>$$\p{A\landB}\Def\land\p{A,B}$$</dd>
       <dt>$\land$演算子</dt>
-      <dd>$$\p{\phi\lor\psi}\Def\lor\p{\phi,\psi}$$</dd>
+      <dd>$$\p{A\lorB}\Def\lor\p{A,B}$$</dd>
       <dt>$\to$演算子</dt>
-      <dd>$$\p{\phi\to\psi}\Def\to\p{\phi,\psi}$$</dd>
+      <dd>$$\p{A\toB}\Def\to\p{A,B}$$</dd>
     </dl>
     <p>
       二項演算子におけるこの記法を<ruby><dfn>中置記法</dfn>
@@ -148,14 +148,14 @@
     </p>
     <dl>
       <h4>定義</h4>
-      論理式$\phi,\psi$について，
+      論理式$A,B$について，
       <dt>等価</dt>
       <dd>
-        $$\p{\phi\iff\psi}\Def\p{\p{\phi\to\psi}\land\p{\psi\to\phi}}$$
+        $$\p{A\iffB}\Def\p{\p{A\toB}\land\p{B\toA}}$$
       </dd>
       <dt>排他的論理和</dt>
       <dd>
-        $$\p{\phi\veebar\psi}\Def\p{\phi\land\p{\lnot\psi}\lor\p{\p{\lnot\phi}\land\psi}}$$
+        $$\p{A\veebarB}\Def\p{A\land\p{\lnotB}\lor\p{\p{\lnotA}\landB}}$$
       </dd>
     </dl>
     <p>
@@ -246,9 +246,9 @@
     </p>
     <dl>
       <h4>定義</h4>
-      論理式$\phi$について，
+      論理式$A$について，
       <dt>全体括弧の省略</dt>
-      <dd>$$\phi\Def\p{\phi}$$</dd>
+      <dd>$$A\Def\p{A}$$</dd>
       $a,b,c$の演算子$\rho_1$が$\rho_2$より優先順位が高いとき，
       <dt>優先順位</dt>
       <dd>$$a\,\rho_1\,b\,\rho_2\,c\Def\p{a\,\rho_1\,b}\,\rho_2\,c$$</dd>
@@ -261,7 +261,7 @@
     </dl>
     <div class="you">
       ここでいう論理式は最長一致であることに注意してね<br>
-      つまり，$\phi\Def\p{\phi}$をつかって，次のように変形するのはダメだよ<br>
+      つまり，$A\Def\p{A}$をつかって，次のように変形するのはダメだよ<br>
       $$a\land\p{b\lor c}\Iff a\land b\lor c$$
     </div>
     <p>
@@ -381,18 +381,18 @@
       <h4>定義</h4>
       量化子$\lambda,\lambda'$について，
       <dt>適用範囲の略記</dt>
-      <dd>$$\lambda x,\phi\Def\lambda x\p{\phi}$$</dd>
+      <dd>$$\lambda x,A\Def\lambda x\p{A}$$</dd>
       <dt>量化列挙の略記</dt>
-      <dd>$$\lambda x\lambda' y,\phi\Def\lambda x,\lambda' y,\phi$$</dd>
+      <dd>$$\lambda x\lambda' y,A\Def\lambda x,\lambda' y,A$$</dd>
       <dt>同量化の略記</dt>
-      <dd>$$\lambda xy,\phi\Def\lambda x\lambda y,\phi$$</dd>
+      <dd>$$\lambda xy,A\Def\lambda x\lambda y,A$$</dd>
       <dt>量化子の別記</dt>
-      <dd>$$^\lambda x,\phi\Def\lambda x,\phi$$</dd>
-      論理式$\phi$，$1$項述語$F\p{x}$，項$x,y$について，
+      <dd>$$^\lambda x,A\Def\lambda x,A$$</dd>
+      論理式$A$，$1$項述語$F\p{x}$，項$x,y$について，
       <dt>$\forall$の条件の略記</dt>
-      <dd>$$\forall F\p{x},\phi\Def\forall x,F\p{x}\to\phi$$</dd>
+      <dd>$$\forall F\p{x},A\Def\forall x,F\p{x}\toA$$</dd>
       <dt>$\exists$の条件の略記</dt>
-      <dd>$$\exists F\p{x},\phi\Def\exists x\phi\land F\p{x}$$</dd>
+      <dd>$$\exists F\p{x},A\Def\exists xA\land F\p{x}$$</dd>
       <dt>唯一存在量化子</dt>
       <dd>$$\exists! F\p{x}\Def\exists F\p{x}\land\forall
         F\p{x}\forall F\p{y}\p{x=y}$$</dd>
@@ -406,7 +406,7 @@
       <h4>定義</h4>
       量化子$\lambda$，変数$x,y$の関係演算子$\rho$について，
       <dt>量化子の否定</dt>
-      <dd>$$\cancel{\lambda} x,\phi\Def\lnot\p{\lambda x,\phi}$$</dd>
+      <dd>$$\cancel{\lambda} x,A\Def\lnot\p{\lambda x,A}$$</dd>
       <dt>関係演算子の否定</dt>
       <dd>$$x\,\cancel{\rho}\,y\Def\lnot\p{x\,\rho\,y}$$</dd>
     </dl>
@@ -419,24 +419,24 @@
       <h4>定義</h4>
       関係演算子$\prec$に対して，
       <dt>反転記法</dt>
-      <dd>$$\psi\succ\phi\Def\phi\prec\psi$$</dd>
+      <dd>$$B\succA\DefA\precB$$</dd>
     </dl>
 
     <h2>命題の表現</h2>
     <p>
-      $\phi\to\psi$は重要な命題である．この命題が真であるとき，$\psi$を$\phi$に対して<ruby><dfn>必要条件</dfn>
+      $A\toB$は重要な命題である．この命題が真であるとき，$B$を$A$に対して<ruby><dfn>必要条件</dfn>
         <rt>necessary condition</rt>
-      </ruby>，$\phi$を$\psi$に対して<ruby><dfn>十分条件</dfn>
+      </ruby>，$A$を$B$に対して<ruby><dfn>十分条件</dfn>
         <rt>sufficient condition</rt>
       </ruby>という．必要条件であり十分条件であるとき<ruby><dfn>必要十分条件</dfn>
         <rt>necessary and sufficient condition</rt>
       </ruby>という．また，この命題の<ruby><dfn>逆</dfn>
         <rt>converse</rt>
-      </ruby>とは$\psi\to\phi$のことであり，<ruby><dfn>裏</dfn>
+      </ruby>とは$B\toA$のことであり，<ruby><dfn>裏</dfn>
         <rt>inverse</rt>
-      </ruby>とは$\lnot\phi\to\lnot\psi$のことであり，<ruby><dfn>対偶</dfn>
+      </ruby>とは$\lnotA\to\lnotB$のことであり，<ruby><dfn>対偶</dfn>
         <rt>contraposition</rt>
-      </ruby>とは$\lnot\psi\to\lnot\phi$のことである．
+      </ruby>とは$\lnotB\to\lnotA$のことである．
     </p>
     <aside>
       <h4>命題で表す文</h4>
@@ -481,10 +481,10 @@
     </p>
     <dl>
       <h4>定義</h4>
-      任意の前提の集合$\Gamma$，帰結$\phi$としたとき，
-      <dt>$\Gamma$から$\phi$への推論</dt>
+      任意の前提の集合$\Gamma$，帰結$A$について，
+      <dt>$\Gamma$から$A$への推論</dt>
       <dd>
-        $$\Gamma\To\phi$$
+        $$\Gamma\ToA$$
       </dd>
     </dl>
 
@@ -496,10 +496,10 @@
     </p>
     <dl>
       <h4>定義</h4>
-      命題の集合$\Gamma$，命題$\phi$としたとき，
-      <dt>$\Gamma$から$\phi$への論理的帰結</dt>
+      命題の集合$\Gamma$，命題$A$について，
+      <dt>$\Gamma$から$A$への論理的帰結</dt>
       <dd>
-        $$\Gamma\models\phi$$
+        $$\Gamma\modelsA$$
       </dd>
     </dl>
 
@@ -536,14 +536,14 @@
     </p>
     <dl>
       <h4>定義</h4>
-      論理体系$\kappa$，命題の集合$\Gamma$，命題$\phi$としたとき，
-      <dt>$\kappa$で$\Gamma$から$\phi$は演繹可能</dt>
+      論理体系$\kappa$，命題の集合$\Gamma$，命題$A$について，
+      <dt>$\kappa$で$\Gamma$から$A$は演繹可能</dt>
       <dd>
-        $$\Gamma\vdash_\kappa\phi$$
+        $$\Gamma\vdash_\kappaA$$
       </dd>
-      <dt>$\kappa$で$\phi$は証明可能</dt>
+      <dt>$\kappa$で$A$は証明可能</dt>
       <dd>
-        $$\vdash_\kappa\phi$$
+        $$\vdash_\kappaA$$
       </dd>
     </dl>
     <p>
@@ -551,12 +551,12 @@
     </p>
     <dl>
       <h4>定義</h4>
-      命題の集合$\set{\phi_1,\phi_2,\cdots,\phi_n}$，命題$\phi$としたとき，
+      命題の集合$\set{A_1,A_2,\cdots,A_n}$，命題$A$について，
       <dt>集合の省略</dt>
       <dd>
-        $$\phi_1,\phi_2,\cdots,\phi_n\To\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\To\phi$$
-        $$\phi_1,\phi_2,\cdots,\phi_n\models\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\models\phi$$
-        $$\phi_1,\phi_2,\cdots,\phi_n\vdash\phi\Def\set{\phi_1,\phi_2,\cdots,\phi_n}\vdash\phi$$
+        $$A_1,A_2,\cdots,A_n\ToA\Def\set{A_1,A_2,\cdots,A_n}\ToA$$
+        $$A_1,A_2,\cdots,A_n\modelsA\Def\set{A_1,A_2,\cdots,A_n}\modelsA$$
+        $$A_1,A_2,\cdots,A_n\vdashA\Def\set{A_1,A_2,\cdots,A_n}\vdashA$$
       </dd>
     </dl>
     <p>
@@ -564,13 +564,13 @@
     </p>
     <dl>
       <h4>定義</h4>
-      命題の集合$\phi_1,\phi_2,\cdots,\phi_n,\psi_1,\psi_2,\cdots,\psi_n$としたとき，
+      命題の集合$A_1,A_2,\cdots,A_n,B_1,B_2,\cdots,B_n$について，
       <dt>$\To$記法の拡張</dt>
       <dd>
-        「$\phi_1,\phi_2,\cdots,\phi_n\To\psi_1$」かつ「$\phi_1,\phi_2,\cdots,\phi_n\To\psi_2$」かつ$\cdots$かつ「$\phi_1,\phi_2,\cdots,\phi_n\To\psi_n$」なら，
-        $$\phi_1,\phi_2,\cdots,\phi_n\To\psi_1,\psi_2,\cdots,\psi_n$$
-        「$\phi_1,\phi_2,\cdots,\phi_n\To\psi_1,\psi_2,\cdots,\psi_n$」かつ「$\psi_1,\psi_2,\cdots,\psi_n\To\psi_1,\psi_2,\cdots,\psi_n$」のとき，
-        $$\phi_1,\phi_2,\cdots,\phi_n\Iff\psi_1,\psi_2,\cdots,\psi_n$$
+        「$A_1,A_2,\cdots,A_n\ToB_1$」かつ「$A_1,A_2,\cdots,A_n\ToB_2$」かつ$\cdots$かつ「$A_1,A_2,\cdots,A_n\ToB_n$」なら，
+        $$A_1,A_2,\cdots,A_n\ToB_1,B_2,\cdots,B_n$$
+        「$A_1,A_2,\cdots,A_n\ToB_1,B_2,\cdots,B_n$」かつ「$B_1,B_2,\cdots,B_n\ToB_1,B_2,\cdots,B_n$」のとき，
+        $$A_1,A_2,\cdots,A_n\IffB_1,B_2,\cdots,B_n$$
       </dd>
     </dl>
 
