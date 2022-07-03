@@ -141,9 +141,9 @@
       <dt>$\land\text{E}$</dt>
       <dd>$$\land\text{E}\infer{A_1}{A_1\land A_2}\qquad\infer{A_2}{A_1\land A_2}$$</dd>
       <dt>$\lor\text{I}$</dt>
-      <dd>$$\lor\text{I}\infer{A_1\lorA_2}{A_1}\qquad\infer{A_1\lorA_2}{A_1}$$</dd>
+      <dd>$$\lor\text{I}\infer{A_1\lor A_2}{A_1}\qquad\infer{A_1\lor A_2}{A_1}$$</dd>
       <dt>$\lor\text{E}$</dt>
-      <dd>$$\lor\text{E}\infer{B}{A_1\lorA_2\quad A_1\toB\quad A_2\toB}$$</dd>
+      <dd>$$\lor\text{E}\infer{B}{A_1\lor A_2\quad A_1\to B\quad A_2\to B}$$</dd>
     </dl>
 
     <h3>$\forall$と$\exists$の推論規則</h3>
@@ -244,7 +244,7 @@
     <details>
       <summary>演繹定理の証明</summary>
       <p>
-        $$\Gamma,A\sequent B\Iff\Gamma\sequent A\toB$$
+        $$\Gamma,A\sequent B\Iff\Gamma\sequent A\to B$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -268,7 +268,7 @@
     </div>
     <div class="you">
       これは$\sequent$が入っていて，対象が論理式ではないから，自然演繹では扱えない<br>
-      この定理の証明は，今行っている体系を組み立てて，論理体系を定義し直した時に，初めて論理的に証明できる<br>
+      この定理の証明は今行っている体系を組み立てて，論理体系を定義し直した時に，初めて論理的に証明できる<br>
       演繹定理を使わなくても複雑になるけど同じ命題を証明できるから数学を構成する上では問題ないよ
     </div>
 
@@ -360,7 +360,7 @@
         <p>
           最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$B\to A\to B$を証明する．
           $$\infer[2]{B\to A\to B}{\infer[1]{A\to B}{\infer{B}{\infer{A\land B}{\infer[1]{A}{}\quad\infer[2]{B}{}}}}}$$
-          この補題より$B\sequentA\to B$であり，必要としない命題を前提として追加してもよいという推論である．この$B$を$\bot$として利用する．
+          この補題より$B\sequent A\to B$であり，必要としない命題を前提として追加してもよいという推論である．この$B$を$\bot$として利用する．
           $$\infer[2]{\bot\to\lnot\lnot A}{\infer{\lnot\lnot A}{\infer[1]{\lnot
           A\to\bot}{\infer{\bot}{\infer[1]{A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}}$$
         </p>
