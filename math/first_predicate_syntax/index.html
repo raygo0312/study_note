@@ -97,7 +97,7 @@
       <dt>原子命題</dt>
       <dd>$$P,Q,R,\cdots$$</dd>
       <dt>真理関数</dt>
-      <dd>$$F,G,\cdots$$</dd>
+      <dd>$$\mathcal{F},\mathcal{G},\cdots$$</dd>
     </dl>
     <div class="you">
       ここでは$\cdots$で列挙される文字は特に決まりはなく，一般にこれを使用していくよという意味で使うよ
@@ -119,7 +119,7 @@
       <dd>
         <ol>
           <li>$P$が原子命題であるとき，$P$は論理式である．</li>
-          <li>$F$が$n$項真理関数で，$A_1,A_2,\cdots,A_n$が論理式ならば，$F\p{A_1,A_2,\cdots,A_n}$は論理式である．
+          <li>$\mathcal{F}$が$n$項真理関数で，$A_1,A_2,\cdots,A_n$が論理式ならば，$\mathcal{F}\p{A_1,A_2,\cdots,A_n}$は論理式である．
           </li>
           <li>(1),(2)以外は論理式ではない．</li>
         </ol>
@@ -128,11 +128,11 @@
     <details>
       <summary>練習問題</summary>
       <p>
-        次の式が命題論理における論理式であることを示せ．ただし，$P,Q$は原子命題，$F$は二項真理関数とする．
+        次の式が命題論理における論理式であることを示せ．ただし，$P,Q$は原子命題，$\mathcal{F}$は二項真理関数とする．
       </p>
       <ol>
-        <li>$F\p{P,P}$</li>
-        <li>$F\p{F\p{P,P},Q}$</li>
+        <li>$\mathcal{F}\p{P,P}$</li>
+        <li>$\mathcal{F}\p{\mathcal{F}\p{P,P},Q}$</li>
       </ol>
       <details class="sub">
         <summary>解答</summary>
@@ -141,10 +141,10 @@
         </p>
         <ol>
           <li>
-            $P$は原子命題であるから$P$は論理式である．$F$が二項真理関数で，$P$が論理式であるから，$F\p{P,P}$は論理式である．
+            $P$は原子命題であるから$P$は論理式である．$\mathcal{F}$が二項真理関数で，$P$が論理式であるから，$\mathcal{F}\p{P,P}$は論理式である．
           </li>
           <li>
-            (1)より，$F\p{P,P}$は論理式である．$Q$は原子命題であるから$Q$は論理式である．$F$が二項真理関数で，$F\p{P,P},Q$が論理式であるから，$F\p{F\p{P,P},Q}$は論理式である．
+            (1)より，$\mathcal{F}\p{P,P}$は論理式である．$Q$は原子命題であるから$Q$は論理式である．$\mathcal{F}$が二項真理関数で，$\mathcal{F}\p{P,P},Q$が論理式であるから，$\mathcal{F}\p{\mathcal{F}\p{P,P},Q}$は論理式である．
           </li>
         </ol>
       </details>
@@ -162,7 +162,7 @@
         <rt>term</rt>
       </ruby>と「～は素数である」という<ruby><dfn>述語</dfn>
         <rt>predicate</rt>
-      </ruby>に分解する．これを形式化して$P\p{7}$とする．このとき，述語を<ruby><dfn>命題関数</dfn>
+      </ruby>に分解する．これを形式化して$F\p{7}$とする．このとき，述語を<ruby><dfn>命題関数</dfn>
         <rt>propositional function</rt>
       </ruby>，<ruby><dfn>条件</dfn>
         <rt>condition</rt>
@@ -177,7 +177,7 @@
 
     <h3>量化</h3>
     <p>
-      $P\p{7}$のほかにも，$P\p{1},P\p{2},P\p{3},\cdots$などがあり様々な項を入れることが出来る．項の値が不特定のものを<ruby><dfn>変数</dfn>
+      $F\p{7}$のほかにも，$F\p{1},F\p{2},F\p{3},\cdots$などがあり様々な項を入れることが出来る．項の値が不特定のものを<ruby><dfn>変数</dfn>
         <rt>variable</rt>
       </ruby>という．一方，値が特定のものを<ruby>
         <dfn>定数</dfn>
