@@ -65,7 +65,7 @@
       $$A,A\to B\To B$$
       これは<ruby><dfn>構成的仮言的三段論法</dfn>
         <rt>modus ponens</rt>
-      </ruby>という名前で知られる．また，$\to,\sequent$はそれぞれ同じ意味として扱いたいので，
+      </ruby>(前件肯定式)という名前で知られる．また，$\to,\sequent$はそれぞれ同じ意味として扱いたいので，
       $$\p{A\sequent B}\To\p{\sequent A\to B}$$
       を認めるとする．この推論規則を用いるときは，仮定に使った論理式を打ち消ししてもよい．つまり，
       $$\infer{B}{\infer{\vdots}{A}}\To\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$
@@ -129,7 +129,9 @@
     </p>
     <p>
       $A_1\lor A_2$は$A_1$または$A_2$であることを意味するが，どちらか一方でも成り立てばいいので，$A_1$か$A_2$が前提のとき$A_1\lor A_2$が演繹できることがわかる．また，$A_1\lor
-      A_2$からは$A_1$と$A_2$で場合分けしたあと，それぞれについて$B$を演繹できれば，$A_1\lor A_2$から$B$が演繹できる．まとめると，
+      A_2$からは$A_1$と$A_2$で場合分けしたあと，それぞれについて$B$を演繹できれば，$A_1\lor A_2$から$B$が演繹できる．これは<ruby><dfn>構成的両刃論法</dfn>
+        <rt>constructive dilemma</rt>
+      </ruby>という名前で知られる．まとめると，
     </p>
     <dl>
       <h4>推論規則</h4>
@@ -437,7 +439,71 @@
     </details>
 
     <h3>命題関数に関する定理</h3>
-
+    <p>
+      命題関数の重要な定理のうち，まだ紹介していないものを次にまとめる．
+    </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>結合律</dt>
+      <dd>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </dd>
+      <dt>交換律</dt>
+      <dd>
+        $$A\land B\iff B\land A$$
+        $$A\lor B\iff B\lor A$$
+      </dd>
+      <dt>吸収律</dt>
+      <dd>
+        $$A\land\p{A\lor B}\iff A$$
+        $$A\lor\p{A\land B}\iff A$$
+      </dd>
+      <dt>冪等律</dt>
+      <dd>
+        $$A\land A\iff A$$
+        $$A\lor A\iff A$$
+      </dd>
+      <dt>縮小律</dt>
+      <dd>
+        $$A\land B\to A$$
+        $$A\land B\to B$$
+      </dd>
+      <dt>拡大律</dt>
+      <dd>
+        $$A\to A\lor B$$
+        $$B\to A\lor B$$
+      </dd>
+      <dt>分配律</dt>
+      <dd>
+        $$A\land\p{B\lor C}\iff\p{A\land B}\lor \p{A\land C}$$
+        $$A\lor\p{B\land C}\iff\p{A\lor B}\land \p{A\lor C}$$
+      </dd>
+      <dt>推移律</dt>
+      <dd>
+        $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}$$
+      </dd>
+      <dt>移入律</dt>
+      <dd>
+        $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}$$
+      </dd>
+      <dt>移出律</dt>
+      <dd>
+        $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}$$
+      </dd>
+      <dt>対偶律</dt>
+      <dd>
+        $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}$$
+      </dd>
+      <dt>二重否定律</dt>
+      <dd>
+        $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}$$
+      </dd>
+      <dt>矛盾律</dt>
+      <dd>
+        $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}$$
+      </dd>
+    </dl>
 
     <h3>量化子に関する定理</h3>
 
