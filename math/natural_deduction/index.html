@@ -198,11 +198,11 @@
       <h4>推論規則(代替)</h4>
       <dt>$\lor\mathrm{E}$</dt>
       <dd>$$\infer[i]{B}{A_1\lor
-        A_2\quad\infer{B}{infer{\vdots}{\infer[i]{A_1}{}}\quad\infer{B}{infer{\vdots}{\infer[i]{A_2}{}}}}}$$</dd>
+        A_2\quad\infer{B}{infer{\vdots}{\infer[i]{A_1}{}}}\quad\infer{B}{infer{\vdots}{\infer[i]{A_2}{}}}}$$</dd>
       <dt>$\exists\mathrm{E}$</dt>
-      <dd>$$\infer[i]{B}{\exists x,F\p{x}\quad\infer{B}{infer{\vdots}{\infer[i]{F\p{a}}{}}}}$$</dd>
+      <dd>$$\infer[i]{B}{\exists x,F\p{x}\quad\infer{B}{\infer{\vdots}{\infer[i]{F\p{a}}{}}}$$</dd>
       <dt>$\lnot\mathrm{I}$</dt>
-      <dd>$$\infer[i]{\lnot A}{\infer{\bot}{infer{\vdots}{\infer[i]{A}{}}}}$$</dd>
+      <dd>$$\infer[i]{\lnot A}{\infer{\bot}{\infer{\vdots}{\infer[i]{A}{}}}}$$</dd>
     </dl>
 
     <h2>論理体系</h2>
