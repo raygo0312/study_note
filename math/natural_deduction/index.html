@@ -468,12 +468,12 @@
       </summary>
       <p>
         任意の論理式$A,B$，任意の論理式を引数とする論理式$f\p{X}$について，
-        $$A\iff B,F\p{A}\iff F\p{B}$$
+        $$A\iff B\To F\p{A}\iff F\p{B}$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          論理式は再帰的定義によって定義されていたため，論理式$f$の数学的帰納法によって証明する．また，$A\iff B,F\p{A}\to F\p{B}$が証明できれば，$A\iff B,F\p{B}\to
+          論理式は再帰的定義によって定義されていたため，論理式$f$の数学的帰納法によって証明する．また，$A\iff B,F\p{A}\to F\p{B}$が証明できれば，$A\iff B\To F\p{B}\to
           F\p{A}$も同様に証明できので，片方だけでよい．
         </p>
         <p>
@@ -490,8 +490,15 @@
         <p>
           $F\p{A}=A\lor C$のとき，
           $$\infer[2]{\p{A\lor C}\to\p{B\lor C}}{\infer[1]{B\lor C}{\infer[2]{A\lor C}{}\quad\infer{B\lor
-          C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{A\iff B}}}\quad\infer{B\lor C}{\infer[1]{B}{}}}}
+          C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{A\iff B}}}\quad\infer{B\lor C}{\infer[1]{B}{}}}}$$
           同様に，$F\p{A}=C\lor A$のときでも成り立つ．
+        </p>
+        <p>
+          $F\p{A}=A\to C$のとき，前述したことを用いて，$A\iff B\To A\to C\iff B\to C$が示せる．
+          同様に，$F\p{A}=C\to A$のときでも成り立つ．
+        </p>
+        <p>
+
         </p>
       </details>
     </details>
@@ -502,15 +509,13 @@
     <h2>古典論理の定理</h2>
     <h3>トートロジー</h3>
     <p>
-      トートロジー$\top$を次のように定義する．
+      トートロジー$\top$を次のように定義する．トートロジーは恒真命題である．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>トートロジー</dt>
       <dd>$$\top\Def\lnot\bot$$</dd>
       <h4>定理</h4>
-      <dt>トートロジー</dt>
-      <dd>$$\top$$</dd>
       <dt>任意の定理とトートロジーの同値性</dt>
       <dd>
         任意の証明された命題を$A$について，
@@ -539,7 +544,7 @@
         <summary>証明</summary>
         <p>
           $\p{\To}$$\top$は定理であるから仮定無しに使用してよい．これを前提として，
-          $$\infer{A\iff\top}{\top}
+          $$\infer{A\iff\top}{\top}$$
         </p>
         <p>
           $\p{\rTo}$逆も同様．
