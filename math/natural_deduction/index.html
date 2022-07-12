@@ -390,6 +390,64 @@
       </details>
     </details>
 
+    <h2>等価性</h2>
+    <p>
+      以前に$=$と$\iff$は相等関係であると説明した．相当関係とは等価性を満たすものであるが，等価性は反射律かつ代入原理である．$=$は集合に対する相等関係と定義されているが，$\iff$は別の定義が既に存在しているので，その定義で相等関係となるかを調べる必要がある．
+    </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>$\iff$の反射律</dt>
+      <dd>
+        任意の論理式$A$について，
+        $$A\iff A$$
+      </dd>
+      <dt>$\iff$の代入原理</dt>
+      <dd>
+        任意の論理式$A,B$，任意の論理式を引数とする論理式$F\p{X}$について，
+        $$A\iff B,F\p{A}\To F\p{B}$$
+      </dd>
+      <h4>定義</h4>
+      <dt>$=$の反射律</dt>
+      <dd>
+        項$a$について，
+        $$a=a$$
+      </dd>
+      <dt>$=$の代入原理</dt>
+      <dd>
+        項$a,b$，算術演算子$f\p{x}$について，
+        $$\forall ab,a=b\To f\p{a}\iff\p{b}$$
+      </dd>
+    </dl>
+    <details>
+      <summary>$\iff$が反射律を満たす証明</summary>
+      <p>
+        $$A\iff A$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          同一律より，$A\to A$であるから成り立つ．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>$\iff$が代入原理を満たす証明
+      </summary>
+      <p>
+        任意の論理式$A,B$，任意の論理式を引数とする論理式$f\p{X}$について，
+        $$A\iff B,f\p{A}\To f\p{B}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          論理式は再帰的定義によって定義されていたため，論理式$f$の数学的帰納法によって証明する．
+        </p>
+        <p>
+
+        </p>
+      </details>
+    </details>
+
     <h2>古典論理の定理</h2>
     <h3>トートロジー</h3>
     <p>
@@ -440,7 +498,33 @@
 
     <h3>命題関数に関する定理</h3>
     <p>
-      命題関数の重要な定理のうち，まだ紹介していないものを次にまとめる．
+      命題関数の重要な定理のうち，まだ紹介していないものを次にまとめる．<ruby><dfn>結合律</dfn>
+        <rt>associative law</rt>
+      </ruby>，<ruby><dfn>交換律</dfn>
+        <rt>commutative law</rt>
+      </ruby>，<ruby><dfn>吸収律</dfn>
+        <rt>absorptive law</rt>
+      </ruby>，<ruby><dfn>冪等律</dfn>
+        <rt>idempotent law</rt>
+      </ruby>，<ruby><dfn>縮小律</dfn>
+        <rt>law of simplification</rt>
+      </ruby>，<ruby><dfn>拡大律</dfn>
+        <rt>law of addition</rt>
+      </ruby>，<ruby><dfn>分配律</dfn>
+        <rt>distributive law</rt>
+      </ruby>，<ruby><dfn>推移律</dfn>
+        <rt>transitive law</rt>
+      </ruby>，<ruby><dfn>移入律</dfn>
+        <rt>law of importation</rt>
+      </ruby>，<ruby><dfn>移出律</dfn>
+        <rt>law of exportation</rt>
+      </ruby>，<ruby><dfn>対偶律</dfn>
+        <rt>law of contraposition</rt>
+      </ruby>，<ruby><dfn>二重否定律</dfn>
+        <rt>law of double negation</rt>
+      </ruby>，<ruby><dfn>矛盾律</dfn>
+        <rt>law of non-contradiction</rt>
+      </ruby>，
     </p>
     <dl>
       <h4>定理</h4>
@@ -504,67 +588,162 @@
         $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}$$
       </dd>
     </dl>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>結合律の証明</summary>
+      <p>
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
 
     <h3>量化子に関する定理</h3>
-
-
-    <h2>等価性</h2>
-    <p>
-      以前に$=$と$\iff$は相等関係であると説明した．相当関係とは等価性を満たすものであるが，等価性は反射律かつ代入原理である．$=$は集合に対する相等関係と定義されているが，$\iff$は別の定義が既に存在しているので，その定義で相等関係となるかを調べる必要がある．
-    </p>
-    <dl>
-      <h4>定理</h4>
-      <dt>$\iff$の反射律</dt>
-      <dd>
-        任意の論理式$A$について，
-        $$A\iff A$$
-      </dd>
-      <dt>$\iff$の代入原理</dt>
-      <dd>
-        任意の論理式$A,B$，任意の論理式を引数とする論理式$F\p{X}$について，
-        $$A\iff B,F\p{A}\To F\p{B}$$
-      </dd>
-      <h4>定義</h4>
-      <dt>$=$の反射律</dt>
-      <dd>
-        項$a$について，
-        $$a=a$$
-      </dd>
-      <dt>$=$の代入原理</dt>
-      <dd>
-        項$a,b$，算術演算子$f\p{x}$について，
-        $$\forall ab,a=b\To f\p{a}\iff\p{b}$$
-      </dd>
-    </dl>
-    <details>
-      <summary>$\iff$が反射律を満たす証明</summary>
-      <p>
-        $$A\iff A$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          同一律より，$A\to A$であるから成り立つ．
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>$\iff$が代入原理を満たす証明
-      </summary>
-      <p>
-        任意の論理式$A,B$，任意の論理式を引数とする論理式$f\p{X}$について，
-        $$A\iff B,f\p{A}\To f\p{B}$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          論理式は再帰的定義によって定義されていたため，論理式$f$の数学的帰納法によって証明する．
-        </p>
-        <p>
-
-        </p>
-      </details>
-    </details>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
