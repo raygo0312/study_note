@@ -477,6 +477,12 @@
           F\p{A}$も同様に証明できので，片方だけでよい．
         </p>
         <p>
+          $F\p{A}=A$のとき，そのものであるから成り立つ．
+        </p>
+        <p>
+          $F\p{A}$に$A$が含まれない$C$のとき，$C\iff C$であるから成り立つ．
+        </p>
+        <p>
           $F\p{A}=\lnot A$のとき，
           $$\infer[2]{\lnot A\to\lnot B}{\infer[1]{\lnot B}{\infer{\bot}{\infer{A}{\infer[1]{B}{}\quad\infer{B\to
           A}{A\iff B}}\quad\infer[2]{\lnot A}{}}}}$$
@@ -508,6 +514,12 @@
           $$\infer[2]{\exists x,A\p{x}\to\exists x,B\p{x}}{\infer[1]{\exists x,B\p{x}}{\infer[2]{\exists
           x,A\p{x}}{}\quad\infer{\exists x,B\p{x}}{\infer{B\p{a}}{\infer[1]{A\p{a}}{}\quad\infer{A\p{a}\to
           B\p{a}}{A\p{a}\iff B\p{a}}}}}}$$
+        </p>
+        <p>
+          $A\iff B$で$F\p{A}\iff
+          F\p{B}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{A}}$について前述したことを用いて$F'\p{F\p{A}}\iff
+          F'\p{F\p{B}}$である．よって，任意の論理式で$F\p{A}\iff
+          F\p{B}$が成り立つ．
         </p>
       </details>
     </details>
