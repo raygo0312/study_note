@@ -67,7 +67,7 @@
         <rt>modus ponens</rt>
       </ruby>という名前で知られる．また，$\to,\sequent$はそれぞれ同じ意味として扱いたいので，
       $$\p{A\sequent B}\To\p{\sequent A\to B}$$
-      を認めるとする．この推論規則を用いるときは，仮定に使った論理式を打ち消しする．つまり，
+      を認めるとする．この推論規則を用いるときは，仮定に使った論理式を打ち消ししてもよい．つまり，
       $$\infer{B}{\infer{\vdots}{A}}\To\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$
       としてよい．まとめると，
     </p>
@@ -100,7 +100,7 @@
     </div>
     <div class="you">
       もう一個の規則は推論規則の中でも重要なもので唯一前提を消せるんだ<br>
-      これは証明図を書くときに絶対使うよ
+      これは証明図を書くときにほぼ使うよ
     </div>
     <aside>
       <h4>証明図を使った証明の例</h4>
@@ -114,16 +114,13 @@
     </p>
     <aside>
       <h4>ルールの例</h4>
-      $$\infer[-1.5]{\p{A\to A\to B}\to A\to B\to B}{\infer[\star]{A\to B\to
-      B}{\infer[0]{B\to B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\to
-      B}{\infer[\star]{A}{}\quad\infer[-1.5]{A\to A\to B}{}}}}}}$$
+      $$\infer[0]{\p{A\to A\to B}\to A\to B\to B}{\infer[\star]{A\to B\to
+      B}{\infer{B\to B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\to
+      B}{\infer[\star]{A}{}\quad\infer[0]{A\to A\to B}{}}}}}}$$
     </aside>
     <div class="you">
       分かりづらいから，1から順番に使ってね
     </div>
-    <p>
-      推論した命題
-    </p>
 
     <h3>$\land$と$\lor$の推論規則</h3>
     <p>
@@ -393,8 +390,57 @@
 
     <h2>古典論理の定理</h2>
     <h3>トートロジー</h3>
+    <p>
+      トートロジー$\top$を次のように定義する．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      <dt>トートロジー</dt>
+      <dd>$$\top\Def\lnot\bot$$</dd>
+      <h4>定理</h4>
+      <dt>トートロジー</dt>
+      <dd>$$\top$$</dd>
+      <dt>任意の定理とトートロジーの同値性</dt>
+      <dd>
+        任意の証明された命題を$A$について，
+        $$A\iff\top$$
+      </dd>
+    </dl>
+    <details>
+      <summary>トートロジーが定理であることの証明</summary>
+      <p>
+        $\top$は定理である．
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          同一律より$\bot\to\bot$が成り立つ．これを前提として，
+          $$\infer{\lnot\bot}{\bot\to\bot}$$
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>任意の定理とトートロジーの同値性の証明</summary>
+      <p>
+        $$A\iff\top$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $\p{\To}$$\top$は定理であるから仮定無しに使用してよい．これを前提として，
+          $$\infer{A\iff\top}{\top}
+        </p>
+        <p>
+          $\p{\rTo}$逆も同様．
+        </p>
+      </details>
+    </details>
+
     <h3>命題関数に関する定理</h3>
+
+
     <h3>量化子に関する定理</h3>
+
 
     <h2>等価性</h2>
     <p>
