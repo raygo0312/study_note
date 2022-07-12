@@ -588,6 +588,12 @@
           A}{\infer{\bot}{\infer{A\lor B}{\infer[1]{A}{}}\quad\infer[3]{\lnot\p{A\lor B}{}}}}\quad\infer[2]{\lnot
           B}{\infer{\bot}{\infer{A\lor B}{\infer[2]{B}{}}\quad\infer[3]{\lnot\p{A\lor B}}{}}}}}$$
         </p>
+        <p>
+          $\p{\rto}$
+          $$\infer[3]{\lnot A\land\lnot B\to\lnot\p{A\lor B}}{\infer[2]{\lnot\p{A\lor
+          B}}{\infer[1]{\bot}{\infer[2]{A\lor B}{}\quad\infer{\bot}{\infer[1]{A}{}\quad\infer{\lnot A}{\infer[3]{\lnot
+          A\land\lnot B}{}}}\quad\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[3]{\lnot A\land\lnot B}{}}}}}}$$
+        </p>
       </details>
     </details>
     <details>
@@ -597,7 +603,16 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-
+        <p>
+          De Morganの法則(1)より，$\lnot\p{A\lor B}&\iff\lnot A\land\lnot B$が成り立つから，この$A$と$B$をそれぞれ$\lnot A$と$\lnot
+          B$に置き換えて，代入原理と二重否定律を用いて変形する．
+          \begin{align}
+          \lnot\p{\lnot A\lor \lnot B}&\iff\lnot\lnot A\land\lnot\lnot B
+          \lnot\lnot\p{\lnot A\lor \lnot B}&\iff\lnot\p{\lnot\lnot A\land\lnot\lnot B}
+          \lnot A\lor \lnot B&\iff\lnot\p{A\land B}
+          \lnot\p{A\land B}&\iff\lnot A\lor \lnot B
+          \end{align}
+        </p>
       </details>
     </details>
     <details>
