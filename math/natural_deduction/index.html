@@ -204,6 +204,9 @@
       <dt>$\lnot\mathrm{I}$</dt>
       <dd>$$\infer[i]{\lnot A}{\infer{\bot}{\infer{\vdots}{\infer[i]{A}{}}}}$$</dd>
     </dl>
+    <p>
+      今後はこれを便利な方を使って証明を行う．
+    </p>
 
     <h2>論理体系</h2>
     <p>
@@ -335,14 +338,14 @@
         </p>
         <p>
           最小論理と爆発律を用いて選言的三段論法を導出する．
-          $$\infer[2]{\p{A\lor B}\land\lnot B\to A}{\infer{A}{\infer{A\lor B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}\quad
-          A\to A\quad\infer[1]{B\to A}{\infer{A}{\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[2]{\p{A\lor
-          B}\land\lnot B}{}}}}}}}$$
+          $$\infer[2]{\p{A\lor B}\land\lnot B\to A}{\infer[1]{A}{\infer{A\lor B}{\infer[2]{\p{A\lor B}\land\lnot
+          B}{}}\quad A\to A\quad\infer{A}{\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[2]{\p{A\lor
+          B}\land\lnot B}{}}}}}}$$
         </p>
         <p>
           最小論理と選言的三段論法を用いて爆発律を導出する．
           $$\infer[1]{\bot\to
-          A}{\infer{A}{\infer{\p{A\lor\bot}\land\lnot\bot}{\infer{A\lor\bot}{\infer[2]{\bot}{}}\quad\infer{\lnot}{\bot\to\bot}}\quad\p{A\lor\bot}\land\lnot\bot\to
+          A}{\infer{A}{\infer{\p{A\lor\bot}\land\lnot\bot}{\infer{A\lor\bot}{\infer[1]{\bot}{}}\quad\infer{\lnot}{\bot\to\bot}}\quad\p{A\lor\bot}\land\lnot\bot\to
           A}}$$
         </p>
       </details>
@@ -369,22 +372,21 @@
         </p>
         <p>
           最小論理と爆発律と排中律を用いて二重否定の除去を導出する．
-          $$\infer[2]{\lnot\lnot A\to A}{\infer{A}{A\land\lnot A\quad A\to A\quad\infer[1]{\lnot A\to
-          A}{\infer{A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer[2]{\lnot\lnot A}{}}}}}}$$
+          $$\infer[2]{\lnot\lnot A\to A}{\infer[1]{A}{A\land\lnot A\quad A\to
+          A\quad\infer{A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer[2]{\lnot\lnot A}{}}}}}$$
         </p>
         <p>
           最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$B\to A\to B$を証明する．
           $$\infer[2]{B\to A\to B}{\infer[1]{A\to B}{\infer{B}{\infer{A\land B}{\infer[1]{A}{}\quad\infer[2]{B}{}}}}}$$
           この補題より$B\sequent A\to B$であり，必要としない命題を前提として追加してもよいという推論である．この$B$を$\bot$として利用する．
-          $$\infer[2]{\bot\to\lnot\lnot A}{\infer{\lnot\lnot A}{\infer[1]{\lnot
-          A\to\bot}{\infer{\bot}{\infer[1]{A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}}$$
+          $$\infer[2]{\bot\to\lnot\lnot A}{\infer[1]{\lnot\lnot
+          A}{\infer{\bot}{\infer[1]{A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}$$
         </p>
         <p>
           最小論理と二重否定の除去を用いて排中律を導出する．
-          $$\infer{A\lor\lnot A}{\infer{\lnot\lnot\p{A\lor\lnot A}}{\infer[2]{\lnot\p{A\lor\lnot
-          A}\to\bot}{\infer{\bot}{\infer{A\lor\lnot A}{\infer{\lnot
-          A}{\infer[1]{A\to\bot}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{A}{}}\quad\infer[2]{\lnot\p{A\lor\lnot
-          A}}{}}}}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}}$$
+          $$\infer{A\lor\lnot A}{\infer[2]{\lnot\lnot\p{A\lor\lnot A}}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{\lnot
+          A}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{A}{}}\quad\infer[2]{\lnot\p{A\lor\lnot
+          A}}{}}}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}$$
         </p>
       </details>
     </details>
