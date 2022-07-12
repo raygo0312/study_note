@@ -137,13 +137,13 @@
     <dl>
       <h4>推論規則</h4>
       <dt>$\land\mathrm{I}$</dt>
-      <dd>$$\land\mathrm{I}\infer{A_1\land A_2}{A_1\quad A_2}$$</dd>
+      <dd>$$\infer{A_1\land A_2}{A_1\quad A_2}$$</dd>
       <dt>$\land\mathrm{E}$</dt>
-      <dd>$$\land\mathrm{E}\infer{A_1}{A_1\land A_2}\qquad\infer{A_2}{A_1\land A_2}$$</dd>
+      <dd>$$\infer{A_1}{A_1\land A_2}\qquad\infer{A_2}{A_1\land A_2}$$</dd>
       <dt>$\lor\mathrm{I}$</dt>
-      <dd>$$\lor\mathrm{I}\infer{A_1\lor A_2}{A_1}\qquad\infer{A_1\lor A_2}{A_1}$$</dd>
+      <dd>$$\infer{A_1\lor A_2}{A_1}\qquad\infer{A_1\lor A_2}{A_1}$$</dd>
       <dt>$\lor\mathrm{E}$</dt>
-      <dd>$$\lor\mathrm{E}\infer{B}{A_1\lor A_2\quad A_1\to B\quad A_2\to B}$$</dd>
+      <dd>$$\infer{B}{A_1\lor A_2\quad A_1\to B\quad A_2\to B}$$</dd>
     </dl>
 
     <h3>$\forall$と$\exists$の推論規則</h3>
@@ -198,9 +198,9 @@
       <h4>推論規則(代替)</h4>
       <dt>$\lor\mathrm{E}$</dt>
       <dd>$$\infer[i]{B}{A_1\lor
-        A_2\quad\infer{B}{infer{\vdots}{\infer[i]{A_1}{}}}\quad\infer{B}{infer{\vdots}{\infer[i]{A_2}{}}}}$$</dd>
+        A_2\quad\infer{B}{\infer{\vdots}{\infer[i]{A_1}{}}}\quad\infer{B}{\infer{\vdots}{\infer[i]{A_2}{}}}}$$</dd>
       <dt>$\exists\mathrm{E}$</dt>
-      <dd>$$\infer[i]{B}{\exists x,F\p{x}\quad\infer{B}{\infer{\vdots}{\infer[i]{F\p{a}}{}}}$$</dd>
+      <dd>$$\infer[i]{B}{\exists x,F\p{x}\quad\infer{B}{\infer{\vdots}{\infer[i]{F\p{a}}{}}}}$$</dd>
       <dt>$\lnot\mathrm{I}$</dt>
       <dd>$$\infer[i]{\lnot A}{\infer{\bot}{\infer{\vdots}{\infer[i]{A}{}}}}$$</dd>
     </dl>
