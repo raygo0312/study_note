@@ -618,8 +618,29 @@
 
     <h3>双対性</h3>
     <p>
-
+      論理式における<ruby><dfn>双対</dfn>
+        <rt>dual</rt>
+      </ruby>とは，$\land$と$\lor$，$\forall$と$\exists$を交換した論理式のことである．このとき，論理式$A$に対して，双対$A^*$と表す．このとき，次の定理が成り立つ．
     </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>双対性</dt>
+      <dd>
+        $n$個の命題または述語を引数に取る論理式$A\p{B_1,B_2,\cdots,B_n}$としたとき，
+        $$\lnot A\p{B_1,B_2,\cdots,B_n}\iff A^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$$
+        が成り立つ．
+      </dd>
+    </dl>
+    <details>
+      <summary>双対性の証明</summary>
+      <p>
+        $$\lnot A\p{B_1,B_2,\cdots,B_n}\iff A^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
 
     <h2>古典論理の定理</h2>
     <h3>トートロジー</h3>
@@ -629,7 +650,7 @@
     <dl>
       <h4>定義</h4>
       <dt>トートロジー</dt>
-      <dd>$$ \top\Def\lnot\bot$$</dd>
+      <dd>$$\top\Def\lnot\bot$$</dd>
       <h4>定理</h4>
       <dt>任意の定理とトートロジーの同値性</dt>
       <dd>
@@ -882,7 +903,80 @@
     </details>
 
     <h3>量化子に関する定理</h3>
+    <p>
+      量化子の重要な定理のうち，まだ紹介していないものを次にまとめる．
+    </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>束縛変数の文字置換</dt>
+      <dd>
+        $$\forall x,F\p{x}\iff\forall y,F\p{y}$$
+        $$\exists x,F\p{x}\iff\exists y,F\p{y}$$
+      </dd>
+      <dt>量化の交換</dt>
+      <dd>
+        $$\forall xy,F\p{x,y}\iff\forall yx,F\p{x,y}$$
+        $$\exists xy,F\p{x,y}\iff\exists yx,F\p{x,y}$$
+        $$\exists x\forall y,F\p{x,y}\to\forall y\exists x,\p{x,y}$$
+      </dd>
+      <dt>量化子の変換</dt>
+      <dd>
+        $$\forall x,F\p{x}\to\exists x,F\p{x}$$
+      </dd>
+      <dt>量化の分配</dt>
+      <dd>
+        $$\forall x,\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$$
+        $$\exists x,\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$$
+        $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x,\p{F\p{x}\lor G\p{x}}$$
+        $$\exists x,\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$$
+      </dd>
+    </dl>
+    <details>
+      <summary>束縛変数の文字置換の証明</summary>
+      <ol>
+        <li>$\forall x,F\p{x}\iff\forall y,F\p{y}$</li>
+        <li>$\exists x,F\p{x}\iff\exists y,F\p{y}$</li>
+      </ol>
+      <details class="sub">
+        <summary>証明</summary>
 
+      </details>
+    </details>
+    <details>
+      <summary>量化の交換の証明</summary>
+      <ol>
+        <li>$\forall xy,F\p{x,y}\iff\forall yx,F\p{x,y}$</li>
+        <li>$\exists xy,F\p{x,y}\iff\exists yx,F\p{x,y}$</li>
+        <li>$\exists x\forall y,F\p{x,y}\to\forall y\exists x,\p{x,y}$</li>
+      </ol>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>量化子の変換の証明</summary>
+      <p>
+        $$\forall x,F\p{x}\to\exists x,F\p{x}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
+    <details>
+      <summary>量化の分配の証明</summary>
+      <ol>
+        <li>$\forall x,\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$</li>
+        <li>$\exists x,\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$</li>
+        <li>$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x,\p{F\p{x}\lor G\p{x}}$</li>
+        <li>$\exists x,\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$</li>
+      </ol>
+      <details class="sub">
+        <summary>証明</summary>
+
+      </details>
+    </details>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
