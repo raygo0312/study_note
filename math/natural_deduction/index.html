@@ -90,8 +90,7 @@
     <aside>
       <h4>推論図を使った推論の例</h4>
       $A,A\to B,A\to B\to C$を前提として推論をする．
-      $$\to\mathrm{E}\infer{C}{\to\mathrm{E}\infer{B}{A\quad A\to B}\quad\to\mathrm{E}\infer{B\to
-      C}{A\quad A\to B\to C}}$$
+      $$\to\mathrm{E}\infer{C}{\to\mathrm{E}\infer{B}{A\quad A\to B}\quad\to\mathrm{E}\infer{B\to C}{A\quad A\to B\to C}}$$
       よって，$A,A\to B,A\to B\to C\sequent C$である．
     </aside>
     <div class="me">
@@ -104,9 +103,7 @@
     </div>
     <aside>
       <h4>証明図を使った証明の例</h4>
-      $$\to\mathrm{I}\infer[2]{A\to\p{A\to B}\to B}{\to\mathrm{I}\infer[1]{\p{A\to
-      B}\to B}{\to\mathrm{E}\infer{B}{\infer[2]{A}{}\quad \infer[1]{A\to
-      B}{}}}}$$
+      $$\to\mathrm{I}\infer[2]{A\to\p{A\to B}\to B}{\to\mathrm{I}\infer[1]{\p{A\to B}\to B}{\to\mathrm{E}\infer{B}{\infer[2]{A}{}\quad \infer[1]{A\to B}{}}}}$$
       よって，$\sequent A\to\p{A\to B}\to B$である．
     </aside>
     <p>
@@ -114,9 +111,7 @@
     </p>
     <aside>
       <h4>ルールの例</h4>
-      $$\infer[0]{\p{A\to A\to B}\to A\to B\to B}{\infer[\star]{A\to B\to
-      B}{\infer{B\to B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\to
-      B}{\infer[\star]{A}{}\quad\infer[0]{A\to A\to B}{}}}}}}$$
+      $$\infer[0]{\p{A\to A\to B}\to A\to B\to B}{\infer[\star]{A\to B\to B}{\infer{B\to B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\to B}{\infer[\star]{A}{}\quad\infer[0]{A\to A\to B}{}}}}}}$$
     </aside>
     <div class="you">
       分かりづらいから，1から順番に使ってね
@@ -124,12 +119,10 @@
 
     <h3>$\land$と$\lor$の推論規則</h3>
     <p>
-      $A_1\land A_2$は$A_1$であり$A_2$であることを意味するが，$A_1$と$A_2$が前提のとき$A_1\land A_2$が演繹できることがわかる．また，$A_1\land
-      A_2$からは$A_1$と$A_2$のそれぞれが演繹できる．
+      $A_1\land A_2$は$A_1$であり$A_2$であることを意味するが，$A_1$と$A_2$が前提のとき$A_1\land A_2$が演繹できることがわかる．また，$A_1\land A_2$からは$A_1$と$A_2$のそれぞれが演繹できる．
     </p>
     <p>
-      $A_1\lor A_2$は$A_1$または$A_2$であることを意味するが，どちらか一方でも成り立てばいいので，$A_1$か$A_2$が前提のとき$A_1\lor A_2$が演繹できることがわかる．また，$A_1\lor
-      A_2$からは$A_1$と$A_2$で場合分けしたあと，それぞれについて$B$を演繹できれば，$A_1\lor A_2$から$B$が演繹できる．これは<ruby><dfn>構成的両刃論法</dfn>
+      $A_1\lor A_2$は$A_1$または$A_2$であることを意味するが，どちらか一方でも成り立てばいいので，$A_1$か$A_2$が前提のとき$A_1\lor A_2$が演繹できることがわかる．また，$A_1\lor A_2$からは$A_1$と$A_2$で場合分けしたあと，それぞれについて$B$を演繹できれば，$A_1\lor A_2$から$B$が演繹できる．これは<ruby><dfn>構成的両刃論法</dfn>
         <rt>constructive dilemma</rt>
       </ruby>という名前で知られる．まとめると，
     </p>
@@ -337,15 +330,11 @@
         </p>
         <p>
           最小論理と爆発律を用いて選言的三段論法を導出する．
-          $$\infer[2]{\p{A\lor B}\land\lnot B\to A}{\infer[1]{A}{\infer{A\lor B}{\infer[2]{\p{A\lor B}\land\lnot
-          B}{}}\quad A\to A\quad\infer{A}{\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[2]{\p{A\lor
-          B}\land\lnot B}{}}}}}}$$
+          $$\infer[2]{\p{A\lor B}\land\lnot B\to A}{\infer[1]{A}{\infer{A\lor B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}\quad A\to A\quad\infer{A}{\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}}}}}$$
         </p>
         <p>
           最小論理と選言的三段論法を用いて爆発律を導出する．
-          $$\infer[1]{\bot\to
-          A}{\infer{A}{\infer{\p{A\lor\bot}\land\lnot\bot}{\infer{A\lor\bot}{\infer[1]{\bot}{}}\quad\infer{\lnot}{\bot\to\bot}}\quad\p{A\lor\bot}\land\lnot\bot\to
-          A}}$$
+          $$\infer[1]{\bot\to A}{\infer{A}{\infer{\p{A\lor\bot}\land\lnot\bot}{\infer{A\lor\bot}{\infer[1]{\bot}{}}\quad\infer{\lnot}{\bot\to\bot}}\quad\p{A\lor\bot}\land\lnot\bot\to A}}$$
         </p>
       </details>
     </details>
@@ -371,21 +360,17 @@
         </p>
         <p>
           最小論理と爆発律と排中律を用いて二重否定の除去を導出する．
-          $$\infer[2]{\lnot\lnot A\to A}{\infer[1]{A}{A\land\lnot A\quad A\to
-          A\quad\infer{A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer[2]{\lnot\lnot A}{}}}}}$$
+          $$\infer[2]{\lnot\lnot A\to A}{\infer[1]{A}{A\land\lnot A\quad A\to A\quad\infer{A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer[2]{\lnot\lnot A}{}}}}}$$
         </p>
         <p>
           最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$B\to A\to B$を証明する．
           $$\infer[2]{B\to A\to B}{\infer[1]{A\to B}{\infer{B}{\infer{A\land B}{\infer[1]{A}{}\quad\infer[2]{B}{}}}}}$$
           この補題より$B\sequent A\to B$であり，必要としない命題を前提として追加してもよいという推論である．この$B$を$\bot$として利用する．
-          $$\infer[2]{\bot\to\lnot\lnot A}{\infer[1]{\lnot\lnot
-          A}{\infer{\bot}{\infer[1]{A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}$$
+          $$\infer[2]{\bot\to\lnot\lnot A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[1]{A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}$$
         </p>
         <p>
           最小論理と二重否定の除去を用いて排中律を導出する．
-          $$\infer{A\lor\lnot A}{\infer[2]{\lnot\lnot\p{A\lor\lnot A}}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{\lnot
-          A}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{A}{}}\quad\infer[2]{\lnot\p{A\lor\lnot
-          A}}{}}}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}$$
+          $$\infer{A\lor\lnot A}{\infer[2]{\lnot\lnot\p{A\lor\lnot A}}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{\lnot A}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{A}{}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}$$
         </p>
       </details>
     </details>
@@ -441,13 +426,11 @@
         <summary>証明</summary>
         <p>
           $\p{A\to B}\to\lnot A\lor B$の証明
-          $$\infer[2]{\p{A\to B}\to\p{\lnot A\lor B}}{\infer[1]{\lnot A\lor B}{A\lor\lnot A\quad\infer{\lnot A\lor
-          B}{\infer{B}{\infer[1]{A}{}\quad\infer[2]{A\to B}{}}}\quad\infer{\lnot A\lor B}{\infer[1]{\lnot A}{}}}}$$
+          $$\infer[2]{\p{A\to B}\to\p{\lnot A\lor B}}{\infer[1]{\lnot A\lor B}{A\lor\lnot A\quad\infer{\lnot A\lor B}{\infer{B}{\infer[1]{A}{}\quad\infer[2]{A\to B}{}}}\quad\infer{\lnot A\lor B}{\infer[1]{\lnot A}{}}}}$$
         </p>
         <p>
           $\lnot A\lor B\to\p{A\to B}$の証明
-          $$\infer[3]{\lnot A\lor B\to\p{A\to B}}{\infer[2]{A \to B}{\infer[3]{\lnot A\lor B}{}\quad\infer[1]{A\to
-          B}{\infer{B}{\infer{\bot}{\infer[1]{A}{}\quad\infer[2]{\lnot A}{}}}}\quad\infer{A\to B}{\infer[2]{B}{}}}}$$
+          $$\infer[3]{\lnot A\lor B\to\p{A\to B}}{\infer[2]{A \to B}{\infer[3]{\lnot A\lor B}{}\quad\infer[1]{A\to B}{\infer{B}{\infer{\bot}{\infer[1]{A}{}\quad\infer[2]{\lnot A}{}}}}\quad\infer{A\to B}{\infer[2]{B}{}}}}$$
         </p>
       </details>
     </details>
@@ -484,19 +467,16 @@
         </p>
         <p>
           $F\p{A}=\lnot A$のとき，
-          $$\infer[2]{\lnot A\to\lnot B}{\infer[1]{\lnot B}{\infer{\bot}{\infer{A}{\infer[1]{B}{}\quad\infer{B\to
-          A}{A\iff B}}\quad\infer[2]{\lnot A}{}}}}$$
+          $$\infer[2]{\lnot A\to\lnot B}{\infer[1]{\lnot B}{\infer{\bot}{\infer{A}{\infer[1]{B}{}\quad\infer{B\to A}{A\iff B}}\quad\infer[2]{\lnot A}{}}}}$$
         </p>
         <p>
           $F\p{A}=A\land C$のとき，
-          $$\infer[1]{\p{A\land C}\to\p{B\land C}}{\infer{B\land C}{\infer{B}{\infer{A}{\infer[1]{A\land
-          C}{}}\quad\infer{A\to B}{A\iff B}}\quad\infer{C}{\infer[1]{A\land C}{}}}}$$
+          $$\infer[1]{\p{A\land C}\to\p{B\land C}}{\infer{B\land C}{\infer{B}{\infer{A}{\infer[1]{A\land C}{}}\quad\infer{A\to B}{A\iff B}}\quad\infer{C}{\infer[1]{A\land C}{}}}}$$
           同様に，$F\p{A}=C\land A$のときでも成り立つ．
         </p>
         <p>
           $F\p{A}=A\lor C$のとき，
-          $$\infer[2]{\p{A\lor C}\to\p{B\lor C}}{\infer[1]{B\lor C}{\infer[2]{A\lor C}{}\quad\infer{B\lor
-          C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{A\iff B}}}\quad\infer{B\lor C}{\infer[1]{B}{}}}}$$
+          $$\infer[2]{\p{A\lor C}\to\p{B\lor C}}{\infer[1]{B\lor C}{\infer[2]{A\lor C}{}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{A\iff B}}}\quad\infer{B\lor C}{\infer[1]{B}{}}}}$$
           同様に，$F\p{A}=C\lor A$のときでも成り立つ．
         </p>
         <p>
@@ -505,21 +485,15 @@
         </p>
         <p>
           $F\p{a,A}=\forall a,A\p{a}$のとき，
-          $$\infer[1]{\forall x,A\p{x}\to\forall x,B\p{x}}{\infer{\forall
-          x,B\p{x}}{\infer{B\p{a}}{\infer{A\p{a}}{\infer[1]{\forall x,A\p{x}}{}}\quad\infer{A\p{a}\to
-          B\p{a}}{A\p{a}\iff B\p{a}}}}}$$
+          $$\infer[1]{\forall x,A\p{x}\to\forall x,B\p{x}}{\infer{\forall x,B\p{x}}{\infer{B\p{a}}{\infer{A\p{a}}{\infer[1]{\forall x,A\p{x}}{}}\quad\infer{A\p{a}\to B\p{a}}{A\p{a}\iff B\p{a}}}}}$$
         </p>
         <p>
           $F\p{a,A}=\exists a,A\p{a}$のとき，
-          $$\infer[2]{\exists x,A\p{x}\to\exists x,B\p{x}}{\infer[1]{\exists x,B\p{x}}{\infer[2]{\exists
-          x,A\p{x}}{}\quad\infer{\exists x,B\p{x}}{\infer{B\p{a}}{\infer[1]{A\p{a}}{}\quad\infer{A\p{a}\to
-          B\p{a}}{A\p{a}\iff B\p{a}}}}}}$$
+          $$\infer[2]{\exists x,A\p{x}\to\exists x,B\p{x}}{\infer[1]{\exists x,B\p{x}}{\infer[2]{\exists x,A\p{x}}{}\quad\infer{\exists x,B\p{x}}{\infer{B\p{a}}{\infer[1]{A\p{a}}{}\quad\infer{A\p{a}\to B\p{a}}{A\p{a}\iff B\p{a}}}}}}$$
         </p>
         <p>
           $A\iff B$で$F\p{A}\iff
-          F\p{B}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{A}}$について前述したことを用いて$F'\p{F\p{A}}\iff
-          F'\p{F\p{B}}$である．よって，任意の論理式で$F\p{A}\iff
-          F\p{B}$が成り立つ．
+          F\p{B}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{A}}$について前述したことを用いて$F'\p{F\p{A}}\iff F'\p{F\p{B}}$である．よって，任意の論理式で$F\p{A}\iff F\p{B}$が成り立つ．
         </p>
       </details>
     </details>
@@ -584,15 +558,11 @@
         <summary>証明</summary>
         <p>
           $\p{\to}$
-          $$\infer[3]{\lnot\p{A\lor B}\to\lnot A\land\lnot B}{\infer{\lnot A\land\lnot B}{\infer[1]{\lnot
-          A}{\infer{\bot}{\infer{A\lor B}{\infer[1]{A}{}}\quad\infer[3]{\lnot\p{A\lor B}{}}}}\quad\infer[2]{\lnot
-          B}{\infer{\bot}{\infer{A\lor B}{\infer[2]{B}{}}\quad\infer[3]{\lnot\p{A\lor B}}{}}}}}$$
+          $$\infer[3]{\lnot\p{A\lor B}\to\lnot A\land\lnot B}{\infer{\lnot A\land\lnot B}{\infer[1]{\lnot A}{\infer{\bot}{\infer{A\lor B}{\infer[1]{A}{}}\quad\infer[3]{\lnot\p{A\lor B}{}}}}\quad\infer[2]{\lnot B}{\infer{\bot}{\infer{A\lor B}{\infer[2]{B}{}}\quad\infer[3]{\lnot\p{A\lor B}}{}}}}}$$
         </p>
         <p>
           $\p{\rto}$
-          $$\infer[3]{\lnot A\land\lnot B\to\lnot\p{A\lor B}}{\infer[2]{\lnot\p{A\lor
-          B}}{\infer[1]{\bot}{\infer[2]{A\lor B}{}\quad\infer{\bot}{\infer[1]{A}{}\quad\infer{\lnot A}{\infer[3]{\lnot
-          A\land\lnot B}{}}}\quad\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[3]{\lnot A\land\lnot B}{}}}}}}$$
+          $$\infer[3]{\lnot A\land\lnot B\to\lnot\p{A\lor B}}{\infer[2]{\lnot\p{A\lor B}}{\infer[1]{\bot}{\infer[2]{A\lor B}{}\quad\infer{\bot}{\infer[1]{A}{}\quad\infer{\lnot A}{\infer[3]{\lnot A\land\lnot B}{}}}\quad\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[3]{\lnot A\land\lnot B}{}}}}}}$$
         </p>
       </details>
     </details>
@@ -624,14 +594,11 @@
         <summary>証明</summary>
         <p>
           $\p{\to}$
-          $$\infer[2]{\lnot\exists xF\p{x}\to\forall x\lnot F\p{x}}{\infer{\forall x\lnot F\p{x}}{\infer[1]{\lnot
-          F\p{a}}{\infer{\bot}{\infer{\exists xF\p{x}}{\infer[1]{F\p{a}}{}}\quad\infer[2]{\lnot\exists xF\p{x}}{}}}}}$$
+          $$\infer[2]{\lnot\exists xF\p{x}\to\forall x\lnot F\p{x}}{\infer{\forall x\lnot F\p{x}}{\infer[1]{\lnot F\p{a}}{\infer{\bot}{\infer{\exists xF\p{x}}{\infer[1]{F\p{a}}{}}\quad\infer[2]{\lnot\exists xF\p{x}}{}}}}}$$
         </p>
         <p>
           $\p{\rto}$
-          $$\infer[3]{\forall x\lnot F\p{x}\to\lnot\exists xF\p{x}}{\infer[2]{\lnot\exists
-          xF\p{x}}{\infer[1]{\bot}{\infer[2]{\exists xF\p{x}}{}\quad\infer{\bot}{\infer[1]{F\p{a}}{}\quad\infer{\lnot
-          F\p{a}}{\infer[3]{\forall x\lnot F\p{x}}{}}}}}}$$
+          $$\infer[3]{\forall x\lnot F\p{x}\to\lnot\exists xF\p{x}}{\infer[2]{\lnot\exists xF\p{x}}{\infer[1]{\bot}{\infer[2]{\exists xF\p{x}}{}\quad\infer{\bot}{\infer[1]{F\p{a}}{}\quad\infer{\lnot F\p{a}}{\infer[3]{\forall x\lnot F\p{x}}{}}}}}}$$
         </p>
       </details>
     </details>
@@ -678,10 +645,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          代入原理の証明と同様に数学的帰納法で証明する．$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot
-          B_n}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{B_1,B_2,\cdots,B_n}}$について前述したことを用いて$\lnot
-          F'\p{F\p{B_1,B_2,\cdots,B_n}}\iff F'^*\p{F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot
-          B_n}}$である．よって，任意の論理式で$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$が成り立つ．
+          代入原理の証明と同様に数学的帰納法で証明する．$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{B_1,B_2,\cdots,B_n}}$についてDe Morganの法則を用いて$\lnot F'\p{F\p{B_1,B_2,\cdots,B_n}}\iff F'^*\p{\lnot F\p{B_1,B_2,\cdots,B_n}}$である．また仮定より，$F'^*\p{\lnot F\p{B_1,B_2,\cdots,B_n}}\iff F'^*\p{F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}}$が成り立つ．よって，任意の論理式で$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$が成り立つ．
         </p>
       </details>
     </details>
