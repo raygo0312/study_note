@@ -606,12 +606,12 @@
         <p>
           De Morganの法則(1)より，$\lnot\p{A\lor B}\iff\lnot A\land\lnot B$が成り立つから，この$A$と$B$をそれぞれ$\lnot A$と$\lnot
           B$に置き換えて，代入原理と二重否定律を用いて変形する．
-          \begin{align}
+          \begin{align*}
           \lnot\p{\lnot A\lor \lnot B}&\iff\lnot\lnot A\land\lnot\lnot B\\
           \lnot\lnot\p{\lnot A\lor \lnot B}&\iff\lnot\p{\lnot\lnot A\land\lnot\lnot B}\\
           \lnot A\lor \lnot B&\iff\lnot\p{A\land B}\\
           \lnot\p{A\land B}&\iff\lnot A\lor \lnot B
-          \end{align}
+          \end{align*}
         </p>
       </details>
     </details>
@@ -622,7 +622,17 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-
+        <p>
+          $\p{\to}$
+          $$\infer[2]{\lnot\exists xF\p{x}\to\forall x\lnot F\p{x}}{\infer{\forall x\lnot F\p{x}}{\infer[1]{\lnot
+          F\p{a}}{\infer{\bot}{\infer{\exists xF\p{x}}{\infer[1]{F\p{a}}{}}\quad\infer[2]{\lnot\exists xF\p{x}}{}}}}}$$
+        </p>
+        <p>
+          $\p{\rto}$
+          $$\infer[3]{\forall x\lnot F\p{x}\to\lnot\exists xF\p{x}}{\infer[2]{\lnot\exists
+          xF\p{x}}{\infer{\bot}{\infer[2]{\exists xF\p{x}}{}\quad\infer{\bot}{\infer{F\p{a}}{}\quad\infer{\lnot
+          F\p{a}}{\infer[3]{\forall x\lnot F\p{x}}{}}}}}}$$
+        </p>
       </details>
     </details>
     <details>
