@@ -630,7 +630,7 @@
         <p>
           $\p{\rto}$
           $$\infer[3]{\forall x\lnot F\p{x}\to\lnot\exists xF\p{x}}{\infer[2]{\lnot\exists
-          xF\p{x}}{\infer{\bot}{\infer[2]{\exists xF\p{x}}{}\quad\infer{\bot}{\infer{F\p{a}}{}\quad\infer{\lnot
+          xF\p{x}}{\infer[1]{\bot}{\infer[2]{\exists xF\p{x}}{}\quad\infer{\bot}{\infer[1]{F\p{a}}{}\quad\infer{\lnot
           F\p{a}}{\infer[3]{\forall x\lnot F\p{x}}{}}}}}}$$
         </p>
       </details>
@@ -642,7 +642,16 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-
+        <p>
+          De Morganの法則(3)より，$\lnot\exists x,F\p{x}\iff\forall x,\lnot F\p{x}$が成り立つから，この$F\p{x}$を$\lnot
+          F\p{x}$に置き換えて，代入原理と二重否定律を用いて変形する．
+          \begin{align*}
+          \lnot\exists x,\lnot F\p{x}&\iff\forall x,\lnot\lnot F\p{x}\\
+          \lnot\lnot\exists x,\lnot F\p{x}&\iff\lnot\forall x,\lnot\lnot F\p{x}\\
+          \exists x,\lnot F\p{x}&\iff\lnot\forall x,F\p{x}\\
+          \lnot\forall x,F\p{x}&\iff\exists x,\lnot F\p{x}
+          \end{align*}
+        </p>
       </details>
     </details>
 
