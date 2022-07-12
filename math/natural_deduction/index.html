@@ -659,25 +659,30 @@
     <p>
       論理式における<ruby><dfn>双対</dfn>
         <rt>dual</rt>
-      </ruby>とは，$\land$と$\lor$，$\forall$と$\exists$を交換した論理式のことである．このとき，論理式$A$に対して，双対$A^*$と表す．このとき，次の定理が成り立つ．
+      </ruby>とは，$\land$と$\lor$，$\forall$と$\exists$を交換した論理式のことである．このとき，論理式$F$に対して，双対$F^*$と表す．このとき，次の定理が成り立つ．
     </p>
     <dl>
       <h4>定理</h4>
       <dt>双対性</dt>
       <dd>
-        $n$個の命題または述語を引数に取る論理式$A\p{B_1,B_2,\cdots,B_n}$としたとき，
-        $$\lnot A\p{B_1,B_2,\cdots,B_n}\iff A^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$$
+        $n$個の命題または述語を引数に取る論理式$F\p{B_1,B_2,\cdots,B_n}$としたとき，
+        $$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$$
         が成り立つ．
       </dd>
     </dl>
     <details>
       <summary>双対性の証明</summary>
       <p>
-        $$\lnot A\p{B_1,B_2,\cdots,B_n}\iff A^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$$
+        $$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$$
       </p>
       <details class="sub">
         <summary>証明</summary>
-
+        <p>
+          代入原理の証明と同様に数学的帰納法で証明する．$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot
+          B_n}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{B_1,B_2,\cdots,B_n}}$について前述したことを用いて$\lnot
+          F'\p{F\p{B_1,B_2,\cdots,B_n}}\iff F'^*\p{F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot
+          B_n}}$である．よって，任意の論理式で$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$が成り立つ．
+        </p>
       </details>
     </details>
 
