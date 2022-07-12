@@ -505,9 +505,9 @@
         </p>
         <p>
           $F\p{a,A}=\exists a,A\p{a}$のとき，
-          $$\infer[1]{\forall x,A\p{x}\to\forall x,B\p{x}}{\infer{\forall
-          x,B\p{x}}{\infer{B\p{a}}\infer{A\p{a}}{\infer[1]{\forall x,A\p{x}}{}}\quad\infer{A\p{a}\to
-          B\p{a}}{\infer{A\p{a}\iff B\p{a}}{\infer{\forall\p{A\p{a}\iff B\p{x}}}{}}}}}
+          $$\infer[2]{\exists x,A\p{x}\to\exists x,B\p{x}}{\infer[1]{\exists x,B\p{x}}{\infer[2]{\exists
+          x,A\p{x}}{}\quad\infer{\exists x,B\p{x}}{\infer{B\p{a}}{\infer[1]{A\p{a}}{}\quad\infer{A\p{a}\to
+          B\p{a}}{\infer{A\p{a}\iff B\p{a}}{\infer{\forall x,A\p{x}\iff B\p{x}}{A\p{a}\iff B\p{a}}}}}}}}
         </p>
       </details>
     </details>
