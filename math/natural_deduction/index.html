@@ -404,9 +404,13 @@
       <dt>$\iff$の代入原理</dt>
       <dd>
         任意の論理式$A,B$，任意の論理式を引数とする論理式$F\p{X}$について，
-        $$A\iff B,F\p{A}\To F\p{B}$$
+        $$A\iff B,F\p{A}\iff F\p{B}$$
       </dd>
       <h4>定義</h4>
+      <dt>$=$</dt>
+      <dd>
+        $=$とは反射律と代入原理を満たす集合の関係である．
+      </dd>
       <dt>$=$の反射律</dt>
       <dd>
         項$a$について，
@@ -418,6 +422,35 @@
         $$\forall ab,a=b\To f\p{a}\iff\p{b}$$
       </dd>
     </dl>
+    <p>
+      代入原理を示すために次の定理を用意する．
+    </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>$\to$の置換</dt>
+      <dd>
+        $$\p{A\to B}\iff\lnot A\lor B$$
+      </dd>
+    </dl>
+    <details>
+      <summary>$\to$の置換の証明</summary>
+      <p>
+        $$\p{A\to B}\iff\lnot A\lor B$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $\p{A\to B}\to\lnot A\lor B$の証明
+          $$\infer[2]{\p{A\to B}\to\p{\lnot A\lor B}}{\infer[1]{\lnot A\lor B}{A\lor\lnot A\quad\infer{\lnot A\lor
+          B}{\infer{B}{\infer[1]{A}{}\quad\infer[2]{A\to B}{}}}\quad\infer{\lnot A\or B}{\infer[1]{\lnot A}{}}}}$$
+        </p>
+        <p>
+          $\lnot A\lor B\to\p{A\to B}$の証明
+          $$\infer[3]{\lnot A\lor B\to\p{A\to B}}{\infer[2]{A \to B}{\infer[3]{\lnot A\lor B}{}\quad\infer[1]{A\to
+          B}{\infer{B}{\infer{\bot}{\infer[1]{A}{}\quad\infer[2]{\lnot A}{}}}}\quad\infer{A\to B}{\infer[2]{B}{}}}}$$
+        </p>
+      </details>
+    </details>
     <details>
       <summary>$\iff$が反射律を満たす証明</summary>
       <p>
@@ -435,18 +468,36 @@
       </summary>
       <p>
         任意の論理式$A,B$，任意の論理式を引数とする論理式$f\p{X}$について，
-        $$A\iff B,f\p{A}\To f\p{B}$$
+        $$A\iff B,F\p{A}\iff F\p{B}$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          論理式は再帰的定義によって定義されていたため，論理式$f$の数学的帰納法によって証明する．
+          論理式は再帰的定義によって定義されていたため，論理式$f$の数学的帰納法によって証明する．また，$A\iff B,F\p{A}\to F\p{B}$が証明できれば，$A\iff B,F\p{B}\to
+          F\p{A}$も同様に証明できので，片方だけでよい．
         </p>
         <p>
-
+          $F\p{A}=\lnot A$のとき，
+          $$\infer[2]{\lnot A\to\lnot B}{\infer[1]{\lnot B}{\infer{\bot}{\infer{A}{\infer[1]{B}{}\quad\infer{B\to
+          A}{A\iff B}}\quad\infer[2]{\lnot A}{}}}}$$
+        </p>
+        <p>
+          $F\p{A}=A\land C$のとき，
+          $$\infer[1]{\p{A\land C}\to\p{B\land C}}{\infer{B\land C}{\infer{B}{\infer{A}{\infer[1]{A\land
+          C}{}}\quad\infer{A\to B}{A\iff B}}\quad\infer{C}{\infer[1]{A\land C}{}}}}$$
+          同様に，$F\p{A}=C\land A$のときでも成り立つ．
+        </p>
+        <p>
+          $F\p{A}=A\lor C$のとき，
+          $$\infer[2]{\p{A\lor C}\to\p{B\lor C}}{\infer[1]{B\lor C}{\infer[2]{A\lor C}{}\quad\infer{B\lor
+          C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{A\iff B}}}\quad\infer{B\lor C}{\infer[1]{B}{}}}}
+          同様に，$F\p{A}=C\lor A$のときでも成り立つ．
         </p>
       </details>
     </details>
+
+    <h2>双対性</h2>
+
 
     <h2>古典論理の定理</h2>
     <h3>トートロジー</h3>
@@ -496,9 +547,9 @@
       </details>
     </details>
 
-    <h3>命題関数に関する定理</h3>
+    <h3>真理関数に関する定理</h3>
     <p>
-      命題関数の重要な定理のうち，まだ紹介していないものを次にまとめる．<ruby><dfn>結合律</dfn>
+      真理関数の重要な定理のうち，まだ紹介していないものを次にまとめる．<ruby><dfn>結合律</dfn>
         <rt>associative law</rt>
       </ruby>，<ruby><dfn>交換律</dfn>
         <rt>commutative law</rt>
