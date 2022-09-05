@@ -790,7 +790,8 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-
+        $A\land\p{B\land C}\iff\p{A\land B}\land C$の証明する．
+        $$\infer[1]{A\land\p{B\land C}\to\p{A\land B}\land C}{\infer{\p{A\land B}\land C}{\infer{A\land B}{\infer{A}{\infer[1]{A\land\p{B\land C}}{}}\quad\infer{B}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}{}}}}\quad\infer{C}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}}
       </details>
     </details>
     <details>
