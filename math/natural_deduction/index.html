@@ -544,8 +544,8 @@
         <ol>
           <li>$\lnot\p{A\lor B}\iff\lnot A\land\lnot B$</li>
           <li>$\lnot\p{A\land B}\iff\lnot A\lor\lnot B$</li>
-          <li>$\lnot\exists x,F\p{x}\iff\forall x,\lnot F\p{x}$</li>
-          <li>$\lnot\forall x,F\p{x}\iff\exists x,\lnot F\p{x}$</li>
+          <li>$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}$</li>
+          <li>$\lnot\forall xF\p{x}\iff\exists x\lnot F\p{x}$</li>
         </ol>
       </dd>
     </dl>
@@ -791,9 +791,21 @@
       <details class="sub">
         <summary>証明</summary>
         $A\land\p{B\land C}\iff\p{A\land B}\land C$の証明する．
-        $$\infer[1]{A\land\p{B\land C}\to\p{A\land B}\land C}{\infer{\p{A\land B}\land C}{\infer{A\land B}{\infer{A}{\infer[1]{A\land\p{B\land C}}{}}\quad\infer{B}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}{}}}}\quad\infer{C}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}}
+        $$\infer[1]{A\land\p{B\land C}\to\p{A\land B}\land C}{\infer{\p{A\land B}\land C}{\infer{A\land B}{\infer{A}{\infer[1]{A\land\p{B\land C}}{}}\quad\infer{B}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}{}}}}\quad\infer{C}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}}$$
+        これと双対性を用いて$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$を証明する．
+        \begin{align*}
+        A\lor\p{B\lor C}&\iff\lnot\lnot\p{A\lor\p{B\lor C}}\\
+        &\iff\lnot\p{\lnot A\land\p{\lnot B\land\lnot C}}\\
+        &\iff\lnot\p{\p{\lnot A\land\lnot B}\land\lnot C}\\
+        &\iff \p{A\land B}\land C\\
+        \end{align*}
       </details>
     </details>
+
+    <div class="you">
+      こんな感じで，双対性を用いて証明
+    </div>
+
     <details>
       <summary>交換律の証明</summary>
       <p>
@@ -919,14 +931,14 @@
       <h4>定理</h4>
       <dt>束縛変数の文字置換</dt>
       <dd>
-        $$\forall x,F\p{x}\iff\forall y,F\p{y}$$
-        $$\exists x,F\p{x}\iff\exists y,F\p{y}$$
+        $$\forall xF\p{x}\iff\forall yF\p{y}$$
+        $$\exists xF\p{x}\iff\exists yF\p{y}$$
       </dd>
       <dt>量化の交換</dt>
       <dd>
-        $$\forall xy,F\p{x,y}\iff\forall yx,F\p{x,y}$$
-        $$\exists xy,F\p{x,y}\iff\exists yx,F\p{x,y}$$
-        $$\exists x\forall y,F\p{x,y}\to\forall y\exists x,\p{x,y}$$
+        $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}$$
+        $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}$$
+        $$\exists x\forall y\p{F\p{x,y}}\to\forall y\exists x\p{x,y}$$
       </dd>
       <dt>量化子の変換</dt>
       <dd>
@@ -934,10 +946,10 @@
       </dd>
       <dt>量化の分配</dt>
       <dd>
-        $$\forall x,\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$$
-        $$\exists x,\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$$
-        $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x,\p{F\p{x}\lor G\p{x}}$$
-        $$\exists x,\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$$
+        $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$$
+        $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$$
+        $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$$
+        $$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$$
       </dd>
     </dl>
     <details>
