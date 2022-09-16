@@ -726,25 +726,30 @@
     </p>
     <dl>
       <h4>定理</h4>
-      <dt>結合律</dt>
-      <dd>
-        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
-        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
-      </dd>
       <dt>交換律</dt>
       <dd>
         $$A\land B\iff B\land A$$
         $$A\lor B\iff B\lor A$$
       </dd>
-      <dt>吸収律</dt>
+      <dt>結合律</dt>
       <dd>
-        $$A\land\p{A\lor B}\iff A$$
-        $$A\lor\p{A\land B}\iff A$$
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
       </dd>
       <dt>冪等律</dt>
       <dd>
         $$A\land A\iff A$$
         $$A\lor A\iff A$$
+      </dd>
+      <dt>分配律</dt>
+      <dd>
+        $$A\land\p{B\lor C}\iff\p{A\land B}\lor \p{A\land C}$$
+        $$A\lor\p{B\land C}\iff\p{A\lor B}\land \p{A\lor C}$$
+      </dd>
+      <dt>吸収律</dt>
+      <dd>
+        $$A\land\p{A\lor B}\iff A$$
+        $$A\lor\p{A\land B}\iff A$$
       </dd>
       <dt>縮小律</dt>
       <dd>
@@ -755,11 +760,6 @@
       <dd>
         $$A\to A\lor B$$
         $$B\to A\lor B$$
-      </dd>
-      <dt>分配律</dt>
-      <dd>
-        $$A\land\p{B\lor C}\iff\p{A\land B}\lor \p{A\land C}$$
-        $$A\lor\p{B\land C}\iff\p{A\lor B}\land \p{A\lor C}$$
       </dd>
       <dt>推移律</dt>
       <dd>
@@ -820,23 +820,36 @@
         交換律を用いると逆も成り立つ．また，双対性より$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$が成り立つ．
       </details>
     </details>
-
-    <details>
-      <summary>吸収律の証明</summary>
-      <p>
-        $$A\land\p{A\lor B}\iff A$$
-        $$A\lor\p{A\land B}\iff A$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-
-      </details>
-    </details>
     <details>
       <summary>冪等律の証明</summary>
       <p>
         $$A\land A\iff A$$
         $$A\lor A\iff A$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        $A\land A\to A$は$\land$除去の推論のとおりである．逆は，
+        $$\infer[1]{A\land A}{\infer[1]{A}{}\quad\infer[1]{A}{}}$$
+        で証明された．双対性より，$A\lor A\iff A$も成り立つ．
+      </details>
+    </details>
+    <details>
+      <summary>分配律の証明</summary>
+      <p>
+        $$A\land\p{B\lor C}\iff\p{A\land B}\lor\p{A\land C}$$
+        $$A\lor\p{B\land C}\iff\p{A\lor B}\land\p{A\lor C}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        $A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$を証明する．
+        $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[2]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
+      </details>
+    </details>
+    <details>
+      <summary>吸収律の証明</summary>
+      <p>
+        $$A\land\p{A\lor B}\iff A$$
+        $$A\lor\p{A\land B}\iff A$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -859,17 +872,6 @@
       <p>
         $$A\to A\lor B$$
         $$B\to A\lor B$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-
-      </details>
-    </details>
-    <details>
-      <summary>分配律の証明</summary>
-      <p>
-        $$A\land\p{B\lor C}\iff\p{A\land B}\lor \p{A\land C}$$
-        $$A\lor\p{B\land C}\iff\p{A\lor B}\land \p{A\lor C}$$
       </p>
       <details class="sub">
         <summary>証明</summary>
