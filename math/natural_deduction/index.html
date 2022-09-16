@@ -702,16 +702,20 @@
 
     <h3>真理関数に関する定理</h3>
     <p>
-      真理関数の重要な定理のうち，まだ紹介していないものを次にまとめる．<ruby><dfn>結合律</dfn>
-        <rt>associative law</rt>
-      </ruby>，<ruby><dfn>交換律</dfn>
+      真理関数の重要な定理のうち，まだ紹介していないものを次にまとめる．<ruby><dfn>交換律</dfn>
         <rt>commutative law</rt>
-      </ruby>，<ruby><dfn>吸収律</dfn>
-        <rt>absorptive law</rt>
+      </ruby>，<ruby><dfn>結合律</dfn>
+        <rt>associative law</rt>
       </ruby>，<ruby><dfn>冪等律</dfn>
         <rt>idempotent law</rt>
       </ruby>，<ruby><dfn>分配律</dfn>
         <rt>distributive law</rt>
+      </ruby>，<ruby><dfn>恒等律</dfn>
+        <rt>identity law</rt>
+      </ruby>，<ruby><dfn>矛盾律</dfn>
+        <rt>law of non-contradiction</rt>
+      </ruby>，<ruby><dfn>吸収律</dfn>
+        <rt>absorptive law</rt>
       </ruby>，<ruby><dfn>推移律</dfn>
         <rt>transitive law</rt>
       </ruby>，<ruby><dfn>移入律</dfn>
@@ -720,10 +724,16 @@
         <rt>law of exportation</rt>
       </ruby>，<ruby><dfn>対偶律</dfn>
         <rt>law of contraposition</rt>
-      </ruby>，<ruby><dfn>矛盾律</dfn>
-        <rt>law of non-contradiction</rt>
       </ruby>である．
     </p>
+
+    <div class="you">
+      定理が複数存在するとき名前が<br>
+      [name] lawになって<br>
+      定理が1つのみのとき名前が<br>
+      law of [name]になってるね
+    </div>
+
     <dl>
       <h4>定理</h4>
       <dt>交換律</dt>
@@ -841,7 +851,7 @@
         $A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$を証明する．
         $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[2]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land C}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
         $\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}$を証明する．
-        $$\infer[2]{\p{A\land B}\lor\p{A\land C}\toA\land\p{B\lor C}}{\infer[1]{A\land\p{B\lor C}}{\infer[2]{\p{A\land B}\lor\p{A\land C}}{}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer[1]{A\land B}{}}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A\land B}{}}}}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer{A\land C}{}}\quad\infer{B\lor C}{\infer{C}{\infer[1]{A\land C}{}}}}}}$$
+        $$\infer[2]{\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}}{\infer[1]{A\land\p{B\lor C}}{\infer[2]{\p{A\land B}\lor\p{A\land C}}{}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer[1]{A\land B}{}}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A\land B}{}}}}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer{A\land C}{}}\quad\infer{B\lor C}{\infer{C}{\infer[1]{A\land C}{}}}}}}$$
         双対性より$A\lor\p{B\land C}\iff\p{A\lor B}\land\p{A\lor C}$も成り立つ．
       </details>
     </details>
@@ -855,10 +865,10 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $$A\land\lnot\bot\to A$$は$\land\mathrm{E}$そのものなので逆を証明する．
+        $A\land\lnot\bot\to A$は$\land\mathrm{E}$そのものなので逆を証明する．
         $$\infer[1]{A\to\lnot\bot\land A}{\infer{\lnot\bot\land A}{\lnot\bot\quad\infer[1]{A}{}}}$$
         双対性より$A\lor\bot\iff A$も成り立つ．
-        $A\land\bot\iff\bot$は$\land\mathrm{E}$そのもので，逆は爆発律そのものである．双対性より$$A\lor\lnot\bot\iff\lnot\bot$$も成り立つ．
+        $A\land\bot\iff\bot$は$\land\mathrm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\lnot\bot\iff\lnot\bot$も成り立つ．
       </details>
     </details>
     <details>
@@ -969,25 +979,25 @@
     </dl>
     <details>
       <summary>束縛変数の文字置換の証明</summary>
-      <ol>
-        <li>$\forall x,F\p{x}\iff\forall y,F\p{y}$</li>
-        <li>$\exists x,F\p{x}\iff\exists y,F\p{y}$</li>
-      </ol>
+      $$\forall xF\p{x}\iff\forall yF\p{y}$$
+      $$\exists xF\p{x}\iff\exists yF\p{y}$$
       <details class="sub">
         <summary>証明</summary>
-
+        $\forall xF\p{x}\to\forall yF\p{y}$を証明する．$F\p{x}$に含まれない$a$を用いて，
+        $$\infer[1]{\forall xF\p{x}\to\forall yF\p{y}}{\infer{\forall yF\p{y}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
+        $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xF\p{x}\iff\exists yF\p{y}$も成り立つ．
       </details>
     </details>
     <details>
       <summary>量化の交換の証明</summary>
-      <ol>
-        <li>$\forall xy,F\p{x,y}\iff\forall yx,F\p{x,y}$</li>
-        <li>$\exists xy,F\p{x,y}\iff\exists yx,F\p{x,y}$</li>
-        <li>$\exists x\forall y,F\p{x,y}\to\forall y\exists x,\p{x,y}$</li>
-      </ol>
+      $$\forall xy,F\p{x,y}\iff\forall yx,F\p{x,y}$$
+      $$\exists xy,F\p{x,y}\iff\exists yx,F\p{x,y}$$
+      $$\exists x\forall y,F\p{x,y}\to\forall y\exists x,\p{x,y}$$
       <details class="sub">
         <summary>証明</summary>
-
+        $\forall xy,F\p{x,y}\to\forall yx,F\p{x,y}$を証明する．
+        $$\infer[1]{\forall xy,F\p{x,y}\to\forall yx,F\p{x,y}}{\infer{\forall yx,F\p{x,y}}{\infer{\forall x,F\p{x,b}}{\infer{F\p{a,b}}{\infer{\forall y,F\p{a,y}}{\infer[1]{\forall xy,F\p{x,y}}{}}}}}}$$
+        $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xy,F\p{x,y}\iff\exists yx,F\p{x,y}$も成り立つ．
       </details>
     </details>
     <details>
@@ -1002,12 +1012,10 @@
     </details>
     <details>
       <summary>量化の分配の証明</summary>
-      <ol>
-        <li>$\forall x,\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$</li>
-        <li>$\exists x,\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$</li>
-        <li>$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x,\p{F\p{x}\lor G\p{x}}$</li>
-        <li>$\exists x,\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$</li>
-      </ol>
+      $$\forall x,\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$$
+      $$\exists x,\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$$
+      $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x,\p{F\p{x}\lor G\p{x}}$$
+      $$\exists x,\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$$
       <details class="sub">
         <summary>証明</summary>
 
