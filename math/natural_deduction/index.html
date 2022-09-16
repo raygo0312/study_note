@@ -828,7 +828,7 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $A\land A\to A$は$\land$除去の推論のとおりである．逆は，
+        $A\land A\to A$は$\land$Eのとおりである．逆は，
         $$\infer[1]{A\land A}{\infer[1]{A}{}\quad\infer[1]{A}{}}$$
         で証明された．双対性より，$A\lor A\iff A$も成り立つ．
       </details>
@@ -843,6 +843,8 @@
         <summary>証明</summary>
         $A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$を証明する．
         $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[2]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land C}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
+        $\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}$を証明する．
+        $$\infer[2]{\p{A\land B}\lor\p{A\land C}\toA\land\p{B\lor C}}{\infer[1]{A\land\p{B\lor C}}{\infer[2]{\p{A\land B}\lor\p{A\land C}}{}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer[1]{A\land B}{}}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A\land B}{}}}}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer{A\land C}{}}\quad\infer{B\lor C}{\infer{C}{\infer[1]{A\land C}{}}}}}}$$
       </details>
     </details>
     <details>
