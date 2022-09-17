@@ -153,17 +153,17 @@
       <h4>推論規則</h4>
       <dt>$\forall\mathrm{I}$</dt>
       <dd>
-        $$\infer{\forall x,F\p{x}}{F\p{a}}$$
-        ただし，自由変数$a$は$F\p{a}$を導く仮定と$\forall x,F\p{x}$の自由変数に含まれていない．
+        $$\infer{\forall xF\p{x}}{F\p{a}}$$
+        ただし，自由変数$a$は$F\p{a}$を導く仮定と$\forall xF\p{x}$の自由変数に含まれていない．
       </dd>
       <dt>$\forall\mathrm{E}$</dt>
-      <dd>$$\infer{F\p{t}}{\forall x,F\p{x}}$$</dd>
+      <dd>$$\infer{F\p{t}}{\forall xF\p{x}}$$</dd>
       <dt>$\exists\mathrm{I}$</dt>
-      <dd>$$\infer{\exists x,F\p{x}}{F\p{t}}$$</dd>
+      <dd>$$\infer{\exists xF\p{x}}{F\p{t}}$$</dd>
       <dt>$\exists\mathrm{E}$</dt>
       <dd>
-        $$\infer{B}{\exists x,F\p{x}\quad F\p{a}\to A}$$
-        ただし，自由変数$a$は$F\p{a}$から$A$を導く仮定と$\exists x,F\p{x}$と$F\p{t}$と$A$の自由変数に含まれていない．
+        $$\infer{A}{\exists xF\p{x}\quad F\p{a}\to A}$$
+        ただし，自由変数$a$は$F\p{a}$から$A$を導く仮定と$\exists xF\p{x}$と$F\p{t}$と$A$の自由変数に含まれていない．
       </dd>
     </dl>
 
@@ -592,7 +592,7 @@
     <details>
       <summary>De Morganの法則(3)の証明</summary>
       <p>
-        $$\lnot\exists x,F\p{x}\iff\forall x,\lnot F\p{x}$$
+        $$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -609,18 +609,18 @@
     <details>
       <summary>De Morganの法則(4)の証明</summary>
       <p>
-        $$\lnot\forall x,F\p{x}\iff\exists x,\lnot F\p{x}$$
+        $$\lnot\forall xF\p{x}\iff\exists x\lnot F\p{x}$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          De Morganの法則(3)より，$\lnot\exists x,F\p{x}\iff\forall x,\lnot F\p{x}$が成り立つから，この$F\p{x}$を$\lnot
+          De Morganの法則(3)より，$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}$が成り立つから，この$F\p{x}$を$\lnot
           F\p{x}$に置き換えて，代入原理と二重否定律を用いて変形する．
           \begin{align*}
-          \lnot\exists x,\lnot F\p{x}&\iff\forall x,\lnot\lnot F\p{x}\\
-          \lnot\lnot\exists x,\lnot F\p{x}&\iff\lnot\forall x,\lnot\lnot F\p{x}\\
-          \exists x,\lnot F\p{x}&\iff\lnot\forall x,F\p{x}\\
-          \lnot\forall x,F\p{x}&\iff\exists x,\lnot F\p{x}
+          \lnot\exists x\lnot F\p{x}&\iff\forall x\lnot\lnot F\p{x}\\
+          \lnot\lnot\exists x\lnot F\p{x}&\iff\lnot\forall x\lnot\lnot F\p{x}\\
+          \exists x\lnot F\p{x}&\iff\lnot\forall xF\p{x}\\
+          \lnot\forall xF\p{x}&\iff\exists x\lnot F\p{x}
           \end{align*}
         </p>
       </details>
@@ -959,15 +959,15 @@
         $$\forall xF\p{x}\iff\forall yF\p{y}$$
         $$\exists xF\p{x}\iff\exists yF\p{y}$$
       </dd>
+      <dt>量化子の変換</dt>
+      <dd>
+        $$\forall xF\p{x}\to\exists xF\p{x}$$
+      </dd>
       <dt>量化の交換</dt>
       <dd>
         $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}$$
         $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}$$
         $$\exists x\forall y\p{F\p{x,y}}\to\forall y\exists x\p{x,y}$$
-      </dd>
-      <dt>量化子の変換</dt>
-      <dd>
-        $$\forall x,F\p{x}\to\exists x,F\p{x}$$
       </dd>
       <dt>量化の分配</dt>
       <dd>
@@ -989,33 +989,36 @@
       </details>
     </details>
     <details>
-      <summary>量化の交換の証明</summary>
-      $$\forall xy,F\p{x,y}\iff\forall yx,F\p{x,y}$$
-      $$\exists xy,F\p{x,y}\iff\exists yx,F\p{x,y}$$
-      $$\exists x\forall y,F\p{x,y}\to\forall y\exists x,\p{x,y}$$
-      <details class="sub">
-        <summary>証明</summary>
-        $\forall xy,F\p{x,y}\to\forall yx,F\p{x,y}$を証明する．
-        $$\infer[1]{\forall xy,F\p{x,y}\to\forall yx,F\p{x,y}}{\infer{\forall yx,F\p{x,y}}{\infer{\forall x,F\p{x,b}}{\infer{F\p{a,b}}{\infer{\forall y,F\p{a,y}}{\infer[1]{\forall xy,F\p{x,y}}{}}}}}}$$
-        $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xy,F\p{x,y}\iff\exists yx,F\p{x,y}$も成り立つ．
-      </details>
-    </details>
-    <details>
       <summary>量化子の変換の証明</summary>
       <p>
-        $$\forall x,F\p{x}\to\exists x,F\p{x}$$
+        $$\forall xF\p{x}\to\exists xF\p{x}$$
       </p>
       <details class="sub">
         <summary>証明</summary>
-
+        $F\p{x}$に含まれない$a$を用いて，
+        $$\infer[1]{\forall xF\p{x}\to\exists xF\p{x}}{\infer{\exists xF\p{x}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}
+      </details>
+    </details>
+    <details>
+      <summary>量化の交換の証明</summary>
+      $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}$$
+      $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}$$
+      $$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$$
+      <details class="sub">
+        <summary>証明</summary>
+        $\forall xyF\p{x,y}\to\forall yxF\p{x,y}$を証明する．$F\p{x}$に含まれない$a,b$を用いて，
+        $$\infer[1]{\forall xyF\p{x,y}\to\forall yxF\p{x,y}}{\infer{\forall yxF\p{x,y}}{\infer{\forall xF\p{x,b}}{\infer{F\p{a,b}}{\infer{\forall yF\p{a,y}}{\infer[1]{\forall xyF\p{x,y}}{}}}}}}$$
+        $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xyF\p{x,y}\iff\exists yx,F\p{x,y}$も成り立つ．
+        $\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$を証明する．$F\p{x}$に含まれない$a,b$を用いて，
+        $$\infer[2]{\exists y\forall xF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\\infer[2]{\exists y\forall xF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
       </details>
     </details>
     <details>
       <summary>量化の分配の証明</summary>
-      $$\forall x,\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$$
-      $$\exists x,\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$$
-      $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x,\p{F\p{x}\lor G\p{x}}$$
-      $$\exists x,\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$$
+      $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$$
+      $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$$
+      $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$$
+      $$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$$
       <details class="sub">
         <summary>証明</summary>
 
