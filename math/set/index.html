@@ -214,9 +214,9 @@
         $x\in\set{a,b}$となる$x$を用意する．
         \begin{align*}
         &x\in\set{a,b}\\
-        \Iff&x=a\lor x=b(対公理)\\
-        \Iff&x=b\lor x=a(交換律)\\
-        \Iff&x\in\set{b,a}(対公理)
+        \Iff&x=a\lor x=b\\
+        \Iff&x=b\lor x=a\\
+        \Iff&x\in\set{b,a}
         end{align*}
         よって，$x\in\set{a,b}\iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
       </details>
@@ -231,9 +231,9 @@
         $a\notin\set{a,b}$と仮定すると，
         \begin{align*}
         &a\notin\set{a,b}\\
-        \Iff&\lnot\p{a=a\lor a=b}(対公理)\\
-        \Iff&a\neq a\lor a\neq b(双対性)\\
-        \To&a\neq a(縮小律)\\
+        \Iff&\lnot\p{a=a\lor a=b}\\
+        \Iff&a\neq a\lor a\neq b\\
+        \To&a\neq a\\
         end{align*}
         $a\neq a$は反射律に矛盾．したがって$a\in\set{a,b}$である．同様に，$b\in\set{a,b}$
       </details>
@@ -248,16 +248,16 @@
         対公理より，
         \begin{align*}
         &c\in\set{a,c}\\
-        \Iff&c\in\set{a,b}(\set{a,c}=\set{a,b}，代入原理)\\
-        \Iff&a=c\lor b=c(対公理)
+        \Iff&c\in\set{a,b}\\
+        \Iff&a=c\lor b=c
         end{align*}
-        同様に，$a=b\lor c=b$である．よって$\land\mathrm{I}$より，
+        同様に，$a=b\lor c=b$である．よって，
         \begin{align*}
         &\p{a=c\lor b=c}\land\p{a=b\lor c=b}\\
-        \Iff&\p{a=c\lor b=c}\land\p{a=b\lor b=c}(対称律)\\
-        \Iff&a=c\land a=b\lor b=c(分配律)\\
-        \Iff&b=c\lor b=c(対称律，推移律)\\
-        \Iff&b=c(冪等律)\\
+        \Iff&\p{a=c\lor b=c}\land\p{a=b\lor b=c}\\
+        \Iff&a=c\land a=b\lor b=c\\
+        \Iff&b=c\lor b=c\\
+        \Iff&b=c\\
         end{align*}
         よって，$\set{a,b}=\set{a,c}\iff b=c$である．
       </details>
@@ -286,14 +286,12 @@
       <details class="sub">
         <summary>証明</summary>
         対公理より，
-        $$
         \begin{align*}
         &b\in\set{b,c}\\
-        \Iff&b\in\set{a}(\set{a}=\set{b,c}，代入原理)\\
-        \Iff&a=b\lor a=b(対公理)
-        \Iff&a=b(冪等律)
+        \Iff&b\in\set{a}\\
+        \Iff&a=b\lor a=b
+        \Iff&a=b
         end{align*}
-        $$
         同様に，$a=c$．したがって，$a=b=c$である．
       </details>
     </details>
