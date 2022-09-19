@@ -23,7 +23,7 @@
       <dfn>集合</dfn>とは数学的対象の集まりを1つの対象としたものであるが，厳密に定義すると集合の公理を満たしたものになる．この集合の公理は，今回はZFC公理系を採用し，紹介する．今ある完成されたものではなく，集合を構成する，ZFC公理系を作っていく流れで議論を進める．
     </p>
     <p>
-      集合に用意されている2項述語は$=$と$\in$である．$=$は相等関係を持つ．$\in$はZFC公理系で性質を定められている．$a\in b$を$a$は$b$に<dfn>属する</dfn>といい，$=$の公理を下にまとめると，
+      集合に用意されている2項述語は$=$と$\in$である．$=$は相等関係を持つ．$\in$はZFC公理系で性質を定められている．$a\in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$=$の公理を下にまとめると，
     </p>
     <dl>
       <h4>$=$の公理</h4>
@@ -76,8 +76,22 @@
     <h2>外延性公理</h2>
     <h3>部分集合</h3>
     <p>
-      集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$
+      集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a\subset b$と表し，$a$は$b$に含まれる，$a$は$b$の部分集合であるという．
     </p>
+    <dl>
+      <h4>部分集合</h4>
+      <dt>$a$は$b$の部分集合</dt>
+      <dd>
+        $$a\subset b\Def\forall x,x\in a\to x\in b$$
+        $$b\supset a\Def a\subset b$$
+      </dd>
+      <dt>$a$は$b$の真部分集合</dt>
+      <dd>
+        $$a\subsetneq b\Def a\subset b\land a\neq b$$
+        $$b\supsetneq a\Def a\subsetneq b$$
+      </dd>
+    </dl>
+
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
