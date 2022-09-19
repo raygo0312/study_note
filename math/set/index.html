@@ -196,12 +196,49 @@
         \end{align*}
       </dd>
     </dl>
+    <p>
+      対についての基本的な命題を表す．
+    </p>
     <dl>
       <h4>命題</h4>
-      $$\set{a,b}=\set{b,a}$$
-      $$a\in\set{a,b}$$
-      $$\set{a,b}=\set{a,c}\to b=c$$
+      <ol>
+        <li>$\set{a,b}=\set{b,a}$</li>
+        <li>$a\in\set{a,b}$</li>
+        <li>$\set{a,b}=\set{a,c}\to b=c$</li>
+      </ol>
     </dl>
+    <details>
+      <summary>命題の証明1</summary>
+      <p>
+        $$\set{a,b}=\set{b,a}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        $x\in\set{a,b}$となる$x$を用意する．
+        \begin{align*}
+        &x\in\set{a,b}\\
+        \Iff&x=a\lor x=b(対公理)\\
+        \Iff&x=b\lor x=a(交換律)\\
+        \Iff&x\in\set{b,a}(対公理)
+        end{align*}
+        よって，$x\in\set{a,b}\iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
+      </details>
+    </details>
+    <details>
+      <summary>命題の証明2</summary>
+      <p>
+        $$a\in\set{a,b}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        $a\notin\set{a,b}$と仮定すると，対公理より，
+        \begin{align*}
+        &a\notin\set{a,b}\\
+        \Iff&\lnot\p{a=a\lor a=b}(対公理)\\
+        \Iff&\lnot\p{a=a\lor a=b}(対公理)\\
+        end{align*}
+      </details>
+    </details>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
