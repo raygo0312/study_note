@@ -30,13 +30,7 @@
     <h2>自然演繹</h2>
     <h3>証明図</h3>
     <p>
-      推論の流れの表し方を考える．<ruby><dfn>推論図</dfn>
-        <rt>inference diagram</rt>
-      </ruby>とは推論の流れを木のように表す図である．ある推論規則では仮定を取り除く，<ruby><dfn>打ち消し</dfn>
-        <rt>discharge</rt>
-      </ruby>という操作がある．この操作や公理となる前提を用いることで，仮定とする前提がないとき，推論図を<ruby><dfn>証明図</dfn>
-        <rt>proof diagram</rt>
-      </ruby>という．
+      推論の流れの表し方を考える．<dfn>推論図</dfn>とは推論の流れを木のように表す図である．ある推論規則では仮定を取り除く，<dfn>打ち消し</dfn>という操作がある．この操作や公理となる前提を用いることで，仮定とする前提がないとき，推論図を<dfn>証明図</dfn>という．
     </p>
     <dl>
       <h4>定義</h4>
@@ -49,13 +43,7 @@
 
     <h3>自然演繹</h3>
     <p>
-      <ruby><dfn>自然演繹</dfn>
-        <rt>natural deduction</rt>
-      </ruby>とは証明を見つけやすく構造を視覚で理解しやすいことを目標としている体系である．証明図を使って論理式の演算(推論)を表していくことが特徴である．推論規則は各論理演算子についての<ruby><dfn>挿入</dfn>
-        <rt>insert</rt>
-      </ruby>と<ruby><dfn>除去</dfn>
-        <rt>erase</rt>
-      </ruby>の規則から成り立っている．
+      <dfn>自然演繹</dfn>とは証明を見つけやすく構造を視覚で理解しやすいことを目標としている体系である．証明図を使って論理式の演算(推論)を表していくことが特徴である．推論規則は各論理演算子についての<dfn>挿入</dfn>と<dfn>除去</dfn>の規則から成り立っている．
     </p>
 
     <h2>自然演繹の推論規則</h2>
@@ -63,9 +51,7 @@
     <p>
       $A\to B$は$A$ならば$B$であることを意味するから，言い直せば，$A$が成り立つときは$B$が成り立つ．これに$A$が成り立つという情報があれば，$B$が成り立つことが導ける．つまり次の推論が成り立つ．
       $$A,A\to B\To B$$
-      これは<ruby><dfn>構成的仮言的三段論法</dfn>
-        <rt>modus ponens</rt>
-      </ruby>(前件肯定式)という名前で知られる．また，$\to,\sequent$はそれぞれ同じ意味として扱いたいので，
+      これは<dfn>構成的仮言的三段論法</dfn>(前件肯定式)という名前で知られる．また，$\to,\sequent$はそれぞれ同じ意味として扱いたいので，
       $$\p{A\sequent B}\To\p{\sequent A\to B}$$
       を認めるとする．この推論規則を用いるときは，仮定に使った論理式を打ち消ししてもよい．つまり，
       $$\infer{B}{\infer{\vdots}{A}}\To\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$
@@ -119,16 +105,10 @@
 
     <h3>$\land$と$\lor$の推論規則</h3>
     <p>
-      $A_1\land A_2$は$A_1$であり$A_2$であることを意味するから，$A_1$と$A_2$が前提のとき$A_1\land A_2$が導ける．また，$A_1\land A_2$からは$A_1$と$A_2$のそれぞれが導ける．これを<ruby><dfn>縮小律</dfn>
-        <rt>law of simplification</rt>
-      </ruby>と言ったりもする．
+      $A_1\land A_2$は$A_1$であり$A_2$であることを意味するから，$A_1$と$A_2$が前提のとき$A_1\land A_2$が導ける．また，$A_1\land A_2$からは$A_1$と$A_2$のそれぞれが導ける．これを<dfn>縮小律</dfn>と言ったりもする．
     </p>
     <p>
-      $A_1\lor A_2$は$A_1$または$A_2$であることを意味するから，どちらか一方でも成り立てばいいので，$A_1$か$A_2$が前提のとき$A_1\lor A_2$が導ける．これを<ruby><dfn>拡大律</dfn>
-        <rt>law of addition</rt>
-      </ruby>と言ったりもする．また，$A_1\lor A_2$からは$A_1$と$A_2$で場合分けしたあと，それぞれについて$B$を推論できれば，$A_1\lor A_2$から$B$が導ける．これは<ruby><dfn>構成的両刃論法</dfn>
-        <rt>constructive dilemma</rt>
-      </ruby>という名前で知られる．まとめると，
+      $A_1\lor A_2$は$A_1$または$A_2$であることを意味するから，どちらか一方でも成り立てばいいので，$A_1$か$A_2$が前提のとき$A_1\lor A_2$が導ける．これを<dfn>拡大律</dfn>と言ったりもする．また，$A_1\lor A_2$からは$A_1$と$A_2$で場合分けしたあと，それぞれについて$B$を推論できれば，$A_1\lor A_2$から$B$が導ける．これは<dfn>構成的両刃論法</dfn>という名前で知られる．まとめると，
     </p>
     <dl>
       <h4>推論規則</h4>
@@ -210,23 +190,7 @@
 
     <h2>論理体系</h2>
     <p>
-      これらの推論規則のみからなる論理体系を<ruby><dfn>最小論理</dfn>
-        <rt>minimal logic</rt>
-      </ruby>という．この論理体系では今後紹介する双対性すら成り立たない．これに，<ruby><dfn>選言的三段論法</dfn>
-        <rt>disjunctive syllogism</rt>
-      </ruby>を満たす公理を追加すると，<ruby><dfn>直感主義論理</dfn>
-        <rt>intuitionistic logic</rt>
-      </ruby>(<dfn>直感論理</dfn>，<ruby><dfn>構成的論理</dfn>
-        <rt>constructive logic</rt>
-      </ruby>)という論理体系になる．さらに，<ruby><dfn>排中律</dfn>
-        <rt>law of excluded middle</rt>
-      </ruby>という公理を追加すると，<ruby><dfn>古典論理</dfn>
-        <rt>classical logic</rt>
-      </ruby>(<ruby><dfn>標準論理</dfn>
-        <rt>standard logic</rt>
-      </ruby>)という論理体系になる．一般的な数学では古典論理が採用されているため，古典論理で成り立つ範囲について扱う．また，<ruby><dfn>二重否定の除去</dfn>
-        <rt>double negative elimination</rt>
-      </ruby>は「選言的三段論法かつ排中律」と同値であるとして知られているため，最小論理に二重否定の除去を推論規則として古典論理を構成することもある．同値であることの証明は後で行う．
+      これらの推論規則のみからなる論理体系を<dfn>最小論理</dfn>という．この論理体系では今後紹介する双対性すら成り立たない．これに，<dfn>選言的三段論法</dfn>を満たす公理を追加すると，<dfn>直感主義論理</dfn>(<dfn>直感論理</dfn>，<dfn>構成的論理</dfn>)という論理体系になる．さらに，<dfn>排中律</dfn>という公理を追加すると，<dfn>古典論理</dfn>(<dfn>標準論理</dfn>)という論理体系になる．一般的な数学では古典論理が採用されているため，古典論理で成り立つ範囲について扱う．また，<dfn>二重否定の除去</dfn>は「選言的三段論法かつ排中律」と同値であるとして知られているため，最小論理に二重否定の除去を推論規則として古典論理を構成することもある．同値であることの証明は後で行う．
     </p>
     <dl>
       <h4>公理</h4>
@@ -250,9 +214,7 @@
 
     <h3>演繹定理</h3>
     <p>
-      推論と命題を自由に変換するために，<ruby><dfn>演繹定理</dfn>
-        <rt>deduction theorem</rt>
-      </ruby>を用いる．
+      推論と命題を自由に変換するために，<dfn>演繹定理</dfn>を用いる．
     </p>
     <dl>
       <h4>定理</h4>
@@ -292,9 +254,7 @@
 
     <h3>爆発律</h3>
     <p>
-      <ruby><dfn>爆発律</dfn>
-        <rt>principle of explosion</rt>
-      </ruby>は矛盾からは任意の命題が導けるという推論規則で，感覚的には間違えてそうである．
+      <dfn>爆発律</dfn>は矛盾からは任意の命題が導けるという推論規則で，感覚的には間違えてそうである．
     </p>
     <dl>
       <h4>推論規則</h4>
@@ -305,9 +265,7 @@
       <dd>最小論理上で爆発律と選言的三段論法と等価である．</dd>
     </dl>
     <p>
-      爆発律と選言的三段論法の等価性を証明するには<ruby><dfn>同一律</dfn>
-        <rt>law of identity</rt>
-      </ruby>が必要である．
+      爆発律と選言的三段論法の等価性を証明するには<dfn>同一律</dfn>が必要である．
     </p>
     <dl>
       <h4>定理</h4>
@@ -509,9 +467,7 @@
     <h2>双対</h2>
     <h3>二重否定律</h3>
     <p>
-      この後の証明に便利なので，<ruby><dfn>二重否定律</dfn>
-        <rt>law of double negation</rt>
-      </ruby>を証明する．
+      この後の証明に便利なので，<dfn>二重否定律</dfn>を証明する．
     </p>
     <dl>
       <h4>定理</h4>
@@ -539,11 +495,7 @@
 
     <h3>De Morganの法則</h3>
     <p>
-      <ruby><dfn>双対性</dfn>
-        <rt>duality</rt>
-      </ruby>について証明したいが，まずは単純な<ruby><dfn>De Morganの法則</dfn>
-        <rt>De Morgan's law</rt>
-      </ruby>について証明していく．
+      <dfn>双対性</dfn>について証明したいが，まずは単純な<dfn>De Morganの法則</dfn>について証明していく．
     </p>
     <dl>
       <h4>定理</h4>
@@ -632,9 +584,7 @@
 
     <h3>双対性</h3>
     <p>
-      論理式における<ruby><dfn>双対</dfn>
-        <rt>dual</rt>
-      </ruby>とは，$\land$と$\lor$，$\forall$と$\exists$を交換した論理式のことである．このとき，論理式$F$に対して，双対$F^*$と表す．このとき，次の定理が成り立つ．
+      論理式における<dfn>双対</dfn>とは，$\land$と$\lor$，$\forall$と$\exists$を交換した論理式のことである．このとき，論理式$F$に対して，双対$F^*$と表す．このとき，次の定理が成り立つ．
     </p>
     <dl>
       <h4>定理</h4>
@@ -706,29 +656,7 @@
 
     <h3>真理関数に関する定理</h3>
     <p>
-      真理関数の重要な定理のうち，まだ紹介していないものを次にまとめる．<ruby><dfn>交換律</dfn>
-        <rt>commutative law</rt>
-      </ruby>，<ruby><dfn>結合律</dfn>
-        <rt>associative law</rt>
-      </ruby>，<ruby><dfn>冪等律</dfn>
-        <rt>idempotent law</rt>
-      </ruby>，<ruby><dfn>分配律</dfn>
-        <rt>distributive law</rt>
-      </ruby>，<ruby><dfn>恒等律</dfn>
-        <rt>identity law</rt>
-      </ruby>，<ruby><dfn>矛盾律</dfn>
-        <rt>law of non-contradiction</rt>
-      </ruby>，<ruby><dfn>吸収律</dfn>
-        <rt>absorptive law</rt>
-      </ruby>，<ruby><dfn>推移律</dfn>
-        <rt>transitive law</rt>
-      </ruby>，<ruby><dfn>移入律</dfn>
-        <rt>law of importation</rt>
-      </ruby>，<ruby><dfn>移出律</dfn>
-        <rt>law of exportation</rt>
-      </ruby>，<ruby><dfn>対偶律</dfn>
-        <rt>law of contraposition</rt>
-      </ruby>である．
+      真理関数の重要な定理のうち，まだ紹介していないものを次にまとめる．<dfn>交換律</dfn>，<dfn>結合律</dfn>，<dfn>冪等律</dfn>，<dfn>分配律</dfn>，<dfn>恒等律</dfn>，<dfn>矛盾律</dfn>，<dfn>吸収律</dfn>，<dfn>推移律</dfn>，<dfn>移入律</dfn>，<dfn>移出律</dfn>，<dfn>対偶律</dfn>である．
     </p>
 
     <div class="you">
