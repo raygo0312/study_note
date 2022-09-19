@@ -176,8 +176,8 @@
       <dt>空集合公理</dt>
       <dd>
         \begin{align*}
-        &\exists x\forall y,y\nin x\\
-        \Iff&\forall x,x\nin 0
+        &\exists x\forall y,y\notin x\\
+        \Iff&\forall x,x\notin 0
         \end{align*}
       </dd>
     </dl>
@@ -192,11 +192,16 @@
       <dd>
         \begin{align*}
         &\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
-        \Iff&\forall x,x\in\set{a,b}\iff x=a\lor x=b
+        \Iff&\forall xyz,z\in\set{x,y}\iff z=x\lor z=y
         \end{align*}
       </dd>
     </dl>
-
+    <dl>
+      <h4>命題</h4>
+      $$\set{a,b}=\set{b,a}$$
+      $$a\in\set{a,b}$$
+      $$\set{a,b}=\set{a,c}\to b=c$$
+    </dl>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
