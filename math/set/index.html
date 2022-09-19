@@ -97,6 +97,45 @@
       </dd>
     </dl>
 
+    <h3>外延性公理</h3>
+    <p>
+      <dfn>外延性</dfn>とは論理学的に，具体例を表すことである．集合論では具体例が重複している場合，1つとしてみる．また，具体例に順番がない性質のことである．
+    </p>
+
+    <div class="you">
+      重複を1つとしてみるってどういうこと？
+    </div>
+    <div class="me">
+      例えば，$\set{林檎, 藍苺, 甘蕉, 林檎}$って集合があったとして<br>
+      これは林檎が重複してるから1つとみて，$\set{甘蕉, 林檎, 藍苺}$と同じだよってこと<br>
+      もちろん順番も入れ替えていいよ<br>
+      これを的確に表現した論理式がこれ
+    </div>
+
+    <dl>
+      <h4>公理</h4>
+      <dt>外延性公理</dt>
+      <dd>
+        $$\forall xy,x\subset y\land y\subset x\iff x=y$$
+      </dd>
+    </dl>
+
+    <div class="you">
+      集合の記法はまだ教えてないけど，知ってる人用に練習問題作ってみたよ
+    </div>
+
+    <details>
+      <summary>練習問題</summary>
+      <p>
+        $A\def\set{a,b,c,a},B\def\set{c,a,b}$としたとき，$A=B$を示せ．
+      </p>
+      <details class="sub">
+        <summary>解答</summary>
+        $x\in A$となる$x$は$a,b,c$のときだけである．このとき，$x\in B$であるから，$A\subset B$である．また，$x\in B$となる$x$は$a,b,c$のときだけである．このとき，$x\in Aであるから，$B\subset A$である．よって外延性公理より$A=B$である．
+      </details>
+    </details>
+
+
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
