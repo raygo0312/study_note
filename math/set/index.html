@@ -20,7 +20,7 @@
   <main>
     <h2>集合</h2>
     <p>
-      <dfn>集合</dfn>とは数学的対象の集まりを1つの対象としたものであるが，厳密に定義すると集合の公理を満たしたものになる．この集合の公理は，今回はZFC公理系を採用し，紹介する．今ある完成されたものではなく，集合を構成する，ZFC公理系を作っていく流れで議論を進める．
+      <dfn>集合</dfn>とは数学的対象の集まりを1つの対象としたものであるが，現代の数学では全ての数学的対象を集合とすることを目的としている，厳密に定義すると集合の公理を満たしたものになる．この集合の公理は，今回はZFC公理系を採用し，紹介する．今ある完成されたものではなく，集合を構成する，ZFC公理系を作っていく流れで議論を進める．
     </p>
     <p>
       集合に用意されている2項述語は$=$と$\in$である．$=$は相等関係を持つ．$\in$はZFC公理系で性質を定められている．$a\in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$=$の公理を下にまとめると，
@@ -75,7 +75,7 @@
 
     <h3>ZFC公理系</h3>
     <p>
-      <dfn>ZFC公理系</dfn>とは一般的に使われている集合の公理系である．ZFC公理系には<dfn>外延性公理</dfn>，<dfn>対公理</dfn>，<dfn>和集合公理</dfn>，<dfn>無限公理</dfn>，<dfn>冪集合公理</dfn>，<dfn>置換公理</dfn>，<dfn>正則性公理</dfn>，<dfn>選択公理</dfn>があり，Fは置換公理，Cは選択公理を指す．また，$\mathrm{ZFC}^-$のように$^-$をつけたものは正則性公理を除いた公理系を表す．
+      <dfn>ZFC公理系</dfn>とは一般的に使われている集合の公理系である．ZFC公理系には<dfn>外延性公理</dfn>，<dfn>和集合公理</dfn>，<dfn>無限公理</dfn>，<dfn>冪集合公理</dfn>，<dfn>置換公理</dfn>，<dfn>正則性公理</dfn>，<dfn>選択公理</dfn>があり，Fは置換公理，Cは選択公理を指す．また，$\mathrm{ZFC}^-$のように$^-$をつけたものは正則性公理を除いた公理系を表す．
     </p>
 
     <h2>外延性公理</h2>
@@ -87,13 +87,17 @@
       <h4>部分集合</h4>
       <dt>$a$は$b$の部分集合</dt>
       <dd>
-        $$a\subset b\Def\forall x,x\in a\to x\in b$$
-        $$b\supset a\Def a\subset b$$
+        \begin{align*}
+        a\subset b&\Def\forall x,x\in a\to x\in b\\
+        b\supset a&\Def a\subset b
+        \end{align*}
       </dd>
       <dt>$a$は$b$の真部分集合</dt>
       <dd>
-        $$a\subsetneq b\Def a\subset b\land a\neq b$$
-        $$b\supsetneq a\Def a\subsetneq b$$
+        \begin{align*}
+        a\subsetneq b&\Def a\subset b\land a\neq b\\
+        b\supsetneq a&\Def a\subsetneq b
+        \end{align*}
       </dd>
     </dl>
 
@@ -135,8 +139,8 @@
       &\forall xy,\forall z\p{z\in x\iff z\in y}\to x=y\\
       \Iff&\forall xy,\lnot\forall z\p{z\in x\iff z\in y}\lor x=y\\
       \Iff&\forall xy,\exists z\lnot\p{z\in x\iff z\in y}\lor x=y\\
-      \Iff&\forall xy,\exists z\p{\lnot\p{z\in x\iff z\in y}\lor x=y}\\
-      \Iff&\forall xy,\exists z\lnot\p{\p{z\in x\iff z\in y}\land x\neqy}
+      \Iff&\forall xy\exists z\lnot\p{z\in x\iff z\in y}\lor x=y\\
+      \Iff&\forall xy\exists z\lnot\p{z\in x\iff z\in y}\land x\neq y
       \end{align*}
       量化子が異なるから余計に分かりづらくなってしまうね
     </div>
@@ -160,8 +164,39 @@
 
     <h2>空集合公理</h2>
     <p>
-      <dfn>空集合</dfn>とは要素が一つもない集合のことである．空集合を$\set{}$や$0$と表す．空集合公理は
+      <dfn>空集合</dfn>とは要素が一つもない集合のことである．空集合を$\set{}$や$0$と表す．空集合公理は無限公理と分出公理から証明できるので，ZFC公理系に含まれてはいない．
     </p>
+
+    <div class="you">
+      空集合$0$を作っておきたかったからここで紹介したよ
+    </div>
+
+    <dl>
+      <h4>公理</h4>
+      <dt>空集合公理</dt>
+      <dd>
+        \begin{align*}
+        &\exists x\forall y,y\nin x\\
+        \Iff&\forall x,x\nin 0
+        \end{align*}
+      </dd>
+    </dl>
+
+    <h2>対公理</h2>
+    <p>
+      <dfn>対</dfn>(<dfn>非順序対</dfn>)とは集合$a,b$だけを元とする集合$\set{a,b}$のことをいう．対公理は置換公理から証明できる．
+    </p>
+    <dl>
+      <h4>公理</h4>
+      <dt>対公理</dt>
+      <dd>
+        \begin{align*}
+        &\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
+        \Iff&\forall x,x\in\set{a,b}\iff x=a\lor x=b
+        \end{align*}
+      </dd>
+    </dl>
+
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
