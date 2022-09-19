@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>自然演繹 | study_note</title>
+  <title>集合 | study_note</title>
   <meta name="author" content="raygo">
   <link rel="stylesheet" href="../../lib/css/bootstrap-reboot.css">
   <link rel="stylesheet" href="../../lib/css/style.css">
@@ -75,7 +75,7 @@
 
     <h3>ZFC公理系</h3>
     <p>
-      <dfn>ZFC公理系</dfn>とは一般的に使われている集合の公理系である．ZFC公理系には<dfn>外延性公理</dfn>，<dfn>空集合公理</dfn>，<dfn>対公理</dfn>，<dfn>和集合公理</dfn>，<dfn>無限公理</dfn>，<dfn>冪集合公理</dfn>，<dfn>置換公理</dfn>，<dfn>正則性公理</dfn>，<dfn>選択公理</dfn>があり，Fは置換公理，Cは選択公理を指す．また，$\mathrm{ZFC}^-$のように$^-$をつけたものは正則性公理を除いた公理系を表す．
+      <dfn>ZFC公理系</dfn>とは一般的に使われている集合の公理系である．ZFC公理系には<dfn>外延性公理</dfn>，<dfn>対公理</dfn>，<dfn>和集合公理</dfn>，<dfn>無限公理</dfn>，<dfn>冪集合公理</dfn>，<dfn>置換公理</dfn>，<dfn>正則性公理</dfn>，<dfn>選択公理</dfn>があり，Fは置換公理，Cは選択公理を指す．また，$\mathrm{ZFC}^-$のように$^-$をつけたものは正則性公理を除いた公理系を表す．
     </p>
 
     <h2>外延性公理</h2>
@@ -116,10 +116,30 @@
       <h4>公理</h4>
       <dt>外延性公理</dt>
       <dd>
-        $$\forall xy,x\subset y\land y\subset x\iff x=y$$
+        \begin{align*}
+        &\forall xy,\forall z\p{z\in x\iff z\in y}\to x=y\\
+        \Iff&\forall xy,x\subset y\land y\subset x\iff x=y
+        \end{align*}
       </dd>
     </dl>
+    <p>
+      2つの集合$x,y$の元$z$が全く共通ならば，その2つの集合$x,y$は等しい．ということである．
+    </p>
 
+    <div class="me">
+      $\forall xy,\forall z\p{z\in x\iff z\in y}\to x=y$の$\forall z$の範囲って$x,y$と同じじゃダメなの？
+    </div>
+    <div class="you">
+      じゃあ折角論理学勉強したし同値変形してみよう
+      \begin{align*}
+      &\forall xy,\forall z\p{z\in x\iff z\in y}\to x=y\\
+      \Iff&\forall xy,\lnot\forall z\p{z\in x\iff z\in y}\lor x=y\\
+      \Iff&\forall xy,\exists z\lnot\p{z\in x\iff z\in y}\lor x=y\\
+      \Iff&\forall xy,\exists z\p{\lnot\p{z\in x\iff z\in y}\lor x=y}\\
+      \Iff&\forall xy,\exists z\lnot\p{\p{z\in x\iff z\in y}\land x\neqy}\\
+      \end{align*}
+      量化子が異なるから
+    </div>
     <div class="you">
       集合の記法はまだ教えてないけど，知ってる人用に練習問題作ってみたよ
     </div>
@@ -135,7 +155,10 @@
       </details>
     </details>
 
-
+    <h2>空集合公理</h2>
+    <p>
+      <dfn>空集合</dfn>とは要素が一つもない集合のことである．空集合を$\set{}$や$0$と表す．空集合公理は
+    </p>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
