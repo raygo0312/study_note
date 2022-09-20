@@ -105,12 +105,8 @@ aside {
   background: #aaaaaa;
 }
 
-ol {
-  list-style-type: upper-roman;
-}
-
 ol li {
-  list-style-type: upper-roman;
+  list-style-type: none;
   counter-increment: cnt;
 }
 
@@ -119,7 +115,7 @@ ol li::before {
   margin-left: -50px;
   width: 50px;
   text-align: right;
-  content: "(" counter(cnt) ")\00a0";
+  content: "(" counter(cnt, upper-roman) ")\00a0";
 }
 
 table {
