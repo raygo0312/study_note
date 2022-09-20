@@ -34,7 +34,7 @@
       <dt>代入原理</dt>
       <dd>
         $f$を任意の述語として，
-        $$\forall ab,a=b\to\p{f\p{a}\iff\p{b}}$$
+        $$\forall ab,a=b\to\p{F\p{a}\iff F\p{b}}$$
       </dd>
     </dl>
     <p>
@@ -60,7 +60,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $f\p{x}\Def x=a$とする．反射律より，$a=a\Iff f\p{a}$は真である．$a=b$と代入原理より，$f\p{b}\Iff b=a$も真である．
+          $F\p{x}\Def x=a$とする．反射律より，$a=a\Iff F\p{a}$は真である．$a=b$と代入原理より，$F\p{b}\Iff b=a$も真である．
         </p>
       </details>
     </details>
@@ -72,7 +72,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $f\p{x}\Def x=c$とする．前提より$b=c\Iff f\p{b}$は真である．$a=b$と代入原理より，$f\p{a}\Iff a=c$も真である．
+          $F\p{x}\Def x=c$とする．前提より$b=c\Iff F\p{b}$は真である．$a=b$と代入原理より，$F\p{a}\Iff a=c$も真である．
         </p>
       </details>
     </details>
@@ -390,7 +390,7 @@
       </dd>
       <dt>$n$組</dt>
       <dd>
-        $$\p{a_1,\cdots,a_n}\def\p{a_1,\p{a_2,\cdots,a_n}}$$
+        $$\p{a_1,\cdots,a_n}\deF\p{a_1,\p{a_2,\cdots,a_n}}$$
       </dd>
     </dl>
     <dl>
@@ -505,10 +505,47 @@
           $x\in\bigcup2^a$となる$x$を用意する．
           \begin{align*}
           &x\in\bigcup2^a\\
-          \
+          \Iff&\exists y\p{x\in y\land y\in2^a}\\
+          \Iff&\exists y\p{x\in y\land y\subset a}\\
+          \Iff&x\in a
+          \end{slign*}
+          よって，$\bigcup2^a\subset a$
+        </p>
+        <p>
+          逆に$x\in a$となる$x$を用意する．
+          \begin{align*}
+          &x\in a\\
+          \To&\set{x}\in2^a
+          \end{slign*}
+          $x\in\set{x}$であるから，$x\in y\land y\in2^a$となる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$
+        </p>
+        <p>
+          したがって，$\bigcup2^a=a$である．
         </p>
       </details>
     </details>
+
+    <h2>分出公理</h2>
+    <h3>分出公理</h3>
+    <p>
+      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．しかし，制限を設けないと，矛盾を生じることがある．そこで，存在する集合$a$のうち条件$F\p{x}$を満たす元のみを取り上げたものの全体の集合を認めることとした．子の集合を$\setsep{x\in a}{F\p{x}}$と表す．この$x$は下の公理より束縛変数であることに注意する．また，置換公理から証明できる．
+    </p>
+    <dl>
+      <h4>公理</h4>
+      <dt>分出公理</dt>
+      <dd>
+        任意の$x$を自由変数にもつ論理式$F\p{x}$に対し，
+        \begin{align*}
+        &\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}\\
+        \Iff&\forall xy,y\in\setsep{y\in x}{F\p{y}}\iff y\in x\land F\p{y}
+        \end{align*}
+      </dd>
+    </dl>
+
+    <h3>積集合</h3>
+    <p>
+      <dfn>積集合</dfn>(<dfn>共通部分</dfn>)とは
+    </p>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>

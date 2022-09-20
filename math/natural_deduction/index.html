@@ -354,7 +354,7 @@
       </dd>
       <dt>$\iff$の代入原理</dt>
       <dd>
-        任意の論理式$A,B$，任意の論理式を引数とする論理式$F\p{X}$について，
+        任意の論理式$A,B$，論理式$F\p{X}$について，
         $$A\iff B\To F\p{A}\iff F\p{B}$$
       </dd>
       <h4>定義</h4>
@@ -369,8 +369,8 @@
       </dd>
       <dt>$=$の代入原理</dt>
       <dd>
-        項$a,b$，算術演算子$f\p{x}$について，
-        $$\forall ab,a=b\to\p{f\p{a}\iff\p{b}}$$
+        項$a,b$，論理式$F\p{x}$について，
+        $$\forall ab,a=b\to\p{F\p{a}\iff F\p{b}}$$
       </dd>
     </dl>
     <p>
@@ -416,7 +416,7 @@
       <summary>$\iff$が代入原理を満たす証明
       </summary>
       <p>
-        任意の論理式$A,B$，任意の論理式を引数とする論理式$f\p{X}$について，
+        任意の論理式$A,B$，任意の論理式を引数とする論理式$F\p{X}$について，
         $$A\iff B\To F\p{A}\iff F\p{B}$$
       </p>
       <details class="sub">
@@ -844,11 +844,11 @@
         <p>
           $\p{A\lor B}\land\p{A\lor\lnot B}$について考える．
           \begin{align*}
-          \p{A\lor B}\land\p{A\lor\lnot B}&\Iff A\lor\p{B\land\lnot B}\
-          &\Iff A\lor\bot\
+          \p{A\lor B}\land\p{A\lor\lnot B}&\Iff A\lor\p{B\land\lnot B}\\
+          &\Iff A\lor\bot\\
           &\Iff A
           \end{align*}
-          よって，$A\land\p{A\lor B}$の$に$\p{A\lor B}\land\p{A\lor\lnot B}$を代入する．
+          よって，$A\land\p{A\lor B}$に$\p{A\lor B}\land\p{A\lor\lnot B}$を代入する．
           \begin{align*}
           A\land\p{A\lor B}&\Iff\p{A\lor B}\land\p{A\lor\lnot B}\land\p{A\lor B}\
           &\Iff\p{A\lor B}\land\p{A\lor\lnot B}\
@@ -879,9 +879,9 @@
         <summary>証明</summary>
         <p>
           \begin{align*}
-          A\to B\to C&\Iff A\to\lnot B\lor C\
-          &\Iff\lnot A\lor\lnot B\lor C\
-          &\Iff\lnot\p{A\land B}\lor C\
+          A\to B\to C&\Iff A\to\lnot B\lor C\\
+          &\Iff\lnot A\lor\lnot B\lor C\\
+          &\Iff\lnot\p{A\land B}\lor C\\
           &\Iff A\land B\to C
           \end{align*}
         </p>
@@ -896,9 +896,9 @@
         <summary>証明</summary>
         <p>
           \begin{align*}
-          A\to B&\Iff\lnot A\lor B\
-          &\Iff B\lor\lnot A\
-          &\Iff\lnot B\to\lnot A\
+          A\to B&\Iff\lnot A\lor B\\
+          &\Iff B\lor\lnot A\\
+          &\Iff\lnot B\to\lnot A
           \end{align*}
         </p>
       </details>
@@ -993,7 +993,7 @@
         <summary>証明</summary>
         <p>
           $\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}$を証明する．$F\p{x}$に含まれない$a$を用いて，
-          $$\infer[1]{\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}}{\infer{F\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall\p{F\p{x}\land G\p{x}}{}}}}}\quad\infer{\forall xG\p{x}}{\infer{G\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall\p{F\p{x}\land G\p{x}}{}}}}}}}$$
+          $$\infer[1]{\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}}{\infer{F\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}\quad\infer{\forall xG\p{x}}{\infer{G\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}}}$$
         </p>
         <p>
           逆も証明する．$F\p{x}$に含まれない$a$を用いて，
