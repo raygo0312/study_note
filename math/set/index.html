@@ -131,7 +131,7 @@
       </dd>
     </dl>
     <p>
-      2つの集合$x,y$の元$z$が全く共通ならば，その2つの集合$x,y$は等しい．ということである．
+      2つの集合$x,y$の元$z$が全く共通ならば，その2つの集合$x,y$は等しい．
     </p>
 
     <div class="me">
@@ -323,12 +323,12 @@
     </dl>
     <dl>
       <h4>命題</h4>
-      $$\p{a,b}=\p{a',b'}\to a=a'\land b=b'$$
+      $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
     </dl>
     <details>
       <summary>命題の証明</summary>
       <p>
-        $$\p{a,b}=\p{a',b'}\to a=a'\land b=b'$$
+        $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -368,6 +368,9 @@
             (1),(2)より示された．
           </li>
         </ol>
+        <p>
+          逆は自明．
+        </p>
       </details>
     </details>
     <dl>
@@ -388,6 +391,78 @@
       <dt>$n$組</dt>
       <dd>
         $$\p{a_1,\cdots,a_n}\def\p{a_1,\p{a_2,\cdots,a_n}}$$
+      </dd>
+    </dl>
+    <dl>
+      <h4>命題</h4>
+      $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\to a_1=b_1\land\cdots\land a_n=b_n$$
+    </dl>
+    <details>
+      <summary>命題の証明</summary>
+      <p>
+        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\iff a_1=b_1\land\cdots\land a_n=b_n$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <ol>
+          <li>
+            $n=0,1,2$のときは示されてる．
+          </li>
+          <li>
+            $n=k(k\ge2)のとき成り立つと仮定すると，
+            \begin{align*}
+            &\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\\
+            \Iff&\p{a_1,\p{a_2,\cdots,a_n}}=\p{b_1,\p{b_2,\cdots,b_n}}\\
+            \Iff&a_1=b_1\land\p{a_2,\cdots,a_n}=\p{b_2,\cdots,b_n}\\
+            \Iff&a_1=b_1\land\cdots\land a_n=b_n\\
+          </li>
+        </ol>
+      </details>
+    </details>
+
+    <h2>和集合</h2>
+    <p>
+      <dfn>和集合</dfn>(<dfn>合併</dfn>)とはその集合の元の元の全体の集合である．$a$の和集合を$\bigcup a$と表す．
+    </p>
+    <dl>
+      <h4>公理</h4>
+      <dt>和集合公理</dt>
+      <dd>
+        \begin{align*}
+        &\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}\\
+        \Iff&\forall xy,y\in\bigcup x\iff\exists z\p{y\in z\land z\in x}
+        \end{align*}
+      </dd>
+    </dl>
+    <dl>
+      <h4>定義</h4>
+      <dt>和集合の演算子</dt>
+      <dd>
+        $$a\cup b\def\bigcup\set{a,b}$$
+      </dd>
+    </dl>
+    <p>
+      公理を用いて性質を調べてみる．定義より，
+      \begin{align*}
+      &\forall x,x\in a\cup b\iff\exists y\p{x\in y\land y\in\set{a,b}}\\
+      \Iff&\forall x,x\in a\cup b\iff\exists y\p{x\in y\land\p{y=a\lor y=b}}\\
+      \To&\forall x,x\in a\cup b\iff x\in a\lor x\in b
+      \end{align*}
+      このことから$\cup$は$\lor$と同じ定理を使用することができることがわかる．
+    </p>
+
+    <h2>冪集合</h2>
+    <p>
+      <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\mathscr{x}$と表す．
+    </p>
+    <dl>
+      <h4>公理</h4>
+      <dt>和集合公理</dt>
+      <dd>
+        \begin{align*}
+        &\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}\\
+        \Iff&\forall xy,y\in\bigcup x\iff\exists z\p{y\in z\land z\in x}
+        \end{align*}
       </dd>
     </dl>
   </main>
