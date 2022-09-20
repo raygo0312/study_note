@@ -453,7 +453,7 @@
 
     <h2>冪集合</h2>
     <p>
-      <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\mathscr{p}\p{a}$と表す．
+      <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\mathscr{P}\p{a}$と表す．
     </p>
     <dl>
       <h4>公理</h4>
@@ -544,7 +544,46 @@
 
     <h3>積集合</h3>
     <p>
-      <dfn>積集合</dfn>(<dfn>共通部分</dfn>)とは
+      <dfn>積集合</dfn>(<dfn>共通部分</dfn>)とは全ての集合の元であるものの全体の集合である．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      <dt>積集合</dt>
+      <dd>
+        $$a\cap b\def\setsep{x\in a}{x\in b}$$
+      </dd>
+    </dl>
+    <p>
+      公理を用いて性質を調べてみる．定義より，
+      $$\forall x,x\in a\cap b\iff x\in a\land x\in b$$
+      このことから$\cap$は$\land$と同じ定理を使用することができることがわかる．
+    </p>
+
+    <h3>差集合</h3>
+    <p>
+      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a-b$で表す．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      <dt>積集合</dt>
+      <dd>
+        $$a-b\def\setsep{x\in a}{x\notin b}$$
+      </dd>
+    </dl>
+
+    <h3>直積集合</h3>
+    <p>
+      <dfn>直積集合</dfn>とは二つの集合$a,b$の元$x,y$の組$\p{x,y}$の全体の集合である．この集合を$a\times b$と表す．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      <dt>直積集合</dt>
+      <dd>
+        $$a\times b\def\setsep{z\in\mathscr{P}\p{\mathscr{P}\p{a\cup b}}}{\exists xy,z=\p{x,y}\land x\in a\land y\in b}$$
+      </dd>
+    </dl>
+    <p>
+      $\mathscr{P}\p{\mathscr{P}\p{a\cup b}}$はとんでもなく大きい集合を持ってきたものである．条件の方を読むと，$x$は$a$の元で，$y$は$b$の元であるときの$\p{x,y}$であると書かれているので，これで組を表現できている．しかし，分出公理より大きい集合の部分集合出なければならないので，任意の組を元に持つような集合を考えなければならない．組は定義より$\set{\set{x},\set{x,y}}$である．$x,y\in a\cup b$であることから，$\set{x},\set{x,y}\in\mathscr{P}\p{a\cup b}$であり，$\set{\set{x},\set{x,y}}\in\mathscr{P}\p{\mathscr{P}\p{a\cup b}}$である．よって，この定義は直積集合を表している．
     </p>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
