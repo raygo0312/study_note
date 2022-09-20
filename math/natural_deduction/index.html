@@ -730,15 +730,21 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $A\land B\to B\land A$を証明する．
-        $$\infer[1]{A\land B\to B\land A}{\infer{B\land A}{\infer{B}{\infer[1]{A\land B}{}}\quad\infer{A}{\infer[1]{A\land B}{}}}}$$
-        $A$と$B$を交換すると逆も成り立つ．
-        また，双対性と代入原理を用いて，
-        \begin{align*}
-        A\land B\iff B\land A&\Iff\lnot\p{A\land B}\iff\lnot\p{B\land A}\\
-        &\Iff\lnot A\lor\lnot B\iff\lnot B\lor\lnot A
-        \end{align*}
-        よって，$A\lor B\iff B\lor A$が成り立つ．
+        <p>
+          $A\land B\to B\land A$を証明する．
+          $$\infer[1]{A\land B\to B\land A}{\infer{B\land A}{\infer{B}{\infer[1]{A\land B}{}}\quad\infer{A}{\infer[1]{A\land B}{}}}}$$
+          $A$と$B$を交換すると逆も成り立つ．
+        </p>
+        <p>
+          また，双対性と代入原理を用いて，
+          \begin{align*}
+          A\land B\iff B\land A&\Iff\lnot\p{A\land B}\iff\lnot\p{B\land A}\
+          &\Iff\lnot A\lor\lnot B\iff\lnot B\lor\lnot A
+          \end{align*}
+        </p>
+        <p>
+          よって，$A\lor B\iff B\lor A$が成り立つ．
+        </p>
       </details>
     </details>
 
@@ -754,9 +760,11 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $A\land\p{B\land C}\to\p{A\land B}\land C$の証明する．
-        $$\infer[1]{A\land\p{B\land C}\to\p{A\land B}\land C}{\infer{\p{A\land B}\land C}{\infer{A\land B}{\infer{A}{\infer[1]{A\land\p{B\land C}}{}}\quad\infer{B}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}\quad\infer{C}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}}$$
-        交換律を用いると逆も成り立つ．また，双対性より$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$が成り立つ．
+        <p>
+          $A\land\p{B\land C}\to\p{A\land B}\land C$の証明する．
+          $$\infer[1]{A\land\p{B\land C}\to\p{A\land B}\land C}{\infer{\p{A\land B}\land C}{\infer{A\land B}{\infer{A}{\infer[1]{A\land\p{B\land C}}{}}\quad\infer{B}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}\quad\infer{C}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}}$$
+          交換律を用いると逆も成り立つ．また，双対性より$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$が成り立つ．
+        </p>
       </details>
     </details>
     <details>
@@ -767,9 +775,11 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $A\land A\to A$は$\land\mathrm{E}$そのものなので逆を証明する．
-        $$\infer[1]{A\land A}{\infer[1]{A}{}\quad\infer[1]{A}{}}$$
-        双対性より$A\lor A\iff A$も成り立つ．
+        <p>
+          $A\land A\to A$は$\land\mathrm{E}$そのものなので逆を証明する．
+          $$\infer[1]{A\land A}{\infer[1]{A}{}\quad\infer[1]{A}{}}$$
+          双対性より$A\lor A\iff A$も成り立つ．
+        </p>
       </details>
     </details>
     <details>
@@ -780,11 +790,15 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$を証明する．
-        $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[2]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land C}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
-        $\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}$を証明する．
-        $$\infer[2]{\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}}{\infer[1]{A\land\p{B\lor C}}{\infer[2]{\p{A\land B}\lor\p{A\land C}}{}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer[1]{A\land B}{}}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A\land B}{}}}}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer{A\land C}{}}\quad\infer{B\lor C}{\infer{C}{\infer[1]{A\land C}{}}}}}}$$
-        双対性より$A\lor\p{B\land C}\iff\p{A\lor B}\land\p{A\lor C}$も成り立つ．
+        <p>
+          $A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$を証明する．
+          $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[2]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land C}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
+        </p>
+        <p>
+          $\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}$を証明する．
+          $$\infer[2]{\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}}{\infer[1]{A\land\p{B\lor C}}{\infer[2]{\p{A\land B}\lor\p{A\land C}}{}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer[1]{A\land B}{}}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A\land B}{}}}}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer{A\land C}{}}\quad\infer{B\lor C}{\infer{C}{\infer[1]{A\land C}{}}}}}}$$
+          双対性より$A\lor\p{B\land C}\iff\p{A\lor B}\land\p{A\lor C}$も成り立つ．
+        </p>
       </details>
     </details>
     <details>
@@ -797,10 +811,12 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $A\land\lnot\bot\to A$は$\land\mathrm{E}$そのものなので逆を証明する．
-        $$\infer[1]{A\to\lnot\bot\land A}{\infer{\lnot\bot\land A}{\lnot\bot\quad\infer[1]{A}{}}}$$
-        双対性より$A\lor\bot\iff A$も成り立つ．
-        $A\land\bot\iff\bot$は$\land\mathrm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\lnot\bot\iff\lnot\bot$も成り立つ．
+        <p>
+          $A\land\lnot\bot\to A$は$\land\mathrm{E}$そのものなので逆を証明する．
+          $$\infer[1]{A\to\lnot\bot\land A}{\infer{\lnot\bot\land A}{\lnot\bot\quad\infer[1]{A}{}}}$$
+          双対性より$A\lor\bot\iff A$も成り立つ．
+          $A\land\bot\iff\bot$は$\land\mathrm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\lnot\bot\iff\lnot\bot$も成り立つ．
+        </p>
       </details>
     </details>
     <details>
@@ -825,19 +841,21 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $\p{A\lor B}\land\p{A\lor\lnot B}$について考える．
-        \begin{align*}
-        \p{A\lor B}\land\p{A\lor\lnot B}&\Iff A\lor\p{B\land\lnot B}\\
-        &\Iff A\lor\bot\\
-        &\Iff A
-        \end{align*}
-        よって，$A\land\p{A\lor B}$の$A$に$\p{A\lor B}\land\p{A\lor\lnot B}$を代入する．
-        \begin{align*}
-        A\land\p{A\lor B}&\Iff\p{A\lor B}\land\p{A\lor\lnot B}\land\p{A\lor B}\\
-        &\Iff\p{A\lor B}\land\p{A\lor\lnot B}\\
-        &\Iff A
-        \end{align*}
-        したがって，$A\land\p{A\lor B}\iff A$は成り立つ．また，双対性より，$A\lor\p{A\land B}\iff A$も成り立つ．
+        <p>
+          $\p{A\lor B}\land\p{A\lor\lnot B}$について考える．
+          \begin{align*}
+          \p{A\lor B}\land\p{A\lor\lnot B}&\Iff A\lor\p{B\land\lnot B}\
+          &\Iff A\lor\bot\
+          &\Iff A
+          \end{align*}
+          よって，$A\land\p{A\lor B}$の$に$\p{A\lor B}\land\p{A\lor\lnot B}$を代入する．
+          \begin{align*}
+          A\land\p{A\lor B}&\Iff\p{A\lor B}\land\p{A\lor\lnot B}\land\p{A\lor B}\
+          &\Iff\p{A\lor B}\land\p{A\lor\lnot B}\
+          &\Iff A
+          \end{align*}
+          したがって，$A\land\p{A\lor B}\iff A$は成り立つ．また，双対性より，$A\lor\p{A\land B}\iff A$も成り立つ．
+        </p>
       </details>
     </details>
     <details>
@@ -847,7 +865,9 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $$\infer[2]{\p{A\to B}\land\p{B\to C}\to\p{A\to C}}{\infer[1]{A\to C}{\infer{C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer[2]{\p{A\to B}\land\p{B\to C}}{}}}\quad\infer{B\to C}{\infer[2]{\p{A\to B}\land\p{B\to C}}}}}}$$
+        <p>
+          $$\infer[2]{\p{A\to B}\land\p{B\to C}\to\p{A\to C}}{\infer[1]{A\to C}{\infer{C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer[2]{\p{A\to B}\land\p{B\to C}}{}}}\quad\infer{B\to C}{\infer[2]{\p{A\to B}\land\p{B\to C}}}}}}$$
+        </p>
       </details>
     </details>
     <details>
@@ -857,12 +877,14 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        \begin{align*}
-        A\to B\to C&\Iff A\to\lnot B\lor C\\
-        &\Iff\lnot A\lor\lnot B\lor C\\
-        &\Iff\lnot\p{A\land B}\lor C\\
-        &\Iff A\land B\to C
-        \end{align*}
+        <p>
+          \begin{align*}
+          A\to B\to C&\Iff A\to\lnot B\lor C\
+          &\Iff\lnot A\lor\lnot B\lor C\
+          &\Iff\lnot\p{A\land B}\lor C\
+          &\Iff A\land B\to C
+          \end{align*}
+        </p>
       </details>
     </details>
     <details>
@@ -872,11 +894,13 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        \begin{align*}
-        A\to B&\Iff\lnot A\lor B\\
-        &\Iff B\lor\lnot A\\
-        &\Iff\lnot B\to\lnot A\\
-        \end{align*}
+        <p>
+          \begin{align*}
+          A\to B&\Iff\lnot A\lor B\
+          &\Iff B\lor\lnot A\
+          &\Iff\lnot B\to\lnot A\
+          \end{align*}
+        </p>
       </details>
     </details>
 
@@ -911,13 +935,17 @@
     </dl>
     <details>
       <summary>束縛変数の文字置換の証明</summary>
-      $$\forall xF\p{x}\iff\forall yF\p{y}$$
-      $$\exists xF\p{x}\iff\exists yF\p{y}$$
+      <p>
+        $$\forall xF\p{x}\iff\forall yF\p{y}$$
+        $$\exists xF\p{x}\iff\exists yF\p{y}$$
+      </p>
       <details class="sub">
         <summary>証明</summary>
-        $\forall xF\p{x}\to\forall yF\p{y}$を証明する．$F\p{x}$に含まれない$a$を用いて，
-        $$\infer[1]{\forall xF\p{x}\to\forall yF\p{y}}{\infer{\forall yF\p{y}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
-        $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xF\p{x}\iff\exists yF\p{y}$も成り立つ．
+        <p>
+          $\forall xF\p{x}\to\forall yF\p{y}$を証明する．$F\p{x}$に含まれない$a$を用いて，
+          $$\infer[1]{\forall xF\p{x}\to\forall yF\p{y}}{\infer{\forall yF\p{y}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
+          $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xF\p{x}\iff\exists yF\p{y}$も成り立つ．
+        </p>
       </details>
     </details>
     <details>
@@ -927,40 +955,56 @@
       </p>
       <details class="sub">
         <summary>証明</summary>
-        $F\p{x}$に含まれない$a$を用いて，
-        $$\infer[1]{\forall xF\p{x}\to\exists xF\p{x}}{\infer{\exists xF\p{x}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
+        <p>
+          $F\p{x}$に含まれない$a$を用いて，
+          $$\infer[1]{\forall xF\p{x}\to\exists xF\p{x}}{\infer{\exists xF\p{x}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
+        </p>
       </details>
     </details>
     <details>
       <summary>量化の交換の証明</summary>
-      $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}$$
-      $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}$$
-      $$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$$
+      <p>
+        $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}$$
+        $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}$$
+        $$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$$
+      </p>
       <details class="sub">
         <summary>証明</summary>
-        $\forall xyF\p{x,y}\to\forall yxF\p{x,y}$を証明する．$F\p{x}$に含まれない$a,b$を用いて，
-        $$\infer[1]{\forall xyF\p{x,y}\to\forall yxF\p{x,y}}{\infer{\forall yxF\p{x,y}}{\infer{\forall xF\p{x,b}}{\infer{F\p{a,b}}{\infer{\forall yF\p{a,y}}{\infer[1]{\forall xyF\p{x,y}}{}}}}}}$$
-        $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xyF\p{x,y}\iff\exists yx,F\p{x,y}$も成り立つ．<br>
-        また，$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$を証明する．$F\p{x}$に含まれない$a,b$を用いて，
-        $$\infer[2]{\exists y\forall xF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\\infer[2]{\exists y\forall xF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
+        <p>
+          $\forall xyF\p{x,y}\to\forall yxF\p{x,y}$を証明する．$F\p{x}$に含まれない$a,b$を用いて，
+          $$\infer[1]{\forall xyF\p{x,y}\to\forall yxF\p{x,y}}{\infer{\forall yxF\p{x,y}}{\infer{\forall xF\p{x,b}}{\infer{F\p{a,b}}{\infer{\forall yF\p{a,y}}{\infer[1]{\forall xyF\p{x,y}}{}}}}}}$$
+          $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xyF\p{x,y}\iff\exists yx,F\p{x,y}$も成り立つ．
+        </p>
+        <p>
+          また，$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$を証明する．$F\p{x}$に含まれない$a,b$を用いて，
+          $$\infer[2]{\exists y\forall xF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\infer[2]{\exists y\forall xF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
+        </p>
       </details>
     </details>
     <details>
       <summary>量化の分配の証明</summary>
-      $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$$
-      $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$$
-      $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$$
-      $$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$$
+      <p>
+        $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$$
+        $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$$
+        $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$$
+        $$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$$
+      </p>
       <details class="sub">
         <summary>証明</summary>
-        $\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}$を証明する．$F\p{x}$に含まれない$a$を用いて，
-        $$\infer[1]{\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}}{\infer{F\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall\p{F\p{x}\land G\p{x}}{}}}}}\quad\infer{\forall xG\p{x}}{\infer{G\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall\p{F\p{x}\land G\p{x}}{}}}}}}}$$
-        逆も証明する．$F\p{x}$に含まれない$a$を用いて，
-        $$\infer[1]{\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}}{\infer{\forall x\p{F\p{x}\land G\p{x}}}{\infer{F\p{a}\land G\p{a}}{\infer{F\p{a}}{\infer{\forall xF\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}{}}}\quad\infer{G\p{a}}{\infer{\forall xG\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}}}}}}$$
-        双対性より，$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$も成り立つ．<br>
-        また，$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$を証明する．$F\p{x}$に含まれない$a$を用いて，
-        $$\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}}{\infer{\forall x\p{F\p{x}\lor G\p{x}}}{\infer{F\p{a}\lor G\p{a}}{\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}}{}\quad\infer{F\p{a}\lor G\p{a}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}\quad\infer{F\p{a}\lor G\p{a}}{\infer{G\p{a}}{\infer[1]{\forall xG\p{x}}{}}}}}}$$
-        対偶律より，$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$も成り立つ．
+        <p>
+          $\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}$を証明する．$F\p{x}$に含まれない$a$を用いて，
+          $$\infer[1]{\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}}{\infer{F\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall\p{F\p{x}\land G\p{x}}{}}}}}\quad\infer{\forall xG\p{x}}{\infer{G\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall\p{F\p{x}\land G\p{x}}{}}}}}}}$$
+        </p>
+        <p>
+          逆も証明する．$F\p{x}$に含まれない$a$を用いて，
+          $$\infer[1]{\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}}{\infer{\forall x\p{F\p{x}\land G\p{x}}}{\infer{F\p{a}\land G\p{a}}{\infer{F\p{a}}{\infer{\forall xF\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}{}}}\quad\infer{G\p{a}}{\infer{\forall xG\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}}}}}}$$
+          双対性より，$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$も成り立つ．
+        </p>
+        <p>
+          また，$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$を証明する．$F\p{x}$に含まれない$a$を用いて，
+          $$\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}}{\infer{\forall x\p{F\p{x}\lor G\p{x}}}{\infer{F\p{a}\lor G\p{a}}{\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}}{}\quad\infer{F\p{a}\lor G\p{a}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}\quad\infer{F\p{a}\lor G\p{a}}{\infer{G\p{a}}{\infer[1]{\forall xG\p{x}}{}}}}}}$$
+          対偶律より，$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$も成り立つ．
+        </p>
       </details>
     </details>
   </main>
