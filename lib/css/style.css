@@ -105,6 +105,10 @@ aside {
   background: #aaaaaa;
 }
 
+ol {
+  list-style-type: upper-roman;
+}
+
 ol li {
   list-style-type: none;
   counter-increment: cnt;
