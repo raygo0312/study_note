@@ -77,6 +77,16 @@
       </details>
     </details>
 
+    <div class="me">
+      $b=c\Iff F\p{b}$が真って，$F\p{b}$が真なの？<br>
+      それとも$b=c$と$F\p{b}$が同値であるが真ってこと？
+    </div>
+    <div class="you">
+      $b=c$と$F\p{b}$が同値ってのは$\Iff$で表しているんだけど，真って言葉は論理式に対して定義された言葉だったね<br>
+      でも，$\Iff$は論理式で使う記号じゃないから真偽の対象じゃないよ<br>
+      $\Iff$は成り立つとき以外で使用しちゃいけない記号なんだ
+    </div>
+
     <h3>ZFC公理系</h3>
     <p>
       <dfn>ZFC公理系</dfn>とは一般的に使われている集合の公理系である．ZFC公理系には<dfn>外延性公理</dfn>，<dfn>和集合公理</dfn>，<dfn>無限公理</dfn>，<dfn>冪集合公理</dfn>，<dfn>置換公理</dfn>，<dfn>正則性公理</dfn>，<dfn>選択公理</dfn>があり，Fは置換公理，Cは選択公理を指す．また，$\mathrm{ZFC}^-$のように$^-$をつけたものは正則性公理を除いた公理系を表す．
@@ -610,10 +620,17 @@
         $a,b,f$が次の論理式を満たすとき，$f$を対応といい$f:a\to b$と表す．
         $$f\subset a\times b$$
       </dd>
+    </dl>
+    <p>
+      この$a$を<dfn>始域</dfn>，$b$を<dfn>終域</dfn>という．
+    </p>
+    <dl>
       <dt>写像</dt>
       <dd>
         対応$f:a\to b$で次の論理式も満たすとき，$f$を写像という．
         $$\forall x,x\in a\to \exists!y\p{\p{x,y}\in f}$$
+        $a$を定義域，次の集合を<dfn>像</dfn>という．
+        $$f\p{a}\def\setsep{y\in B}{\forall x\in a,y=f\p{x}}$$
       </dd>
     </dl>
     <p>
@@ -633,18 +650,25 @@
       つまり，$F\p{x,y}$となる$y$が一意であることを主張している．
     </p>
 
+    <h3>集合族</h3>
+    <p>
+      ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字域</dfn>とする<dfn>集合族</dfn>といい，$\setsep{x}{\exists i\in I\p{F\p{i,x}}}$と表す．
+    </p>
+
     <h3>置換公理</h3>
     <dl>
       <h4>公理</h4>
       <dt>置換公理</dt>
       <dd>
         論理関数式$F\p{x,y}$として，
-        $$\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w,z}}$$
+        \begin{align*}
+        &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w,z}}\\
+        \Iff&\forall xy,y\in \setsep{y}{\exists z\in x\p{F\p{z,y}}}\iff\exists z\p{z\in x\land F\p{z,y}}
+        \end{align*}
       </dd>
     </dl>
     <p>
-      この論理関数式$F$をきちんと写像で定義すると，
-      $$f\def\setsep{\p{x,y}\in A}
+      この論理関数式$F$をきちんと写像で定義したい．集合$A$が与えられたとき，これの像$B$を$\setsep{y}{\existsx\in A\p{F\p{x,y}}}$とすると，論理関数式$F$の写像は$f\def\setsep{\p{x,y}\in A\times B}{F\p{x,y}}$で表せる．このとき，$f:i\mapsto a_i$としたとき集合族を$\setsep{a_i}{i\in I}=\set{a_i}$と表してもよい．
     </p>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
