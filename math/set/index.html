@@ -738,13 +738,41 @@
       <h4>命題</h4>
       <dt>正則性公理から導かれる命題</dt>
       <dd>
-        <ul>
+        <ol>
           <li>$\forall x,x\notin x$</li>
           <li>$\forall xy,x\notin y\lor y\notin x</li>
           <li>$\not\exists x\forall y,y\in x$</li>
-        </ul>
+        </ol>
       </dd>
     </dl>
+
+    <details>
+      <summary>命題の証明1</summary>
+      <p>
+        $$\forall x,x\notin x$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $x\in x$と仮定する．このとき，$\set{x}$について正則性公理を考えると，
+          \begin{align*}
+          &\set{x}\neq0\to\exists y\p{y\in\set{x}\land y\cap\set{x}=0}\\
+          \To&\exists y\p{y\in\set{x}\land y\cap\set{x}=0}
+          \end{align*}
+          ここで，
+          \begin{align*}
+          &y\in\set{x}\land y\cap\set{x}=0\\
+          \To&y=x\land y\cap\set{x}=0\\
+          \To&x\cap\set{x}=0
+          \end{align*}
+          より，
+          \begin{align*}
+          &\exists y\p{y\in\set{x}\land y\cap\set{x}=0}\\
+          \To&x\cap\set{x}=0
+          \end{align*}
+        </p>
+      </details>
+    </details>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
