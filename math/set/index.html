@@ -685,7 +685,7 @@
     <h2>無限公理</h2>
     <h3>自然数</h3>
     <p>
-      自然数の集合は具体的に書くと$\set{0,1,2,\cdots}$のことである．自然数の公理は後に紹介する．ここでは集合で表現することだけ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．
+      自然数の集合は具体的に書くと$\set{0,1,2,\cdots}$のことである．これを$\mathbb{N}$と表す．自然数の公理は後に紹介する．ここでは集合で表現することだけ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．
     </p>
     <dl>
       <h4>定義</h4>
@@ -709,9 +709,38 @@
         \end{align*}
       </dd>
     </dl>
-    <p>
 
+    <h3>無限公理</h3>
+    <p>
+      自然数を定義するために認めた公理が<dfn>無限公理</dfn>である．
     </p>
+    <dl>
+      <h4>公理</h4>
+      <dt>無限公理</dt>
+      <dd>
+        \begin{align*}
+        &\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}\\
+        \Iff&0\in\mathbb{N}\land\forall x\p{x\in\mathbb{N}\to \suc{x}\in\mathbb{N}}
+        \end{align*}
+      </dd>
+    </dl>
+
+    <h2>正則性公理</h2>
+    <dl>
+      <h4>公理</h4>
+      <dt>正則性公理</dt>
+      <dd>
+        $$\forall x,x\neq0\to\exists\p{y\in x\land y\cap x=0}$$
+      </dd>
+    </dl>
+
+    <dl>
+      <h4>命題</h4>
+      <dt>正則性公理から導かれる命題</dt>
+      <dd>
+        $$\forall x,x\neq0\to\exists\p{y\in x\land y\cap x=0}$$
+      </dd>
+    </dl>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
