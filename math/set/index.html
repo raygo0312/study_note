@@ -766,6 +766,50 @@
         </p>
       </details>
     </details>
+    <details>
+      <summary>命題の証明2</summary>
+      <p>
+        $$\forall xy,x\notin y\lor y\notin x$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $x\in y\land y\in x$と仮定すると，$x\in y$と$x\in\set{x,y}$より$x\in y\cap\set{x,y}$である．同様に，$y\in x\cap\set{x,y}$である．
+        </p>
+        <p>
+          $\set{x,y}$を正則性公理より，
+          \begin{align*}
+          &\exists z\p{z\in\set{x,y}\land z\cap\set{x,y}=0}\\
+          \To&x\cap\set{x,y}=0\lor y\cap\set{x,y}=0
+          \end{align*}
+          これは$x\in y\cap\set{x,y}\land y\in x\cap\set{x,y}$に矛盾にする．よって，$x\notin y\lor y\notin x$である．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>命題の証明3</summary>
+      <p>
+        $$\not\exists x\forall y,y\in x$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          仮に，$\forall y,y\in u$とすると，$u\in u$より偽．
+        </p>
+      </details>
+    </details>
+
+    <h2>選択公理</h2>
+    <p>
+      <dfn>選択公理</dfn>は$x$の空集合でない各元から1つ選ぶような写像が存在するという主張である．
+    </p>
+    <dl>
+      <h4>公理</h4>
+      <dt>無限公理</dt>
+      <dd>
+        $$\forall x\exists f,f\in\p{\bigcup x}^x\land\forall y\p{y\in x\land y\neq0\to f\p{y}\in y}$$
+      </dd>
+    </dl>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
