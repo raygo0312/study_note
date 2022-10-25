@@ -424,7 +424,8 @@
             &\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\\
             \Iff&\p{a_1,\p{a_2,\cdots,a_n}}=\p{b_1,\p{b_2,\cdots,b_n}}\\
             \Iff&a_1=b_1\land\p{a_2,\cdots,a_n}=\p{b_2,\cdots,b_n}\\
-            \Iff&a_1=b_1\land\cdots\land a_n=b_n\\
+            \Iff&a_1=b_1\land\cdots\land a_n=b_n
+            \end{align*}
           </li>
         </ol>
       </details>
@@ -757,17 +758,9 @@
           $x\in x$と仮定する．このとき，$\set{x}$について正則性公理を考えると，
           \begin{align*}
           &\set{x}\neq0\to\exists y\p{y\in\set{x}\land y\cap\set{x}=0}\\
-          \To&\exists y\p{y\in\set{x}\land y\cap\set{x}=0}
-          \end{align*}
-          ここで，
-          \begin{align*}
-          &y\in\set{x}\land y\cap\set{x}=0\\
-          \To&y=x\land y\cap\set{x}=0\\
-          \To&x\cap\set{x}=0
-          \end{align*}
-          より，
-          \begin{align*}
-          &\exists y\p{y\in\set{x}\land y\cap\set{x}=0}\\
+          \To&\exists y,y\in\set{x}\land y\cap\set{x}=0\\
+          \To&\exists y,y=x\land y\cap\set{x}=0\\
+          \To&\exists y,x\cap\set{x}=0\\
           \To&x\cap\set{x}=0
           \end{align*}
         </p>
