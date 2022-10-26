@@ -810,6 +810,61 @@
         $$\forall x\exists f,f\in\p{\bigcup x}^x\land\forall y\p{y\in x\land y\neq0\to f\p{y}\in y}$$
       </dd>
     </dl>
+
+    <h2>公理から他の公理の導出</h2>
+    <p>
+      この章ではZFC公理に必要のない公理を他の公理から証明する．
+    </p>
+    <details>
+      <summary>分出公理の導出</summary>
+      <p>
+        置換公理$\To$分出公理
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          論理式$G\p{x,y}\Def F\p{x}\land x=y$とすると，$G$は関数論理式である．なぜなら，$G\p{x,y}$と$G\p{x,z}$を仮定すると，$x=y=z$である．置換公理より，
+          \begin{align*}
+          &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land G\p{w,z}}\\
+          \To&\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w}\land w=z}\\
+          \To&\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{w}\\
+          \end{align*}
+          分出公理が導けた．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>対公理の導出</summary>
+      <p>
+        空集合公理，冪集合，置換公理$\To$対公理
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $c\def\mathcal{p}\p{\mathcal{p}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
+          \begin{align*}
+          &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land\p{w=0\land z=a\lor w=1\land z=b}}\\
+          \To&\forall x\exists y\forall z,z\in y\iff0\in x\land z=a\lor 1\in x\land z=b\\
+          \To&\exists y\forall z,z\in y\iff0\in c\land z=a\lor 1\in c\land z=b\\
+          \To&\exists y\forall z,z\in y\iff z=a\lor z=b\\
+          \To&\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
+          \end{align}
+          対公理が導けた．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>空集合公理の導出</summary>
+      <p>
+        無限公理，分出公理$\To$空集合公理
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          1は無限公理より存在する．このとき，$0=\setsep{x\in1}{x=x}$が成り立ち，これは分出公理より存在する．
+        </p>
+      </details>
+    </details>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
