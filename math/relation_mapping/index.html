@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ZFC公理系 | study_note</title>
+  <title>関係・写像 | study_note</title>
   <meta name="author" content="raygo">
   <link rel="stylesheet" href="../../lib/css/bootstrap-reboot.css">
   <link rel="stylesheet" href="../../lib/css/style.css">
@@ -14,8 +14,8 @@
 
 <body>
   <header>
-    <h1>ZFC公理系</h1>
-    <a href="../../">ホーム</a> -&gt; <a href="../">数学</a> -&gt; ZFC公理系
+    <h1>関係・写像</h1>
+    <a href="../../">ホーム</a> -&gt; <a href="../">数学</a> -&gt; 関係・写像
   </header>
   <main>
     <h2>集合</h2>
@@ -89,7 +89,7 @@
 
     <h3>ZFC公理系</h3>
     <p>
-      <dfn>ZFC公理系</dfn>とは一般的に使われている集合の公理系である．ZFC公理系には<dfn>外延性公理</dfn>，<dfn>和集合公理</dfn>，<dfn>無限公理</dfn>，<dfn>冪集合公理</dfn>，<dfn>置換公理</dfn>，<dfn>正則性公理</dfn>，<dfn>選択公理</dfn>があり，Fは置換公理，Cは選択公理を指す．また，$\rm{ZFC}^-$のように$^-$をつけたものは正則性公理を除いた公理系を表す．
+      <dfn>ZFC公理系</dfn>とは一般的に使われている集合の公理系である．ZFC公理系には<dfn>外延性公理</dfn>，<dfn>和集合公理</dfn>，<dfn>無限公理</dfn>，<dfn>冪集合公理</dfn>，<dfn>置換公理</dfn>，<dfn>正則性公理</dfn>，<dfn>選択公理</dfn>があり，Fは置換公理，Cは選択公理を指す．また，$\mathrm{ZFC}^-$のように$^-$をつけたものは正則性公理を除いた公理系を表す．
     </p>
 
     <h2>外延性公理</h2>
@@ -464,7 +464,7 @@
 
     <h2>冪集合</h2>
     <p>
-      <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\scr{P}\p{a}$と表す．
+      <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\mathcal{P}\p{a}$と表す．
     </p>
     <dl>
       <h4>公理</h4>
@@ -602,11 +602,11 @@
       <h4>定義</h4>
       <dt>直積集合</dt>
       <dd>
-        $$a\times b\def\setsep{z\in\scr{P}\p{\scr{P}\p{a\cup b}}}{\exists xy,z=\p{x,y}\land x\in a\land y\in b}$$
+        $$a\times b\def\setsep{z\in\mathcal{P}\p{\mathcal{P}\p{a\cup b}}}{\exists xy,z=\p{x,y}\land x\in a\land y\in b}$$
       </dd>
     </dl>
     <p>
-      $\scr{P}\p{\scr{P}\p{a\cup b}}$はとんでもなく大きい集合を持ってきたものである．条件の方を読むと，$x$は$a$の元で，$y$は$b$の元であるときの$\p{x,y}$であると書かれているので，これで組を表現できている．しかし，分出公理より大きい集合の部分集合出なければならないので，任意の組を元に持つような集合を考えなければならない．組は定義より$\set{\set{x},\set{x,y}}$である．$x,y\in a\cup b$であることから，$\set{x},\set{x,y}\in\scr{P}\p{a\cup b}$であり，$\set{\set{x},\set{x,y}}\in\scr{P}\p{\scr{P}\p{a\cup b}}$である．よって，この定義は直積集合を表している．
+      $\mathcal{P}\p{\mathcal{P}\p{a\cup b}}$はとんでもなく大きい集合を持ってきたものである．条件の方を読むと，$x$は$a$の元で，$y$は$b$の元であるときの$\p{x,y}$であると書かれているので，これで組を表現できている．しかし，分出公理より大きい集合の部分集合出なければならないので，任意の組を元に持つような集合を考えなければならない．組は定義より$\set{\set{x},\set{x,y}}$である．$x,y\in a\cup b$であることから，$\set{x},\set{x,y}\in\mathcal{P}\p{a\cup b}$であり，$\set{\set{x},\set{x,y}}\in\mathcal{P}\p{\mathcal{P}\p{a\cup b}}$である．よって，この定義は直積集合を表している．
     </p>
     <p>
       $\times$は右結合とする．このとき，$a_1\times\cdots\times a_n$は$\p{x_1,\p{x_2,\cdots,x_n}}=\p{x_1,\cdots,x_n}$の集合になる．
@@ -686,7 +686,7 @@
     <h2>無限公理</h2>
     <h3>自然数</h3>
     <p>
-      自然数の集合は具体的に書くと$\set{0,1,2,\cdots}$のことである．これを$\bm{N}$と表す．自然数の公理は後に紹介する．ここでは集合で表現することだけ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．
+      自然数の集合は具体的に書くと$\set{0,1,2,\cdots}$のことである．これを$\mathbb{N}$と表す．自然数の公理は後に紹介する．ここでは集合で表現することだけ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．
     </p>
     <dl>
       <h4>定義</h4>
@@ -721,7 +721,7 @@
       <dd>
         \begin{align*}
         &\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}\\
-        \Iff&0\in\bm{N}\land\forall x\p{x\in\bm{N}\to\suc\p{x}\in\bm{N}}
+        \Iff&0\in\mathbb{N}\land\forall x\p{x\in\mathbb{N}\to\suc\p{x}\in\mathbb{N}}
         \end{align*}
       </dd>
     </dl>
@@ -841,7 +841,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $c\def\scr{P}\p{\scr{P}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
+          $c\def\mathcal{p}\p{\mathcal{p}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
           \begin{align*}
           &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land\p{w=0\land z=a\lor w=1\land z=b}}\\
           \To&\forall x\exists y\forall z,z\in y\iff0\in x\land z=a\lor 1\in x\land z=b\\
