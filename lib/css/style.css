@@ -227,6 +227,7 @@ details.sub summary {
 
 .MathJax {
   padding: 0.1rem;
+  margin: 0 0.2rem;
   overflow-x: auto;
   overflow-y: hidden;
 }
