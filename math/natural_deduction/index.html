@@ -339,7 +339,7 @@
           最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$B\to A\to B$を証明する．
           $$\infer[2]{B\to A\to B}{\infer[1]{A\to B}{\infer{B}{\infer{A\land B}{\infer[1]{A}{}\quad\infer[2]{B}{}}}}}$$
           この補題より$B\sequent A\to B$であり，必要としない論理式を前提として追加してもよいという推論である．この$B$を$\bot$として利用する．
-          $$\infer[2]{\bot\to\lnot\lnot A}{\infer{A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}}$$
+          $$\infer[2]{\bot\toA}{\infer{A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}}$$
         </p>
       </details>
     </details>
@@ -467,6 +467,74 @@
       </details>
     </details>
 
+    <p>
+      等価性は同値性を満たす．<dfn>同値性</dfn>とは反射律，対称律，推移律が成り立つことである．等価性から同値性のそれぞれの性質を証明する．
+    </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>$\iff$の対称律</dt>
+      <dd>
+        任意の論理式$A,B$について，
+        $$A\iff B\Iff B\iff A$$
+      </dd>
+      <dt>$\iff$の推移律</dt>
+      <dd>
+        任意の論理式$A,B,C$について，
+        $$\p{A\iff B}\land\p{B\iff C}\To A\iff C$$
+      </dd>
+      <dt>$=$の対称律</dt>
+      <dd>
+        項$a,b$について，
+        $$a=b\iff b=a$$
+      </dd>
+      <dt>$=$の推移律</dt>
+      <dd>
+        項$a,b,c$
+        $$\p{a=b}\land\p{b=c}\to a=c$$
+      </dd>
+    </dl>
+    <p>
+      $\iff$と$=$の対称律と推移律の証明は等価性以外の$\iff,=$の性質を用いずに求めれば本質的に同じなので$\iff$のみ証明を行う．
+    </p>
+    <details>
+      <summary>$\iff$の対称律の証明</summary>
+      <p>
+        $$A\iff B\Iff B\iff A$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        \begin{align*}
+        A\iff B&\To \p{A\iff A}\iff\p{B\iff A}\\
+        &\To \p{A\iff A}\to\p{B\iff A}
+        \end{align*}
+        反射律より$A\iff A$は定理なので，
+        $$\p{B\iff A}$$
+        が推論された．逆も同様．
+      </details>
+    </details>
+    <details>
+      <summary>$\iff$の推移律の証明</summary>
+      <p>
+        $$\p{A\iff B}\land\p{B\iff C}\To A\iff C$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        \begin{align*}
+        A\iff B&\To \p{A\iff C}\iff\p{B\iff C}\\
+        &\To \p{B\iff C}\to\p{A\iff C}
+        \end{align*}
+        \begin{align*}
+        B\iff C&\To \p{B\iff C}\iff\p{C\iff C}\\
+        &\To \p{C\iff C}\to\p{B\iff C}
+        \end{align*}
+        反射律より$C\iff C$なので，
+        $$\p{B\iff C}$$
+        が推論され，
+        $$\p{A\iff C}$$
+        も推論される．逆も同様．
+      </details>
+    </details>
+
     <h2>双対</h2>
     <h3>二重否定律</h3>
     <p>
@@ -488,7 +556,7 @@
         <summary>証明</summary>
         <p>
           $\p{\to}$
-          $$\infer[2]{A\to\lnot\lnot A}{\infer[1]{\lnot\lnot}{\infer{\bot}{\infer[2]{A}{}\quad\infer[1]{\lnot}{}}}}$$
+          $$\infer[2]{A\to\lnot\lnot A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[2]{A}{}\quad\infer[1]{\lnot A}{}}}}$$
         </p>
         <p>
           $\p{\rto}$二重否定の除去そのものである．
@@ -649,7 +717,7 @@
         <summary>証明</summary>
         <p>
           $\p{\To}$$\top$は定理であるから仮定無しに使用してよい．これを前提として，
-          $$\infer{A\iff\top}{\top}$$
+          $$\infer{A\to\top}{\top}$$
         </p>
         <p>
           $\p{\rTo}$逆も同様．
@@ -661,13 +729,6 @@
     <p>
       真理関数の重要な定理のうち，まだ紹介していないものを次にまとめる．
     </p>
-
-    <div class="you">
-      定理が複数存在するとき名前が<br>
-      [name] lawになって<br>
-      定理が1つのみのとき名前が<br>
-      law of [name]になってるね
-    </div>
 
     <dl>
       <h4>定理</h4>
@@ -780,7 +841,7 @@
         <summary>証明</summary>
         <p>
           $A\land A\to A$は$\land\rm{E}$そのものなので逆を証明する．
-          $$\infer[1]{A\land A}{\infer[1]{A}{}\quad\infer[1]{A}{}}$$
+          $$\infer[1]{A\to A\land A}{\infer{A\land A}{\infer[1]{A}{}\quad\infer[1]{A}{}}}$$
           双対性より$A\lor A\iff A$も成り立つ．
         </p>
       </details>
@@ -795,7 +856,7 @@
         <summary>証明</summary>
         <p>
           $A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$を証明する．
-          $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[2]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land C}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
+          $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[1]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land C}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
         </p>
         <p>
           $\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}$を証明する．
@@ -807,18 +868,18 @@
     <details>
       <summary>恒等律の証明</summary>
       <p>
-        $$A\land\lnot\bot\iff A$$
+        $$A\land\top\iff A$$
         $$A\lor\bot\iff A$$
         $$A\land\bot\iff\bot$$
-        $$A\lor\lnot\bot\iff\lnot\bot$$
+        $$A\lor\top\iff\top$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $A\land\lnot\bot\to A$は$\land\rm{E}$そのものなので逆を証明する．
-          $$\infer[1]{A\to\lnot\bot\land A}{\infer{\lnot\bot\land A}{\lnot\bot\quad\infer[1]{A}{}}}$$
+          $A\land\top\to A$は$\land\rm{E}$そのものなので逆を証明する．
+          $$\infer[1]{A\to\top\land A}{\infer{\top\land A}{\top\quad\infer[1]{A}{}}}$$
           双対性より$A\lor\bot\iff A$も成り立つ．
-          $A\land\bot\iff\bot$は$\land\rm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\lnot\bot\iff\lnot\bot$も成り立つ．
+          $A\land\bot\iff\bot$は$\land\rm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\top\iff\top$も成り立つ．
         </p>
       </details>
     </details>
@@ -853,8 +914,8 @@
           \end{align*}
           よって，$A\land\p{A\lor B}$に$\p{A\lor B}\land\p{A\lor\lnot B}$を代入する．
           \begin{align*}
-          A\land\p{A\lor B}&\Iff\p{A\lor B}\land\p{A\lor\lnot B}\land\p{A\lor B}\
-          &\Iff\p{A\lor B}\land\p{A\lor\lnot B}\
+          A\land\p{A\lor B}&\Iff\p{A\lor B}\land\p{A\lor\lnot B}\land\p{A\lor B}\\
+          &\Iff\p{A\lor B}\land\p{A\lor\lnot B}\\
           &\Iff A
           \end{align*}
           したがって，$A\land\p{A\lor B}\iff A$は成り立つ．また，双対性より，$A\lor\p{A\land B}\iff A$も成り立つ．
@@ -980,7 +1041,7 @@
         </p>
         <p>
           また，$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$を証明する．$F\p{x}$に含まれない$a,b$を用いて，
-          $$\infer[2]{\exists y\forall xF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\infer[2]{\exists y\forall xF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
+          $$\infer[2]{\exists x\forall yF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\infer[2]{\exists x\forall yF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
         </p>
       </details>
     </details>
@@ -1000,7 +1061,7 @@
         </p>
         <p>
           逆も証明する．$F\p{x}$に含まれない$a$を用いて，
-          $$\infer[1]{\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}}{\infer{\forall x\p{F\p{x}\land G\p{x}}}{\infer{F\p{a}\land G\p{a}}{\infer{F\p{a}}{\infer{\forall xF\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}{}}}\quad\infer{G\p{a}}{\infer{\forall xG\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}}}}}}$$
+          $$\infer[1]{\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}}{\infer{\forall x\p{F\p{x}\land G\p{x}}}{\infer[1]{F\p{a}\land G\p{a}}{\infer{F\p{a}}{\infer{\forall xF\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}{}}}\quad\infer{G\p{a}}{\infer{\forall xG\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}}}}}}$$
           双対性より，$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$も成り立つ．
         </p>
         <p>
