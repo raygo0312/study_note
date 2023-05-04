@@ -259,12 +259,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          空集合$0,0'$について，$\forall x,x\notin0$と$\forall x,x\notin0'$が成り立つ．つまり，
-          \begin{align*}
-          &\forall x\p{x\notin0}\land\forall x\p{x\notin0'}\\
-          \Iff&\forall x,x\notin0\land x\notin0'
-          \end{align*}
-          同様に，$\To&\forall x,x\notin0'\to x\notin0$が成り立つから．外延性公理より$0=0'$である．
+          空集合$0,0'$について，$\forall x,x\notin0$と$\forall x,x\notin0'$が成り立つ．つまり，$\forall x,x\notin0'\iff x\notin0$が成り立つから．外延性公理より$0=0'$である．
         </p>
       </details>
     </details>
@@ -283,6 +278,18 @@
         \end{align*}
       </dd>
     </dl>
+    <details>
+      <summary>対の一意性</summary>
+      <p>
+        $\set{a,b}$は一意である．
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          対$\set{a,b},\set{a,b}'$について，$\forall x,x\in\set{a,b}\iff x=a\lor x=b$と$\forall x,x\in\set{a,b}'\iff x=a\lor x=b$が成り立つ．推移律より，$\forall x,x\in\set{a,b}\iff x\in\set{a,b}'$外延性公理より$\set{a,b}=\set{a,b}'$である．
+        </p>
+      </details>
+    </details>
     <dl>
       <h4>対の性質</h4>
       $$\set{a,b}=\set{b,a}$$
