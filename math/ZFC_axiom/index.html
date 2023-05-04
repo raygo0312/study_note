@@ -329,7 +329,7 @@
           &\p{c=a\lor c=b}\land\p{b=a\lor b=c}\\
           \Iff&c=a\land b=a\lor b=c&\bcs{分配律}\\
           \Iff&b=c\lor b=c&\bcs{推移律}\\
-          \Iff&b=c&\bcs{冪等律}
+          \Iff&b=c
           \end{align*}
           よって，$\set{a,b}=\set{a,c}\iff b=c$である．
         </p>
@@ -387,8 +387,8 @@
           ($\to$)の証明．
           \begin{align*}
           &\set{a}\in\p{a,b}=\set{\set{a},\set{a,b}}\\
-          \Iff&\set{a}\in\p{a',b'}=\set{\set{a'},\set{a',b'}}\\
-          \Iff&\set{a}=\set{a'}\lor\set{a}=\set{a',b'}
+          \Iff&\set{a}\in\p{a',b'}=\set{\set{a'},\set{a',b'}}&\bcs{前提}\\
+          \Iff&\set{a}=\set{a'}\lor\set{a}=\set{a',b'}&\bcs{対公理}
           \end{align*}
         </p>
         <p>
@@ -398,8 +398,8 @@
           \end{align*}
           よって，仮定より，
           \begin{align*}
-          &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}\notag\\
-          \Iff&\set{a,b}=\set{a,b'}\notag\\
+          &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}\\
+          \Iff&\set{a,b}=\set{a,b'}\\
           \Iff&b=b'
           \end{align*}
           よって示された．
@@ -411,8 +411,8 @@
           \end{align*}
           よって，仮定より，
           \begin{align*}
-          &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}\notag\\
-          \Iff&\set{a,b}=\set{a}\notag\\
+          &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}\\
+          \Iff&\set{a,b}=\set{a}\\
           \Iff&b=a
           \end{align*}
           よって$a=b=a'=b'$より示された．
@@ -523,6 +523,7 @@
       このことから$\cup$は$\lor$と同じ定理を使用することができることがわかる．
     </p>
 
+
     <h2>冪集合</h2>
     <p>
       <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\scr{P}\p{a}$と表す．冪集合公理は冪集合の存在を保証する．
@@ -543,7 +544,7 @@
       $$\bigcup2^a=a$$
     </dl>
     <details>
-      <summary>命題の証明1</summary>
+      <summary>冪集合の性質の証明1</summary>
       <p>
         $$a\in b\to\set{a}\in2^b$$
       </p>
@@ -565,7 +566,7 @@
       </details>
     </details>
     <details>
-      <summary>命題の証明2</summary>
+      <summary>冪集合の性質の証明2</summary>
       <p>
         $$\bigcup2^a=a$$
       </p>
@@ -578,7 +579,7 @@
           \Iff&\exists y\p{x\in y\land y\in2^a}\\
           \Iff&\exists y\p{x\in y\land y\subset a}\\
           \Iff&x\in a
-          \end{slign*}
+          \end{align*}
           よって，$\bigcup2^a\subset a$
         </p>
         <p>
