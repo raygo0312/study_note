@@ -115,7 +115,7 @@
       </dd>
       <dt>推移律</dt>
       <dd>
-        $$\forall abc,a\subset b\land b\subset c\to b\subset c$$
+        $$\forall abc,a\subset b\land b\subset c\to a\subset c$$
       </dd>
       <dt>反対称律</dt>
       <dd>
@@ -145,7 +145,7 @@
     <details>
       <summary>$\subset$の推移律の証明</summary>
       <p>
-        $$\forall abc,a\subset b\land b\subset c\to b\subset c$$
+        $$\forall abc,a\subset b\land b\subset c\to a\subset c$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -153,9 +153,11 @@
           定義より，
           \begin{align*}
           &\forall x\p{x\in a\to x\in b}\land\forall x\p{x\in b\subset x\in c}\\
-          \To&\forall x,x\in a\to x\in b\land x\in b\subset x\in c&\bcs{量化の分配}
+          \Iff&\forall x,x\in a\to x\in b\land x\in b\to x\in c&\bcs{量化の分配}\\
+          \To&\forall x,x\in a\to x\in c&\bcs{推移律}\\
+          \Iff&a\subset c\\
           \end{align*}
-          同一律よりこれは真である．
+          よりこれは真である．
         </p>
       </details>
     </details>
