@@ -534,6 +534,18 @@
     <div class="you">
       逆はどれか一つでもいいから$\set{\set{0},\set{0,1,2},\set{2,3,5}}$から元を取ってきてその元を持っていればいいことから$\bigcup x=\set{0,1,2,3,5}$となるね
     </div>
+    <details>
+      <summary>和集合の一意性</summary>
+      <p>
+        $\bigcup x$は一意である．
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          和集合$\bigcup a,\bigcup'a$について，$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}$と$\forall x,x\in\bigcup'a\iff\exists y\p{x\in y\land y\in a}$が成り立つ．推移律より，$\forall x,x\in\bigcup a\iff x\in\bigcup' a$外延性公理より$\bigcup a=\bigcup'a$である．
+        </p>
+      </details>
+    </details>
     <dl>
       <h4>定義</h4>
       <dt>和集合の演算子</dt>
@@ -627,7 +639,7 @@
     <h2>分出公理</h2>
     <h3>分出公理</h3>
     <p>
-      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，制限を設けないと，矛盾を生じることがある．そこで，$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は下の公理より束縛変数であることに注意する．また，他の公理から証明できる．
+      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，制限を設けないと，矛盾を生じることがある．そこで，$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数であることに注意する．他の公理から証明できる．
     </p>
     <dl>
       <h4>公理</h4>
