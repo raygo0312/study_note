@@ -525,7 +525,7 @@
 
     <h2>冪集合</h2>
     <p>
-      <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\scr{P}\p{a}$と表す．
+      <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\scr{P}\p{a}$と表す．冪集合公理は冪集合の存在を保証する．
     </p>
     <dl>
       <h4>公理</h4>
@@ -533,16 +533,14 @@
       <dd>
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff z\subset x\\
-        \Iff&\forall xy,y\in2^x\iff y\subset x
+        \To&\forall xy,y\in2^x\iff y\subset x
         \end{align*}
       </dd>
     </dl>
     <dl>
-      <h4>命題</h4>
-      <ol>
-        <li>$a\in b\to\set{a}\in2^b$</li>
-        <li>$\bigcup2^a=a$</li>
-      </ol>
+      <h4>冪集合の性質</h4>
+      $$a\in b\to\set{a}\in2^b$$
+      $$\bigcup2^a=a$$
     </dl>
     <details>
       <summary>命題の証明1</summary>
