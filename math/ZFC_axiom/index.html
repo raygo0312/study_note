@@ -257,7 +257,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          ($\rto)の証明．
+          ($\rto$)の証明．
           代入原理より成り立つ．
         </p>
         <p>
@@ -290,9 +290,14 @@
         $$\set{a}\def\set{a,a}$$
       </dd>
     </dl>
+    <p>
+      1元集合は対から定義されるから，対の性質から直ちにわかる性質がある．
+    </p>
     <dl>
-      <h4>命題</h4>
-      $$\set{a}=\set{b,c}\to a=b=c$$
+      <h4>1元集合の性質</h4>
+      $$a\in\set{a}$$
+      $$\set{a}=\set{b,c}\iff a=b=c$$
+      $$\set{a}=\set{b}\iff a=b$$
     </dl>
 
     <h3>順序対</h3>
@@ -307,57 +312,59 @@
       </dd>
     </dl>
     <dl>
-      <h4>命題</h4>
+      <h4>順序対の性質</h4>
       $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
     </dl>
     <details>
-      <summary>命題の証明</summary>
+      <summary>順序対の性質の証明</summary>
       <p>
         $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          対公理より，
+          ($\rto$)の証明．
+          代入原理より成り立つ．
+        </p>
+        <p>
+          ($\to$)の証明．
           \begin{align*}
-          &\set{a}\in\p{a,b}\\
-          \Iff&\set{a}\in\p{a',b'}\\
+          &\set{a}\in\p{a,b}=\set{\set{a},\set{a,b}}\\
+          \Iff&\set{a}\in\p{a',b'}=\set{\set{a'},\set{a',b'}}\\
           \Iff&\set{a}=\set{a'}\lor\set{a}=\set{a',b'}
           \end{align*}
         </p>
-        <ol>
-          <li>
-            $\set{a}=\set{a'}$のとき，
-            \begin{align}
-            a=a'
-            \end{align}
-            よって，仮定より，
-            \begin{align}
-            &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}\notag\\
-            \Iff&\set{a,b}=\set{a,b'}\notag\\
-            \Iff&b=b'
-            \end{align}
-            (1),(2)より示された．
-          </li>
-          <li>
-            $\set{a}=\set{a',b'}$のとき，
-            \begin{align}
-            a=a'=b'
-            \end{align}
-            よって，仮定より，
-            \begin{align}
-            &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}\notag\\
-            \Iff&\set{a,b}=\set{a}\notag\\
-            \Iff&b=a
-            \end{align}
-            (1),(2)より示された．
-          </li>
-        </ol>
         <p>
-          逆は自明．
+          $\set{a}=\set{a'}$のとき，
+          \begin{align*}
+          a=a'
+          \end{align*}
+          よって，仮定より，
+          \begin{align*}
+          &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}\notag\\
+          \Iff&\set{a,b}=\set{a,b'}\notag\\
+          \Iff&b=b'
+          \end{align*}
+          よって示された．
+        </p>
+        <p>
+          $\set{a}=\set{a',b'}$のとき，
+          \begin{align*}
+          a=a'=b'
+          \end{align*}
+          よって，仮定より，
+          \begin{align*}
+          &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}\notag\\
+          \Iff&\set{a,b}=\set{a}\notag\\
+          \Iff&b=a
+          \end{align*}
+          よって$a=b=a'=b'$より示された．
         </p>
       </details>
     </details>
+    <p>
+      順序対を$n$個の組として拡張する．
+    </p>
     <dl>
       <h4>定義</h4>
       順序組
@@ -367,7 +374,7 @@
       </dd>
       <dt>1組(1元集合)</dt>
       <dd>
-        $$\p{a}\def\set{a}$$
+        $$\p{a}\def a$$
       </dd>
       <dt>2組(順序対)</dt>
       <dd>
@@ -379,11 +386,11 @@
       </dd>
     </dl>
     <dl>
-      <h4>命題</h4>
-      $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\to a_1=b_1\land\cdots\land a_n=b_n$$
+      <h4>順序組の性質</h4>
+      $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\iff a_1=b_1\land\cdots\land a_n=b_n$$
     </dl>
     <details>
-      <summary>命題の証明</summary>
+      <summary>順序組の性質の証明</summary>
       <p>
         $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\iff a_1=b_1\land\cdots\land a_n=b_n$$
       </p>
