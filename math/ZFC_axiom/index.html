@@ -53,7 +53,7 @@
     </dl>
 
     <details>
-      <summary>$=$の対称律の証明</summary>
+      <summary>$=$の対称律</summary>
       <p>
         $$\forall ab,a=b\to b=a$$
       </p>
@@ -65,7 +65,7 @@
       </details>
     </details>
     <details>
-      <summary>$=$の推移律の証明</summary>
+      <summary>$=$の推移律</summary>
       <p>
         $$\forall abc,a=b\land b=c\to a=c$$
       </p>
@@ -126,7 +126,7 @@
       これら3つの性質を満たす関係を<dfn>順序関係</dfn>という．つまり，$\subset$は順序関係である．反対称律は外延性公理から導ける．
     </p>
     <details>
-      <summary>$\subset$の反射律の証明</summary>
+      <summary>$\subset$の反射律</summary>
       <p>
         $$\forall a,a\subset a$$
       </p>
@@ -143,7 +143,7 @@
       </details>
     </details>
     <details>
-      <summary>$\subset$の推移律の証明</summary>
+      <summary>$\subset$の推移律</summary>
       <p>
         $$\forall abc,a\subset b\land b\subset c\to a\subset c$$
       </p>
@@ -225,6 +225,10 @@
       </details>
     </details>
 
+    <div class="you">
+      この練習問題からわかるように，集合を一意に表していることを保証している．集合の一意性を証明するためには必須である．
+    </div>
+
     <h2>空集合公理</h2>
     <p>
       <dfn>空集合</dfn>とは要素が一つもない集合のことである．空集合を$\set{}$や$0$と表す．空集合の存在を認める空集合公理は他の公理から証明できる．
@@ -244,6 +248,25 @@
         \end{align*}
       </dd>
     </dl>
+    <details>
+      <summary>空集合の一意性</summary>
+      <p>
+        $$\set{a,b}=\set{b,a}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $x\in\set{a,b}$となる$x$を用意する．
+          \begin{align*}
+          &x\in\set{a,b}\\
+          \Iff&x=a\lor x=b&\bcs{対公理}\\
+          \Iff&x=b\lor x=a\\
+          \Iff&x\in\set{b,a}&\bcs{対公理}
+          \end{align*}
+          よって，$x\in\set{a,b}\iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
+        </p>
+      </details>
+    </details>
     <p>
       空集合は任意の集合を持たない．
     </p>
@@ -269,7 +292,7 @@
       $$\set{a,b}=\set{a,c}\iff b=c$$
     </dl>
     <details>
-      <summary>対の性質の証明1</summary>
+      <summary>対の性質1</summary>
       <p>
         $$\set{a,b}=\set{b,a}$$
       </p>
@@ -288,7 +311,7 @@
       </details>
     </details>
     <details>
-      <summary>対の性質の証明2</summary>
+      <summary>対の性質2</summary>
       <p>
         $$a\in\set{a,b}, b\in\set{a,b}$$
       </p>
@@ -307,7 +330,7 @@
       </details>
     </details>
     <details>
-      <summary>対の性質の証明3</summary>
+      <summary>対の性質3</summary>
       <p>
         $$\set{a,b}=\set{a,c}\iff b=c$$
       </p>
@@ -373,7 +396,7 @@
       $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
     </dl>
     <details>
-      <summary>順序対の性質の証明</summary>
+      <summary>順序対の性質</summary>
       <p>
         $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
       </p>
@@ -447,7 +470,7 @@
       $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\iff a_1=b_1\land\cdots\land a_n=b_n$$
     </dl>
     <details>
-      <summary>順序組の性質の証明</summary>
+      <summary>順序組の性質</summary>
       <p>
         $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\iff a_1=b_1\land\cdots\land a_n=b_n$$
       </p>
@@ -544,7 +567,7 @@
       $$\bigcup2^a=a$$
     </dl>
     <details>
-      <summary>冪集合の性質の証明1</summary>
+      <summary>冪集合の性質1</summary>
       <p>
         $$a\in b\to\set{a}\in2^b$$
       </p>
@@ -560,13 +583,13 @@
           よって$x\in\set{a}\to x\in b$であるから，
           \begin{align*}
           &\set{a}\subset b\\
-          \Iff&\set{a}\in2^b
+          \Iff&\set{a}\in2^b&\bcs{冪集合公理}
           \end{align*}
         </p>
       </details>
     </details>
     <details>
-      <summary>冪集合の性質の証明2</summary>
+      <summary>冪集合の性質2</summary>
       <p>
         $$\bigcup2^a=a$$
       </p>
@@ -588,7 +611,7 @@
           &x\in a\\
           \To&\set{x}\in2^a
           \end{align*}
-          $x\in\set{x}$であるから，$x\in y\land y\in2^a$となる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$
+          $x\in\set{x}$であるから，$x\in y\land y\in2^a$となる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$なので$a\subset\bigcup2^a$
         </p>
         <p>
           したがって，$\bigcup2^a=a$である．
@@ -808,7 +831,7 @@
     </dl>
 
     <details>
-      <summary>命題の証明1</summary>
+      <summary>命題1</summary>
       <p>
         $$\forall x,x\notin x$$
       </p>
@@ -827,7 +850,7 @@
       </details>
     </details>
     <details>
-      <summary>命題の証明2</summary>
+      <summary>命題2</summary>
       <p>
         $$\forall xy,x\notin y\lor y\notin x$$
       </p>
@@ -847,7 +870,7 @@
       </details>
     </details>
     <details>
-      <summary>命題の証明3</summary>
+      <summary>命題3</summary>
       <p>
         $$\not\exists x\forall y,y\in x$$
       </p>
