@@ -224,9 +224,9 @@
           $x\in\set{a,b}$となる$x$を用意する．
           \begin{align*}
           &x\in\set{a,b}\\
-          \Iff&x=a\lor x=b\bcs{対公理}\\
+          \Iff&x=a\lor x=b&\bcs{対公理}\\
           \Iff&x=b\lor x=a\\
-          \Iff&x\in\set{b,a}\bcs{対公理}
+          \Iff&x\in\set{b,a}&\bcs{対公理}
           \end{align*}
           よって，$x\in\set{a,b}\iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
         </p>
@@ -243,7 +243,7 @@
           $a\notin\set{a,b}$と仮定すると，
           \begin{align*}
           &a\notin\set{a,b}\\
-          \Iff&\lnot\p{a=a\lor a=b}\bcs{対公理}\\
+          \Iff&\lnot\p{a=a\lor a=b}&\bcs{対公理}\\
           \Iff&a\neq a\land a\neq b\\
           \To&a\neq a
           \end{align*}
@@ -259,21 +259,17 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          ($\to$)の証明
           \begin{align*}
           &c\in\set{a,c}\\
-          \Iff&c\in\set{a,b}\bcs{前提}\\
-          \Iff&c=a\lor c=b\bcs{対公理}
+          \Iff&c\in\set{a,b}&\bcs{前提}\\
+          \Iff&c=a\lor c=b&\bcs{対公理}
           \end{align*}
           同様に，$b=a\lor b=c$である．よって，
           \begin{align*}
           &\p{c=a\lor c=b}\land\p{b=a\lor b=c}\\
-          \Iff&c=a\land b=a\lor c=a\land b=c\lor c=b\land b=a\lor c=b\land b=c\bcs{分配律}\\
-          \Iff&b=a\lor c=a\land b=c\lor c=b\land b=a\lor c=b\land b=c\bcs{対称律，推移律}\\
-          \Iff&b=c\lor b=c\lor c=b\land b=a\lor c=b\land b=c\bcs\\
-          \Iff&b=c\lor b=c\lor b=c\lor c=b\land b=c\bcs{対称律}\\
-          \Iff&b=c\lor b=c\lor b=c\lor b=c\bcs{対称律，冪等律}\\
-          \Iff&b=c\bcs{冪等律}
+          \Iff&c=a\land b=a\lor b=c&\bcs{分配律}\\
+          \Iff&b=c\lor b=c&\bcs{推移律}\\
+          \Iff&b=c&\bcs{冪等律}
           \end{align*}
           よって，$\set{a,b}=\set{a,c}\iff b=c$である．
         </p>
