@@ -33,7 +33,7 @@
       </dd>
       <dt>代入原理</dt>
       <dd>
-        $f$を任意の述語として，
+        $F$を任意の述語として，
         $$\forall ab,a=b\to\p{F\p{a}\iff F\p{b}}$$
       </dd>
     </dl>
@@ -60,7 +60,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $F\p{x}\Def x=a$とする．反射律より，$a=a\Iff F\p{a}$は真である．$a=b$と代入原理より，$F\p{b}\Iff b=a$も真である．
+          $F\p{x}\Def x=a$とする．反射律より，$a=a$は真である．つまり，$F\p{a}$は真である．$a=b$と代入原理より，$F\p{b}$すなわち$b=a$も真である．
         </p>
       </details>
     </details>
@@ -72,20 +72,10 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $F\p{x}\Def x=c$とする．前提より$b=c\Iff F\p{b}$は真である．$a=b$と代入原理より，$F\p{a}\Iff a=c$も真である．
+          $F\p{x}\Def x=c$とする．前提より$b=c$であるから$F\p{b}$は真である．$a=b$と代入原理より，$F\p{a}$すなわち$a=c$も真である．
         </p>
       </details>
     </details>
-
-    <div class="me">
-      $b=c\Iff F\p{b}$が真って，$F\p{b}$が真なの？<br>
-      それとも$b=c$と$F\p{b}$が同値であるが真ってこと？
-    </div>
-    <div class="you">
-      $b=c$と$F\p{b}$が同値ってのは$\Iff$で表しているんだけど，真って言葉は論理式に対して定義された言葉だったね<br>
-      でも，$\Iff$は論理式で使う記号じゃないから真偽の対象じゃないよ<br>
-      $\Iff$は成り立つとき以外で使用しちゃいけない記号なんだ
-    </div>
 
     <h3>ZFC公理系</h3>
     <p>
@@ -120,10 +110,10 @@
       <dfn>外延性</dfn>とは論理学的に，具体例を表すことである．集合論では具体例が重複している場合，1つとしてみる．また，具体例に順番がない性質のことである．
     </p>
 
-    <div class="you">
+    <div class="me">
       重複を1つとしてみるってどういうこと？
     </div>
-    <div class="me">
+    <div class="you">
       例えば，$\set{林檎, 藍苺, 甘蕉, 林檎}$って集合があったとして<br>
       これは林檎が重複してるから1つとみて，$\set{甘蕉, 林檎, 藍苺}$と同じだよってこと<br>
       もちろん順番も入れ替えていいよ<br>
@@ -141,11 +131,11 @@
       </dd>
     </dl>
     <p>
-      2つの集合$x,y$の元$z$が全く共通ならば，その2つの集合$x,y$は等しい．
+      2つの集合$x,y$の元$z$が全く共通ならば，その2つの集合$x,y$は等しい．言い換えると，互いに部分集合である場合等しい．
     </p>
 
     <div class="me">
-      $\forall xy,\forall z\p{z\in x\iff z\in y}\to x=y$の$\forall z$の範囲って$x,y$と同じじゃダメなの？
+      $\forall xy,\forall z\p{z\in x\iff z\in y}\to x=y$の$\forall z$の範囲って$x,y$と同じ，つまり$\forall xyz,z\in x\iff z\in y\to x=y$じゃダメなの？
     </div>
     <div class="you">
       じゃあ折角論理学勉強したし同値変形してみよう
@@ -154,9 +144,9 @@
       \Iff&\forall xy,\lnot\forall z\p{z\in x\iff z\in y}\lor x=y\\
       \Iff&\forall xy,\exists z\lnot\p{z\in x\iff z\in y}\lor x=y\\
       \Iff&\forall xy\exists z\lnot\p{z\in x\iff z\in y}\lor x=y\\
-      \Iff&\forall xy\exists z\lnot\p{z\in x\iff z\in y}\land x\neq y
+      \Iff&\forall xy\exists z\lnot\p{z\in x\iff z\in y\land x\neq y}
       \end{align*}
-      量化子が異なるから余計に分かりづらくなってしまうね
+      量化子が変わってしまうからそう単純じゃないことがわかるね
     </div>
     <div class="me">
       このぐらいの変形だったなら自分で確認すればよかった
@@ -180,7 +170,7 @@
 
     <h2>空集合公理</h2>
     <p>
-      <dfn>空集合</dfn>とは要素が一つもない集合のことである．空集合を$\set{}$や$0$と表す．空集合公理は他の公理から証明できるので，ZFC公理系に含まれてはいない．
+      <dfn>空集合</dfn>とは要素が一つもない集合のことである．空集合を$\set{}$や$0$と表す．空集合の存在を認める空集合公理は他の公理から証明できる．
     </p>
 
     <div class="you">
@@ -193,14 +183,17 @@
       <dd>
         \begin{align*}
         &\exists x\forall y,y\notin x\\
-        \Iff&\forall x,x\notin 0
+        \To&\forall x,x\notin 0
         \end{align*}
       </dd>
     </dl>
+    <p>
+      空集合は任意の集合を持たない．
+    </p>
 
     <h2>対公理</h2>
     <p>
-      <dfn>対</dfn>(<dfn>非順序対</dfn>)とは集合$a,b$だけを元とする集合$\set{a,b}$のことをいう．対公理は他の公理から証明できる．
+      <dfn>対</dfn>(<dfn>非順序対</dfn>)とは二つの集合$a,b$だけを元とする集合$\set{a,b}$のことをいう．対公理は他の公理から証明できる．
     </p>
     <dl>
       <h4>公理</h4>
@@ -230,9 +223,9 @@
         <p>
           $x\in\set{a,b}$となる$x$を用意する．
           \begin{align*}
-          &x\in\set{a,b}\
-          \Iff&x=a\lor x=b\
-          \Iff&x=b\lor x=a\
+          &x\in\set{a,b}\\
+          \Iff&x=a\lor x=b\quad(外延性公理)\\
+          \Iff&x=b\lor x=a\\
           \Iff&x\in\set{b,a}
           \end{align*}
           よって，$x\in\set{a,b}\iff x\in\set{b,a}$であるから$\set{a,b}=\set{b,a}$である．
