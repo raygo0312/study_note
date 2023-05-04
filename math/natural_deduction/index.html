@@ -1061,12 +1061,12 @@
         </p>
         <p>
           逆も証明する．$F\p{x}$に含まれない$a$を用いて，
-          $$\infer[1]{\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}}{\infer{\forall x\p{F\p{x}\land G\p{x}}}{\infer[1]{F\p{a}\land G\p{a}}{\infer{F\p{a}}{\infer{\forall xF\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}{}}}\quad\infer{G\p{a}}{\infer{\forall xG\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}}}}}}$$
+          $$\infer[1]{\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}}{\infer{\forall x\p{F\p{x}\land G\p{x}}}{\infer{F\p{a}\land G\p{a}}{\infer{F\p{a}}{\infer{\forall xF\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}{}}}\quad\infer{G\p{a}}{\infer{\forall xG\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}}}}}}$$
           双対性より，$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$も成り立つ．
         </p>
         <p>
           また，$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$を証明する．$F\p{x}$に含まれない$a$を用いて，
-          $$\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}}{\infer{\forall x\p{F\p{x}\lor G\p{x}}}{\infer{F\p{a}\lor G\p{a}}{\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}}{}\quad\infer{F\p{a}\lor G\p{a}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}\quad\infer{F\p{a}\lor G\p{a}}{\infer{G\p{a}}{\infer[1]{\forall xG\p{x}}{}}}}}}$$
+          $$\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}}{\infer{\forall x\p{F\p{x}\lor G\p{x}}}{\infer[1]{F\p{a}\lor G\p{a}}{\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}}{}\quad\infer{F\p{a}\lor G\p{a}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}\quad\infer{F\p{a}\lor G\p{a}}{\infer{G\p{a}}{\infer[1]{\forall xG\p{x}}{}}}}}}$$
           対偶律より，$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$も成り立つ．
         </p>
       </details>

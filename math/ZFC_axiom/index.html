@@ -104,6 +104,61 @@
         \end{align*}
       </dd>
     </dl>
+    <p>
+      定義より$\subset$は$\to$のように扱える．つまり$\to$と同様の性質が使える．しかし，$\subset$は集合から論理値を返す述語であるからすべての性質が使えるわけではないので注意が必要である．$\subset$の性質を次にまとめる．
+    </p>
+    <dl>
+      <h4>$\subset$の性質</h4>
+      <dt>反射律</dt>
+      <dd>
+        $$\forall a,a\subset a$$
+      </dd>
+      <dt>推移律</dt>
+      <dd>
+        $$\forall abc,a\subset b\land b\subset c\to b\subset c$$
+      </dd>
+      <dt>反対称律</dt>
+      <dd>
+        $$\forall xy,x\subset y\land y\subset x\to x=y$$
+      </dd>
+    </dl>
+    <p>
+      これら3つの性質を満たす関係を<dfn>順序関係</dfn>という．つまり，$\subset$は順序関係である．反対称律は外延性公理から導ける．
+    </p>
+    <details>
+      <summary>$\subset$の反射律の証明</summary>
+      <p>
+        $$\forall a,a\subset a$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          定義より，
+          \begin{align*}
+          &\forall a,a\subset a\\
+          \Iff&\forall ax,x\in a\to x\in a
+          \end{align*}
+          同一律よりこれは真である．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>$\subset$の推移律の証明</summary>
+      <p>
+        $$\forall abc,a\subset b\land b\subset c\to b\subset c$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          定義より，
+          \begin{align*}
+          &\forall x\p{x\in a\to x\in b}\land\forall x\p{x\in b\subset x\in c}\\
+          \To&\forall x,x\in a\to x\in b\land x\in b\subset x\in c&\bcs{量化の分配}
+          \end{align*}
+          同一律よりこれは真である．
+        </p>
+      </details>
+    </details>
 
     <h3>外延性公理</h3>
     <p>
@@ -437,7 +492,17 @@
       とすると，
       $$\bigcup x=\set{0,1,2,3,5}$$
       となる．これを用いて確かめてみようか
-      $y\in\set{0,1,2,3,5}\iff\exists z\p{y\in z\land z\in\set{\set{0},\set{0,1,2},\set{2,3,5}}}$$
+      $$y\in\set{0,1,2,3,5}\iff\exists z\p{y\in z\land z\in\set{\set{0},\set{0,1,2},\set{2,3,5}}}$$
+      $y$は任意だったから$\to$を示すなら$0,1,2,3,5$について考えれば十分だね
+    </div>
+    <div class="me">
+      $z$が存在すればいいんだよね<br>
+      例えば，$0$だったら$\set{0}$や$\set{0,1,2}$が<br>
+      $$0\in\set{0}\land\set{0}\in\set{\set{0},\set{0,1,2},\set{2,3,5}}$$
+      を満たしてるね
+    </div>
+    <div class="you">
+      逆はどれか一つでもいいから$\set{\set{0},\set{0,1,2},\set{2,3,5}}$から元を取ってきてその元を持っていればいいことから$\bigcup x=\set{0,1,2,3,5}$となるね
     </div>
     <dl>
       <h4>定義</h4>
