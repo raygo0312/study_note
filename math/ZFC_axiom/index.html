@@ -248,28 +248,26 @@
         \end{align*}
       </dd>
     </dl>
+    <p>
+      空集合は任意の集合を持たない．
+    </p>
     <details>
       <summary>空集合の一意性</summary>
       <p>
-        $$\set{a,b}=\set{b,a}$$
+        $0$は一意である．
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $x\in\set{a,b}$となる$x$を用意する．
+          空集合$0,0'$について，$\forall x,x\notin0$と$\forall x,x\notin0'$が成り立つ．つまり，
           \begin{align*}
-          &x\in\set{a,b}\\
-          \Iff&x=a\lor x=b&\bcs{対公理}\\
-          \Iff&x=b\lor x=a\\
-          \Iff&x\in\set{b,a}&\bcs{対公理}
+          &\forall x\p{x\notin0}\land\forall x\p{x\notin0'}\\
+          \Iff&\forall x,x\notin0\land x\notin0'
           \end{align*}
-          よって，$x\in\set{a,b}\iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
+          同様に，$\To&\forall x,x\notin0'\to x\notin0$が成り立つから．外延性公理より$0=0'$である．
         </p>
       </details>
     </details>
-    <p>
-      空集合は任意の集合を持たない．
-    </p>
 
     <h2>対公理</h2>
     <p>
