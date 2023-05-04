@@ -111,11 +111,11 @@
       <h4>$\subset$の性質</h4>
       <dt>反射律</dt>
       <dd>
-        $$\forall a,a\subset a$$
+        $$\forall x,x\subset x$$
       </dd>
       <dt>推移律</dt>
       <dd>
-        $$\forall abc,a\subset b\land b\subset c\to a\subset c$$
+        $$\forall xyz,x\subset y\land y\subset z\to x\subset z$$
       </dd>
       <dt>反対称律</dt>
       <dd>
@@ -128,15 +128,15 @@
     <details>
       <summary>$\subset$の反射律</summary>
       <p>
-        $$\forall a,a\subset a$$
+        $$\forall x,x\subset x$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
           定義より，
           \begin{align*}
-          &\forall a,a\subset a\\
-          \Iff&\forall ax,x\in a\to x\in a
+          &\forall x,x\subset x\\
+          \Iff&\forall yx,y\in x\to y\in x
           \end{align*}
           同一律よりこれは真である．
         </p>
@@ -145,17 +145,17 @@
     <details>
       <summary>$\subset$の推移律</summary>
       <p>
-        $$\forall abc,a\subset b\land b\subset c\to a\subset c$$
+        $$\forall abc,x\subset y\land y\subset z\to x\subset z$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
           定義より，
           \begin{align*}
-          &\forall x\p{x\in a\to x\in b}\land\forall x\p{x\in b\subset x\in c}\\
-          \Iff&\forall x,x\in a\to x\in b\land x\in b\to x\in c&\bcs{量化の分配}\\
-          \To&\forall x,x\in a\to x\in c&\bcs{推移律}\\
-          \Iff&a\subset c\\
+          &\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\\
+          \Iff&\forall w,w\in x\to w\in y\land w\in y\to w\in z&\bcs{量化の分配}\\
+          \To&\forall w,w\in x\to w\in z&\bcs{推移律}\\
+          \Iff&x\subset z\\
           \end{align*}
           よりこれは真である．
         </p>
@@ -537,7 +537,7 @@
     <details>
       <summary>和集合の一意性</summary>
       <p>
-        $\bigcup x$は一意である．
+        $\bigcup a$は一意である．
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -578,6 +578,22 @@
         \end{align*}
       </dd>
     </dl>
+    <div class="you">
+      冪集合が部分集合全体の集合であるという意味の通りの論理式が書かれてるね<br>
+      例えば，$a=
+    </div>
+    <details>
+      <summary>冪集合の一意性</summary>
+      <p>
+        $2^a$は一意である．
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          冪集合$2^a,2'^a$について，$\forall x,x\in2^a\iff x\subset a$と$\forall x,x\in2'^a\iff x\subset a$が成り立つ．推移律より，$\forall x,x\in2^a\iff x\in2'^a$外延性公理より$2^a=2'^a$である．
+        </p>
+      </details>
+    </details>
     <dl>
       <h4>冪集合の性質</h4>
       $$a\in b\to\set{a}\in2^b$$
