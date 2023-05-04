@@ -403,10 +403,10 @@
           <li>
             $n=k(k\ge2)$のとき成り立つと仮定すると，
             \begin{align*}
-            &\p{a_{k+1},\cdots,a_1}=\p{b_{k+1},\cdots,b_1}\\
-            \Iff&\p{a_{k+1},\p{a_k,\cdots,a_1}}=\p{b_{k+1},\p{b_k,\cdots,b_1}}\\
-            \Iff&a_{k+1}=b_{k+1}\land\p{a_k,\cdots,a_1}=\p{b_k,\cdots,b_1}\\
-            \Iff&a_{k+1}=b_{k+1}\land\cdots\land a_1=b_1
+            &\p{a_1,\cdots,a_{k+1}}=\p{b_1,\cdots,b_{k+1}}\\
+            \Iff&\p{a_1,\p{a_2,\cdots,a_{k+1}}}=\p{b_1,\p{b_2,\cdots,b_{k+1}}}\\
+            \Iff&a_1=b_1\land\p{a_2,\cdots,a_{k+1}}=\p{b_2,\cdots,b_{k+1}}\\
+            \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}
             \end{align*}
           </li>
         </ol>
@@ -423,10 +423,22 @@
       <dd>
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}\\
-        \Iff&\forall xy,y\in\bigcup x\iff\exists z\p{y\in z\land z\in x}
+        \To&\forall xy,y\in\bigcup x\iff\exists z\p{y\in z\land z\in x}
         \end{align*}
       </dd>
     </dl>
+    <div class="me">
+      全然意味が分からんよ
+    </div>
+    <div class="you">
+      論理式を読むときは覚悟と根気が必要だね<br>
+      和集合の存在を認めているだけの公理なんだけど，この公理が和集合の性質を満たしているかが分かりづらいよね．具体例を見ようか．
+      $$x=\set{\set{0},\set{0,1,2},\set{2,3,5}}$$
+      とすると，
+      $$\bigcup x=\set{0,1,2,3,5}$$
+      となる．これを用いて確かめてみようか
+      $y\in\set{0,1,2,3,5}\iff\exists z\p{y\in z\land z\in\set{\set{0},\set{0,1,2},\set{2,3,5}}}$$
+    </div>
     <dl>
       <h4>定義</h4>
       <dt>和集合の演算子</dt>
