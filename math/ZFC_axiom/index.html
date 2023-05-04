@@ -206,15 +206,13 @@
       </dd>
     </dl>
     <dl>
-      <h4>命題</h4>
-      <ol>
-        <li>$\set{a,b}=\set{b,a}$</li>
-        <li>$a\in\set{a,b}, b\in\set{a,b}$</li>
-        <li>$\set{a,b}=\set{a,c}\iff b=c$</li>
-      </ol>
+      <h4>対の性質</h4>
+      $$\set{a,b}=\set{b,a}$$
+      $$a\in\set{a,b}, b\in\set{a,b}$$
+      $$\set{a,b}=\set{a,c}\iff b=c$$
     </dl>
     <details>
-      <summary>命題の証明1</summary>
+      <summary>対の性質の証明1</summary>
       <p>
         $$\set{a,b}=\set{b,a}$$
       </p>
@@ -233,7 +231,7 @@
       </details>
     </details>
     <details>
-      <summary>命題の証明2</summary>
+      <summary>対の性質の証明2</summary>
       <p>
         $$a\in\set{a,b}, b\in\set{a,b}$$
       </p>
@@ -252,13 +250,18 @@
       </details>
     </details>
     <details>
-      <summary>命題の証明3</summary>
+      <summary>対の性質の証明3</summary>
       <p>
         $$\set{a,b}=\set{a,c}\iff b=c$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
+          ($\rto)の証明．
+          代入原理より成り立つ．
+        </p>
+        <p>
+          ($\to$)の証明．
           \begin{align*}
           &c\in\set{a,c}\\
           \Iff&c\in\set{a,b}&\bcs{前提}\\
@@ -291,25 +294,6 @@
       <h4>命題</h4>
       $$\set{a}=\set{b,c}\to a=b=c$$
     </dl>
-    <details>
-      <summary>命題の証明</summary>
-      <p>
-        $$\set{a}=\set{b,c}\iff a=b=c$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          対公理より，
-          \begin{align*}
-          &b\in\set{b,c}\\
-          \Iff&b\in\set{a}\\
-          \Iff&a=b\lor a=b\\
-          \Iff&a=b
-          \end{align*}
-          同様に，$a=c$．したがって，$a=b=c$である．
-        </p>
-      </details>
-    </details>
 
     <h3>順序対</h3>
     <p>
