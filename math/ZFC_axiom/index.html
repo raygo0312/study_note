@@ -657,7 +657,7 @@
     <h2>分出公理</h2>
     <h3>分出公理</h3>
     <p>
-      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，制限を設けないと，矛盾を生じることがある．そこで，$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数であることに注意する．他の公理から証明できる．
+      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，制限を設けないと，矛盾を生じることがある．分出公理で$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数であることに注意する．他の公理から証明できる．
     </p>
     <dl>
       <h4>公理</h4>
@@ -670,18 +670,15 @@
         \end{align*}
       </dd>
     </dl>
-    <div class="you">
-
-    </div>
     <details>
-      <summary>冪集合の一意性</summary>
+      <summary>集合$\setsep{x\in a}{F\p{x}}$の一意性</summary>
       <p>
-        $2^a$は一意である．
+        条件$F(x)$によって定まる集合$\setsep{x\in a}{F\p{x}}$は一意である．
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          冪集合$2^a,2'^a$について，$\forall x,x\in2^a\iff x\subset a$と$\forall x,x\in2'^a\iff x\subset a$が成り立つ．推移律より，$\forall x,x\in2^a\iff x\in2'^a$．外延性公理より$2^a=2'^a$である．
+          $\setsep{x\in a}{F\p{x}},\setsep{x\in a}{F\p{x}}'$について，$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in x\land F(y)$と$\forall x,x\in\setsep{x\in a}{F\p{x}}'\iff x\in x\land F(y)$が成り立つ．推移律より，$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in\setsep{x\in a}{F\p{x}}'$．外延性公理より$\setsep{x\in a}{F\p{x}}=\setsep{x\in a}{F\p{x}}'$である．
         </p>
       </details>
     </details>
@@ -714,6 +711,11 @@
         $$a-b\def\setsep{x\in a}{x\notin b}$$
       </dd>
     </dl>
+    <p>
+      公理を用いて性質を調べてみる．定義より，
+      $$\forall x,x\in a-b\iff x\in a\land x\notin b$$
+      となる．
+    </p>
 
     <h3>対称差</h3>
     <p>
@@ -726,6 +728,17 @@
         $$a\bigtriangleup b\def\p{a-b}\cup\p{b-a}$$
       </dd>
     </dl>
+    <p>
+      公理を用いて性質を調べてみる．任意の$x$について定義より，
+      \begin{align*}
+      &x\in a\bigtriangleup b\\
+      \iff&x\in\p{a-b}\cup\p{b-a}\\
+      \iff&x\in\p{a-b}\lor x\in\p{b-a}\\
+      \iff&x\in a\land x\notin b\lor x\in b\land x\notin a\\
+      \iff&x\in a\veebar x\in b
+      \end{align*}
+      となる．
+    </p>
 
     <h3>直積集合</h3>
     <p>
