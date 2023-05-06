@@ -286,7 +286,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          対$\set{a,b},\set{a,b}'$について，$\forall x,x\in\set{a,b}\iff x=a\lor x=b$と$\forall x,x\in\set{a,b}'\iff x=a\lor x=b$が成り立つ．推移律より，$\forall x,x\in\set{a,b}\iff x\in\set{a,b}'$外延性公理より$\set{a,b}=\set{a,b}'$である．
+          対$\set{a,b},\set{a,b}'$について，$\forall x,x\in\set{a,b}\iff x=a\lor x=b$と$\forall x,x\in\set{a,b}'\iff x=a\lor x=b$が成り立つ．推移律より，$\forall x,x\in\set{a,b}\iff x\in\set{a,b}'$．外延性公理より$\set{a,b}=\set{a,b}'$である．
         </p>
       </details>
     </details>
@@ -542,7 +542,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          和集合$\bigcup a,\bigcup'a$について，$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}$と$\forall x,x\in\bigcup'a\iff\exists y\p{x\in y\land y\in a}$が成り立つ．推移律より，$\forall x,x\in\bigcup a\iff x\in\bigcup' a$外延性公理より$\bigcup a=\bigcup'a$である．
+          和集合$\bigcup a,\bigcup'a$について，$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}$と$\forall x,x\in\bigcup'a\iff\exists y\p{x\in y\land y\in a}$が成り立つ．推移律より，$\forall x,x\in\bigcup a\iff x\in\bigcup' a$．外延性公理より$\bigcup a=\bigcup'a$である．
         </p>
       </details>
     </details>
@@ -580,7 +580,9 @@
     </dl>
     <div class="you">
       冪集合が部分集合全体の集合であるという意味の通りの論理式が書かれてるね<br>
-      例えば，$a=
+      例えば，$a=\set{0,1,2}$としたら，
+      $$2^a=\set{0,\set{0},\set{1},\set{2},\set{0,1},\set{0,2},\set{1,2},\set{0,1,2}}$$
+      となるね
     </div>
     <details>
       <summary>冪集合の一意性</summary>
@@ -590,7 +592,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          冪集合$2^a,2'^a$について，$\forall x,x\in2^a\iff x\subset a$と$\forall x,x\in2'^a\iff x\subset a$が成り立つ．推移律より，$\forall x,x\in2^a\iff x\in2'^a$外延性公理より$2^a=2'^a$である．
+          冪集合$2^a,2'^a$について，$\forall x,x\in2^a\iff x\subset a$と$\forall x,x\in2'^a\iff x\subset a$が成り立つ．推移律より，$\forall x,x\in2^a\iff x\in2'^a$．外延性公理より$2^a=2'^a$である．
         </p>
       </details>
     </details>
@@ -668,6 +670,21 @@
         \end{align*}
       </dd>
     </dl>
+    <div class="you">
+
+    </div>
+    <details>
+      <summary>冪集合の一意性</summary>
+      <p>
+        $2^a$は一意である．
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          冪集合$2^a,2'^a$について，$\forall x,x\in2^a\iff x\subset a$と$\forall x,x\in2'^a\iff x\subset a$が成り立つ．推移律より，$\forall x,x\in2^a\iff x\in2'^a$．外延性公理より$2^a=2'^a$である．
+        </p>
+      </details>
+    </details>
 
     <h3>積集合</h3>
     <p>
