@@ -23,7 +23,7 @@
       <dfn>集合</dfn>とは数学的対象の集まりを1つの対象としたものであるが，現代の数学では全ての数学的対象を集合とすることを目的としている，厳密に定義すると集合の公理を満たしたものになる．この集合の公理は，今回はZFC公理系を採用し，紹介する．今ある完成されたものではなく，集合を構成する，ZFC公理系を作っていく流れで議論を進める．
     </p>
     <p>
-      集合に用意されている2項述語は$=$と$\in$である．$=$は相等関係を持つ．$\in$はZFC公理系で性質を定められている．$a\in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$=$の公理を下にまとめると，
+      集合に用意されている2項述語は$=$と$\in$である．$=$は相等関係を持つ．$\in$はZFC公理系で性質を定められている．$a\in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$=$の公理を次にまとめると，
     </p>
     <dl>
       <h4>$=$の公理</h4>
@@ -773,7 +773,7 @@
       </dd>
       <dt>対偶律</dt>
       <dd>
-        $$\p{a\subset b}=\overline{b}\subset\overline{a}$$
+        $$\p{a\subset b}\iff\overline{b}\subset\overline{a}$$
       </dd>
       <dt>二重否定</dt>
       <dd>
@@ -803,17 +803,53 @@
       この$a$を<dfn>始域</dfn>，$b$を<dfn>終域</dfn>という．
     </p>
     <dl>
+      <h4>定義</h4>
       <dt>写像</dt>
       <dd>
-        対応$f:a\to b$で次の論理式も満たすとき，$f$を写像という．
-        $$\forall x,x\in a\to \exists!y\p{\p{x,y}\in f}$$
-        $a$を定義域，次の集合を<dfn>像</dfn>という．
-        $$f\p{a}\def\setsep{y\in B}{\forall x\in a,y=f\p{x}}$$
+        対応$f:a\to b$で次の論理式も満たす
+        $$\forall x\in a,\exists!y\p{\p{x,y}\in f}$$
+        $y$を$f(x)$と表す．
+      </dd>
+      写像$f:a\to b$とする．
+      <dt>像</dt>
+      <dd>
+        $a'\subset a$であるとき，
+        $$f\sq{a'}\def\setsep{y\in b}{\forall x\in a',\p{x,y}\in f}$$
+      </dd>
+      <dt>逆像</dt>
+      <dd>
+        $b'\subset b$であるとき，
+        $$f^{-1}\sq{b'}\def\setsep{x\in a}{\exists y\in b',\p{x,y}\in f}$$
+      </dd>
+      <dt>値域</dt>
+      <dd>
+        $$f\sq{a}$$
+      </dd>
+      <dt>写像全体の集合</dt>
+      <dd>
+        $$b^a\def\setseq{f\in2^{a\times b}}{fは写像}$$
+      </dd>
+      <dt>制限</dt>
+      <dd>
+        $$b^a\def\setseq{f\in2^{a\times b}}{fは写像}$$
+      </dd>
+      <dt>単射</dt>
+      <dd>
+        $$\forall xy\in a,f\p{x}=f\p{y}\to x=y$$
+      </dd>
+      <dt>全射</dt>
+      <dd>
+        $$\forall y\in b\exists x\in a,f\p{x}=y$$
+      </dd>
+      <dt>全単射</dt>
+      <dd>
+        単射かつ全射である．
+      </dd>
+      <dt>逆写像</dt>
+      <dd>
+        次のように定義される$f^{-1}$
       </dd>
     </dl>
-    <p>
-      定義より$y$は1つなのでこれを$f\p{x}$と表す．つまり$\forall x,x\in a\to \p{x,f\p{x}}\in f$である．また，写像$f:a\to b$の全体の集合を$b^a$と表す．つまり$f\in b^a$となる．
-    </p>
 
     <h3>関数論理式</h3>
     <dl>

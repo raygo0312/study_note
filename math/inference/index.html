@@ -78,14 +78,14 @@
     </p>
     <dl>
       <h4>用意</h4>
-      論理式$A,B$について，
-      <dfn>否定</dfn>
+      論理式$A,B$について，次は真理関数ある．
+      <dt>否定</dt>
       <dd>$$\lnot\p{A}$$</dd>
-      <dfn>連言</dfn>
+      <dt>連言</dt>
       <dd>$$\land\p{A,B}$$</dd>
-      <dfn>選言</dfn>
+      <dt>選言</dt>
       <dd>$$\lor\p{A,B}$$</dd>
-      <dfn>含意</dfn>
+      <dt>含意</dt>
       <dd>$$\to\p{A,B}$$</dd>
     </dl>
     <p>
@@ -202,22 +202,31 @@
     </p>
     <dl>
       <h4>定義</h4>
-      $\p{a}$が演算子の引数ではなく，とき，
+      $\p{a}$が演算子の引数ではないとき，
       <dt>括弧の略記</dt>
-      <dd>$$A\Def\p{A}$$</dd>
-      $a$の一項演算子$\star$について，
+      <dd>$$a\Def\p{a}$$</dd>
+      $a,b,c$を演算子の引数とする．
       <dt>一項演算子についての略記</dt>
-      <dd>$$\star\,A\Def\p{\star A}$$</dd>
-      $a,b,c$の二項演算子$\star_1$が$\star_2$より優先順位が高いとき，
-      <dt>優先順位</dt>
-      <dd>$$a\,\star_1\,b\,\star_2\,c\Def\p{a\,\star_1\,b}\,\star_2\,c$$</dd>
-      <dd>$$a\,\star_2\,b\,\star_1\,c\Def a\,\star_2\,\p{b\,\star_1\,c}$$</dd>
-      $a,b,c$の二項演算子$\star$が左結合であるとき，
+      <dd>
+        一項演算子$\star$について，
+        $$\star\,A\Def\p{\star A}$$
+      </dd>
+      <dt>二項演算子についての優先順位</dt>
+      <dd>
+        二項演算子$\star_1$が$\star_2$より優先順位が高いとき，
+        $$a\,\star_1\,b\,\star_2\,c\Def\p{a\,\star_1\,b}\,\star_2\,c$$
+        $$a\,\star_2\,b\,\star_1\,c\Def a\,\star_2\,\p{b\,\star_1\,c}$$
+      </dd>
       <dt>左結合</dt>
-      <dd>$$a\,\star\,b\,\star\,c\Def\p{a\,\star\,b}\,\star\,c$$</dd>
-      $a,b,c$の二項演算子$\star$が右結合であるとき，
+      <dd>
+        二項演算子$\star$が左結合であるとき，
+        $$a\,\star\,b\,\star\,c\Def\p{a\,\star\,b}\,\star\,c$$
+      </dd>
       <dt>右結合</dt>
-      <dd>$$a\,\star\,b\,\star\,c\Def a\,\star\,(b\,\star\,c)$$</dd>
+      <dd>
+        二項演算子$\star$が右結合であるとき，
+        $$a\,\star\,b\,\star\,c\Def a\,\star\,(b\,\star\,c)$$
+      </dd>
     </dl>
     <p>
       この略記は論理演算子について定めたものだが，ほかの演算子についても同様に定める．各種演算子ごとの大まかな優先順位を定める．推論文字($\To,\Iff,\sequent,\models$)の優先順位は最下位とする，算術演算とは($+,-,\cup$など)数字や集合など同士の演算子である．
