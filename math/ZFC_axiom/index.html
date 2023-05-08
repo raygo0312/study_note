@@ -33,7 +33,7 @@
       </dd>
       <dt>代入原理</dt>
       <dd>
-        $F$を任意の述語として，
+        述語$F$について，
         $$\forall ab,a=b\to\p{F\p{a}\iff F\p{b}}$$
       </dd>
     </dl>
@@ -239,13 +239,16 @@
     </div>
 
     <dl>
+      <h4>定義</h4>
+      <dt>空集合</dt>
+      <dd>
+        次を満たす$0$のことを空集合という．
+        $$\forall x,x\notin 0$$
+      </dd>
       <h4>公理</h4>
       <dt>空集合公理</dt>
       <dd>
-        \begin{align*}
-        &\exists x\forall y,y\notin x\\
-        \To&\forall x,x\notin 0
-        \end{align*}
+        $$\exists x\forall y,y\notin x$$
       </dd>
     </dl>
     <p>
@@ -269,13 +272,16 @@
       <dfn>対</dfn>(<dfn>非順序対</dfn>)とは二つの集合$a,b$だけを元とする集合$\set{a,b}$のことをいう．対公理は他の公理から証明できる．
     </p>
     <dl>
+      <h4>定義</h4>
+      <dt>対</dt>
+      <dd>
+        次を満たす$\set{a,b}$を対という．
+        $$\forall x,x\in\set{a,b}\iff x=a\lor x=b$$
+      </dd>
       <h4>公理</h4>
       <dt>対公理</dt>
       <dd>
-        \begin{align*}
-        &\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
-        \Iff&\forall xyz,z\in\set{x,y}\iff z=x\lor z=y
-        \end{align*}
+        $$\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y$$
       </dd>
     </dl>
     <details>
@@ -294,10 +300,13 @@
       $\iff$で公理化されている集合は同じやり方で一意性を証明できるから省略するね
     </div>
     <dl>
-      <h4>対の性質</h4>
-      $$\set{a,b}=\set{b,a}$$
-      $$a\in\set{a,b}, b\in\set{a,b}$$
-      $$\set{a,b}=\set{a,c}\iff b=c$$
+      <h4>定理</h4>
+      <dt>対の性質</dt>
+      <dd>
+        $$\set{a,b}=\set{b,a}$$
+        $$a\in\set{a,b}, b\in\set{a,b}$$
+        $$\set{a,b}=\set{a,c}\iff b=c$$
+      </dd>
     </dl>
     <details>
       <summary>対の性質1</summary>
@@ -382,10 +391,13 @@
       1元集合は対から定義されるから，対の性質から直ちにわかる性質がある．
     </p>
     <dl>
-      <h4>1元集合の性質</h4>
-      $$a\in\set{a}$$
-      $$\set{a}=\set{b,c}\iff a=b=c$$
-      $$\set{a}=\set{b}\iff a=b$$
+      <h4>定理</h4>
+      <dt>1元集合の性質</dt>
+      <dd>
+        $$a\in\set{a}$$
+        $$\set{a}=\set{b,c}\iff a=b=c$$
+        $$\set{a}=\set{b}\iff a=b$$
+      </dd>
     </dl>
 
     <h3>順序対</h3>
@@ -400,8 +412,11 @@
       </dd>
     </dl>
     <dl>
-      <h4>順序対の性質</h4>
-      $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
+      <h4>定理</h4>
+      <dt>順序対の性質</dt>
+      <dd>
+        $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
+      </dd>
     </dl>
     <details>
       <summary>順序対の性質</summary>
@@ -474,8 +489,11 @@
       </dd>
     </dl>
     <dl>
-      <h4>順序組の性質</h4>
-      $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\iff a_1=b_1\land\cdots\land a_n=b_n$$
+      <h4>定理</h4>
+      <dt>順序組の性質</dt>
+      <dd>
+        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\iff a_1=b_1\land\cdots\land a_n=b_n$$
+      </dd>
     </dl>
     <details>
       <summary>順序組の性質</summary>
@@ -506,13 +524,15 @@
       <dfn>和集合</dfn>(<dfn>合併</dfn>)とはその集合の元の元の全体の集合である．$a$の和集合を$\bigcup a$と表す．
     </p>
     <dl>
+      <h4>定義</h4>
+      <dt>和集合</dt>
+      <dd>
+        $$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}$$
+      </dd>
       <h4>公理</h4>
       <dt>和集合公理</dt>
       <dd>
-        \begin{align*}
-        &\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}\\
-        \To&\forall xy,y\in\bigcup x\iff\exists z\p{y\in z\land z\in x}
-        \end{align*}
+        $$\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}$$
       </dd>
     </dl>
     <div class="me">
@@ -560,13 +580,15 @@
       <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\scr{P}\p{a}$と表す．冪集合公理は冪集合の存在を保証する．
     </p>
     <dl>
+      <h4>定義</h4>
+      <dt>冪集合</dt>
+      <dd>
+        $$\forall x,x\in2^a\iff x\subset a$$
+      </dd>
       <h4>公理</h4>
       <dt>冪集合公理</dt>
       <dd>
-        \begin{align*}
-        &\forall x\exists y\forall z,z\in y\iff z\subset x\\
-        \To&\forall xy,y\in2^x\iff y\subset x
-        \end{align*}
+        $$\forall x\exists y\forall z,z\in y\iff z\subset x$$
       </dd>
     </dl>
     <div class="you">
@@ -576,9 +598,12 @@
       となるね
     </div>
     <dl>
-      <h4>冪集合の性質</h4>
-      $$a\in b\to\set{a}\in2^b$$
-      $$\bigcup2^a=a$$
+      <h4>定理</h4>
+      <dt>冪集合の性質</dt>
+      <dd>
+        $$a\in b\to\set{a}\in2^b$$
+        $$\bigcup2^a=a$$
+      </dd>
     </dl>
     <details>
       <summary>冪集合の性質1</summary>
@@ -795,7 +820,7 @@
       <h4>定義</h4>
       <dt>対応</dt>
       <dd>
-        $a,b,f$が次の論理式を満たすとき，$f$を対応といい$f:a\to b$と表す．
+        $f$を対応といい，$f:a\to b$と表す．
         $$f\subset a\times b$$
       </dd>
     </dl>
@@ -806,33 +831,33 @@
       <h4>定義</h4>
       <dt>写像</dt>
       <dd>
-        対応$f:a\to b$で次の論理式も満たすとき，$f$を写像という．
+        対応$f:a\to b$について，
         $$\forall x\in a\exists!y,\p{x,y}\in f$$
         $y$を$f(x)$と表す．つまり，
         $$\forall x\in a,\p{x,f\p{x}}\in f$$
       </dd>
-      写像$f:a\to b$とする．
       <dt>像</dt>
       <dd>
-        $a'\subset a$であるとき，
+        写像$f:a\to b$，$a'\subset a$について，
         $$f\sq{a'}\def\setsep{y\in b}{\forall x\in a',\p{x,y}\in f}$$
       </dd>
       <dt>逆像</dt>
       <dd>
-        $b'\subset b$であるとき，
+        写像$f:a\to b$，$b'\subset b$について，
         $$f^{-1}\sq{b'}\def\setsep{x\in a}{\exists y\in b',\p{x,y}\in f}$$
       </dd>
       <dt>値域</dt>
       <dd>
+        写像$f:a\to b$とする．
         $$f\sq{a}$$
       </dd>
       <dt>写像全体の集合</dt>
       <dd>
-        $$b^a\def\setsep{f\in\mathcal{P}\p{a\times b}}{fは写像}$$
+        $$b^a\def\setsep{f\in\frak{P}\p{a\times b}}{fは写像}$$
       </dd>
       <dt>制限</dt>
       <dd>
-        $$b^a\def\setsep{f\in\mathcal{P}\p{a\times b}}{fは写像}$$
+        $$b^a\def\setsep{f\in\frak{P}\p{a\times b}}{fは写像}$$
       </dd>
       <dt>単射</dt>
       <dd>
@@ -848,7 +873,8 @@
       </dd>
       <dt>逆写像</dt>
       <dd>
-        次のように定義される$f^{-1}$
+        次のように定義される$f^{-1}$が写像であるとき，$f^{-1}$を$f$の逆写像という．
+        $$f^{-1}\p{x}=\setsep{\p{y,x}\in\frak{P}\p{b\times a}}{\p{x,y}\in f}$$
       </dd>
     </dl>
 

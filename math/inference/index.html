@@ -372,11 +372,17 @@
     </p>
     <dl>
       <h4>定義</h4>
-      量化子$\lambda$，変数$x,y$の関係演算子$\star$について，
+
       <dt>量化子の否定</dt>
-      <dd>$$\cancel{\lambda} x,A\Def\lnot\p{\lambda x,A}$$</dd>
+      <dd>
+        量化子$\lambda$について，
+        $$\cancel{\lambda} x,A\Def\lnot\p{\lambda x,A}$$
+      </dd>
       <dt>関係演算子の否定</dt>
-      <dd>$$x\,\cancel{\star}\,y\Def\lnot\p{x\,\star\,y}$$</dd>
+      <dd>
+        変数$x,y$の関係演算子$\star$について，
+        $$x\,\cancel{\star}\,y\Def\lnot\p{x\,\star\,y}$$
+      </dd>
     </dl>
 
     <h3>反転の略記</h3>
@@ -385,9 +391,11 @@
     </p>
     <dl>
       <h4>定義</h4>
-      関係演算子$\prec$に対して，
       <dt>反転記法</dt>
-      <dd>$$B\succ A\Def A\prec B$$</dd>
+      <dd>
+        関係演算子$\prec$に対して，
+        $$B\succ A\Def A\prec B$$
+      </dd>
     </dl>
 
     <h2>推論</h2>
@@ -401,9 +409,9 @@
     </p>
     <dl>
       <h4>定義</h4>
-      任意の前提の集合$\Gamma$，帰結$A$について，
       <dt>$\Gamma$から$A$への推論</dt>
       <dd>
+        任意の前提の集合$\Gamma$，帰結$A$について，
         $$\Gamma\To A$$
       </dd>
     </dl>
@@ -414,9 +422,9 @@
     </p>
     <dl>
       <h4>定義</h4>
-      命題の集合$\Gamma$，命題$A$について，
       <dt>$\Gamma$から$A$への論理的帰結</dt>
       <dd>
+        命題の集合$\Gamma$，命題$A$について，
         $$\Gamma\models A$$
       </dd>
     </dl>
@@ -438,13 +446,14 @@
     </p>
     <dl>
       <h4>定義</h4>
-      論理体系$\kappa$，命題の集合$\Gamma$，命題$A$について，
       <dt>$\kappa$で$\Gamma$から$A$は演繹可能</dt>
       <dd>
+        論理体系$\kappa$，命題の集合$\Gamma$，命題$A$について，
         $$\Gamma\vdash_\kappa A$$
       </dd>
       <dt>$\kappa$で$A$は証明可能</dt>
       <dd>
+        論理体系$\kappa$，命題$A$について，
         $$\vdash_\kappa A$$
       </dd>
     </dl>
@@ -453,9 +462,9 @@
     </p>
     <dl>
       <h4>定義</h4>
-      命題の集合$\set{A_1,A_2,\cdots,A_n}$，命題$A$について，
       <dt>集合の省略</dt>
       <dd>
+        命題の集合$\set{A_1,A_2,\cdots,A_n}$，命題$A$について，
         $$A_1,A_2,\cdots,A_n\To A\Def\set{A_1,A_2,\cdots,A_n}\To A$$
         $$A_1,A_2,\cdots,A_n\models A\Def\set{A_1,A_2,\cdots,A_n}\models A$$
         $$A_1,A_2,\cdots,A_n\vdash A\Def\set{A_1,A_2,\cdots,A_n}\vdash A$$
@@ -466,9 +475,9 @@
     </p>
     <dl>
       <h4>定義</h4>
-      命題の集合$A_1,A_2,\cdots,A_n,B_1,B_2,\cdots,B_n$について，
       <dt>$\To,\sequent,\models$記法の拡張</dt>
       <dd>
+        命題の集合$A_1,A_2,\cdots,A_n,B_1,B_2,\cdots,B_n$について，
         「$A_1,A_2,\cdots,A_n\To B_1$」かつ「$A_1,A_2,\cdots,A_n\To B_2$」かつ$\cdots$かつ「$A_1,A_2,\cdots,A_n\To B_n$」なら，
         $$A_1,A_2,\cdots,A_n\To B_1,B_2,\cdots,B_n$$
         「$A_1,A_2,\cdots,A_n\To B_1,B_2,\cdots,B_n$」かつ「$B_1,B_2,\cdots,B_n\To A_1,A_2,\cdots,A_n$」のとき，
