@@ -734,7 +734,7 @@
 
     <dl>
       <h4>定理</h4>
-      ここでは，全体集合を$U$，$a$の補集合$\overline{a}$とする．もちろん$a,b,c\subset U$である．
+      全体集合を$U$，$a$の補集合$\overline{a}$とする．もちろん$a,b,c\subset U$である．
       <dt>交換律</dt>
       <dd>
         $$a\cap b=b\cap a$$
@@ -806,9 +806,10 @@
       <h4>定義</h4>
       <dt>写像</dt>
       <dd>
-        対応$f:a\to b$で次の論理式も満たす
-        $$\forall x\in a,\exists!y\p{\p{x,y}\in f}$$
-        $y$を$f(x)$と表す．
+        対応$f:a\to b$で次の論理式も満たすとき，$f$を写像という．
+        $$\forall x\in a\exists!y,\p{x,y}\in f$$
+        $y$を$f(x)$と表す．つまり，
+        $$\forall x\in a,\p{x,f\p{x}}\in f$$
       </dd>
       写像$f:a\to b$とする．
       <dt>像</dt>
@@ -827,11 +828,11 @@
       </dd>
       <dt>写像全体の集合</dt>
       <dd>
-        $$b^a\def\setseq{f\in2^{a\times b}}{fは写像}$$
+        $$b^a\def\setsep{f\in\mathcal{P}\p{a\times b}}{fは写像}$$
       </dd>
       <dt>制限</dt>
       <dd>
-        $$b^a\def\setseq{f\in2^{a\times b}}{fは写像}$$
+        $$b^a\def\setsep{f\in\mathcal{P}\p{a\times b}}{fは写像}$$
       </dd>
       <dt>単射</dt>
       <dd>
