@@ -226,7 +226,7 @@
     </details>
 
     <div class="you">
-      この練習問題からわかるように，集合を一意に表していることを保証している．集合の一意性を証明するためには必須である．
+      この練習問題からわかるように，集合を一意に表していることを保証している．集合の一意性を証明するためには必須だよ．
     </div>
 
     <h2>空集合公理</h2>
@@ -290,6 +290,9 @@
         </p>
       </details>
     </details>
+    <div class="you">
+      $\iff$で公理化されている集合は同じやり方で一意性を証明できるから省略するね
+    </div>
     <dl>
       <h4>対の性質</h4>
       $$\set{a,b}=\set{b,a}$$
@@ -534,18 +537,6 @@
     <div class="you">
       逆はどれか一つでもいいから$\set{\set{0},\set{0,1,2},\set{2,3,5}}$から元を取ってきてその元を持っていればいいことから$\bigcup a=\set{0,1,2,3,5}$となるね
     </div>
-    <details>
-      <summary>和集合の一意性</summary>
-      <p>
-        $\bigcup a$は一意である．
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          和集合$\bigcup a,\bigcup'a$について，$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}$と$\forall x,x\in\bigcup'a\iff\exists y\p{x\in y\land y\in a}$が成り立つ．推移律より，$\forall x,x\in\bigcup a\iff x\in\bigcup' a$．外延性公理より$\bigcup a=\bigcup'a$である．
-        </p>
-      </details>
-    </details>
     <dl>
       <h4>定義</h4>
       <dt>和集合の演算子</dt>
@@ -584,18 +575,6 @@
       $$2^a=\set{0,\set{0},\set{1},\set{2},\set{0,1},\set{0,2},\set{1,2},\set{0,1,2}}$$
       となるね
     </div>
-    <details>
-      <summary>冪集合の一意性</summary>
-      <p>
-        $2^a$は一意である．
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          冪集合$2^a,2'^a$について，$\forall x,x\in2^a\iff x\subset a$と$\forall x,x\in2'^a\iff x\subset a$が成り立つ．推移律より，$\forall x,x\in2^a\iff x\in2'^a$．外延性公理より$2^a=2'^a$である．
-        </p>
-      </details>
-    </details>
     <dl>
       <h4>冪集合の性質</h4>
       $$a\in b\to\set{a}\in2^b$$
@@ -670,18 +649,6 @@
         \end{align*}
       </dd>
     </dl>
-    <details>
-      <summary>集合$\setsep{x\in a}{F\p{x}}$の一意性</summary>
-      <p>
-        条件$F(x)$によって定まる集合$\setsep{x\in a}{F\p{x}}$は一意である．
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\setsep{x\in a}{F\p{x}},\setsep{x\in a}{F\p{x}}'$について，$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in x\land F(y)$と$\forall x,x\in\setsep{x\in a}{F\p{x}}'\iff x\in x\land F(y)$が成り立つ．推移律より，$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in\setsep{x\in a}{F\p{x}}'$．外延性公理より$\setsep{x\in a}{F\p{x}}=\setsep{x\in a}{F\p{x}}'$である．
-        </p>
-      </details>
-    </details>
 
     <h3>積集合</h3>
     <p>
@@ -702,12 +669,17 @@
 
     <h3>差集合</h3>
     <p>
-      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a-b$で表す．
+      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a-b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，想定している範囲の集合であり，文脈によって決まる．このとき差集合$U-a$を$a$の<dfn>補集合</dfn>という．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>積集合</dt>
       <dd>
+        $$a-b\def\setsep{x\in a}{x\notin b}$$
+      </dd>
+      <dt>補集合</dt>
+      <dd>
+        全体集合
         $$a-b\def\setsep{x\in a}{x\notin b}$$
       </dd>
     </dl>
@@ -757,6 +729,62 @@
     <p>
       $\times$は右結合とする．このとき，$a_1\times\cdots\times a_n$は$\p{x_1,\p{x_2,\cdots,x_n}}=\p{x_1,\cdots,x_n}$の集合になる．
     </p>
+    <dl>
+      <h4>定理</h4>
+      ここでは，全体集合を$U$，$a$の補集合$\bar{a}$とする．もちろん$a,b,c\subset U$である．
+      <dt>交換律</dt>
+      <dd>
+        $$a\cap b=b\cap a$$
+        $$a\cup b=b\cup a$$
+      </dd>
+      <dt>結合律</dt>
+      <dd>
+        $$a\cap\p{b\cap C}=\p{a\cap b}\cap C$$
+        $$a\cup\p{b\cup C}=\p{a\cup b}\cup C$$
+      </dd>
+      <dt>冪等律</dt>
+      <dd>
+        $$a\cap a=a$$
+        $$a\cup a=a$$
+      </dd>
+      <dt>分配律</dt>
+      <dd>
+        $$a\cap\p{b\cup C}=\p{a\cap b}\cup \p{a\cap C}$$
+        $$a\cup\p{b\cap C}=\p{a\cup b}\cap \p{a\cup C}$$
+      </dd>
+      <dt>恒等律</dt>
+      <dd>
+        $$a\cap U=a$$
+        $$a\cup0=a$$
+        $$a\cap0=0$$
+        $$a\cup U=U$$
+      </dd>
+      <dt>矛盾律</dt>
+      <dd>
+        $$\p{a\cap \bar{a}}=0$$
+      </dd>
+      <dt>吸収律</dt>
+      <dd>
+        $$a\cap\p{a\cup b}=a$$
+        $$a\cup\p{a\cap b}=a$$
+      </dd>
+      <dt>対偶律</dt>
+      <dd>
+        $$\p{a\subset b}=\bar{b}\subset\bar{a}$$
+      </dd>
+      <dt>二重否定</dt>
+      <dd>
+        $$a=\bar{\bar{a}}$$
+      </dd>
+      <dt>De Morganの法則</dt>
+      <dd>
+        $$\bar{\p{a\cup b}}=\bar{a}\cap\bar{b}$$
+        $$\bar{\p{a\cap b}}=\bar{a}\cup\bar{b}$$
+      </dd>
+    </dl>
+    <div class="you">
+      証明は論理式に復元するだけなので省略するね
+    </div>
 
     <h2>置換公理</h2>
     <h3>写像</h3>
