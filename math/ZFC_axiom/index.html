@@ -153,8 +153,8 @@
           定義より，
           \begin{align*}
           &\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\\
-          \Iff&\forall w,w\in x\to w\in y\land w\in y\to w\in z&\bcs{量化の分配}\\
-          \To&\forall w,w\in x\to w\in z&\bcs{推移律}\\
+          \Iff&\forall w,w\in x\to w\in y\land w\in y\to w\in z&\because{量化の分配}\\
+          \To&\forall w,w\in x\to w\in z&\because{推移律}\\
           \Iff&x\subset z\\
           \end{align*}
           よりこれは真である．
@@ -319,9 +319,9 @@
           $x\in\set{a,b}$となる$x$を用意する．
           \begin{align*}
           &x\in\set{a,b}\\
-          \Iff&x=a\lor x=b&\bcs{対公理}\\
+          \Iff&x=a\lor x=b&\because{対公理}\\
           \Iff&x=b\lor x=a\\
-          \Iff&x\in\set{b,a}&\bcs{対公理}
+          \Iff&x\in\set{b,a}&\because{対公理}
           \end{align*}
           よって，$x\in\set{a,b}\iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
         </p>
@@ -338,7 +338,7 @@
           $a\notin\set{a,b}$と仮定すると，
           \begin{align*}
           &a\notin\set{a,b}\\
-          \Iff&\lnot\p{a=a\lor a=b}&\bcs{対公理}\\
+          \Iff&\lnot\p{a=a\lor a=b}&\because{対公理}\\
           \Iff&a\neq a\land a\neq b\\
           \To&a\neq a
           \end{align*}
@@ -361,14 +361,14 @@
           ($\to$)の証明．
           \begin{align*}
           &c\in\set{a,c}\\
-          \Iff&c\in\set{a,b}&\bcs{前提}\\
-          \Iff&c=a\lor c=b&\bcs{対公理}
+          \Iff&c\in\set{a,b}&\because{前提}\\
+          \Iff&c=a\lor c=b&\because{対公理}
           \end{align*}
           同様に，$b=a\lor b=c$である．よって，
           \begin{align*}
           &\p{c=a\lor c=b}\land\p{b=a\lor b=c}\\
-          \Iff&c=a\land b=a\lor b=c&\bcs{分配律}\\
-          \Iff&b=c\lor b=c&\bcs{推移律}\\
+          \Iff&c=a\land b=a\lor b=c&\because{分配律}\\
+          \Iff&b=c\lor b=c&\because{推移律}\\
           \Iff&b=c
           \end{align*}
           よって，$\set{a,b}=\set{a,c}\iff b=c$である．
@@ -433,8 +433,8 @@
           ($\to$)の証明．
           \begin{align*}
           &\set{a}\in\p{a,b}=\set{\set{a},\set{a,b}}\\
-          \Iff&\set{a}\in\p{a',b'}=\set{\set{a'},\set{a',b'}}&\bcs{前提}\\
-          \Iff&\set{a}=\set{a'}\lor\set{a}=\set{a',b'}&\bcs{対公理}
+          \Iff&\set{a}\in\p{a',b'}=\set{\set{a'},\set{a',b'}}&\because{前提}\\
+          \Iff&\set{a}=\set{a'}\lor\set{a}=\set{a',b'}&\because{対公理}
           \end{align*}
         </p>
         <p>
@@ -622,7 +622,7 @@
           よって$x\in\set{a}\to x\in b$であるから，
           \begin{align*}
           &\set{a}\subset b\\
-          \Iff&\set{a}\in2^b&\bcs{冪集合公理}
+          \Iff&\set{a}\in2^b&\because{冪集合公理}
           \end{align*}
         </p>
       </details>
@@ -853,28 +853,32 @@
       </dd>
       <dt>写像全体の集合</dt>
       <dd>
-        $$b^a\def\setsep{f\in\frak{P}\p{a\times b}}{f\text{は写像}}$$
+        $$b^a\def\setsep{f\in\scr{P}\p{a\times b}}{fは写像}$$
       </dd>
       <dt>制限</dt>
       <dd>
-        $$b^a\def\setsep{f\in\frak{P}\p{a\times b}}{fは写像}$$
+        写像$f:a\to b$，$a'\subset a$について，
+        $$f|_{a'}\def f\cap\p{a'\times b}$$
       </dd>
       <dt>単射</dt>
       <dd>
+        写像$f:a\to b$について，
         $$\forall xy\in a,f\p{x}=f\p{y}\to x=y$$
       </dd>
       <dt>全射</dt>
       <dd>
+        写像$f:a\to b$について，
         $$\forall y\in b\exists x\in a,f\p{x}=y$$
       </dd>
       <dt>全単射</dt>
       <dd>
-        単射かつ全射である．
+        写像$f:a\to b$について，
+        $$fが単射かつ全射$$
       </dd>
       <dt>逆写像</dt>
       <dd>
-        次のように定義される$f^{-1}$が写像であるとき，$f^{-1}$を$f$の逆写像という．
-        $$f^{-1}\p{x}=\setsep{\p{y,x}\in\frak{P}\p{b\times a}}{\p{x,y}\in f}$$
+        写像$f:a\to b$について，次のように定義される$f^{-1}$が写像であるとき，$f^{-1}$を$f$の逆写像という．
+        $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}$$
       </dd>
     </dl>
 
