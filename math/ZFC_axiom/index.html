@@ -875,7 +875,7 @@
       </dd>
       <dt>合成写像(写像の積)</dt>
       <dd>
-        写像$f:a\to b$，$g:b\to c$について，
+        写像$f:a\to b$，写像$g:b\to c$について，
         $$g\circ f\def\setsep{\p{x,z}\in a\times c}{\p{f\p{x},z}\in g}$$
       </dd>
       <dt>単射</dt>
@@ -901,55 +901,41 @@
     </dl>
     <dl>
       <h4>定理</h4>
-      写像$f:a\to b$，$a_1,a_2\subset a$，$b_1,b_2\subset b$として，
-      <dt>交換律</dt>
+      <dt>像の性質</dt>
       <dd>
-        $$a\cap b=b\cap a$$
-        $$a\cup b=b\cup a$$
+        写像$f:a\to b$，部分集合$a_1,a_2\subset a$，部分集合$b_1,b_2\subset b$について，
+        $$f\sq{a_1\cup a_2}=f\sq{a_1}\cup f\sq{a_2}$$
+        $$f\sq{a_1\cap a_2}\subset f\sq{a_1}\cap f\sq{a_2}$$
+        $$f\sq{a_1-a_2}\supset f\sq{a_1}-f\sq{a_2}$$
+        $$a_1\subset f^{-1}\sq{f\sq{a_1}}$$
+        $$f^{-1}\sq{b_1\cup b_2}=f^{-1}\sq{b_1}\cup f^{-1}\sq{b_2}$$
+        $$f^{-1}\sq{b_1\cap b_2}=f\sq{a_1}\cap f\sq{a_2}$$
+        $$f^{-1}\sq{b_1-b_2}=f^{-1}\sq{b_1}-f^{-1}\sq{b_2}$$
+        $$b_1\subset f\sq{f^{-1}\sq{b_1}}$$
       </dd>
-      <dt>結合律</dt>
+      <dt>単射の性質</dt>
       <dd>
-        $$a\cap\p{b\cap c}=\p{a\cap b}\cap c$$
-        $$a\cup\p{b\cup c}=\p{a\cup b}\cup c$$
+        単射な写像$f:a\to b$，部分集合$a_1,a_2\subset a$，について，
+        $$f\sq{a_1\cap a_2}=f\sq{a_1}\cap f\sq{a_2}$$
+        $$f\sq{a_1-a_2}=f\sq{a_1}-f\sq{a_2}$$
+        $$a_1=f^{-1}\sq{f\sq{a_1}}$$
       </dd>
-      <dt>冪等律</dt>
+      <dt>全射の性質</dt>
       <dd>
-        $$a\cap a=a$$
-        $$a\cup a=a$$
+        全射な写像$f:a\to b$，部分集合$b_1,b_2\subset b$について，
+        $$b_1=f\sq{f^{-1}\sq{b_1}}$$
       </dd>
-      <dt>分配律</dt>
+      <dt>合成写像の性質</dt>
       <dd>
-        $$a\cap\p{b\cup c}=\p{a\cap b}\cup \p{a\cap c}$$
-        $$a\cup\p{b\cap c}=\p{a\cup b}\cap \p{a\cup c}$$
-      </dd>
-      <dt>恒等律</dt>
-      <dd>
-        $$a\cap U=a$$
-        $$a\cup0=a$$
-        $$a\cap0=0$$
-        $$a\cup U=U$$
-      </dd>
-      <dt>矛盾律</dt>
-      <dd>
-        $$\p{a\cap \overline{a}}=0$$
-      </dd>
-      <dt>吸収律</dt>
-      <dd>
-        $$a\cap\p{a\cup b}=a$$
-        $$a\cup\p{a\cap b}=a$$
-      </dd>
-      <dt>対偶律</dt>
-      <dd>
-        $$\p{a\subset b}\iff\overline{b}\subset\overline{a}$$
-      </dd>
-      <dt>二重否定</dt>
-      <dd>
-        $$a=\overline{\overline{a}}$$
-      </dd>
-      <dt>De Morganの法則</dt>
-      <dd>
-        $$\overline{\p{a\cup b}}=\overline{a}\cap\overline{b}$$
-        $$\overline{\p{a\cap b}}=\overline{a}\cup\overline{b}$$
+        写像$f:a\to b$，部分集合$a_1,a_2\subset a$，部分集合$b_1,b_2\subset b$について，
+        $$f\sq{a_1\cup a_2}=f\sq{a_1}\cup f\sq{a_2}$$
+        $$f\sq{a_1\cap a_2}\subset f\sq{a_1}\cap f\sq{a_2}$$
+        $$f\sq{a_1-a_2}\supset f\sq{a_1}-f\sq{a_2}$$
+        $$a_1\subset f^{-1}\sq{f\sq{a_1}}$$
+        $$f^{-1}\sq{b_1\cup b_2}=f^{-1}\sq{b_1}\cup f^{-1}\sq{b_2}$$
+        $$f^{-1}\sq{b_1\cap b_2}=f\sq{a_1}\cap f\sq{a_2}$$
+        $$f^{-1}\sq{b_1-b_2}=f^{-1}\sq{b_1}-f^{-1}\sq{b_2}$$
+        $$b_1\subset f\sq{f^{-1}\sq{b_1}}$$
       </dd>
     </dl>
 
