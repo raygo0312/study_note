@@ -849,6 +849,12 @@
         $y$を$f(x)$と表す．つまり，
         $$\forall x\in a,\p{x,f\p{x}}\in f$$
       </dd>
+      <dt>恒等写像</dt>
+      <dd>
+        写像$f:a\to a$について，
+        $$\id_a\def\setsep{\p{x,x}\in a\times a}{x\in a}$$
+        $a$であることが明確であるとき，$\id\def\id_a$と省略する．
+      </dd>
       <dt>像</dt>
       <dd>
         写像$f:a\to b$，$a'\subset a$について，$f$による$a'$の像とは，
@@ -927,15 +933,10 @@
       </dd>
       <dt>合成写像の性質</dt>
       <dd>
-        写像$f:a\to b$，部分集合$a_1,a_2\subset a$，部分集合$b_1,b_2\subset b$について，
-        $$f\sq{a_1\cup a_2}=f\sq{a_1}\cup f\sq{a_2}$$
-        $$f\sq{a_1\cap a_2}\subset f\sq{a_1}\cap f\sq{a_2}$$
-        $$f\sq{a_1-a_2}\supset f\sq{a_1}-f\sq{a_2}$$
-        $$a_1\subset f^{-1}\sq{f\sq{a_1}}$$
-        $$f^{-1}\sq{b_1\cup b_2}=f^{-1}\sq{b_1}\cup f^{-1}\sq{b_2}$$
-        $$f^{-1}\sq{b_1\cap b_2}=f\sq{a_1}\cap f\sq{a_2}$$
-        $$f^{-1}\sq{b_1-b_2}=f^{-1}\sq{b_1}-f^{-1}\sq{b_2}$$
-        $$b_1\subset f\sq{f^{-1}\sq{b_1}}$$
+        写像$f:a\to b$，写像$a_1,a_2\subset a$，について，
+        $$g\circ fが単射\To fが単射$$
+        $$g\circ fが全射\To fが全射$$
+        $$g\circ f\To fが単射$$
       </dd>
     </dl>
 
