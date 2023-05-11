@@ -669,14 +669,17 @@
       <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，制限を設けないと，矛盾を生じることがある．分出公理で$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数であることに注意する．他の公理から証明できる．
     </p>
     <dl>
+      <h4>定義</h4>
+      <dt>内包表記</dt>
+      <dd>
+        論理式$F\p{x}$に対し，
+        $$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in a\land F\p{x}$$
+      </dd>
       <h4>公理</h4>
       <dt>分出公理</dt>
       <dd>
-        任意の$x$を自由変数にもつ論理式$F\p{x}$に対し，
-        \begin{align*}
-        &\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}\\
-        \To&\forall xy,y\in\setsep{y\in x}{F\p{y}}\iff y\in x\land F\p{y}
-        \end{align*}
+        論理式$F\p{x}$に対し，
+        $$\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}$$
       </dd>
     </dl>
 
@@ -824,13 +827,13 @@
     <h2>置換公理</h2>
     <h3>写像</h3>
     <p>
-      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f\p{3}$は$6$となる．これを$\p(3,6)\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\cdots}$である．写像をさらに一般化した<dfn>対応</dfn>から順に定義する．対応は返ってくる元が一つとは限らないものである．
+      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f\p{3}$は$6$となる．これを$\p{3,6}\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\cdots}$である．写像をさらに一般化した<dfn>対応</dfn>から順に定義する．対応は返ってくる元が一つとは限らないものである．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>対応</dt>
       <dd>
-        $f$を対応といい，$f:a\to b$と表す．
+        次を満たす$f$を対応といい，$f:a\to b$と表す．
         $$f\subset a\times b$$
       </dd>
     </dl>
@@ -841,24 +844,24 @@
       <h4>定義</h4>
       <dt>写像</dt>
       <dd>
-        対応$f:a\to b$について，
+        対応$f:a\to b$について，$f$が写像とは，
         $$\forall x\in a\exists!y,\p{x,y}\in f$$
         $y$を$f(x)$と表す．つまり，
         $$\forall x\in a,\p{x,f\p{x}}\in f$$
       </dd>
       <dt>像</dt>
       <dd>
-        写像$f:a\to b$，$a'\subset a$について，
+        写像$f:a\to b$，$a'\subset a$について，$f$による$a'$の像とは，
         $$f\sq{a'}\def\setsep{y\in b}{\forall x\in a',\p{x,y}\in f}$$
       </dd>
       <dt>逆像</dt>
       <dd>
-        写像$f:a\to b$，$b'\subset b$について，
+        写像$f:a\to b$，$b'\subset b$について，$f$による$b'$の像とは，
         $$f^{-1}\sq{b'}\def\setsep{x\in a}{\exists y\in b',\p{x,y}\in f}$$
       </dd>
       <dt>値域</dt>
       <dd>
-        写像$f:a\to b$について，
+        写像$f:a\to b$について，$a$を$f$の定義域といい，$f$の値域とは$f$による$a$の像であり，
         $$f\sq{a}$$
       </dd>
       <dt>写像全体の集合</dt>
@@ -867,28 +870,86 @@
       </dd>
       <dt>制限</dt>
       <dd>
-        写像$f:a\to b$，$a'\subset a$について，
+        写像$f:a\to b$，$a'\subset a$について，$f$の$a'$への制限とは，
         $$f|_{a'}\def f\cap\p{a'\times b}$$
       </dd>
       <dt>単射</dt>
       <dd>
-        写像$f:a\to b$について，
+        写像$f:a\to b$，$g:b\to cについて，
+        $$g\circ f\def\set{\p{x,z}\in a\times c}{\p{f\p{x},z}\in g}$$
+      </dd>
+      <dt>単射</dt>
+      <dd>
+        写像$f:a\to b$について，$f$が単射であるとは，
         $$\forall xy\in a,f\p{x}=f\p{y}\to x=y$$
       </dd>
       <dt>全射</dt>
       <dd>
-        写像$f:a\to b$について，
+        写像$f:a\to b$について，$f$が全射であるとは，
         $$\forall y\in b\exists x\in a,f\p{x}=y$$
       </dd>
       <dt>全単射</dt>
       <dd>
-        写像$f:a\to b$について，
+        写像$f:a\to b$について，$f$が全単射であるとは，
         $$fが単射かつ全射$$
       </dd>
       <dt>逆写像</dt>
       <dd>
         写像$f:a\to b$について，次のように定義される$f^{-1}$が写像であるとき，$f^{-1}$を$f$の逆写像という．
         $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}$$
+      </dd>
+    </dl>
+    <dl>
+      <h4>定理</h4>
+      写像$f:a\to b$，$a_1,a_2\subset a$，$b_1,b_2\subset b$として，
+      <dt>交換律</dt>
+      <dd>
+        $$a\cap b=b\cap a$$
+        $$a\cup b=b\cup a$$
+      </dd>
+      <dt>結合律</dt>
+      <dd>
+        $$a\cap\p{b\cap c}=\p{a\cap b}\cap c$$
+        $$a\cup\p{b\cup c}=\p{a\cup b}\cup c$$
+      </dd>
+      <dt>冪等律</dt>
+      <dd>
+        $$a\cap a=a$$
+        $$a\cup a=a$$
+      </dd>
+      <dt>分配律</dt>
+      <dd>
+        $$a\cap\p{b\cup c}=\p{a\cap b}\cup \p{a\cap c}$$
+        $$a\cup\p{b\cap c}=\p{a\cup b}\cap \p{a\cup c}$$
+      </dd>
+      <dt>恒等律</dt>
+      <dd>
+        $$a\cap U=a$$
+        $$a\cup0=a$$
+        $$a\cap0=0$$
+        $$a\cup U=U$$
+      </dd>
+      <dt>矛盾律</dt>
+      <dd>
+        $$\p{a\cap \overline{a}}=0$$
+      </dd>
+      <dt>吸収律</dt>
+      <dd>
+        $$a\cap\p{a\cup b}=a$$
+        $$a\cup\p{a\cap b}=a$$
+      </dd>
+      <dt>対偶律</dt>
+      <dd>
+        $$\p{a\subset b}\iff\overline{b}\subset\overline{a}$$
+      </dd>
+      <dt>二重否定</dt>
+      <dd>
+        $$a=\overline{\overline{a}}$$
+      </dd>
+      <dt>De Morganの法則</dt>
+      <dd>
+        $$\overline{\p{a\cup b}}=\overline{a}\cap\overline{b}$$
+        $$\overline{\p{a\cap b}}=\overline{a}\cup\overline{b}$$
       </dd>
     </dl>
 
@@ -905,12 +966,10 @@
       つまり，$F\p{x,y}$となる$y$が一意であることを主張している．
     </p>
 
-    <h3>添字集合</h3>
-    <p>
-      ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字域</dfn>とする<dfn>添字集合</dfn>といい，$\setsep{x}{\exists i\in I\p{F\p{i,x}}}$と表す．
-    </p>
-
     <h3>置換公理</h3>
+    <p>
+      ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字域</dfn>とする<dfn>添字集合</dfn>といい，$\setsep{x}{\exists i\in I\p{F\p{i,x}}}$と表す．これの存在を認める公理が置換公理である．
+    </p>
     <dl>
       <h4>公理</h4>
       <dt>置換公理</dt>
