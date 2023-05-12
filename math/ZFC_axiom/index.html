@@ -31,7 +31,7 @@
       集合に用意されている2項述語は$=$と$\in$である．$=$は相等関係を持つ．$\in$はZFC公理系で性質を定められている．$a\in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$=$の公理を次にまとめると，
     </p>
     <dl>
-      <h4>$=$の公理</h4>
+      <h4>公理</h4>
       <dt>反射律</dt>
       <dd>
         $$\forall a,a=a$$
@@ -46,7 +46,7 @@
       相等関係は同値関係の一種である．<dfn>同値関係</dfn>とは<dfn>反射律</dfn>，<dfn>対称律</dfn>，<dfn>推移律</dfn>が成り立つ関係のことである．つまり，反射律と代入原理から，対象律と推移律を示すことができる．
     </p>
     <dl>
-      <h4>$=$の定理</h4>
+      <h4>定理</h4>
       <dt>対称律</dt>
       <dd>
         $$\forall ab,a=b\to b=a$$
@@ -110,10 +110,10 @@
       </dd>
     </dl>
     <p>
-      定義より$\subset$は$\to$のように扱える．つまり$\to$と同様の性質が使える．しかし，$\subset$は集合から論理値を返す述語であるからすべての性質が使えるわけではないので注意が必要である．$\subset$の性質を次にまとめる．
+      定義より$\subset$は$\to$のように扱える．つまり$\to$と同様の性質が使える．しかし，$\subset$は集合から論理値を返す述語であるからすべての性質が使えるわけではないので注意が必要である．次の3つの性質を満たす関係を<dfn>順序関係</dfn>という．つまり，$\subset$は順序関係である．反対称律は外延性公理から導ける．
     </p>
     <dl>
-      <h4>$\subset$の性質</h4>
+      <h4>定理</h4>
       <dt>反射律</dt>
       <dd>
         $$\forall x,x\subset x$$
@@ -127,9 +127,6 @@
         $$\forall xy,x\subset y\land y\subset x\to x=y$$
       </dd>
     </dl>
-    <p>
-      これら3つの性質を満たす関係を<dfn>順序関係</dfn>という．つまり，$\subset$は順序関係である．反対称律は外延性公理から導ける．
-    </p>
     <details>
       <summary>$\subset$の反射律</summary>
       <p>
@@ -143,7 +140,7 @@
           &\forall x,x\subset x\\
           \Iff&\forall yx,y\in x\to y\in x
           \end{align*}
-          同一律よりこれは真である．
+          同一律よりこれは真である．よって示された．
         </p>
       </details>
     </details>
@@ -162,7 +159,36 @@
           \To&\forall w,w\in x\to w\in z&\because{推移律}\\
           \Iff&x\subset z\\
           \end{align*}
-          よりこれは真である．
+          よって示された．
+        </p>
+      </details>
+    </details>
+    <p>
+      $\sebset$の順序関係以外の性質についても述べる．
+    </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>$\subset$の性質</dt>
+      <dd>
+        $$a\in b\land b\seubet c\To a\in c$$
+      </dd>
+    </dl>
+    <details>
+      <summary>$\subset$の性質</summary>
+      <p>
+        $$a\in b\land b\seubet c\To a\in c$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          任意の$x$を$a$で代入すると，
+          \begin{align*}
+          &a\in b\land b\seubet c\\
+          \Iff&a\in b\land\p{x\in b\to x\in c}\\
+          \To&a\in b\land\p{a\in b\to a\in c}\\
+          \To&a\in c\\
+          \end{align*}
+          よって示された．
         </p>
       </details>
     </details>
@@ -321,7 +347,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $x\in\set{a,b}$となる$x$を用意する．
+          $x\in\set{a,b}$となる$x$について
           \begin{align*}
           &x\in\set{a,b}\\
           \Iff&x=a\lor x=b&\because{対公理}\\
@@ -533,7 +559,7 @@
       <h4>定義</h4>
       <dt>和集合</dt>
       <dd>
-        次を満たす$\Bigcup a$を$a$の和集合という．
+        次を満たす$\bigcup a$を$a$の和集合という．
         $$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}$$
       </dd>
       <h4>公理</h4>
@@ -621,7 +647,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $x\in\set{a}$となる$x$を用意する．
+          $x\in\set{a}$となる$x$について，
           \begin{align*}
           &x\in\set{a}\\
           \Iff&x=a\\
@@ -643,7 +669,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $x\in\bigcup2^a$となる$x$を用意する．
+          $x\in\bigcup2^a$となる$x$について，
           \begin{align*}
           &x\in\bigcup2^a\\
           \Iff&\exists y\p{x\in y\land y\in2^a}\\
@@ -653,7 +679,7 @@
           よって，$\bigcup2^a\subset a$
         </p>
         <p>
-          逆に$x\in a$となる$x$を用意する．
+          逆に$x\in a$となる$x$について，
           \begin{align*}
           &x\in a\\
           \To&\set{x}\in2^a
@@ -1037,15 +1063,11 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $x\in x$と仮定する．このとき，$\set{x}$について正則性公理を考えると，
-          \begin{align*}
-          &\set{x}\neq0\to\exists y\in\set{x}\p{y\cap\set{x}=0}\\
-          \To&\exists y,y\in\set{x}\land y\cap\set{x}=0\\
-          \To&\exists y,y=x\land y\cap\set{x}=0\\
-          \To&\exists y,x\cap\set{x}=0\\
-          \To&x\cap\set{x}=0
-          \end{align*}
-          となる．$x\in x\land x\in \set{x}$であることから，$x\in x\cap\set{x}$であるが，$x\cap\set{x}=0$に矛盾する．
+          $x\in x$と仮定する．$\set{x}$は空集合ではないから，正則性公理より，
+          $$y\cap\set{x}=0$$
+          となる$y\in\set{x}$が存在する．1元集合の性質より$y=x$であるから，$=$の代入原理より，
+          $$x\cap\set{x}=0$$
+          となる．仮定より$x\in x\land x\in \set{x}$であるから，$x\in x\cap\set{x}$となるが，$x\cap\set{x}=0$に矛盾する．よって，$x\notin x$である．
         </p>
       </details>
     </details>
@@ -1060,12 +1082,22 @@
           $x\in y\land y\in x$と仮定すると，$x\in y$と$x\in\set{x,y}$より$x\in y\cap\set{x,y}$である．同様に，$y\in x\cap\set{x,y}$である．
         </p>
         <p>
-          $\set{x,y}$は正則性公理より，
-          \begin{align*}
-          &\exists z\p{z\in\set{x,y}\land z\cap\set{x,y}=0}\\
-          \To&x\cap\set{x,y}=0\lor y\cap\set{x,y}=0
-          \end{align*}
-          これは$x\in y\cap\set{x,y}\land y\in x\cap\set{x,y}$に矛盾にする．よって，$x\notin y\lor y\notin x$である．
+          $\set{x,y}$は空集合ではないから，正則性公理より，
+          $$z\cap\set{x,y}=0$$
+          となる$z\in\set{x,y}$が存在する．対の定義より$z=x\lor z=y$である．
+        </p>
+        <p>
+          $z=x$のとき，
+          $$x\cap\set{x,y}=0$$
+          は$y\in x\cap\set{x,y}$に矛盾する．
+        </p>
+        <p>
+          $z=y$のとき，
+          $$y\cap\set{x,y}=0$$
+          は$x\in y\cap\set{x,y}$に矛盾する．
+        </p>
+        <p>
+          よって，$x\notin y\lor y\notin x$である．
         </p>
       </details>
     </details>
@@ -1077,7 +1109,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          仮に，$\forall y,y\in u$とすると，$u\in u$より偽．
+          $\forall y,y\in u$と仮定すると，$u\in u$より偽．
         </p>
       </details>
     </details>
