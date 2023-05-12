@@ -447,53 +447,51 @@
       <h4>定理</h4>
       <dt>順序対の性質</dt>
       <dd>
-        $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
+        $$\p{a,b}=\p{a',b'}\Iff a=a'\land b=b'$$
       </dd>
     </dl>
     <details>
       <summary>順序対の性質</summary>
       <p>
-        $$\p{a,b}=\p{a',b'}\iff a=a'\land b=b'$$
+        $$\p{a,b}=\p{a',b'}\Iff a=a'\land b=b'$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          ($\rto$)の証明．
+          ($\rTo$)の証明．
           代入原理より成り立つ．
         </p>
         <p>
-          ($\to$)の証明．
-          \begin{align*}
-          &\set{a}\in\p{a,b}=\set{\set{a},\set{a,b}}\\
-          \Iff&\set{a}\in\p{a',b'}=\set{\set{a'},\set{a',b'}}&\because{前提}\\
-          \Iff&\set{a}=\set{a'}\lor\set{a}=\set{a',b'}&\because{対公理}
-          \end{align*}
+          ($\To$)の証明．
+          順序対の定義より$\p{a,b}=\set{\set{a},\set{a,b}}$であるから，対の性質より，
+          $$\set{a}\in\p{a,b}$$
+          である．前提より$\p{a,b}=\p{a',b'}$であるから，
+          $$\set{a}\in\p{a',b'}$$
+          である．順序対の定義より$\p{a',b'}=\set{\set{a'},\set{a',b'}}$であるから，対の定義より，$\set{a}=\set{a'}$または$\set{a}=\set{a',b'}$である．
         </p>
         <p>
-          $\set{a}=\set{a'}$のとき，
+          $\set{a}=\set{a'}$のとき，1元集合の性質より，
+          $$a=a'$$
+          これを前提に代入して，
+          $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}$$
+          対の性質を繰り返し使って，
           \begin{align*}
-          a=a'
+          &\set{a,b}=set{a,b'}\\
+          \To&b=b'
           \end{align*}
-          よって，仮定より，
-          \begin{align*}
-          &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}\\
-          \Iff&\set{a,b}=\set{a,b'}\\
-          \Iff&b=b'
-          \end{align*}
-          よって示された．
+          よって$a=a'\land b=b'$である．
         </p>
         <p>
-          $\set{a}=\set{a',b'}$のとき，
+          $\set{a}=\set{a',b'}$のとき，1元集合の性質より，
+          $$a=a'=b'$$
+          これを前提に代入して，
+          $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}$$
+          対の性質を繰り返し使って，
           \begin{align*}
-          a=a'=b'
+          &\set{a,b}=set{a,a}\\
+          \To&b=a
           \end{align*}
-          よって，仮定より，
-          \begin{align*}
-          &\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}\\
-          \Iff&\set{a,b}=\set{a}\\
-          \Iff&b=a
-          \end{align*}
-          よって$a=b=a'=b'$より示された．
+          よって$b=a=a'=b'$より$a=a'\land b=b'$である．
         </p>
       </details>
     </details>
@@ -1084,7 +1082,7 @@
         <p>
           $\set{x,y}$は空集合ではないから，正則性公理より，
           $$z\cap\set{x,y}=0$$
-          となる$z\in\set{x,y}$が存在する．対の定義より$z=x\lor z=y$である．
+          となる$z\in\set{x,y}$が存在する．対の定義より$z=x$または$z=y$である．
         </p>
         <p>
           $z=x$のとき，
