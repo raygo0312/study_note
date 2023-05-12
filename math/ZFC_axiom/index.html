@@ -135,12 +135,9 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          命題を同値変形する．
-          \begin{align*}
-          &\forall x,x\subset x\\
-          \Iff&\forall yx,y\in x\to y\in x
-          \end{align*}
-          同一律よりこれは真である．よって示された．
+          部分集合の定義より，命題は，
+          $$\forall yx,y\in x\to y\in x$$
+          となる．同一律よりこれは真である．よって示された．
         </p>
       </details>
     </details>
@@ -152,15 +149,15 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          前提より，
+          部分集合の定義より，前提は，
           \begin{align*}
           &x\subset y\land y\subset z\\
           \Iff&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\\
           \Iff&\forall w,w\in x\to w\in y\land w\in y\to w\in z&\because{量化の分配}\\
           \To&\forall w,w\in x\to w\in z&\because{推移律}\\
-          \Iff&x\subset z\\
+          \Iff&x\subset z&\because{部分集合の定義}
           \end{align*}
-          よって示された．
+          であるから，示された．
         </p>
       </details>
     </details>
@@ -332,7 +329,7 @@
       <dd>
         $$\set{a,b}=\set{b,a}$$
         $$a\in\set{a,b}, b\in\set{a,b}$$
-        $$\set{a,b}=\set{a,c}\iff b=c$$
+        $$\set{a,b}=\set{a,c}\Iff b=c$$
       </dd>
     </dl>
     <details>
@@ -343,14 +340,14 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $x\in\set{a,b}$となる$x$について
+          $x\in\set{a,b}$となる$x$について，
           \begin{align*}
           &x\in\set{a,b}\\
-          \Iff&x=a\lor x=b&\because{対公理}\\
-          \Iff&x=b\lor x=a\\
-          \Iff&x\in\set{b,a}&\because{対公理}
+          \Iff&x=a\lor x=b&\because{対の定義}\\
+          \Iff&x=b\lor x=a&\because{\lorの可換律}\\
+          \Iff&x\in\set{b,a}&\because{対の定義}
           \end{align*}
-          よって，$x\in\set{a,b}\iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
+          となるから，$x\in\set{a,b}\Iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
         </p>
       </details>
     </details>
@@ -365,11 +362,11 @@
           $a\notin\set{a,b}$と仮定すると，
           \begin{align*}
           &a\notin\set{a,b}\\
-          \Iff&\lnot\p{a=a\lor a=b}&\because{対公理}\\
-          \Iff&a\neq a\land a\neq b\\
-          \To&a\neq a
+          \Iff&\lnot\p{a=a\lor a=b}&\because{対の定義}\\
+          \Iff&a\neq a\land a\neq b&\because{対の定義}\\
+          \To&a\neq a&\because{縮小律}
           \end{align*}
-          $a\neq a$は反射律と矛盾．したがって$a\in\set{a,b}$である．同様に，$b\in\set{a,b}$
+          となるから，$a\neq a$は$=$の反射律と矛盾．したがって$a\in\set{a,b}$である．また，$b\in\set{b,a}=\set{a,b}$である．
         </p>
       </details>
     </details>
