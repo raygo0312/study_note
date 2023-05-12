@@ -280,7 +280,7 @@
       <h4>定義</h4>
       <dt>対</dt>
       <dd>
-        次を満たす$\set{a,b}$を対という．
+        次を満たす$\set{a,b}$を$a,b$の対という．
         $$\forall x,x\in\set{a,b}\iff x=a\lor x=b$$
       </dd>
       <h4>公理</h4>
@@ -413,6 +413,7 @@
       <h4>定義</h4>
       <dt>順序対</dt>
       <dd>
+        $a,b$の順序対とは，
         $$\p{a,b}\def\set{\set{a},\set{a,b}}$$
       </dd>
     </dl>
@@ -532,6 +533,7 @@
       <h4>定義</h4>
       <dt>和集合</dt>
       <dd>
+        次を満たす$\Bigcup a$を$a$の和集合という．
         $$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}$$
       </dd>
       <h4>公理</h4>
@@ -588,6 +590,7 @@
       <h4>定義</h4>
       <dt>冪集合</dt>
       <dd>
+        次を満たす$2^a$を$a$の冪集合という．
         $$\forall x,x\in2^a\iff x\subset a$$
       </dd>
       <h4>公理</h4>
@@ -666,13 +669,13 @@
     <h2>分出公理</h2>
     <h3>分出公理</h3>
     <p>
-      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，制限を設けないと，矛盾を生じることがある．分出公理で$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数であることに注意する．他の公理から証明できる．
+      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，自由に使うと矛盾を生じることがある．分出公理で$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数であることに注意する．他の公理から証明できる．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>内包表記</dt>
       <dd>
-        論理式$F\p{x}$に対し，
+        論理式$F\p{x}$に対し，集合$\setsep{x\in a}{F\p{x}}$は次を満たす．
         $$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in a\land F\p{x}$$
       </dd>
       <h4>公理</h4>
@@ -691,6 +694,7 @@
       <h4>定義</h4>
       <dt>積集合</dt>
       <dd>
+        $a,b$の積集合とは，
         $$a\cap b\def\setsep{x\in a}{x\in b}$$
       </dd>
     </dl>
@@ -708,11 +712,12 @@
       <h4>定義</h4>
       <dt>差集合</dt>
       <dd>
+        $a,b$の差集合とは，
         $$a-b\def\setsep{x\in a}{x\notin b}$$
       </dd>
       <dt>補集合</dt>
       <dd>
-        全体集合$U$について，
+        全体集合$U$について，$a$の補集合とは，
         $$U-a$$
       </dd>
     </dl>
@@ -730,6 +735,7 @@
       <h4>定義</h4>
       <dt>対称差</dt>
       <dd>
+        $a,b$の対象差とは，
         $$a\bigtriangleup b\def\p{a-b}\cup\p{b-a}$$
       </dd>
     </dl>
@@ -753,6 +759,7 @@
       <h4>定義</h4>
       <dt>直積集合</dt>
       <dd>
+        $a,b$の直積集合とは，
         $$a\times b\def\setsep{z\in\scr{P}\p{\scr{P}\p{a\cup b}}}{\exists xy,z=\p{x,y}\land x\in a\land y\in b}$$
       </dd>
     </dl>
@@ -862,7 +869,7 @@
       </dd>
       <dt>逆像</dt>
       <dd>
-        写像$f:a\to b$，$b'\subset b$について，$f$による$b'$の像とは，
+        写像$f:a\to b$，$b'\subset b$について，$f$による$b'$の逆像とは，
         $$f^{-1}\sq{b'}\def\setsep{x\in a}{\exists y\in b',\p{x,y}\in f}$$
       </dd>
       <dt>値域</dt>
@@ -921,7 +928,7 @@
       </dd>
       <dt>単射の性質</dt>
       <dd>
-        単射な写像$f:a\to b$，部分集合$a_1,a_2\subset a$，について，
+        単射な写像$f:a\to b$，部分集合$a_1,a_2\subset a$について，
         $$f\sq{a_1\cap a_2}=f\sq{a_1}\cap f\sq{a_2}$$
         $$f\sq{a_1-a_2}=f\sq{a_1}-f\sq{a_2}$$
         $$a_1=f^{-1}\sq{f\sq{a_1}}$$
@@ -958,26 +965,29 @@
       ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字域</dfn>とする<dfn>添字集合</dfn>といい，$\setsep{x}{\exists i\in I\p{F\p{i,x}}}$と表す．これの存在を認める公理が置換公理である．
     </p>
     <dl>
+      <h4>定義</h4>
+      <dt>添字集合</dt>
+      <dd>
+        論理関数式$F\p{x,y}$として，
+        $$forall x,x\in \setsep{x}{\exists i\in I\p{F\p{i,x}}}\iff\exists i\p{i\in I\land F\p{i,x}}$$
+      </dd>
       <h4>公理</h4>
       <dt>置換公理</dt>
       <dd>
         論理関数式$F\p{x,y}$として，
-        \begin{align*}
-        &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w,z}}\\
-        \Iff&\forall xy,y\in \setsep{y}{\exists z\in x\p{F\p{z,y}}}\iff\exists z\p{z\in x\land F\p{z,y}}
-        \end{align*}
+        \forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w,z}}
       </dd>
     </dl>
     <p>
-      この論理関数式$F$をきちんと写像で定義したい．集合$A$が与えられたとき，これの像$B$を$\setsep{y}{\exists x\in A\p{F\p{x,y}}}$とすると，論理関数式$F$の写像は$f\def\setsep{\p{x,y}\in A\times B}{F\p{x,y}}$で表せる．このとき，$f:i\mapsto a_i$としたとき集合族を$\setsep{a_i}{i\in I}=\set{a_i}$と表してもよい．また，和集合と積集合を添字集合で拡張させる．
+      この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$$とする．この述語$F$は関数論理式である．よって，また，$f:i\mapsto a_i$としたとき集合族を$\setsep{a_i}{i\in I}=\set{a_i}$と表してもよい．和集合と積集合を添字集合で拡張させる．
     </p>
     <dl>
       <h4>定義</h4>
-      <dt>和集合</dt>
+      <dt>添字和集合</dt>
       <dd>
         $$\bigcup_{i\in I}a_i\def\bigcup\set{a_i}$$
       </dd>
-      <dt>積集合</dt>
+      <dt>添字積集合</dt>
       <dd>
         $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}$$
       </dd>
