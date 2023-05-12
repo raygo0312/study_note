@@ -362,8 +362,8 @@
           $a\notin\set{a,b}$と仮定すると，
           \begin{align*}
           &a\notin\set{a,b}\\
-          \Iff&\lnot\p{a=a\lor a=b}&\because{対の定義}\\
-          \Iff&a\neq a\land a\neq b&\because{対の定義}\\
+          \To&\lnot\p{a=a\lor a=b}&\because{対の定義}\\
+          \To&a\neq a\land a\neq b&\because{対の定義}\\
           \To&a\neq a&\because{縮小律}
           \end{align*}
           となり，これは$=$の反射律と矛盾．したがって$a\in\set{a,b}$である．また，$b\in\set{b,a}=\set{a,b}$である．
@@ -373,16 +373,16 @@
     <details>
       <summary>対の性質3</summary>
       <p>
-        $$\set{a,b}=\set{a,c}\iff b=c$$
+        $$\set{a,b}=\set{a,c}\Iff b=c$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          ($\rto$)の証明．
+          ($\rTo$)の証明．
           代入原理より成り立つ．
         </p>
         <p>
-          ($\to$)の証明．$b\in\set{a,b}$であるから，前提より$b\in\set{a,c}$となる．対の定義より，$b=a$または$b=c$である．$b=c$のときは命題が示されているので，$b=a$のときを考える．同様に$c=a$が言えるから，推移律より$b=c$である．よって示された．
+          ($\To$)の証明．$b\in\set{a,b}$であるから，前提より$b\in\set{a,c}$となる．対の定義より，$b=a$または$b=c$である．$b=c$のときは命題が示されているので，$b=a$のときを考える．同様に$c=a$が言えるから，推移律より$b=c$である．よって示された．
         </p>
       </details>
     </details>
@@ -527,7 +527,7 @@
             \Iff&a_1=b_1\land\p{a_2,\cdots,a_{k+1}}=\p{b_2,\cdots,b_{k+1}}&\because順序対の性質\\
             \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}&\because仮定
             \end{align*}
-            となるので，
+            となるので，示された．
           </li>
         </ol>
       </details>
@@ -632,14 +632,15 @@
           $x\in\set{a}$となる$x$について，
           \begin{align*}
           &x\in\set{a}\\
-          \Iff&x=a&\because1元集合の性質\\
+          \To&x=a&\because1元集合の性質\\
           \To&x\in b&\because前提に代入
           \end{align*}
-          よって$x\in\set{a}\to x\in b$であるから，
+          となる．よって$x\in\set{a}\to x\in b$であるから，
           \begin{align*}
           &\set{a}\subset b\\
-          \Iff&\set{a}\in2^b&\because{冪集合公理}
+          \To&\set{a}\in2^b&\because{冪集合公理}
           \end{align*}
+          が導かれて，示された．
         </p>
       </details>
     </details>
@@ -654,11 +655,11 @@
           $x\in\bigcup2^a$となる$x$について，
           \begin{align*}
           &x\in\bigcup2^a\\
-          \Iff&\exists y\p{x\in y\land y\in2^a}\\
-          \Iff&\exists y\p{x\in y\land y\subset a}\\
-          \Iff&x\in a
+          \To&\exists y\p{x\in y\land y\in2^a}\\
+          \To&\exists y\p{x\in y\land y\subset a}\\
+          \To&x\in a
           \end{align*}
-          よって，$\bigcup2^a\subset a$
+          である．よって，$\bigcup2^a\subset a$である．
         </p>
         <p>
           逆に$x\in a$となる$x$について，
@@ -666,7 +667,7 @@
           &x\in a\\
           \To&\set{x}\in2^a
           \end{align*}
-          $x\in\set{x}$であるから，$x\in y\land y\in2^a$となる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$なので$a\subset\bigcup2^a$
+          $x\in\set{x}$であるから，$x\in y\land y\in2^a$となる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$なので$a\subset\bigcup2^a$である．
         </p>
         <p>
           したがって，$\bigcup2^a=a$である．
@@ -1005,13 +1006,36 @@
 
     <h2>無限公理</h2>
     <p>
-      無限の要素数を持つ集合の存在を保証するために認めた公理が<dfn>無限公理</dfn>である．
+      自然数の集合は具体的に書くと$\set{0,1,2,\cdots}$のことである．これを$\bm{N}$と表す．自然数の定義は後に紹介する．ここでは集合で表現することだけ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．無限公理は後者の存在を認める公理である．
     </p>
     <dl>
+      <h4>定義</h4>
+      <dt>後者</dt>
+      <dd>
+        $a$の後者とは，
+        $$\suc\p{a}\def n\cup\set{n}$$
+      </dd>
+      <dt>数字</dt>
+      <dd>
+        \begin{align*}
+        1&\def\suc\p{0}=0\cup\set{0}=\set{0}=\set{\set{}}\\
+        2&\def\suc\p{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}\\
+        3&\def\suc\p{2}=\set{0,1,2}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}\\
+        4&\def\suc\p{3}=\set{0,1,2,3}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}},\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}}\\
+        5&\def\suc\p{4}=\set{0,1,2,3,4}\\
+        6&\def\suc\p{5}=\set{0,1,2,3,4,5}\\
+        7&\def\suc\p{6}=\set{0,1,2,3,4,5,6}\\
+        8&\def\suc\p{7}=\set{0,1,2,3,4,5,6,7}\\
+        9&\def\suc\p{8}=\set{0,1,2,3,4,5,6,7,8}\\
+        \end{align*}
+      </dd>
       <h4>公理</h4>
       <dt>無限公理</dt>
       <dd>
-        $$\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}$$
+        \begin{align*}
+        &\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}\\
+        \Iff&\exists x,0\in x\land\forall y\p{y\in x\to\suc{y}\in x}
+        \end{align*}
       </dd>
     </dl>
 
@@ -1104,7 +1128,7 @@
       <h4>公理</h4>
       <dt>無限公理</dt>
       <dd>
-        $$\forall x\exists f,f\in\p{\bigcup x}^x\land\forall y\p{y\in x\land y\neq0\to f\p{y}\in y}$$
+        $$\forall x\exists f\in\p{\bigcup x}^x\forall y\in x,y\neq0\to f\p{y}\in y$$
       </dd>
     </dl>
 
@@ -1124,7 +1148,7 @@
           \begin{align*}
           &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land G\p{w,z}}\\
           \To&\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w}\land w=z}\\
-          \To&\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{w}\\
+          \To&\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}\\
           \end{align*}
           分出公理が導けた．
         </p>
@@ -1158,7 +1182,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          1は無限公理より存在する．このとき，$0=\setsep{x\in1}{x=x}$が成り立ち，これは分出公理より存在する．
+          1は無限公理より存在する．このとき，$0=\setsep{x\in1}{x\noteq x}$が成り立ち，これは分出公理より存在する．
         </p>
       </details>
     </details>
