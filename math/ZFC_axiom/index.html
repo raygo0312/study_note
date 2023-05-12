@@ -152,10 +152,10 @@
           部分集合の定義より，前提は，
           \begin{align*}
           &x\subset y\land y\subset z\\
-          \Iff&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\\
-          \Iff&\forall w,w\in x\to w\in y\land w\in y\to w\in z&\because{量化の分配}\\
+          \To&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\\
+          \To&\forall w,w\in x\to w\in y\land w\in y\to w\in z&\because{量化の分配}\\
           \To&\forall w,w\in x\to w\in z&\because{推移律}\\
-          \Iff&x\subset z&\because{部分集合の定義}
+          \To&x\subset z&\because{部分集合の定義}
           \end{align*}
           であるから，示された．
         </p>
@@ -366,7 +366,7 @@
           \Iff&a\neq a\land a\neq b&\because{対の定義}\\
           \To&a\neq a&\because{縮小律}
           \end{align*}
-          となるから，$a\neq a$は$=$の反射律と矛盾．したがって$a\in\set{a,b}$である．また，$b\in\set{b,a}=\set{a,b}$である．
+          となり，これは$=$の反射律と矛盾．したがって$a\in\set{a,b}$である．また，$b\in\set{b,a}=\set{a,b}$である．
         </p>
       </details>
     </details>
@@ -382,20 +382,7 @@
           代入原理より成り立つ．
         </p>
         <p>
-          ($\to$)の証明．
-          \begin{align*}
-          &c\in\set{a,c}\\
-          \Iff&c\in\set{a,b}&\because{前提}\\
-          \Iff&c=a\lor c=b&\because{対公理}
-          \end{align*}
-          同様に，$b=a\lor b=c$である．よって，
-          \begin{align*}
-          &\p{c=a\lor c=b}\land\p{b=a\lor b=c}\\
-          \Iff&c=a\land b=a\lor b=c&\because{分配律}\\
-          \Iff&b=c\lor b=c&\because{推移律}\\
-          \Iff&b=c
-          \end{align*}
-          よって，$\set{a,b}=\set{a,c}\iff b=c$である．
+          ($\to$)の証明．$b\in\set{a,b}$であるから，前提より$b\in\set{a,c}$となる．対の定義より，$b=a$または$b=c$である．$b=c$のときは命題が示されているので，$b=a$のときを考える．同様に$c=a$が言えるから，推移律より$b=c$である．よって示された．
         </p>
       </details>
     </details>
@@ -419,8 +406,8 @@
       <dt>1元集合の性質</dt>
       <dd>
         $$a\in\set{a}$$
-        $$\set{a}=\set{b,c}\iff a=b=c$$
-        $$\set{a}=\set{b}\iff a=b$$
+        $$\set{a}=\set{b,c}\Iff a=b=c$$
+        $$\set{a}=\set{b}\Iff a=b$$
       </dd>
     </dl>
 
@@ -626,14 +613,14 @@
       <h4>定理</h4>
       <dt>冪集合の性質</dt>
       <dd>
-        $$a\in b\to\set{a}\in2^b$$
+        $$a\in b\To\set{a}\in2^b$$
         $$\bigcup2^a=a$$
       </dd>
     </dl>
     <details>
       <summary>冪集合の性質1</summary>
       <p>
-        $$a\in b\to\set{a}\in2^b$$
+        $$a\in b\To\set{a}\in2^b$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -641,8 +628,8 @@
           $x\in\set{a}$となる$x$について，
           \begin{align*}
           &x\in\set{a}\\
-          \Iff&x=a\\
-          \To&x\in b
+          \Iff&x=a&\because1元集合の性質\\
+          \To&x\in b&\because前提に代入
           \end{align*}
           よって$x\in\set{a}\to x\in b$であるから，
           \begin{align*}
