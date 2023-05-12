@@ -452,11 +452,11 @@
         <p>
           $\set{a}=\set{a'}$のとき，1元集合の性質より，
           $$a=a'$$
-          これを前提に代入して，
+          となり，これを前提に代入して，
           $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}$$
-          対の性質を繰り返し使って，
+          である．対の性質を繰り返し使って，
           \begin{align*}
-          &\set{a,b}=set{a,b'}\\
+          &\set{a,b}=\set{a,b'}\\
           \To&b=b'
           \end{align*}
           よって$a=a'\land b=b'$である．
@@ -468,10 +468,13 @@
           $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}$$
           対の性質を繰り返し使って，
           \begin{align*}
-          &\set{a,b}=set{a,a}\\
+          &\set{a,b}=\set{a,a}\\
           \To&b=a
           \end{align*}
           よって$b=a=a'=b'$より$a=a'\land b=b'$である．
+        </p>
+        <p>
+          したがって，示された．
         </p>
       </details>
     </details>
@@ -502,13 +505,13 @@
       <h4>定理</h4>
       <dt>順序組の性質</dt>
       <dd>
-        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\iff a_1=b_1\land\cdots\land a_n=b_n$$
+        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\Iff a_1=b_1\land\cdots\land a_n=b_n$$
       </dd>
     </dl>
     <details>
       <summary>順序組の性質</summary>
       <p>
-        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\iff a_1=b_1\land\cdots\land a_n=b_n$$
+        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\Iff a_1=b_1\land\cdots\land a_n=b_n$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -520,10 +523,11 @@
             $n=k(k\ge2)$のとき成り立つと仮定すると，
             \begin{align*}
             &\p{a_1,\cdots,a_{k+1}}=\p{b_1,\cdots,b_{k+1}}\\
-            \Iff&\p{a_1,\p{a_2,\cdots,a_{k+1}}}=\p{b_1,\p{b_2,\cdots,b_{k+1}}}\\
-            \Iff&a_1=b_1\land\p{a_2,\cdots,a_{k+1}}=\p{b_2,\cdots,b_{k+1}}\\
-            \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}
+            \Iff&\p{a_1,\p{a_2,\cdots,a_{k+1}}}=\p{b_1,\p{b_2,\cdots,b_{k+1}}}&\because順序組の定義\\
+            \Iff&a_1=b_1\land\p{a_2,\cdots,a_{k+1}}=\p{b_2,\cdots,b_{k+1}}&\because順序対の性質\\
+            \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}&\because仮定
             \end{align*}
+            となるので，
           </li>
         </ol>
       </details>
