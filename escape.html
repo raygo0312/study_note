@@ -1,0 +1,26 @@
+<h3>自然数</h3>
+<p>
+  自然数の集合は具体的に書くと$\set{0,1,2,\cdots}$のことである．これを$\bm{N}$と表す．自然数の定義は後に紹介する．ここでは集合で表現することだけ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．
+</p>
+<dl>
+  <h4>定義</h4>
+  <dt>後者</dt>
+  <dd>
+    自然数$n$に対して，
+    $$\suc\p{n}\def n\cup\set{n}$$
+  </dd>
+  <dt>数字</dt>
+  <dd>
+    \begin{align*}
+    1&\def\suc\p{0}=0\cup\set{0}=\set{0}=\set{\set{}}\\
+    2&\def\suc\p{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}\\
+    3&\def\suc\p{2}=\set{0,1,2}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}\\
+    4&\def\suc\p{3}=\set{0,1,2,3}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}},\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}}\\
+    5&\def\suc\p{4}=\set{0,1,2,3,4}\\
+    6&\def\suc\p{5}=\set{0,1,2,3,4,5}\\
+    7&\def\suc\p{6}=\set{0,1,2,3,4,5,6}\\
+    8&\def\suc\p{7}=\set{0,1,2,3,4,5,6,7}\\
+    9&\def\suc\p{8}=\set{0,1,2,3,4,5,6,7,8}\\
+    \end{align*}
+  </dd>
+</dl>

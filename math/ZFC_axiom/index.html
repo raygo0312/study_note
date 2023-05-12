@@ -996,54 +996,26 @@
     </dl>
 
     <h2>無限公理</h2>
-    <h3>自然数</h3>
     <p>
-      自然数の集合は具体的に書くと$\set{0,1,2,\cdots}$のことである．これを$\bm{N}$と表す．自然数の公理は後に紹介する．ここでは集合で表現することだけ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．
-    </p>
-    <dl>
-      <h4>定義</h4>
-      <dt>後者</dt>
-      <dd>
-        自然数$n$に対して，
-        $$\suc\p{n}\def n\cup\set{n}$$
-      </dd>
-      <dt>数字</dt>
-      <dd>
-        \begin{align*}
-        1&\def\suc\p{0}=0\cup\set{0}=\set{0}=\set{\set{}}\\
-        2&\def\suc\p{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}\\
-        3&\def\suc\p{2}=\set{0,1,2}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}\\
-        4&\def\suc\p{3}=\set{0,1,2,3}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}},\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}}\\
-        5&\def\suc\p{4}=\set{0,1,2,3,4}\\
-        6&\def\suc\p{5}=\set{0,1,2,3,4,5}\\
-        7&\def\suc\p{6}=\set{0,1,2,3,4,5,6}\\
-        8&\def\suc\p{7}=\set{0,1,2,3,4,5,6,7}\\
-        9&\def\suc\p{8}=\set{0,1,2,3,4,5,6,7,8}\\
-        \end{align*}
-      </dd>
-    </dl>
-
-    <h3>無限公理</h3>
-    <p>
-      自然数を定義するために認めた公理が<dfn>無限公理</dfn>である．
+      無限の要素数を持つ集合の存在を保証するために認めた公理が<dfn>無限公理</dfn>である．
     </p>
     <dl>
       <h4>公理</h4>
       <dt>無限公理</dt>
       <dd>
-        \begin{align*}
-        &\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}\\
-        \Iff&0\in\bm{N}\land\forall x\p{x\in\bm{N}\to\suc\p{x}\in\bm{N}}
-        \end{align*}
+        $$\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}$$
       </dd>
     </dl>
 
     <h2>正則性公理</h2>
+    <p>
+      矛盾を生み出すものを集合と認めないための公理が<dfn>正則性公理</dfn>である．
+    </p>
     <dl>
       <h4>公理</h4>
       <dt>正則性公理</dt>
       <dd>
-        $$\forall x,x\neq0\to\exists\p{y\in x\land y\cap x=0}$$
+        $$\forall x,x\neq0\to\exists y\in x\p{y\cap x=0}$$
       </dd>
     </dl>
 
@@ -1051,11 +1023,9 @@
       <h4>命題</h4>
       <dt>正則性公理から導かれる命題</dt>
       <dd>
-        <ol>
-          <li>$\forall x,x\notin x$</li>
-          <li>$\forall xy,x\notin y\lor y\notin x$</li>
-          <li>$\not\exists x\forall y,y\in x$</li>
-        </ol>
+        $$\forall x,x\notin x$$
+        $$\forall xy,x\notin y\lor y\notin x$$
+        $$\not\exists x\forall y,y\in x$$
       </dd>
     </dl>
 
@@ -1069,12 +1039,13 @@
         <p>
           $x\in x$と仮定する．このとき，$\set{x}$について正則性公理を考えると，
           \begin{align*}
-          &\set{x}\neq0\to\exists y\p{y\in\set{x}\land y\cap\set{x}=0}\\
+          &\set{x}\neq0\to\exists y\in\set{x}\p{y\cap\set{x}=0}\\
           \To&\exists y,y\in\set{x}\land y\cap\set{x}=0\\
           \To&\exists y,y=x\land y\cap\set{x}=0\\
           \To&\exists y,x\cap\set{x}=0\\
           \To&x\cap\set{x}=0
           \end{align*}
+          となる．$x\in x\land x\in \set{x}$であることから，$x\in x\cap\set{x}$であるが，$x\cap\set{x}=0$に矛盾する．
         </p>
       </details>
     </details>
@@ -1089,7 +1060,7 @@
           $x\in y\land y\in x$と仮定すると，$x\in y$と$x\in\set{x,y}$より$x\in y\cap\set{x,y}$である．同様に，$y\in x\cap\set{x,y}$である．
         </p>
         <p>
-          $\set{x,y}$を正則性公理より，
+          $\set{x,y}$は正則性公理より，
           \begin{align*}
           &\exists z\p{z\in\set{x,y}\land z\cap\set{x,y}=0}\\
           \To&x\cap\set{x,y}=0\lor y\cap\set{x,y}=0
