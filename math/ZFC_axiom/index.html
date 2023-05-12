@@ -135,7 +135,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          定義より，
+          命題を同値変形する．
           \begin{align*}
           &\forall x,x\subset x\\
           \Iff&\forall yx,y\in x\to y\in x
@@ -152,9 +152,10 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          定義より，
+          前提より，
           \begin{align*}
-          &\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\\
+          &x\subset y\land y\subset z\\
+          \Iff&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\\
           \Iff&\forall w,w\in x\to w\in y\land w\in y\to w\in z&\because{量化の分配}\\
           \To&\forall w,w\in x\to w\in z&\because{推移律}\\
           \Iff&x\subset z\\
@@ -164,13 +165,13 @@
       </details>
     </details>
     <p>
-      $\sebset$の順序関係以外の性質についても述べる．
+      $\subset$の順序関係以外の性質についても述べる．
     </p>
     <dl>
       <h4>定理</h4>
       <dt>$\subset$の性質</dt>
       <dd>
-        $$a\in b\land b\seubet c\To a\in c$$
+        $$a\in b\land b\subset c\To a\in c$$
       </dd>
     </dl>
     <details>
@@ -181,14 +182,9 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          任意の$x$を$a$で代入すると，
-          \begin{align*}
-          &a\in b\land b\seubet c\\
-          \Iff&a\in b\land\p{x\in b\to x\in c}\\
-          \To&a\in b\land\p{a\in b\to a\in c}\\
-          \To&a\in c\\
-          \end{align*}
-          よって示された．
+          部分集合の定義より，任意の$x$について$x\in b\to x\in c$であるから，$a$についても成り立ち，
+          $$a\in b\to a\in c$$
+          である．前提より，$a\in b$であるから$a\in c$が導ける．よって示された．
         </p>
       </details>
     </details>
