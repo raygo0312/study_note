@@ -865,7 +865,7 @@
       <dt>像</dt>
       <dd>
         写像$f:a\to b$，$a'\subset a$について，$f$による$a'$の像とは，
-        $$f\sq{a'}\def\setsep{y\in b}{\forall x\in a',\p{x,y}\in f}$$
+        $$f\sq{a'}\def\setsep{y\in b}{\exists x\in a',\p{x,y}\in f}$$
       </dd>
       <dt>逆像</dt>
       <dd>
@@ -969,7 +969,7 @@
       <dt>添字集合</dt>
       <dd>
         論理関数式$F\p{x,y}$として，
-        $$forall x,x\in \setsep{x}{\exists i\in I\p{F\p{i,x}}}\iff\exists i\p{i\in I\land F\p{i,x}}$$
+        $$\forall x,x\in \setsep{x}{\exists i\in I\p{F\p{i,x}}}\iff\exists i\p{i\in I\land F\p{i,x}}$$
       </dd>
       <h4>公理</h4>
       <dt>置換公理</dt>
@@ -979,16 +979,18 @@
       </dd>
     </dl>
     <p>
-      この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$$とする．この述語$F$は関数論理式である．よって，$\setsep{f\p{i}}{\exists i\in I}\def\setsep{x}{\exists i\in I\p{x=f\p{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\setsep{a_i}{i\in I}=\set{a_i}$と表してもよい．和集合と積集合を添字集合で拡張させる．
+      この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$とする．この述語$F$は関数論理式である．よって，$\setsep{f\p{i}}{i\in I}\def\setsep{x}{\exists i\in I\p{x=f\p{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\set{a_i}_I\def\setsep{a_i}{i\in I}$とし，勘違いしない場合は省略してよい．和集合と積集合を添字集合で拡張させる．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>添字和集合</dt>
       <dd>
-        $$\bigcup_{i\in I}a_i\def\bigcup\set{a_i}$$
+        添字集合$\set{a_i}_I$の和集合とは，
+        $$\bigcup_{i\in I}a_i\def\bigcup\set{a_i}_I$$
       </dd>
       <dt>添字積集合</dt>
       <dd>
+        添字集合$\set{a_i}_I$の積集合とは，
         $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}$$
       </dd>
     </dl>
