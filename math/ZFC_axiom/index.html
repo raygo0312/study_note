@@ -459,7 +459,7 @@
           である．対の性質を繰り返し使って，
           \begin{align*}
           \set{a,b}&=\set{a,b'}\\
-          b&=b'
+          b&=b'\bcs対の性質
           \end{align*}
           よって$a=a'\land b=b'$である．
         </p>
@@ -471,7 +471,7 @@
           対の性質を繰り返し使って，
           \begin{align*}
           \set{a,b}&=\set{a,a}\\
-          b&=a
+          b&=a\bcs対の性質
           \end{align*}
           よって$b=a=a'=b'$より$a=a'\land b=b'$である．
         </p>
@@ -657,9 +657,9 @@
           $x\in\bigcup2^a$となる$x$について，
           \begin{align*}
           &x\in\bigcup2^a\\
-          &\exists y\p{x\in y\land y\in2^a}\\
-          &\exists y\p{x\in y\land y\subset a}\\
-          &x\in a
+          &\exists y\p{x\in y\land y\in2^a}\bcs和集合の定義\\
+          &\exists y\p{x\in y\land y\subset a}\bcs冪集合の定義\\
+          &x\in a\bcs部分集合の性質
           \end{align*}
           である．よって，$\bigcup2^a\subset a$である．
         </p>
@@ -667,9 +667,9 @@
           逆に$x\in a$となる$x$について，
           \begin{align*}
           x&\in a\\
-          \set{x}&\in2^a
+          \set{x}&\in2^a\bcs{冪集合の性質}
           \end{align*}
-          $x\in\set{x}$であるから，$x\in y\land y\in2^a$となる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$なので$a\subset\bigcup2^a$である．
+          となり，$x\in\set{x}$であるから，$x\in y\land y\in2^a$となる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$なので$a\subset\bigcup2^a$である．
         </p>
         <p>
           したがって，$\bigcup2^a=a$である．
@@ -717,7 +717,7 @@
 
     <h3>差集合</h3>
     <p>
-      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a-b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，想定している範囲の集合であり，文脈によって決まる．このとき差集合$U-a$を$a$の<dfn>補集合</dfn>という．
+      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a-b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，登場する集合を含む(部分集合にもつ)集合である．文脈によって決まる．このとき差集合$U-a$を$a$の<dfn>補集合</dfn>という．$a$の補集合をたまに$\overline{a}$と表すことがあるが，あまり使わない．今回は定理の紹介時に使うとする．
     </p>
     <dl>
       <h4>定義</h4>
@@ -787,7 +787,6 @@
     </p>
     <dl>
       <h4>定理</h4>
-      全体集合を$U$，$a$の補集合$\overline{a}$とする．もちろん$a,b,c\subset U$である．
       <dt>交換律</dt>
       <dd>
         $$a\cap b=b\cap a$$
@@ -1005,6 +1004,17 @@
         $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}$$
       </dd>
     </dl>
+    <dl>
+      <h4>定理</h4>
+      <dt>添字集合の性質</dt>
+      <dd>
+        $
+        $$\bigcup_{i\in I}a_i\cap b=\bigcup_{i\in I}\p{a_i\cap b}$$
+        $$\bigcap_{i\in I}a_i\cup b=\bigcap_{i\in I}\p{a_i\cup b}$$
+        $$\overline{\bigcap_{i\in I}a_i}=\bigcap_{i\in I}\overline{a_i}$$
+        $$\overline{\bigcap_{i\in I}a_i}=\bigcap_{i\in I}\overline{a_i}$$
+      </dd>
+    </dl>
 
     <h2>無限公理</h2>
     <p>
@@ -1128,7 +1138,7 @@
     </p>
     <dl>
       <h4>公理</h4>
-      <dt>無限公理</dt>
+      <dt>選択公理</dt>
       <dd>
         $$\forall x\exists f\in\p{\bigcup x}^x\forall y\in x,y\neq0\to f\p{y}\in y$$
       </dd>
@@ -1153,8 +1163,8 @@
           論理式$G\p{x,y}\Def F\p{x}\land x=y$とすると，$G$は関数論理式である．なぜなら，$G\p{x,y}$と$G\p{x,z}$を仮定すると，$x=y=z$である．置換公理より，
           \begin{align*}
           \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land G\p{w,z}}\\
-          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land F\p{w}\land w=z}\\
-          \forall x\exists y\forall z,z\in y&\iff z\in x\land F\p{z}\\
+          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land F\p{w}\land w=z}\bcs Gの定義\\
+          \forall x\exists y\forall z,z\in y&\iff z\in x\land F\p{z}\bcs代入原理\\
           \end{align*}
           分出公理が導けた．
         </p>
@@ -1171,10 +1181,10 @@
           $c\def\scr{P}\p{\scr{P}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
           \begin{align*}
           \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land\p{w=0\land z=a\lor w=1\land z=b}}\\
-          \forall x\exists y\forall z,z\in y&\iff0\in x\land z=a\lor 1\in x\land z=b\\
-          \exists y\forall z,z\in y&\iff0\in c\land z=a\lor 1\in c\land z=b\\
-          \exists y\forall z,z\in y&\iff z=a\lor z=b\\
-          \forall xy\exists z\forall w,w\in z&\iff w=x\lor w=y\\
+          \forall x\exists y\forall z,z\in y&\iff0\in x\land z=a\lor 1\in x\land z=b\bcs代入原理\\
+          \exists y\forall z,z\in y&\iff0\in c\land z=a\lor 1\in c\land z=b\bcs\forall E\\
+          \exists y\forall z,z\in y&\iff z=a\lor z=b\bcs恒等律\\
+          \forall xy\exists z\forall w,w\in z&\iff w=x\lor w=y\bcs\forall I\\
           \end{align*}
           対公理が導けた．
         </p>
