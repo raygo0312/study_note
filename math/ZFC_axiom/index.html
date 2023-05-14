@@ -152,10 +152,10 @@
           部分集合の定義より，前提は，
           \begin{align*}
           &x\subset y\land y\subset z\\
-          \To&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}&&\because部分集合の定義\\
-          \To&\forall w,w\in x\to w\in y\land w\in y\to w\in z&&\because量化の分配\\
-          \To&\forall w,w\in x\to w\in z&&\because推移律\\
-          \To&x\subset z&&\because部分集合の定義
+          \To&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\bcs部分集合の定義\\
+          \To&\forall w,w\in x\to w\in y\land w\in y\to w\in z\bcs量化の分配\\
+          \To&\forall w,w\in x\to w\in z\bcs推移律\\
+          \To&x\subset z\bcs部分集合の定義
           \end{align*}
           であるから，示された．
         </p>
@@ -343,9 +343,9 @@
           $x\in\set{a,b}$となる$x$について，
           \begin{align*}
           &x\in\set{a,b}\\
-          \Iff&x=a\lor x=b&\because{対の定義}\\
-          \Iff&x=b\lor x=a&\because{\lorの可換律}\\
-          \Iff&x\in\set{b,a}&\because{対の定義}
+          \Iff&x=a\lor x=b\bcs{対の定義}\\
+          \Iff&x=b\lor x=a\bcs{\lorの可換律}\\
+          \Iff&x\in\set{b,a}\bcs{対の定義}
           \end{align*}
           となるから，$x\in\set{a,b}\Iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
         </p>
@@ -362,9 +362,9 @@
           $a\notin\set{a,b}$と仮定すると，
           \begin{align*}
           &a\notin\set{a,b}\\
-          &\lnot\p{a=a\lor a=b}&\because{対の定義}\\
-          &a\neq a\land a\neq b&\because{対の定義}\\
-          &a\neq a&\because{縮小律}
+          &\lnot\p{a=a\lor a=b}\bcs{対の定義}\\
+          &a\neq a\land a\neq b\bcs{対の定義}\\
+          &a\neq a\bcs{縮小律}
           \end{align*}
           となり，これは$=$の反射律と矛盾．したがって$a\in\set{a,b}$である．また，$b\in\set{b,a}=\set{a,b}$である．
         </p>
@@ -523,9 +523,9 @@
             $n=k(k\ge2)$のとき成り立つと仮定すると，
             \begin{align*}
             &\p{a_1,\cdots,a_{k+1}}=\p{b_1,\cdots,b_{k+1}}\\
-            \Iff&\p{a_1,\p{a_2,\cdots,a_{k+1}}}=\p{b_1,\p{b_2,\cdots,b_{k+1}}}&\because順序組の定義\\
-            \Iff&a_1=b_1\land\p{a_2,\cdots,a_{k+1}}=\p{b_2,\cdots,b_{k+1}}&\because順序対の性質\\
-            \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}&\because仮定
+            \Iff&\p{a_1,\p{a_2,\cdots,a_{k+1}}}=\p{b_1,\p{b_2,\cdots,b_{k+1}}}\bcs順序組の定義\\
+            \Iff&a_1=b_1\land\p{a_2,\cdots,a_{k+1}}=\p{b_2,\cdots,b_{k+1}}\bcs順序対の性質\\
+            \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}\bcs仮定
             \end{align*}
             となるので，示された．
           </li>
@@ -632,13 +632,13 @@
           $x\in\set{a}$となる$x$について，
           \begin{align*}
           &x\in\set{a}\\
-          &x=a&\because1元集合の性質\\
-          &x\in b&\because前提に代入
+          &x=a\bcs1元集合の性質\\
+          &x\in b\bcs前提に代入
           \end{align*}
           となる．よって$x\in\set{a}\to x\in b$であるから，
           \begin{align*}
           &\set{a}\subset b\\
-          &\set{a}\in2^b&\because{冪集合公理}
+          &\set{a}\in2^b\bcs{冪集合公理}
           \end{align*}
           が導かれて，示された．
         </p>
