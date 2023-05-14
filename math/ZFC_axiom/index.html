@@ -144,7 +144,7 @@
     <details>
       <summary>$\subset$の推移律</summary>
       <p>
-        $$\forall abc,x\subset y\land y\subset z\to x\subset z$$
+        $$\forall xyz,x\subset y\land y\subset z\to x\subset z$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -152,10 +152,10 @@
           部分集合の定義より，前提は，
           \begin{align*}
           &x\subset y\land y\subset z\\
-          &\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}&\because部分集合の定義\\
-          &\forall w,w\in x\to w\in y\land w\in y\to w\in z&\because量化の分配\\
-          &\forall w,w\in x\to w\in z&\because推移律\\
-          &x\subset z&\because部分集合の定義
+          \To&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}&\because{部分集合の定義}\\
+          \To&\forall w,w\in x\to w\in y\land w\in y\to w\in z&\because{量化の分配}\\
+          \To&\forall w,w\in x\to w\in z&\because{推移律}\\
+          \To&x\subset z&\because{部分集合の定義}
           \end{align*}
           であるから，示された．
         </p>
