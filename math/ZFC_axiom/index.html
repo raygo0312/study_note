@@ -152,10 +152,10 @@
           部分集合の定義より，前提は，
           \begin{align*}
           &x\subset y\land y\subset z\\
-          \To&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}&\because部分集合の定義\\
-          \To&\forall w,w\in x\to w\in y\land w\in y\to w\in z&\because量化の分配\\
-          \To&\forall w,w\in x\to w\in z&\because推移律\\
-          \To&x\subset z&\because部分集合の定義
+          &\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}&\because部分集合の定義\\
+          &\forall w,w\in x\to w\in y\land w\in y\to w\in z&\because量化の分配\\
+          &\forall w,w\in x\to w\in z&\because推移律\\
+          &x\subset z&\because部分集合の定義
           \end{align*}
           であるから，示された．
         </p>
@@ -362,9 +362,9 @@
           $a\notin\set{a,b}$と仮定すると，
           \begin{align*}
           &a\notin\set{a,b}\\
-          \To&\lnot\p{a=a\lor a=b}&\because{対の定義}\\
-          \To&a\neq a\land a\neq b&\because{対の定義}\\
-          \To&a\neq a&\because{縮小律}
+          &\lnot\p{a=a\lor a=b}&\because{対の定義}\\
+          &a\neq a\land a\neq b&\because{対の定義}\\
+          &a\neq a&\because{縮小律}
           \end{align*}
           となり，これは$=$の反射律と矛盾．したがって$a\in\set{a,b}$である．また，$b\in\set{b,a}=\set{a,b}$である．
         </p>
@@ -456,8 +456,8 @@
           $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}$$
           である．対の性質を繰り返し使って，
           \begin{align*}
-          &\set{a,b}=\set{a,b'}\\
-          \To&b=b'
+          \set{a,b}&=\set{a,b'}\\
+          b&=b'
           \end{align*}
           よって$a=a'\land b=b'$である．
         </p>
@@ -469,7 +469,7 @@
           対の性質を繰り返し使って，
           \begin{align*}
           &\set{a,b}=\set{a,a}\\
-          \To&b=a
+          &b=a
           \end{align*}
           よって$b=a=a'=b'$より$a=a'\land b=b'$である．
         </p>
@@ -584,7 +584,7 @@
       \begin{align*}
       &\forall x,x\in a\cup b\iff\exists y\p{x\in y\land y\in\set{a,b}}\\
       \Iff&\forall x,x\in a\cup b\iff\exists y\p{x\in y\land\p{y=a\lor y=b}}\\
-      \To&\forall x,x\in a\cup b\iff x\in a\lor x\in b
+      &\forall x,x\in a\cup b\iff x\in a\lor x\in b
       \end{align*}
       このことから$\cup$は$\lor$と同じ定理を使用することができることがわかる．
     </p>
@@ -632,13 +632,13 @@
           $x\in\set{a}$となる$x$について，
           \begin{align*}
           &x\in\set{a}\\
-          \To&x=a&\because1元集合の性質\\
-          \To&x\in b&\because前提に代入
+          &x=a&\because1元集合の性質\\
+          &x\in b&\because前提に代入
           \end{align*}
           となる．よって$x\in\set{a}\to x\in b$であるから，
           \begin{align*}
           &\set{a}\subset b\\
-          \To&\set{a}\in2^b&\because{冪集合公理}
+          &\set{a}\in2^b&\because{冪集合公理}
           \end{align*}
           が導かれて，示された．
         </p>
@@ -655,9 +655,9 @@
           $x\in\bigcup2^a$となる$x$について，
           \begin{align*}
           &x\in\bigcup2^a\\
-          \To&\exists y\p{x\in y\land y\in2^a}\\
-          \To&\exists y\p{x\in y\land y\subset a}\\
-          \To&x\in a
+          &\exists y\p{x\in y\land y\in2^a}\\
+          &\exists y\p{x\in y\land y\subset a}\\
+          &x\in a
           \end{align*}
           である．よって，$\bigcup2^a\subset a$である．
         </p>
@@ -665,7 +665,7 @@
           逆に$x\in a$となる$x$について，
           \begin{align*}
           &x\in a\\
-          \To&\set{x}\in2^a
+          &\set{x}\in2^a
           \end{align*}
           $x\in\set{x}$であるから，$x\in y\land y\in2^a$となる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$なので$a\subset\bigcup2^a$である．
         </p>
@@ -1151,8 +1151,8 @@
           論理式$G\p{x,y}\Def F\p{x}\land x=y$とすると，$G$は関数論理式である．なぜなら，$G\p{x,y}$と$G\p{x,z}$を仮定すると，$x=y=z$である．置換公理より，
           \begin{align*}
           &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land G\p{w,z}}\\
-          \To&\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w}\land w=z}\\
-          \To&\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}\\
+          &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w}\land w=z}\\
+          &\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}\\
           \end{align*}
           分出公理が導けた．
         </p>
@@ -1169,10 +1169,10 @@
           $c\def\scr{P}\p{\scr{P}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
           \begin{align*}
           &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land\p{w=0\land z=a\lor w=1\land z=b}}\\
-          \To&\forall x\exists y\forall z,z\in y\iff0\in x\land z=a\lor 1\in x\land z=b\\
-          \To&\exists y\forall z,z\in y\iff0\in c\land z=a\lor 1\in c\land z=b\\
-          \To&\exists y\forall z,z\in y\iff z=a\lor z=b\\
-          \To&\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
+          &\forall x\exists y\forall z,z\in y\iff0\in x\land z=a\lor 1\in x\land z=b\\
+          &\exists y\forall z,z\in y\iff0\in c\land z=a\lor 1\in c\land z=b\\
+          &\exists y\forall z,z\in y\iff z=a\lor z=b\\
+          &\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
           \end{align*}
           対公理が導けた．
         </p>
