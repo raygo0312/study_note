@@ -175,7 +175,6 @@ details.sub summary {
 }
 
 .you {
-  display: table;
   position: relative;
   margin: 2.5rem auto 2rem 3rem;
   border-radius: 1rem;
