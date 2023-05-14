@@ -175,6 +175,7 @@ details.sub summary {
 }
 
 .you {
+  width: fit-content;
   position: relative;
   margin: 2.5rem auto 2rem 3rem;
   border-radius: 1rem;
@@ -199,6 +200,7 @@ details.sub summary {
 }
 
 .me {
+  width: fit-content;
   position: relative;
   margin: 2rem 1rem 2rem auto;
   border-radius: 1rem;
