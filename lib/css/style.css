@@ -207,7 +207,7 @@ details.sub summary {
   padding: 0.1rem 0.5rem;
   padding-right: 0.3rem;
   max-width: 70%;
-  background: #c0c4ff;
+  background: #c0d6ff;
   text-align: left;
 }
 
@@ -216,7 +216,7 @@ details.sub summary {
   top: -0.1rem;
   right: -1rem;
   border: solid 0.3rem transparent;
-  border-left: solid 1rem #c0c4ff;
+  border-left: solid 1rem #c0d6ff;
   transform: rotate(-35deg);
   content: "";
 }
