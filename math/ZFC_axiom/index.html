@@ -802,6 +802,16 @@
     </p>
     <dl>
       <h4>定理</h4>
+      <dt>縮小律</dt>
+      <dd>
+        $$a\subset a\cup b$$
+        $$b\subset a\cup b$$
+      </dd>
+      <dt>拡大律</dt>
+      <dd>
+        $$a\cap b\subset a$$
+        $$a\cap b\subset b$$
+      </dd>
       <dt>交換律</dt>
       <dd>
         $$a\cap b=b\cap a$$
@@ -947,26 +957,6 @@
         $$g\circ f\def\setsep{\p{x,z}\in a\times c}{\p{f\p{x},z}\in g}$$
         つまり，$g\circ f\p{x}=g\p{f\p{x}}$である．
       </dd>
-      <dt>単射</dt>
-      <dd>
-        写像$f:a\to b$について，$f$が単射であるとは，
-        $$\forall xy\in a,f\p{x}=f\p{y}\to x=y$$
-      </dd>
-      <dt>全射</dt>
-      <dd>
-        写像$f:a\to b$について，$f$が全射であるとは，
-        $$\forall y\in b\exists x\in a,f\p{x}=y$$
-      </dd>
-      <dt>全単射</dt>
-      <dd>
-        写像$f:a\to b$について，$f$が全単射であるとは，
-        $$fが単射かつ全射$$
-      </dd>
-      <dt>逆写像</dt>
-      <dd>
-        写像$f:a\to b$について，次のように定義される$f^{-1}$が写像であるとき，$f^{-1}$を$f$の逆写像という．
-        $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}$$
-      </dd>
     </dl>
     <aside>
       <h4>像・値域の例</h4>
@@ -1035,17 +1025,59 @@
           $f\sq{a_1\cup a_2}$の元$y$の条件は，
           \begin{align*}
           &\exists x\in a_1\cup a_2,\p{x,y}\in f\\
-          \Iff&\exists x,x\in a_1\cup a_2\land\p{x,y}\in f\bcs省略の定義\\
           \Iff&\exists x,\p{x\in a_1\lor x\in a_2}\land\p{x,y}\in f\bcs\cupの定義\\
           \Iff&\exists x,x\in a_1\land\p{x,y}\in f\lor x\in a_2\land\p{x,y}\in f\bcs分配律\\
-          \Iff&\p{\exists x\in a_1,\p{x,y}\in f}\lor \p{\exists x\in a_2,\p{x,y}\in f}\bcs量化の分配\\
+          \Iff&\p{\exists x\in a_1,\p{x,y}\in f}\lor \p{\exists x\in a_2,\p{x,y}\in f}\bcs量化の分配
           \end{align*}
+          これは$f\sq{a_1}\cup f\sq{a_2}$の元である．
         </p>
         <p>
-          したがって，$\bigcup2^a=a$である．
+          $f\sq{a_1\cap a_2}$の元$y$の条件は，
+          \begin{align*}
+          &\exists x\in a_1\cap a_2,\p{x,y}\in f\\
+          &\exists x,x\in a_1\land x\in a_2\land\p{x,y}\in f\bcs\cupの定義\\
+          &\exists x,x\in a_1\land\p{x,y}\in f\land x\in a_2\land\p{x,y}\in f\bcs冪等律\\
+          &\p{\exists x\in a_1,\p{x,y}\in f}\land\p{\exists x\in a_2,\p{x,y}\in f}\bcs量化の分配
+          \end{align*}
+          これは$f\sq{a_1}\cap f\sq{a_2}$の元である．
+        </p>
+        <p>
+          $f\sq{a_1}-f\sq{a_2}$の元$y$の条件は，
+          \begin{align*}
+          &\p{\exists x\in a_1,\p{x,y}\in f}\land\lnot\p{\exists x\in a_2,\p{x,y}\in f}\\
+          &\p{\exists x\in a_1,\p{x,y}\in f}\land\p{\forall x,x\notin a_2\lor\p{x,y}\notin f}\bcs双対定理\\
+          &\exists x,x\in a_1\land\p{x,y}\in f\land x\in a_2\land\p{x,y}\in f\bcs冪等律\\
+          &\exists x,x\in a_1\land x\in a_2\land\p{x,y}\in f\bcs\cupの定義\\
+          &\exists x\in a_1\cap a_2,\p{x,y}\in f\\
+          \end{align*}
+          これは$f\sq{a_1}\cup f\sq{a_2}$の元である．
         </p>
       </details>
     </details>
+
+    <dl>
+      <h4>定義</h4>
+      <dt>単射</dt>
+      <dd>
+        写像$f:a\to b$について，$f$が単射であるとは，
+        $$\forall xy\in a,f\p{x}=f\p{y}\to x=y$$
+      </dd>
+      <dt>全射</dt>
+      <dd>
+        写像$f:a\to b$について，$f$が全射であるとは，
+        $$\forall y\in b\exists x\in a,f\p{x}=y$$
+      </dd>
+      <dt>全単射</dt>
+      <dd>
+        写像$f:a\to b$について，$f$が全単射であるとは，
+        $$fが単射かつ全射$$
+      </dd>
+      <dt>逆写像</dt>
+      <dd>
+        写像$f:a\to b$について，次のように定義される$f^{-1}$が写像であるとき，$f^{-1}$を$f$の逆写像という．
+        $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}$$
+      </dd>
+    </dl>
 
     <h3>関数論理式</h3>
     <dl>
