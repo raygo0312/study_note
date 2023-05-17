@@ -1069,20 +1069,20 @@
       <dt>後者</dt>
       <dd>
         $a$の後者とは，
-        $$\suc\p{a}\def n\cup\set{n}$$
+        $$\suc{a}\def n\cup\set{n}$$
       </dd>
       <dt>数字</dt>
       <dd>
         \begin{align*}
-        1&\def\suc\p{0}=0\cup\set{0}=\set{0}=\set{\set{}}\\
-        2&\def\suc\p{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}\\
-        3&\def\suc\p{2}=\set{0,1,2}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}\\
-        4&\def\suc\p{3}=\set{0,1,2,3}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}},\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}}\\
-        5&\def\suc\p{4}=\set{0,1,2,3,4}\\
-        6&\def\suc\p{5}=\set{0,1,2,3,4,5}\\
-        7&\def\suc\p{6}=\set{0,1,2,3,4,5,6}\\
-        8&\def\suc\p{7}=\set{0,1,2,3,4,5,6,7}\\
-        9&\def\suc\p{8}=\set{0,1,2,3,4,5,6,7,8}\\
+        1&\def\suc{0}=0\cup\set{0}=\set{0}=\set{\set{}}\\
+        2&\def\suc{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}\\
+        3&\def\suc{2}=\set{0,1,2}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}\\
+        4&\def\suc{3}=\set{0,1,2,3}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}},\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}}\\
+        5&\def\suc{4}=\set{0,1,2,3,4}\\
+        6&\def\suc{5}=\set{0,1,2,3,4,5}\\
+        7&\def\suc{6}=\set{0,1,2,3,4,5,6}\\
+        8&\def\suc{7}=\set{0,1,2,3,4,5,6,7}\\
+        9&\def\suc{8}=\set{0,1,2,3,4,5,6,7,8}\\
         \end{align*}
       </dd>
       <h4>公理</h4>
@@ -1090,7 +1090,7 @@
       <dd>
         \begin{align*}
         &\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}\\
-        \Iff&\exists x,0\in x\land\forall y(\p{y\in x\to\suc{y}\in x}\sin\p{y}\sin(y)\sin y
+        \Iff&\exists x,0\in x\land\forall y\p{y\in x\to\suc{y}\in x}
         \end{align*}
       </dd>
     </dl>
