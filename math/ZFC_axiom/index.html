@@ -90,7 +90,7 @@
     <h2>外延性公理</h2>
     <h3>部分集合</h3>
     <p>
-      集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a\subset b$と表し，$a$は$b$に含まれる，$a$は$b$の部分集合であるという．
+      集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a\subset b$と表し，$a$は$b$に<dfn>含まれる</dfn>，$a$は$b$の部分集合であるという．
     </p>
     <dl>
       <h4>定義</h4>
@@ -274,7 +274,10 @@
       <h4>公理</h4>
       <dt>空集合公理</dt>
       <dd>
-        $$\exists x\forall y,y\notin x$$
+        \begin{align*}
+        &\exists x\forall y,y\notin x\\
+        \Iff&\exists0
+        \end{align*}
       </dd>
     </dl>
     <p>
@@ -307,7 +310,10 @@
       <h4>公理</h4>
       <dt>対公理</dt>
       <dd>
-        $$\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y$$
+        \begin{align*}
+        &\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
+        \Iff&\forall xy\exists\set{x,y}
+        \end{align*}
       </dd>
     </dl>
     <details>
@@ -549,7 +555,10 @@
       <h4>公理</h4>
       <dt>和集合公理</dt>
       <dd>
-        $$\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}$$
+        \begin{align*}
+        &\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}\\
+        \Iff&\forall x\exists\bigcup x
+        \end{align*}
       </dd>
     </dl>
     <div class="me">
@@ -606,7 +615,10 @@
       <h4>公理</h4>
       <dt>冪集合公理</dt>
       <dd>
-        $$\forall x\exists y\forall z,z\in y\iff z\subset x$$
+        \begin{align*}
+        &\forall x\exists y\forall z,z\in y\iff z\subset x\\
+        \Iff&\forall x\exists2^x
+        end{align*}
       </dd>
     </dl>
     <div class="you">
@@ -693,7 +705,10 @@
       <dt>分出公理</dt>
       <dd>
         論理式$F\p{x}$に対し，
-        $$\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}$$
+        \begin{align*}
+        &\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}\\
+        \Iff&\forall x\exists\setsep{t\in x}{F\p{x}}
+        \end{align*}
       </dd>
     </dl>
 
@@ -717,7 +732,7 @@
 
     <h3>差集合</h3>
     <p>
-      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a-b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，登場する集合を含む(部分集合にもつ)集合である．文脈によって決まる．このとき差集合$U-a$を$a$の<dfn>補集合</dfn>という．$a$の補集合をたまに$\overline{a}$と表すことがあるが，あまり使わない．今回は定理の紹介時に使うとする．
+      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a-b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，登場するすべての集合を含む集合である．文脈によって決まる．このとき差集合$U-a$を$a$の<dfn>補集合</dfn>という．$a$の補集合をたまに$\overline{a}$と表すことがあるが，あまり使わない．今回は定理の紹介時に使うとする．
     </p>
     <dl>
       <h4>定義</h4>
@@ -852,11 +867,22 @@
       <dd>
         次を満たす$f$を対応といい，$f:a\to b$と表す．
         $$f\subset a\times b$$
+        この$a$を始域，$b$を終域という．
       </dd>
     </dl>
-    <p>
-      この$a$を<dfn>始域</dfn>，$b$を<dfn>終域</dfn>という．
-    </p>
+    <aside>
+      <h4>対応の例</h4>
+      $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，対応$f:a\to b$は$a\times b$に含まれている必要があるから，
+      $$f=\set{}$$
+      $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8}}$$
+      $\p{3,8}\in f$なので，$3$は$8$に$f$で対応しているという．
+      <h4>対応でない例</h4>
+      $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，対応$f:a\to b$でないとは，
+      $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},5}$$
+      順序対でない$5$が属している．
+      $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},\p{5,5}}$$
+      $a\to b$の対応ではない．$\p{a\cup\set{5}}\to b$の対応ではある．
+    </aside>
     <dl>
       <h4>定義</h4>
       <dt>写像</dt>
@@ -869,8 +895,8 @@
       <dt>恒等写像</dt>
       <dd>
         写像$f:a\to a$について，
-        $$\id_a\def\setsep{\p{x,x}\in a\times a}{x\in a}$$
-        $a$であることが明確であるとき，$\id\def\id_a$と省略する．
+        $$f\def\setsep{\p{x,x}\in a\times a}{x\in a}$$
+        このとき，$f$を$a$の恒等写像といい$\id_a$で表す．勘違いしないとき$a$を省略する．
       </dd>
       <dt>像</dt>
       <dd>
@@ -900,6 +926,7 @@
       <dd>
         写像$f:a\to b$，写像$g:b\to c$について，
         $$g\circ f\def\setsep{\p{x,z}\in a\times c}{\p{f\p{x},z}\in g}$$
+        つまり，$g\circ f\p{x}=g\p{f\p{x}}$である．
       </dd>
       <dt>単射</dt>
       <dd>
@@ -922,6 +949,20 @@
         $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}$$
       </dd>
     </dl>
+    <aside>
+      <h4>写像の例</h4>
+      $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，写像$f:a\to b$は対応かつ任意の$a$の元について$y$が一つである必要があるから，
+      $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{3,3},\p{4,5}}$$
+      $\p{2,9}\in f$なので，$f\p{2}=8$と表せる．
+      <h4>写像でない例</h4>
+      $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，写像$f:a\to b$でないとは，
+      $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{4,5}}$$
+      $3\in a$について$y$が存在しない．
+      $$f=\set{\p{0,3},\p{1,1},\p{2,6},\p{2,9},\p{3,3},\p{4,5}}$$
+      $2\in a$について$y$が二つ存在する．
+      <h4>恒等写像の例</h4>
+
+    </aside>
     <dl>
       <h4>定理</h4>
       <dt>像の性質</dt>
@@ -985,11 +1026,14 @@
       <dt>置換公理</dt>
       <dd>
         論理関数式$F\p{x,y}$として，
-        $$\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w,z}}$$
+        \begin{align*}
+        &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w,z}}\\
+        \Iff&\forall x\exists\setsep{t}{\exists i\in x\p{F\p{i,t}}}
+        \end{align*}
       </dd>
     </dl>
     <p>
-      この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$とする．この述語$F$は関数論理式である．よって，$\setsep{f\p{i}}{i\in I}\def\setsep{x}{\exists i\in I\p{x=f\p{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\set{a_i}_I\def\setsep{a_i}{i\in I}$とし，勘違いしない場合は省略してよい．和集合と積集合を添字集合で拡張させる．
+      この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$とする．この述語$F$は関数論理式である．よって，$\setsep{f\p{i}}{i\in I}\def\setsep{x}{\exists i\in I\p{x=f\p{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\set{a_i}_I\def\setsep{a_i}{i\in I}$とし，勘違いしない場合は$I$を省略してよい．和集合と積集合を添字集合で拡張させる．
     </p>
     <dl>
       <h4>定義</h4>
