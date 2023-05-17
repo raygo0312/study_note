@@ -921,10 +921,34 @@
       $$f=\set{\p{0,3},\p{1,1},\p{2,6},\p{2,9},\p{3,3},\p{4,5}}$$
       これは$2\in a$について$y$が二つ存在する．
       <h4>恒等写像の例</h4>
-      $a=\set{0,1,2,3,4}$について，恒等写像$\id:a\to a$は$\p{x,x}$を元に持つから，
-      $$\id=\set{\p{0,0},\p{1,1},\p{2,2},\p{3,3},\p{4,4}}$$
-      もちろん$\forall x\in a,f\p{x}=x$である．
+      $a=\set{0,1,2,3,4}$について，恒等写像$\rm{id}:a\to a$は$\p{x,x}$を元に持つから，
+      $$\rm{id}=\set{\p{0,0},\p{1,1},\p{2,2},\p{3,3},\p{4,4}}$$
+      もちろん$\forall x\in a,\idx=x$である．
     </aside>
+    <dl>
+      <h4>定理</h4>
+      <dt>写像の性質</dt>
+      <dd>
+        写像$f:a\to b$，$g:a\to b$について，
+        $$f\p{x}=g\p{x}\To f=g$$
+      </dd>
+    </dl>
+    <details>
+      <summary>写像の性質</summary>
+      <p>
+        写像$f:a\to b$，$g:a\to b$について，
+        $$\forall x\in a\p{f\p{x}=g\p{x}}\To f=g$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+
+          \begin{align*}
+
+          \end{align*}
+        </p>
+      </details>
+    </details>
     <dl>
       <h4>定義</h4>
       <dt>像</dt>
@@ -973,6 +997,11 @@
         写像$f:a\to b$，部分集合$a'\subset a$について，
         $$x\in a'\To f\p{x}\in f\sq{a'}$$
       </dd>
+      <dt>合成写像の結合律</dt>
+      <dd>
+        写像$f:a\to b$，$g:b\to c$，$h:c\to d$について，
+        $$\p{h\circ g}\circ f=h\circ\p{g\circ f}$$
+      </dd>
     </dl>
     <details>
       <summary>像の性質</summary>
@@ -986,6 +1015,26 @@
           定義より，$f\sq{a'}$に属している元$y$は，
           $$\exists x,y\in b\land x\in a'\land\p{x,y}\in f$$
           が成り立つ．写像$f$の定義と前提より，$f\p{x}\in b$かつ$x\in a'$かつ$\p{x,f\p{x}}\in f$が成り立つから，$f\p{x}$は$f\sq{a'}$の元である．よって示された．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>合成写像の結合律</summary>
+      <p>
+        写像$f:a\to b$，$g:b\to c$，$h:c\to d$について，
+        $$\p{h\circ g}\circ f=h\circ\p{g\circ f}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          定義より変形を行う．
+          \begin{align*}
+          \p{h\circ g}\circ f\p{x}&=h\circ g\p{f\p{x}}\\
+          &=h\p{g\p{f\p{x}}}\\
+          &=h\p{g\circ f\p{x}}\\
+          &=h\circ\p{g\circ f}\p{x}
+          \end{align*}
+          よって，写像の性質より$\p{h\circ g}\circ f=h\circ\p{g\circ f}$である．
         </p>
       </details>
     </details>
