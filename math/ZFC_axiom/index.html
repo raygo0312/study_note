@@ -965,96 +965,30 @@
       $$f\sq{\set{0,1,3}}=\set{1,3}$$
       このとき，$f$の値域は
       $$f\sq{a}=\set{1,3,5,9}$$
-      <h4>単射の例</h4>
-      $a=\set{0,1,2,3,4}$，$b=\set{a,b,c,d,e}$，写像$f:a\to b$について，
-      $$\set{\p{0,d},\p{1,a},\p{2,c},\p{3,b},\p{4,e}}$$
-      は写像先によって写像前の1つの元があるので単射である．
-      <h4>全射の例</h4>
-      $a=\set{0,1,2,3,4}$，$b=\set{a,b}$，写像$f:a\to b$について，
-      $$\set{\p{0,a},\p{1,a},\p{2,b},\p{3,b},\p{4,a}}$$
-      は写像先がすべて存在するので全射である．
     </aside>
     <dl>
       <h4>定理</h4>
       <dt>像の性質</dt>
       <dd>
-        写像$f:a\to b$，部分集合$a_1,a_2\subset a$，部分集合$b_1,b_2\subset b$について，
-        $$f\sq{a_1\cup a_2}=f\sq{a_1}\cup f\sq{a_2}$$
-        $$f\sq{a_1\cap a_2}\subset f\sq{a_1}\cap f\sq{a_2}$$
-        $$f\sq{a_1-a_2}\supset f\sq{a_1}-f\sq{a_2}$$
-        $$a_1\subset f^{-1}\sq{f\sq{a_1}}$$
-        $$f^{-1}\sq{b_1\cup b_2}=f^{-1}\sq{b_1}\cup f^{-1}\sq{b_2}$$
-        $$f^{-1}\sq{b_1\cap b_2}=f\sq{a_1}\cap f\sq{a_2}$$
-        $$f^{-1}\sq{b_1-b_2}=f^{-1}\sq{b_1}-f^{-1}\sq{b_2}$$
-        $$b_1\subset f\sq{f^{-1}\sq{b_1}}$$
-      </dd>
-      <dt>単射の性質</dt>
-      <dd>
-        単射な写像$f:a\to b$，部分集合$a_1,a_2\subset a$について，
-        $$f\sq{a_1\cap a_2}=f\sq{a_1}\cap f\sq{a_2}$$
-        $$f\sq{a_1-a_2}=f\sq{a_1}-f\sq{a_2}$$
-        $$a_1=f^{-1}\sq{f\sq{a_1}}$$
-      </dd>
-      <dt>全射の性質</dt>
-      <dd>
-        全射な写像$f:a\to b$，部分集合$b_1,b_2\subset b$について，
-        $$b_1=f\sq{f^{-1}\sq{b_1}}$$
-      </dd>
-      <dt>合成写像の性質</dt>
-      <dd>
-        写像$f:a\to b$，写像$a_1,a_2\subset a$，について，
-        $$g\circ fが単射\To fが単射$$
-        $$g\circ fが全射\To fが全射$$
-        $$g\circ f\To fが単射$$
+        写像$f:a\to b$，部分集合$a'\subset a$について，
+        $$x\in a'\To f\p{x}\in f\sq{a'}$$
       </dd>
     </dl>
     <details>
-      <summary>像の性質1~3</summary>
+      <summary>像の性質</summary>
       <p>
-        写像$f:a\to b$，部分集合$a_1,a_2\subset a$，部分集合$b_1,b_2\subset b$について，
-        $$f\sq{a_1\cup a_2}=f\sq{a_1}\cup f\sq{a_2}$$
-        $$f\sq{a_1\cap a_2}\subset f\sq{a_1}\cap f\sq{a_2}$$
-        $$f\sq{a_1-a_2}\supset f\sq{a_1}-f\sq{a_2}$$
+        写像$f:a\to b$，部分集合$a'\subset a$について，
+        $$x\in a'\To f\p{x}\in f\sq{a'}$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $f$による像はすべて$b$の部分集合であるからその条件は明記しない．像の集合に属する条件を変形することで示す．
-        </p>
-        <p>
-          $f\sq{a_1\cup a_2}$の元$y$の条件は，
-          \begin{align*}
-          &\exists x\in a_1\cup a_2,\p{x,y}\in f\\
-          \Iff&\exists x,\p{x\in a_1\lor x\in a_2}\land\p{x,y}\in f\bcs\cupの定義\\
-          \Iff&\exists x,x\in a_1\land\p{x,y}\in f\lor x\in a_2\land\p{x,y}\in f\bcs分配律\\
-          \Iff&\p{\exists x\in a_1,\p{x,y}\in f}\lor \p{\exists x\in a_2,\p{x,y}\in f}\bcs量化の分配
-          \end{align*}
-          これは$f\sq{a_1}\cup f\sq{a_2}$の元である．
-        </p>
-        <p>
-          $f\sq{a_1\cap a_2}$の元$y$の条件は，
-          \begin{align*}
-          &\exists x\in a_1\cap a_2,\p{x,y}\in f\\
-          &\exists x,x\in a_1\land x\in a_2\land\p{x,y}\in f\bcs\cupの定義\\
-          &\exists x,x\in a_1\land\p{x,y}\in f\land x\in a_2\land\p{x,y}\in f\bcs冪等律\\
-          &\p{\exists x\in a_1,\p{x,y}\in f}\land\p{\exists x\in a_2,\p{x,y}\in f}\bcs量化の分配
-          \end{align*}
-          これは$f\sq{a_1}\cap f\sq{a_2}$の元である．
-        </p>
-        <p>
-          $f\sq{a_1}-f\sq{a_2}$の元$y$の条件は，
-          \begin{align*}
-          &\p{\exists x\in a_1,\p{x,y}\in f}\land\lnot\p{\exists x\in a_2,\p{x,y}\in f}\\
-          &\p{\exists x\in a_1,\p{x,y}\in f}\land\p{\forall x,x\notin a_2\lor\p{x,y}\notin f}\bcs双対定理\\
-          &\exists x,x\in a_1\land\p{x,y}\in f\land x\in a_2\land\p{x,y}\in f\bcs冪等律\\
-          &\exists x,x\in a_1\land x\in a_2\land\p{x,y}\in f\bcs\cupの定義\\
-          &\exists x\in a_1\cap a_2,\p{x,y}\in f\\
-          \end{align*}
-          これは$f\sq{a_1}\cup f\sq{a_2}$の元である．
+          写像$f$の定義より，$\p{x,f\p{x}}\in f$である．定義より，$f\sq{a'}$に属している元$y$は，
+          $$\exists x,y\in b\land x\in a'\land\p{x,y}\in f$$
+          が成り立つ．$f\p{x}\in b$かつ$x\in a'$かつ$\p{x,f\p{x}}\in f$が成り立つから，$f\p{x}$は$f\sq{a'}$の元である．よって示された．
         </p>
       </details>
     </details>
-
     <dl>
       <h4>定義</h4>
       <dt>単射</dt>
@@ -1078,6 +1012,16 @@
         $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}$$
       </dd>
     </dl>
+    <aside>
+      <h4>単射の例</h4>
+      $a=\set{0,1,2,3,4}$，$b=\set{a,b,c,d,e}$，写像$f:a\to b$について，
+      $$\set{\p{0,d},\p{1,a},\p{2,c},\p{3,b},\p{4,e}}$$
+      は写像先によって写像前の1つの元があるので単射である．
+      <h4>全射の例</h4>
+      $a=\set{0,1,2,3,4}$，$b=\set{a,b}$，写像$f:a\to b$について，
+      $$\set{\p{0,a},\p{1,a},\p{2,b},\p{3,b},\p{4,a}}$$
+      は写像先がすべて存在するので全射である．
+    </aside>
 
     <h3>関数論理式</h3>
     <dl>
@@ -1189,8 +1133,8 @@
     </dl>
 
     <dl>
-      <h4>命題</h4>
-      <dt>正則性公理から導かれる命題</dt>
+      <h4>定理</h4>
+      <dt>正則性公理から導かれる定理</dt>
       <dd>
         $$\forall x,x\notin x$$
         $$\forall xy,x\notin y\lor y\notin x$$
@@ -1199,7 +1143,7 @@
     </dl>
 
     <details>
-      <summary>命題1</summary>
+      <summary>定理1</summary>
       <p>
         $$\forall x,x\notin x$$
       </p>
@@ -1215,7 +1159,7 @@
       </details>
     </details>
     <details>
-      <summary>命題2</summary>
+      <summary>定理2</summary>
       <p>
         $$\forall xy,x\notin y\lor y\notin x$$
       </p>
@@ -1245,7 +1189,7 @@
       </details>
     </details>
     <details>
-      <summary>命題3</summary>
+      <summary>定理3</summary>
       <p>
         $$\not\exists x\forall y,y\in x$$
       </p>
