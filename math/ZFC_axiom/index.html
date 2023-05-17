@@ -1018,6 +1018,34 @@
         $$g\circ f\To fが単射$$
       </dd>
     </dl>
+    <details>
+      <summary>像の性質1~3</summary>
+      <p>
+        写像$f:a\to b$，部分集合$a_1,a_2\subset a$，部分集合$b_1,b_2\subset b$について，
+        $$f\sq{a_1\cup a_2}=f\sq{a_1}\cup f\sq{a_2}$$
+        $$f\sq{a_1\cap a_2}\subset f\sq{a_1}\cap f\sq{a_2}$$
+        $$f\sq{a_1-a_2}\supset f\sq{a_1}-f\sq{a_2}$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $f$による像はすべて$b$の部分集合であるからその条件は明記しない．像の集合に属する条件を変形することで示す．
+        </p>
+        <p>
+          $f\sq{a_1\cup a_2}$の元$y$の条件は，
+          \begin{align*}
+          &\exists x\in a_1\cup a_2,\p{x,y}\in f\\
+          \Iff&\exists x,x\in a_1\cup a_2\land\p{x,y}\in f\bcs省略の定義\\
+          \Iff&\exists x,\p{x\in a_1\lor x\in a_2}\land\p{x,y}\in f\bcs\cupの定義\\
+          \Iff&\exists x,x\in a_1\land\p{x,y}\in f\lor x\in a_2\land\p{x,y}\in f\bcs分配律\\
+          \Iff&\p{\exists x\in a_1,\p{x,y}\in f}\lor \p{\exists x\in a_2,\p{x,y}\in f}\bcs量化の分配\\
+          \end{align*}
+        </p>
+        <p>
+          したがって，$\bigcup2^a=a$である．
+        </p>
+      </details>
+    </details>
 
     <h3>関数論理式</h3>
     <dl>
@@ -1066,7 +1094,7 @@
       <dt>添字積集合</dt>
       <dd>
         添字集合$\set{a_i}_I$の積集合とは，
-        $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}$$
+        $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}_I\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}$$
       </dd>
     </dl>
     <dl>
@@ -1076,8 +1104,8 @@
         $\set{a_i}_I$について，
         $$\bigcup_{i\in I}a_i\cap b=\bigcup_{i\in I}\p{a_i\cap b}$$
         $$\bigcap_{i\in I}a_i\cup b=\bigcap_{i\in I}\p{a_i\cup b}$$
-        $$\overline{\bigcap_{i\in I}a_i}=\bigcap_{i\in I}\overline{a_i}$$
-        $$\overline{\bigcap_{i\in I}a_i}=\bigcap_{i\in I}\overline{a_i}$$
+        $$\overline{\bigcup_{i\in I}a_i}=\bigcap_{i\in I}\overline{a_i}$$
+        $$\overline{\bigcap_{i\in I}a_i}=\bigcup_{i\in I}\overline{a_i}$$
       </dd>
     </dl>
 
