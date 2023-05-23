@@ -25,7 +25,7 @@
     </details>
     <h2>証明体系</h2>
     <p>
-      一階述語論理において証明体系は2つの考えを組み合わせである．1つ目は推論の形式についてであり，ヒルベルト流H，自然演繹N，シーケント計算Lの3つが知られてる．2つ目は定理の範囲についてであり，最小論理M，直感主義論理J，古典論理Kの3つが知られてる．それぞれの組み合わせにより，HM，HJ，HK，NM，NJ，NK，LM，LJ，LKの9つの証明体系がよく知られている．自然演繹が初学者にとって分かりやすいのでこれを採用する．
+      証明体系は推論規則と公理からなる．一階述語論理の証明体系は2つの考えを組み合わせて名前が付けられている．1つ目は推論の形式についてであり，ヒルベルト流H，自然演繹N，シーケント計算Lの3つが知られてる．2つ目は定理の範囲についてであり，最小論理M，直感主義論理J，古典論理Kの3つが知られてる．それぞれの組み合わせにより，HM，HJ，HK，NM，NJ，NK，LM，LJ，LKの9つの証明体系がよく知られている．自然演繹が初学者にとって分かりやすいのでこれを採用する．
     </p>
 
     <h2>自然演繹</h2>
@@ -37,30 +37,37 @@
       <h4>定義</h4>
       <dt>推論図</dt>
       <dd>
-        $A_1,A_2,\cdots,A_n\To A$を次の図のように表し，推論図という．
+        $A_1,A_2,\cdots,A_n\To A$を次の図のように表し，
         $$\infer{A}{A_1\quad A_2\quad\cdots\quad A_n}$$
-        このとき，$A_1,A_2,\cdots,A_n$を前提，$A$を結論という．$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}$が推論図であるとき，$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}\To A$を次の図のように表し，これも推論図という．
+        を推論図という．このとき，$A_1,A_2,\cdots,A_n$を前提，$A$を結論という．$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}$が推論図であるとき，$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}\To A$を次の図のように表し，
         $$\infer{A}{\mathcal{A_1}\quad\mathcal{A_2}\quad\cdots\quad\mathcal{A_n}}$$
+        も推論図という．
       </dd>
       <dt>演繹図</dt>
       <dd>
-        推論規則$\rm{R}$が$A_1,A_2,\cdots,A_n\To A$であるとき，次の図のように表し，演繹図という．
+        推論規則$\rm{R}$が$A_1,A_2,\cdots,A_n\To A$であるとき，次の図のように表し，
         $$\rm{R}\infer{A}{A_1\quad A_2\quad\cdots\quad A_n}$$
-        このとき，$A$を帰結という．$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}$が演繹図であるとき，$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}\To A$を次の図のように表し，これも演繹図という．
+        を演繹図という．このとき，$A$を帰結という．推論規則$\rm{R}$が明らかなとき省略してよい．また，公理$A$について，次の図のように表し，
+        $$\infer{A}{}$$
+        を演繹図という．$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}$がそれぞれ$A_1,A_2,\cdots,A_n$を帰結とする演繹図とする．推論規則$\rm{R}$が$A_1,A_2,\cdots,A_n\To A$のとき，次の図のように表し，
         $$\rm{R}\infer{A}{\mathcal{A_1}\quad\mathcal{A_2}\quad\cdots\quad\mathcal{A_n}}$$
-        推論規則$\rm{R}$が明確なとき省略してよい．前提がないとき，証明図という．
+        も演繹図という．前提がないとき，演繹図を証明図という．
       </dd>
       <dt>演繹可能</dt>
       <dd>
         前提$A_1,A_2,\cdots,A_n$，帰結$A$について，演繹図が存在するとき，
         $$A_1,A_2,\cdots,A_n\sequent A$$
-        と表し，$A_1,A_2,\cdots,A_n$から$A$へ演繹可能という．
+        と表し，$A_1,A_2,\cdots,A_n$から$A$に演繹可能という．
       </dd>
       <dt>証明可能</dt>
       <dd>
         帰結$A$について，証明図が存在するとき，
         $$\sequent A$$
         と表し，$A$は証明可能という．
+      </dd>
+      <dt>定理</dt>
+      <dd>
+        論理式$A$が証明可能なとき，$A$を定理という．
       </dd>
     </dl>
     <div class="you">
@@ -271,7 +278,7 @@
           $\p{\rTo}$前提より，
           $$\Gamma\sequent A\to B.$$
           前提に$A$を追加すると，
-          $$A\Gamma\sequent A,A\to B.$$
+          $$A,\Gamma\sequent A,A\to B.$$
           となり，$A,A\to B\To B$であるから，
           $$\Gamma,A\sequent B.$$
           が成り立つ．
@@ -297,10 +304,15 @@
     <dl>
       <h4>推論規則</h4>
       <dt>爆発律</dt>
-      <dd>$$\infer{A}{\bot}$$</dd>
+      <dd>
+        $$\infer{A}{\bot}$$
+      </dd>
       <h4>定理</h4>
       <dt>爆発律と選言的三段論法の等価性</dt>
-      <dd>最小論理上で爆発律と選言的三段論法と等価である．</dd>
+      <dd>
+        最小論理上で爆発律と選言的三段論法と等価である．つまり，
+        $$
+      </dd>
     </dl>
     <p>
       爆発律と選言的三段論法の等価性を証明するには<dfn>同一律</dfn>が必要である．
@@ -318,6 +330,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
+          次の証明図が存在する．
           $$\infer[1]{A\to A}{\infer[1]{A}{}}$$
         </p>
       </details>
@@ -334,11 +347,11 @@
         </p>
         <p>
           最小論理と爆発律を用いて選言的三段論法を導出する．
-          $$\infer[2]{\p{A\lor B}\land\lnot B\to A}{\infer[1]{A}{\infer{A\lor B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}\quad A\to A\quad\infer{A}{\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}}}}}$$
+          $$\infer[2]{\p{A\lor B}\land\lnot B\to A}{\infer[1]{A}{\infer{A\lor B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}\quad\infer{A\to A}{}\quad\infer{A}{\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}}}}}$$
         </p>
         <p>
           最小論理と選言的三段論法を用いて爆発律を導出する．
-          $$\infer[1]{\bot\to A}{\infer{A}{\infer{\p{A\lor\bot}\land\lnot\bot}{\infer{A\lor\bot}{\infer[1]{\bot}{}}\quad\infer{\lnot\bot}{\bot\to\bot}}\quad\p{A\lor\bot}\land\lnot\bot\to A}}$$
+          $$\infer[1]{\bot\to A}{\infer{A}{\infer{\p{A\lor\bot}\land\lnot\bot}{\infer{A\lor\bot}{\infer[1]{\bot}{}}\quad\infer{\lnot\bot}{\infer{\bot\to\bot}{}}}\quad\p{A\lor\bot}\land\lnot\bot\to A}}$$
         </p>
       </details>
     </details>
@@ -364,7 +377,7 @@
         </p>
         <p>
           最小論理と爆発律と排中律を用いて二重否定の除去を導出する．
-          $$\infer[2]{\lnot\lnot A\to A}{\infer[1]{A}{A\lor\lnot A\quad A\to A\quad\infer{A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer[2]{\lnot\lnot A}{}}}}}$$
+          $$\infer[2]{\lnot\lnot A\to A}{\infer[1]{A}{\infer{A\lor\lnot A}{}\quad\infer{A\to A}{}\quad\infer{A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer[2]{\lnot\lnot A}{}}}}}$$
         </p>
         <p>
           最小論理と二重否定の除去を用いて排中律を導出する．
@@ -429,11 +442,11 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $\p{A\to B}\to\lnot A\lor B$の証明をする．
-          $$\infer[2]{\p{A\to B}\to\lnot A\lor B}{\infer[1]{\lnot A\lor B}{A\lor\lnot A\quad\infer{\lnot A\lor B}{\infer{B}{\infer[1]{A}{}\quad\infer[2]{A\to B}{}}}\quad\infer{\lnot A\lor B}{\infer[1]{\lnot A}{}}}}$$
+          $\p{A\to B}\to\lnot A\lor B$の証明図が存在する．
+          $$\infer[2]{\p{A\to B}\to\lnot A\lor B}{\infer[1]{\lnot A\lor B}{\infer{A\lor\lnot A}{}\quad\infer{\lnot A\lor B}{\infer{B}{\infer[1]{A}{}\quad\infer[2]{A\to B}{}}}\quad\infer{\lnot A\lor B}{\infer[1]{\lnot A}{}}}}$$
         </p>
         <p>
-          $\lnot A\lor B\to\p{A\to B}$の証明をする．
+          $\lnot A\lor B\to\p{A\to B}$の証明図が存在する．
           $$\infer[3]{\lnot A\lor B\to A\to B}{\infer[2]{A \to B}{\infer[3]{\lnot A\lor B}{}\quad\infer[1]{A\to B}{\infer{B}{\infer{\bot}{\infer[1]{A}{}\quad\infer[2]{\lnot A}{}}}}\quad\infer{A\to B}{\infer[2]{B}{}}}}$$
         </p>
       </details>
@@ -471,16 +484,16 @@
         </p>
         <p>
           $F\p{A}=\lnot A$のとき，次の証明図が存在する．
-          $$\infer[2]{\lnot A\to\lnot B}{\infer[1]{\lnot B}{\infer{\bot}{\infer{A}{\infer[1]{B}{}\quad\infer{B\to A}{A\iff B}}\quad\infer[2]{\lnot A}{}}}}$$
+          $$\infer[2]{\lnot A\to\lnot B}{\infer[1]{\lnot B}{\infer{\bot}{\infer{A}{\infer[1]{B}{}\quad\infer{B\to A}{\infer{A\iff B}{}}}\quad\infer[2]{\lnot A}{}}}}$$
         </p>
         <p>
           $F\p{A}=A\land C$のとき，次の証明図が存在する．
-          $$\infer[1]{A\land C\to B\land C}{\infer{B\land C}{\infer{B}{\infer{A}{\infer[1]{A\land C}{}}\quad\infer{A\to B}{A\iff B}}\quad\infer{C}{\infer[1]{A\land C}{}}}}$$
+          $$\infer[1]{A\land C\to B\land C}{\infer{B\land C}{\infer{B}{\infer{A}{\infer[1]{A\land C}{}}\quad\infer{A\to B}{\infer{A\iff B}{}}}\quad\infer{C}{\infer[1]{A\land C}{}}}}$$
           同様に，$F\p{A}=C\land A$のときでも成り立つ．
         </p>
         <p>
           $F\p{A}=A\lor C$のとき，次の証明図が存在する．
-          $$\infer[2]{A\lor C\to B\lor C}{\infer[1]{B\lor C}{\infer[2]{A\lor C}{}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{A\iff B}}}\quad\infer{B\lor C}{\infer[1]{C}{}}}}$$
+          $$\infer[2]{A\lor C\to B\lor C}{\infer[1]{B\lor C}{\infer[2]{A\lor C}{}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer{A\iff B}{}}}}\quad\infer{B\lor C}{\infer[1]{C}{}}}}$$
           同様に，$F\p{A}=C\lor A$のときでも成り立つ．
         </p>
         <p>
@@ -489,11 +502,11 @@
         </p>
         <p>
           $F\p{A}=\forall a,A\p{a}$のとき，次の証明図が存在する．
-          $$\infer[1]{\forall x,A\p{x}\to\forall x,B\p{x}}{\infer{\forall x,B\p{x}}{\infer{B\p{a}}{\infer{A\p{a}}{\infer[1]{\forall x,A\p{x}}{}}\quad\infer{A\p{a}\to B\p{a}}{A\p{a}\iff B\p{a}}}}}$$
+          $$\infer[1]{\forall x,A\p{x}\to\forall x,B\p{x}}{\infer{\forall x,B\p{x}}{\infer{B\p{a}}{\infer{A\p{a}}{\infer[1]{\forall x,A\p{x}}{}}\quad\infer{A\p{a}\to B\p{a}}{\infer{A\p{a}\iff B\p{a}}{}}}}}$$
         </p>
         <p>
           $F\p{A}=\exists a,A\p{a}$のとき，次の証明図が存在する．
-          $$\infer[2]{\exists x,A\p{x}\to\exists x,B\p{x}}{\infer[1]{\exists x,B\p{x}}{\infer[2]{\exists x,A\p{x}}{}\quad\infer{\exists x,B\p{x}}{\infer{B\p{a}}{\infer[1]{A\p{a}}{}\quad\infer{A\p{a}\to B\p{a}}{A\p{a}\iff B\p{a}}}}}}$$
+          $$\infer[2]{\exists x,A\p{x}\to\exists x,B\p{x}}{\infer[1]{\exists x,B\p{x}}{\infer[2]{\exists x,A\p{x}}{}\quad\infer{\exists x,B\p{x}}{\infer{B\p{a}}{\infer[1]{A\p{a}}{}\quad\infer{A\p{a}\to B\p{a}}{\infer{A\p{a}\iff B\p{a}}{}}}}}}$$
         </p>
         <p>
           $A\iff B$で$F\p{A}\iff F\p{B}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{A}}$について前述したことを用いて$F'\p{F\p{A}}\iff F'\p{F\p{B}}$である．よって，任意の論理式で$F\p{A}\iff F\p{B}$が成り立つ．
@@ -509,12 +522,12 @@
       <dt>$\iff$の対称律</dt>
       <dd>
         任意の論理式$A,B$について，
-        $$A\iff B\Iff B\iff A$$
+        $$A\iff B\Iff B\iff A.$$
       </dd>
       <dt>$\iff$の推移律</dt>
       <dd>
         任意の論理式$A,B,C$について，
-        $$\p{A\iff B}\land\p{B\iff C}\To A\iff C$$
+        $$\p{A\iff B}\land\p{B\iff C}\To A\iff C.$$
       </dd>
       <dt>$=$の対称律</dt>
       <dd>
@@ -533,13 +546,15 @@
     <details>
       <summary>$\iff$の対称律</summary>
       <p>
-        $$A\iff B\Iff B\iff A$$
+        $$A\iff B\Iff B\iff A.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
+        代入原理を用いて次のように変形する．
         \begin{align*}
-        A\iff B&\To \p{A\iff A}\iff\p{B\iff A}\\
-        &\To \p{A\iff A}\to\p{B\iff A}
+        &A\iff B\\
+        \To&\p{A\iff A}\iff\p{B\iff A}\\
+        \To&\p{A\iff A}\to\p{B\iff A}.
         \end{align*}
         反射律より$A\iff A$は定理なので，
         $$\p{B\iff A}$$
@@ -549,17 +564,21 @@
     <details>
       <summary>$\iff$の推移律</summary>
       <p>
-        $$\p{A\iff B}\land\p{B\iff C}\To A\iff C$$
+        $$\p{A\iff B}\land\p{B\iff C}\To A\iff C.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
+        代入原理を用いて次のように変形する．
         \begin{align*}
-        A\iff B&\To \p{A\iff C}\iff\p{B\iff C}\\
-        &\To \p{B\iff C}\to\p{A\iff C}
+        &A\iff B\\
+        \To&\p{A\iff C}\iff\p{B\iff C}\\
+        \To&\p{B\iff C}\to\p{A\iff C}.
         \end{align*}
+        同様に代入原理を用いて次のように変形する．
         \begin{align*}
-        B\iff C&\To \p{B\iff C}\iff\p{C\iff C}\\
-        &\To \p{C\iff C}\to\p{B\iff C}
+        &B\iff C\\
+        \To&\p{B\iff C}\iff\p{C\iff C}\\
+        \To&\p{C\iff C}\to\p{B\iff C}.
         \end{align*}
         反射律より$C\iff C$なので，
         $$\p{B\iff C}$$
@@ -578,22 +597,22 @@
       <h4>定理</h4>
       <dt>二重否定律</dt>
       <dd>
-        $$A\iff\lnot\lnot A$$
+        $$A\iff\lnot\lnot A.$$
       </dd>
     </dl>
     <details>
       <summary>二重否定律</summary>
       <p>
-        $$A\iff\lnot\lnot A$$
+        $$A\iff\lnot\lnot A.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $\p{\to}$
+          $\p{\to}$の証明図が存在する．
           $$\infer[2]{A\to\lnot\lnot A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[2]{A}{}\quad\infer[1]{\lnot A}{}}}}$$
         </p>
         <p>
-          $\p{\rto}$二重否定の除去そのものである．
+          $\p{\rto}$は二重否定の除去そのものである．
         </p>
       </details>
     </details>
@@ -607,22 +626,22 @@
       <dt>De Morganの法則</dt>
       <dd>
         <ol>
-          <li>$\lnot\p{A\lor B}\iff\lnot A\land\lnot B$</li>
-          <li>$\lnot\p{A\land B}\iff\lnot A\lor\lnot B$</li>
-          <li>$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}$</li>
-          <li>$\lnot\forall xF\p{x}\iff\exists x\lnot F\p{x}$</li>
+          <li>$\lnot\p{A\lor B}\iff\lnot A\land\lnot B.$</li>
+          <li>$\lnot\p{A\land B}\iff\lnot A\lor\lnot B.$</li>
+          <li>$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}.$</li>
+          <li>$\lnot\forall xF\p{x}\iff\exists x\lnot F\p{x}.$</li>
         </ol>
       </dd>
     </dl>
     <details>
       <summary>De Morganの法則(1)</summary>
       <p>
-        $$\lnot\p{A\lor B}\iff\lnot A\land\lnot B$$
+        $$\lnot\p{A\lor B}\iff\lnot A\land\lnot B.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $\p{\to}$
+          $\p{\to}$の証明図が存在する．
           $$\infer[3]{\lnot\p{A\lor B}\to\lnot A\land\lnot B}{\infer{\lnot A\land\lnot B}{\infer[1]{\lnot A}{\infer{\bot}{\infer{A\lor B}{\infer[1]{A}{}}\quad\infer[3]{\lnot\p{A\lor B}{}}}}\quad\infer[2]{\lnot B}{\infer{\bot}{\infer{A\lor B}{\infer[2]{B}{}}\quad\infer[3]{\lnot\p{A\lor B}}{}}}}}$$
         </p>
         <p>
