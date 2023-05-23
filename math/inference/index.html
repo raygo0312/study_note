@@ -35,12 +35,12 @@
       <dt>$A$を$B$で定義する</dt>
       <dd>
         論理式$A,B$について，
-        $$A\Def B$$
+        $$A\Def B.$$
       </dd>
       <dt>$a$を$b$で定義する</dt>
       <dd>
         項$a,b$について，
-        $$a\def b$$
+        $$a\def b.$$
       </dd>
     </dl>
     <p>
@@ -51,12 +51,12 @@
       <dt>$A$と$B$は等価である</dt>
       <dd>
         論理式$A,B$について，
-        $$A\Iff B$$
+        $$A\Iff B.$$
       </dd>
       <dt>$a$と$b$は恒等である</dt>
       <dd>
         項$a,b$について，
-        $$a=b$$
+        $$a=b.$$
       </dd>
     </dl>
     <p>
@@ -96,25 +96,25 @@
       <h4>用意</h4>
       論理式$A,B$について，次は真理関数である．
       <dt>否定</dt>
-      <dd>$$\lnot\p{A}$$</dd>
+      <dd>$$\lnot\p{A}.$$</dd>
       <dt>連言</dt>
-      <dd>$$\land\p{A,B}$$</dd>
+      <dd>$$\land\p{A,B}.$$</dd>
       <dt>選言</dt>
-      <dd>$$\lor\p{A,B}$$</dd>
+      <dd>$$\lor\p{A,B}.$$</dd>
       <dt>含意</dt>
-      <dd>$$\to\p{A,B}$$</dd>
+      <dd>$$\to\p{A,B}.$$</dd>
     </dl>
     <p>
       形式化する上では論理体系の意味を考えないが，意味がわからないと理解しづらいので，参考までに自然言語としての意味を載せる．直感でわかりやすいように，真理関数は自然言語で使われる言葉が元になっている．
     </p>
     <aside>
       <h4>真理関数の意味</h4>
-      論理式$A,B$について，
+      論理式$A,B$について，次は真理関数の意味を表す．
       <ul>
-        <li>否定$\lnot\p{A}$ : $A$ではない</li>
-        <li>連言$\land\p{A,B}$ : $A$かつ$B$</li>
-        <li>選言$\lor\p{A,B}$ : $A$または$B$</li>
-        <li>含意$\to\p{A,B}$ : $A$ならば$B$</li>
+        <li>否定$\lnot\p{A}$ : $A$ではない．</li>
+        <li>連言$\land\p{A,B}$ : $A$かつ$B$．</li>
+        <li>選言$\lor\p{A,B}$ : $A$または$B$．</li>
+        <li>含意$\to\p{A,B}$ : $A$ならば$B$．</li>
       </ul>
     </aside>
     <p>
@@ -122,29 +122,29 @@
     </p>
     <dl>
       <h4>定義</h4>
-      論理式$A,B$について，
+      論理式$A,B$について，次の表記を認める．
       <dt>$\lnot$演算子</dt>
-      <dd>$$\p{\lnot A}\Def\lnot\p{A}$$</dd>
+      <dd>$$\p{\lnot A}\Def\lnot\p{A}.$$</dd>
       <dt>$\lor$演算子</dt>
-      <dd>$$\p{A\land B}\Def\land\p{A,B}$$</dd>
+      <dd>$$\p{A\land B}\Def\land\p{A,B}.$$</dd>
       <dt>$\land$演算子</dt>
-      <dd>$$\p{A\lor B}\Def\lor\p{A,B}$$</dd>
+      <dd>$$\p{A\lor B}\Def\lor\p{A,B}.$$</dd>
       <dt>$\to$演算子</dt>
-      <dd>$$\p{A\to B}\Def\to\p{A,B}$$</dd>
+      <dd>$$\p{A\to B}\Def\to\p{A,B}.$$</dd>
     </dl>
     <p>
       二項演算子におけるこの記法を<dfn>中置記法</dfn>という．一方，前に置く記法を<dfn>前置記法</dfn>(<dfn>ポーランド記法</dfn>)という．後ろに置く記法を<dfn>後置記法</dfn>(<dfn>逆ポーランド記法</dfn>)という．便利なのでこれらのほかにもう2つ演算子を定義する．
     </p>
     <dl>
       <h4>定義</h4>
-      論理式$A,B$について，
+      論理式$A,B$について，次の表記を認める．
       <dt>等価</dt>
       <dd>
-        $$\p{A\iff B}\Def\p{\p{A\to B}\land\p{B\to A}}$$
+        $$\p{A\iff B}\Def\p{\p{A\to B}\land\p{B\to A}}.$$
       </dd>
       <dt>排他的論理和</dt>
       <dd>
-        $$\p{A\veebar B}\Def\p{A\land\p{\lnot B}\lor\p{\lnot A}\land B}$$
+        $$\p{A\veebar B}\Def\p{A\land\p{\lnot B}\lor\p{\lnot A}\land B}.$$
       </dd>
     </dl>
     <p>
@@ -183,7 +183,9 @@
     <dl>
       <h4>定義</h4>
       <dt>全称量化子</dt>
-      <dd>$$\forall$$</dd>
+      <dd>
+        $$\forall$$
+      </dd>
       <dt>存在量化子</dt>
       <dd>
         $$\exists$$
@@ -221,29 +223,29 @@
       <dt>括弧の省略</dt>
       <dd>
         $\p{a}$が演算子の引数ではないとき，
-        $$a\Def\p{a}$$
+        $$a\Def\p{a}.$$
       </dd>
       $a,b,c$を演算子の引数とする．
       <dt>一項演算子についての省略</dt>
       <dd>
         一項演算子$\star$について，
-        $$\star\,a\Def\p{\star a}$$
+        $$\star\,a\Def\p{\star a}.$$
       </dd>
       <dt>二項演算子についての優先順位</dt>
       <dd>
-        二項演算子$\star_1$が$\star_2$より優先順位が高いとき，
-        $$a\,\star_1\,b\,\star_2\,c\Def\p{a\,\star_1\,b}\,\star_2\,c$$
-        $$a\,\star_2\,b\,\star_1\,c\Def a\,\star_2\,\p{b\,\star_1\,c}$$
+        二項演算子$\star_1$が$\star_2$より優先順位が高いとき，次の表記を認める．
+        $$a\,\star_1\,b\,\star_2\,c\Def\p{a\,\star_1\,b}\,\star_2\,c.$$
+        $$a\,\star_2\,b\,\star_1\,c\Def a\,\star_2\,\p{b\,\star_1\,c}.$$
       </dd>
       <dt>左結合</dt>
       <dd>
         二項演算子$\star$が左結合であるとき，
-        $$a\,\star\,b\,\star\,c\Def\p{a\,\star\,b}\,\star\,c$$
+        $$a\,\star\,b\,\star\,c\Def\p{a\,\star\,b}\,\star\,c.$$
       </dd>
       <dt>右結合</dt>
       <dd>
         二項演算子$\star$が右結合であるとき，
-        $$a\,\star\,b\,\star\,c\Def a\,\star\,(b\,\star\,c)$$
+        $$a\,\star\,b\,\star\,c\Def a\,\star\,(b\,\star\,c).$$
       </dd>
     </dl>
     <p>
@@ -273,12 +275,12 @@
     </dl>
     <aside>
       <h4>優先順位の例</h4>
-      命題$P,Q,R$について，
-      $$\lnot P\land Q\Iff\p{\lnot P}\land Q$$
-      $$P\land Q\lor Q\land R\Iff\p{P\land Q}\lor\p{Q\land R}$$
-      $$\lnot\lnot P\Iff\lnot\p{\lnot P}$$
-      $$P\to Q\to R\Iff P\to\p{Q\to R}$$
-      $$\lnot\p{P\lor Q}\land R\Iff\p{\lnot\p{P\lor Q}}\land R$$
+      命題$P,Q,R$について，次を満たす．
+      $$\lnot P\land Q\Iff\p{\lnot P}\land Q.$$
+      $$P\land Q\lor Q\land R\Iff\p{P\land Q}\lor\p{Q\land R}.$$
+      $$\lnot\lnot P\Iff\lnot\p{\lnot P}.$$
+      $$P\to Q\to R\Iff P\to\p{Q\to R}.$$
+      $$\lnot\p{P\lor Q}\land R\Iff\p{\lnot\p{P\lor Q}}\land R.$$
     </aside>
     <details>
       <summary>練習問題1</summary>
@@ -286,9 +288,9 @@
         次の括弧が省略された命題に括弧をつけなさい．
       </p>
       <ol>
-        <li>$\lnot P\land Q$</li>
-        <li>$P\land Q\lor R\to P\lor\lnot Q\land R$</li>
-        <li>$P\to Q\to P\iff Q$</li>
+        <li>$\lnot P\land Q.$</li>
+        <li>$P\land Q\lor R\to P\lor\lnot Q\land R.$</li>
+        <li>$P\to Q\to P\iff Q.$</li>
       </ol>
       <details class="sub">
         <summary>解答</summary>
@@ -296,9 +298,9 @@
           優先順位が高い演算子から括弧をくくる．
         </p>
         <ol>
-          <li>$\p{\p{\lnot P}\land Q}$</li>
-          <li>$\p{\p{\p{P\land Q}\lor R}\to\p{P\lor\p{\p{\lnot Q}\land R}}}$</li>
-          <li>$\p{\p{P\to \p{Q\to P}}\iff Q}$</li>
+          <li>$\p{\p{\lnot P}\land Q}.$</li>
+          <li>$\p{\p{\p{P\land Q}\lor R}\to\p{P\lor\p{\p{\lnot Q}\land R}}}.$</li>
+          <li>$\p{\p{P\to \p{Q\to P}}\iff Q}.$</li>
         </ol>
       </details>
     </details>
@@ -308,9 +310,9 @@
         次の式が命題論理における論理式であることを示せ．ただし，$P,Q$は原子命題とする．
       </p>
       <ol>
-        <li>$P\to P$</li>
-        <li>$\lnot P\land Q$</li>
-        <li>$P\iff P$</li>
+        <li>$P\to P.$</li>
+        <li>$\lnot P\land Q.$</li>
+        <li>$P\iff P.$</li>
       </ol>
       <details class="sub">
         <summary>解答</summary>
@@ -322,7 +324,7 @@
             与式を変形する．
             \begin{align*}
             &P\to P\\
-            \Iff&\to\p{P,P}\\
+            \Iff&\to\p{P,P}.\\
             \end{align*}
             $P$は原子命題より$P$は論理式である．$\to$は二項真理関数で$P$は論理式より$\to\p{P,P}$は論理式である．したがって，$P\to P$は論理式である．
           </li>
@@ -331,17 +333,16 @@
             \begin{align*}
             &\lnot P\land Q\\
             \Iff&\p{\p{\lnot P}\land Q}\\
-            \Iff&\land\p{\lnot\p{P},Q}\\
+            \Iff&\land\p{\lnot\p{P},Q}.\\
             \end{align*}
-            $P$は原子命題より$P$は論理式である．$\lnot$は一項真理関数で$P$は論理式より$\lnot\p{P}$は論理式である．また，$Q$は原子命題より$Q$は論理式である．よって，$\land$は二項真理関数で$\lnot\p{P}$と$Q$は論理式より$\land\p{\lnot\p{P},Q}$は論理式である．したがって，$\lnot
-            P\land Q$は論理式である．
+            $P$は原子命題より$P$は論理式である．$\lnot$は一項真理関数で$P$は論理式より$\lnot\p{P}$は論理式である．また，$Q$は原子命題より$Q$は論理式である．よって，$\land$は二項真理関数で$\lnot\p{P}$と$Q$は論理式より$\land\p{\lnot\p{P},Q}$は論理式である．したがって，$\lnot P\land Q$は論理式である．
           </li>
           <li>
             与式を変形する．
             \begin{align*}
             &P\iff P\\
             \Iff&\p{P\to P}\land\p{P\to P}\\
-            \Iff&\land\p{P\to P,P\to P}\\
+            \Iff&\land\p{P\to P,P\to P}.\\
             \end{align*}
             (1)より$P\to P$は論理式である．$\land$は二項真理関数で$P\to P$は論理式より$\land\p{P\to P,P\to
             P}$は論理式である．したがって，$P\iff P$は論理式である．
@@ -357,24 +358,24 @@
     <dl>
       <h4>定義</h4>
       <dt>唯一存在量化子</dt>
-      <dd>$$\exists!x,F\p{x}\Def\exists x\p{F\p{x}}\land\forall xy,\p{F\p{x}\land F\p{y}\to x=y}$$</dd>
+      <dd>$$\exists!x,F\p{x}\Def\exists x\p{F\p{x}}\land\forall xy,\p{F\p{x}\land F\p{y}\to x=y}.$$</dd>
       <dt>適用範囲の省略</dt>
       <dd>
         量化子$\lambda$，論理式$\p{A}$が演算子の引数ではないときについて，
-        $$\lambda x,A\Def\lambda x\p{A}$$
+        $$\lambda x,A\Def\lambda x\p{A}.$$
       </dd>
       <dt>同量化の省略</dt>
       <dd>
         量化子$\lambda$について，
-        $$\lambda xy\p{A}\Def\lambda x\lambda y\p{A}$$
+        $$\lambda xy\p{A}\Def\lambda x\lambda y\p{A}.$$
       </dd>
       <dt>量化子の別記</dt>
-      <dd>$$^\lambda x,A\Def\lambda x,A$$</dd>
-      論理式$A$，二項関係演算子$\star$，項$y$について，
+      <dd>$$^\lambda x,A\Def\lambda x,A.$$</dd>
+      論理式$A$，二項関係演算子$\star$，項$y$について，次の表記を認める．
       <dt>$\forall$の条件の省略</dt>
-      <dd>$$\forall x\star y,A\Def\forall x,x\star y\to A$$</dd>
+      <dd>$$\forall x\star y,A\Def\forall x,x\star y\to A.$$</dd>
       <dt>$\exists$の条件の省略</dt>
-      <dd>$$\exists x\star y,A\Def\exists x,A\land x\star y$$</dd>
+      <dd>$$\exists x\star y,A\Def\exists x,x\star y\land A.$$</dd>
     </dl>
 
     <h3>否定の省略</h3>
@@ -387,12 +388,12 @@
       <dt>量化子の否定</dt>
       <dd>
         量化子$\lambda$について，
-        $$\cancel{\lambda} x,A\Def\lnot\p{\lambda x,A}$$
+        $$\cancel{\lambda} x,A\Def\lnot\p{\lambda x,A}.$$
       </dd>
       <dt>関係演算子の否定</dt>
       <dd>
         変数$x,y$の関係演算子$\star$について，
-        $$x\cancel{\star}y\Def\lnot\p{x\star y}$$
+        $$x\cancel{\star}y\Def\lnot\p{x\star y}.$$
       </dd>
     </dl>
 
@@ -405,7 +406,7 @@
       <dt>反転記法</dt>
       <dd>
         関係演算子$\prec$に対して，
-        $$B\succ A\Def A\prec B$$
+        $$B\succ A\Def A\prec B.$$
       </dd>
     </dl>
 
@@ -416,16 +417,19 @@
 
     <h3>演繹と帰納</h3>
     <p>
-      <dfn>推論</dfn>とは<dfn>前提</dfn>から<dfn>結論</dfn>を論理的に導くことである．形式的には文の変形を意味する．推論には大きく2つに分かれており，演繹と帰納である．<dfn>演繹</dfn>は前提から結論を得る方法である．求めて得られた結論のことを<dfn>帰結</dfn>という．演繹では使われた前提がすべて真であれば結論も真である．<dfn>帰納</dfn>は前提から成り立ちそうな一般的事実を導くことである．結論が真とは限らないことに注意が必要である．言葉に帰納を含むが，数学的帰納法は演繹の一種である．数学の証明では演繹しか用いないので，演繹のことを単に推論ともいったり，数学的帰納法を単に帰納法ともいったりする．推論を次のように表す．
+      <dfn>推論</dfn>とは<dfn>前提</dfn>から<dfn>結論</dfn>を論理的に導くことである．形式的には文の変形を意味する．推論には大きく2つに分かれており，演繹と帰納である．<dfn>演繹</dfn>は前提から結論を得る方法である．求めて得られた結論のことを<dfn>帰結</dfn>という．演繹では使われた前提がすべて真であれば結論も真である．<dfn>帰納</dfn>は前提から成り立ちそうな一般的事実を導くことである．結論が真とは限らないことに注意が必要である．言葉に帰納を含むが，数学的帰納法は演繹の一種である．推論を次のように表す．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>$\Gamma$から$A$への推論</dt>
       <dd>
-        任意の前提の集合$\Gamma$，帰結$A$について，
-        $$\Gamma\To A$$
+        任意の前提の集合$\Gamma$，結論$A$について，
+        $$\Gamma\To A.$$
       </dd>
     </dl>
+    <p>
+      数学の証明では演繹しか用いないので，演繹のことを単に推論ともいったり，数学的帰納法を単に帰納法ともいったりする．
+    </p>
 
     <h3>論理的帰結</h3>
     <p>
@@ -436,7 +440,7 @@
       <dt>$\Gamma$から$A$への論理的帰結</dt>
       <dd>
         命題の集合$\Gamma$，命題$A$について，
-        $$\Gamma\models A$$
+        $$\Gamma\models A.$$
       </dd>
     </dl>
     <p>
@@ -463,12 +467,12 @@
       <dt>$\kappa$で$\Gamma$から$A$は演繹可能</dt>
       <dd>
         論理体系$\kappa$，命題の集合$\Gamma$，命題$A$について，
-        $$\Gamma\vdash_\kappa A$$
+        $$\Gamma\vdash_\kappa A.$$
       </dd>
       <dt>$\kappa$で$A$は証明可能</dt>
       <dd>
         論理体系$\kappa$，命題$A$について，
-        $$\vdash_\kappa A$$
+        $$\vdash_\kappa A.$$
       </dd>
     </dl>
     <p>
@@ -478,10 +482,10 @@
       <h4>定義</h4>
       <dt>集合の省略</dt>
       <dd>
-        命題の集合$\set{A_1,A_2,\cdots,A_n}$，命題$A$について，
-        $$A_1,A_2,\cdots,A_n\To A\Def\set{A_1,A_2,\cdots,A_n}\To A$$
-        $$A_1,A_2,\cdots,A_n\models A\Def\set{A_1,A_2,\cdots,A_n}\models A$$
-        $$A_1,A_2,\cdots,A_n\vdash A\Def\set{A_1,A_2,\cdots,A_n}\vdash A$$
+        命題の集合$\set{A_1,A_2,\cdots,A_n}$，命題$A$について，次の表記を認める．
+        $$A_1,A_2,\cdots,A_n\To A\Def\set{A_1,A_2,\cdots,A_n}\To A.$$
+        $$A_1,A_2,\cdots,A_n\models A\Def\set{A_1,A_2,\cdots,A_n}\models A.$$
+        $$A_1,A_2,\cdots,A_n\vdash A\Def\set{A_1,A_2,\cdots,A_n}\vdash A.$$
       </dd>
     </dl>
     <p>
@@ -491,11 +495,11 @@
       <h4>定義</h4>
       <dt>$\To,\sequent,\models$記法の拡張</dt>
       <dd>
-        命題の集合$A_1,A_2,\cdots,A_n,B_1,B_2,\cdots,B_n$について，
-        「$A_1,A_2,\cdots,A_n\To B_1$」かつ「$A_1,A_2,\cdots,A_n\To B_2$」かつ$\cdots$かつ「$A_1,A_2,\cdots,A_n\To B_n$」なら，
-        $$A_1,A_2,\cdots,A_n\To B_1,B_2,\cdots,B_n$$
+        命題の集合$A_1,A_2,\cdots,A_n,B_1,B_2,\cdots,B_n$について，次の表記を認める．
+        「$A_1,A_2,\cdots,A_n\To B_1$」または「$A_1,A_2,\cdots,A_n\To B_2$」または$\cdots$または「$A_1,A_2,\cdots,A_n\To B_n$」のとき，
+        $$A_1,A_2,\cdots,A_n\To B_1,B_2,\cdots,B_n.$$
         「$A_1,A_2,\cdots,A_n\To B_1,B_2,\cdots,B_n$」かつ「$B_1,B_2,\cdots,B_n\To A_1,A_2,\cdots,A_n$」のとき，
-        $$A_1,A_2,\cdots,A_n\Iff B_1,B_2,\cdots,B_n$$
+        $$A_1,A_2,\cdots,A_n\Iff B_1,B_2,\cdots,B_n.$$
       </dd>
     </dl>
 
@@ -513,8 +517,8 @@
       <h4>定義</h4>
       <dt>関係式の拡張</dt>
       <dd>
-        $a,b,c$を引数にとる関係(推論文字，関係演算子)を表す記号$\To$について，
-        $$a\To b\To c\Def a\To b\land b\To c$$
+        $a,b,c$を引数にとる関係(推論文字，関係演算子)を表す記号$\prec$について，
+        $$a\prec b\prec c\Def a\prec b\land b\prec c.$$
       </dd>
     </dl>
 
