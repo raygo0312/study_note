@@ -37,27 +37,27 @@
       <h4>定義</h4>
       <dt>推論図</dt>
       <dd>
-        $A_1,A_2,\cdots,A_n\To A$を次の図のように表し，
+        $A_1,A_2,\dots,A_n\To A$を次の図のように表し，
         $$\infer{A}{A_1\quad A_2\quad\cdots\quad A_n}$$
-        を推論図という．このとき，$A_1,A_2,\cdots,A_n$を前提，$A$を結論という．$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}$が推論図であるとき，$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}\To A$を次の図のように表し，
+        を推論図という．このとき，$A_1,A_2,\dots,A_n$を前提，$A$を結論という．$\mathcal{A_1},\mathcal{A_2},\dots,\mathcal{A_n}$が推論図であるとき，$\mathcal{A_1},\mathcal{A_2},\dots,\mathcal{A_n}\To A$を次の図のように表し，
         $$\infer{A}{\mathcal{A_1}\quad\mathcal{A_2}\quad\cdots\quad\mathcal{A_n}}$$
         も推論図という．
       </dd>
       <dt>演繹図</dt>
       <dd>
-        推論規則$\rm{R}$が$A_1,A_2,\cdots,A_n\To A$であるとき，次の図のように表し，
+        推論規則$\rm{R}$が$A_1,A_2,\dots,A_n\To A$であるとき，次の図のように表し，
         $$\rm{R}\infer{A}{A_1\quad A_2\quad\cdots\quad A_n}$$
         を演繹図という．このとき，$A$を帰結という．推論規則$\rm{R}$が明らかなとき省略してよい．また，公理$A$について，次の図のように表し，
         $$\infer{A}{}$$
-        を演繹図という．$\mathcal{A_1},\mathcal{A_2},\cdots,\mathcal{A_n}$がそれぞれ$A_1,A_2,\cdots,A_n$を帰結とする演繹図とする．推論規則$\rm{R}$が$A_1,A_2,\cdots,A_n\To A$のとき，次の図のように表し，
+        を演繹図という．$\mathcal{A_1},\mathcal{A_2},\dots,\mathcal{A_n}$がそれぞれ$A_1,A_2,\dots,A_n$を帰結とする演繹図とする．推論規則$\rm{R}$が$A_1,A_2,\dots,A_n\To A$のとき，次の図のように表し，
         $$\rm{R}\infer{A}{\mathcal{A_1}\quad\mathcal{A_2}\quad\cdots\quad\mathcal{A_n}}$$
         も演繹図という．前提がないとき，演繹図を証明図という．
       </dd>
       <dt>演繹可能</dt>
       <dd>
-        前提$A_1,A_2,\cdots,A_n$，帰結$A$について，演繹図が存在するとき，
-        $$A_1,A_2,\cdots,A_n\proof A$$
-        と表し，$A_1,A_2,\cdots,A_n$から$A$に演繹可能という．
+        前提$A_1,A_2,\dots,A_n$，帰結$A$について，演繹図が存在するとき，
+        $$A_1,A_2,\dots,A_n\proof A$$
+        と表し，$A_1,A_2,\dots,A_n$から$A$に演繹可能という．
       </dd>
       <dt>証明可能</dt>
       <dd>
@@ -728,20 +728,20 @@
       <h4>定理</h4>
       <dt>双対性</dt>
       <dd>
-        $n$個の論理式または述語を引数に取る論理式$F\p{B_1,B_2,\cdots,B_n}$としたとき，
-        $$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}.$$
+        $n$個の論理式または述語を引数に取る論理式$F\p{B_1,B_2,\dots,B_n}$としたとき，
+        $$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}.$$
         が成り立つ．
       </dd>
     </dl>
     <details>
       <summary>双対性</summary>
       <p>
-        $$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}.$$
+        $$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          代入原理の証明と同様に数学的帰納法で証明する．$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{B_1,B_2,\cdots,B_n}}$についてDe Morganの法則を用いて$\lnot F'\p{F\p{B_1,B_2,\cdots,B_n}}\iff F'^*\p{\lnot F\p{B_1,B_2,\cdots,B_n}}$である．また仮定より，$F'^*\p{\lnot F\p{B_1,B_2,\cdots,B_n}}\iff F'^*\p{F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}}$が成り立つ．よって，任意の論理式で$\lnot F\p{B_1,B_2,\cdots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\cdots,\lnot B_n}$が成り立つ．
+          代入原理の証明と同様に数学的帰納法で証明する．$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{B_1,B_2,\dots,B_n}}$についてDe Morganの法則を用いて$\lnot F'\p{F\p{B_1,B_2,\dots,B_n}}\iff F'^*\p{\lnot F\p{B_1,B_2,\dots,B_n}}$である．また仮定より，$F'^*\p{\lnot F\p{B_1,B_2,\dots,B_n}}\iff F'^*\p{F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}}$が成り立つ．よって，任意の論理式で$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}$が成り立つ．
         </p>
       </details>
     </details>
