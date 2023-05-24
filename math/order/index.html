@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>自然数 | study_note</title>
+  <title>順序 | study_note</title>
   <meta name="author" content="raygo">
   <link rel="stylesheet" href="../../lib/css/bootstrap-reboot.css">
   <link rel="stylesheet" href="../../lib/css/style.css">
@@ -15,8 +15,8 @@
 
 <body>
   <header>
-    <h1>自然数</h1>
-    <a href="../../">ホーム</a> -&gt; <a href="../">数学</a> -&gt; 自然数
+    <h1>順序</h1>
+    <a href="../../">ホーム</a> -&gt; <a href="../">数学</a> -&gt; 順序
   </header>
   <main>
     <details>
@@ -24,9 +24,9 @@
       <div id="toc"></div>
     </details>
     <h2>順序集合</h2>
-    <h3>半順序</h3>
+    <h3>順序</h3>
     <p>
-      順序関係を定義する．<dfn>順序関係</dfn>とは順序の性質を満たす関係である．<dfn>順序</dfn>とは<dfn>反射律</dfn>，<dfn>反対称律</dfn>，<dfn>推移律</dfn>を満たす性質のことである．
+      順序関係を定義する．<dfn>順序関係</dfn>とは順序の性質を満たす関係である．<dfn>順序</dfn>(<dfn>半順序</dfn>)とは<dfn>反射律</dfn>，<dfn>反対称律</dfn>，<dfn>推移律</dfn>を満たす性質のことである．
     </p>
     <dl>
       <h4>定義</h4>
@@ -34,24 +34,20 @@
       <dd>
         $A$上の関係$\leq$について，次の条件(順序)を満たすとき$\leq$を順序関係という．
         \begin{align*}
-        &\forall x\in A,x\leq x&&(反射律)\\
-        &\forall x,y\in A,x\leq y\land y\leq x\to x=y&&(反射律)\\
-        &\forall x,y,z\in A,x\leq y\land y\leq z\to x\leq z&&(反射律)
+        &\forall x\in A,x\leq x.&&(反射律)\\
+        &\forall x,y\in A,x\leq y\land y\leq x\to x=y.&&(反射律)\\
+        &\forall x,y,z\in A,x\leq y\land y\leq z\to x\leq z.&&(反射律)
         \end{align*}
         この順序を<dfn>広義順序</dfn>ともいう．
       </dd>
       <dt>狭義順序関係</dt>
       <dd>
-        $A$上の関係$\le$について，次の条件(狭義順序)を満たすとき$\le$を狭義順序関係という．$x,y\in A$
-        $$x\le y\Def x\leq y\land x\neq y$$
+        $A$上の関係$\le$について，$\le$を狭義順序関係という．$x,y\in A$について，
+        $$x\le y\Def x\leq y\land x\neq y.$$
       </dd>
       <dt>順序集合</dt>
       <dd>
-        $A$上の順序$\leq$について，順序対$\p{A,\leq}$を順序集合という．
-      </dd>
-      <dt>狭義順序集合</dt>
-      <dd>
-        $A$上の狭義順序$\le$について，順序対$\p{A,\le}$を狭義順序集合という．
+        $A$上の順序$\leq$について，$A$は$\leq$についての順序集合であるという．
       </dd>
     </dl>
     <div class="me">

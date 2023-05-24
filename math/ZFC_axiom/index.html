@@ -34,12 +34,12 @@
       <h4>公理</h4>
       <dt>反射律</dt>
       <dd>
-        $$\forall x,x=x$$
+        $$\forall x,x=x.$$
       </dd>
       <dt>代入原理</dt>
       <dd>
         述語$F$について，
-        $$\forall xy,x=y\to\p{F\p{x}\iff F\p{y}}$$
+        $$\forall xy,x=y\to\p{F\p{x}\iff F\p{y}}.$$
       </dd>
     </dl>
     <p>
@@ -49,18 +49,18 @@
       <h4>定理</h4>
       <dt>対称律</dt>
       <dd>
-        $$\forall xy,x=y\to y=x$$
+        $$\forall xy,x=y\to y=x.$$
       </dd>
       <dt>推移律</dt>
       <dd>
-        $$\forall xyz,x=y\land y=z\to x=z$$
+        $$\forall xyz,x=y\land y=z\to x=z.$$
       </dd>
     </dl>
 
     <details>
       <summary>$=$の対称律</summary>
       <p>
-        $$\forall xy,x=y\to y=x$$
+        $$\forall xy,x=y\to y=x.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -72,7 +72,7 @@
     <details>
       <summary>$=$の推移律</summary>
       <p>
-        $$\forall xyz,x=y\land y=z\to x=z$$
+        $$\forall xyz,x=y\land y=z\to x=z.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -97,15 +97,15 @@
       <dt>$a$は$b$の部分集合</dt>
       <dd>
         \begin{align*}
-        a\subset b&\Def\forall x,x\in a\to x\in b\\
-        b\supset a&\Def a\subset b
+        a\subset b&\Def\forall x,x\in a\to x\in b,\\
+        b\supset a&\Def a\subset b.
         \end{align*}
       </dd>
       <dt>$a$は$b$の真部分集合</dt>
       <dd>
         \begin{align*}
-        a\subsetneq b&\Def a\subset b\land a\neq b\\
-        b\supsetneq a&\Def a\subsetneq b
+        a\subsetneq b&\Def a\subset b\land a\neq b,\\
+        b\supsetneq a&\Def a\subsetneq b.
         \end{align*}
       </dd>
     </dl>
@@ -116,21 +116,21 @@
       <h4>定理</h4>
       <dt>反射律</dt>
       <dd>
-        $$\forall x,x\subset x$$
+        $$\forall x,x\subset x.$$
       </dd>
       <dt>推移律</dt>
       <dd>
-        $$\forall xyz,x\subset y\land y\subset z\to x\subset z$$
+        $$\forall xyz,x\subset y\land y\subset z\to x\subset z.$$
       </dd>
       <dt>反対称律</dt>
       <dd>
-        $$\forall xy,x\subset y\land y\subset x\to x=y$$
+        $$\forall xy,x\subset y\land y\subset x\to x=y.$$
       </dd>
     </dl>
     <details>
       <summary>$\subset$の反射律</summary>
       <p>
-        $$\forall x,x\subset x$$
+        $$\forall x,x\subset x.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -144,7 +144,7 @@
     <details>
       <summary>$\subset$の推移律</summary>
       <p>
-        $$\forall xyz,x\subset y\land y\subset z\to x\subset z$$
+        $$\forall xyz,x\subset y\land y\subset z\to x\subset z.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -155,7 +155,7 @@
           \To&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\bcs部分集合の定義\\
           \To&\forall w,w\in x\to w\in y\land w\in y\to w\in z\bcs量化の分配\\
           \To&\forall w,w\in x\to w\in z\bcs推移律\\
-          \To&x\subset z\bcs部分集合の定義
+          \To&x\subset z.\bcs部分集合の定義
           \end{align*}
           であるから，示された．
         </p>
@@ -168,13 +168,13 @@
       <h4>定理</h4>
       <dt>$\subset$の性質</dt>
       <dd>
-        $$a\in b\land b\subset c\To a\in c$$
+        $$a\in b\land b\subset c\To a\in c.$$
       </dd>
     </dl>
     <details>
       <summary>$\subset$の性質</summary>
       <p>
-        $$a\in b\land b\subset c\To a\in c$$
+        $$a\in b\land b\subset c\To a\in c.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -207,7 +207,7 @@
       <dd>
         \begin{align*}
         &\forall xy,\forall z\p{z\in x\iff z\in y}\to x=y\\
-        \Iff&\forall xy,x\subset y\land y\subset x\to x=y
+        \Iff&\forall xy,x\subset y\land y\subset x\to x=y.
         \end{align*}
       </dd>
     </dl>
@@ -269,14 +269,14 @@
       <dt>空集合</dt>
       <dd>
         次を満たす$0$のことを空集合という．
-        $$\forall x,x\notin 0$$
+        $$\forall x,x\notin 0.$$
       </dd>
       <h4>公理</h4>
       <dt>空集合公理</dt>
       <dd>
         \begin{align*}
         &\exists x\forall y,y\notin x\\
-        \Iff&\exists0
+        \Iff&\exists0.
         \end{align*}
       </dd>
     </dl>
@@ -305,14 +305,14 @@
       <dt>対</dt>
       <dd>
         次を満たす$\set{a,b}$を$a,b$の対という．
-        $$\forall x,x\in\set{a,b}\iff x=a\lor x=b$$
+        $$\forall x,x\in\set{a,b}\iff x=a\lor x=b.$$
       </dd>
       <h4>公理</h4>
       <dt>対公理</dt>
       <dd>
         \begin{align*}
         &\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
-        \Iff&\forall xy\exists\set{x,y}
+        \Iff&\forall xy\exists\set{x,y}.
         \end{align*}
       </dd>
     </dl>
@@ -335,15 +335,15 @@
       <h4>定理</h4>
       <dt>対の性質</dt>
       <dd>
-        $$\set{a,b}=\set{b,a}$$
-        $$a\in\set{a,b}, b\in\set{a,b}$$
-        $$\set{a,b}=\set{a,c}\Iff b=c$$
+        $$\set{a,b}=\set{b,a}.$$
+        $$a\in\set{a,b}, b\in\set{a,b}.$$
+        $$\set{a,b}=\set{a,c}\Iff b=c.$$
       </dd>
     </dl>
     <details>
       <summary>対の性質1</summary>
       <p>
-        $$\set{a,b}=\set{b,a}$$
+        $$\set{a,b}=\set{b,a}.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -353,7 +353,7 @@
           &x\in\set{a,b}\\
           \Iff&x=a\lor x=b\bcs{対の定義}\\
           \Iff&x=b\lor x=a\bcs{\lorの可換律}\\
-          \Iff&x\in\set{b,a}\bcs{対の定義}
+          \Iff&x\in\set{b,a}.\bcs{対の定義}
           \end{align*}
           になるから，$x\in\set{a,b}\Iff x\in\set{b,a}$であるから外延性公理より$\set{a,b}=\set{b,a}$である．
         </p>
@@ -362,17 +362,17 @@
     <details>
       <summary>対の性質2</summary>
       <p>
-        $$a\in\set{a,b}, b\in\set{a,b}$$
+        $$a\in\set{a,b}, b\in\set{a,b}.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
           $a\notin\set{a,b}$と仮定すると，
           \begin{align*}
-          &a\notin\set{a,b}\\
-          &\lnot\p{a=a\lor a=b}\bcs対の定義\\
-          &a\neq a\land a\neq b\bcs対の定義\\
-          &a\neq a\bcs縮小律
+          &a\notin\set{a,b},\\
+          &\lnot\p{a=a\lor a=b},\bcs対の定義\\
+          &a\neq a\land a\neq b,\bcs対の定義\\
+          &a\neq a.\bcs縮小律
           \end{align*}
           となり，これは$=$の反射律と矛盾．したがって$a\in\set{a,b}$である．また，$b\in\set{b,a}=\set{a,b}$である．
         </p>
@@ -403,7 +403,7 @@
       <h4>定義</h4>
       <dt>1元集合</dt>
       <dd>
-        $$\set{a}\def\set{a,a}$$
+        $$\set{a}\def\set{a,a}.$$
       </dd>
     </dl>
     <p>
@@ -413,9 +413,9 @@
       <h4>定理</h4>
       <dt>1元集合の性質</dt>
       <dd>
-        $$a\in\set{a}$$
-        $$\set{a}=\set{b,c}\Iff a=b=c$$
-        $$\set{a}=\set{b}\Iff a=b$$
+        $$a\in\set{a}.$$
+        $$\set{a}=\set{b,c}\Iff a=b=c.$$
+        $$\set{a}=\set{b}\Iff a=b.$$
       </dd>
     </dl>
 
@@ -428,20 +428,20 @@
       <dt>順序対</dt>
       <dd>
         $a,b$の順序対とは，
-        $$\p{a,b}\def\set{\set{a},\set{a,b}}$$
+        $$\p{a,b}\def\set{\set{a},\set{a,b}}.$$
       </dd>
     </dl>
     <dl>
       <h4>定理</h4>
       <dt>順序対の性質</dt>
       <dd>
-        $$\p{a,b}=\p{a',b'}\Iff a=a'\land b=b'$$
+        $$\p{a,b}=\p{a',b'}\Iff a=a'\land b=b'.$$
       </dd>
     </dl>
     <details>
       <summary>順序対の性質</summary>
       <p>
-        $$\p{a,b}=\p{a',b'}\Iff a=a'\land b=b'$$
+        $$\p{a,b}=\p{a',b'}\Iff a=a'\land b=b'.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -459,25 +459,25 @@
         </p>
         <p>
           $\set{a}=\set{a'}$のとき，1元集合の性質より，
-          $$a=a'$$
-          となり，これを前提に代入して，
-          $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}$$
-          である．対の性質を繰り返し使って，
+          $$a=a'.$$
+          これを前提に代入して，
+          $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}.$$
+          対の性質を繰り返し使って，
           \begin{align*}
-          \set{a,b}&=\set{a,b'}\\
-          b&=b'\bcs対の性質
+          \set{a,b}&=\set{a,b'},\\
+          b&=b'.\bcs対の性質
           \end{align*}
           よって$a=a'\land b=b'$である．
         </p>
         <p>
           $\set{a}=\set{a',b'}$のとき，1元集合の性質より，
-          $$a=a'=b'$$
+          $$a=a'=b'.$$
           これを前提に代入して，
-          $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}$$
+          $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}.$$
           対の性質を繰り返し使って，
           \begin{align*}
-          \set{a,b}&=\set{a,a}\\
-          b&=a\bcs対の性質
+          \set{a,b}&=\set{a,a},\\
+          b&=a.\bcs対の性質
           \end{align*}
           よって$b=a=a'=b'$より$a=a'\land b=b'$である．
         </p>
@@ -494,32 +494,32 @@
       順序組
       <dt>0組(空集合)</dt>
       <dd>
-        $$\p{}\def0$$
+        $$\p{}\def0.$$
       </dd>
       <dt>1組(1元集合)</dt>
       <dd>
-        $$\p{a}\def a$$
+        $$\p{a}\def a.$$
       </dd>
       <dt>2組(順序対)</dt>
       <dd>
-        $$\p{a,b}\def\set{\set{a},\set{a,b}}$$
+        $$\p{a,b}\def\set{\set{a},\set{a,b}}.$$
       </dd>
       <dt>$n$組</dt>
       <dd>
-        $$\p{a_1,\cdots,a_n}\def\p{a_1,\p{a_2,\cdots,a_n}}$$
+        $$\p{a_1,\cdots,a_n}\def\p{a_1,\p{a_2,\cdots,a_n}}.$$
       </dd>
     </dl>
     <dl>
       <h4>定理</h4>
       <dt>順序組の性質</dt>
       <dd>
-        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\Iff a_1=b_1\land\cdots\land a_n=b_n$$
+        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\Iff a_1=b_1\land\cdots\land a_n=b_n.$$
       </dd>
     </dl>
     <details>
       <summary>順序組の性質</summary>
       <p>
-        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\Iff a_1=b_1\land\cdots\land a_n=b_n$$
+        $$\p{a_1,\cdots,a_n}=\p{b_1,\cdots,b_n}\Iff a_1=b_1\land\cdots\land a_n=b_n.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -533,7 +533,7 @@
             &\p{a_1,\cdots,a_{k+1}}=\p{b_1,\cdots,b_{k+1}}\\
             \Iff&\p{a_1,\p{a_2,\cdots,a_{k+1}}}=\p{b_1,\p{b_2,\cdots,b_{k+1}}}\bcs順序組の定義\\
             \Iff&a_1=b_1\land\p{a_2,\cdots,a_{k+1}}=\p{b_2,\cdots,b_{k+1}}\bcs順序対の性質\\
-            \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}\bcs仮定
+            \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}.\bcs仮定
             \end{align*}
             になるので，示された．
           </li>
@@ -550,14 +550,14 @@
       <dt>和集合</dt>
       <dd>
         次を満たす$\bigcup a$を$a$の和集合という．
-        $$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}$$
+        $$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}.$$
       </dd>
       <h4>公理</h4>
       <dt>和集合公理</dt>
       <dd>
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}\\
-        \Iff&\forall x\exists\bigcup x
+        \Iff&\forall x\exists\bigcup x.
         \end{align*}
       </dd>
     </dl>
@@ -570,7 +570,7 @@
       $$a=\set{\set{0},\set{0,1,2},\set{2,3,5}}$$
       とすると，
       $$\bigcup a=\set{0,1,2,3,5}$$
-      となる．これを用いて確かめてみようか
+      これを用いて確かめてみようか
       $$x\in\set{0,1,2,3,5}\iff\exists y\p{x\in y\land y\in\set{\set{0},\set{0,1,2},\set{2,3,5}}}$$
       $x$は任意だったから$\to$を示すなら$0,1,2,3,5$について考えれば十分だね
     </div>
@@ -587,15 +587,15 @@
       <h4>定義</h4>
       <dt>和集合の演算子</dt>
       <dd>
-        $$a\cup b\def\bigcup\set{a,b}$$
+        $$a\cup b\def\bigcup\set{a,b}.$$
       </dd>
     </dl>
     <p>
       公理を用いて性質を調べてみる．定義より，
       \begin{align*}
-      \forall x,x\in a\cup b&\iff\exists y\p{x\in y\land y\in\set{a,b}}\\
-      \forall x,x\in a\cup b&\iff\exists y\p{x\in y\land\p{y=a\lor y=b}}\\
-      \forall x,x\in a\cup b&\iff x\in a\lor x\in b
+      \forall x,x\in a\cup b&\iff\exists y\p{x\in y\land y\in\set{a,b}},\\
+      \forall x,x\in a\cup b&\iff\exists y\p{x\in y\land\p{y=a\lor y=b}},\\
+      \forall x,x\in a\cup b&\iff x\in a\lor x\in b.
       \end{align*}
       このことから$\cup$は$\lor$と同じ定理を使用することができることがわかる．
     </p>
@@ -610,14 +610,14 @@
       <dt>冪集合</dt>
       <dd>
         次を満たす$2^a$を$a$の冪集合という．
-        $$\forall x,x\in2^a\iff x\subset a$$
+        $$\forall x,x\in2^a\iff x\subset a.$$
       </dd>
       <h4>公理</h4>
       <dt>冪集合公理</dt>
       <dd>
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff z\subset x\\
-        \Iff&\forall x\exists2^x
+        \Iff&\forall x\exists2^x.
         \end{align*}
       </dd>
     </dl>
@@ -631,28 +631,28 @@
       <h4>定理</h4>
       <dt>冪集合の性質</dt>
       <dd>
-        $$a\in b\To\set{a}\in2^b$$
-        $$\bigcup2^a=a$$
+        $$a\in b\To\set{a}\in2^b.$$
+        $$\bigcup2^a=a.$$
       </dd>
     </dl>
     <details>
       <summary>冪集合の性質1</summary>
       <p>
-        $$a\in b\To\set{a}\in2^b$$
+        $$a\in b\To\set{a}\in2^b.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
           $x\in\set{a}$となる$x$について，
           \begin{align*}
-          x&\in\set{a}\\
-          x&=a\bcs1元集合の性質\\
-          x&\in b\bcs前提に代入
+          x&\in\set{a},\\
+          x&=a,\bcs1元集合の性質\\
+          x&\in b.\bcs前提に代入
           \end{align*}
           になる．よって$x\in\set{a}\To x\in b$であるから，
           \begin{align*}
-          \set{a}&\subset b\\
-          \set{a}&\in2^b\bcs{冪集合公理}
+          \set{a}&\subset b,\\
+          \set{a}&\in2^b.\bcs{冪集合公理}
           \end{align*}
           が導かれて，示された．
         </p>
@@ -661,25 +661,25 @@
     <details>
       <summary>冪集合の性質2</summary>
       <p>
-        $$\bigcup2^a=a$$
+        $$\bigcup2^a=a.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
           $x\in\bigcup2^a$となる$x$について，
           \begin{align*}
-          &x\in\bigcup2^a\\
-          &\exists y\p{x\in y\land y\in2^a}\bcs和集合の定義\\
-          &\exists y\p{x\in y\land y\subset a}\bcs冪集合の定義\\
-          &x\in a\bcs部分集合の性質
+          &x\in\bigcup2^a,\\
+          &\exists y\p{x\in y\land y\in2^a},\bcs和集合の定義\\
+          &\exists y\p{x\in y\land y\subset a},\bcs冪集合の定義\\
+          &x\in a.\bcs部分集合の性質
           \end{align*}
           である．よって，$\bigcup2^a\subset a$である．
         </p>
         <p>
           逆に$x\in a$となる$x$について，
           \begin{align*}
-          x&\in a\\
-          \set{x}&\in2^a\bcs{冪集合の性質}
+          x&\in a,\\
+          \set{x}&\in2^a.\bcs{冪集合の性質}
           \end{align*}
           となり，$x\in\set{x}$であるから，$x\in y\land y\in2^a$になる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$なので$a\subset\bigcup2^a$である．
         </p>
@@ -699,7 +699,7 @@
       <dt>内包表記</dt>
       <dd>
         論理式$F\p{x}$に対し，集合$\setsep{x\in a}{F\p{x}}$は次を満たす．
-        $$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in a\land F\p{x}$$
+        $$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in a\land F\p{x}.$$
       </dd>
       <h4>公理</h4>
       <dt>分出公理</dt>
@@ -707,7 +707,7 @@
         論理式$F\p{x}$に対し，
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}\\
-        \Iff&\forall x\exists\setsep{t\in x}{F\p{x}}
+        \Iff&\forall x\exists\setsep{t\in x}{F\p{x}}.
         \end{align*}
       </dd>
     </dl>
@@ -721,12 +721,12 @@
       <dt>積集合</dt>
       <dd>
         $a,b$の積集合とは，
-        $$a\cap b\def\setsep{x\in a}{x\in b}$$
+        $$a\cap b\def\setsep{x\in a}{x\in b}.$$
       </dd>
     </dl>
     <p>
       公理を用いて性質を調べてみる．定義より，
-      $$\forall x,x\in a\cap b\iff x\in a\land x\in b$$
+      $$\forall x,x\in a\cap b\iff x\in a\land x\in b.$$
       このことから$\cap$は$\land$と同じ定理を使用することができることがわかる．
     </p>
 
@@ -739,12 +739,12 @@
       <dt>差集合</dt>
       <dd>
         $a,b$の差集合とは，
-        $$a-b\def\setsep{x\in a}{x\notin b}$$
+        $$a-b\def\setsep{x\in a}{x\notin b}.$$
       </dd>
       <dt>補集合</dt>
       <dd>
         全体集合$U$について，$a$の補集合とは，
-        $$U-a$$
+        $$U-a.$$
       </dd>
     </dl>
     <p>
@@ -762,17 +762,17 @@
       <dt>対称差</dt>
       <dd>
         $a,b$の対象差とは，
-        $$a\bigtriangleup b\def\p{a-b}\cup\p{b-a}$$
+        $$a\bigtriangleup b\def\p{a-b}\cup\p{b-a}.$$
       </dd>
     </dl>
     <p>
       公理を用いて性質を調べてみる．任意の$x$について定義より，
       \begin{align*}
-      &x\in a\bigtriangleup b\\
-      &x\in\p{a-b}\cup\p{b-a}\\
-      &x\in\p{a-b}\lor x\in\p{b-a}\\
-      &x\in a\land x\notin b\lor x\in b\land x\notin a\\
-      &x\in a\veebar x\in b
+      &x\in a\bigtriangleup b,\\
+      &x\in\p{a-b}\cup\p{b-a},\\
+      &x\in\p{a-b}\lor x\in\p{b-a},\\
+      &x\in a\land x\notin b\lor x\in b\land x\notin a,\\
+      &x\in a\veebar x\in b.
       \end{align*}
       このことから$\bigtriangleup$は$\veebar$と同じ定理を使用することができることがわかる．
     </p>
@@ -786,7 +786,7 @@
       <dt>直積集合</dt>
       <dd>
         $a,b$の直積集合とは，
-        $$a\times b\def\setsep{z\in\scr{P}\p{\scr{P}\p{a\cup b}}}{\exists xy,z=\p{x,y}\land x\in a\land y\in b}$$
+        $$a\times b\def\setsep{z\in\scr{P}\p{\scr{P}\p{a\cup b}}}{\exists xy,z=\p{x,y}\land x\in a\land y\in b}.$$
       </dd>
     </dl>
     <p>
@@ -804,62 +804,62 @@
       <h4>定理</h4>
       <dt>縮小律</dt>
       <dd>
-        $$a\subset a\cup b$$
-        $$b\subset a\cup b$$
+        $$a\subset a\cup b.$$
+        $$b\subset a\cup b.$$
       </dd>
       <dt>拡大律</dt>
       <dd>
-        $$a\cap b\subset a$$
-        $$a\cap b\subset b$$
+        $$a\cap b\subset a.$$
+        $$a\cap b\subset b.$$
       </dd>
       <dt>交換律</dt>
       <dd>
-        $$a\cap b=b\cap a$$
-        $$a\cup b=b\cup a$$
+        $$a\cap b=b\cap a.$$
+        $$a\cup b=b\cup a.$$
       </dd>
       <dt>結合律</dt>
       <dd>
-        $$a\cap\p{b\cap c}=\p{a\cap b}\cap c$$
-        $$a\cup\p{b\cup c}=\p{a\cup b}\cup c$$
+        $$a\cap\p{b\cap c}=\p{a\cap b}\cap c.$$
+        $$a\cup\p{b\cup c}=\p{a\cup b}\cup c.$$
       </dd>
       <dt>冪等律</dt>
       <dd>
-        $$a\cap a=a$$
-        $$a\cup a=a$$
+        $$a\cap a=a.$$
+        $$a\cup a=a.$$
       </dd>
       <dt>分配律</dt>
       <dd>
-        $$a\cap\p{b\cup c}=\p{a\cap b}\cup \p{a\cap c}$$
-        $$a\cup\p{b\cap c}=\p{a\cup b}\cap \p{a\cup c}$$
+        $$a\cap\p{b\cup c}=\p{a\cap b}\cup \p{a\cap c}.$$
+        $$a\cup\p{b\cap c}=\p{a\cup b}\cap \p{a\cup c}.$$
       </dd>
       <dt>恒等律</dt>
       <dd>
-        $$a\cap U=a$$
-        $$a\cup0=a$$
-        $$a\cap0=0$$
-        $$a\cup U=U$$
+        $$a\cap U=a.$$
+        $$a\cup0=a.$$
+        $$a\cap0=0.$$
+        $$a\cup U=U.$$
       </dd>
       <dt>矛盾律</dt>
       <dd>
-        $$\p{a\cap \overline{a}}=0$$
+        $$\p{a\cap \overline{a}}=0.$$
       </dd>
       <dt>吸収律</dt>
       <dd>
-        $$a\cap\p{a\cup b}=a$$
-        $$a\cup\p{a\cap b}=a$$
+        $$a\cap\p{a\cup b}=a.$$
+        $$a\cup\p{a\cap b}=a.$$
       </dd>
       <dt>対偶律</dt>
       <dd>
-        $$\p{a\subset b}\iff\overline{b}\subset\overline{a}$$
+        $$\p{a\subset b}\iff\overline{b}\subset\overline{a}.$$
       </dd>
       <dt>二重否定</dt>
       <dd>
-        $$a=\overline{\overline{a}}$$
+        $$a=\overline{\overline{a}}.$$
       </dd>
       <dt>De Morganの法則</dt>
       <dd>
-        $$\overline{\p{a\cup b}}=\overline{a}\cap\overline{b}$$
-        $$\overline{\p{a\cap b}}=\overline{a}\cup\overline{b}$$
+        $$\overline{\p{a\cup b}}=\overline{a}\cap\overline{b}.$$
+        $$\overline{\p{a\cap b}}=\overline{a}\cup\overline{b}.$$
       </dd>
     </dl>
     <div class="you">
@@ -869,43 +869,43 @@
     <h2>置換公理</h2>
     <h3>写像</h3>
     <p>
-      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f\p{3}$は$6$になる．これを$\p{3,6}\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\cdots}$である．写像をさらに一般化した<dfn>対応</dfn>から順に定義する．対応は返ってくる元が一つとは限らないものである．
+      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f\p{3}$は$6$になる．これを$\p{3,6}\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\cdots}$である．写像をさらに一般化した<dfn>関係</dfn>から順に定義する．関係は返ってくる元が一つとは限らないものである．
     </p>
     <dl>
       <h4>定義</h4>
-      <dt>対応・関係</dt>
+      <dt>関係</dt>
       <dd>
-        次を満たす$f$を対応または関係といい，$f:a\to b$と表す．
-        $$f\subset a\times b$$
+        次を満たす$f$を関係といい，$f:a\to b$と表す．
+        $$f\subset a\times b.$$
         この$a$を始域，$b$を終域という．
       </dd>
     </dl>
     <aside>
-      <h4>対応の例</h4>
-      $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，$f:a\to b$が対応であるとき，$a\times b$に含まれている必要があるから，
-      $$f=\set{}$$
+      <h4>関係の例</h4>
+      $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，$f:a\to b$が関係であるとき，$a\times b$に含まれている必要があるから，
+      $$f=\set{},$$
       $$f=\set{\p{0,1},\p{0,2},\p{0,8},\p{3,8},\p{4,8}}$$
-      などは対応である．$\p{3,8}\in f$なので，$3$は$8$に$f$で対応しているという．
-      <h4>対応でない例</h4>
-      $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，次の例は対応$f:a\to b$でない．
-      $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},5}$$
-      順序対でない$5$が属している．
-      $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},\p{5,5}}$$
-      $a\to b$の対応ではない．$\p{a\cup\set{5}}\to b$の対応ではある．
+      などは関係である．$\p{3,8}\in f$なので，$3$は$8$に$f$で関係しているという．
+      <h4>関係でない例</h4>
+      $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，次の例は関係$f:a\to b$でない．
+      $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},5}.$$
+      これは順序対でない$5$が属している．
+      $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},\p{5,5}}.$$
+      これは$a\to b$の関係ではない．$\p{a\cup\set{5}}\to b$の関係ではある．
     </aside>
     <dl>
       <h4>定義</h4>
       <dt>写像</dt>
       <dd>
-        対応$f:a\to b$について，$f$が写像とは，
-        $$\forall x\in a\exists!y,\p{x,y}\in f$$
+        関係$f:a\to b$について，$f$が写像とは，
+        $$\forall x\in a\exists!y,\p{x,y}\in f.$$
         $y$を$f(x)$と表す．つまり，
-        $$\forall x\in a,\p{x,f\p{x}}\in f$$
+        $$\forall x\in a,\p{x,f\p{x}}\in f.$$
       </dd>
       <dt>恒等写像</dt>
       <dd>
         写像$f:a\to a$について，
-        $$f\def\setsep{\p{x,x}\in a\times a}{x\in a}$$
+        $$f\def\setsep{\p{x,x}\in a\times a}{x\in a}.$$
         このとき，$f$を$a$の恒等写像といい$\rm{id}$で表す．
       </dd>
     </dl>
@@ -916,13 +916,13 @@
       は写像である．$\p{2,9}\in f$なので，$f\p{2}=8$と表せる．
       <h4>写像でない例</h4>
       $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，次の例は写像$f:a\to b$でない．
-      $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{4,5}}$$
+      $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{4,5}}.$$
       これは$3\in a$について$y$が存在しない．
-      $$f=\set{\p{0,3},\p{1,1},\p{2,6},\p{2,9},\p{3,3},\p{4,5}}$$
+      $$f=\set{\p{0,3},\p{1,1},\p{2,6},\p{2,9},\p{3,3},\p{4,5}}.$$
       これは$2\in a$について$y$が二つ存在する．
       <h4>恒等写像の例</h4>
       $a=\set{0,1,2,3,4}$について，恒等写像$\rm{id}:a\to a$は$\p{x,x}$を元に持つから，
-      $$\rm{id}=\set{\p{0,0},\p{1,1},\p{2,2},\p{3,3},\p{4,4}}$$
+      $$\rm{id}=\set{\p{0,0},\p{1,1},\p{2,2},\p{3,3},\p{4,4}}.$$
       もちろん$\forall x\in a,\idx=x$である．
     </aside>
     <dl>
@@ -930,14 +930,14 @@
       <dt>写像の性質</dt>
       <dd>
         写像$f:a\to b$，$g:a\to b$について，
-        $$f\p{x}=g\p{x}\To f=g$$
+        $$f\p{x}=g\p{x}\To f=g.$$
       </dd>
     </dl>
     <details>
       <summary>写像の性質</summary>
       <p>
         写像$f:a\to b$，$g:a\to b$について，
-        $$\forall x\in a\p{f\p{x}=g\p{x}}\To f=g$$
+        $$\forall x\in a\p{f\p{x}=g\p{x}}\To f=g.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -951,60 +951,60 @@
       <dt>像</dt>
       <dd>
         写像$f:a\to b$，$a'\subset a$について，$f$による$a'$の像とは，
-        $$f\sq{a'}\def\setsep{y\in b}{\exists x\in a',\p{x,y}\in f}$$
+        $$f\sq{a'}\def\setsep{y\in b}{\exists x\in a',\p{x,y}\in f}.$$
       </dd>
       <dt>逆像</dt>
       <dd>
         写像$f:a\to b$，$b'\subset b$について，$f$による$b'$の逆像とは，
-        $$f^{-1}\sq{b'}\def\setsep{x\in a}{\exists y\in b',\p{x,y}\in f}$$
+        $$f^{-1}\sq{b'}\def\setsep{x\in a}{\exists y\in b',\p{x,y}\in f}.$$
       </dd>
       <dt>値域</dt>
       <dd>
         写像$f:a\to b$について，$a$を$f$の定義域といい，$f$の値域とは$f$による$a$の像であり，
-        $$f\sq{a}$$
+        $$f\sq{a}.$$
       </dd>
       <dt>写像全体の集合</dt>
       <dd>
-        $$b^a\def\setsep{f\in\scr{P}\p{a\times b}}{fは写像}$$
+        $$b^a\def\setsep{f\in\scr{P}\p{a\times b}}{fは写像}.$$
       </dd>
       <dt>制限</dt>
       <dd>
         写像$f:a\to b$，$a'\subset a$について，$f$の$a'$への制限とは，
-        $$f|a'\def f\cap\p{a'\times b}$$
+        $$f|a'\def f\cap\p{a'\times b}.$$
       </dd>
       <dt>合成写像(写像の積)</dt>
       <dd>
         写像$f:a\to b$，写像$g:b\to c$について，
-        $$g\circ f\def\setsep{\p{x,z}\in a\times c}{\p{f\p{x},z}\in g}$$
+        $$g\circ f\def\setsep{\p{x,z}\in a\times c}{\p{f\p{x},z}\in g}.$$
         つまり，$g\circ f\p{x}=g\p{f\p{x}}$である．
       </dd>
     </dl>
     <aside>
       <h4>像・値域の例</h4>
       $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，写像$f:a\to b$を$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{3,3},\p{4,5}}$として，
-      $$f\sq{\set{0,1,2}}=\set{1,3,9}$$
-      $$f\sq{\set{0,1,3}}=\set{1,3}$$
+      $$f\sq{\set{0,1,2}}=\set{1,3,9},$$
+      $$f\sq{\set{0,1,3}}=\set{1,3}.$$
       このとき，$f$の値域は
-      $$f\sq{a}=\set{1,3,5,9}$$
+      $$f\sq{a}=\set{1,3,5,9}.$$
     </aside>
     <dl>
       <h4>定理</h4>
       <dt>像の性質</dt>
       <dd>
         写像$f:a\to b$，部分集合$a'\subset a$について，
-        $$x\in a'\To f\p{x}\in f\sq{a'}$$
+        $$x\in a'\To f\p{x}\in f\sq{a'}.$$
       </dd>
       <dt>合成写像の結合律</dt>
       <dd>
         写像$f:a\to b$，$g:b\to c$，$h:c\to d$について，
-        $$\p{h\circ g}\circ f=h\circ\p{g\circ f}$$
+        $$\p{h\circ g}\circ f=h\circ\p{g\circ f}.$$
       </dd>
     </dl>
     <details>
       <summary>像の性質</summary>
       <p>
         写像$f:a\to b$，部分集合$a'\subset a$について，
-        $$x\in a'\To f\p{x}\in f\sq{a'}$$
+        $$x\in a'\To f\p{x}\in f\sq{a'}.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -1019,17 +1019,17 @@
       <summary>合成写像の結合律</summary>
       <p>
         写像$f:a\to b$，$g:b\to c$，$h:c\to d$について，
-        $$\p{h\circ g}\circ f=h\circ\p{g\circ f}$$
+        $$\p{h\circ g}\circ f=h\circ\p{g\circ f}.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
           定義より変形を行う．
           \begin{align*}
-          \p{h\circ g}\circ f\p{x}&=h\circ g\p{f\p{x}}\\
-          &=h\p{g\p{f\p{x}}}\\
-          &=h\p{g\circ f\p{x}}\\
-          &=h\circ\p{g\circ f}\p{x}
+          \p{h\circ g}\circ f\p{x}&=h\circ g\p{f\p{x}},\\
+          &=h\p{g\p{f\p{x}}},\\
+          &=h\p{g\circ f\p{x}},\\
+          &=h\circ\p{g\circ f}\p{x}.
           \end{align*}
           よって，写像の性質より$\p{h\circ g}\circ f=h\circ\p{g\circ f}$である．
         </p>
@@ -1040,22 +1040,22 @@
       <dt>単射</dt>
       <dd>
         写像$f:a\to b$について，$f$が単射であるとは，
-        $$\forall xy\in a,f\p{x}=f\p{y}\to x=y$$
+        $$\forall xy\in a,f\p{x}=f\p{y}\to x=y.$$
       </dd>
       <dt>全射</dt>
       <dd>
         写像$f:a\to b$について，$f$が全射であるとは，
-        $$\forall y\in b\exists x\in a,f\p{x}=y$$
+        $$\forall y\in b\exists x\in a,f\p{x}=y.$$
       </dd>
       <dt>全単射</dt>
       <dd>
         写像$f:a\to b$について，$f$が全単射であるとは，
-        $$fが単射かつ全射$$
+        $$fが単射かつ全射.$$
       </dd>
       <dt>逆写像</dt>
       <dd>
         写像$f:a\to b$について，次のように定義される$f^{-1}$が写像であるとき，$f^{-1}$を$f$の逆写像という．
-        $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}$$
+        $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}.$$
       </dd>
     </dl>
     <aside>
@@ -1075,7 +1075,7 @@
       <dt>関数論理式</dt>
       <dd>
         $F\p{x,y}$が1変数の関数論理式であるとは，次の論理式を満たすことをいう．
-        $$\forall xyz,F\p{x,y}\land F\p{x,z}\to y=z$$
+        $$\forall xyz,F\p{x,y}\land F\p{x,z}\to y=z.$$
       </dd>
     </dl>
     <p>
@@ -1091,7 +1091,7 @@
       <dt>添字集合</dt>
       <dd>
         論理関数式$F\p{x,y}$として，
-        $$\forall x,x\in \setsep{x}{\exists i\in I\p{F\p{i,x}}}\iff\exists i\p{i\in I\land F\p{i,x}}$$
+        $$\forall x,x\in \setsep{x}{\exists i\in I\p{F\p{i,x}}}\iff\exists i\p{i\in I\land F\p{i,x}}.$$
       </dd>
       <h4>公理</h4>
       <dt>置換公理</dt>
@@ -1099,7 +1099,7 @@
         論理関数式$F\p{x,y}$として，
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w,z}}\\
-        \Iff&\forall x\exists\setsep{t}{\exists i\in x\p{F\p{i,t}}}
+        \Iff&\forall x\exists\setsep{t}{\exists i\in x\p{F\p{i,t}}}.
         \end{align*}
       </dd>
     </dl>
@@ -1111,12 +1111,12 @@
       <dt>添字和集合</dt>
       <dd>
         添字集合$\set{a_i}_I$の和集合とは，
-        $$\bigcup_{i\in I}a_i\def\bigcup\set{a_i}_I$$
+        $$\bigcup_{i\in I}a_i\def\bigcup\set{a_i}_I.$$
       </dd>
       <dt>添字積集合</dt>
       <dd>
         添字集合$\set{a_i}_I$の積集合とは，
-        $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}_I\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}$$
+        $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}_I\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}.$$
       </dd>
     </dl>
     <dl>
@@ -1124,10 +1124,10 @@
       <dt>添字集合の性質</dt>
       <dd>
         $\set{a_i}_I$について，
-        $$\bigcup_{i\in I}a_i\cap b=\bigcup_{i\in I}\p{a_i\cap b}$$
-        $$\bigcap_{i\in I}a_i\cup b=\bigcap_{i\in I}\p{a_i\cup b}$$
-        $$\overline{\bigcup_{i\in I}a_i}=\bigcap_{i\in I}\overline{a_i}$$
-        $$\overline{\bigcap_{i\in I}a_i}=\bigcup_{i\in I}\overline{a_i}$$
+        $$\bigcup_{i\in I}a_i\cap b=\bigcup_{i\in I}\p{a_i\cap b}.$$
+        $$\bigcap_{i\in I}a_i\cup b=\bigcap_{i\in I}\p{a_i\cup b}.$$
+        $$\overline{\bigcup_{i\in I}a_i}=\bigcap_{i\in I}\overline{a_i}.$$
+        $$\overline{\bigcap_{i\in I}a_i}=\bigcup_{i\in I}\overline{a_i}.$$
       </dd>
     </dl>
 
@@ -1140,20 +1140,20 @@
       <dt>後者</dt>
       <dd>
         $a$の後者とは，
-        $$\suc{a}\def n\cup\set{n}$$
+        $$\suc{a}\def n\cup\set{n}.$$
       </dd>
       <dt>数字</dt>
       <dd>
         \begin{align*}
-        1&\def\suc{0}=0\cup\set{0}=\set{0}=\set{\set{}}\\
-        2&\def\suc{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}\\
-        3&\def\suc{2}=\set{0,1,2}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}\\
-        4&\def\suc{3}=\set{0,1,2,3}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}},\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}}\\
-        5&\def\suc{4}=\set{0,1,2,3,4}\\
-        6&\def\suc{5}=\set{0,1,2,3,4,5}\\
-        7&\def\suc{6}=\set{0,1,2,3,4,5,6}\\
-        8&\def\suc{7}=\set{0,1,2,3,4,5,6,7}\\
-        9&\def\suc{8}=\set{0,1,2,3,4,5,6,7,8}\\
+        1&\def\suc{0}=0\cup\set{0}=\set{0}=\set{\set{}}.\\
+        2&\def\suc{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}.\\
+        3&\def\suc{2}=\set{0,1,2}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}.\\
+        4&\def\suc{3}=\set{0,1,2,3}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}},\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}}.\\
+        5&\def\suc{4}=\set{0,1,2,3,4}.\\
+        6&\def\suc{5}=\set{0,1,2,3,4,5}.\\
+        7&\def\suc{6}=\set{0,1,2,3,4,5,6}.\\
+        8&\def\suc{7}=\set{0,1,2,3,4,5,6,7}.\\
+        9&\def\suc{8}=\set{0,1,2,3,4,5,6,7,8}.\\
         \end{align*}
       </dd>
       <h4>公理</h4>
@@ -1161,7 +1161,7 @@
       <dd>
         \begin{align*}
         &\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}\\
-        \Iff&\exists x,0\in x\land\forall y\p{y\in x\to\suc{y}\in x}
+        \Iff&\exists x,0\in x\land\forall y\p{y\in x\to\suc{y}\in x}.
         \end{align*}
       </dd>
     </dl>
@@ -1174,7 +1174,7 @@
       <h4>公理</h4>
       <dt>正則性公理</dt>
       <dd>
-        $$\forall x\neq0\exists y\in x,y\cap x=0$$
+        $$\forall x\neq0\exists y\in x,y\cap x=0.$$
       </dd>
     </dl>
 
@@ -1182,16 +1182,16 @@
       <h4>定理</h4>
       <dt>正則性公理から導かれる定理</dt>
       <dd>
-        $$\forall x,x\notin x$$
-        $$\forall xy,x\notin y\lor y\notin x$$
-        $$\not\exists x\forall y,y\in x$$
+        $$\forall x,x\notin x.$$
+        $$\forall xy,x\notin y\lor y\notin x.$$
+        $$\not\exists x\forall y,y\in x.$$
       </dd>
     </dl>
 
     <details>
       <summary>定理1</summary>
       <p>
-        $$\forall x,x\notin x$$
+        $$\forall x,x\notin x.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -1199,15 +1199,15 @@
           $x\in x$と仮定する．$\set{x}$は空集合ではないから，正則性公理より，
           $$y\cap\set{x}=0$$
           になる$y\in\set{x}$が存在する．1元集合の性質より$y=x$であるから，$=$の代入原理より，
-          $$x\cap\set{x}=0$$
-          になる．仮定より$x\in x\land x\in \set{x}$であるから，$x\in x\cap\set{x}$になるが，$x\cap\set{x}=0$に矛盾する．よって，$x\notin x$である．
+          $$x\cap\set{x}=0.$$
+          仮定より$x\in x\land x\in \set{x}$であるから，$x\in x\cap\set{x}$になるが，$x\cap\set{x}=0$に矛盾する．よって，$x\notin x$である．
         </p>
       </details>
     </details>
     <details>
       <summary>定理2</summary>
       <p>
-        $$\forall xy,x\notin y\lor y\notin x$$
+        $$\forall xy,x\notin y\lor y\notin x.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -1237,7 +1237,7 @@
     <details>
       <summary>定理3</summary>
       <p>
-        $$\not\exists x\forall y,y\in x$$
+        $$\not\exists x\forall y,y\in x.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
@@ -1255,7 +1255,7 @@
       <h4>公理</h4>
       <dt>選択公理</dt>
       <dd>
-        $$\forall x\exists f\in\p{\bigcup x}^x\forall y\in x,y\neq0\to f\p{y}\in y$$
+        $$\forall x\exists f\in\p{\bigcup x}^x\forall y\in x,y\neq0\to f\p{y}\in y.$$
       </dd>
     </dl>
     <div class="you">
@@ -1270,16 +1270,16 @@
     <details>
       <summary>分出公理の導出</summary>
       <p>
-        置換公理$\To$分出公理
+        置換公理$\To$分出公理．
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
           論理式$G\p{x,y}\Def F\p{x}\land x=y$とすると，$G$は関数論理式である．なぜなら，$G\p{x,y}$と$G\p{x,z}$を仮定すると，$x=y=z$である．置換公理より，
           \begin{align*}
-          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land G\p{w,z}}\\
-          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land F\p{w}\land w=z}\bcs Gの定義\\
-          \forall x\exists y\forall z,z\in y&\iff z\in x\land F\p{z}\bcs代入原理\\
+          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land G\p{w,z}},\\
+          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land F\p{w}\land w=z},\bcs Gの定義\\
+          \forall x\exists y\forall z,z\in y&\iff z\in x\land F\p{z}.\bcs代入原理\\
           \end{align*}
           分出公理が導けた．
         </p>
@@ -1288,18 +1288,18 @@
     <details>
       <summary>対公理の導出</summary>
       <p>
-        空集合公理，冪集合，置換公理$\To$対公理
+        空集合公理，冪集合，置換公理$\To$対公理．
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
           $c\def\scr{P}\p{\scr{P}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
           \begin{align*}
-          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land\p{w=0\land z=a\lor w=1\land z=b}}\\
-          \forall x\exists y\forall z,z\in y&\iff0\in x\land z=a\lor 1\in x\land z=b\bcs代入原理\\
-          \exists y\forall z,z\in y&\iff0\in c\land z=a\lor 1\in c\land z=b\bcs\forall E\\
-          \exists y\forall z,z\in y&\iff z=a\lor z=b\bcs恒等律\\
-          \forall xy\exists z\forall w,w\in z&\iff w=x\lor w=y\bcs\forall I\\
+          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land\p{w=0\land z=a\lor w=1\land z=b}},\\
+          \forall x\exists y\forall z,z\in y&\iff0\in x\land z=a\lor 1\in x\land z=b,\bcs代入原理\\
+          \exists y\forall z,z\in y&\iff0\in c\land z=a\lor 1\in c\land z=b,\bcs\forall E\\
+          \exists y\forall z,z\in y&\iff z=a\lor z=b,\bcs恒等律\\
+          \forall xy\exists z\forall w,w\in z&\iff w=x\lor w=y.\bcs\forall I\\
           \end{align*}
           対公理が導けた．
         </p>
@@ -1308,7 +1308,7 @@
     <details>
       <summary>空集合公理の導出</summary>
       <p>
-        無限公理，分出公理$\To$空集合公理
+        無限公理，分出公理$\To$空集合公理．
       </p>
       <details class="sub">
         <summary>証明</summary>
