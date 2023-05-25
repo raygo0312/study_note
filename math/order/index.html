@@ -58,9 +58,27 @@
     <p>
       狭義順序関係は定義より次のように変形できる．
       \begin{align*}
-      x\le y&\Iff x\leq y\land x\neq y\\
-      x\le y\lor x=y&\Iff \p{x\leq y\land x\neq y}\lor x=y\\
+      x\le y&\Iff x\leq y\land x\neq y,\\
+      x\le y\lor x=y&\Iff x\leq y\land x\neq y\lor x=y,\\
+      x\le y\lor x=y&\Iff \p{x\leq y\lor x=y}\land \p{x\neq y\lor x=y},\\
+      x\leq y&\Iff x\le y\lor x=y.
+      \end{align*}
+      このことから狭義順序関係は次の性質を満たす．
     </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>狭義順序関係の性質</dt>
+      <dd>
+        $A$上の関係$\le$について，次の条件(順序)を満たすとき$\leq$を順序関係という．
+        \begin{align*}
+        &\forall x\in A,x\leq x.&&(反射律)\\
+        &\forall xy\in A,x\leq y\land y\leq x\to x=y.&&(反対称律)\\
+        &\forall xyz\in A,x\leq y\land y\leq z\to x\leq z.&&(推移律)
+        \end{align*}
+        この順序を<dfn>広義順序</dfn>ともいう．
+      </dd>
+    </dl>
+
     <h3>全順序</h3>
 
     <h2>整列集合</h2>
