@@ -26,23 +26,22 @@
     <h2>順序集合</h2>
     <h3>順序</h3>
     <p>
-      順序関係を定義する．<dfn>順序関係</dfn>とは順序の性質を満たす関係である．<dfn>順序</dfn>(<dfn>半順序</dfn>)とは<dfn>反射律</dfn>，<dfn>反対称律</dfn>，<dfn>推移律</dfn>を満たす性質のことである．
+      <dfn>順序</dfn>(<dfn>半順序</dfn>，<dfn>広義順序</dfn>)とは<dfn>反射律</dfn>，<dfn>反対称律</dfn>，<dfn>推移律</dfn>を満たす関係のことである．
     </p>
     <dl>
       <h4>定義</h4>
-      <dt>順序関係</dt>
+      <dt>順序</dt>
       <dd>
-        $A$上の関係$\leq$について，次の条件(順序)を満たすとき$\leq$を順序関係という．
+        $A$上の関係$\leq$について，次の条件を満たすとき$\leq$を順序という．
         \begin{align*}
         &\forall x\in A,x\leq x.&&(反射律)\\
         &\forall xy\in A,x\leq y\land y\leq x\to x=y.&&(反対称律)\\
         &\forall xyz\in A,x\leq y\land y\leq z\to x\leq z.&&(推移律)
         \end{align*}
-        この順序を<dfn>広義順序</dfn>ともいう．
       </dd>
-      <dt>狭義順序関係</dt>
+      <dt>狭義順序</dt>
       <dd>
-        $A$上の関係$\le$について，$\le$を狭義順序関係という．$x,y\in A$について，
+        $A$上の関係$\le$について，$\le$を狭義順序という．$x,y\in A$について，
         $$x\le y\Def x\leq y\land x\neq y.$$ </dd>
       <dt>順序集合</dt>
       <dd>
@@ -56,30 +55,97 @@
       同じというか，$\leq$を一般化した概念になってるね
     </div>
     <p>
-      狭義順序関係は定義より次のように変形できる．
+      狭義順序は定義より次のように変形できる．
       \begin{align*}
       x\le y&\Iff x\leq y\land x\neq y,\\
       x\le y\lor x=y&\Iff x\leq y\land x\neq y\lor x=y,\\
       x\le y\lor x=y&\Iff \p{x\leq y\lor x=y}\land \p{x\neq y\lor x=y},\\
       x\leq y&\Iff x\le y\lor x=y.
       \end{align*}
-      このことから狭義順序関係は次の性質を満たす．
+      狭義順序は次の性質を満たす．
     </p>
     <dl>
       <h4>定理</h4>
-      <dt>狭義順序関係の性質</dt>
+      <dt>狭義順序の性質</dt>
       <dd>
-        $A$上の関係$\le$について，次の条件(順序)を満たすとき$\leq$を順序関係という．
+        $A$上の関係$\le$について，
         \begin{align*}
-        &\forall x\in A,x\leq x.&&(反射律)\\
-        &\forall xy\in A,x\leq y\land y\leq x\to x=y.&&(反対称律)\\
-        &\forall xyz\in A,x\leq y\land y\leq z\to x\leq z.&&(推移律)
+        &\forall x\in A,\lnot\p{x\le x}.\\
+        &\forall xy\in A,\lnot\p{x\le y\land y\le x}.\\
+        &\forall xyz\in A,x\le y\land y\le z\to x\le z.
         \end{align*}
-        この順序を<dfn>広義順序</dfn>ともいう．
+      </dd>
+    </dl>
+    <details>
+      <summary>狭義順序の性質1</summary>
+      <p>
+        $A$上の関係$\le$について，
+        $$\forall x\in A,\lnot\p{x\le x}.$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $x\le x$であると仮定すると，定義より$x\neq x$であるから矛盾する．よって，$\lnot\p{x\le x}$である．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>狭義順序の性質2</summary>
+      <p>
+        $A$上の関係$\le$について，
+        $$\forall xy\in A,\lnot\p{x\le y\land y\le x}.$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $x\le y\land y\le x$と仮定すると，定義より$x\leq y$かつ$y\leq x$かつ$x\neq y$が成り立つ．反射律より$x=y$が成り立つから矛盾する．よって，$\lnot\p{x\le y\land y\le x}$である．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>狭義順序の性質3</summary>
+      <p>
+        $A$上の関係$\le$について，
+        $$\forall xyz\in A,x\le y\land y\le z\to x\le z.$$
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          任意の順序対$\p{x,\op{f}{x}}\in f$について，前提より$\p{x,\op{f}{x}}=\p{x,\op{g}{x}}$である．$\p{x,\op{g}{x}}\in g$であるから，$\p{x,\op{f}{x}}\in g$である．よって$f\subset g$である．$f,g$を入れ替えて同様に$g\subset f$であるから，$f=g$である．
+        </p>
+      </details>
+    </details>
+
+    <h3>全順序</h3>
+    <dl>
+      <h4>定義</h4>
+      <dt>全順序</dt>
+      <dd>
+        $A$上の順序$\leq$について，次の条件を満たすとき$\leq$を全順序という．
+        \begin{align*}
+        &\forall xy\in A,x\leq y\land y\leq x&&(完全律)\\
+        \Iff&\forall x\in A,x\leq y\lor x=y\lor y\leq x.&&(三分律)
+        \end{align*}
       </dd>
     </dl>
 
-    <h3>全順序</h3>
+    <h3>順序集合についての性質の定義</h3>
+    <p>
+      順序を定めた場合，1番大きいなどに興味が出る．そこで順序について性質の定義をする．
+    </p>
+    <dl>
+      <h4>定義</h4>
+      <dt>最大元・最小元</dt>
+      <dd>
+        順序集合$A$の部分集合$B$とする．$B$の元$a$について，
+        $$\forall x\in B,x\leq a$$
+        が成り立つとき，$a$を$B$の最大元といい，$\max B$と表す．つまり，
+        $$\forall x\in B,x\leq \max B$$
+        である．同様に$B$の最小元$\min B$を，
+        $$\forall x\in B,\min B\leq x$$
+        とする．
+      </dd>
+    </dl>
 
     <h2>整列集合</h2>
     <h2>順序数</h2>

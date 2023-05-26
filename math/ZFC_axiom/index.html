@@ -39,7 +39,7 @@
       <dt>代入原理</dt>
       <dd>
         述語$F$について，
-        $$\forall xy,x=y\to\p{F\p{x}\iff F\p{y}}.$$
+        $$\forall xy,x=y\to\p{\op{F}{x}\iff \op{F}{y}}.$$
       </dd>
     </dl>
     <p>
@@ -65,7 +65,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $F\p{t}\Def t=x$とする．反射律より，$x=x$は真である．つまり，$F\p{x}$は真である．前提$x=y$と代入原理より，$F\p{y}$すなわち$y=x$も真である．
+          $\op{F}{t}\Def t=x$とする．反射律より，$x=x$は真である．つまり，$\op{F}{x}$は真である．前提$x=y$と代入原理より，$\op{F}{y}$すなわち$y=x$も真である．
         </p>
       </details>
     </details>
@@ -77,7 +77,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $F\p{t}\Def t=z$とする．前提より$y=z$であるから$F\p{y}$は真である．前提$x=y$と代入原理より，$F\p{x}$すなわち$x=z$も真である．
+          $\op{F}{t}\Def t=z$とする．前提より$y=z$であるから$\op{F}{y}$は真である．前提$x=y$と代入原理より，$\op{F}{x}$すなわち$x=z$も真である．
         </p>
       </details>
     </details>
@@ -692,22 +692,22 @@
     <h2>分出公理</h2>
     <h3>分出公理</h3>
     <p>
-      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，自由に使うと矛盾を生じることがある．分出公理で$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数であることに注意する．他の公理から証明できる．
+      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$\op{F}{x}$を満たす$x$の集合を$\setsep{x}{\op{F}{x}}$と表すものである．しかし，自由に使うと矛盾を生じることがある．分出公理で$\setsep{x\in a}{\op{F}{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数であることに注意する．他の公理から証明できる．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>内包表記</dt>
       <dd>
-        論理式$F\p{x}$に対し，集合$\setsep{x\in a}{F\p{x}}$は次を満たす．
-        $$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in a\land F\p{x}.$$
+        論理式$\op{F}{x}$に対し，集合$\setsep{x\in a}{\op{F}{x}}$は次を満たす．
+        $$\forall x,x\in\setsep{x\in a}{\op{F}{x}}\iff x\in a\land \op{F}{x}.$$
       </dd>
       <h4>公理</h4>
       <dt>分出公理</dt>
       <dd>
-        論理式$F\p{x}$に対し，
+        論理式$\op{F}{x}$に対し，
         \begin{align*}
-        &\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}\\
-        \Iff&\forall x\exists\setsep{t\in x}{F\p{x}}.
+        &\forall x\exists y\forall z,z\in y\iff z\in x\land \op{F}{z}\\
+        \Iff&\forall x\exists\setsep{t\in x}{\op{F}{x}}.
         \end{align*}
       </dd>
     </dl>
@@ -869,7 +869,7 @@
     <h2>置換公理</h2>
     <h3>写像</h3>
     <p>
-      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f\p{3}$は$6$になる．これを$\p{3,6}\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\cdots}$である．写像をさらに一般化した<dfn>関係</dfn>から順に定義する．関係は返ってくる元が一つとは限らないものである．
+      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$\op{f}{3}$は$6$になる．これを$\p{3,6}\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\cdots}$である．写像をさらに一般化した<dfn>関係</dfn>から順に定義する．関係は返ってくる元が一つとは限らないものである．
     </p>
     <dl>
       <h4>定義</h4>
@@ -900,7 +900,7 @@
         関係$f:a\to b$について，$f$が写像とは，
         $$\forall x\in a\exists!y,\p{x,y}\in f.$$
         $y$を$f(x)$と表す．つまり，
-        $$\forall x\in a,\p{x,f\p{x}}\in f.$$
+        $$\forall x\in a,\p{x,\op{f}{x}}\in f.$$
       </dd>
       <dt>恒等写像</dt>
       <dd>
@@ -913,7 +913,7 @@
       <h4>写像の例</h4>
       $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，写像$f:a\to b$は$a$の任意の元について$y$が一つである必要があるから，
       $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{3,3},\p{4,5}}$$
-      は写像である．$\p{2,9}\in f$なので，$f\p{2}=8$と表せる．
+      は写像である．$\p{2,9}\in f$なので，$\op{f}{2}=8$と表せる．
       <h4>写像でない例</h4>
       $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，次の例は写像$f:a\to b$でない．
       $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{4,5}}.$$
@@ -930,19 +930,19 @@
       <dt>写像の性質</dt>
       <dd>
         写像$f:a\to b$，$g:a\to b$について，
-        $$f\p{x}=g\p{x}\To f=g.$$
+        $$\op{f}{x}=\op{g}{x}\To f=g.$$
       </dd>
     </dl>
     <details>
       <summary>写像の性質</summary>
       <p>
         写像$f:a\to b$，$g:a\to b$について，
-        $$\forall x\in a\p{f\p{x}=g\p{x}}\To f=g.$$
+        $$\forall x\in a\p{\op{f}{x}=\op{g}{x}}\To f=g.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          任意の順序対$\p{x,f\p{x}}\in f$について，前提より$\p{x,f\p{x}}=\p{x,g\p{x}}$である．$\p{x,g\p{x}}\in g$であるから，$\p{x,f\p{x}}\in g$である．よって$f\subset g$である．$f,g$を入れ替えて同様に$g\subset f$であるから，$f=g$である．
+          任意の順序対$\p{x,\op{f}{x}}\in f$について，前提より$\p{x,\op{f}{x}}=\p{x,\op{g}{x}}$である．$\p{x,\op{g}{x}}\in g$であるから，$\p{x,\op{f}{x}}\in g$である．よって$f\subset g$である．$f,g$を入れ替えて同様に$g\subset f$であるから，$f=g$である．
         </p>
       </details>
     </details>
@@ -975,8 +975,8 @@
       <dt>合成写像(写像の積)</dt>
       <dd>
         写像$f:a\to b$，写像$g:b\to c$について，
-        $$g\circ f\def\setsep{\p{x,z}\in a\times c}{\p{f\p{x},z}\in g}.$$
-        つまり，$g\circ f\p{x}=g\p{f\p{x}}$である．
+        $$g\circ f\def\setsep{\p{x,z}\in a\times c}{\p{\op{f}{x},z}\in g}.$$
+        つまり，$g\circ \op{f}{x}=\op{g}{\op{f}{x}}$である．
       </dd>
     </dl>
     <aside>
@@ -992,7 +992,7 @@
       <dt>像の性質</dt>
       <dd>
         写像$f:a\to b$，部分集合$a'\subset a$について，
-        $$x\in a'\To f\p{x}\in f\sq{a'}.$$
+        $$x\in a'\To \op{f}{x}\in f\sq{a'}.$$
       </dd>
       <dt>合成写像の結合律</dt>
       <dd>
@@ -1004,14 +1004,14 @@
       <summary>像の性質</summary>
       <p>
         写像$f:a\to b$，部分集合$a'\subset a$について，
-        $$x\in a'\To f\p{x}\in f\sq{a'}.$$
+        $$x\in a'\To \op{f}{x}\in f\sq{a'}.$$
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
           定義より，$f\sq{a'}$に属している元$y$は，
           $$\exists x,y\in b\land x\in a'\land\p{x,y}\in f$$
-          が成り立つ．写像$f$の定義と前提より，$f\p{x}\in b$かつ$x\in a'$かつ$\p{x,f\p{x}}\in f$が成り立つから，$f\p{x}$は$f\sq{a'}$の元である．よって示された．
+          が成り立つ．写像$f$の定義と前提より，$\op{f}{x}\in b$かつ$x\in a'$かつ$\p{x,\op{f}{x}}\in f$が成り立つから，$\op{f}{x}$は$f\sq{a'}$の元である．よって示された．
         </p>
       </details>
     </details>
@@ -1026,9 +1026,9 @@
         <p>
           定義より変形を行う．
           \begin{align*}
-          \p{h\circ g}\circ f\p{x}&=h\circ g\p{f\p{x}},\\
-          &=h\p{g\p{f\p{x}}},\\
-          &=h\p{g\circ f\p{x}},\\
+          \p{h\circ g}\circ \op{f}{x}&=h\circ \op{g}{\op{f}{x}},\\
+          &=\op{h}{\op{g}{\op{f}{x}}},\\
+          &=\op{h}{g\circ \op{f}{x}},\\
           &=h\circ\p{g\circ f}\p{x}.
           \end{align*}
           よって，写像の性質より$\p{h\circ g}\circ f=h\circ\p{g\circ f}$である．
@@ -1040,12 +1040,12 @@
       <dt>単射</dt>
       <dd>
         写像$f:a\to b$について，$f$が単射であるとは，
-        $$\forall xy\in a,f\p{x}=f\p{y}\to x=y.$$
+        $$\forall xy\in a,\op{f}{x}=\op{f}{y}\to x=y.$$
       </dd>
       <dt>全射</dt>
       <dd>
         写像$f:a\to b$について，$f$が全射であるとは，
-        $$\forall y\in b\exists x\in a,f\p{x}=y.$$
+        $$\forall y\in b\exists x\in a,\op{f}{x}=y.$$
       </dd>
       <dt>全単射</dt>
       <dd>
@@ -1074,37 +1074,37 @@
       <h4>定義</h4>
       <dt>関数論理式</dt>
       <dd>
-        $F\p{x,y}$が1変数の関数論理式であるとは，次の論理式を満たすことをいう．
-        $$\forall xyz,F\p{x,y}\land F\p{x,z}\to y=z.$$
+        $\op{F}{x,y}$が1変数の関数論理式であるとは，次の論理式を満たすことをいう．
+        $$\forall xyz,\op{F}{x,y}\land \op{F}{x,z}\to y=z.$$
       </dd>
     </dl>
     <p>
-      つまり，$F\p{x,y}$となる$y$が一意であることを主張している．
+      つまり，$\op{F}{x,y}$となる$y$が一意であることを主張している．
     </p>
 
     <h3>置換公理</h3>
     <p>
-      ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字域</dfn>とする<dfn>添字集合</dfn>といい，$\setsep{x}{\exists i\in I\p{F\p{i,x}}}$と表す．これの存在を認める公理が置換公理である．
+      ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字域</dfn>とする<dfn>添字集合</dfn>といい，$\setsep{x}{\exists i\in I\p{\op{F}{i,x}}}$と表す．これの存在を認める公理が置換公理である．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>添字集合</dt>
       <dd>
-        論理関数式$F\p{x,y}$として，
-        $$\forall x,x\in \setsep{x}{\exists i\in I\p{F\p{i,x}}}\iff\exists i\p{i\in I\land F\p{i,x}}.$$
+        論理関数式$\op{F}{x,y}$として，
+        $$\forall x,x\in \setsep{x}{\exists i\in I\p{\op{F}{i,x}}}\iff\exists i\p{i\in I\land \op{F}{i,x}}.$$
       </dd>
       <h4>公理</h4>
       <dt>置換公理</dt>
       <dd>
-        論理関数式$F\p{x,y}$として，
+        論理関数式$\op{F}{x,y}$として，
         \begin{align*}
-        &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w,z}}\\
-        \Iff&\forall x\exists\setsep{t}{\exists i\in x\p{F\p{i,t}}}.
+        &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land \op{F}{w,z}}\\
+        \Iff&\forall x\exists\setsep{t}{\exists i\in x\p{\op{F}{i,t}}}.
         \end{align*}
       </dd>
     </dl>
     <p>
-      この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$とする．この述語$F$は関数論理式である．よって，$\setsep{f\p{i}}{i\in I}\def\setsep{x}{\exists i\in I\p{x=f\p{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\set{a_i}_I\def\setsep{a_i}{i\in I}$とし，明らかな場合は$I$を省略してよい．和集合と積集合を添字集合で拡張させる．
+      この論理関数式$F$を写像とした方が使い勝手が良い．$\op{F}{x,y}\Def y=\op{f}{x}$とする．この述語$F$は関数論理式である．よって，$\setsep{\op{f}{i}}{i\in I}\def\setsep{x}{\exists i\in I\p{x=\op{f}{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\set{a_i}_I\def\setsep{a_i}{i\in I}$とし，明らかな場合は$I$を省略してよい．和集合と積集合を添字集合で拡張させる．
     </p>
     <dl>
       <h4>定義</h4>
@@ -1255,7 +1255,7 @@
       <h4>公理</h4>
       <dt>選択公理</dt>
       <dd>
-        $$\forall x\exists f\in\p{\bigcup x}^x\forall y\in x,y\neq0\to f\p{y}\in y.$$
+        $$\forall x\exists f\in\p{\bigcup x}^x\forall y\in x,y\neq0\to \op{f}{y}\in y.$$
       </dd>
     </dl>
     <div class="you">
@@ -1275,11 +1275,11 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          論理式$G\p{x,y}\Def F\p{x}\land x=y$とすると，$G$は関数論理式である．なぜなら，$G\p{x,y}$と$G\p{x,z}$を仮定すると，$x=y=z$である．置換公理より，
+          論理式$G\p{x,y}\Def \op{F}{x}\land x=y$とすると，$G$は関数論理式である．なぜなら，$G\p{x,y}$と$G\p{x,z}$を仮定すると，$x=y=z$である．置換公理より，
           \begin{align*}
           \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land G\p{w,z}},\\
-          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land F\p{w}\land w=z},\bcs Gの定義\\
-          \forall x\exists y\forall z,z\in y&\iff z\in x\land F\p{z}.\bcs代入原理\\
+          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land \op{F}{w}\land w=z},\bcs Gの定義\\
+          \forall x\exists y\forall z,z\in y&\iff z\in x\land \op{F}{z}.\bcs代入原理\\
           \end{align*}
           分出公理が導けた．
         </p>
@@ -1293,7 +1293,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $c\def\scr{P}\p{\scr{P}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
+          $c\def\scr{P}\p{\scr{P}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$\op{F}{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
           \begin{align*}
           \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land\p{w=0\land z=a\lor w=1\land z=b}},\\
           \forall x\exists y\forall z,z\in y&\iff0\in x\land z=a\lor 1\in x\land z=b,\bcs代入原理\\
