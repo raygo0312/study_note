@@ -45,7 +45,7 @@
         $$x\le y\Def x\leq y\land x\neq y.$$ </dd>
       <dt>順序集合</dt>
       <dd>
-        $A$上の順序$\leq$について，$A$は$\leq$についての順序集合であるという．
+        $A$上の順序$\leq$について，$A$は$\leq$についての順序集合という．
       </dd>
     </dl>
     <div class="me">
@@ -85,7 +85,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $x\le x$であると仮定すると，定義より$x\neq x$であるから矛盾する．よって，$\lnot\p{x\le x}$である．
+          $x\le x$と仮定すると，定義より$x\neq x$だから矛盾する．よって，$\lnot\p{x\le x}$である．
         </p>
       </details>
     </details>
@@ -111,7 +111,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          任意の順序対$\p{x,\op{f}{x}}\in f$について，前提より$\p{x,\op{f}{x}}=\p{x,\op{g}{x}}$である．$\p{x,\op{g}{x}}\in g$であるから，$\p{x,\op{f}{x}}\in g$である．よって$f\subset g$である．$f,g$を入れ替えて同様に$g\subset f$であるから，$f=g$である．
+          任意の順序対$\p{x,f\p{x}}\in f$について，前提より$\p{x,f\p{x}}=\p{x,g\p{x}}$である．$\p{x,g\p{x}}\in g$だから，$\p{x,f\p{x}}\in g$である．よって$f\subset g$である．$f,g$を入れ替えて同様に$g\subset f$だから，$f=g$である．
         </p>
       </details>
     </details>
@@ -129,23 +129,50 @@
       </dd>
     </dl>
 
-    <h3>順序集合についての性質の定義</h3>
+    <h3>順序集合の元</h3>
     <p>
-      順序を定めた場合，1番大きいなどに興味が出る．そこで順序について性質の定義をする．
+      順序集合の元の性質を調べたい．そこで順序について性質の定義をする．
     </p>
+    <div class="you">
+      順序集合の部分集合は順序集合になるよ
+    </div>
     <dl>
       <h4>定義</h4>
       <dt>最大元・最小元</dt>
       <dd>
-        順序集合$A$の部分集合$B$とする．$B$の元$a$について，
-        $$\forall x\in B,x\leq a$$
-        が成り立つとき，$a$を$B$の最大元といい，$\max B$と表す．つまり，
+        順序集合$A$の部分集合$B$とする．$B$の元$\max B$について，
         $$\forall x\in B,x\leq \max B$$
-        である．同様に$B$の最小元$\min B$を，
+        が成り立つとき，$a$を$B$の最大元という．同様に$B$の最小元$\min B$を，
         $$\forall x\in B,\min B\leq x$$
         とする．
       </dd>
+      <dt>上界・下界</dt>
+      <dd>
+        順序集合$A$の部分集合$B$とする．$A$の元$a$について，
+        $$\forall x\in B,x\leq a$$
+        が成り立つとき，$a$を$B$の上界という．同様に，
+        $$\forall x\in B,a\leq x$$
+        が成り立つとき，$a$を$B$の下界という．$B$の上界が存在するとき$B$は上に有界といい，下界が存在するとき下に有界という．
+      <dt>上界・下界</dt>
+      <dd>
+        順序集合$A$の部分集合$B$とする．$B$の上界の最小元
+        $$\min\setsep{a\in A}{\forall x\in B,x\leq a}$$
+        を$B$の上限という．同様に，下界の最大元
+        $$\max\setsep{a\in A}{\forall x\in B,a\leq x}$$
+        を$B$の下限という．
+      </dd>
     </dl>
+    <div class="you">
+      いままで定義してきた性質をもつ元は順序集合に存在するとは限らないよ
+    </div>
+    <div class="me">
+      最大元と上界が同じ条件に見えるけど，違うものなの？
+    </div>
+    <div class="you">
+      前提条件が少し違うね<br>
+      最大元は$B$の元，上界は$A$の元になってるね<br>
+      $B$は$A$の部分集合だから最大元は上界になるよ
+    </div>
 
     <h2>整列集合</h2>
     <h2>順序数</h2>
