@@ -15,7 +15,7 @@ main {
   border: solid #aaaaaa 0.1rem;
   padding: 0.5rem;
   padding-bottom: 10rem;
-  min-height: 60rem;
+  min-height: 100vh;
   max-width: 50rem;
   background-color: #ffffff;
 }
@@ -80,13 +80,15 @@ dfn {
 
 dl {
   margin: 1rem;
-  border-top: solid #bb5511 0.2rem;
-  border-right: solid #bb5511 0.2rem;
-  border-bottom: solid #aaaaaa 1rem;
-  border-left: solid #bb5511 0.2rem;
   padding: 0.5rem;
-  background-color: #005000;
-  color: #eeeeee;
+}
+
+dl.def {
+  background-color: #ddffdd;
+}
+
+dl.thm {
+  background-color: #ddddff;
 }
 
 dt {
@@ -136,19 +138,17 @@ table tr:nth-child(odd) {
 
 details {
   margin: 0.5rem;
-  border: solid #222222 0.1rem;
+  background-color: #eeeeee;
 }
+
 
 details+details {
   margin-top: -0.6rem;
 }
 
 summary {
-  margin: -0.1rem;
-  border-bottom: solid #222222 0.1rem;
   padding-left: 0.5rem;
-  background-color: #22aa55;
-  color: #ffffff;
+  border-bottom: solid 0.1rem #000000;
   font-family: sans-serif;
 }
 
@@ -156,9 +156,8 @@ summary+* {
   margin-top: 0.6rem;
 }
 
-details.sub summary {
-  background-color: #cccccc;
-  color: #222222;
+details details {
+  background-color: #dddddd;
 }
 
 /* チャット */
@@ -190,7 +189,7 @@ details.sub summary {
   top: -0.1rem;
   left: -1rem;
   border: solid 0.3rem transparent;
-  border-right: solid 1rem #edf1ee;
+  border-right: solid 1rem #dddddd;
   transform: rotate(35deg);
   content: "";
 }
@@ -207,7 +206,7 @@ details.sub summary {
   padding: 0.1rem 0.5rem;
   padding-right: 0.3rem;
   max-width: 70%;
-  background: #c0c4ff;
+  background: #dddddd;
   text-align: left;
 }
 
@@ -216,7 +215,7 @@ details.sub summary {
   top: -0.1rem;
   right: -1rem;
   border: solid 0.3rem transparent;
-  border-left: solid 1rem #c0c4ff;
+  border-left: solid 1rem #dddddd;
   transform: rotate(-35deg);
   content: "";
 }

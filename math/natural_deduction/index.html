@@ -33,7 +33,7 @@
     <p>
       推論の流れの表し方を考える．<dfn>推論図</dfn>とは推論の流れを木のように表す図である．ある推論規則では前提を取り除く，<dfn>打ち消し</dfn>という操作がある．打ち消される前提を<dfn>仮定</dfn>という．推論規則のみを用いているとき，推論図を<dfn>演繹図</dfn>という．前提がないとき，演繹図を<dfn>証明図</dfn>という．
     </p>
-    <dl>
+    <dl class="def">
       <h4>定義</h4>
       <dt>推論図</dt>
       <dd>
@@ -97,7 +97,7 @@
       $$\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$
       としてよい．
     </p>
-    <dl>
+    <dl class="def">
       <h4>推論規則</h4>
       <dt>$\to\rm{I}$</dt>
       <dd>$$\to\rm{I}\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$</dd>
@@ -153,7 +153,7 @@
     <p>
       $A_1\lor A_2$は$A_1$または$A_2$なことを意味するから，どちらか一方でも成り立てばいいので，$A_1$か$A_2$が前提のとき$A_1\lor A_2$が導ける．これを<dfn>拡大律</dfn>と言ったりもする．また，$A_1\lor A_2$からは$A_1$と$A_2$で場合分けしたあと，それぞれについて$B$を推論できれば，$A_1\lor A_2$から$B$が導ける．これは<dfn>構成的両刃論法</dfn>という名前で知られる．場合分けのことである．
     </p>
-    <dl>
+    <dl class="def">
       <h4>推論規則</h4>
       <dt>$\land\rm{I}$</dt>
       <dd>$$\infer{A_1\land A_2}{A_1\quad A_2}$$</dd>
@@ -167,12 +167,12 @@
 
     <h3>$\forall$と$\exists$の推論規則</h3>
     <p>
-      $\forall$はすべてについて成り立つという意味だが，これは対象の集合$\set{a_1,a_2,\cdots}$の元すべてで成り立つということである．また，$\exists$も成り立つ元が一つ以上あるという意味である．つまり，
+      $\forall$はすべてについて成り立つという意味だが，これは対象の集合$\set{a_1,a_2,\dots}$の元すべてで成り立つということである．また，$\exists$も成り立つ元が一つ以上あるという意味である．つまり，
       $$\forall F\p{x}\Iff F\p{a_1}\land F\p{a_2}\land\cdots.$$
       $$\exists F\p{x}\Iff F\p{a_1}\lor F\p{a_2}\lor\cdots.$$
       と書きたいが，これだと無限に列挙することになってしまうため量化子を用いて表しているに過ぎない．これをもとに推論規則を定める．
     </p>
-    <dl>
+    <dl class="def">
       <h4>推論規則</h4>
       <dt>$\forall\rm{I}$</dt>
       <dd>
@@ -198,7 +198,7 @@
     <p>
       $\lnot A$は$A$でないことを意味する．背理法の論法を推論規則に定める．また，$A$とその否定$\lnot A$から矛盾$\bot$を推論できるとする．
     </p>
-    <dl>
+    <dl class="def">
       <h4>推論規則</h4>
       <dt>$\lnot\rm{I}$</dt>
       <dd>$$\infer{\lnot A}{A\to\bot}$$</dd>
@@ -217,7 +217,7 @@
     <p>
       $\to$が含まれている推論規則には二つの問題点がある．一つ目はもしこの論理体系で$\to$を使用しない場合にこの推論規則を使用することができない．二つ目は冗長なこと．$\to$からの推論をするために，$\to$を作る推論が必要がある．そのため，$\to\rm{I}$を一緒に使用することが多い．これをまとめて1つの推論規則とするほうが都合がいい．
     </p>
-    <dl>
+    <dl class="def">
       <h4>推論規則(代替)</h4>
       <dt>$\lor\rm{E}$</dt>
       <dd>$$\infer[i]{B}{A_1\lor
@@ -235,7 +235,7 @@
     <p>
       これらの推論規則のみからなる論理体系を<dfn>最小論理</dfn>という．この論理体系では今後紹介する双対性すら成り立たない．これに，<dfn>選言的三段論法</dfn>を満たす公理を追加すると，<dfn>直感主義論理</dfn>(<dfn>直感論理</dfn>，<dfn>構成的論理</dfn>)という論理体系となる．さらに，<dfn>排中律</dfn>という公理を追加すると，<dfn>古典論理</dfn>(<dfn>標準論理</dfn>)という論理体系になる．一般的な数学では古典論理が採用されているため，古典論理で成り立つ範囲について扱う．また，<dfn>二重否定の除去</dfn>は「選言的三段論法かつ排中律」と同値として知られているため，最小論理に二重否定の除去を推論規則として古典論理を構成することもある．同値なことの証明は後で行う．
     </p>
-    <dl>
+    <dl class="def">
       <h4>公理</h4>
       <dt>選言的三段論法</dt>
       <dd>$$\p{A\lor B}\land\lnot B\to A.$$</dd>
@@ -259,32 +259,29 @@
     <p>
       推論と論理式を自由に変換するために，<dfn>演繹定理</dfn>を用いる．
     </p>
-    <dl>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>演繹定理</dt>
-      <dd>$$\Gamma,A\proof B\Iff\Gamma\proof A\to B.$$</dd>
-    </dl>
-    <details>
-      <summary>演繹定理</summary>
-      <p>
+      <dd>
         $$\Gamma,A\proof B\Iff\Gamma\proof A\to B.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\p{\To}$$\to\rm{I}$そのものである．
-        </p>
-        <p>
-          $\p{\rTo}$前提より，
-          $$\Gamma\proof A\to B.$$
-          前提に$A$を追加すると，
-          $$A,\Gamma\proof A,A\to B.$$
-          となり，$A,A\to B\To B$だから，
-          $$\Gamma,A\proof B.$$
-          が成り立つ．
-        </p>
-      </details>
-    </details>
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\p{\To}$$\to\rm{I}$そのものである．
+          </p>
+          <p>
+            $\p{\rTo}$前提より，
+            $$\Gamma\proof A\to B.$$
+            前提に$A$を追加すると，
+            $$A,\Gamma\proof A,A\to B.$$
+            となり，$A,A\to B\To B$だから，
+            $$\Gamma,A\proof B.$$
+            が成り立つ．
+          </p>
+        </details>
+      </dd>
+    </dl>
+
     <div class="you">
       この命題によって，$A$から$B$を演繹できたとき，$A\to B$って書けることを意味してるから，推論と$\to$が含まれる論理式に違いがないことがわかるね
     </div>
@@ -301,59 +298,49 @@
     <p>
       <dfn>爆発律</dfn>は矛盾からは任意の論理式が導けるという推論規則で，感覚的には間違えてそうである．
     </p>
-    <dl>
+    <dl class="def">
       <h4>推論規則</h4>
       <dt>爆発律</dt>
       <dd>
         $$\infer{A}{\bot}$$
       </dd>
-      <h4>定理</h4>
-      <dt>爆発律と選言的三段論法の等価性</dt>
-      <dd>
-        最小論理上で爆発律と選言的三段論法は等価である．
-      </dd>
     </dl>
     <p>
       爆発律と選言的三段論法の等価性を証明するには<dfn>同一律</dfn>が必要である．
     </p>
-    <dl>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>同一律</dt>
-      <dd>$$A\to A.$$</dd>
-    </dl>
-    <details>
-      <summary>同一律</summary>
-      <p>
+      <dd>
         $$A\to A.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          次の証明図が存在する．
-          $$\infer[1]{A\to A}{\infer[1]{A}{}}$$
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>爆発律と選言的三段論法の等価性</summary>
-      <p>
+        <details>
+          <summary>証明</summary>
+          <p>
+            次の証明図が存在する．
+            $$\infer[1]{A\to A}{\infer[1]{A}{}}$$
+          </p>
+        </details>
+      </dd>
+      <dt>爆発律と選言的三段論法の等価性</dt>
+      <dd>
         最小論理上で爆発律と選言的三段論法は等価である．
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          最小論理を用いて，爆発律から選言的三段論法，選言的三段論法から爆発律をそれぞれ推論すればよい．
-        </p>
-        <p>
-          最小論理と爆発律を用いて選言的三段論法を導出する．
-          $$\infer[2]{\p{A\lor B}\land\lnot B\to A}{\infer[1]{A}{\infer{A\lor B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}\quad\infer{A\to A}{}\quad\infer{A}{\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}}}}}$$
-        </p>
-        <p>
-          最小論理と選言的三段論法を用いて爆発律を導出する．
-          $$\infer[1]{\bot\to A}{\infer{A}{\infer{\p{A\lor\bot}\land\lnot\bot}{\infer{A\lor\bot}{\infer[1]{\bot}{}}\quad\infer{\lnot\bot}{\infer{\bot\to\bot}{}}}}}$$
-        </p>
-      </details>
-    </details>
+        <details>
+          <summary>証明</summary>
+          <p>
+            最小論理を用いて，爆発律から選言的三段論法，選言的三段論法から爆発律をそれぞれ推論すればよい．
+          </p>
+          <p>
+            最小論理と爆発律を用いて選言的三段論法を導出する．
+            $$\infer[2]{\p{A\lor B}\land\lnot B\to A}{\infer[1]{A}{\infer{A\lor B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}\quad\infer{A\to A}{}\quad\infer{A}{\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}}}}}$$
+          </p>
+          <p>
+            最小論理と選言的三段論法を用いて爆発律を導出する．
+            $$\infer[1]{\bot\to A}{\infer{A}{\infer{\p{A\lor\bot}\land\lnot\bot}{\infer{A\lor\bot}{\infer[1]{\bot}{}}\quad\infer{\lnot\bot}{\infer{\bot\to\bot}{}}}}}$$
+          </p>
+        </details>
+      </dd>
+    </dl>
+
     <div class="you">
       個々の証明では演繹定理と切断規則を使用しているよ<br>
       カット規則は$A\proof B$のときに$A\To B$を演繹していいという規則だよ<br>
@@ -374,54 +361,122 @@
     <p>
       選言的三段論法の代わりに爆発律を用いて次の定理を証明する．
     </p>
-    <dl>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>「爆発律，排中律」と二重否定の除去の等価性</dt>
-      <dd>最小論理上で「爆発律，排中律」と二重否定の除去は等価である．</dd>
+      <dd>
+        最小論理上で「爆発律，排中律」と二重否定の除去は等価である．
+        <details>
+          <summary>証明</summary>
+          <p>
+            最小論理を用いて，爆発律と排中律から二重否定の除去，二重否定の除去から爆発律と排中律をそれぞれ推論すればよい．
+          </p>
+          <p>
+            最小論理と爆発律と排中律を用いて二重否定の除去を導出する．
+            $$\infer[2]{\lnot\lnot A\to A}{\infer[1]{A}{\infer{A\lor\lnot A}{}\quad\infer{A\to A}{}\quad\infer{A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer[2]{\lnot\lnot A}{}}}}}$$
+          </p>
+          <p>
+            最小論理と二重否定の除去を用いて排中律を導出する．
+            $$\infer{A\lor\lnot A}{\infer[2]{\lnot\lnot\p{A\lor\lnot A}}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{\lnot A}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{A}{}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}$$
+          </p>
+          <p>
+            最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$B\to A\to B$を証明する．
+            $$\infer[2]{B\to A\to B}{\infer[1]{A\to B}{\infer{B}{\infer{A\land B}{\infer[1]{A}{}\quad\infer[2]{B}{}}}}}$$
+            この補題より$B\proof A\to B$で，必要としない論理式を前提として追加してもよいという推論である．この$B$を$\bot$として利用する．
+            $$\infer[2]{\bot\to A}{\infer{A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}}$$
+          </p>
+        </details>
+      </dd>
     </dl>
-    <details>
-      <summary>「爆発律，排中律」と二重否定の除去の等価性</summary>
-      <p>
-        最小論理上で爆発律と選言的三段論法と等価である．
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          最小論理を用いて，爆発律と排中律から二重否定の除去，二重否定の除去から爆発律と排中律をそれぞれ推論すればよい．
-        </p>
-        <p>
-          最小論理と爆発律と排中律を用いて二重否定の除去を導出する．
-          $$\infer[2]{\lnot\lnot A\to A}{\infer[1]{A}{\infer{A\lor\lnot A}{}\quad\infer{A\to A}{}\quad\infer{A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer[2]{\lnot\lnot A}{}}}}}$$
-        </p>
-        <p>
-          最小論理と二重否定の除去を用いて排中律を導出する．
-          $$\infer{A\lor\lnot A}{\infer[2]{\lnot\lnot\p{A\lor\lnot A}}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{\lnot A}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{A}{}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}$$
-        </p>
-        <p>
-          最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$B\to A\to B$を証明する．
-          $$\infer[2]{B\to A\to B}{\infer[1]{A\to B}{\infer{B}{\infer{A\land B}{\infer[1]{A}{}\quad\infer[2]{B}{}}}}}$$
-          この補題より$B\proof A\to B$で，必要としない論理式を前提として追加してもよいという推論である．この$B$を$\bot$として利用する．
-          $$\infer[2]{\bot\to A}{\infer{A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}}$$
-        </p>
-      </details>
-    </details>
+
 
     <h2>等価性</h2>
     <p>
       以前に$=$と$\iff$は相等関係と説明した．相当関係とは等価性を満たすものだが，等価性は反射律かつ代入原理である．$=$は集合に対する相等関係と定義されているが，$\iff$は別の定義が既に存在しているので，その定義で相等関係になるかを調べる必要がある．
+    <p>
+      代入原理を示すために次の定理を用意する．
     </p>
-    <dl>
+    <dl class="thm">
+      <h4>定理</h4>
+      <dt>$\to$の置換</dt>
+      <dd>
+        $$\p{A\to B}\iff\lnot A\lor B.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\p{A\to B}\to\lnot A\lor B$の証明である．
+            $$\infer[2]{\p{A\to B}\to\lnot A\lor B}{\infer[1]{\lnot A\lor B}{\infer{A\lor\lnot A}{}\quad\infer{\lnot A\lor B}{\infer{B}{\infer[1]{A}{}\quad\infer[2]{A\to B}{}}}\quad\infer{\lnot A\lor B}{\infer[1]{\lnot A}{}}}}$$
+          </p>
+          <p>
+            $\lnot A\lor B\to\p{A\to B}$の証明である．
+            $$\infer[3]{\lnot A\lor B\to A\to B}{\infer[2]{A \to B}{\infer[3]{\lnot A\lor B}{}\quad\infer[1]{A\to B}{\infer{B}{\infer{\bot}{\infer[1]{A}{}\quad\infer[2]{\lnot A}{}}}}\quad\infer{A\to B}{\infer[2]{B}{}}}}$$
+          </p>
+        </details>
+      </dd>
+    </dl>
+    </p>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>$\iff$の反射律</dt>
       <dd>
         任意の論理式$A$について，
         $$A\iff A.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            同一律より，$A\to A$だから成り立つ．
+          </p>
+        </details>
       </dd>
       <dt>$\iff$の代入原理</dt>
       <dd>
         任意の論理式$A,B$，論理式$F\p{X}$について，
         $$A\iff B\To F\p{A}\iff F\p{B}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            論理式は再帰的定義によって定義されていたため，論理式の数学的帰納法によって証明する．また，$A\iff B,F\p{A}\to F\p{B}$が証明できれば，$A\iff B\To F\p{B}\to
+            F\p{A}$も同様に証明できので，片方のみでよい．
+          </p>
+          <p>
+            $F\p{A}=A$のとき，そのものだから成り立つ．
+          </p>
+          <p>
+            $F\p{A}$に$A$が含まれない$C$のとき，$C\iff C$だから成り立つ．
+          </p>
+          <p>
+            $F\p{A}=\lnot A$のとき，次の証明である．
+            $$\infer[2]{\lnot A\to\lnot B}{\infer[1]{\lnot B}{\infer{\bot}{\infer{A}{\infer[1]{B}{}\quad\infer{B\to A}{\infer{A\iff B}{}}}\quad\infer[2]{\lnot A}{}}}}$$
+          </p>
+          <p>
+            $F\p{A}=A\land C$のとき，次の証明である．
+            $$\infer[1]{A\land C\to B\land C}{\infer{B\land C}{\infer{B}{\infer{A}{\infer[1]{A\land C}{}}\quad\infer{A\to B}{\infer{A\iff B}{}}}\quad\infer{C}{\infer[1]{A\land C}{}}}}$$
+            同様に，$F\p{A}=C\land A$のときでも成り立つ．
+          </p>
+          <p>
+            $F\p{A}=A\lor C$のとき，次の証明である．
+            $$\infer[2]{A\lor C\to B\lor C}{\infer[1]{B\lor C}{\infer[2]{A\lor C}{}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer{A\iff B}{}}}}\quad\infer{B\lor C}{\infer[1]{C}{}}}}$$
+            同様に，$F\p{A}=C\lor A$のときでも成り立つ．
+          </p>
+          <p>
+            $F\p{A}=A\to C$のとき，前述したことを用いて，$A\iff B\To A\to C\iff B\to C$が示せる．
+            同様に，$F\p{A}=C\to A$のときでも成り立つ．
+          </p>
+          <p>
+            $F\p{A}=\forall a,A\p{a}$のとき，次の証明である．
+            $$\infer[1]{\forall x,A\p{x}\to\forall x,B\p{x}}{\infer{\forall x,B\p{x}}{\infer{B\p{a}}{\infer{A\p{a}}{\infer[1]{\forall x,A\p{x}}{}}\quad\infer{A\p{a}\to B\p{a}}{\infer{A\p{a}\iff B\p{a}}{}}}}}$$
+          </p>
+          <p>
+            $F\p{A}=\exists a,A\p{a}$のとき，次の証明である．
+            $$\infer[2]{\exists x,A\p{x}\to\exists x,B\p{x}}{\infer[1]{\exists x,B\p{x}}{\infer[2]{\exists x,A\p{x}}{}\quad\infer{\exists x,B\p{x}}{\infer{B\p{a}}{\infer[1]{A\p{a}}{}\quad\infer{A\p{a}\to B\p{a}}{\infer{A\p{a}\iff B\p{a}}{}}}}}}$$
+          </p>
+          <p>
+            $A\iff B$で$F\p{A}\iff F\p{B}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{A}}$について前述したことを用いて$F'\p{F\p{A}}\iff F'\p{F\p{B}}$である．よって，任意の論理式で$F\p{A}\iff F\p{B}$が成り立つ．
+          </p>
+        </details>
       </dd>
+    </dl>
+    <dl class="def">
       <h4>定義</h4>
       <dt>$=$</dt>
       <dd>
@@ -438,387 +493,279 @@
         $$\forall ab,a=b\to\p{F\p{a}\iff F\p{b}}.$$
       </dd>
     </dl>
-    <p>
-      代入原理を示すために次の定理を用意する．
-    </p>
-    <dl>
-      <h4>定理</h4>
-      <dt>$\to$の置換</dt>
-      <dd>
-        $$\p{A\to B}\iff\lnot A\lor B.$$
-      </dd>
-    </dl>
-    <details>
-      <summary>$\to$の置換</summary>
-      <p>
-        $$\p{A\to B}\iff\lnot A\lor B.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\p{A\to B}\to\lnot A\lor B$の証明である．
-          $$\infer[2]{\p{A\to B}\to\lnot A\lor B}{\infer[1]{\lnot A\lor B}{\infer{A\lor\lnot A}{}\quad\infer{\lnot A\lor B}{\infer{B}{\infer[1]{A}{}\quad\infer[2]{A\to B}{}}}\quad\infer{\lnot A\lor B}{\infer[1]{\lnot A}{}}}}$$
-        </p>
-        <p>
-          $\lnot A\lor B\to\p{A\to B}$の証明である．
-          $$\infer[3]{\lnot A\lor B\to A\to B}{\infer[2]{A \to B}{\infer[3]{\lnot A\lor B}{}\quad\infer[1]{A\to B}{\infer{B}{\infer{\bot}{\infer[1]{A}{}\quad\infer[2]{\lnot A}{}}}}\quad\infer{A\to B}{\infer[2]{B}{}}}}$$
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>$\iff$が反射律を満たす証明</summary>
-      <p>
-        $$A\iff A.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          同一律より，$A\to A$だから成り立つ．
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>$\iff$が代入原理を満たす証明
-      </summary>
-      <p>
-        任意の論理式$A,B$，任意の論理式を引数とする論理式$F\p{X}$について，
-        $$A\iff B\To F\p{A}\iff F\p{B}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          論理式は再帰的定義によって定義されていたため，論理式の数学的帰納法によって証明する．また，$A\iff B,F\p{A}\to F\p{B}$が証明できれば，$A\iff B\To F\p{B}\to
-          F\p{A}$も同様に証明できので，片方のみでよい．
-        </p>
-        <p>
-          $F\p{A}=A$のとき，そのものだから成り立つ．
-        </p>
-        <p>
-          $F\p{A}$に$A$が含まれない$C$のとき，$C\iff C$だから成り立つ．
-        </p>
-        <p>
-          $F\p{A}=\lnot A$のとき，次の証明である．
-          $$\infer[2]{\lnot A\to\lnot B}{\infer[1]{\lnot B}{\infer{\bot}{\infer{A}{\infer[1]{B}{}\quad\infer{B\to A}{\infer{A\iff B}{}}}\quad\infer[2]{\lnot A}{}}}}$$
-        </p>
-        <p>
-          $F\p{A}=A\land C$のとき，次の証明である．
-          $$\infer[1]{A\land C\to B\land C}{\infer{B\land C}{\infer{B}{\infer{A}{\infer[1]{A\land C}{}}\quad\infer{A\to B}{\infer{A\iff B}{}}}\quad\infer{C}{\infer[1]{A\land C}{}}}}$$
-          同様に，$F\p{A}=C\land A$のときでも成り立つ．
-        </p>
-        <p>
-          $F\p{A}=A\lor C$のとき，次の証明である．
-          $$\infer[2]{A\lor C\to B\lor C}{\infer[1]{B\lor C}{\infer[2]{A\lor C}{}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer{A\iff B}{}}}}\quad\infer{B\lor C}{\infer[1]{C}{}}}}$$
-          同様に，$F\p{A}=C\lor A$のときでも成り立つ．
-        </p>
-        <p>
-          $F\p{A}=A\to C$のとき，前述したことを用いて，$A\iff B\To A\to C\iff B\to C$が示せる．
-          同様に，$F\p{A}=C\to A$のときでも成り立つ．
-        </p>
-        <p>
-          $F\p{A}=\forall a,A\p{a}$のとき，次の証明である．
-          $$\infer[1]{\forall x,A\p{x}\to\forall x,B\p{x}}{\infer{\forall x,B\p{x}}{\infer{B\p{a}}{\infer{A\p{a}}{\infer[1]{\forall x,A\p{x}}{}}\quad\infer{A\p{a}\to B\p{a}}{\infer{A\p{a}\iff B\p{a}}{}}}}}$$
-        </p>
-        <p>
-          $F\p{A}=\exists a,A\p{a}$のとき，次の証明である．
-          $$\infer[2]{\exists x,A\p{x}\to\exists x,B\p{x}}{\infer[1]{\exists x,B\p{x}}{\infer[2]{\exists x,A\p{x}}{}\quad\infer{\exists x,B\p{x}}{\infer{B\p{a}}{\infer[1]{A\p{a}}{}\quad\infer{A\p{a}\to B\p{a}}{\infer{A\p{a}\iff B\p{a}}{}}}}}}$$
-        </p>
-        <p>
-          $A\iff B$で$F\p{A}\iff F\p{B}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{A}}$について前述したことを用いて$F'\p{F\p{A}}\iff F'\p{F\p{B}}$である．よって，任意の論理式で$F\p{A}\iff F\p{B}$が成り立つ．
-        </p>
-      </details>
-    </details>
 
     <p>
       等価性は同値性を満たす．<dfn>同値性</dfn>とは反射律，対称律，推移律が成り立つことである．等価性から同値性のそれぞれの性質を証明する．
     </p>
-    <dl>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>$\iff$の対称律</dt>
       <dd>
         任意の論理式$A,B$について，
         $$A\iff B\Iff B\iff A.$$
+        <details>
+          <summary>証明</summary>
+          代入原理を用いて次のように変形する．
+          \begin{align*}
+          &A\iff B\\
+          \To&\p{A\iff A}\iff\p{B\iff A}\\
+          \To&\p{A\iff A}\to\p{B\iff A}.
+          \end{align*}
+          反射律より$A\iff A$は定理なので，
+          $$\p{B\iff A}$$
+          が推論された．逆も同様．
+        </details>
       </dd>
       <dt>$\iff$の推移律</dt>
       <dd>
         任意の論理式$A,B,C$について，
         $$\p{A\iff B}\land\p{B\iff C}\To A\iff C.$$
-      </dd>
-      <dt>$=$の対称律</dt>
-      <dd>
-        項$a,b$について，
-        $$a=b\iff b=a$$
-      </dd>
-      <dt>$=$の推移律</dt>
-      <dd>
-        項$a,b,c$
-        $$\p{a=b}\land\p{b=c}\to a=c$$
+        <details>
+          <summary>証明</summary>
+          代入原理を用いて次のように変形する．
+          \begin{align*}
+          &A\iff B\\
+          \To&\p{A\iff C}\iff\p{B\iff C}\\
+          \To&\p{B\iff C}\to\p{A\iff C}.
+          \end{align*}
+          同様に代入原理を用いて次のように変形する．
+          \begin{align*}
+          &B\iff C\\
+          \To&\p{B\iff C}\iff\p{C\iff C}\\
+          \To&\p{C\iff C}\to\p{B\iff C}.
+          \end{align*}
+          反射律より$C\iff C$なので，
+          $$\p{B\iff C}$$
+          が推論され，
+          $$\p{A\iff C}$$
+          も推論される．逆も同様．
+        </details>
       </dd>
     </dl>
     <p>
       $\iff$と$=$の対称律と推移律の証明は等価性以外の$\iff,=$の性質を用いずに求めれば本質的に同じなので$\iff$のみ証明を行う．
     </p>
-    <details>
-      <summary>$\iff$の対称律</summary>
-      <p>
-        $$A\iff B\Iff B\iff A.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        代入原理を用いて次のように変形する．
-        \begin{align*}
-        &A\iff B\\
-        \To&\p{A\iff A}\iff\p{B\iff A}\\
-        \To&\p{A\iff A}\to\p{B\iff A}.
-        \end{align*}
-        反射律より$A\iff A$は定理なので，
-        $$\p{B\iff A}$$
-        が推論された．逆も同様．
-      </details>
-    </details>
-    <details>
-      <summary>$\iff$の推移律</summary>
-      <p>
-        $$\p{A\iff B}\land\p{B\iff C}\To A\iff C.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        代入原理を用いて次のように変形する．
-        \begin{align*}
-        &A\iff B\\
-        \To&\p{A\iff C}\iff\p{B\iff C}\\
-        \To&\p{B\iff C}\to\p{A\iff C}.
-        \end{align*}
-        同様に代入原理を用いて次のように変形する．
-        \begin{align*}
-        &B\iff C\\
-        \To&\p{B\iff C}\iff\p{C\iff C}\\
-        \To&\p{C\iff C}\to\p{B\iff C}.
-        \end{align*}
-        反射律より$C\iff C$なので，
-        $$\p{B\iff C}$$
-        が推論され，
-        $$\p{A\iff C}$$
-        も推論される．逆も同様．
-      </details>
-    </details>
 
     <h2>双対</h2>
     <h3>二重否定律</h3>
     <p>
       この後の証明に便利なので，<dfn>二重否定律</dfn>を証明する．
     </p>
-    <dl>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>二重否定律</dt>
       <dd>
         $$A\iff\lnot\lnot A.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\p{\to}$の証明である．
+            $$\infer[2]{A\to\lnot\lnot A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[2]{A}{}\quad\infer[1]{\lnot A}{}}}}$$
+          </p>
+          <p>
+            $\p{\rto}$は二重否定の除去そのものである．
+          </p>
+        </details>
       </dd>
     </dl>
-    <details>
-      <summary>二重否定律</summary>
-      <p>
-        $$A\iff\lnot\lnot A.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\p{\to}$の証明である．
-          $$\infer[2]{A\to\lnot\lnot A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[2]{A}{}\quad\infer[1]{\lnot A}{}}}}$$
-        </p>
-        <p>
-          $\p{\rto}$は二重否定の除去そのものである．
-        </p>
-      </details>
-    </details>
 
     <h3>De Morganの法則</h3>
     <p>
       <dfn>双対性</dfn>について証明したいが，まずは単純な<dfn>De Morganの法則</dfn>について証明していく．
     </p>
-    <dl>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>De Morganの法則</dt>
       <dd>
-        <ol>
-          <li>$\lnot\p{A\lor B}\iff\lnot A\land\lnot B.$</li>
-          <li>$\lnot\p{A\land B}\iff\lnot A\lor\lnot B.$</li>
-          <li>$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}.$</li>
-          <li>$\lnot\forall xF\p{x}\iff\exists x\lnot F\p{x}.$</li>
-        </ol>
+        $$\lnot\p{A\lor B}\iff\lnot A\land\lnot B.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\p{\to}$の証明である．
+            $$\infer[3]{\lnot\p{A\lor B}\to\lnot A\land\lnot B}{\infer{\lnot A\land\lnot B}{\infer[1]{\lnot A}{\infer{\bot}{\infer{A\lor B}{\infer[1]{A}{}}\quad\infer[3]{\lnot\p{A\lor B}{}}}}\quad\infer[2]{\lnot B}{\infer{\bot}{\infer{A\lor B}{\infer[2]{B}{}}\quad\infer[3]{\lnot\p{A\lor B}}{}}}}}$$
+          </p>
+          <p>
+            $\p{\rto}$の証明である．
+            $$\infer[3]{\lnot A\land\lnot B\to\lnot\p{A\lor B}}{\infer[2]{\lnot\p{A\lor B}}{\infer[1]{\bot}{\infer[2]{A\lor B}{}\quad\infer{\bot}{\infer[1]{A}{}\quad\infer{\lnot A}{\infer[3]{\lnot A\land\lnot B}{}}}\quad\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[3]{\lnot A\land\lnot B}{}}}}}}$$
+          </p>
+        </details>
+        $$\lnot\p{A\land B}\iff\lnot A\lor\lnot B.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            De Morganの法則(1)より，$\lnot\p{A\lor B}\iff\lnot A\land\lnot B$が成り立つから，この$A$と$B$をそれぞれ$\lnot A$と$\lnot
+            B$に置き換えて，代入原理と二重否定律を用いて変形する．
+            \begin{align*}
+            \lnot\p{\lnot A\lor \lnot B}&\iff\lnot\lnot A\land\lnot\lnot B,\\
+            \lnot\lnot\p{\lnot A\lor \lnot B}&\iff\lnot\p{\lnot\lnot A\land\lnot\lnot B},\\
+            \lnot A\lor \lnot B&\iff\lnot\p{A\land B},\\
+            \lnot\p{A\land B}&\iff\lnot A\lor \lnot B.
+            \end{align*}
+          </p>
+        </details>
+        $$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\p{\to}$の証明である．
+            $$\infer[2]{\lnot\exists xF\p{x}\to\forall x\lnot F\p{x}}{\infer{\forall x\lnot F\p{x}}{\infer[1]{\lnot F\p{a}}{\infer{\bot}{\infer{\exists xF\p{x}}{\infer[1]{F\p{a}}{}}\quad\infer[2]{\lnot\exists xF\p{x}}{}}}}}$$
+          </p>
+          <p>
+            $\p{\rto}$の証明である．
+            $$\infer[3]{\forall x\lnot F\p{x}\to\lnot\exists xF\p{x}}{\infer[2]{\lnot\exists xF\p{x}}{\infer[1]{\bot}{\infer[2]{\exists xF\p{x}}{}\quad\infer{\bot}{\infer[1]{F\p{a}}{}\quad\infer{\lnot F\p{a}}{\infer[3]{\forall x\lnot F\p{x}}{}}}}}}$$
+          </p>
+        </details>
+        $$\lnot\forall xF\p{x}\iff\exists x\lnot F\p{x}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            De Morganの法則(3)より，$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}$が成り立つから，この$F\p{x}$を$\lnot
+            F\p{x}$に置き換えて，代入原理と二重否定律を用いて変形する．
+            \begin{align*}
+            \lnot\exists x\lnot F\p{x}&\iff\forall x\lnot\lnot F\p{x},\\
+            \lnot\lnot\exists x\lnot F\p{x}&\iff\lnot\forall x\lnot\lnot F\p{x},\\
+            \exists x\lnot F\p{x}&\iff\lnot\forall xF\p{x},\\
+            \lnot\forall xF\p{x}&\iff\exists x\lnot F\p{x}.
+            \end{align*}
+          </p>
+        </details>
       </dd>
     </dl>
-    <details>
-      <summary>De Morganの法則(1)</summary>
-      <p>
-        $$\lnot\p{A\lor B}\iff\lnot A\land\lnot B.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\p{\to}$の証明である．
-          $$\infer[3]{\lnot\p{A\lor B}\to\lnot A\land\lnot B}{\infer{\lnot A\land\lnot B}{\infer[1]{\lnot A}{\infer{\bot}{\infer{A\lor B}{\infer[1]{A}{}}\quad\infer[3]{\lnot\p{A\lor B}{}}}}\quad\infer[2]{\lnot B}{\infer{\bot}{\infer{A\lor B}{\infer[2]{B}{}}\quad\infer[3]{\lnot\p{A\lor B}}{}}}}}$$
-        </p>
-        <p>
-          $\p{\rto}$の証明である．
-          $$\infer[3]{\lnot A\land\lnot B\to\lnot\p{A\lor B}}{\infer[2]{\lnot\p{A\lor B}}{\infer[1]{\bot}{\infer[2]{A\lor B}{}\quad\infer{\bot}{\infer[1]{A}{}\quad\infer{\lnot A}{\infer[3]{\lnot A\land\lnot B}{}}}\quad\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[3]{\lnot A\land\lnot B}{}}}}}}$$
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>De Morganの法則(2)</summary>
-      <p>
-        $$\lnot\p{A\land B}\iff\lnot A\lor\lnot B.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          De Morganの法則(1)より，$\lnot\p{A\lor B}\iff\lnot A\land\lnot B$が成り立つから，この$A$と$B$をそれぞれ$\lnot A$と$\lnot
-          B$に置き換えて，代入原理と二重否定律を用いて変形する．
-          \begin{align*}
-          \lnot\p{\lnot A\lor \lnot B}&\iff\lnot\lnot A\land\lnot\lnot B,\\
-          \lnot\lnot\p{\lnot A\lor \lnot B}&\iff\lnot\p{\lnot\lnot A\land\lnot\lnot B},\\
-          \lnot A\lor \lnot B&\iff\lnot\p{A\land B},\\
-          \lnot\p{A\land B}&\iff\lnot A\lor \lnot B.
-          \end{align*}
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>De Morganの法則(3)</summary>
-      <p>
-        $$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\p{\to}$の証明である．
-          $$\infer[2]{\lnot\exists xF\p{x}\to\forall x\lnot F\p{x}}{\infer{\forall x\lnot F\p{x}}{\infer[1]{\lnot F\p{a}}{\infer{\bot}{\infer{\exists xF\p{x}}{\infer[1]{F\p{a}}{}}\quad\infer[2]{\lnot\exists xF\p{x}}{}}}}}$$
-        </p>
-        <p>
-          $\p{\rto}$の証明である．
-          $$\infer[3]{\forall x\lnot F\p{x}\to\lnot\exists xF\p{x}}{\infer[2]{\lnot\exists xF\p{x}}{\infer[1]{\bot}{\infer[2]{\exists xF\p{x}}{}\quad\infer{\bot}{\infer[1]{F\p{a}}{}\quad\infer{\lnot F\p{a}}{\infer[3]{\forall x\lnot F\p{x}}{}}}}}}$$
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>De Morganの法則(4)</summary>
-      <p>
-        $$\lnot\forall xF\p{x}\iff\exists x\lnot F\p{x}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          De Morganの法則(3)より，$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}$が成り立つから，この$F\p{x}$を$\lnot
-          F\p{x}$に置き換えて，代入原理と二重否定律を用いて変形する．
-          \begin{align*}
-          \lnot\exists x\lnot F\p{x}&\iff\forall x\lnot\lnot F\p{x},\\
-          \lnot\lnot\exists x\lnot F\p{x}&\iff\lnot\forall x\lnot\lnot F\p{x},\\
-          \exists x\lnot F\p{x}&\iff\lnot\forall xF\p{x},\\
-          \lnot\forall xF\p{x}&\iff\exists x\lnot F\p{x}.
-          \end{align*}
-        </p>
-      </details>
-    </details>
 
     <h3>双対性</h3>
     <p>
       論理式における<dfn>双対</dfn>とは，$\land$と$\lor$，$\forall$と$\exists$を交換した論理式のことである．このとき，論理式$F$に対して，双対$F^*$と表す．このとき，次の定理が成り立つ．
     </p>
-    <dl>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>双対性</dt>
       <dd>
         $n$個の論理式または述語を引数に取る論理式$F\p{B_1,B_2,\dots,B_n}$としたとき，
         $$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}.$$
         が成り立つ．
+        <details>
+          <summary>証明</summary>
+          <p>
+            代入原理の証明と同様に数学的帰納法で証明する．$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{B_1,B_2,\dots,B_n}}$についてDe Morganの法則を用いて$\lnot F'\p{F\p{B_1,B_2,\dots,B_n}}\iff F'^*\p{\lnot F\p{B_1,B_2,\dots,B_n}}$である．また仮定より，$F'^*\p{\lnot F\p{B_1,B_2,\dots,B_n}}\iff F'^*\p{F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}}$が成り立つ．よって，任意の論理式で$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}$が成り立つ．
+          </p>
+        </details>
       </dd>
     </dl>
-    <details>
-      <summary>双対性</summary>
-      <p>
-        $$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          代入原理の証明と同様に数学的帰納法で証明する．$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{B_1,B_2,\dots,B_n}}$についてDe Morganの法則を用いて$\lnot F'\p{F\p{B_1,B_2,\dots,B_n}}\iff F'^*\p{\lnot F\p{B_1,B_2,\dots,B_n}}$である．また仮定より，$F'^*\p{\lnot F\p{B_1,B_2,\dots,B_n}}\iff F'^*\p{F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}}$が成り立つ．よって，任意の論理式で$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}$が成り立つ．
-        </p>
-      </details>
-    </details>
 
     <h2>古典論理の定理</h2>
     <h3>トートロジー</h3>
     <p>
       トートロジー$\top$を次のように定義する．トートロジーは恒真命題である．
     </p>
-    <dl>
+    <dl class="def">
       <h4>定義</h4>
       <dt>トートロジー</dt>
-      <dd>$$\top\Def\lnot\bot.$$</dd>
+      <dd>
+        $$\top\Def\lnot\bot.$$
+      </dd>
       <h4>定理</h4>
+      <dt>トートロジー</dt>
+      <dd>
+        $\top$は定理である．
+        <details>
+          <summary>証明</summary>
+          <p>
+            同一律より$\bot\to\bot$が成り立つから，次の証明図が存在する．
+            $$\infer{\lnot\bot}{\infer{\bot\to\bot}{}}$$
+          </p>
+        </details>
+      </dd>
       <dt>任意の定理とトートロジーの同値性</dt>
       <dd>
         任意の証明された命題を$A$について，
         $$A\iff\top.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\p{\To}$$\top$は定理だから，次の証明図が存在する．
+            $$\infer{A\to\top}{\infer{\top}{}}$$
+          </p>
+          <p>
+            $\p{\rTo}$逆も同様．
+          </p>
+        </details>
       </dd>
     </dl>
-    <details>
-      <summary>トートロジーが定理なこと</summary>
-      <p>
-        $\top$は定理である．
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          同一律より$\bot\to\bot$が成り立つから，次の証明図が存在する．
-          $$\infer{\lnot\bot}{\infer{\bot\to\bot}{}}$$
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>任意の定理とトートロジーの同値性</summary>
-      <p>
-        任意の証明された命題を$A$について，
-        $$A\iff\top$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\p{\To}$$\top$は定理だから，次の証明図が存在する．
-          $$\infer{A\to\top}{\infer{\top}{}}$$
-        </p>
-        <p>
-          $\p{\rTo}$逆も同様．
-        </p>
-      </details>
-    </details>
 
     <h3>真理関数に関する定理</h3>
     <p>
       真理関数の重要な定理のうち，まだ紹介していないものを次にまとめる．
     </p>
 
-    <dl>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>交換律</dt>
       <dd>
         $$A\land B\iff B\land A.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $A\land B\to B\land A$を証明する．
+            $$\infer[1]{A\land B\to B\land A}{\infer{B\land A}{\infer{B}{\infer[1]{A\land B}{}}\quad\infer{A}{\infer[1]{A\land B}{}}}}$$
+            $A$と$B$を交換すると逆も成り立つ．
+          </p>
+        </details>
         $$A\lor B\iff B\lor A.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            双対性と代入原理を用いて，
+            \begin{align*}
+            &A\land B\iff B\land A
+            \Iff&\lnot\p{A\land B}\iff\lnot\p{B\land A}\\
+            \Iff&\lnot A\lor\lnot B\iff\lnot B\lor\lnot A.
+            \end{align*}
+            よって，$A\lor B\iff B\lor A$が成り立つ．
+          </p>
+        </details>
       </dd>
       <dt>結合律</dt>
       <dd>
         $$A\land\p{B\land C}\iff\p{A\land B}\land C.$$
         $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $A\land\p{B\land C}\to\p{A\land B}\land C$の証明する．
+            $$\infer[1]{A\land\p{B\land C}\to\p{A\land B}\land C}{\infer{\p{A\land B}\land C}{\infer{A\land B}{\infer{A}{\infer[1]{A\land\p{B\land C}}{}}\quad\infer{B}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}\quad\infer{C}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}}$$
+            交換律を用いると逆も成り立つ．また，双対性より$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$が成り立つ．
+          </p>
+        </details>
       </dd>
       <dt>冪等律</dt>
       <dd>
         $$A\land A\iff A.$$
         $$A\lor A\iff A.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $A\land A\to A$は$\land\rm{E}$そのものなので逆を証明する．
+            $$\infer[1]{A\to A\land A}{\infer{A\land A}{\infer[1]{A}{}\quad\infer[1]{A}{}}}$$
+            双対性より$A\lor A\iff A$も成り立つ．
+          </p>
+        </details>
       </dd>
       <dt>分配律</dt>
       <dd>
         $$A\land\p{B\lor C}\iff\p{A\land B}\lor \p{A\land C}.$$
         $$A\lor\p{B\land C}\iff\p{A\lor B}\land \p{A\lor C}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$を証明する．
+            $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[1]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land C}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
+          </p>
+          <p>
+            $\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}$を証明する．
+            $$\infer[2]{\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}}{\infer[1]{A\land\p{B\lor C}}{\infer[2]{\p{A\land B}\lor\p{A\land C}}{}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer[1]{A\land B}{}}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A\land B}{}}}}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer{A\land C}{}}\quad\infer{B\lor C}{\infer{C}{\infer[1]{A\land C}{}}}}}}$$
+            双対性より$A\lor\p{B\land C}\iff\p{A\lor B}\land\p{A\lor C}$も成り立つ．
+          </p>
+        </details>
       </dd>
       <dt>恒等律</dt>
       <dd>
@@ -826,19 +773,62 @@
         $$A\lor\bot\iff A.$$
         $$A\land\bot\iff\bot.$$
         $$A\lor\top\iff\top.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $A\land\top\to A$は$\land\rm{E}$そのものなので逆を証明する．
+            $$\infer[1]{A\to\top\land A}{\infer{\top\land A}{\top\quad\infer[1]{A}{}}}$$
+            双対性より$A\lor\bot\iff A$も成り立つ．
+            $A\land\bot\iff\bot$は$\land\rm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\top\iff\top$も成り立つ．
+          </p>
+        </details>
       </dd>
       <dt>矛盾律</dt>
       <dd>
         $$\lnot\p{A\land\lnot A}.$$
+        <details>
+          <summary>証明</summary>
+          \begin{align*}
+          \lnot\p{A\land\lnot B}&\Iff\lnot A\lor A\\
+          &\Iff A\lor\lnot A.
+          \end{align*}
+          より真である．
+        </details>
       </dd>
       <dt>吸収律</dt>
       <dd>
         $$A\land\p{A\lor B}\iff A.$$
         $$A\lor\p{A\land B}\iff A.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\p{A\lor B}\land\p{A\lor\lnot B}$について考える．
+            \begin{align*}
+            &\p{A\lor B}\land\p{A\lor\lnot B}
+            \Iff&A\lor\p{B\land\lnot B}\\
+            \Iff&A\lor\bot\\
+            \Iff&A.
+            \end{align*}
+            よって，$A\land\p{A\lor B}$に$\p{A\lor B}\land\p{A\lor\lnot B}$を代入する．
+            \begin{align*}
+            &A\land\p{A\lor B}\\
+            \Iff&\p{A\lor B}\land\p{A\lor\lnot B}\land\p{A\lor B}\\
+            \Iff&\p{A\lor B}\land\p{A\lor\lnot B}\\
+            \Iff&A.
+            \end{align*}
+            したがって，$A\land\p{A\lor B}\iff A$は成り立つ．また，双対性より，$A\lor\p{A\land B}\iff A$も成り立つ．
+          </p>
+        </details>
       </dd>
       <dt>推移律</dt>
       <dd>
         $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $$\infer[2]{\p{A\to B}\land\p{B\to C}\to\p{A\to C}}{\infer[1]{A\to C}{\infer{C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer[2]{\p{A\to B}\land\p{B\to C}}{}}}\quad\infer{B\to C}{\infer[2]{\p{A\to B}\land\p{B\to C}}}}}}$$
+          </p>
+        </details>
       </dd>
       <dt>移入律</dt>
       <dd>
@@ -847,303 +837,119 @@
       <dt>移出律</dt>
       <dd>
         $$\p{A\land B\to C}\to\p{A\to B\to C}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            \begin{align*}
+            &A\to B\to C\\
+            \Iff&A\to\lnot B\lor C\\
+            \Iff&\lnot A\lor\lnot B\lor C\\
+            \Iff&\lnot\p{A\land B}\lor C\\
+            \Iff&A\land B\to C.
+            \end{align*}
+          </p>
+        </details>
       </dd>
       <dt>対偶律</dt>
       <dd>
         $$\p{A\to B}\iff\lnot B\to\lnot A.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            \begin{align*}
+            &A\to B
+            \Iff&\lnot A\lor B\\
+            \Iff&B\lor\lnot A\\
+            \Iff&\lnot B\to\lnot A.
+            \end{align*}
+          </p>
+        </details>
       </dd>
     </dl>
-
-    <details>
-      <summary>交換律</summary>
-      <p>
-        $$A\land B\iff B\land A.$$
-        $$A\lor B\iff B\lor A.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $A\land B\to B\land A$を証明する．
-          $$\infer[1]{A\land B\to B\land A}{\infer{B\land A}{\infer{B}{\infer[1]{A\land B}{}}\quad\infer{A}{\infer[1]{A\land B}{}}}}$$
-          $A$と$B$を交換すると逆も成り立つ．
-        </p>
-        <p>
-          また，双対性と代入原理を用いて，
-          \begin{align*}
-          &A\land B\iff B\land A
-          \Iff&\lnot\p{A\land B}\iff\lnot\p{B\land A}\\
-          \Iff&\lnot A\lor\lnot B\iff\lnot B\lor\lnot A.
-          \end{align*}
-        </p>
-        <p>
-          よって，$A\lor B\iff B\lor A$が成り立つ．
-        </p>
-      </details>
-    </details>
 
     <div class="you">
       こんな感じで，一方の命題は双対性を用いて簡単に証明できるので省略することにするね
     </div>
 
-    <details>
-      <summary>結合律</summary>
-      <p>
-        $$A\land\p{B\land C}\iff\p{A\land B}\land C.$$
-        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $A\land\p{B\land C}\to\p{A\land B}\land C$の証明する．
-          $$\infer[1]{A\land\p{B\land C}\to\p{A\land B}\land C}{\infer{\p{A\land B}\land C}{\infer{A\land B}{\infer{A}{\infer[1]{A\land\p{B\land C}}{}}\quad\infer{B}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}\quad\infer{C}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}}$$
-          交換律を用いると逆も成り立つ．また，双対性より$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$が成り立つ．
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>冪等律</summary>
-      <p>
-        $$A\land A\iff A.$$
-        $$A\lor A\iff A.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $A\land A\to A$は$\land\rm{E}$そのものなので逆を証明する．
-          $$\infer[1]{A\to A\land A}{\infer{A\land A}{\infer[1]{A}{}\quad\infer[1]{A}{}}}$$
-          双対性より$A\lor A\iff A$も成り立つ．
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>分配律</summary>
-      <p>
-        $$A\land\p{B\lor C}\iff\p{A\land B}\lor\p{A\land C}.$$
-        $$A\lor\p{B\land C}\iff\p{A\lor B}\land\p{A\lor C}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$を証明する．
-          $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[1]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land C}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
-        </p>
-        <p>
-          $\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}$を証明する．
-          $$\infer[2]{\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}}{\infer[1]{A\land\p{B\lor C}}{\infer[2]{\p{A\land B}\lor\p{A\land C}}{}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer[1]{A\land B}{}}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A\land B}{}}}}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer{A\land C}{}}\quad\infer{B\lor C}{\infer{C}{\infer[1]{A\land C}{}}}}}}$$
-          双対性より$A\lor\p{B\land C}\iff\p{A\lor B}\land\p{A\lor C}$も成り立つ．
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>恒等律</summary>
-      <p>
-        $$A\land\top\iff A.$$
-        $$A\lor\bot\iff A.$$
-        $$A\land\bot\iff\bot.$$
-        $$A\lor\top\iff\top.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $A\land\top\to A$は$\land\rm{E}$そのものなので逆を証明する．
-          $$\infer[1]{A\to\top\land A}{\infer{\top\land A}{\top\quad\infer[1]{A}{}}}$$
-          双対性より$A\lor\bot\iff A$も成り立つ．
-          $A\land\bot\iff\bot$は$\land\rm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\top\iff\top$も成り立つ．
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>矛盾律</summary>
-      <p>
-        $$\lnot\p{A\land\lnot A}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        \begin{align*}
-        \lnot\p{A\land\lnot B}&\Iff\lnot A\lor A\\
-        &\Iff A\lor\lnot A.
-        \end{align*}
-        より真である．
-      </details>
-    </details>
-    <details>
-      <summary>吸収律</summary>
-      <p>
-        $$A\land\p{A\lor B}\iff A.$$
-        $$A\lor\p{A\land B}\iff A.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\p{A\lor B}\land\p{A\lor\lnot B}$について考える．
-          \begin{align*}
-          &\p{A\lor B}\land\p{A\lor\lnot B}
-          \Iff&A\lor\p{B\land\lnot B}\\
-          \Iff&A\lor\bot\\
-          \Iff&A.
-          \end{align*}
-          よって，$A\land\p{A\lor B}$に$\p{A\lor B}\land\p{A\lor\lnot B}$を代入する．
-          \begin{align*}
-          &A\land\p{A\lor B}\\
-          \Iff&\p{A\lor B}\land\p{A\lor\lnot B}\land\p{A\lor B}\\
-          \Iff&\p{A\lor B}\land\p{A\lor\lnot B}\\
-          \Iff&A.
-          \end{align*}
-          したがって，$A\land\p{A\lor B}\iff A$は成り立つ．また，双対性より，$A\lor\p{A\land B}\iff A$も成り立つ．
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>推移律</summary>
-      <p>
-        $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $$\infer[2]{\p{A\to B}\land\p{B\to C}\to\p{A\to C}}{\infer[1]{A\to C}{\infer{C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer[2]{\p{A\to B}\land\p{B\to C}}{}}}\quad\infer{B\to C}{\infer[2]{\p{A\to B}\land\p{B\to C}}}}}}$$
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>移入律と移出律</summary>
-      <p>
-        $$A\to B\to C\iff A\land B\to C.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          \begin{align*}
-          &A\to B\to C
-          \Iff&A\to\lnot B\lor C\\
-          \Iff&\lnot A\lor\lnot B\lor C\\
-          \Iff&\lnot\p{A\land B}\lor C\\
-          \Iff&A\land B\to C.
-          \end{align*}
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>対偶律</summary>
-      <p>
-        $$A\to B\iff\lnot B\to\lnot A.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          \begin{align*}
-          &A\to B
-          \Iff&\lnot A\lor B\\
-          \Iff&B\lor\lnot A\\
-          \Iff&\lnot B\to\lnot A.
-          \end{align*}
-        </p>
-      </details>
-    </details>
-
     <h3>量化子に関する定理</h3>
     <p>
       量化子の重要な定理のうち，まだ紹介していないものを次にまとめる．
     </p>
-    <dl>
+    <dl class="thm">
       <h4>定理</h4>
       <dt>束縛変数の文字置換</dt>
       <dd>
         $$\forall xF\p{x}\iff\forall yF\p{y}.$$
         $$\exists xF\p{x}\iff\exists yF\p{y}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\forall xF\p{x}\to\forall yF\p{y}$を証明する．$F\p{x}$に含まれない$a$を用いて，
+            $$\infer[1]{\forall xF\p{x}\to\forall yF\p{y}}{\infer{\forall yF\p{y}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
+            $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xF\p{x}\iff\exists yF\p{y}$も成り立つ．
+          </p>
+        </details>
       </dd>
       <dt>量化子の変換</dt>
       <dd>
         $$\forall xF\p{x}\to\exists xF\p{x}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $F\p{x}$に含まれない$a$を用いて，
+            $$\infer[1]{\forall xF\p{x}\to\exists xF\p{x}}{\infer{\exists xF\p{x}}{\infer{F\p{F}{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
+          </p>
+        </details>
       </dd>
       <dt>量化の交換</dt>
       <dd>
         $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}.$$
         $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\forall xyF\p{x,y}\to\forall yxF\p{x,y}$を$F\p{x}$に含まれない$a,b$を用いて証明する．
+            $$\infer[1]{\forall xyF\p{x,y}\to\forall yxF\p{x,y}}{\infer{\forall yxF\p{x,y}}{\infer{\forall xF\p{x,b}}{\infer{F\p{a,b}}{\infer{\forall yF\p{a,y}}{\infer[1]{\forall xyF\p{x,y}}{}}}}}}$$
+            $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xyF\p{x,y}\iff\exists yx,F\p{x,y}$も成り立つ．
+          </p>
+        </details>
         $$\exists x\forall y\p{F\p{x,y}}\to\forall y\exists x\p{x,y}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            また，$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$を$F\p{x}$に含まれない$a,b$を用いて証明する．
+            $$\infer[2]{\exists x\forall yF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\infer[2]{\exists x\forall yF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
+          </p>
+        </details>
       </dd>
       <dt>量化の分配</dt>
       <dd>
         $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}.$$
         $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{F}{x}\lor\exists xG\p{x}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            $\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}$を$F\p{x}$に含まれない$a$を用いて証明する．
+            $$\infer[1]{\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}}{\infer{F\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}\quad\infer{\forall xG\p{x}}{\infer{G\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}}}$$
+          </p>
+          <p>
+            逆も$F\p{x}$に含まれない$a$を用いて証明する．
+            $$\infer[1]{\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}}{\infer{\forall x\p{F\p{x}\land G\p{x}}}{\infer{F\p{a}\land G\p{a}}{\infer{F\p{a}}{\infer{\forall xF\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}{}}}\quad\infer{G\p{a}}{\infer{\forall xG\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}}}}}}$$
+            双対性より，$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$も成り立つ．
+          </p>
+        </details>
         $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}.$$
         $$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            また，$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$を$F\p{x}$に含まれない$a$を用いて証明する．
+            $$\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}}{\infer{\forall x\p{F\p{x}\lor G\p{x}}}{\infer[1]{F\p{a}\lor G\p{a}}{\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}}{}\quad\infer{F\p{a}\lor G\p{a}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}\quad\infer{F\p{a}\lor G\p{a}}{\infer{G\p{a}}{\infer[1]{\forall xG\p{x}}{}}}}}}$$
+            対偶律より，$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$も成り立つ．
+          </p>
+        </details>
       </dd>
     </dl>
-    <details>
-      <summary>束縛変数の文字置換</summary>
-      <p>
-        $$\forall xF\p{x}\iff\forall yF\p{y}.$$
-        $$\exists xF\p{x}\iff\exists yF\p{y}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\forall xF\p{x}\to\forall yF\p{y}$を証明する．$F\p{x}$に含まれない$a$を用いて，
-          $$\infer[1]{\forall xF\p{x}\to\forall yF\p{y}}{\infer{\forall yF\p{y}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
-          $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xF\p{x}\iff\exists yF\p{y}$も成り立つ．
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>量化子の変換</summary>
-      <p>
-        $$\forall xF\p{x}\to\exists xF\p{x}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $F\p{x}$に含まれない$a$を用いて，
-          $$\infer[1]{\forall xF\p{x}\to\exists xF\p{x}}{\infer{\exists xF\p{x}}{\infer{F\p{F}{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>量化の交換</summary>
-      <p>
-        $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}.$$
-        $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}.$$
-        $$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\forall xyF\p{x,y}\to\forall yxF\p{x,y}$を$F\p{x}$に含まれない$a,b$を用いて証明する．
-          $$\infer[1]{\forall xyF\p{x,y}\to\forall yxF\p{x,y}}{\infer{\forall yxF\p{x,y}}{\infer{\forall xF\p{x,b}}{\infer{F\p{a,b}}{\infer{\forall yF\p{a,y}}{\infer[1]{\forall xyF\p{x,y}}{}}}}}}$$
-          $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xyF\p{x,y}\iff\exists yx,F\p{x,y}$も成り立つ．
-        </p>
-        <p>
-          また，$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$を$F\p{x}$に含まれない$a,b$を用いて証明する．
-          $$\infer[2]{\exists x\forall yF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\infer[2]{\exists x\forall yF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
-        </p>
-      </details>
-    </details>
-    <details>
-      <summary>量化の分配</summary>
-      <p>
-        $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}.$$
-        $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{F}{x}\lor\exists xG\p{x}.$$
-        $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}.$$
-        $$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}.$$
-      </p>
-      <details class="sub">
-        <summary>証明</summary>
-        <p>
-          $\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}$を$F\p{x}$に含まれない$a$を用いて証明する．
-          $$\infer[1]{\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}}{\infer{F\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}\quad\infer{\forall xG\p{x}}{\infer{G\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}}}$$
-        </p>
-        <p>
-          逆も$F\p{x}$に含まれない$a$を用いて証明する．
-          $$\infer[1]{\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}}{\infer{\forall x\p{F\p{x}\land G\p{x}}}{\infer{F\p{a}\land G\p{a}}{\infer{F\p{a}}{\infer{\forall xF\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}{}}}\quad\infer{G\p{a}}{\infer{\forall xG\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}}}}}}$$
-          双対性より，$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$も成り立つ．
-        </p>
-        <p>
-          また，$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$を$F\p{x}$に含まれない$a$を用いて証明する．
-          $$\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}}{\infer{\forall x\p{F\p{x}\lor G\p{x}}}{\infer[1]{F\p{a}\lor G\p{a}}{\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}}{}\quad\infer{F\p{a}\lor G\p{a}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}\quad\infer{F\p{a}\lor G\p{a}}{\infer{G\p{a}}{\infer[1]{\forall xG\p{x}}{}}}}}}$$
-          対偶律より，$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$も成り立つ．
-        </p>
-      </details>
-    </details>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>

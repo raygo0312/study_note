@@ -62,7 +62,7 @@
       <p>
         $$\forall xy,x=y\to y=x.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $F\p{t}\Def t=x$とする．反射律より，$x=x$は真である．つまり，$F\p{x}$は真である．前提$x=y$と代入原理より，$F\p{y}$すなわち$y=x$も真である．
@@ -74,7 +74,7 @@
       <p>
         $$\forall xyz,x=y\land y=z\to x=z.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $F\p{t}\Def t=z$とする．前提より$y=z$だから$F\p{y}$は真である．前提$x=y$と代入原理より，$F\p{x}$すなわち$x=z$も真である．
@@ -132,7 +132,7 @@
       <p>
         $$\forall x,x\subset x.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           部分集合の定義より，命題は，
@@ -146,7 +146,7 @@
       <p>
         $$\forall xyz,x\subset y\land y\subset z\to x\subset z.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           部分集合の定義より，前提は，
@@ -176,7 +176,7 @@
       <p>
         $$a\in b\land b\subset c\To a\in c.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           部分集合の定義より，任意の$x$について$x\in b\to x\in c$だから，$a$についても成り立ち，
@@ -243,7 +243,7 @@
       <p>
         $A\def\set{a,b,c,a},B\def\set{c,a,b}$としたとき，$A=B$を示せ．
       </p>
-      <details class="sub">
+      <details>
         <summary>解答</summary>
         <p>
           $x\in A$になる$x$は$a,b,c$のときのみである．このとき，$x\in B$だから，$A\subset B$である．また，$x\in B$になる$x$は$a,b,c$のときのみである．このとき，$x\in A$だから，$B\subset A$である．よって外延性公理より$A=B$である．
@@ -288,7 +288,7 @@
       <p>
         $0$は一意である．
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           空集合$0,0'$について，$\forall x,x\notin0$と$\forall x,x\notin0'$が成り立つ．つまり，$\forall x,x\notin0'\iff x\notin0$が成り立つから．外延性公理より$0=0'$である．
@@ -321,7 +321,7 @@
       <p>
         $\set{a,b}$は一意である．
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           対$\set{a,b},\set{a,b}'$について，$\forall x,x\in\set{a,b}\iff x=a\lor x=b$と$\forall x,x\in\set{a,b}'\iff x=a\lor x=b$が成り立つ．推移律より，$\forall x,x\in\set{a,b}\iff x\in\set{a,b}'$．外延性公理より$\set{a,b}=\set{a,b}'$である．
@@ -351,7 +351,7 @@
       <p>
         $$\set{a,b}=\set{b,a}.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $x\in\set{a,b}$になる$x$について，
@@ -370,7 +370,7 @@
       <p>
         $$a\in\set{a,b}, b\in\set{a,b}.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $a\notin\set{a,b}$と仮定すると，
@@ -389,7 +389,7 @@
       <p>
         $$\set{a,b}=\set{a,c}\Iff b=c$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           ($\rTo$)の証明．
@@ -455,7 +455,7 @@
       <p>
         $$\p{a,b}=\p{a',b'}\Iff a=a'\land b=b'.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           ($\rTo$)の証明．
@@ -533,7 +533,7 @@
       <p>
         $$\p{a_1,\dots,a_n}=\p{b_1,\dots,b_n}\Iff a_1=b_1\land\cdots\land a_n=b_n.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <ol>
           <li>
@@ -655,7 +655,7 @@
       <p>
         $$a\in b\To\set{a}\in2^b.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $x\in\set{a}$となる$x$について，
@@ -678,7 +678,7 @@
       <p>
         $$\bigcup2^a=a.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $x\in\bigcup2^a$となる$x$について，
@@ -789,7 +789,7 @@
       <p>
         全体集合$U\supset a$について，$U\neq a$なら$U-a\neq0$．
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $U-a=0$と仮定すると，$x\notin a$となる$U$の元$x$が存在しない．すなわち，$U$の任意の元$x$について$x\in a$である．よって$U\subset a$であるから$U=a$であり反する．よって示された．
@@ -801,7 +801,7 @@
       <p>
         全体集合$U\supset a,b$について，$U-a$と$b$が互いに素なら$b\subset a$．
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $b$の任意の元$x$について，$x\notin a$と仮定すると，$x\in U-a$であるが，$U-a$と$b$が互いに素であることに反する．よって示された．
@@ -925,7 +925,7 @@
     <h2>置換公理</h2>
     <h3>写像</h3>
     <p>
-      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f\p{3}$は$6$になる．これを$\p{3,6}\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\cdots}$である．写像をさらに一般化した<dfn>関係</dfn>から順に定義する．関係は返ってくる元が一つとは限らないものである．
+      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f\p{3}$は$6$になる．これを$\p{3,6}\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\dots}$である．写像をさらに一般化した<dfn>関係</dfn>から順に定義する．関係は返ってくる元が一つとは限らないものである．
     </p>
     <dl>
       <h4>定義</h4>
@@ -995,7 +995,7 @@
         写像$f:a\to b$，$g:a\to b$について，
         $$\forall x\in a\p{f\p{x}=g\p{x}}\To f=g.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           任意の順序対$\p{x,f\p{x}}\in f$について，前提より$\p{x,f\p{x}}=\p{x,g\p{x}}$である．$\p{x,g\p{x}}\in g$だから，$\p{x,f\p{x}}\in g$である．よって$f\subset g$である．$f,g$を入れ替えて同様に$g\subset f$だから，$f=g$である．
@@ -1062,7 +1062,7 @@
         写像$f:a\to b$，部分集合$a'\subset a$について，
         $$x\in a'\To f\p{x}\in f\sq{a'}.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           定義より，$f\sq{a'}$に属している元$y$は，
@@ -1077,7 +1077,7 @@
         写像$f:a\to b$，$g:b\to c$，$h:c\to d$について，
         $$\p{h\circ g}\circ f=h\circ\p{g\circ f}.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           定義より変形を行う．
@@ -1200,7 +1200,7 @@
 
     <h2>無限公理</h2>
     <p>
-      自然数の集合は具体的に書くと$\set{0,1,2,\cdots}$のことである．これを$\bm{N}$と表す．自然数の定義は後に紹介する．ここでは集合で表現することのみ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．無限公理は後者の存在を認める公理である．
+      自然数の集合は具体的に書くと$\set{0,1,2,\dots}$のことである．これを$\bm{N}$と表す．自然数の定義は後に紹介する．ここでは集合で表現することのみ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．無限公理は後者の存在を認める公理である．
     </p>
     <dl>
       <h4>定義</h4>
@@ -1260,7 +1260,7 @@
       <p>
         $$\forall x,x\notin x.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $x\in x$と仮定する．$\set{x}$は空集合ではないから，正則性公理より，
@@ -1276,7 +1276,7 @@
       <p>
         $$\forall xy,x\notin y\lor y\notin x.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $x\in y\land y\in x$と仮定すると，$x\in y$と$x\in\set{x,y}$より$x\in y\cap\set{x,y}$である．同様に，$y\in x\cap\set{x,y}$である．
@@ -1306,7 +1306,7 @@
       <p>
         $$\not\exists x\forall y,y\in x.$$
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $\forall y,y\in u$と仮定すると，$u\in u$より偽．
@@ -1339,7 +1339,7 @@
       <p>
         置換公理$\To$分出公理．
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           論理式$G\p{x,y}\Def F\p{x}\land x=y$とすると，$G$は関数論理式である．なぜなら，$G\p{x,y}$と$G\p{x,z}$を仮定すると，$x=y=z$である．置換公理より，
@@ -1357,7 +1357,7 @@
       <p>
         空集合公理，冪集合，置換公理$\To$対公理．
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           $c\def\scr{P}\p{\scr{P}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
@@ -1377,7 +1377,7 @@
       <p>
         無限公理，分出公理$\To$空集合公理．
       </p>
-      <details class="sub">
+      <details>
         <summary>証明</summary>
         <p>
           1は無限公理より存在する．このとき，$0=\setsep{x\in1}{x\neq x}$が成り立ち，これは分出公理より存在する．
