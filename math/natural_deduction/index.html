@@ -777,7 +777,7 @@
           <summary>証明</summary>
           <p>
             $A\land\top\to A$は$\land\rm{E}$そのものなので逆を証明する．
-            $$\infer[1]{A\to\top\land A}{\infer{\top\land A}{\top\quad\infer[1]{A}{}}}$$
+            $$\infer[1]{A\to\top\land A}{\infer{\top\land A}{\infer{\top}{}\quad\infer[1]{A}{}}}$$
             双対性より$A\lor\bot\iff A$も成り立つ．
             $A\land\bot\iff\bot$は$\land\rm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\top\iff\top$も成り立つ．
           </p>
@@ -789,8 +789,9 @@
         <details>
           <summary>証明</summary>
           \begin{align*}
-          \lnot\p{A\land\lnot B}&\Iff\lnot A\lor A\\
-          &\Iff A\lor\lnot A.
+          &\lnot\p{A\land\lnot B}\\
+          \Iff&\lnot A\lor A\\
+          \Iff&A\lor\lnot A.
           \end{align*}
           より真である．
         </details>
@@ -804,7 +805,7 @@
           <p>
             $\p{A\lor B}\land\p{A\lor\lnot B}$について考える．
             \begin{align*}
-            &\p{A\lor B}\land\p{A\lor\lnot B}
+            &\p{A\lor B}\land\p{A\lor\lnot B}\\
             \Iff&A\lor\p{B\land\lnot B}\\
             \Iff&A\lor\bot\\
             \Iff&A.
@@ -857,7 +858,7 @@
           <summary>証明</summary>
           <p>
             \begin{align*}
-            &A\to B
+            &A\to B\\
             \Iff&\lnot A\lor B\\
             \Iff&B\lor\lnot A\\
             \Iff&\lnot B\to\lnot A.
