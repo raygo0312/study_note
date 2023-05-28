@@ -333,10 +333,16 @@
     </div>
     <dl>
       <h4>定理</h4>
-      <dt>対の性質</dt>
+      <dt>対の性質1</dt>
       <dd>
         $$\set{a,b}=\set{b,a}.$$
+      </dd>
+      <dt>対の性質2</dt>
+      <dd>
         $$a\in\set{a,b}, b\in\set{a,b}.$$
+      </dd>
+      <dt>対の性質3</dt>
+      <dd>
         $$\set{a,b}=\set{a,c}\Iff b=c.$$
       </dd>
     </dl>
@@ -411,10 +417,16 @@
     </p>
     <dl>
       <h4>定理</h4>
-      <dt>1元集合の性質</dt>
+      <dt>1元集合の性質1</dt>
       <dd>
         $$a\in\set{a}.$$
+      </dd>
+      <dt>1元集合の性質2</dt>
+      <dd>
         $$\set{a}=\set{b,c}\Iff a=b=c.$$
+      </dd>
+      <dt>1元集合の性質3</dt>
+      <dd>
         $$\set{a}=\set{b}\Iff a=b.$$
       </dd>
     </dl>
@@ -629,9 +641,12 @@
     </div>
     <dl>
       <h4>定理</h4>
-      <dt>冪集合の性質</dt>
+      <dt>冪集合の性質1</dt>
       <dd>
         $$a\in b\To\set{a}\in2^b.$$
+      </dd>
+      <dt>冪集合の性質2</dt>
+      <dd>
         $$\bigcup2^a=a.$$
       </dd>
     </dl>
@@ -723,6 +738,12 @@
         $a,b$の積集合とは，
         $$a\cap b\def\setsep{x\in a}{x\in b}.$$
       </dd>
+      <dt>互いに素</dt>
+      <dd>
+        $a,b$が互いに素とは，
+        $$a\cap b=0.$$
+        が成り立つことである．
+      </dd>
     </dl>
     <p>
       公理を用いて性質を調べてみる．定義より，
@@ -752,6 +773,41 @@
       $$\forall x,x\in a-b\iff x\in a\land x\notin b$$
       になる．
     </p>
+    <dl>
+      <h4>定理</h4>
+      <dt>補集合の性質1</dt>
+      <dd>
+        全体集合$U\supset a$について，$U\neq a$なら$U-a\neq0$．
+      </dd>
+      <dt>補集合の性質2</dt>
+      <dd>
+        全体集合$U\supset a,b$について，$U-a$と$b$が互いに素なら$b\subset a$．
+      </dd>
+    </dl>
+    <details>
+      <summary>補集合の性質1</summary>
+      <p>
+        全体集合$U\supset a$について，$U\neq a$なら$U-a\neq0$．
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $U-a=0$と仮定すると，$x\notin a$となる$U$の元$x$が存在しない．すなわち，$U$の任意の元$x$について$x\in a$である．よって$U\subset a$であるから$U=a$であり反する．よって示された．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>補集合の性質2</summary>
+      <p>
+        全体集合$U\supset a,b$について，$U-a$と$b$が互いに素なら$b\subset a$．
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $b$の任意の元$x$について，$x\notin a$と仮定すると，$x\in U-a$であるが，$U-a$と$b$が互いに素であることに反する．よって示された．
+        </p>
+      </details>
+    </details>
 
     <h3>対称差</h3>
     <p>
@@ -1103,29 +1159,41 @@
       </dd>
     </dl>
     <p>
-      この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$とする．この述語$F$は関数論理式である．よって，$\setsep{f\p{i}}{i\in I}\def\setsep{x}{\exists i\in I\p{x=f\p{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\set{a_i}_I\def\setsep{a_i}{i\in I}$とし，明らかな場合は$I$を省略してよい．和集合と積集合を添字集合で拡張させる．
+      この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$とする．この述語$F$は関数論理式である．よって，$\setsep{f\p{i}}{i\in I}\def\setsep{x}{\exists i\in I\p{x=f\p{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\set{a_i}_{i\in I}\def\setsep{a_i}{i\in I}$とし，明らかな場合は$I$を省略してよい．和集合と積集合を添字集合で拡張させる．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>添字和集合</dt>
       <dd>
-        添字集合$\set{a_i}_I$の和集合とは，
-        $$\bigcup_{i\in I}a_i\def\bigcup\set{a_i}_I.$$
+        添字集合$\set{a_i}_{i\in I}$の和集合とは，
+        $$\bigcup_{i\in I}a_i\def\bigcup\set{a_i}_{i\in I}.$$
       </dd>
       <dt>添字積集合</dt>
       <dd>
-        添字集合$\set{a_i}_I$の積集合とは，
-        $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}_I\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}.$$
+        添字集合$\set{a_i}_{i\in I}$の積集合とは，
+        $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}_{i\in I}\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}.$$
       </dd>
     </dl>
     <dl>
       <h4>定理</h4>
-      <dt>添字集合の性質</dt>
+      <dt>添字集合の性質1</dt>
       <dd>
-        $\set{a_i}_I$について，
+        $\set{a_i}_{i\in I}$について，
         $$\bigcup_{i\in I}a_i\cap b=\bigcup_{i\in I}\p{a_i\cap b}.$$
+      </dd>
+      <dt>添字集合の性質2</dt>
+      <dd>
+        $\set{a_i}_{i\in I}$について，
         $$\bigcap_{i\in I}a_i\cup b=\bigcap_{i\in I}\p{a_i\cup b}.$$
+      </dd>
+      <dt>添字集合の性質3</dt>
+      <dd>
+        $\set{a_i}_{i\in I}$について，
         $$\overline{\bigcup_{i\in I}a_i}=\bigcap_{i\in I}\overline{a_i}.$$
+      </dd>
+      <dt>添字集合の性質4</dt>
+      <dd>
+        $\set{a_i}_{i\in I}$について，
         $$\overline{\bigcap_{i\in I}a_i}=\bigcup_{i\in I}\overline{a_i}.$$
       </dd>
     </dl>
@@ -1199,7 +1267,7 @@
           $$y\cap\set{x}=0$$
           になる$y\in\set{x}$が存在する．1元集合の性質より$y=x$だから，$=$の代入原理より，
           $$x\cap\set{x}=0.$$
-          仮定より$x\in x\land x\in \set{x}$だから，$x\in x\cap\set{x}$になるが，$x\cap\set{x}=0$に矛盾する．よって，$x\notin x$である．
+          仮定より$x\in x\land x\in \set{x}$だから，$x\in x\cap\set{x}$になるが，$x\cap\set{x}=0$に反する．よって，$x\notin x$である．
         </p>
       </details>
     </details>
@@ -1221,12 +1289,12 @@
         <p>
           $z=x$のとき，
           $$x\cap\set{x,y}=0$$
-          は$y\in x\cap\set{x,y}$に矛盾する．
+          は$y\in x\cap\set{x,y}$に反する．
         </p>
         <p>
           $z=y$のとき，
           $$y\cap\set{x,y}=0$$
-          は$x\in y\cap\set{x,y}$に矛盾する．
+          は$x\in y\cap\set{x,y}$に反する．
         </p>
         <p>
           よって，$x\notin y\lor y\notin x$である．

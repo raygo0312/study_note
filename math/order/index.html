@@ -66,14 +66,20 @@
     </p>
     <dl>
       <h4>定理</h4>
-      <dt>狭義順序の性質</dt>
+      <dt>狭義順序の性質1</dt>
       <dd>
         $A$上の関係$\le$について，
-        \begin{align*}
-        &\forall x\in A,\lnot\p{x\le x}.\\
-        &\forall xy\in A,\lnot\p{x\le y\land y\le x}.\\
-        &\forall xyz\in A,x\le y\land y\le z\to x\le z.
-        \end{align*}
+        $$\forall x\in A,\lnot\p{x\le x}.$$
+      </dd>
+      <dt>狭義順序の性質2</dt>
+      <dd>
+        $A$上の関係$\le$について，
+        $$\forall xy\in A,\lnot\p{x\le y\land y\le x}.$$
+      </dd>
+      <dt>狭義順序の性質3</dt>
+      <dd>
+        $A$上の関係$\le$について，
+        $$\forall xyz\in A,x\le y\land y\le z\to x\le z.$$
       </dd>
     </dl>
     <details>
@@ -85,7 +91,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $x\le x$と仮定すると，定義より$x\neq x$だから矛盾する．よって，$\lnot\p{x\le x}$である．
+          $x\le x$と仮定すると，定義より$x\neq x$だから反する．よって，$\lnot\p{x\le x}$である．
         </p>
       </details>
     </details>
@@ -98,7 +104,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $x\le y\land y\le x$と仮定すると，定義より$x\leq y$かつ$y\leq x$かつ$x\neq y$が成り立つ．反射律より$x=y$が成り立つから矛盾する．よって，$\lnot\p{x\le y\land y\le x}$である．
+          $x\le y\land y\le x$と仮定すると，定義より$x\leq y$かつ$y\leq x$かつ$x\neq y$が成り立つ．反射律より$x=y$が成り立つから反する．よって，$\lnot\p{x\le y\land y\le x}$である．
         </p>
       </details>
     </details>
@@ -111,7 +117,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          前提より，$x\leq y$かつ$y\leq z$が成り立ち，推移律より$x\leq z$である．また，$x=z$と仮定すると，反対称律より$x=y=z$であるが前提に矛盾する．よって，$x\neq z$が成り立ち$x\le z$である．
+          前提より，$x\leq y$かつ$y\leq z$が成り立ち，推移律より$x\leq z$である．また，$x=z$と仮定すると，反対称律より$x=y=z$であるが前提に反する．よって，$x\neq z$が成り立ち$x\le z$である．
         </p>
       </details>
     </details>
@@ -123,7 +129,7 @@
       <dd>
         $A$上の順序$\leq$について，次の条件を満たすとき$\leq$を全順序という．
         \begin{align*}
-        &\forall xy\in A,x\leq y\land y\leq x&&(完全律)\\
+        &\forall xy\in A,x\leq y\lor y\leq x&&(完全律)\\
         \Iff&\forall x\in A,x\le y\lor x=y\lor y\le x.&&(三分律)
         \end{align*}
       </dd>
@@ -197,7 +203,7 @@
         $$\forall xy\in A,x\star y\to f\p{x}\star f\p{y}.$$
         任意の算術$\star$について，
         $$\forall xy\in A,f\p{x\star y}=f\p{x}\star f\p{y}$$
-        が成り立つとき，$f$を準同型写像といい，$f$は順序を保つという．$f$が逆写像$f^{-1}$をもち，$f^{-1}$も準同型であるとき，$f$を同型写像，$A,B$は同型という．
+        が成り立つとき，$f$を準同型写像といい，$f$は順序を保つという．$f$が逆写像$f^{-1}$をもち，$f^{-1}$も準同型であるとき，$f$を同型写像，$A,B$は同型といい，$A\cong B$と表す．
       </dd>
     </dl>
     <div class="you">
@@ -217,15 +223,22 @@
       整列集合の前提には順序集合で十分なんだ<br>
       整列集合の条件から全順序であることが示せるよ
     </div>
+    <dl>
+      <h4>定理</h4>
+      <dt>整列集合の条件</dt>
+      <dd>
+        順序集合$A$について，空でない任意の部分集合が最小元をもつとき，$A$は全順序集合である．
+      </dd>
+    </dl>
     <details>
-      <summary>整列集合の性質</summary>
+      <summary>整列集合の条件</summary>
       <p>
-        整列集合$A,B$について，$A$から$B$への順序同型写像は高々1つである．
+        順序集合$A$について，空でない任意の部分集合が最小元をもつとき，$A$は全順序集合である．
       </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $A$と$B$の順序同型写像$f,g$について，$g^{-1}\circ f$は$A$から$A$への順序同型写像だから$g^{-1}\circ f=\rm{id}$．よって$f=g$である．
+          $A$の任意の部分対集合$\set{a,b}$について，最小値が存在することから，$a\leq b\lor b\leq a$である．よって$A$は全順序集合である．
         </p>
       </details>
     </details>
@@ -234,32 +247,49 @@
       <h4>定理</h4>
       <dt>整列集合の性質</dt>
       <dd>
-        整列集合$A,B$について，$A$から$B$への順序同型写像は高々1つである．
+        <ul>
+          <li>整列集合$A$から$A$への狭義順序準同型写像$f$，任意の$x$について，$x\leq f\p{x}$が成り立つ．</li>
+          <details>
+            <summary>証明</summary>
+            <p>
+              $x\ge f\p{x}$となる$A$の元$x$があると仮定すると，$A$の部分集合$B=\setsep{x\in A}{x\ge f\p{x}}$は空でないから最小限$a$をもつ．$a\ge f\p{a}$より準同型写像の定義から$f\p{a}\ge f\p{f\p{a}}$となり，$f\p{a}\in B$である．しかし，$a$が最小元であることと$a\ge f\p{a}$が反する．よって，示された．
+            </p>
+          </details>
+          </details>
+          <li>整列集合$A$から$A$への順序同型写像は恒等写像のみである．</li>
+          <li>整列集合$A,B$について，$A$から$B$への順序同型写像は高々1つである．</li>
+        </ul>
       </dd>
     </dl>
     <details>
       <summary>整列集合の性質</summary>
       <p>
-        整列集合$A,B$について，$A$から$B$への順序同型写像は高々1つである．
+        整列集合$A$から$A$への狭義順序準同型写像$f$，任意の$x$について，$x\leq f\p{x}$が成り立つ．
       </p>
       <details class="sub">
-        <summary>補題</summary>
+        <summary>証明</summary>
         <p>
-          整列集合$A$から$A$への狭義順序準同型写像$f$，任意の$x$について，$x\leq f\p{x}$が成り立つ．
-        </p>
-        <p>
-          $x\ge f\p{x}$となる$A$の元$x$があると仮定すると，$A$の部分集合$B=\setsep{x\in A}{x\ge f\p{x}}$は空でないから最小限$a$をもつ．$a\ge f\p{a}$より準同型写像の定義から$f\p{a}\ge f\p{f\p{a}}$となり，$f\p{a}\in B$である．しかし，$a$が最小元であることと$a\ge f\p{a}$が矛盾する．よって，示された．
+          $x\ge f\p{x}$となる$A$の元$x$があると仮定すると，$A$の部分集合$B=\setsep{x\in A}{x\ge f\p{x}}$は空でないから最小限$a$をもつ．$a\ge f\p{a}$より準同型写像の定義から$f\p{a}\ge f\p{f\p{a}}$となり，$f\p{a}\in B$である．しかし，$a$が最小元であることと$a\ge f\p{a}$が反する．よって，示された．
         </p>
       </details>
+    </details>
+    <details>
+      <summary>整列集合の性質2</summary>
+      <p>
+        整列集合$A$から$A$への順序同型写像は恒等写像のみである．
+      </p>
       <details class="sub">
-        <summary>補題</summary>
-        <p>
-          整列集合$A$から$A$への順序同型写像は恒等写像のみである．
-        </p>
+        <summary>証明</summary>
         <p>
           $A$から$A$への順序同型写像$f$，$A$の元$x$について，前提より$x\leq f\p{x}\leq f^{-1}\p{f\p{x}}=x$であるから$f$は恒等写像である．
         </p>
       </details>
+    </details>
+    <details>
+      <summary>整列集合の性質3</summary>
+      <p>
+        整列集合$A,B$について，$A$から$B$への順序同型写像は高々1つである．
+      </p>
       <details class="sub">
         <summary>証明</summary>
         <p>
@@ -280,13 +310,13 @@
     </dl>
     <dl>
       <h4>定理</h4>
-      <dt>整列集合の性質</dt>
+      <dt>整列集合の性質4</dt>
       <dd>
         整列集合$A$，$A$の元$a$について，$a\neq\max A$なら$a^+$が存在する．
       </dd>
     </dl>
     <details>
-      <summary>整列集合の性質</summary>
+      <summary>整列集合の性質4</summary>
       <p>
         整列集合$A$，$A$の元$a$について，$a\neq\max A$なら$a^+$が存在する．
       </p>
@@ -322,6 +352,15 @@
         整列集合$A$，論理式$F\p{x}$について，$A$の任意の元$a$について，$b\le a$となる$A$の元$b$について$F\p{b}$が成り立つとき$F\p{a}$も成り立つなら，$A$の任意の元$a$でも$F\p{a}$である．
         $$\forall x\in A\p{\forall y\in A\p{y\le x\to F\p{y}}\to F\p{x}}\to\forall x\in A\p{F\p{x}}.$$
       </dd>
+      <dt>整列集合の比較定理</dt>
+      <dd>
+        整列集合$A,A'$について，次のうちどれか1つのみを満たす．
+        <ul>
+          <li>$A$と$A'$は同型．</li>
+          <li>$A$は$A'$と同型となる切片が存在する．</li>
+          <li>$A'$は$A$と同型となる切片が存在する．</li>
+        </ul>
+      </dd>
     </dl>
     <details>
       <summary>切片の性質</summary>
@@ -355,16 +394,39 @@
           $$\forall a\in A\p{A\agl{a}\subset B\to a\in B}\to B=A.$$
         </p>
         <p>
-          $B\neq A$と仮定すると，
+          $B\neq A$と仮定すると，$A-B$は空でないから最小元$a$が存在する．最小元の定義から切片$A\agl{a}$は$A-B$と互いに素である．よって$A\agl{a}\subset B$である．前提より，$a\in B$であるが，$a\in A-B$に反する．よって示された．
         </p>
       </details>
       <details class="sub">
         <summary>証明</summary>
         <p>
-          定義より$a$は$A\agl{a}$の上界である．$A\agl{a}$の上界$b$について，$b\le a$と仮定すると$b\in A\agl{a}$より$b=\max A\agl{a}$すなわち$b=a^-$より$a^-$が存在しないことに反する．よって示された．
+          $B=\setsep{x\in A}{F\p{x}}$について，$A\agl{a}\subset B$なら前提から$a\in B$である．よって$B=A$である．よって示された．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>整列集合の比較定理</summary>
+      <p>
+        整列集合$A,A'$について，次のうちどれか1つのみを満たす．
+      <ul>
+        <li>$A$と$A'$は同型．</li>
+        <li>$A$は$A'$と同型となる切片が存在する．</li>
+        <li>$A'$は$A$と同型となる切片が存在する．</li>
+      </ul>
+      </p>
+      <details class="sub">
+        <summary>補題1</summary>
+        <p>
+          整列集合$A$について，$A$と$A$の任意の切片が順序同型ではない．
         </p>
         <p>
-          直前の定義そのものである．
+          $A$の元$a$について，順序同型写像$f:A\to A\agl{a}$が存在すると仮定すると，$f\p{a}\in A\agl{a}$であるから$f\p{a}\le a$である．整列集合の性質に反するから
+        </p>
+      </details>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          それぞれが両立しないことを示す．
         </p>
       </details>
     </details>
