@@ -111,7 +111,7 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          任意の順序対$\p{x,f\p{x}}\in f$について，前提より$\p{x,f\p{x}}=\p{x,g\p{x}}$である．$\p{x,g\p{x}}\in g$だから，$\p{x,f\p{x}}\in g$である．よって$f\subset g$である．$f,g$を入れ替えて同様に$g\subset f$だから，$f=g$である．
+          前提より，$x\leq y$かつ$y\leq z$が成り立ち，推移律より$x\leq z$である．また，$x=z$と仮定すると，反対称律より$x=y=z$であるが前提に矛盾する．よって，$x\neq z$が成り立ち$x\le z$である．
         </p>
       </details>
     </details>
@@ -183,13 +183,13 @@
 
     <h3>順序同型</h3>
     <p>
-      順序の構造をもつ集合同士の関係を知りたい．そこで同型という概念を定義する．この概念は様々な構造をもつ集合に対して使える．
+      順序の構造をもつ集合同士の関係を知りたい．そこで同型という概念を定義する．この概念は様々な代数的構造をもつ集合に対して使える．
     </p>
     <dl>
       <h4>定義</h4>
       <dt>代数的構造</dt>
       <dd>
-        集合に定まっている演算の集合を代数的構造という．構造ともいう．構造をもつ集合を代数系という．
+        集合に定まっている演算の集合を代数的構造という．代数的構造をもつ集合を代数系という．
       </dd>
       <dt>同型</dt>
       <dd>
@@ -210,9 +210,113 @@
       <h4>定義</h4>
       <dt>整列集合</dt>
       <dd>
-        全順序集合$A$について，任意の部分集合が最小元をもつとき，$A$を整列集合という．
+        全順序集合$A$について，空でない任意の部分集合が最小元をもつとき，$A$を整列集合という．
       </dd>
     </dl>
+    <dl>
+      <h4>定理</h4>
+      <dt>整列集合の性質</dt>
+      <dd>
+        整列集合$A,B$について，$A$から$B$への順序同型写像は高々1つである．
+      </dd>
+    </dl>
+    <details>
+      <summary>整列集合の性質</summary>
+      <p>
+        整列集合$A,B$について，$A$から$B$への順序同型写像は高々1つである．
+      </p>
+      <details class="sub">
+        <summary>補題</summary>
+        <p>
+          整列集合$A$から$A$への狭義順序準同型写像$f$，任意の$x$について，$x\leq f\p{x}$が成り立つ．
+        </p>
+        <p>
+          $x\ge f\p{x}$となる$A$の元$x$があると仮定すると，$A$の部分集合$B=\setsep{x\in A}{x\ge f\p{x}}$は空でないから最小限$a$をもつ．$a\ge f\p{a}$より準同型写像の定義から$f\p{a}\ge f\p{f\p{a}}$となり，$f\p{a}\in B$である．しかし，$a$が最小元であることと$a\ge f\p{a}$が矛盾する．よって，示された．
+        </p>
+      </details>
+      <details class="sub">
+        <summary>補題</summary>
+        <p>
+          整列集合$A$から$A$への順序同型写像は恒等写像のみである．
+        </p>
+        <p>
+          $A$から$A$への順序同型写像$f$，$A$の元$x$について，前提より$x\leq f\p{x}\leq f^{-1}\p{f\p{x}}=x$であるから$f$は恒等写像である．
+        </p>
+      </details>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $A$と$B$の順序同型写像$f,g$について，$g^{-1}\circ f$は$A$から$A$への順序同型写像だから$g^{-1}\circ f=\rm{id}$．よって$f=g$である．
+        </p>
+      </details>
+    </details>
+
+    <h3>直前・直後</h3>
+    <dl>
+      <h4>定義</h4>
+      <dt>直前・直後</dt>
+      <dd>
+        全順序集合$A$の元$a$について$a^+$を直後，$a^-$を直前といい，
+        $$a^+\def\min\setsep{x\in A}{a\le x},$$
+        $$a^-\def\max\setsep{x\in A}{x\le a}.$$
+      </dd>
+    </dl>
+    <dl>
+      <h4>定理</h4>
+      <dt>整列集合の性質</dt>
+      <dd>
+        整列集合$A$，$A$の元$a$について，$a\neq\max A$なら$a^+$が存在する．
+      </dd>
+    </dl>
+    <details>
+      <summary>整列集合の性質</summary>
+      <p>
+        整列集合$A$，$A$の元$a$について，$a\neq\max A$なら$a^+$が存在する．
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $a\neq\max A$より$a\le x$となる$A$の元$x$が存在する．よって，$A$の部分集合$\setsep{x\in A}{a\le x}$は空でないから最小元$a^+$が存在する．
+        </p>
+      </details>
+    </details>
+
+    <h3>切片</h3>
+    <dl>
+      <h4>定義</h4>
+      <dt>切片</dt>
+      <dd>
+        全順序集合$A$の元$a$について$A\agl{a}$を切片といい，
+        $$A\agl{a}\def\setsep{x\in A}{x\le a}.$$
+      </dd>
+    </dl>
+    <dl>
+      <h4>定理</h4>
+      <dt>切片の性質</dt>
+      <dd>
+        整列集合$A$，$A$の元$a$について，
+        <ul>
+          <li>$a^-$が存在しないとき$a=\sup A\agl{a}，</li>
+          <li>$a^-$が存在するとき$a^-=\max A\agl{a}．</li>
+        </ul>
+      </dd>
+    </dl>
+    <details>
+      <summary>切片の性質</summary>
+      <p>
+        整列集合$A$，$A$の元$a$について，
+      <ul>
+        <li>$a^-$が存在しないとき$a=\sup A\agl{a}，</li>
+        <li>$a^-$が存在するとき$a^-=\max A\agl{a}．</li>
+      </ul>
+      </p>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          $a\neq\max A$より$a\le x$となる$A$の元$x$が存在する．よって，$A$の部分集合$\setsep{x\in A}{a\le x}$は空でないから最小元$a^+$が存在する．
+        </p>
+      </details>
+    </details>
 
     <h2>順序数</h2>
     <h2>自然数</h2>
