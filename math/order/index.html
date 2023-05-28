@@ -317,6 +317,11 @@
           <li>$a^-$が存在するとき$a^-=\max A\agl{a}$．</li>
         </ul>
       </dd>
+      <dt>整列集合の超限帰納法</dt>
+      <dd>
+        整列集合$A$，論理式$F\p{x}$について，$A$の任意の元$a$について，$b\le a$となる$A$の元$b$について$F\p{b}$が成り立つとき$F\p{a}$も成り立つなら，$A$の任意の元$a$でも$F\p{a}$である．
+        $$\forall x\in A\p{\forall y\in A\p{y\le x\to F\p{y}}\to F\p{x}}\to\forall x\in A\p{F\p{x}}.$$
+      </dd>
     </dl>
     <details>
       <summary>切片の性質</summary>
@@ -330,7 +335,36 @@
       <details class="sub">
         <summary>証明</summary>
         <p>
-          $a\neq\max A$より$a\le x$となる$A$の元$x$が存在する．よって，$A$の部分集合$\setsep{x\in A}{a\le x}$は空でないから最小元$a^+$が存在する．
+          定義より$a$は$A\agl{a}$の上界である．$A\agl{a}$の上界$b$について，$b\le a$と仮定すると$b\in A\agl{a}$より$b=\max A\agl{a}$すなわち$b=a^-$より$a^-$が存在しないことに反する．よって示された．
+        </p>
+        <p>
+          直前の定義そのものである．
+        </p>
+      </details>
+    </details>
+    <details>
+      <summary>整列集合の超限帰納法</summary>
+      <p>
+        整列集合$A$，論理式$F\p{x}$について，$A$の任意の元$a$について，$b\le a$となる$A$の元$b$について$F\p{b}$が成り立つとき$F\p{a}$も成り立つなら，$A$の任意の元$a$でも$F\p{a}$である．
+        $$\forall x\in A\p{\forall y\in A\p{y\le x\to F\p{y}}\to F\p{x}}\to\forall x\in A\p{F\p{x}}.$$
+      </p>
+      <details class="sub">
+        <summary>補題</summary>
+        <p>
+          整列集合$A$の部分集合$B$について，$A$の任意の元$a$で切片$A\agl{a}$が$B$の部分集合なら$a\in B$が成り立つとき，$B=A$である．
+          $$\forall a\in A\p{A\agl{a}\subset B\to a\in B}\to B=A.$$
+        </p>
+        <p>
+          $B\neq A$と仮定すると，
+        </p>
+      </details>
+      <details class="sub">
+        <summary>証明</summary>
+        <p>
+          定義より$a$は$A\agl{a}$の上界である．$A\agl{a}$の上界$b$について，$b\le a$と仮定すると$b\in A\agl{a}$より$b=\max A\agl{a}$すなわち$b=a^-$より$a^-$が存在しないことに反する．よって示された．
+        </p>
+        <p>
+          直前の定義そのものである．
         </p>
       </details>
     </details>
