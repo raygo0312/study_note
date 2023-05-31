@@ -32,14 +32,11 @@
     </p>
     <dl class="def">
       <h4>定義</h4>
-      <dt>$A$を$B$で定義する</dt>
+      <dt>定義</dt>
       <dd>
-        論理式$A,B$について，
+        論理式$A,B$について，$A$を$B$で定義するとは，
         $$A\Def B.$$
-      </dd>
-      <dt>$a$を$b$で定義する</dt>
-      <dd>
-        項$a,b$について，
+        項$a,b$について，$a$を$b$で定義するとは，
         $$a\def b.$$
       </dd>
     </dl>
@@ -93,71 +90,115 @@
       命題論理や1階述語論理で普通，構文論で具体的に用意される真理関数を次に示す．
     </p>
     <dl class="def">
-      <h4>用意</h4>
-      論理式$A,B$について，次は真理関数である．
+      <h4>定義</h4>
       <dt>否定</dt>
-      <dd>$$\lnot\p{A}.$$</dd>
+      <dd>
+        論理式$A$について，
+        $$\lnot\p{A}.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A$ではない．
+          </p>
+        </details>
+      </dd>
       <dt>連言</dt>
-      <dd>$$\land\p{A,B}.$$</dd>
+      <dd>
+        論理式$A,B$について，
+        $$\land\p{A,B}.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A$かつ$B$．
+          </p>
+        </details>
+      </dd>
       <dt>選言</dt>
-      <dd>$$\lor\p{A,B}.$$</dd>
+      <dd>
+        論理式$A,B$について，
+        $$\lor\p{A,B}.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A$または$B$．
+          </p>
+        </details>
+      </dd>
       <dt>含意</dt>
-      <dd>$$\to\p{A,B}.$$</dd>
+      <dd>
+        論理式$A,B$について，
+        $$\to\p{A,B}.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A$ならば$B$．
+          </p>
+        </details>
+      </dd>
     </dl>
-    <p>
-      形式化する上では論理体系の意味を考えないが，意味がわからないと理解しづらいので，参考までに自然言語としての意味を載せる．直感でわかりやすいように，真理関数は自然言語で使われる言葉が元になっている．
-    </p>
-    <aside>
-      <h4>真理関数の意味</h4>
-      論理式$A,B$について，次は真理関数の意味を表す．
-      <ul>
-        <li>否定$\lnot\p{A}$ : $A$ではない．</li>
-        <li>連言$\land\p{A,B}$ : $A$かつ$B$．</li>
-        <li>選言$\lor\p{A,B}$ : $A$または$B$．</li>
-        <li>含意$\to\p{A,B}$ : $A$ならば$B$．</li>
-      </ul>
-    </aside>
+    <div class="you">
+      真理関数の意味はここでは定義しないけど，意味が想像しやすいように読みを載せたよ
+    </div>
     <p>
       このままでは扱いづらいので，真理関数を演算子として扱いたい．このとき，<dfn>論理演算子</dfn>ともいう．次のように表す．
     </p>
     <dl class="def">
       <h4>定義</h4>
-      論理式$A,B$について，次の表記を認める．
       <dt>$\lnot$演算子</dt>
-      <dd>$$\p{\lnot A}\Def\lnot\p{A}.$$</dd>
-      <dt>$\lor$演算子</dt>
-      <dd>$$\p{A\land B}\Def\land\p{A,B}.$$</dd>
+      <dd>
+        論理式$A$について，
+        $$\p{\lnot A}\Def\lnot\p{A}.$$
+      </dd>
       <dt>$\land$演算子</dt>
-      <dd>$$\p{A\lor B}\Def\lor\p{A,B}.$$</dd>
+      <dd>
+        論理式$A,B$について，
+        $$\p{A\land B}\Def\land\p{A,B}.$$
+      </dd>
+      <dt>$\lor$演算子</dt>
+      <dd>
+        論理式$A,B$について，
+        $$\p{A\lor B}\Def\lor\p{A,B}.$$
+      </dd>
       <dt>$\to$演算子</dt>
-      <dd>$$\p{A\to B}\Def\to\p{A,B}.$$</dd>
+      <dd>
+        論理式$A,B$について，
+        $$\p{A\to B}\Def\to\p{A,B}.$$
+      </dd>
     </dl>
     <p>
       二項演算子におけるこの記法を<dfn>中置記法</dfn>という．一方，前に置く記法を<dfn>前置記法</dfn>(<dfn>ポーランド記法</dfn>)という．後ろに置く記法を<dfn>後置記法</dfn>(<dfn>逆ポーランド記法</dfn>)という．便利なのでこれらのほかにもう2つ演算子を定義する．
     </p>
     <dl class="def">
       <h4>定義</h4>
-      論理式$A,B$について，次の表記を認める．
-      <dt>等価</dt>
+      <dt>同値</dt>
       <dd>
+        論理式$A,B$について，
         $$\p{A\iff B}\Def{\p{A\to B}\land\p{B\to A}}.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A$と$B$は同値．
+          </p>
+        </details>
       </dd>
       <dt>排他的論理和</dt>
       <dd>
+        論理式$A,B$について，
         $$\p{A\veebar B}\Def\p{A\land\p{\lnot B}\lor\p{\lnot A}\land B}.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A$と$B$はどちらか一方．
+          </p>
+        </details>
       </dd>
     </dl>
-    <p>
-      <dfn>排他的論理和</dfn>はどちらか一方のみという意味である．
-    </p>
     <div class="me">
-      また等価！？<br>
-      同じ言葉だけど文字がちょっと違う
+      $\Iff$と$\iff$は何が違うの？
     </div>
     <div class="you">
-      どっちも本質的には同じなんだけどね<br>
       $\Iff$は推論の意味で論理式の関係を表していて，どっちからでも推論可能なことを示してるよ<br>
-      $\iff$は論理式の文字で変形も可能だよ<br>
+      $\iff$は論理式の文字で変形も可能だよ
     </div>
 
     <h3>量化子</h3>
@@ -178,17 +219,29 @@
       それに関係してるよ
     </div>
     <p>
-      2つの量化表現を導入する．
+      2つの量化表現を導入する．量化子$\lambda$は項$x$を用いて，$\lambda x$と表すことで論理式に対して1項演算子を表す．
     </p>
     <dl class="def">
       <h4>定義</h4>
       <dt>全称量化子</dt>
       <dd>
         $$\forall$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            任意の～について
+          </p>
+        </details>
       </dd>
       <dt>存在量化子</dt>
       <dd>
         $$\exists$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            ある～が存在して
+          </p>
+        </details>
       </dd>
     </dl>
     <p>
@@ -225,26 +278,25 @@
         $\p{a}$が演算子の引数ではないとき，
         $$a\Def\p{a}.$$
       </dd>
-      $a,b,c$を演算子の引数とする．
       <dt>一項演算子についての省略</dt>
       <dd>
-        一項演算子$\star$について，
+        $a$の一項演算子$\star$について，
         $$\star\,a\Def\p{\star a}.$$
       </dd>
       <dt>二項演算子についての優先順位</dt>
       <dd>
-        二項演算子$\star_1$が$\star_2$より優先順位が高いとき，次の表記を認める．
+        $a,b,c$の二項演算子$\star_1$が$\star_2$より優先順位が高いとき，次の表記を認める．
         $$a\,\star_1\,b\,\star_2\,c\Def\p{a\,\star_1\,b}\,\star_2\,c.$$
         $$a\,\star_2\,b\,\star_1\,c\Def a\,\star_2\,\p{b\,\star_1\,c}.$$
       </dd>
       <dt>左結合</dt>
       <dd>
-        二項演算子$\star$が左結合のとき，
+        $a,b,c$の二項演算子$\star$が左結合のとき，
         $$a\,\star\,b\,\star\,c\Def\p{a\,\star\,b}\,\star\,c.$$
       </dd>
       <dt>右結合</dt>
       <dd>
-        二項演算子$\star$が右結合のとき，
+        $a,b,c$の二項演算子$\star$が右結合のとき，
         $$a\,\star\,b\,\star\,c\Def a\,\star\,(b\,\star\,c).$$
       </dd>
     </dl>
@@ -357,11 +409,9 @@
     </p>
     <dl class="def">
       <h4>定義</h4>
-      <dt>唯一存在量化子</dt>
-      <dd>$$\exists!x,F\p{x}\Def\exists x\p{F\p{x}}\land\forall xy,\p{F\p{x}\land F\p{y}\to x=y}.$$</dd>
       <dt>適用範囲の省略</dt>
       <dd>
-        量化子$\lambda$，論理式$\p{A}$が演算子の引数ではないときについて，
+        量化子$\lambda$，論理式$\lambda x\p{A}$が演算子の引数ではないときについて，
         $$\lambda x,A\Def\lambda x\p{A}.$$
       </dd>
       <dt>同量化の省略</dt>
@@ -370,12 +420,26 @@
         $$\lambda xy\p{A}\Def\lambda x\lambda y\p{A}.$$
       </dd>
       <dt>量化子の別記</dt>
-      <dd>$$^\lambda x,A\Def\lambda x,A.$$</dd>
-      論理式$A$，二項関係演算子$\star$，項$y$について，次の表記を認める．
+      <dd>
+        $$^\lambda x,A\Def\lambda x,A.$$
+      </dd>
       <dt>$\forall$の条件の省略</dt>
-      <dd>$$\forall x\star y,A\Def\forall x,x\star y\to A.$$</dd>
+      <dd>
+        論理式$A$，述語$F$について，
+        $$\forall F\p{x_1,\dots,x_n},A\Def\forall x_1\cdots x_n,F\p{x_1,\dots,x_n}\to A.$$
+        $$\forall F\p{x_1,\dots,x_n}\Def\forall F\p{x_1,\dots,x_n},\bot.$$
+      </dd>
       <dt>$\exists$の条件の省略</dt>
-      <dd>$$\exists x\star y,A\Def\exists x,x\star y\land A.$$</dd>
+      <dd>
+        論理式$A$，述語$F$について，
+        $$\exists F\p{x_1,\dots,x_n},A\Def\exists x_1\cdots x_n,F\p{x_1,\dots,x_n}\land A.$$
+        $$\exists F\p{x_1,\dots,x_n}\Def\exists F\p{x_1,\dots,x_n},\top.$$
+      </dd>
+      <dt>唯一存在量化子</dt>
+      <dd>
+        述語$F$について，
+        $$\exists!F\p{x}\Def\exists F\p{x}\land\forall F\p{x}\land F\p{y}\p{x=y}.$$
+      </dd>
     </dl>
 
     <h3>否定の省略</h3>
@@ -420,10 +484,16 @@
     </p>
     <dl class="def">
       <h4>定義</h4>
-      <dt>$\Gamma$から$A$への推論</dt>
+      <dt>推論</dt>
       <dd>
         任意の前提の集合$\Gamma$，結論$A$について，
         $$\Gamma\To A.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $\Gamma$から$A$へ推論．
+          </p>
+        </details>
       </dd>
     </dl>
     <p>
@@ -436,10 +506,16 @@
     </p>
     <dl class="def">
       <h4>定義</h4>
-      <dt>$\Gamma$から$A$への論理的帰結</dt>
+      <dt>論理的帰結</dt>
       <dd>
         命題の集合$\Gamma$，命題$A$について，
         $$\Gamma\models A.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $\Gamma$がすべて真のとき$A$が偽となりえない．
+          </p>
+        </details>
       </dd>
     </dl>
     <p>
@@ -463,15 +539,27 @@
     </p>
     <dl class="def">
       <h4>定義</h4>
-      <dt>$\kappa$で$\Gamma$から$A$は演繹可能</dt>
+      <dt>演繹可能</dt>
       <dd>
         論理体系$\kappa$，命題の集合$\Gamma$，命題$A$について，
         $$\Gamma\vdash_\kappa A.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $\kappa$で$\Gamma$から$A$へ導ける．
+          </p>
+        </details>
       </dd>
-      <dt>$\kappa$で$A$は証明可能</dt>
+      <dt>証明可能</dt>
       <dd>
         論理体系$\kappa$，命題$A$について，
         $$\vdash_\kappa A.$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $\kappa$で$A$は示された．
+          </p>
+        </details>
       </dd>
     </dl>
     <p>
@@ -481,10 +569,10 @@
       <h4>定義</h4>
       <dt>集合の省略</dt>
       <dd>
-        命題の集合$\set{A_1,A_2,\dots,A_n}$，命題$A$について，次の表記を認める．
-        $$A_1,A_2,\dots,A_n\To A\Def\set{A_1,A_2,\dots,A_n}\To A.$$
-        $$A_1,A_2,\dots,A_n\models A\Def\set{A_1,A_2,\dots,A_n}\models A.$$
-        $$A_1,A_2,\dots,A_n\vdash A\Def\set{A_1,A_2,\dots,A_n}\vdash A.$$
+        命題の集合$\set{A_1,\dots,A_n}$，命題$A$について，次の表記を認める．
+        $$A_1,\dots,A_n\To A\Def\set{A_1,\dots,A_n}\To A.$$
+        $$A_1,\dots,A_n\models A\Def\set{A_1,\dots,A_n}\models A.$$
+        $$A_1,\dots,A_n\vdash A\Def\set{A_1,\dots,A_n}\vdash A.$$
       </dd>
     </dl>
     <p>
@@ -494,9 +582,11 @@
       <h4>定義</h4>
       <dt>$\To$記法の拡張</dt>
       <dd>
-        命題の集合$A_1,A_2,\dots,A_n,B_1,B_2,\dots,B_n$について，次の表記を認める．
-        「$A_1,A_2,\dots,A_n\To B_1$」または「$A_1,A_2,\dots,A_n\To B_2$」または$\cdots$または「$A_1,A_2,\dots,A_n\To B_n$」のとき，
-        $$A_1,A_2,\dots,A_n\To B_1,B_2,\dots,B_n.$$
+        命題$A_1,\dots,A_n,B_1,\dots,B_n$について，次の表記を認める．
+        「$A_1,\dots,A_n\To B_1$」または$\cdots$または「$A_1,\dots,A_n\To B_n$」のとき，
+        $$A_1,\dots,A_n\To B_1,\dots,B_n.$$
+        $\To$の前後が空のとき，
+        $$\To\Def\top\To\bot.$$
         「$A_1,A_2,\dots,A_n\To B_1,B_2,\dots,B_n$」かつ「$B_1,B_2,\dots,B_n\To A_1,A_2,\dots,A_n$」のとき，
         $$A_1,A_2,\dots,A_n\Iff B_1,B_2,\dots,B_n.$$
       </dd>

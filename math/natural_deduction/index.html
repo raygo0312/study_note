@@ -100,9 +100,27 @@
     <dl class="def">
       <h4>推論規則</h4>
       <dt>$\to\rm{I}$</dt>
-      <dd>$$\to\rm{I}\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$</dd>
+      <dd>
+        論理式$A,B$について，
+        $$\to\rm{I}\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A$より，$\dots$，よって$B$．ゆえに$A\to B$．
+          </p>
+        </details>
+      </dd>
       <dt>$\to\rm{E}$</dt>
-      <dd>$$\to\rm{E}\infer{B}{A\quad A\to B}$$</dd>
+      <dd>
+        論理式$A,B$について，
+        $$\to\rm{E}\infer{B}{A\quad A\to B}$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A\to B$が成り立つから，$A$．ゆえに$B$．
+          </p>
+        </details>
+      </dd>
     </dl>
     <div class="you">
       推論規則名のIとEはそれぞれInsert，Eraseを意味してるよ
@@ -156,13 +174,25 @@
     <dl class="def">
       <h4>推論規則</h4>
       <dt>$\land\rm{I}$</dt>
-      <dd>$$\infer{A_1\land A_2}{A_1\quad A_2}$$</dd>
+      <dd>
+        論理式$A_1,A_2$について，
+        $$\infer{A_1\land A_2}{A_1\quad A_2}$$
+      </dd>
       <dt>$\land\rm{E}$</dt>
-      <dd>$$\infer{A_1}{A_1\land A_2}\qquad\infer{A_2}{A_1\land A_2}$$</dd>
+      <dd>
+        論理式$A_1,A_2$について，
+        $$\infer{A_1}{A_1\land A_2}\qquad\infer{A_2}{A_1\land A_2}$$
+      </dd>
       <dt>$\lor\rm{I}$</dt>
-      <dd>$$\infer{A_1\lor A_2}{A_1}\qquad\infer{A_1\lor A_2}{A_2}$$</dd>
+      <dd>
+        論理式$A_1,A_2$について，
+        $$\infer{A_1\lor A_2}{A_1}\qquad\infer{A_1\lor A_2}{A_2}$$
+      </dd>
       <dt>$\lor\rm{E}$</dt>
-      <dd>$$\infer{B}{A_1\lor A_2\quad A_1\to B\quad A_2\to B}$$</dd>
+      <dd>
+        論理式$A_1,A_2,B$について，
+        $$\infer{B}{A_1\lor A_2\quad A_1\to B\quad A_2\to B}$$
+      </dd>
     </dl>
 
     <h3>$\forall$と$\exists$の推論規則</h3>
@@ -176,15 +206,23 @@
       <h4>推論規則</h4>
       <dt>$\forall\rm{I}$</dt>
       <dd>
+        論理式$F\p{x}$について，
         $$\infer{\forall xF\p{x}}{F\p{a}}$$
         ただし，$a$は打ち消されていない仮定と$\forall xF\p{x}$の自由変数に含まれていない．
       </dd>
       <dt>$\forall\rm{E}$</dt>
-      <dd>$$\infer{F\p{t}}{\forall xF\p{x}}$$</dd>
+      <dd>
+        論理式$F\p{x}$について，
+        $$\infer{F\p{t}}{\forall xF\p{x}}$$
+      </dd>
       <dt>$\exists\rm{I}$</dt>
-      <dd>$$\infer{\exists xF\p{x}}{F\p{t}}$$</dd>
+      <dd>
+        論理式$F\p{x}$について，
+        $$\infer{\exists xF\p{x}}{F\p{t}}$$
+      </dd>
       <dt>$\exists\rm{E}$</dt>
       <dd>
+        論理式$F\p{x},A$について，
         $$\infer{A}{\exists xF\p{x}\quad F\p{a}\to A}$$
         ただし，$a$は$F\p{a}\to A$の打ち消されていない仮定と$A$と$\exists xF\p{x}$の自由変数に含まれていない．
       </dd>
@@ -201,9 +239,15 @@
     <dl class="def">
       <h4>推論規則</h4>
       <dt>$\lnot\rm{I}$</dt>
-      <dd>$$\infer{\lnot A}{A\to\bot}$$</dd>
+      <dd>
+        論理式$A$について，
+        $$\infer{\lnot A}{A\to\bot}$$
+      </dd>
       <dt>$\lnot\rm{E}$</dt>
-      <dd>$$\infer{\bot}{A\quad\lnot A}$$</dd>
+      <dd>
+        論理式$A$について，
+        $$\infer{\bot}{A\quad\lnot A}$$
+      </dd>
     </dl>
     <p>
       しかし，これは$\lnot A$が$A\to\bot$と定義しているに過ぎない．実際に置き換えてみても自然である．
@@ -220,12 +264,32 @@
     <dl class="def">
       <h4>推論規則(代替)</h4>
       <dt>$\lor\rm{E}$</dt>
-      <dd>$$\infer[i]{B}{A_1\lor
-        A_2\quad\infer{B}{\infer{\vdots}{\infer[i]{A_1}{}}}\quad\infer{B}{\infer{\vdots}{\infer[i]{A_2}{}}}}$$</dd>
+      <dd>
+        論理式$A_1,A_2,B$について，
+        $$\infer[i]{B}{A_1\lor A_2\quad\infer{B}{\infer{\vdots}{\infer[i]{A_1}{}}}\quad\infer{B}{\infer{\vdots}{\infer[i]{A_2}{}}}}$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A_1$または$A_2$が成り立つから，場合分けを行う．$A_1$のとき$B$である．$A_2$のとき$B$である．ゆえに$B$である．
+          </p>
+        </details>
+      </dd>
       <dt>$\exists\rm{E}$</dt>
-      <dd>$$\infer[i]{B}{\exists x,F\p{x}\quad\infer{B}{\infer{\vdots}{\infer[i]{F\p{a}}{}}}}$$</dd>
+      <dd>
+        論理式$F\p{x},B$について，
+        $$\infer[i]{B}{\exists x,F\p{x}\quad\infer{B}{\infer{\vdots}{\infer[i]{F\p{a}}{}}}}$$
+      </dd>
       <dt>$\lnot\rm{I}$</dt>
-      <dd>$$\infer[i]{\lnot A}{\infer{\bot}{\infer{\vdots}{\infer[i]{A}{}}}}$$</dd>
+      <dd>
+        論理式$A$について，
+        $$\infer[i]{\lnot A}{\infer{\bot}{\infer{\vdots}{\infer[i]{A}{}}}}$$
+        <details>
+          <summary>読み</summary>
+          <p>
+            $A$を仮定すると，$\dots$，矛盾する．ゆえに$\lnot A$である．
+          </p>
+        </details>
+      </dd>
     </dl>
     <p>
       便利な方を使って証明を行う．
@@ -238,11 +302,20 @@
     <dl class="def">
       <h4>公理</h4>
       <dt>選言的三段論法</dt>
-      <dd>$$\p{A\lor B}\land\lnot B\to A.$$</dd>
+      <dd>
+        論理式$A,B$について，
+        $$\p{A\lor B}\land\lnot B\to A.$$
+      </dd>
       <dt>排中律</dt>
-      <dd>$$A\lor\lnot A.$$</dd>
+      <dd>
+        論理式$A$について，
+        $$A\lor\lnot A.$$
+      </dd>
       <dt>二重否定の除去</dt>
-      <dd>$$\lnot\lnot A\to A.$$</dd>
+      <dd>
+        論理式$A$について，
+        $$\lnot\lnot A\to A.$$
+      </dd>
     </dl>
     <div class="me">
       さっき，二重否定の除去は推論規則って言っていたのに，なんで公理として紹介してるの？<br>
@@ -263,6 +336,7 @@
       <h4>定理</h4>
       <dt>演繹定理</dt>
       <dd>
+        論理式の集合$\Gamma$，論理式$A,B$について，
         $$\Gamma,A\proof B\Iff\Gamma\proof A\to B.$$
         <details>
           <summary>証明</summary>
@@ -302,6 +376,7 @@
       <h4>推論規則</h4>
       <dt>爆発律</dt>
       <dd>
+        論理式$A$について，
         $$\infer{A}{\bot}$$
       </dd>
     </dl>
@@ -312,6 +387,7 @@
       <h4>定理</h4>
       <dt>同一律</dt>
       <dd>
+        論理式$A$について，
         $$A\to A.$$
         <details>
           <summary>証明</summary>
@@ -400,6 +476,7 @@
       <h4>定理</h4>
       <dt>$\to$の置換</dt>
       <dd>
+        論理式$A,B$について，
         $$\p{A\to B}\iff\lnot A\lor B.$$
         <details>
           <summary>証明</summary>
@@ -419,7 +496,7 @@
       <h4>定理</h4>
       <dt>$\iff$の反射律</dt>
       <dd>
-        任意の論理式$A$について，
+        論理式$A$について，
         $$A\iff A.$$
         <details>
           <summary>証明</summary>
@@ -430,7 +507,7 @@
       </dd>
       <dt>$\iff$の代入原理</dt>
       <dd>
-        任意の論理式$A,B$，論理式$F\p{X}$について，
+        論理式$F\p{X},A,B$について，
         $$A\iff B\To F\p{A}\iff F\p{B}.$$
         <details>
           <summary>証明</summary>
@@ -484,12 +561,11 @@
       </dd>
       <dt>$=$の反射律</dt>
       <dd>
-        項$a$について，
-        $$a=a.$$
+        $$\forall a,a=a.$$
       </dd>
       <dt>$=$の代入原理</dt>
       <dd>
-        項$a,b$，論理式$F\p{x}$について，
+        論理式$F\p{x}$について，
         $$\forall ab,a=b\to\p{F\p{a}\iff F\p{b}}.$$
       </dd>
     </dl>
@@ -501,7 +577,7 @@
       <h4>定理</h4>
       <dt>$\iff$の対称律</dt>
       <dd>
-        任意の論理式$A,B$について，
+        論理式$A,B$について，
         $$A\iff B\Iff B\iff A.$$
         <details>
           <summary>証明</summary>
@@ -518,7 +594,7 @@
       </dd>
       <dt>$\iff$の推移律</dt>
       <dd>
-        任意の論理式$A,B,C$について，
+        論理式$A,B,C$について，
         $$\p{A\iff B}\land\p{B\iff C}\To A\iff C.$$
         <details>
           <summary>証明</summary>
@@ -555,6 +631,7 @@
       <h4>定理</h4>
       <dt>二重否定律</dt>
       <dd>
+        論理式$A$について，
         $$A\iff\lnot\lnot A.$$
         <details>
           <summary>証明</summary>
@@ -577,6 +654,7 @@
       <h4>定理</h4>
       <dt>De Morganの法則</dt>
       <dd>
+        論理式$F\p{x},A,B$について，
         $$\lnot\p{A\lor B}\iff\lnot A\land\lnot B.$$
         <details>
           <summary>証明</summary>
@@ -593,7 +671,7 @@
         <details>
           <summary>証明</summary>
           <p>
-            De Morganの法則(1)より，$\lnot\p{A\lor B}\iff\lnot A\land\lnot B$が成り立つから，この$A$と$B$をそれぞれ$\lnot A$と$\lnot
+            De Morganの法則より，$\lnot\p{A\lor B}\iff\lnot A\land\lnot B$が成り立つから，この$A$と$B$をそれぞれ$\lnot A$と$\lnot
             B$に置き換えて，代入原理と二重否定律を用いて変形する．
             \begin{align*}
             \lnot\p{\lnot A\lor \lnot B}&\iff\lnot\lnot A\land\lnot\lnot B,\\
@@ -607,11 +685,11 @@
         <details>
           <summary>証明</summary>
           <p>
-            $\p{\to}$の証明である．
+            $\p{\to}$をF\p{x}$に含まれていない$a$を用いて証明する．
             $$\infer[2]{\lnot\exists xF\p{x}\to\forall x\lnot F\p{x}}{\infer{\forall x\lnot F\p{x}}{\infer[1]{\lnot F\p{a}}{\infer{\bot}{\infer{\exists xF\p{x}}{\infer[1]{F\p{a}}{}}\quad\infer[2]{\lnot\exists xF\p{x}}{}}}}}$$
           </p>
           <p>
-            $\p{\rto}$の証明である．
+            $\p{\rto}$を$F\p{x}$に含まれていない$a$を用いて証明する．
             $$\infer[3]{\forall x\lnot F\p{x}\to\lnot\exists xF\p{x}}{\infer[2]{\lnot\exists xF\p{x}}{\infer[1]{\bot}{\infer[2]{\exists xF\p{x}}{}\quad\infer{\bot}{\infer[1]{F\p{a}}{}\quad\infer{\lnot F\p{a}}{\infer[3]{\forall x\lnot F\p{x}}{}}}}}}$$
           </p>
         </details>
@@ -619,8 +697,7 @@
         <details>
           <summary>証明</summary>
           <p>
-            De Morganの法則(3)より，$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}$が成り立つから，この$F\p{x}$を$\lnot
-            F\p{x}$に置き換えて，代入原理と二重否定律を用いて変形する．
+            De Morganの法則より，$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}$が成り立つから，この$F\p{x}$を$\lnot F\p{x}$に置き換えて，代入原理と二重否定律を用いて変形する．
             \begin{align*}
             \lnot\exists x\lnot F\p{x}&\iff\forall x\lnot\lnot F\p{x},\\
             \lnot\lnot\exists x\lnot F\p{x}&\iff\lnot\forall x\lnot\lnot F\p{x},\\
@@ -629,19 +706,47 @@
             \end{align*}
           </p>
         </details>
+        $$\lnot\exists F\p{x},A\iff\forall F\p{x},\lnot A.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            同値変形を行う．
+            \begin{align*}
+            &\lnot\exists F\p{x},A\\
+            \Iff&\lnot\exists x,F\p{x}\land A\\
+            \Iff&\forall x,\lnot\p{F\p{x}\land A}\\
+            \Iff&\forall x,\lnot F\p{x}\lor\lnot A\\
+            \Iff&\forall x,F\p{x}\to\lnot A\\
+            \Iff&\forall F\p{x},\lnot A
+            \end{align*}
+          </p>
+        </details>
+        $$\lnot\forall F\p{x},A\iff\exists \lnot F\p{x},A.$$
+        <details>
+          <summary>証明</summary>
+          <p>
+            De Morganの法則より，$\lnot\exists F\p{x},A\iff\forall F\p{x},\lnot A$が成り立つから，$A$を$\lnot A$として，代入原理と二重否定律を用いて変形する．
+            \begin{align*}
+            \lnot\exists F\p{x},\lnot A&\iff\forall F\p{x},\lnot\lnot A,\\
+            \lnot\lnot\exists F\p{x},\lnot A&\iff\lnot\forall F\p{x},A,\\
+            \exists F\p{x},\lnot A&\iff\lnot\forall F\p{x},A,\\
+            \lnot\forall F\p{x},A&\iff\exists F\p{x},\lnot A.
+            \end{align*}
+          </p>
+        </details>
       </dd>
     </dl>
 
     <h3>双対性</h3>
     <p>
-      論理式における<dfn>双対</dfn>とは，$\land$と$\lor$，$\forall$と$\exists$を交換した論理式のことである．このとき，論理式$F$に対して，双対$F^*$と表す．このとき，次の定理が成り立つ．
+      論理式における<dfn>双対</dfn>とは，$\land$と$\lor$，$\forall$と$\exists$を交換した論理式のことである．このとき，次の定理が成り立つ．
     </p>
     <dl class="thm">
       <h4>定理</h4>
       <dt>双対性</dt>
       <dd>
-        $n$個の論理式または述語を引数に取る論理式$F\p{B_1,B_2,\dots,B_n}$としたとき，
-        $$\lnot F\p{B_1,B_2,\dots,B_n}\iff F^*\p{\lnot B_1,\lnot B_2,\dots,\lnot B_n}.$$
+        $n$個の論理式または述語を引数に取る論理式$F\p{B_1,\dots,B_n}$の双対$F^*\p{B_1,\dots,B_n}$としたとき，
+        $$\lnot F\p{B_1,\dots,B_n}\iff F^*\p{\lnot B_1,\dots,\lnot B_n}.$$
         が成り立つ．
         <details>
           <summary>証明</summary>
@@ -677,7 +782,7 @@
       </dd>
       <dt>任意の定理とトートロジーの同値性</dt>
       <dd>
-        任意の証明された命題を$A$について，
+        定理$A$について，
         $$A\iff\top.$$
         <details>
           <summary>証明</summary>
@@ -701,6 +806,7 @@
       <h4>定理</h4>
       <dt>交換律</dt>
       <dd>
+        論理式$A,B$について，
         $$A\land B\iff B\land A.$$
         <details>
           <summary>証明</summary>
@@ -716,7 +822,7 @@
           <p>
             双対性と代入原理を用いて，
             \begin{align*}
-            &A\land B\iff B\land A
+            &A\land B\iff B\land A\\
             \Iff&\lnot\p{A\land B}\iff\lnot\p{B\land A}\\
             \Iff&\lnot A\lor\lnot B\iff\lnot B\lor\lnot A.
             \end{align*}
@@ -726,6 +832,7 @@
       </dd>
       <dt>結合律</dt>
       <dd>
+        論理式$A,B,C$について，
         $$A\land\p{B\land C}\iff\p{A\land B}\land C.$$
         $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C.$$
         <details>
@@ -739,6 +846,7 @@
       </dd>
       <dt>冪等律</dt>
       <dd>
+        論理式$A$について，
         $$A\land A\iff A.$$
         $$A\lor A\iff A.$$
         <details>
@@ -752,6 +860,7 @@
       </dd>
       <dt>分配律</dt>
       <dd>
+        論理式$A,B,C$について，
         $$A\land\p{B\lor C}\iff\p{A\land B}\lor \p{A\land C}.$$
         $$A\lor\p{B\land C}\iff\p{A\lor B}\land \p{A\lor C}.$$
         <details>
@@ -769,6 +878,7 @@
       </dd>
       <dt>恒等律</dt>
       <dd>
+        論理式$A$について，
         $$A\land\top\iff A.$$
         $$A\lor\bot\iff A.$$
         $$A\land\bot\iff\bot.$$
@@ -785,6 +895,7 @@
       </dd>
       <dt>矛盾律</dt>
       <dd>
+        論理式$A$について，
         $$\lnot\p{A\land\lnot A}.$$
         <details>
           <summary>証明</summary>
@@ -798,6 +909,7 @@
       </dd>
       <dt>吸収律</dt>
       <dd>
+        論理式$A,B$について，
         $$A\land\p{A\lor B}\iff A.$$
         $$A\lor\p{A\land B}\iff A.$$
         <details>
@@ -823,6 +935,7 @@
       </dd>
       <dt>推移律</dt>
       <dd>
+        論理式$A,B,C$について，
         $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}.$$
         <details>
           <summary>証明</summary>
@@ -833,10 +946,12 @@
       </dd>
       <dt>移入律</dt>
       <dd>
+        論理式$A,B,C$について，
         $$\p{A\to B\to C}\to\p{A\land B\to C}.$$
       </dd>
       <dt>移出律</dt>
       <dd>
+        論理式$A,B,C$について，
         $$\p{A\land B\to C}\to\p{A\to B\to C}.$$
         <details>
           <summary>証明</summary>
@@ -853,6 +968,7 @@
       </dd>
       <dt>対偶律</dt>
       <dd>
+        論理式$A,B$について，
         $$\p{A\to B}\iff\lnot B\to\lnot A.$$
         <details>
           <summary>証明</summary>
@@ -880,12 +996,13 @@
       <h4>定理</h4>
       <dt>束縛変数の文字置換</dt>
       <dd>
+        論理式$F\p{x}$について，
         $$\forall xF\p{x}\iff\forall yF\p{y}.$$
         $$\exists xF\p{x}\iff\exists yF\p{y}.$$
         <details>
           <summary>証明</summary>
           <p>
-            $\forall xF\p{x}\to\forall yF\p{y}$を証明する．$F\p{x}$に含まれない$a$を用いて，
+            $\forall xF\p{x}\to\forall yF\p{y}$をF\p{x}$に含まれない$a$を用いて証明する．
             $$\infer[1]{\forall xF\p{x}\to\forall yF\p{y}}{\infer{\forall yF\p{y}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
             $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xF\p{x}\iff\exists yF\p{y}$も成り立つ．
           </p>
@@ -893,23 +1010,25 @@
       </dd>
       <dt>量化子の変換</dt>
       <dd>
+        論理式$F\p{x}$について，
         $$\forall xF\p{x}\to\exists xF\p{x}.$$
         <details>
           <summary>証明</summary>
           <p>
-            $F\p{x}$に含まれない$a$を用いて，
-            $$\infer[1]{\forall xF\p{x}\to\exists xF\p{x}}{\infer{\exists xF\p{x}}{\infer{F\p{F}{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
+            $F\p{x}$に含まれない$a$を用いて証明する．
+            $$\infer[1]{\forall xF\p{x}\to\exists xF\p{x}}{\infer{\exists xF\p{x}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
           </p>
         </details>
       </dd>
       <dt>量化の交換</dt>
       <dd>
+        論理式$F\p{x,y}$について，
         $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}.$$
         $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}.$$
         <details>
           <summary>証明</summary>
           <p>
-            $\forall xyF\p{x,y}\to\forall yxF\p{x,y}$を$F\p{x}$に含まれない$a,b$を用いて証明する．
+            $\forall xyF\p{x,y}\to\forall yxF\p{x,y}$を$F\p{x,y}$に含まれない$a,b$を用いて証明する．
             $$\infer[1]{\forall xyF\p{x,y}\to\forall yxF\p{x,y}}{\infer{\forall yxF\p{x,y}}{\infer{\forall xF\p{x,b}}{\infer{F\p{a,b}}{\infer{\forall yF\p{a,y}}{\infer[1]{\forall xyF\p{x,y}}{}}}}}}$$
             $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xyF\p{x,y}\iff\exists yx,F\p{x,y}$も成り立つ．
           </p>
@@ -918,19 +1037,20 @@
         <details>
           <summary>証明</summary>
           <p>
-            また，$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$を$F\p{x}$に含まれない$a,b$を用いて証明する．
+            また，$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$を$F\p{x,y}$に含まれない$a,b$を用いて証明する．
             $$\infer[2]{\exists x\forall yF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\infer[2]{\exists x\forall yF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
           </p>
         </details>
       </dd>
       <dt>量化の分配</dt>
       <dd>
+        論理式$F\p{x}$について，
         $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}.$$
-        $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{F}{x}\lor\exists xG\p{x}.$$
+        $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}.$$
         <details>
           <summary>証明</summary>
           <p>
-            $\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}$を$F\p{x}$に含まれない$a$を用いて証明する．
+            $\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}$を$F\p{x},G\p{x}$に含まれない$a$を用いて証明する．
             $$\infer[1]{\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}}{\infer{F\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}\quad\infer{\forall xG\p{x}}{\infer{G\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}}}$$
           </p>
           <p>
@@ -944,7 +1064,7 @@
         <details>
           <summary>証明</summary>
           <p>
-            また，$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$を$F\p{x}$に含まれない$a$を用いて証明する．
+            また，$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$を$F\p{x},G\p{x}$に含まれない$a$を用いて証明する．
             $$\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}}{\infer{\forall x\p{F\p{x}\lor G\p{x}}}{\infer[1]{F\p{a}\lor G\p{a}}{\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}}{}\quad\infer{F\p{a}\lor G\p{a}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}\quad\infer{F\p{a}\lor G\p{a}}{\infer{G\p{a}}{\infer[1]{\forall xG\p{x}}{}}}}}}$$
             対偶律より，$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$も成り立つ．
           </p>
