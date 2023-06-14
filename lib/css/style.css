@@ -168,7 +168,7 @@ details details {
   border-radius: 50%;
   width: 2.5em;
   height: 2.5em;
-  background: url("../img/teacher.jpg") no-repeat;
+  background: url("../img/teacher.png") no-repeat;
   background-size: contain;
   content: "";
 }
