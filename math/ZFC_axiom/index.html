@@ -30,56 +30,56 @@
     <p>
       集合に用意されている2項述語は$=$と$\in$である．$=$は相等関係をもつ．$\in$はZFC公理系で性質を定められている．$a\in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$\in$を<dfn>帰属関係</dfn>という．$=$の公理を次にまとめると，
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>公理</h4>
-      <dt>反射律</dt>
-      <dd>
+      <h5>反射律</h5>
+      <p>
         $$\forall x,x=x.$$
-      </dd>
-      <dt>代入原理</dt>
-      <dd>
+      </p>
+      <h5>代入原理</h5>
+      <p>
         述語$F$について，
         $$\forall xy,x=y\to\p{F\p{x}\iff F\p{y}}.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       相等関係は同値関係の一種である．<dfn>同値関係</dfn>とは<dfn>反射律</dfn>，<dfn>対称律</dfn>，<dfn>推移律</dfn>が成り立つ関係のことである．つまり，反射律と代入原理から，対象律と推移律を示すことができる．
     </p>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>対称律</dt>
-      <dd>
+      <h5>対称律</h5>
+      <p>
         $$\forall xy,x=y\to y=x.$$
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $F\p{t}\Def t=x$とする．反射律より，$x=x$は真である．つまり，$F\p{x}$は真である．前提$x=y$と代入原理より，$F\p{y}$すなわち$y=x$も真である．
+        </p>
         <details>
-          <summary>証明</summary>
+          <summary>証明図</summary>
           <p>
-            $F\p{t}\Def t=x$とする．反射律より，$x=x$は真である．つまり，$F\p{x}$は真である．前提$x=y$と代入原理より，$F\p{y}$すなわち$y=x$も真である．
+            $$\infer{\forall xy,x=y\to y=x}{\infer[1]{a=b\to b=a}{\infer{b=a}{\infer{a=a}{\infer{\forall x,x=x}{}}\quad\infer{a=a\to b=a}{\infer{a=a\iff b=a}{\infer[1]{a=b}{}\quad\infer{a=b\to\p{a=a\iff b=a}}{\infer{\forall xy,x=y\to\p{x=x\iff y=x}}}}}}}}$$
           </p>
-          <details>
-            <summary>証明図</summary>
-            <p>
-              $$\infer{\forall xy,x=y\to y=x}{\infer[1]{a=b\to b=a}{\infer{b=a}{\infer{a=a}{\infer{\forall x,x=x}{}}\quad\infer{a=a\to b=a}{\infer{a=a\iff b=a}{\infer[1]{a=b}{}\quad\infer{a=b\to\p{a=a\iff b=a}}{\infer{\forall xy,x=y\to\p{x=x\iff y=x}}}}}}}}$$
-            </p>
-          </details>
         </details>
-      </dd>
-      <dt>推移律</dt>
-      <dd>
+      </details>
+      <h5>推移律</h5>
+      <p>
         $$\forall xyz,x=y\land y=z\to x=z.$$
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $F\p{t}\Def t=z$とする．前提より$y=z$だから$F\p{y}$は真である．前提$x=y$と代入原理より，$F\p{x}$すなわち$x=z$も真である．
+        </p>
         <details>
-          <summary>証明</summary>
+          <summary>証明図</summary>
           <p>
-            $F\p{t}\Def t=z$とする．前提より$y=z$だから$F\p{y}$は真である．前提$x=y$と代入原理より，$F\p{x}$すなわち$x=z$も真である．
+            $$\infer{\forall xyz,x=y\land y=z\to x=z}{\infer[1]{a=b\land b=c\to a=c}{\infer{a=c}{\infer{b=c}{\infer[1]{a=b\land b=c}{}}\quad\infer{b=c\to a=c}{\infer{a=c\iff b=c}{\infer{a=b}{\infer[1]{a=b\land b=c}{}}\quad\infer{a=b\to\p{a=c\iff b=c}}{\infer{\forall xy,x=y\to\p{x=c\iff y=c}}{}}}}}}}$$
           </p>
-          <details>
-            <summary>証明図</summary>
-            <p>
-              $$\infer{\forall xyz,x=y\land y=z\to x=z}{\infer[1]{a=b\land b=c\to a=c}{\infer{a=c}{\infer{b=c}{\infer[1]{a=b\land b=c}{}}\quad\infer{b=c\to a=c}{\infer{a=c\iff b=c}{\infer{a=b}{\infer[1]{a=b\land b=c}{}}\quad\infer{a=b\to\p{a=c\iff b=c}}{\infer{\forall xy,x=y\to\p{x=c\iff y=c}}{}}}}}}}$$
-            </p>
-          </details>
         </details>
-      </dd>
-    </dl>
+      </details>
+    </section>
     <div class="you">
       こんな感じで証明図を日本語で書いていくよ
     </div>
@@ -94,86 +94,86 @@
     <p>
       集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a\subset b$と表し，$a$は$b$に<dfn>含まれる</dfn>，$a$は$b$の部分集合という．$\subset$を<dfn>包含関係</dfn>という．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>部分集合</dt>
-      <dd>
+      <h5>部分集合</h5>
+      <p>
         \begin{align*}
         a\subset b&\Def\forall x,x\in a\to x\in b,\\
         b\supset a&\Def a\subset b.
         \end{align*}
-        <details>
-          <summary>読み</summary>
-          $a$は$b$に含まれる．
-        </details>
-      </dd>
-      <dt>真部分集合</dt>
-      <dd>
+      </p>
+      <details>
+        <summary>読み</summary>
+        $a$は$b$に含まれる．
+      </details>
+      <h5>真部分集合</h5>
+      <p>
         \begin{align*}
         a\subsetneq b&\Def a\subset b\land a\neq b,\\
         b\supsetneq a&\Def a\subsetneq b.
         \end{align*}
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       定義より$\subset$は$\to$のように扱える．つまり$\to$と同様の性質が使える．しかし，$\subset$は集合から論理値を返す述語だからすべての性質が使えるわけではないので注意が必要である．次の3つの性質を満たす関係を<dfn>順序関係</dfn>という．つまり，$\subset$は順序関係である．反対称律は外延性公理から導ける．
     </p>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>反射律</dt>
-      <dd>
+      <h5>反射律</h5>
+      <p>
         $$\forall x,x\subset x.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            部分集合の定義より，命題は，
-            $$\forall xy,y\in x\to y\in x$$
-            となる．同一律よりこれは真である．よって示された．
-          </p>
-        </details>
-      </dd>
-      <dt>推移律</dt>
-      <dd>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          部分集合の定義より，命題は，
+          $$\forall xy,y\in x\to y\in x$$
+          となる．同一律よりこれは真である．よって示された．
+        </p>
+      </details>
+      <h5>推移律</h5>
+      <p>
         $$\forall xyz,x\subset y\land y\subset z\to x\subset z.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            部分集合の定義より，前提は，
-            \begin{align*}
-            &x\subset y\land y\subset z\\
-            \To&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\bcs部分集合の定義\\
-            \To&\forall w,w\in x\to w\in y\land w\in y\to w\in z\bcs量化の分配\\
-            \To&\forall w,w\in x\to w\in z\bcs推移律\\
-            \To&x\subset z.\bcs部分集合の定義
-            \end{align*}
-            だから，示された．
-          </p>
-        </details>
-      </dd>
-      <dt>反対称律</dt>
-      <dd>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          部分集合の定義より，前提は，
+          \begin{align*}
+          &x\subset y\land y\subset z\\
+          \To&\forall w\p{w\in x\to w\in y}\land\forall w\p{w\in y\subset w\in z}\bcs部分集合の定義\\
+          \To&\forall w,w\in x\to w\in y\land w\in y\to w\in z\bcs量化の分配\\
+          \To&\forall w,w\in x\to w\in z\bcs推移律\\
+          \To&x\subset z.\bcs部分集合の定義
+          \end{align*}
+          だから，示された．
+        </p>
+      </details>
+      <h5>反対称律</h5>
+      <p>
         $$\forall xy,x\subset y\land y\subset x\to x=y.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       $\subset$の順序関係以外の性質についても述べる．
     </p>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>$\subset$の性質</dt>
-      <dd>
+      <h5>$\subset$の性質</h5>
+      <p>
         集合$a,b,c$について，
         $$a\in b\land b\subset c\To a\in c.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            部分集合の定義より，任意の$x$について$x\in b\to x\in c$だから，$a$についても成り立ち，
-            $$a\in b\to a\in c$$
-            である．前提より，$a\in b$だから$a\in c$が導ける．よって示された．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          部分集合の定義より，任意の$x$について$x\in b\to x\in c$だから，$a$についても成り立ち，
+          $$a\in b\to a\in c$$
+          である．前提より，$a\in b$だから$a\in c$が導ける．よって示された．
+        </p>
+      </details>
+    </section>
 
     <h3>外延性公理</h3>
     <p>
@@ -189,16 +189,16 @@
       これを的確に表現した論理式がこれ
     </div>
 
-    <dl class="def">
+    <section class="def">
       <h4>公理</h4>
-      <dt>外延性公理</dt>
-      <dd>
+      <h5>外延性公理</h5>
+      <p>
         \begin{align*}
         &\forall xy,\forall z\p{z\in x\iff z\in y}\to x=y\\
         \Iff&\forall xy,x\subset y\land y\subset x\to x=y.
         \end{align*}
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       2つの集合$x,y$の元$z$が全く共通ならば，その2つの集合$x,y$は等しい．言い換えると，互いに部分集合な場合等しい．
     </p>
@@ -252,296 +252,299 @@
       空集合$0$を作っておきたかったからここで紹介したよ
     </div>
 
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>空集合</dt>
-      <dd>
+      <h5>空集合</h5>
+      <p>
         空集合$0$とは，
         $$\forall x,x\notin 0.$$
-      </dd>
+      </p>
       <h4>公理</h4>
-      <dt>空集合公理</dt>
-      <dd>
+      <h5>空集合公理</h5>
+      <p>
         \begin{align*}
         &\exists x\forall y,y\notin x\\
         \Iff&\exists0.
         \end{align*}
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       空集合は任意の集合を持たない．
     </p>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>空集合の一意性</dt>
-      <dd>
+      <h5>空集合の一意性</h5>
+      <p>
         $0$は一意である．
-        <details>
-          <summary>証明</summary>
-          <p>
-            空集合$0,0'$について，$\forall x,x\notin0$と$\forall x,x\notin0'$が成り立つ．つまり，$\forall x,x\notin0'\iff x\notin0$が成り立つから．外延性公理より$0=0'$である．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      <details>
+        <summary>証明</summary>
+        <p>
+          空集合$0,0'$について，$\forall x,x\notin0$と$\forall x,x\notin0'$が成り立つ．つまり，$\forall x,x\notin0'\iff x\notin0$が成り立つから．外延性公理より$0=0'$である．
+        </p>
+      </details>
+      </p>
+    </section>
 
     <h2>対公理</h2>
     <p>
       <dfn>対</dfn>(<dfn>非順序対</dfn>)とは二つの集合$a,b$のみを元とする集合$\set{a,b}$のことをいう．対公理は他の公理から証明できる．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>対</dt>
-      <dd>
+      <h5>対</h5>
+      <p>
         集合$a,b$について，$a,b$の対$\set{a,b}$とは，
         $$\forall x,x\in\set{a,b}\iff x=a\lor x=b.$$
-      </dd>
+      </p>
       <h4>公理</h4>
-      <dt>対公理</dt>
-      <dd>
+      <h5>対公理</h5>
+      <p>
         \begin{align*}
         &\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
         \Iff&\forall xy\exists\set{x,y}.
         \end{align*}
-      </dd>
-    </dl>
-    <dl class="thm">
+      </p>
+    </section>
+    <section class="thm">
       <h4>定理</h4>
-      <dt>対の一意性</dt>
-      <dd>
+      <h5>対の一意性</h5>
+      <p>
         集合$a,b$について，
         $\set{a,b}$は一意である．
-        <details>
-          <summary>証明</summary>
-          <p>
-            対$\set{a,b},\set{a,b}'$について，$\forall x,x\in\set{a,b}\iff x=a\lor x=b$と$\forall x,x\in\set{a,b}'\iff x=a\lor x=b$が成り立つ．推移律より，$\forall x,x\in\set{a,b}\iff x\in\set{a,b}'$．外延性公理より$\set{a,b}=\set{a,b}'$である．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          対$\set{a,b},\set{a,b}'$について，$\forall x,x\in\set{a,b}\iff x=a\lor x=b$と$\forall x,x\in\set{a,b}'\iff x=a\lor x=b$が成り立つ．推移律より，$\forall x,x\in\set{a,b}\iff x\in\set{a,b}'$．外延性公理より$\set{a,b}=\set{a,b}'$である．
+        </p>
+      </details>
+    </section>
     <div class="you">
       $\iff$で公理化されている集合は同じやり方で一意性を証明できるから省略するね
     </div>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>対の性質</dt>
-      <dd>
+      <h5>対の性質</h5>
+      <p>
         集合$a,b,c$について，
         $$\set{a,b}=\set{b,a}.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            $x\in\set{a,b}$になる$x$について，
-            \begin{align*}
-            &x\in\set{a,b}\\
-            \Iff&x=a\lor x=b\bcs{対の定義}\\
-            \Iff&x=b\lor x=a\bcs{\lorの可換律}\\
-            \Iff&x\in\set{b,a}.\bcs{対の定義}
-            \end{align*}
-            になるから，$x\in\set{a,b}\Iff x\in\set{b,a}$だから外延性公理より$\set{a,b}=\set{b,a}$である．
-          </p>
-        </details>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $x\in\set{a,b}$になる$x$について，
+          \begin{align*}
+          &x\in\set{a,b}\\
+          \Iff&x=a\lor x=b\bcs{対の定義}\\
+          \Iff&x=b\lor x=a\bcs{\lorの可換律}\\
+          \Iff&x\in\set{b,a}.\bcs{対の定義}
+          \end{align*}
+          になるから，$x\in\set{a,b}\Iff x\in\set{b,a}$だから外延性公理より$\set{a,b}=\set{b,a}$である．
+        </p>
+      </details>
+      <p>
         $$a\in\set{a,b}, b\in\set{a,b}.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            $a\notin\set{a,b}$と仮定すると，
-            \begin{align*}
-            &a\notin\set{a,b},\\
-            &\lnot\p{a=a\lor a=b},\bcs対の定義\\
-            &a\neq a\land a\neq b,\bcs対の定義\\
-            &a\neq a.\bcs縮小律
-            \end{align*}
-            となり，これは$=$の反射律と矛盾．したがって$a\in\set{a,b}$である．また，$b\in\set{b,a}=\set{a,b}$である．
-          </p>
-        </details>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $a\notin\set{a,b}$と仮定すると，
+          \begin{align*}
+          &a\notin\set{a,b},\\
+          &\lnot\p{a=a\lor a=b},\bcs対の定義\\
+          &a\neq a\land a\neq b,\bcs対の定義\\
+          &a\neq a.\bcs縮小律
+          \end{align*}
+          となり，これは$=$の反射律と矛盾．したがって$a\in\set{a,b}$である．また，$b\in\set{b,a}=\set{a,b}$である．
+        </p>
+      </details>
+      <p>
         $$\set{a,b}=\set{a,c}\Iff b=c.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            ($\rTo$)の証明．
-            代入原理より成り立つ．
-          </p>
-          <p>
-            ($\To$)の証明．$b\in\set{a,b}$だから，前提より$b\in\set{a,c}$になる．対の定義より，$b=a$または$b=c$である．$b=c$のときは示されているので，$b=a$のときを考える．同様に$c=a$が言えるから，推移律より$b=c$である．よって示された．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          ($\rTo$)の証明．
+          代入原理より成り立つ．
+        </p>
+        <p>
+          ($\To$)の証明．$b\in\set{a,b}$だから，前提より$b\in\set{a,c}$になる．対の定義より，$b=a$または$b=c$である．$b=c$のときは示されているので，$b=a$のときを考える．同様に$c=a$が言えるから，推移律より$b=c$である．よって示された．
+        </p>
+      </details>
+    </section>
 
     <h3>1元集合</h3>
     <p>
       <dfn>1元集合</dfn>とは元$a$をただ1つのみもつ集合$\set{a}$のことである．外延性公理と対公理を用いることで1元集合の性質が説明できる．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>1元集合</dt>
-      <dd>
+      <h5>1元集合</h5>
+      <p>
         集合$a$について，
         $$\set{a}\def\set{a,a}.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       1元集合は対から定義されるから，対の性質から直ちにわかる性質がある．
     </p>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>1元集合の性質</dt>
-      <dd>
+      <h5>1元集合の性質</h5>
+      <p>
         集合$a,b,c$について，
         $$a\in\set{a}.$$
         $$\set{a}=\set{b,c}\Iff a=b=c.$$
         $$\set{a}=\set{b}\Iff a=b.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
 
     <h3>順序対</h3>
     <p>
       <dfn>順序対</dfn>とは順序を持った対を$\p{a,b}$のように表す．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>順序対</dt>
-      <dd>
+      <h5>順序対</h5>
+      <p>
         集合$a,b$について，$a,b$の順序対とは，
         $$\p{a,b}\def\set{\set{a},\set{a,b}}.$$
-      </dd>
-    </dl>
-    <dl class="thm">
+      </p>
+    </section>
+    <section class="thm">
       <h4>定理</h4>
-      <dt>順序対の性質</dt>
-      <dd>
+      <h5>順序対の性質</h5>
+      <p>
         集合$a,b,a',b'$について，
         $$\p{a,b}=\p{a',b'}\Iff a=a'\land b=b'.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            ($\rTo$)の証明．
-            代入原理より成り立つ．
-          </p>
-          <p>
-            ($\To$)の証明．
-            順序対の定義より$\p{a,b}=\set{\set{a},\set{a,b}}$だから，対の性質より，
-            $$\set{a}\in\p{a,b}$$
-            である．前提より$\p{a,b}=\p{a',b'}$だから，
-            $$\set{a}\in\p{a',b'}$$
-            である．順序対の定義より$\p{a',b'}=\set{\set{a'},\set{a',b'}}$だから，対の定義より，$\set{a}=\set{a'}$または$\set{a}=\set{a',b'}$である．
-          </p>
-          <p>
-            $\set{a}=\set{a'}$のとき，1元集合の性質より，
-            $$a=a'.$$
-            これを前提に代入して，
-            $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}.$$
-            対の性質を繰り返し使って，
-            \begin{align*}
-            \set{a,b}&=\set{a,b'},\\
-            b&=b'.\bcs対の性質
-            \end{align*}
-            よって$a=a'\land b=b'$である．
-          </p>
-          <p>
-            $\set{a}=\set{a',b'}$のとき，1元集合の性質より，
-            $$a=a'=b'.$$
-            これを前提に代入して，
-            $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}.$$
-            対の性質を繰り返し使って，
-            \begin{align*}
-            \set{a,b}&=\set{a,a},\\
-            b&=a.\bcs対の性質
-            \end{align*}
-            よって$b=a=a'=b'$より$a=a'\land b=b'$である．
-          </p>
-          <p>
-            したがって，示された．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          ($\rTo$)の証明．
+          代入原理より成り立つ．
+        </p>
+        <p>
+          ($\To$)の証明．
+          順序対の定義より$\p{a,b}=\set{\set{a},\set{a,b}}$だから，対の性質より，
+          $$\set{a}\in\p{a,b}$$
+          である．前提より$\p{a,b}=\p{a',b'}$だから，
+          $$\set{a}\in\p{a',b'}$$
+          である．順序対の定義より$\p{a',b'}=\set{\set{a'},\set{a',b'}}$だから，対の定義より，$\set{a}=\set{a'}$または$\set{a}=\set{a',b'}$である．
+        </p>
+        <p>
+          $\set{a}=\set{a'}$のとき，1元集合の性質より，
+          $$a=a'.$$
+          これを前提に代入して，
+          $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,b'}}.$$
+          対の性質を繰り返し使って，
+          \begin{align*}
+          \set{a,b}&=\set{a,b'},\\
+          b&=b'.\bcs対の性質
+          \end{align*}
+          よって$a=a'\land b=b'$である．
+        </p>
+        <p>
+          $\set{a}=\set{a',b'}$のとき，1元集合の性質より，
+          $$a=a'=b'.$$
+          これを前提に代入して，
+          $$\set{\set{a},\set{a,b}}=\set{\set{a},\set{a,a}}.$$
+          対の性質を繰り返し使って，
+          \begin{align*}
+          \set{a,b}&=\set{a,a},\\
+          b&=a.\bcs対の性質
+          \end{align*}
+          よって$b=a=a'=b'$より$a=a'\land b=b'$である．
+        </p>
+        <p>
+          したがって，示された．
+        </p>
+      </details>
+    </section>
 
     <p>
       順序対を$n$個の組として拡張する．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      順序組
-      <dt>0組(空集合)</dt>
-      <dd>
+      <h5>順序組</h5>
+      <h5>0組(空集合)</h5>
+      <p>
         $$\p{}\def0.$$
-      </dd>
-      <dt>1組(1元集合)</dt>
-      <dd>
+      </p>
+      <h5>1組(1元集合)</h5>
+      <p>
         集合$a$について，
         $$\p{a}\def a.$$
-      </dd>
-      <dt>2組(順序対)</dt>
-      <dd>
+      </p>
+      <h5>2組(順序対)</h5>
+      <p>
         集合$a,b$について，
         $$\p{a,b}\def\set{\set{a},\set{a,b}}.$$
-      </dd>
-      <dt>$n$組</dt>
-      <dd>
+      </p>
+      <h5>$n$組</h5>
+      <p>
         集合$a_1,\dots,a_n$について，
         $$\p{a_1,\dots,a_n}\def\p{a_1,\p{a_2,\dots,a_n}}.$$
-      </dd>
-    </dl>
-    <dl class="thm">
+      </p>
+    </section>
+    <section class="thm">
       <h4>定理</h4>
-      <dt>順序組の性質</dt>
-      <dd>
+      <h5>順序組の性質</h5>
+      <p>
         集合$a_1,\dots,a_n,b_1,\dots,b_n$について，
         $$\p{a_1,\dots,a_n}=\p{b_1,\dots,b_n}\Iff a_1=b_1\land\cdots\land a_n=b_n.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            $n=0,1,2$のときは示されてる．
-          </p>
-          <p>
-            $n=k(k\ge2)$のとき成り立つと仮定すると，
-            \begin{align*}
-            &\p{a_1,\dots,a_{k+1}}=\p{b_1,\dots,b_{k+1}}\\
-            \Iff&\p{a_1,\p{a_2,\dots,a_{k+1}}}=\p{b_1,\p{b_2,\dots,b_{k+1}}}\bcs順序組の定義\\
-            \Iff&a_1=b_1\land\p{a_2,\dots,a_{k+1}}=\p{b_2,\dots,b_{k+1}}\bcs順序対の性質\\
-            \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}.\bcs仮定
-            \end{align*}
-            になるので，示された．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $n=0,1,2$のときは示されてる．
+        </p>
+        <p>
+          $n=k(k\ge2)$のとき成り立つと仮定すると，
+          \begin{align*}
+          &\p{a_1,\dots,a_{k+1}}=\p{b_1,\dots,b_{k+1}}\\
+          \Iff&\p{a_1,\p{a_2,\dots,a_{k+1}}}=\p{b_1,\p{b_2,\dots,b_{k+1}}}\bcs順序組の定義\\
+          \Iff&a_1=b_1\land\p{a_2,\dots,a_{k+1}}=\p{b_2,\dots,b_{k+1}}\bcs順序対の性質\\
+          \Iff&a_1=b_1\land\cdots\land a_{k+1}=b_{k+1}.\bcs仮定
+          \end{align*}
+          になるので，示された．
+        </p>
+      </details>
+    </section>
 
     <h2>和集合公理</h2>
     <h3>外延記法</h3>
     <p>
       対公理と和集合公理より有限個の集合の存在が示せる．そのような集合を表す表記を定義する．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>外延記法</dt>
-      <dd>
+      <h5>外延記法</h5>
+      <p>
         集合$a_1,\dots,a_n$について，外延記法の集合$\set{a_1,\dots,a_n}$とは，
         $$\forall x,x\in\set{a_1,\dots,a_n}\iff x=a_1\lor\cdots\lor x=a_n.$$
-      </dd>
-    </dl>
-
+      </p>
+    </section>
     <p>
       <dfn>和集合</dfn>(<dfn>合併</dfn>)とはその集合の元の元の全体の集合である．$a$の和集合を$\bigcup a$と表す．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>和集合</dt>
-      <dd>
+      <h5>和集合</h5>
+      <p>
         集合$a$について，$a$の和集合$\bigcup a$とは，
         $$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}.$$
-      </dd>
+      </p>
       <h4>公理</h4>
-      <dt>和集合公理</dt>
-      <dd>
+      <h5>和集合公理</h5>
+      <p>
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}\\
         \Iff&\forall x\exists\bigcup x.
         \end{align*}
-      </dd>
-    </dl>
+      </p>
+    </section>
     <div class="me">
       全然意味が分からんよ
     </div>
@@ -564,14 +567,14 @@
     <div class="you">
       逆はどれか一つでもいいから$\set{\set{0},\set{0,1,2},\set{2,3,5}}$から元を取ってきてその元を持っていればいいことから$\bigcup a=\set{0,1,2,3,5}$になるね
     </div>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>和集合の演算子</dt>
-      <dd>
+      <h5>和集合の演算子</h5>
+      <p>
         集合$a,b$について，
         $$a\cup b\def\bigcup\set{a,b}.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       公理を用いて性質を調べてみる．定義より，
       \begin{align*}
@@ -586,119 +589,121 @@
     <p>
       <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\scr{P}\p{a}$と表す．冪集合公理は冪集合の存在を保証する．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>冪集合</dt>
-      <dd>
+      <h5>冪集合</h5>
+      <p>
         集合$a$について，冪集合$2^a$とは，
         $$\forall x,x\in2^a\iff x\subset a.$$
-      </dd>
+      </p>
       <h4>公理</h4>
-      <dt>冪集合公理</dt>
-      <dd>
+      <h5>冪集合公理</h5>
+      <p>
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff z\subset x\\
         \Iff&\forall x\exists2^x.
         \end{align*}
-      </dd>
-    </dl>
+      </p>
+    </section>
     <div class="you">
       冪集合が部分集合全体の集合という意味の通りの論理式が書かれてるね<br>
       例えば，$a=\set{0,1,2}$としたら，
       $$2^a=\set{0,\set{0},\set{1},\set{2},\set{0,1},\set{0,2},\set{1,2},\set{0,1,2}}$$
       になるね
     </div>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>冪集合の性質</dt>
-      <dd>
+      <h5>冪集合の性質</h5>
+      <p>
         集合$a,b$について，
         $$a\in b\To\set{a}\in2^b.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            $x\in\set{a}$となる$x$について，
-            \begin{align*}
-            x&\in\set{a},\\
-            x&=a,\bcs1元集合の性質\\
-            x&\in b.\bcs前提に代入
-            \end{align*}
-            になる．よって$x\in\set{a}\To x\in b$だから，
-            \begin{align*}
-            \set{a}&\subset b,\\
-            \set{a}&\in2^b.\bcs{冪集合公理}
-            \end{align*}
-            が導かれて，示された．
-          </p>
-        </details>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $x\in\set{a}$となる$x$について，
+          \begin{align*}
+          x&\in\set{a},\\
+          x&=a,\bcs1元集合の性質\\
+          x&\in b.\bcs前提に代入
+          \end{align*}
+          になる．よって$x\in\set{a}\To x\in b$だから，
+          \begin{align*}
+          \set{a}&\subset b,\\
+          \set{a}&\in2^b.\bcs{冪集合公理}
+          \end{align*}
+          が導かれて，示された．
+        </p>
+      </details>
+      <p>
         $$\bigcup2^a=a.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            $x\in\bigcup2^a$となる$x$について，
-            \begin{align*}
-            &x\in\bigcup2^a,\\
-            &\exists y\p{x\in y\land y\in2^a},\bcs和集合の定義\\
-            &\exists y\p{x\in y\land y\subset a},\bcs冪集合の定義\\
-            &x\in a.\bcs部分集合の性質
-            \end{align*}
-            である．よって，$\bigcup2^a\subset a$である．
-          </p>
-          <p>
-            逆に$x\in a$となる$x$について，
-            \begin{align*}
-            x&\in a,\\
-            \set{x}&\in2^a.\bcs{冪集合の性質}
-            \end{align*}
-            となり，$x\in\set{x}$だから，$x\in y\land y\in2^a$になる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$なので$a\subset\bigcup2^a$である．
-          </p>
-          <p>
-            したがって，$\bigcup2^a=a$である．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $x\in\bigcup2^a$となる$x$について，
+          \begin{align*}
+          &x\in\bigcup2^a,\\
+          &\exists y\p{x\in y\land y\in2^a},\bcs和集合の定義\\
+          &\exists y\p{x\in y\land y\subset a},\bcs冪集合の定義\\
+          &x\in a.\bcs部分集合の性質
+          \end{align*}
+          である．よって，$\bigcup2^a\subset a$である．
+        </p>
+        <p>
+          逆に$x\in a$となる$x$について，
+          \begin{align*}
+          x&\in a,\\
+          \set{x}&\in2^a.\bcs{冪集合の性質}
+          \end{align*}
+          となり，$x\in\set{x}$だから，$x\in y\land y\in2^a$になる$y=\set{x}$が存在する．よって，$x\in\bigcup2^a$なので$a\subset\bigcup2^a$である．
+        </p>
+        <p>
+          したがって，$\bigcup2^a=a$である．
+        </p>
+      </details>
+    </section>
 
     <h2>分出公理</h2>
     <p>
       <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，自由に使うと矛盾を生じることがある．分出公理で$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数なことに注意する．他の公理から証明できる．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>内包表記</dt>
-      <dd>
+      <h5>内包表記</h5>
+      <p>
         論理式$F\p{x}$，集合$a$について，内包表記の集合$\setsep{x\in a}{F\p{x}}$とは，
         $$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in a\land F\p{x}.$$
-      </dd>
+      </p>
       <h4>公理</h4>
-      <dt>分出公理</dt>
-      <dd>
+      <h5>分出公理</h5>
+      <p>
         論理式$F\p{x}$について，
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff z\in x\land F\p{z}\\
         \Iff&\forall x\exists\setsep{t\in x}{F\p{x}}.
         \end{align*}
-      </dd>
-    </dl>
+      </p>
+    </section>
 
     <h3>積集合</h3>
     <p>
       <dfn>積集合</dfn>(<dfn>共通部分</dfn>)とは全ての集合の元なものの全体の集合である．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>積集合</dt>
-      <dd>
+      <h5>積集合</h5>
+      <p>
         $a,b$の積集合とは，
         $$a\cap b\def\setsep{x\in a}{x\in b}.$$
-      </dd>
-      <dt>互いに素</dt>
-      <dd>
+      </p>
+      <h5>互いに素</h5>
+      <p>
         $a,b$が互いに素とは，
         $$a\cap b=0.$$
         が成り立つことである．
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       公理を用いて性質を調べてみる．定義より，
       $$\forall x,x\in a\cap b\iff x\in a\land x\in b.$$
@@ -709,57 +714,59 @@
     <p>
       <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a-b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，登場するすべての集合を含む集合である．文脈によって決まる．このとき差集合$U-a$を$a$の<dfn>補集合</dfn>という．$a$の補集合をたまに$\overline{a}$と表すことがあるが，あまり使わない．今回は定理の紹介で使うとする．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>差集合</dt>
-      <dd>
+      <h5>差集合</h5>
+      <p>
         $a,b$の差集合とは，
         $$a-b\def\setsep{x\in a}{x\notin b}.$$
-      </dd>
-      <dt>補集合</dt>
-      <dd>
+      </p>
+      <h5>補集合</h5>
+      <p>
         全体集合$U$について，$a$の補集合とは，
         $$U-a.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       公理を用いて性質を調べてみる．定義より，
       $$\forall x,x\in a-b\iff x\in a\land x\notin b$$
       になる．
     </p>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>補集合の性質</dt>
-      <dd>
+      <h5>補集合の性質</h5>
+      <p>
         全体集合$U\supset a$について，$U\neq a$なら$U-a\neq0$．
-        <details>
-          <summary>証明</summary>
-          <p>
-            $U-a=0$と仮定すると，$x\notin a$となる$U$の元$x$が存在しない．すなわち，$U$の任意の元$x$について$x\in a$である．よって$U\subset a$であるから$U=a$であり反する．よって示された．
-          </p>
-        </details>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $U-a=0$と仮定すると，$x\notin a$となる$U$の元$x$が存在しない．すなわち，$U$の任意の元$x$について$x\in a$である．よって$U\subset a$であるから$U=a$であり反する．よって示された．
+        </p>
+      </details>
+      <p>
         全体集合$U\supset a,b$について，$U-a$と$b$が互いに素なら$b\subset a$．
-        <details>
-          <summary>証明</summary>
-          <p>
-            $b$の任意の元$x$について，$x\notin a$と仮定すると，$x\in U-a$であるが，$U-a$と$b$が互いに素であることに反する．よって示された．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $b$の任意の元$x$について，$x\notin a$と仮定すると，$x\in U-a$であるが，$U-a$と$b$が互いに素であることに反する．よって示された．
+        </p>
+      </details>
+    </section>
 
     <h3>対称差</h3>
     <p>
       <dfn>対称差</dfn>とはどちらか一方の集合のみに属してる元の全体の集合のことである．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>対称差</dt>
-      <dd>
+      <h5>対称差</h5>
+      <p>
         $a,b$の対象差とは，
         $$a\bigtriangleup b\def\p{a-b}\cup\p{b-a}.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       公理を用いて性質を調べてみる．任意の$x$について定義より，
       \begin{align*}
@@ -776,14 +783,14 @@
     <p>
       <dfn>直積集合</dfn>とは二つの集合$a,b$の元$x,y$の組$\p{x,y}$の全体の集合である．この集合を$a\times b$と表す．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>直積集合</dt>
-      <dd>
+      <h5>直積集合</h5>
+      <p>
         $a,b$の直積集合とは，
         $$a\times b\def\setsep{z\in\scr{P}\p{\scr{P}\p{a\cup b}}}{\exists xy,z=\p{x,y}\land x\in a\land y\in b}.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       $\scr{P}\p{\scr{P}\p{a\cup b}}$はとんでもなく大きい集合を持ってきたものである．条件の方を読むと，$x$は$a$の元で，$y$は$b$の元のときの$\p{x,y}$と書かれているので，これで組を表現できている．しかし，分出公理より大きい集合の部分集合出なければならないので，任意の組を元にもつような集合を考えなければならない．組は定義より$\set{\set{x},\set{x,y}}$である．$x,y\in a\cup b$なことから，$\set{x},\set{x,y}\in\scr{P}\p{a\cup b}$で，$\set{\set{x},\set{x,y}}\in\scr{P}\p{\scr{P}\p{a\cup b}}$である．よって，この定義は直積集合を表している．
     </p>
@@ -795,78 +802,78 @@
     <p>
       今まで紹介した集合演算子(和集合，積集合，補集合)について成り立つ定理を紹介する．
     </p>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>縮小律</dt>
-      <dd>
+      <h5>縮小律</h5>
+      <p>
         集合$a,b$について，
         $$a\subset a\cup b.$$
         $$b\subset a\cup b.$$
-      </dd>
-      <dt>拡大律</dt>
-      <dd>
+      </p>
+      <h5>拡大律</h5>
+      <p>
         集合$a,b$について，
         $$a\cap b\subset a.$$
         $$a\cap b\subset b.$$
-      </dd>
-      <dt>交換律</dt>
-      <dd>
+      </p>
+      <h5>交換律</h5>
+      <p>
         集合$a,b$について，
         $$a\cap b=b\cap a.$$
         $$a\cup b=b\cup a.$$
-      </dd>
-      <dt>結合律</dt>
-      <dd>
+      </p>
+      <h5>結合律</h5>
+      <p>
         集合$a,b,c$について，
         $$a\cap\p{b\cap c}=\p{a\cap b}\cap c.$$
         $$a\cup\p{b\cup c}=\p{a\cup b}\cup c.$$
-      </dd>
-      <dt>冪等律</dt>
-      <dd>
+      </p>
+      <h5>冪等律</h5>
+      <p>
         集合$a$について，
         $$a\cap a=a.$$
         $$a\cup a=a.$$
-      </dd>
-      <dt>分配律</dt>
-      <dd>
+      </p>
+      <h5>分配律</h5>
+      <p>
         集合$a,b,c$について，
         $$a\cap\p{b\cup c}=\p{a\cap b}\cup \p{a\cap c}.$$
         $$a\cup\p{b\cap c}=\p{a\cup b}\cap \p{a\cup c}.$$
-      </dd>
-      <dt>恒等律</dt>
-      <dd>
+      </p>
+      <h5>恒等律</h5>
+      <p>
         全体集合$U$の部分集合$a$について，
         $$a\cap U=a.$$
         $$a\cup0=a.$$
         $$a\cap0=0.$$
         $$a\cup U=U.$$
-      </dd>
-      <dt>矛盾律</dt>
-      <dd>
+      </p>
+      <h5>矛盾律</h5>
+      <p>
         全体集合$U$の部分集合$a$について，
         $$\p{a\cap \p{U-a}}=0.$$
-      </dd>
-      <dt>吸収律</dt>
-      <dd>
+      </p>
+      <h5>吸収律</h5>
+      <p>
         集合$a,b$について，
         $$a\cap\p{a\cup b}=a.$$
         $$a\cup\p{a\cap b}=a.$$
-      </dd>
-      <dt>対偶律</dt>
-      <dd>
+      </p>
+      <h5>対偶律</h5>
+      <p>
         全体集合$U$の部分集合$a,b$について，
         $$a\subset b\iff U-b\subset U-a.$$
-      </dd>
-      <dt>二重否定</dt>
-      <dd>
+      </p>
+      <h5>二重否定</h5>
+      <p>
         $$a=U-\p{U-a}.$$
-      </dd>
-      <dt>De Morganの法則</dt>
-      <dd>
+      </p>
+      <h5>De Morganの法則</h5>
+      <p>
         $$\p{U-\p{a\cup b}}=\p{U-a}\cap\p{U-b}.$$
         $$\p{U-\p{a\cap b}}=\p{U-a}\cup\p{U-b}.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <div class="you">
       証明は論理式に復元するだけなので省略するね
     </div>
@@ -876,218 +883,218 @@
     <p>
       <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f\p{3}$は$6$になる．これを$\p{3,6}\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\dots}$である．写像をさらに一般化した<dfn>関係</dfn>から順に定義する．関係は返ってくる元が一つとは限らないものである．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>関係</dt>
-      <dd>
+      <h5>関係</h5>
+      <p>
         集合$a,b$について，$a,b$の関係$f$とは，
         $$f\subset a\times b.$$
         この$a$を始域，$b$を終域という．
-        <details>
-          <summary>関係の例</summary>
-          <p>
-            $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，$f:a\to b$が関係のとき，$a\times b$に含まれている必要があるから，
-            $$f=\set{},$$
-            $$f=\set{\p{0,1},\p{0,2},\p{0,8},\p{3,8},\p{4,8}}$$
-            などは関係である．$\p{3,8}\in f$なので，$3$は$8$に$f$で関係しているという．
-          </p>
-        </details>
-        <details>
-          <summary>関係でない例</summary>
-          <p>
-            $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，次の例は関係$f:a\to b$でない．
-            $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},5}.$$
-            これは順序対でない$5$が属している．
-            $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},\p{5,5}}.$$
-            これは$a\to b$の関係ではない．$\p{a\cup\set{5}}\to b$の関係ではある．
-          </p>
-        </details>
-      </dd>
-    </dl>
-    <dl class="def">
+      </p>
+      <details>
+        <summary>関係の例</summary>
+        <p>
+          $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，$f:a\to b$が関係のとき，$a\times b$に含まれている必要があるから，
+          $$f=\set{},$$
+          $$f=\set{\p{0,1},\p{0,2},\p{0,8},\p{3,8},\p{4,8}}$$
+          などは関係である．$\p{3,8}\in f$なので，$3$は$8$に$f$で関係しているという．
+        </p>
+      </details>
+      <details>
+        <summary>関係でない例</summary>
+        <p>
+          $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，次の例は関係$f:a\to b$でない．
+          $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},5}.$$
+          これは順序対でない$5$が属している．
+          $$f=\set{\p{0,1},\p{0,2},\p{3,8},\p{4,8},\p{5,5}}.$$
+          これは$a\to b$の関係ではない．$\p{a\cup\set{5}}\to b$の関係ではある．
+        </p>
+      </details>
+    </section>
+    <section class="def">
       <h4>定義</h4>
-      <dt>写像</dt>
-      <dd>
+      <h5>写像</h5>
+      <p>
         $a,b$の関係$f:a\to b$について，$a,b$の写像$f$とは，写像$f:a\to b$と表し，
         $$\forall x\in a\exists!y,\p{x,y}\in f.$$
         $y$を$f(x)$と表す．つまり，
         $$\forall x\in a,\p{x,f\p{x}}\in f.$$
-        <details>
-          <summary>写像の例</summary>
-          <p>
-            $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，写像$f:a\to b$は$a$の任意の元について$y$が一つな必要があるから，
-            $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{3,3},\p{4,5}}$$
-            は写像である．$\p{2,9}\in f$なので，$f\p{2}=8$と表せる．
-          </p>
-        </details>
-        <details>
-          <summary>写像でない例</summary>
-          <p>
-            $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，次の例は写像$f:a\to b$でない．
-            $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{4,5}}.$$
-            これは$3\in a$について$y$が存在しない．
-            $$f=\set{\p{0,3},\p{1,1},\p{2,6},\p{2,9},\p{3,3},\p{4,5}}.$$
-            これは$2\in a$について$y$が二つ存在する．
-          </p>
-        </details>
-      </dd>
-      <dt>恒等写像</dt>
-      <dd>
+      </p>
+      <details>
+        <summary>写像の例</summary>
+        <p>
+          $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，写像$f:a\to b$は$a$の任意の元について$y$が一つな必要があるから，
+          $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{3,3},\p{4,5}}$$
+          は写像である．$\p{2,9}\in f$なので，$f\p{2}=8$と表せる．
+        </p>
+      </details>
+      <details>
+        <summary>写像でない例</summary>
+        <p>
+          $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，次の例は写像$f:a\to b$でない．
+          $$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{4,5}}.$$
+          これは$3\in a$について$y$が存在しない．
+          $$f=\set{\p{0,3},\p{1,1},\p{2,6},\p{2,9},\p{3,3},\p{4,5}}.$$
+          これは$2\in a$について$y$が二つ存在する．
+        </p>
+      </details>
+      <h5>恒等写像</h5>
+      <p>
         写像$f:a\to a$について，恒等写像$f$とは，
         $$f\def\setsep{\p{x,x}\in a\times a}{x\in a}.$$
         $f$を$\rm{id}$で表す．
-        <details>
-          <summary>恒等写像の例</summary>
-          <p>
-            $a=\set{0,1,2,3,4}$について，恒等写像$\rm{id}:a\to a$は$\p{x,x}$を元にもつから，
-            $$\rm{id}=\set{\p{0,0},\p{1,1},\p{2,2},\p{3,3},\p{4,4}}.$$
-            もちろん$\forall x\in a,\id x=x$である．
-          </p>
-        </details>
-      </dd>
-    </dl>
-    <dl class="thm">
+      </p>
+      <details>
+        <summary>恒等写像の例</summary>
+        <p>
+          $a=\set{0,1,2,3,4}$について，恒等写像$\rm{id}:a\to a$は$\p{x,x}$を元にもつから，
+          $$\rm{id}=\set{\p{0,0},\p{1,1},\p{2,2},\p{3,3},\p{4,4}}.$$
+          もちろん$\forall x\in a,\id x=x$である．
+        </p>
+      </details>
+    </section>
+    <section class="thm">
       <h4>定理</h4>
-      <dt>写像の性質</dt>
-      <dd>
+      <h5>写像の性質</h5>
+      <p>
         写像$f:a\to b$，$g:a\to b$について，
         $$f\p{x}=g\p{x}\To f=g.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            任意の順序対$\p{x,f\p{x}}\in f$について，前提より$\p{x,f\p{x}}=\p{x,g\p{x}}$である．$\p{x,g\p{x}}\in g$だから，$\p{x,f\p{x}}\in g$である．よって$f\subset g$である．$f,g$を入れ替えて同様に$g\subset f$だから，$f=g$である．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          任意の順序対$\p{x,f\p{x}}\in f$について，前提より$\p{x,f\p{x}}=\p{x,g\p{x}}$である．$\p{x,g\p{x}}\in g$だから，$\p{x,f\p{x}}\in g$である．よって$f\subset g$である．$f,g$を入れ替えて同様に$g\subset f$だから，$f=g$である．
+        </p>
+      </details>
+    </section>
 
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>像</dt>
-      <dd>
+      <h5>像</h5>
+      <p>
         写像$f:a\to b$，$a'\subset a$について，$f$による$a'$の像$f\sq{a'}$とは，
         $$f\sq{a'}\def\setsep{y\in b}{\exists x\in a',\p{x,y}\in f}.$$
-      </dd>
-      <dt>逆像</dt>
-      <dd>
+      </p>
+      <h5>逆像</h5>
+      <p>
         写像$f:a\to b$，$b'\subset b$について，$f$による$b'$の逆像$f^{-1}\sq{b'}$とは，
         $$f^{-1}\sq{b'}\def\setsep{x\in a}{\exists y\in b',\p{x,y}\in f}.$$
-      </dd>
-      <dt>値域</dt>
-      <dd>
+      </p>
+      <h5>値域</h5>
+      <p>
         写像$f:a\to b$について，$a$を$f$の定義域といい，$f$の値域とは，
         $$f\sq{a}.$$
-        <details>
-          <summary>像・値域の例</summary>
-          <p>
-            $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，写像$f:a\to b$を$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{3,3},\p{4,5}}$として，
-            $$f\sq{\set{0,1,2}}=\set{1,3,9},$$
-            $$f\sq{\set{0,1,3}}=\set{1,3}.$$
-            このとき，$f$の値域は
-            $$f\sq{a}=\set{1,3,5,9}.$$
-          </p>
-        </details>
-      </dd>
-      <dt>写像全体の集合</dt>
-      <dd>
+      </p>
+      <details>
+        <summary>像・値域の例</summary>
+        <p>
+          $a=\set{0,1,2,3,4}$，$b=\set{0,1,2,3,4,5,6,7,8,9}$について，写像$f:a\to b$を$f=\set{\p{0,3},\p{1,1},\p{2,9},\p{3,3},\p{4,5}}$として，
+          $$f\sq{\set{0,1,2}}=\set{1,3,9},$$
+          $$f\sq{\set{0,1,3}}=\set{1,3}.$$
+          このとき，$f$の値域は
+          $$f\sq{a}=\set{1,3,5,9}.$$
+        </p>
+      </details>
+      <h5>写像全体の集合</h5>
+      <p>
         集合$a,b$について，
         $$b^a\def\setsep{f\in\scr{P}\p{a\times b}}{fは写像}.$$
-      </dd>
-      <dt>制限</dt>
-      <dd>
+      </p>
+      <h5>制限</h5>
+      <p>
         写像$f:a\to b$，$a'\subset a$について，$f$の$a'$への制限$f|a'$とは，
         $$f|a'\def f\cap\p{a'\times b}.$$
-      </dd>
-      <dt>合成写像(写像の積)</dt>
-      <dd>
+      </p>
+      <h5>合成写像(写像の積)</h5>
+      <p>
         写像$f:a\to b$，写像$g:b\to c$について，
         $$g\circ f\def\setsep{\p{x,z}\in a\times c}{\p{f\p{x},z}\in g}.$$
         つまり，$g\circ f\p{x}=g\p{f\p{x}}$である．
-      </dd>
-    </dl>
-    <dl class="thm">
+      </p>
+    </section>
+    <section class="thm">
       <h4>定理</h4>
-      <dt>像の性質</dt>
-      <dd>
+      <h5>像の性質</h5>
+      <p>
         写像$f:a\to b$，部分集合$a'\subset a$について，
         $$x\in a'\To f\p{x}\in f\sq{a'}.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            定義より，$f\sq{a'}$に属している元$y$は，
-            $$\exists x,y\in b\land x\in a'\land\p{x,y}\in f$$
-            が成り立つ．写像$f$の定義と前提より，$f\p{x}\in b$かつ$x\in a'$かつ$\p{x,f\p{x}}\in f$が成り立つから，$f\p{x}$は$f\sq{a'}$の元である．よって示された．
-          </p>
-        </details>
-      </dd>
-      <dt>合成写像の結合律</dt>
-      <dd>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          定義より，$f\sq{a'}$に属している元$y$は，
+          $$\exists x,y\in b\land x\in a'\land\p{x,y}\in f$$
+          が成り立つ．写像$f$の定義と前提より，$f\p{x}\in b$かつ$x\in a'$かつ$\p{x,f\p{x}}\in f$が成り立つから，$f\p{x}$は$f\sq{a'}$の元である．よって示された．
+        </p>
+      </details>
+      <h5>合成写像の結合律</h5>
+      <p>
         写像$f:a\to b$，$g:b\to c$，$h:c\to d$について，
         $$\p{h\circ g}\circ f=h\circ\p{g\circ f}.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            定義より変形を行う．
-            \begin{align*}
-            \p{h\circ g}\circ f\p{x}&=h\circ g\p{f\p{x}},\\
-            &=h\p{g\p{f\p{x}}},\\
-            &=h\p{g\circ f\p{x}},\\
-            &=h\circ\p{g\circ f}\p{x}.
-            \end{align*}
-            よって，写像の性質より$\p{h\circ g}\circ f=h\circ\p{g\circ f}$である．
-          </p>
-        </details>
-      </dd>
-    </dl>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          定義より変形を行う．
+          \begin{align*}
+          \p{h\circ g}\circ f\p{x}&=h\circ g\p{f\p{x}},\\
+          &=h\p{g\p{f\p{x}}},\\
+          &=h\p{g\circ f\p{x}},\\
+          &=h\circ\p{g\circ f}\p{x}.
+          \end{align*}
+          よって，写像の性質より$\p{h\circ g}\circ f=h\circ\p{g\circ f}$である．
+        </p>
+      </details>
+    </section>
 
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>単射</dt>
-      <dd>
+      <h5>単射</h5>
+      <p>
         写像$f:a\to b$について，$f$が単射とは，
         $$\forall xy\in a,f\p{x}=f\p{y}\to x=y.$$
-        <details>
-          <summary>単射の例</summary>
-          <p>
-            $a=\set{0,1,2,3,4}$，$b=\set{a,b,c,d,e}$，写像$f:a\to b$について，
-            $$\set{\p{0,d},\p{1,a},\p{2,c},\p{3,b},\p{4,e}}$$
-            は写像先によって写像前の1つの元があるので単射である．
-          </p>
-        </details>
-      </dd>
-      <dt>全射</dt>
-      <dd>
+      </p>
+      <details>
+        <summary>単射の例</summary>
+        <p>
+          $a=\set{0,1,2,3,4}$，$b=\set{a,b,c,d,e}$，写像$f:a\to b$について，
+          $$\set{\p{0,d},\p{1,a},\p{2,c},\p{3,b},\p{4,e}}$$
+          は写像先によって写像前の1つの元があるので単射である．
+        </p>
+      </details>
+      <h5>全射</h5>
+      <p>
         写像$f:a\to b$について，$f$が全射とは，
         $$\forall y\in b\exists x\in a,f\p{x}=y.$$
-        <details>
-          <summary>全射の例</summary>
-          <p>
-            $a=\set{0,1,2,3,4}$，$b=\set{a,b}$，写像$f:a\to b$について，
-            $$\set{\p{0,a},\p{1,a},\p{2,b},\p{3,b},\p{4,a}}$$
-            は写像先がすべて存在するので全射である．
-          </p>
-        </details>
-      </dd>
-      <dt>全単射</dt>
-      <dd>
+      </p>
+      <details>
+        <summary>全射の例</summary>
+        <p>
+          $a=\set{0,1,2,3,4}$，$b=\set{a,b}$，写像$f:a\to b$について，
+          $$\set{\p{0,a},\p{1,a},\p{2,b},\p{3,b},\p{4,a}}$$
+          は写像先がすべて存在するので全射である．
+        </p>
+      </details>
+      <h5>全単射</h5>
+      <p>
         写像$f:a\to b$について，$f$が全単射とは$f$が単射かつ全射である．
-      </dd>
-      <dt>逆写像</dt>
-      <dd>
+      </p>
+      <h5>逆写像</h5>
+      <p>
         写像$f:a\to b$について，次のように定義される$f^{-1}$が写像のとき，$f^{-1}$を$f$の逆写像という．
         $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
 
     <h3>関数論理式</h3>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>関数論理式</dt>
-      <dd>
+      <h5>関数論理式</h5>
+      <p>
         関数論理式$F\p{x,y}$とは，
         $$\forall xyz,F\p{x,y}\land F\p{x,z}\to y=z.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       つまり，$F\p{x,y}$となる$y$が高々1つなことを主張している．
     </p>
@@ -1096,44 +1103,44 @@
     <p>
       ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字集合</dfn>(<dfn>添字域</dfn>)とする<dfn>族</dfn>といい，$\setsep{x}{\exists i\in I\p{F\p{i,x}}}$と表す．これの存在を認める公理が置換公理である．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>族</dt>
-      <dd>
+      <h5>族</h5>
+      <p>
         論理関数式$F\p{x,y}$について，$I$を添字集合とする族$\setsep{x}{\exists i\in I\p{F\p{i,x}}}$とは，
         $$\forall x,x\in \setsep{x}{\exists i\in I\p{F\p{i,x}}}\iff\exists i\p{i\in I\land F\p{i,x}}.$$
         $i$を添字という．
-      </dd>
+      </p>
       <h4>公理</h4>
-      <dt>置換公理</dt>
-      <dd>
+      <h5>置換公理</h5>
+      <p>
         論理関数式$F\p{x,y}$について，
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff\exists w\p{w\in x\land F\p{w,z}}\\
         \Iff&\forall x\exists\setsep{t}{\exists i\in x\p{F\p{i,t}}}.
         \end{align*}
-      </dd>
-    </dl>
+      </p>
+    </section>
     <p>
       この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$とする．この述語$F$は関数論理式である．よって，$\setsep{f\p{i}}{i\in I}\def\setsep{x}{\exists i\in I\p{x=f\p{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\set{a_i}_{i\in I}\def\setsep{a_i}{i\in I}$とし，明らかな場合は$I$を省略してよい．和集合と積集合を族で拡張させる．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>添字和集合</dt>
-      <dd>
+      <h5>添字和集合</h5>
+      <p>
         族$\set{a_i}_{i\in I}$の和集合$\bigcup_{i\in I}a_i$とは，
         $$\bigcup_{i\in I}a_i\def\bigcup\set{a_i}_{i\in I}.$$
-      </dd>
-      <dt>添字積集合</dt>
-      <dd>
+      </p>
+      <h5>添字積集合</h5>
+      <p>
         族$\set{a_i}_{i\in I}$の積集合$\bigcap_{i\in I}a_i$とは，
         $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}_{i\in I}\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}.$$
-      </dd>
-    </dl>
-    <dl class="thm">
+      </p>
+    </section>
+    <section class="thm">
       <h4>定理</h4>
-      <dt>族の性質</dt>
-      <dd>
+      <h5>族の性質</h5>
+      <p>
         族$\set{a_i}_{i\in I}$について，
         $$\bigcup_{i\in I}a_i\cap b=\bigcup_{i\in I}\p{a_i\cap b}.$$
         族$\set{a_i}_{i\in I}$について，
@@ -1142,22 +1149,22 @@
         $$\overline{\bigcup_{i\in I}a_i}=\bigcap_{i\in I}\overline{a_i}.$$
         族$\set{a_i}_{i\in I}$について，
         $$\overline{\bigcap_{i\in I}a_i}=\bigcup_{i\in I}\overline{a_i}.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
 
     <h2>無限公理</h2>
     <p>
       自然数の集合は具体的に書くと$\set{0,1,2,\dots}$のことである．これを$\bm{N}$と表す．自然数の定義は後に紹介する．ここでは集合で表現することのみ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．無限公理は後者の存在を認める公理である．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>定義</h4>
-      <dt>後者</dt>
-      <dd>
+      <h5>後者</h5>
+      <p>
         $a$の後者とは，
         $$\suc{a}\def n\cup\set{n}.$$
-      </dd>
-      <dt>数字</dt>
-      <dd>
+      </p>
+      <h5>数字</h5>
+      <p>
         \begin{align*}
         1&\def\suc{0}=0\cup\set{0}=\set{0}=\set{\set{}}.\\
         2&\def\suc{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}.\\
@@ -1169,92 +1176,94 @@
         8&\def\suc{7}=\set{0,1,2,3,4,5,6,7}.\\
         9&\def\suc{8}=\set{0,1,2,3,4,5,6,7,8}.\\
         \end{align*}
-      </dd>
+      </p>
       <h4>公理</h4>
-      <dt>無限公理</dt>
-      <dd>
+      <h5>無限公理</h5>
+      <p>
         \begin{align*}
         &\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}\\
         \Iff&\exists x,0\in x\land\forall y\p{y\in x\to\suc{y}\in x}.
         \end{align*}
-      </dd>
-    </dl>
+      </p>
+    </section>
 
     <h2>正則性公理</h2>
     <p>
       矛盾を生み出すものを集合と認めないための公理が<dfn>正則性公理</dfn>である．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>公理</h4>
-      <dt>正則性公理</dt>
-      <dd>
+      <h5>正則性公理</h5>
+      <p>
         $$\forall x\neq0\exists y\in x,y\cap x=0.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
 
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>正則性公理から導かれる定理</dt>
-      <dd>
+      <h5>正則性公理から導かれる定理</h5>
+      <p>
         $$\forall x,x\notin x.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            $x\in x$と仮定する．$\set{x}$は空集合ではないから，正則性公理より，
-            $$y\cap\set{x}=0$$
-            になる$y\in\set{x}$が存在する．1元集合の性質より$y=x$だから，$=$の代入原理より，
-            $$x\cap\set{x}=0.$$
-            仮定より$x\in x\land x\in \set{x}$だから，$x\in x\cap\set{x}$になるが，$x\cap\set{x}=0$に反する．よって，$x\notin x$である．
-          </p>
-        </details>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $x\in x$と仮定する．$\set{x}$は空集合ではないから，正則性公理より，
+          $$y\cap\set{x}=0$$
+          になる$y\in\set{x}$が存在する．1元集合の性質より$y=x$だから，$=$の代入原理より，
+          $$x\cap\set{x}=0.$$
+          仮定より$x\in x\land x\in \set{x}$だから，$x\in x\cap\set{x}$になるが，$x\cap\set{x}=0$に反する．よって，$x\notin x$である．
+        </p>
+      </details>
+      <p>
         $$\forall xy,x\notin y\lor y\notin x.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            $x\in y\land y\in x$と仮定すると，$x\in y$と$x\in\set{x,y}$より$x\in y\cap\set{x,y}$である．同様に，$y\in x\cap\set{x,y}$である．
-          </p>
-          <p>
-            $\set{x,y}$は空集合ではないから，正則性公理より，
-            $$z\cap\set{x,y}=0$$
-            になる$z\in\set{x,y}$が存在する．対の定義より$z=x$または$z=y$である．
-          </p>
-          <p>
-            $z=x$のとき，
-            $$x\cap\set{x,y}=0$$
-            は$y\in x\cap\set{x,y}$に反する．
-          </p>
-          <p>
-            $z=y$のとき，
-            $$y\cap\set{x,y}=0$$
-            は$x\in y\cap\set{x,y}$に反する．
-          </p>
-          <p>
-            よって，$x\notin y\lor y\notin x$である．
-          </p>
-        </details>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $x\in y\land y\in x$と仮定すると，$x\in y$と$x\in\set{x,y}$より$x\in y\cap\set{x,y}$である．同様に，$y\in x\cap\set{x,y}$である．
+        </p>
+        <p>
+          $\set{x,y}$は空集合ではないから，正則性公理より，
+          $$z\cap\set{x,y}=0$$
+          になる$z\in\set{x,y}$が存在する．対の定義より$z=x$または$z=y$である．
+        </p>
+        <p>
+          $z=x$のとき，
+          $$x\cap\set{x,y}=0$$
+          は$y\in x\cap\set{x,y}$に反する．
+        </p>
+        <p>
+          $z=y$のとき，
+          $$y\cap\set{x,y}=0$$
+          は$x\in y\cap\set{x,y}$に反する．
+        </p>
+        <p>
+          よって，$x\notin y\lor y\notin x$である．
+        </p>
+      </details>
+      <p>
         $$\not\exists x\forall y,y\in x.$$
-        <details>
-          <summary>証明</summary>
-          <p>
-            $\forall y,y\in u$と仮定すると，$u\in u$より偽．
-          </p>
-        </details>
-      </dd>
-    </dl>
-
-
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $\forall y,y\in u$と仮定すると，$u\in u$より偽．
+        </p>
+      </details>
+    </section>
 
     <h2>選択公理</h2>
     <p>
       <dfn>選択公理</dfn>は$x$の空集合でない各元から1つ選ぶような写像が存在するという主張である．
     </p>
-    <dl class="def">
+    <section class="def">
       <h4>公理</h4>
-      <dt>選択公理</dt>
-      <dd>
+      <h5>選択公理</h5>
+      <p>
         $$\forall x\exists f\in\p{\bigcup x}^x\forall y\in x,y\neq0\to f\p{y}\in y.$$
-      </dd>
-    </dl>
+      </p>
+    </section>
     <div class="you">
       ここでは紹介だけにとどめとくね<br>
       この公理を用いて証明される定理はかなり多いんだ
@@ -1264,48 +1273,51 @@
     <p>
       この章ではZFC公理に必要のない公理を他の公理から証明する．
     </p>
-    <dl class="thm">
+    <section class="thm">
       <h4>定理</h4>
-      <dt>ZFC公理からの導出</dt>
-      <dd>
+      <h5>ZFC公理からの導出</h5>
+      <p>
         置換公理$\To$分出公理．
-        <details>
-          <summary>証明</summary>
-          <p>
-            論理式$G\p{x,y}\Def F\p{x}\land x=y$とすると，$G$は関数論理式である．なぜなら，$G\p{x,y}$と$G\p{x,z}$を仮定すると，$x=y=z$である．置換公理より，
-            \begin{align*}
-            \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land G\p{w,z}},\\
-            \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land F\p{w}\land w=z},\bcs Gの定義\\
-            \forall x\exists y\forall z,z\in y&\iff z\in x\land F\p{z}.\bcs代入原理\\
-            \end{align*}
-            分出公理が導けた．
-          </p>
-        </details>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          論理式$G\p{x,y}\Def F\p{x}\land x=y$とすると，$G$は関数論理式である．なぜなら，$G\p{x,y}$と$G\p{x,z}$を仮定すると，$x=y=z$である．置換公理より，
+          \begin{align*}
+          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land G\p{w,z}},\\
+          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land F\p{w}\land w=z},\bcs Gの定義\\
+          \forall x\exists y\forall z,z\in y&\iff z\in x\land F\p{z}.\bcs代入原理\\
+          \end{align*}
+          分出公理が導けた．
+        </p>
+      </details>
+      <p>
         空集合公理，冪集合，置換公理$\To$対公理．
-        <details>
-          <summary>証明</summary>
-          <p>
-            $c\def\scr{P}\p{\scr{P}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
-            \begin{align*}
-            \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land\p{w=0\land z=a\lor w=1\land z=b}},\\
-            \forall x\exists y\forall z,z\in y&\iff0\in x\land z=a\lor 1\in x\land z=b,\bcs代入原理\\
-            \exists y\forall z,z\in y&\iff0\in c\land z=a\lor 1\in c\land z=b,\bcs\forall E\\
-            \exists y\forall z,z\in y&\iff z=a\lor z=b,\bcs恒等律\\
-            \forall xy\exists z\forall w,w\in z&\iff w=x\lor w=y.\bcs\forall I\\
-            \end{align*}
-            対公理が導けた．
-          </p>
-        </details>
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          $c\def\scr{P}\p{\scr{P}\p{0}}=\set{0,1}$とすると，空集合公理と冪集合から存在する．$F\p{x,y}\Def x=0\land y=a\lor x=1\land y=b$とすると$F$は論理関数式である．置換公理より，
+          \begin{align*}
+          \forall x\exists y\forall z,z\in y&\iff\exists w\p{w\in x\land\p{w=0\land z=a\lor w=1\land z=b}},\\
+          \forall x\exists y\forall z,z\in y&\iff0\in x\land z=a\lor 1\in x\land z=b,\bcs代入原理\\
+          \exists y\forall z,z\in y&\iff0\in c\land z=a\lor 1\in c\land z=b,\bcs\forall E\\
+          \exists y\forall z,z\in y&\iff z=a\lor z=b,\bcs恒等律\\
+          \forall xy\exists z\forall w,w\in z&\iff w=x\lor w=y.\bcs\forall I\\
+          \end{align*}
+          対公理が導けた．
+        </p>
+      </details>
+      <p>
         無限公理，分出公理$\To$空集合公理．
-        <details>
-          <summary>証明</summary>
-          <p>
-            1は無限公理より存在する．このとき，$0=\setsep{x\in1}{x\neq x}$が成り立ち，これは分出公理より存在する．
-          </p>
-        </details>
-      </dd>
-    </dl>
-
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          1は無限公理より存在する．このとき，$0=\setsep{x\in1}{x\neq x}$が成り立ち，これは分出公理より存在する．
+        </p>
+      </details>
+    </section>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>

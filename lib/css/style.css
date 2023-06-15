@@ -44,11 +44,16 @@ h3 {
   border-left: solid #aaddff 0.5rem;
   padding-left: 0.5rem;
   font-family: sans-serif;
-
 }
 
 h4 {
   text-decoration: underline;
+  font-family: sans-serif;
+}
+
+h5 {
+  margin-top: 0.5rem;
+  font-size: 1rem;
   font-family: sans-serif;
 }
 
@@ -78,25 +83,24 @@ dfn {
   font-weight: bold;
 }
 
-dl {
+section {
   margin: 1rem;
   padding: 0.5rem;
 }
 
-dl.def {
+section p,
+section ol,
+section ul,
+section details {
+  margin-left: 2rem;
+}
+
+section.def {
   background-color: #ddffdd;
 }
 
-dl.thm {
+section.thm {
   background-color: #ddddff;
-}
-
-dt {
-  margin-top: 0.5rem;
-}
-
-dd {
-  margin-left: 2rem;
 }
 
 aside {
