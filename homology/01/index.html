@@ -36,12 +36,22 @@
     <p>
       $a\in R$に対して，$af:M\to N$を$\p{af}\p{x}\def af\p{x}$と定義してもこれは左$R$加群の準同型写像になるとは限らない．一般に$a,b\in R$について，
       $$\p{af}\p{bx}=af\p{bx}=abf\p{x}\neq baf\p{x}=b\p{af}\p{x}.$$
-      したがって一般には$\Hom_R\p{M,N}$に左$R$加群の構造は入らない．
+      したがって一般には$\Hom_R\p{M,N}$に左$R$加群の構造は入らない．$R$が可換環のときは左$R$加群の構造は入る．
     </p>
     <p>
-      $R,S$を環として$M$が$\p{R,S}$両側加群，$N$が左$R$加群ならば$\Hom_R\p{M,N}$について$\p{af}\p{x}\def f\p{xa}$ただし$a\in S,x\in M$と定義したとき，
-
+      $R,S$を環として$M$が$\p{R,S}$両側加群，$N$が左$R$加群ならば$\Hom_R\p{M,N}$について$\p{af}\p{x}\def f\p{xa}$(ただし$a\in S,x\in M$)と定義したとき，左$S$加群の構造が入る．$b\in R$について，
+      $$\p{af}\p{bx}=f\p{bxa}=bf\p{xa}=b\p{af}\p{x}$$
+      より$af\in\Hom_R\p{M,N}$．
     </p>
+    <section class="def">
+      <h4>定義1.21</h4>
+      <p>
+        左$R$加群$M,N,X$と$f\in\Hom_R\p{M,N}$について，
+        $$f^\sharp\def\Hom_R\p{X,M}\to\Hom_R\p{X,N};\phi\mapsto f\circ\phi$$
+        $$^\sharp f\def\Hom_R\p{N,X}\to\Hom_R\p{M,X};\phi\mapsto\phi\circ f$$
+      </p>
+    </section>
+    $f^\sharp,^\sharp f$は可換群の準同型写像，$R$が可換群のときは$R$加群の準同型写像となる．
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
