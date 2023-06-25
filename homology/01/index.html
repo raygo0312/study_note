@@ -48,14 +48,14 @@
       <p>
         左$R$加群$M,N,X$と$f\in\Hom_R\p{M,N}$について，
         $$f^\sharp:\Hom_R\p{X,M}\to\Hom_R\p{X,N};\phi\mapsto f\circ\phi$$
-        $$^\sharp f:\Hom_R\p{N,X}\to\Hom_R\p{M,X};\phi\mapsto\phi\circ f$$
+        $$\prescript{\sharp}{}f:\Hom_R\p{N,X}\to\Hom_R\p{M,X};\phi\mapsto\phi\circ f$$
       </p>
     </section>
     <p>
-      $f^\sharp,^\sharp f$は可換群の準同型写像，$R$が可換群のときは$R$加群の準同型写像となる．
+      $f^\sharp,\prescript{\sharp}{}f$は可換群の準同型写像，$R$が可換群のときは$R$加群の準同型写像となる．
     </p>
     <p>
-      $f\in\Hom_R\p{M,N},g\in\Hom_R\p{N,L}$とするとき$g^\sharp\circ f^\sharp=\p{g\circ f}^\sharp,^\sharp f\circ^\sharp g=^\sharp\p{g\circ f}$が成り立つ．
+      $f\in\Hom_R\p{M,N},g\in\Hom_R\p{N,L}$とするとき$g^\sharp\circ f^\sharp=\p{g\circ f}^\sharp,\prescript{\sharp}{}f\circ\prescript{\sharp}{}g=\prescript{\sharp}{}{\p{g\circ f}}$が成り立つ．
     </p>
     <section class="def">
       <h4>定義1.21</h4>
@@ -72,7 +72,7 @@
         <li>零写像0:$\Ker0=M,\Im0=0,\Coker0=N$．</li>
         <li>$N$を左$R$加群$M$の部分加群，$i:N\to M$を標準的包含として，$\Ker i=0,\Im i=N,\Coker i=M/N$．</li>
         <li>$N$を左$R$加群$M$の部分加群，$p:M\to M/N;x\mapsto x+N$を標準的射影とするとき$\Ker p=N,\Im p=M/N,\Coker p=0$．</li>
-        <li>左$R$加群$M$，$f:M\to M';x\mapsto x+N$を準同型写像とするとき標準的射影$g:M'\to\Coker f$の核$\Ker g=\Im f$．</li>
+        <li>左$R$加群$M$，$f:M\to M';x\mapsto x+N$を準同型写像とするとき標準的射影$g:M'\to\Coker f$について$\Ker g=\Im f$．</li>
       </ul>
       <p>なんでかは説明できません……</p>
     </aside>
@@ -80,8 +80,30 @@
       <h4>命題1.23</h4>
       <h5>普遍性</h5>
       <p>
-        $R$を環，$f:M\to M'$を左$R$加群の準同型写像，$i:\Ker f\to M$を標準的包含，$p:M'\to\Coker f$を
+        $R$を環，$f:M\to M'$を左$R$加群の準同型写像，$i:\Ker f\to M$を標準的包含，$p:M'\to\Coker f$を標準的射影とする．このとき以下が成り立つ．
       </p>
+      <p>
+        任意の左$R$加群$N$に対して写像
+        $$i^\sharp:\Hom_R\p{N,\Ker f}\to\setsep{g\in\Hom_R\p{N,M}}{f\circ g=0};h\mapsto i\circ h$$
+        はwell-definedな全単射となる．特に，任意の左$R$加群の準同型写像$g:N\to M$で$f\circ g=0$を満たすものに対して準同型写像$h:N\to\Ker f$で$i\circ h=g$を満たすものが一意的に存在する．
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          核の定義より$f\circ i=0$．よって任意の$h:N\to\Ker f$に対して$f\circ\p{i\circ h}=\p{f\circ i}\circ h=0$となるので写像$i^\sharp$はwell-defined．また，$g:N\to M$が$f\circ g=0$を満たすとき，任意の$x\in N$に対して$f\p{g\p{x}}=0$つまり$g\p{x}\in\Ker f$なので，$h:N\to\Ker f$を$h\p{x}\def g\p{x}$と定めるとこれはwell-definedで，また$i\circ h=i\circ h'$を満たすとすると任意の$x\in N$に対して$i\p{h\p{x}}=i\p{h'\p{x}}$となるが，$i$が単車なので$h\p{x}=h'\p{x}$，よって$h=h'$となる．よって写像$i^\sharp$は単射．
+        </p>
+      </details>
+      <p>
+        任意の左$R$加群$N$に対して写像
+        $$\prescript{\sharp}{}p:\Hom_R\p{\Coker f,N}\to\setsep{g\in\Hom_R\p{M',N}}{g\circ f=0};h\mapsto h\circ p$$
+        はwell-definedな全単射となる．特に，任意の左$R$加群の準同型写像$g:M'\to N$で$g\circ f=0$を満たすものに対して準同型写像$h:\Coker f\to N$で$h\circ p=g$を満たすものが一意的に存在する．
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          余核の定義より$p\circ f=0$．よって任意の$h:\Coker f\to N$に対して$\p{h\circ p}\circ f=h\circ\p{p\circ f}=0$となるので写像$\prescript{\sharp}{}p$はwell-defined．また，$g:M'\to N$で$g\circ f=0$を満たすとき，$x+\Im f=x'+\Im f$のときある$y\in M$に対して$x=x'+f\p{y}$とかけ，このとき仮定より$g\p{x}=g\p{x'}+g\p{f\p{y}}=g\p{x'}$なので，上記の$h$はwell-definedである．そして$h\p{p\p{x}}=h\p{x+\Im f}=g\p{x}$より$h\circ p=g$が成り立つ．よって写像$\prescript{\sharp}{}p$は全射．そして$h,h':\Coker f\to N$が$h\circ p=h'\circ p$を満たすとすると，任意の$x+\Im f\in\Coker f$に対して$h\p{x+\Im f}=h\p{p\p{x}}=h'\p{p\p{x}}=h'\p{x+\Im f}$なので$h=h'$となる．よって写像$\prescript{\sharp}{}p$は単射．
+        </p>
+      </details>
     </section>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
