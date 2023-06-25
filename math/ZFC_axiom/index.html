@@ -935,14 +935,14 @@
       <p>
         写像$f:a\to a$について，恒等写像$f$とは，
         $$f\def\setsep{\p{x,x}\in a\times a}{x\in a}.$$
-        $f$を$\rm{id}$で表す．
+        $f$を$\id$で表す．
       </p>
       <details>
         <summary>恒等写像の例</summary>
         <p>
-          $a=\set{0,1,2,3,4}$について，恒等写像$\rm{id}:a\to a$は$\p{x,x}$を元にもつから，
-          $$\rm{id}=\set{\p{0,0},\p{1,1},\p{2,2},\p{3,3},\p{4,4}}.$$
-          もちろん$\forall x\in a,\id x=x$である．
+          $a=\set{0,1,2,3,4}$について，恒等写像$\id:a\to a$は$\p{x,x}$を元にもつから，
+          $$\id=\set{\p{0,0},\p{1,1},\p{2,2},\p{3,3},\p{4,4}}.$$
+          もちろん$\forall x\in a,\id\p{x}=x$である．
         </p>
       </details>
     </section>
@@ -1151,20 +1151,20 @@
       <h5>後者</h5>
       <p>
         $a$の後者とは，
-        $$\suc{a}\def n\cup\set{n}.$$
+        $$\suc\p{a}\def n\cup\set{n}.$$
       </p>
       <h5>数字</h5>
       <p>
         \begin{align*}
-        1&\def\suc{0}=0\cup\set{0}=\set{0}=\set{\set{}}.\\
-        2&\def\suc{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}.\\
-        3&\def\suc{2}=\set{0,1,2}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}.\\
-        4&\def\suc{3}=\set{0,1,2,3}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}},\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}}.\\
-        5&\def\suc{4}=\set{0,1,2,3,4}.\\
-        6&\def\suc{5}=\set{0,1,2,3,4,5}.\\
-        7&\def\suc{6}=\set{0,1,2,3,4,5,6}.\\
-        8&\def\suc{7}=\set{0,1,2,3,4,5,6,7}.\\
-        9&\def\suc{8}=\set{0,1,2,3,4,5,6,7,8}.\\
+        1&\def\suc\p{0}=0\cup\set{0}=\set{0}=\set{\set{}}.\\
+        2&\def\suc\p{1}=1\cup\set{1}=\set{0,1}=\set{\set{},\set{\set{}}}.\\
+        3&\def\suc\p{2}=\set{0,1,2}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}.\\
+        4&\def\suc\p{3}=\set{0,1,2,3}=\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}},\set{\set{},\set{\set{}},\set{\set{},\set{\set{}}}}}.\\
+        5&\def\suc\p{4}=\set{0,1,2,3,4}.\\
+        6&\def\suc\p{5}=\set{0,1,2,3,4,5}.\\
+        7&\def\suc\p{6}=\set{0,1,2,3,4,5,6}.\\
+        8&\def\suc\p{7}=\set{0,1,2,3,4,5,6,7}.\\
+        9&\def\suc\p{8}=\set{0,1,2,3,4,5,6,7,8}.\\
         \end{align*}
       </p>
       <h4>公理</h4>
@@ -1172,7 +1172,7 @@
       <p>
         \begin{align*}
         &\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}\\
-        \Iff&\exists x,0\in x\land\forall y\p{y\in x\to\suc{y}\in x}.
+        \Iff&\exists x,0\in x\land\forall y\p{y\in x\to\suc\p{y}\in x}.
         \end{align*}
       </p>
     </section>
