@@ -16,7 +16,7 @@
 <body>
   <header>
     <h1>第1回</h1>
-    <a href="../../">ホーム</a> -&gt; <a href="../">数学</a> -&gt; 第1回
+    <a href="../../">ホーム</a> -&gt; <a href="../">ホモロジー代数勉強会</a> -&gt; 第1回
   </header>
   <main>
     <details>
@@ -47,11 +47,42 @@
       <h4>定義1.21</h4>
       <p>
         左$R$加群$M,N,X$と$f\in\Hom_R\p{M,N}$について，
-        $$f^\sharp\def\Hom_R\p{X,M}\to\Hom_R\p{X,N};\phi\mapsto f\circ\phi$$
-        $$^\sharp f\def\Hom_R\p{N,X}\to\Hom_R\p{M,X};\phi\mapsto\phi\circ f$$
+        $$f^\sharp:\Hom_R\p{X,M}\to\Hom_R\p{X,N};\phi\mapsto f\circ\phi$$
+        $$^\sharp f:\Hom_R\p{N,X}\to\Hom_R\p{M,X};\phi\mapsto\phi\circ f$$
       </p>
     </section>
-    $f^\sharp,^\sharp f$は可換群の準同型写像，$R$が可換群のときは$R$加群の準同型写像となる．
+    <p>
+      $f^\sharp,^\sharp f$は可換群の準同型写像，$R$が可換群のときは$R$加群の準同型写像となる．
+    </p>
+    <p>
+      $f\in\Hom_R\p{M,N},g\in\Hom_R\p{N,L}$とするとき$g^\sharp\circ f^\sharp=\p{g\circ f}^\sharp,^\sharp f\circ^\sharp g=^\sharp\p{g\circ f}$が成り立つ．
+    </p>
+    <section class="def">
+      <h4>定義1.21</h4>
+      <h5>余核</h5>
+      <p>
+        $f:M\to M'$を左$R$加群の準同型写像とするとき，$f$の余核とは，
+        $$\Coker f=M'/\Im f$$
+      </p>
+    </section>
+    <aside>
+      <h4>例</h4>
+      <ul>
+        <li>$\Ker\id_M=0,\Im\id_M=M,\Coker\id_M=0$．</li>
+        <li>零写像0:$\Ker0=M,\Im0=0,\Coker0=N$．</li>
+        <li>$N$を左$R$加群$M$の部分加群，$i:N\to M$を標準的包含として，$\Ker i=0,\Im i=N,\Coker i=M/N$．</li>
+        <li>$N$を左$R$加群$M$の部分加群，$p:M\to M/N;x\mapsto x+N$を標準的射影とするとき$\Ker p=N,\Im p=M/N,\Coker p=0$．</li>
+        <li>左$R$加群$M$，$f:M\to M';x\mapsto x+N$を準同型写像とするとき標準的射影$g:M'\to\Coker f$の核$\Ker g=\Im f$．</li>
+      </ul>
+      <p>なんでかは説明できません……</p>
+    </aside>
+    <section class="def">
+      <h4>命題1.23</h4>
+      <h5>普遍性</h5>
+      <p>
+        $R$を環，$f:M\to M'$を左$R$加群の準同型写像，$i:\Ker f\to M$を標準的包含，$p:M'\to\Coker f$を
+      </p>
+    </section>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
