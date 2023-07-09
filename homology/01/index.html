@@ -28,17 +28,17 @@
       <h5>余核</h5>
       <p>
         左$R$加群の準同型写像$f:M\to M'$について，$f$の余核とは，
-        $$\Coker\,f=M'/\Im\,f$$
+        $$\Coker\,f\def M'/\Im\,f$$
       </p>
     </section>
     <aside>
       <h4>例</h4>
       <ul>
-        <li>$\Ker\$，$\id_M=0$，$\Im\,\id_M=M$，$\Coker\,\id_M=0$．</li>
-        <li>零写像0:$\Ker\,0=M$，$\Im\,0=0$，$\Coker\,0=N$．</li>
-        <li>$N$を左$R$加群$M$の部分加群，$i:N\to M$を標準的包含として，$\Ker\,i=0$，$\Im\,i=N$，$\Coker\,i=M/N$．</li>
-        <li>$N$を左$R$加群$M$の部分加群，$p:M\to M/N;x\mapsto x+N$を標準的射影とするとき$\Ker\,p=N$，$\Im\,p=M/N$，$\Coker\,p=0$．</li>
-        <li>左$R$加群$M$，$f:M\to M';x\mapsto x+N$を準同型写像とするとき標準的射影$g:M'\to\Coker\,f$について$\Ker\,g=\Im\,f$．</li>
+        <li>$\Ker\,\id_M=0$，$\Im\,\id_M=M$，$\Coker\,\id_M=0$．</li>
+        <li>零写像0について，$\Ker\,0=M$，$\Im\,0=0$，$\Coker\,0=N$．</li>
+        <li>左$R$加群$M$の部分加群$N$，標準的包含$i:N\to M$について，$\Ker\,i=0$，$\Im\,i=N$，$\Coker\,i=M/N$．</li>
+        <li>左$R$加群$M$の部分加群$N$，標準的射影$p:M\to M/N$について，$\Ker\,p=N$，$\Im\,p=M/N$，$\Coker\,p=0$．</li>
+        <li>左$R$加群$M$，準同型写像$f:M\to M'$，標準的射影$g:M'\to\Coker\,f$について，$\Ker\,g=\Im\,f$．</li>
       </ul>
     </aside>
     <section class="def">
@@ -51,29 +51,51 @@
         任意の左$R$加群$N$に対して写像
         $$i^\sharp:\Hom_R\p{N,\Ker\,f}\to\setsep{g\in\Hom_R\p{N,M}}{f\circ g=0};h\mapsto i\circ h$$
         はwell-definedな全単射となる．特に，任意の左$R$加群の準同型写像$g:N\to M$で$f\circ g=0$を満たすものに対して準同型写像$h:N\to\Ker\,f$で$i\circ h=g$を満たすものが一意的に存在する．
+        $$\xymatrix{
+        \Ker\,f \ar[r]^i & M \ar[r]^f & M'\\
+        N \ar@{.>}[u]^{\exists!h} \ar[ru]^g \ar[rru]_0
+        }$$
       </p>
       <details>
         <summary>証明</summary>
-        <p>
-          核の定義より$f\circ i=0$．よって任意の$h:N\to\Ker\,f$に対して$f\circ\p{i\circ h}=\p{f\circ i}\circ h=0$となるので写像$i^\sharp$はwell-defined．また，$g:N\to M$が$f\circ g=0$を満たすとき，任意の$x\in N$に対して$f\p{g\p{x}}=0$つまり$g\p{x}\in\Ker\,f$なので，$h:N\to\Ker\,f$を$h\p{x}\def g\p{x}$と定めるとこれはwell-definedで，また$i\circ h=i\circ h'$を満たすとすると任意の$x\in N$に対して$i\p{h\p{x}}=i\p{h'\p{x}}$となるが，$i$が単射なので$h\p{x}=h'\p{x}$，よって$h=h'$となる．よって写像$i^\sharp$は単射．
-          $$\xymatrix{
-          \Ker\,f \ar[r]^i & M \ar[r]^f & M'\\
-          N \ar[u]^{\exists!h} \ar[ru]^g \ar[rru]_0
-          }$$
-        </p>
+        <div class="tree">
+          写像$i^\sharp$はwell-defined．
+          <div>
+            核の定義より$f\circ i=0$．
+            <div>
+              任意の$x\in\Ker\,f$について，$\p{f\circ i}\p{x}=f\p{x}=0$．
+            </div>
+            任意の$h:N\to\Ker\,f$に対して$f\circ\p{i\circ h}=\p{f\circ i}\circ h=0$．
+          </div>
+          $h:N\to\Ker\,f$を$h\p{x}\def g\p{x}$と定めるとwell-defined．
+          <div>
+            任意の$x\in N$に対して$f\p{g\p{x}}=0$．$g\p{x}\in\Ker\,f$．
+          </div>
+          写像$i^\sharp$は単射．
+          <div>
+            $i\circ h=i\circ h'$を満たすとすると，任意の$x\in N$に対して$i\p{h\p{x}}=i\p{h'\p{x}}$．$i$が単射なので$h\p{x}=h'\p{x}$．$h=h'$．
+          </div>
+        </div>
       </details>
       <p>
         任意の左$R$加群$N$に対して写像
         $$\prescript{\sharp}{}p:\Hom_R\p{\Coker\,f,N}\to\setsep{g\in\Hom_R\p{M',N}}{g\circ f=0};h\mapsto h\circ p$$
-        はwell-definedな全単射となる．特に，任意の左$R$加群の準同型写像$g:M'\to N$で$g\circ f=0$を満たすものに対して準同型写像$h:\Coker\,f\to N$で$h\circ p=g$を満たすものが一意的に存在する．
+        はwell-definedな全単射となる．特に，任意の左$R$加群の準同型写像$g:M'\to N$で$g\circ f=0$を満たすものに対して準同型写像$h:\Coker\,f\to N$で$h\circ p=g$を満たす$h$が一意的に存在する．
+        $$\xymatrix{
+        M \ar[r]^f \ar[rrd]_0 & M' \ar[r]^p \ar[rd]^g & \Coker\,f \ar@{.>}[d]^{\exists!h}\\
+        & & N
+        }$$
       </p>
       <details>
         <summary>証明</summary>
-        <p>
-          余核の定義より$p\circ f=0$．よって任意の$h:\Coker\,f\to N$に対して$\p{h\circ p}\circ f=h\circ\p{p\circ f}=0$となるので写像$\prescript{\sharp}{}p$はwell-defined．また，$g:M'\to N$で$g\circ f=0$を満たすとき，$x+\Im\,f=x'+\Im\,f$のときある$y\in M$に対して$x=x'+f\p{y}$とかけ，このとき仮定より$g\p{x}=g\p{x'}+g\p{f\p{y}}=g\p{x'}$なので，上記の$h$はwell-definedである．そして$h\p{p\p{x}}=h\p{x+\Im\,f}=g\p{x}$より$h\circ p=g$が成り立つ．よって写像$\prescript{\sharp}{}p$は全射．そして$h,h':\Coker\,f\to N$が$h\circ p=h'\circ p$を満たすとすると，任意の$x+\Im\,f\in\Coker\,f$に対して$h\p{x+\Im\,f}=h\p{p\p{x}}=h'\p{p\p{x}}=h'\p{x+\Im\,f}$なので$h=h'$となる．よって写像$\prescript{\sharp}{}p$は単射．
-        </p>
+        <div class="tree">
+          余核の定義より$p\circ f=0$．任意の$h:\Coker\,f\to N$に対して$\p{h\circ p}\circ f=h\circ\p{p\circ f}=0$となるので写像$\prescript{\sharp}{}p$はwell-defined．また，$g:M'\to N$で$g\circ f=0$を満たすとき，$x+\Im\,f=x'+\Im\,f$のときある$y\in M$に対して$x=x'+f\p{y}$とかけ，このとき仮定より$g\p{x}=g\p{x'}+g\p{f\p{y}}=g\p{x'}$なので，上記の$h$はwell-definedである．そして$h\p{p\p{x}}=h\p{x+\Im\,f}=g\p{x}$より$h\circ p=g$が成り立つ．よって写像$\prescript{\sharp}{}p$は全射．そして$h,h':\Coker\,f\to N$が$h\circ p=h'\circ p$を満たすとすると，任意の$x+\Im\,f\in\Coker\,f$に対して$h\p{x+\Im\,f}=h\p{p\p{x}}=h'\p{p\p{x}}=h'\p{x+\Im\,f}$なので$h=h'$となる．よって写像$\prescript{\sharp}{}p$は単射．
+        </div>
       </details>
     </section>
+    <p>
+      $i':K\to M$
+    </p>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>

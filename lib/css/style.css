@@ -2,6 +2,7 @@ body {
   margin: 0px;
   background-color: #dddddd;
   font-family: serif;
+  line-break: strict;
 }
 
 header {
@@ -89,10 +90,10 @@ section {
   padding: 0.5rem;
 }
 
-section p,
-section ol,
-section ul,
-section details {
+section>p,
+section>ol,
+section>ul,
+section>details {
   margin-left: 2rem;
 }
 
@@ -110,19 +111,6 @@ aside {
   border: solid #222222 0.1rem;
   padding: 0.5rem;
   background: #aaaaaa;
-}
-
-ol li {
-  list-style-type: none;
-  counter-increment: cnt;
-}
-
-ol li::before {
-  display: inline-block;
-  margin-left: -50px;
-  width: 50px;
-  text-align: right;
-  content: "(" counter(cnt, upper-roman) ")\00a0";
 }
 
 table {
@@ -163,6 +151,11 @@ summary+* {
 
 details details {
   background-color: #dddddd;
+}
+
+div.tree div {
+  margin-left: 1rem;
+  border-left: solid 0.1rem #000000;
 }
 
 /* チャット */
