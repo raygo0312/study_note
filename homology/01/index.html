@@ -41,7 +41,7 @@
         <li>左$R$加群$M$，準同型写像$f:M\to M'$，標準的射影$g:M'\to\Coker\,f$について，$\Ker\,g=\Im\,f$．</li>
       </ul>
     </aside>
-    <section class="def">
+    <section class="thm">
       <h4>命題1.23</h4>
       <h5>普遍性</h5>
       <p>
@@ -93,9 +93,26 @@
         </div>
       </details>
     </section>
+    <h4>核の特徴付け</h4>
+    <ul>
+      <li>準同型写像$i':K\to M$が$i'^\sharp$について普遍性を満たすとき，$i'\circ h=i$を満たす同型写像$h:\Ker\,f\to K$が一意的に存在する．</li>
+      <li>$N=\Ker\,f$のとき，$f\circ i=0$より$h$が一意的に存在する．</li>
+      <li>$N=K$のとき，$f\circ i'=f\circ i'^\sharp\p{\id_K}=0$より$h$が一意的に存在する．</li>
+      <li>$N=\Ker\,f$のとき，合成$h'\circ h:\Ker\,f\to\Ker\,f$より$i\circ\p{h'\circ h}=i$であり，$i\circ\id_{\Ker\,f}=i$であるから，$h$が一意的に存在する．</li>
+      <li>$N=\Ker\,f$のとき，合成$h'\circ h:\Ker\,f\to\Ker\,f$より$i\circ\p{h'\circ h}=i$であり，$i\circ\id_{\Ker\,f}=i$であるから，$h$が一意的に存在する．</li>
+      <li>$N=K$のとき，$i'$の普遍性より$h\circ h'=\id_K$である．したがって$h$は同型写像である．</li>
+    </ul>
+    <h4>余核の特徴付け</h4>
     <p>
-      $i':K\to M$
+      同様に，準同型写像$p':M'\to C$が普遍性を満たすとき，$h\circ p=p'$を満たす同型写像$h:\Coker\,f\to C$が一意的に存在する．
     </p>
+    <section class="thm">
+      <h4>命題1.25</h4>
+      <h5>準同型定理</h5>
+      <p>
+        環$R$，左$R$加群の準同型写像とするとき，$f$は自然に同型写像$\bar{f}:M/\Ker\,f\to\Im\,f;x+\Ker\,f\mapsto f\p{x}$を引き起こす．
+      </p>
+    </section>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
 </body>
