@@ -132,8 +132,30 @@
       <h4>命題1.25</h4>
       <h5>準同型定理</h5>
       <p>
-        環$R$，左$R$加群の準同型写像とするとき，$f$は自然に同型写像$\bar{f}:M/\Ker\,f\to\Im\,f;x+\Ker\,f\mapsto f\p{x}$を引き起こす．
+        環$R$，左$R$加群の準同型写像$f:M\to N$は自然に同型写像$\bar{f}:M/\Ker\,f\to\Im\,f;x+\Ker\,f\mapsto f\p{x}$を引き起こす．
       </p>
+      <details>
+        <summary>証明</summary>
+        <div class="tree">
+          $\bar{f}$はwell-defined．
+          <div>
+            $x+\Ker\,f=x'\Ker\,f$のとき，$x-x'\in\Ker\,f$である．<br>
+            定義より$f\p{x-x'}=f\p{x}-f\p{x'}=0$である．<br>
+            つまり$f\p{x}=f\p{x'}$である．
+          </div>
+          $\bar{f}$は全射．
+          <div>
+            これは「任意の$x\in M/\Ker\,f$に対して，$\bar{f}\p{x}=0$ならば$x=0$である」と同値である．<br>
+            $\bar{f}\p{a+\Ker\,f}=0$のとき$f\{a}=0$である．<br>
+            つまり，$a\in\Ker\,f$である．<br>
+            よって，$a=0$である．
+          </div>
+          $\bar{f}$は単射．
+          <div>
+            $i\circ h=i\circ h'$を満たすとすると，任意の$x\in N$に対して$i\p{h\p{x}}=i\p{h'\p{x}}$．$i$が単射なので$h\p{x}=h'\p{x}$．$h=h'$．
+          </div>
+        </div>
+      </details>
     </section>
   </main>
   <footer>Copyright &copy; raygo All Rights Reserved since 2016.</footer>
