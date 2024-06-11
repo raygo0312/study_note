@@ -1,62 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hachi+Maru+Pop&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
+
+:root {
+  --serif: "Noto Serif JP";
+  --sans: "Noto Sans JP";
+  --heading: "Shippori Mincho B1";
+  --space: 10pt;
+  --border: var(--black) solid thin;
+  --white: #f0f0f0;
+  --gray: #dddddd;
+  --black: #333333;
+  --accent: #6d7993;
+  --main: #9099a2;
+  --header: #66a5ad;
+  --h2: #96858f;
+  --h3: #c09f80;
+  --ex: #c5c2bd;
+  --axm: #d5c5c5;
+  --def: #c0c4d0;
+  --thm: #bdc6c0;
+}
+
 body {
-  margin: 0px;
-  background-color: #dddddd;
-  font-family: serif;
+  margin: 0;
+  background-color: var(--main);
+  font-family: var(--serif);
   line-break: strict;
 }
 
 header {
-  border-bottom: solid 0.2rem;
-  padding-left: 0.5rem;
-  background-color: #00aa00;
+  border-bottom: var(--border);
+  padding: var(--space);
+  background-color: var(--header);
+  font-family: var(--heading);
 }
 
 main {
   margin: auto;
-  border: solid #aaaaaa 0.1rem;
-  padding: 0.5rem;
-  padding-bottom: 10rem;
+  border: var(--border);
+  padding: var(--space);
   min-height: 100vh;
   max-width: 60rem;
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
 footer {
-  border-top: solid #ffffff 0.1rem;
-  background-color: #303030;
-  color: #808080;
-  background-color: black;
+  border-top: var(--border);
+  color: var(--gray);
+  background-color: var(--black);
 }
 
 h1 {
-  font-family: sans-serif;
+  font-family: var(--heading);
+  margin-left: calc(2 * var(--space));
 }
 
 h2 {
-  margin-top: 5rem;
-  border-left: solid #007700 0.5rem;
-  padding-left: 0.5rem;
-  background-color: #ddffdd;
-  font-family: sans-serif;
+  margin-top: calc(4 * var(--space));
+  border-left: var(--h2) solid thick;
+  padding-left: var(--space);
+  background-color: rgb(from var(--h2) r g b / 0.3);
+  font-family: var(--sans);
 }
 
 h3 {
-  margin-top: 3rem;
-  border-bottom: solid #aaddff 0.2rem;
-  border-left: solid #aaddff 0.5rem;
-  padding-left: 0.5rem;
-  font-family: sans-serif;
+  margin-top: calc(2 * var(--space));
+  border-bottom: var(--h3) solid medium;
+  border-left: var(--h3) solid thick;
+  padding-left: calc(0.5 * var(--space));
+  font-family: var(--sans);
 }
 
 h4 {
-  text-decoration: underline;
-  font-family: sans-serif;
-}
-
-h5 {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  font-family: sans-serif;
+  margin-top: var(--space);
+  font-family: var(--sans);
 }
 
 p {
@@ -65,12 +84,11 @@ p {
 
 a:link {
   text-decoration: underline;
-  color: #000000;
+  color: var(--black);
 }
 
 a:visited {
-  text-decoration: none;
-  color: #333333;
+  color: var(--black);
 }
 
 a:hover {
@@ -78,7 +96,7 @@ a:hover {
 }
 
 a:active {
-  color: #ffffff;
+  color: var(--white);
 }
 
 dfn {
@@ -86,8 +104,11 @@ dfn {
 }
 
 section {
-  margin: 1rem;
-  padding: 0.5rem;
+  margin: var(--space) calc(4 * var(--space));
+  padding: calc(0.5 * var(--space));
+  position: relative;
+  padding-top: 3rem;
+  border: var(--border);
 }
 
 section>p,
@@ -98,64 +119,75 @@ section>details {
 }
 
 section.def {
-  background-color: #ddffdd;
+  background-color: var(--def);
+}
+
+section.def::before {
+  content: "定義";
+}
+
+section.axm {
+  background-color: var(--axm);
+}
+
+section.axm::before {
+  content: "公理";
 }
 
 section.thm {
-  background-color: #ddddff;
+  background-color: var(--thm);
 }
 
-aside {
-  margin: 1rem;
-  box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
-  border: solid #222222 0.1rem;
-  padding: 0.5rem;
-  background: #aaaaaa;
+section.thm::before {
+  content: "定理";
 }
 
-table {
-  border-spacing: 0;
-  border-collapse: collapse;
+section.ex {
+  background-color: var(--ex);
+}
+
+section.ex::before {
+  content: "例";
+}
+
+section.def::before,
+section.axm::before,
+section.thm::before,
+section.ex::before {
+  position: absolute;
+  background: rgb(from var(--accent) r g b / 0.3);
+  color: var(--white);
+  font-weight: bold;
+  padding: calc(0.5 * var(--space));
   width: 100%;
-}
-
-table th,
-table td {
-  padding: 0.5rem 0;
-  text-align: center;
-}
-
-table tr:nth-child(odd) {
-  background-color: #eeeeee
+  top: 0;
+  left: 0;
 }
 
 details {
   margin: 0.5rem;
-  background-color: #eeeeee;
+  border: var(--black) solid 1px;
+  background-color: rgb(from var(--black) r g b / 0.1);
 }
 
-
 details+details {
-  margin-top: -0.6rem;
+  margin-top: -6pt;
 }
 
 summary {
-  padding-left: 0.5rem;
-  border-bottom: solid 0.1rem #000000;
-  font-family: sans-serif;
+  padding-left: var(--space);
+  border-bottom: var(--border);
+  background-color: rgb(from var(--black) r g b / 0.1);
+  font-family: "Noto Sans JP";
 }
 
 summary+* {
-  margin-top: 0.6rem;
-}
-
-details details {
-  background-color: #dddddd;
+  margin-top: var(--space);
 }
 
 div.tree div {
   margin-left: 1rem;
-  border-left: solid 0.1rem #000000;
+  border-left: var(--border);
 }
 
 /* チャット */
@@ -179,7 +211,7 @@ div.tree div {
   padding: 0.1rem 0.5rem;
   padding-right: 0.3rem;
   max-width: 70%;
-  background: #dddddd;
+  background: var(--gray);
 }
 
 .you::after {
@@ -187,7 +219,7 @@ div.tree div {
   top: -0.1rem;
   left: -1rem;
   border: solid 0.3rem transparent;
-  border-right: solid 1rem #dddddd;
+  border-right: solid 1rem var(--gray);
   transform: rotate(35deg);
   content: "";
 }
@@ -204,7 +236,7 @@ div.tree div {
   padding: 0.1rem 0.5rem;
   padding-right: 0.3rem;
   max-width: 70%;
-  background: #dddddd;
+  background: var(--gray);
   text-align: left;
 }
 
@@ -213,7 +245,7 @@ div.tree div {
   top: -0.1rem;
   right: -1rem;
   border: solid 0.3rem transparent;
-  border-left: solid 1rem #dddddd;
+  border-left: solid 1rem var(--gray);
   transform: rotate(-35deg);
   content: "";
 }
@@ -223,8 +255,7 @@ div.tree div {
 }
 
 .MathJax {
-  padding: 0.1rem;
-  margin: 0 0.1rem;
+  margin: 0 0.25rem;
   overflow-x: auto;
   overflow-y: hidden;
 }

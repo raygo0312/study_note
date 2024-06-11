@@ -34,8 +34,7 @@
       推論の流れの表し方を考える．<dfn>推論図</dfn>とは推論の流れを木のように表す図である．ある推論規則では前提を取り除く，<dfn>打ち消し</dfn>という操作がある．打ち消される前提を<dfn>仮定</dfn>という．推論規則のみを用いているとき，推論図を<dfn>演繹図</dfn>という．前提がないとき，演繹図を<dfn>証明図</dfn>という．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>推論図</h5>
+      <h4>推論図</h4>
       <p>
         $A_1,A_2,\dots,A_n\To A$を次の図のように表し，
         $$\infer{A}{A_1\quad A_2\quad\cdots\quad A_n}$$
@@ -43,7 +42,7 @@
         $$\infer{A}{\mathcal{A_1}\quad\mathcal{A_2}\quad\cdots\quad\mathcal{A_n}}$$
         も推論図という．
       </p>
-      <h5>演繹図</h5>
+      <h4>演繹図</h4>
       <p>
         推論規則$\rm{R}$が$A_1,A_2,\dots,A_n\To A$のとき，次の図のように表し，
         $$\rm{R}\infer{A}{A_1\quad A_2\quad\cdots\quad A_n}$$
@@ -53,19 +52,19 @@
         $$\rm{R}\infer{A}{\mathcal{A_1}\quad\mathcal{A_2}\quad\cdots\quad\mathcal{A_n}}$$
         も演繹図という．前提がないとき，演繹図を証明図という．
       </p>
-      <h5>演繹可能</h5>
+      <h4>演繹可能</h4>
       <p>
         前提$A_1,A_2,\dots,A_n$，帰結$A$について，演繹図が存在するとき，
         $$A_1,A_2,\dots,A_n\proof A$$
         と表し，$A_1,A_2,\dots,A_n$から$A$に演繹可能という．
       </p>
-      <h5>証明可能</h5>
+      <h4>証明可能</h4>
       <p>
         帰結$A$について，証明図が存在するとき，
         $$\proof A$$
         と表し，$A$は証明可能という．
       </p>
-      <h5>定理</h5>
+      <h4>定理</h4>
       <p>
         論理式$A$が証明可能なとき，$A$を定理という．
       </p>
@@ -97,9 +96,8 @@
       $$\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$
       としてよい．
     </p>
-    <section class="def">
-      <h4>推論規則</h4>
-      <h5>$\to\rm{I}$</h5>
+    <section class="axm">
+      <h4>$\to\rm{I}$</h4>
       <p>
         論理式$A,B$について，
         $$\to\rm{I}\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$
@@ -110,7 +108,7 @@
           $A$より，$\dots$，よって$B$．ゆえに$A\to B$．
         </p>
       </details>
-      <h5>$\to\rm{E}$</h5>
+      <h4>$\to\rm{E}$</h4>
       <p>
         論理式$A,B$について，
         $$\to\rm{E}\infer{B}{A\quad A\to B}$$
@@ -131,14 +129,13 @@
     <div class="you">
       実際にこの推論規則を使って推論図を書いてみようか
     </div>
-    <aside>
-      <h4>推論図を使った推論の例</h4>
+    <section class="ex">
       <p>
         $A,A\to B,A\to B\to C$を前提として推論をする．
         $$\to\rm{E}\infer{C}{\to\rm{E}\infer{B}{A\quad A\to B}\quad\to\rm{E}\infer{B\to C}{A\quad A\to B\to C}}$$
         よって，$A,A\to B,A\to B\to C\proof C$である．
       </p>
-    </aside>
+    </section>
     <div class="you">
       完成された推論図を見るのではなくて，上から推論規則を使いながら推論図を作っていくイメージを持ってほしいな
     </div>
@@ -150,22 +147,20 @@
       もう一個の規則は推論規則の中でも重要なもので唯一前提を消せるんだ<br>
       これは証明図を書くときによく使うよ
     </div>
-    <aside>
-      <h4>証明図を使った証明の例</h4>
+    <section class="ex">
       <p>
         $$\to\rm{I}\infer[2]{A\to\p{A\to B}\to B}{\to\rm{I}\infer[1]{\p{A\to B}\to B}{\to\rm{E}\infer{B}{\infer[2]{A}{}\quad \infer[1]{A\to B}{}}}}$$
         よって，$\proof A\to\p{A\to B}\to B$である．
       </p>
-    </aside>
+    </section>
     <p>
       打ち消しの対応に使った数字は数字な必要はなく，順序にも意味はない．打ち消しでどの打ち消し線が引かれたかが分かればどんな文字を用いてもよい．複数の前提が同じ論理式のときは一度の推論で複数打ち消すこともできる．また，使用した推論規則を明記する必要もない．
     </p>
-    <aside>
-      <h4>ルールの例</h4>
+    <section class="ex">
       <p>
         $$\infer[0]{\p{A\to A\to B}\to A\to B\to B}{\infer[\star]{A\to B\to B}{\infer{B\to B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\to B}{\infer[\star]{A}{}\quad\infer[0]{A\to A\to B}{}}}}}}$$
       </p>
-    </aside>
+    </section>
     <div class="you">
       分かりづらいから，1から順番に使ってね
     </div>
@@ -177,24 +172,23 @@
     <p>
       $A_1\lor A_2$は$A_1$または$A_2$なことを意味するから，どちらか一方でも成り立てばいいので，$A_1$か$A_2$が前提のとき$A_1\lor A_2$が導ける．これを<dfn>拡大律</dfn>と言ったりもする．また，$A_1\lor A_2$からは$A_1$と$A_2$で場合分けしたあと，それぞれについて$B$を推論できれば，$A_1\lor A_2$から$B$が導ける．これは<dfn>構成的両刃論法</dfn>という名前で知られる．場合分けのことである．
     </p>
-    <section class="def">
-      <h4>推論規則</h4>
-      <h5>$\land\rm{I}$</h5>
+    <section class="axm">
+      <h4>$\land\rm{I}$</h4>
       <p>
         論理式$A_1,A_2$について，
         $$\infer{A_1\land A_2}{A_1\quad A_2}$$
       </p>
-      <h5>$\land\rm{E}$</h5>
+      <h4>$\land\rm{E}$</h4>
       <p>
         論理式$A_1,A_2$について，
         $$\infer{A_1}{A_1\land A_2}\qquad\infer{A_2}{A_1\land A_2}$$
       </p>
-      <h5>$\lor\rm{I}$</h5>
+      <h4>$\lor\rm{I}$</h4>
       <p>
         論理式$A_1,A_2$について，
         $$\infer{A_1\lor A_2}{A_1}\qquad\infer{A_1\lor A_2}{A_2}$$
       </p>
-      <h5>$\lor\rm{E}$</h5>
+      <h4>$\lor\rm{E}$</h4>
       <p>
         論理式$A_1,A_2,B$について，
         $$\infer{B}{A_1\lor A_2\quad A_1\to B\quad A_2\to B}$$
@@ -208,25 +202,24 @@
       $$\exists F\p{x}\Iff F\p{a_1}\lor F\p{a_2}\lor\cdots.$$
       と書きたいが，これだと無限に列挙することになってしまうため量化子を用いて表しているに過ぎない．これをもとに推論規則を定める．
     </p>
-    <section class="def">
-      <h4>推論規則</h4>
-      <h5>$\forall\rm{I}$</h5>
+    <section class="axm">
+      <h4>$\forall\rm{I}$</h4>
       <p>
         論理式$F\p{x}$について，
         $$\infer{\forall xF\p{x}}{F\p{a}}$$
         ただし，$a$は打ち消されていない仮定と$\forall xF\p{x}$の自由変数に含まれていない．
       </p>
-      <h5>$\forall\rm{E}$</h5>
+      <h4>$\forall\rm{E}$</h4>
       <p>
         論理式$F\p{x}$について，
         $$\infer{F\p{t}}{\forall xF\p{x}}$$
       </p>
-      <h5>$\exists\rm{I}$</h5>
+      <h4>$\exists\rm{I}$</h4>
       <p>
         論理式$F\p{x}$について，
         $$\infer{\exists xF\p{x}}{F\p{t}}$$
       </p>
-      <h5>$\exists\rm{E}$</h5>
+      <h4>$\exists\rm{E}$</h4>
       <p>
         論理式$F\p{x},A$について，
         $$\infer{A}{\exists xF\p{x}\quad F\p{a}\to A}$$
@@ -242,14 +235,13 @@
     <p>
       $\lnot A$は$A$でないことを意味する．背理法の論法を推論規則に定める．また，$A$とその否定$\lnot A$から矛盾$\bot$を推論できるとする．
     </p>
-    <section class="def">
-      <h4>推論規則</h4>
-      <h5>$\lnot\rm{I}$</h5>
+    <section class="axm">
+      <h4>$\lnot\rm{I}$</h4>
       <p>
         論理式$A$について，
         $$\infer{\lnot A}{A\to\bot}$$
       </p>
-      <h5>$\lnot\rm{E}$</h5>
+      <h4>$\lnot\rm{E}$</h4>
       <p>
         論理式$A$について，
         $$\infer{\bot}{A\quad\lnot A}$$
@@ -267,9 +259,8 @@
     <p>
       $\to$が含まれている推論規則には二つの問題点がある．一つ目はもしこの論理体系で$\to$を使用しない場合にこの推論規則を使用することができない．二つ目は冗長なこと．$\to$からの推論をするために，$\to$を作る推論が必要がある．そのため，$\to\rm{I}$を一緒に使用することが多い．これをまとめて1つの推論規則とするほうが都合がいい．
     </p>
-    <section class="def">
-      <h4>推論規則(代替)</h4>
-      <h5>$\lor\rm{E}$</h5>
+    <section class="axm">
+      <h4>$\lor\rm{E}$</h4>
       <p>
         論理式$A_1,A_2,B$について，
         $$\infer[i]{B}{A_1\lor A_2\quad\infer{B}{\infer{\vdots}{\infer[i]{A_1}{}}}\quad\infer{B}{\infer{\vdots}{\infer[i]{A_2}{}}}}$$
@@ -280,12 +271,12 @@
           $A_1$または$A_2$が成り立つから，場合分けを行う．$A_1$のとき$B$である．$A_2$のとき$B$である．ゆえに$B$である．
         </p>
       </details>
-      <h5>$\exists\rm{E}$</h5>
+      <h4>$\exists\rm{E}$</h4>
       <p>
         論理式$F\p{x},B$について，
         $$\infer[i]{B}{\exists x,F\p{x}\quad\infer{B}{\infer{\vdots}{\infer[i]{F\p{a}}{}}}}$$
       </p>
-      <h5>$\lnot\rm{I}$</h5>
+      <h4>$\lnot\rm{I}$</h4>
       <p>
         論理式$A$について，
         $$\infer[i]{\lnot A}{\infer{\bot}{\infer{\vdots}{\infer[i]{A}{}}}}$$
@@ -306,18 +297,17 @@
       これらの推論規則のみからなる論理体系を<dfn>最小論理</dfn>という．この論理体系では今後紹介する双対性すら成り立たない．これに，<dfn>選言的三段論法</dfn>を満たす公理を追加すると，<dfn>直観主義論理</dfn>(<dfn>直感論理</dfn>，<dfn>構成的論理</dfn>)という論理体系となる．さらに，<dfn>排中律</dfn>という公理を追加すると，<dfn>古典論理</dfn>(<dfn>標準論理</dfn>)という論理体系になる．一般的な数学では古典論理が採用されているため，古典論理で成り立つ範囲について扱う．また，<dfn>二重否定の除去</dfn>は「選言的三段論法かつ排中律」と同値として知られているため，最小論理に二重否定の除去を推論規則として古典論理を構成することもある．同値なことの証明は後で行う．
     </p>
     <section class="def">
-      <h4>公理</h4>
-      <h5>選言的三段論法</h5>
+      <h4>選言的三段論法</h4>
       <p>
         論理式$A,B$について，
         $$\p{A\lor B}\land\lnot B\to A.$$
       </p>
-      <h5>排中律</h5>
+      <h4>排中律</h4>
       <p>
         論理式$A$について，
         $$A\lor\lnot A.$$
       </p>
-      <h5>二重否定の除去</h5>
+      <h4>二重否定の除去</h4>
       <p>
         論理式$A$について，
         $$\lnot\lnot A\to A.$$
@@ -339,8 +329,7 @@
       推論と論理式を自由に変換するために，<dfn>演繹定理</dfn>を用いる．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>演繹定理</h5>
+      <h4>演繹定理</h4>
       <p>
         論理式の集合$\Gamma$，論理式$A,B$について，
         $$\Gamma,A\proof B\Iff\Gamma\proof A\to B.$$
@@ -379,8 +368,7 @@
       <dfn>爆発律</dfn>は矛盾からは任意の論理式が導けるという推論規則で，感覚的には間違えてそうである．
     </p>
     <section class="def">
-      <h4>推論規則</h4>
-      <h5>爆発律</h5>
+      <h4>爆発律</h4>
       <p>
         論理式$A$について，
         $$\infer{A}{\bot}$$
@@ -390,8 +378,7 @@
       爆発律と選言的三段論法の等価性を証明するには<dfn>同一律</dfn>が必要である．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>同一律</h5>
+      <h4>同一律</h4>
       <p>
         論理式$A$について，
         $$A\to A.$$
@@ -403,7 +390,7 @@
           $$\infer[1]{A\to A}{\infer[1]{A}{}}$$
         </p>
       </details>
-      <h5>爆発律と選言的三段論法の等価性</h5>
+      <h4>爆発律と選言的三段論法の等価性</h4>
       <p>
         最小論理上で爆発律と選言的三段論法は等価である．
       </p>
@@ -444,8 +431,7 @@
       選言的三段論法の代わりに爆発律を用いて次の定理を証明する．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>「爆発律，排中律」と二重否定の除去の等価性</h5>
+      <h4>「爆発律，排中律」と二重否定の除去の等価性</h4>
       <p>
         最小論理上で「爆発律，排中律」と二重否定の除去は等価である．
       </p>
@@ -479,8 +465,7 @@
       代入原理を示すために次の定理を用意する．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>$\to$の置換</h5>
+      <h4>$\to$の置換</h4>
       <p>
         論理式$A,B$について，
         $$\p{A\to B}\iff\lnot A\lor B.$$
@@ -498,8 +483,7 @@
       </details>
     </section>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>$\iff$の反射律</h5>
+      <h4>$\iff$の反射律</h4>
       <p>
         論理式$A$について，
         $$A\iff A.$$
@@ -510,7 +494,7 @@
           同一律より，$A\to A$だから成り立つ．
         </p>
       </details>
-      <h5>$\iff$の代入原理</h5>
+      <h4>$\iff$の代入原理</h4>
       <p>
         論理式$F\p{X},A,B$について，
         $$A\iff B\To F\p{A}\iff F\p{B}.$$
@@ -559,16 +543,15 @@
       </details>
     </section>
     <section class="def">
-      <h4>定義</h4>
-      <h5>$=$</h5>
+      <h4>$=$</h4>
       <p>
         $=$とは反射律と代入原理を満たす集合の関係である．
       </p>
-      <h5>$=$の反射律</h5>
+      <h4>$=$の反射律</h4>
       <p>
         $$\forall a,a=a.$$
       </p>
-      <h5>$=$の代入原理</h5>
+      <h4>$=$の代入原理</h4>
       <p>
         論理式$F\p{x}$について，
         $$\forall ab,a=b\to\p{F\p{a}\iff F\p{b}}.$$
@@ -578,8 +561,7 @@
       等価性は同値性を満たす．<dfn>同値性</dfn>とは反射律，対称律，推移律が成り立つことである．等価性から同値性のそれぞれの性質を証明する．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>$\iff$の対称律</h5>
+      <h4>$\iff$の対称律</h4>
       <p>
         論理式$A,B$について，
         $$A\iff B\Iff B\iff A.$$
@@ -596,7 +578,7 @@
         $$\p{B\iff A}$$
         が推論された．逆も同様．
       </details>
-      <h5>$\iff$の推移律</h5>
+      <h4>$\iff$の推移律</h4>
       <p>
         論理式$A,B,C$について，
         $$\p{A\iff B}\land\p{B\iff C}\To A\iff C.$$
@@ -632,8 +614,7 @@
       この後の証明に便利なので，<dfn>二重否定律</dfn>を証明する．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>二重否定律</h5>
+      <h4>二重否定律</h4>
       <p>
         論理式$A$について，
         $$A\iff\lnot\lnot A.$$
@@ -655,8 +636,7 @@
       <dfn>双対性</dfn>について証明したいが，まずは単純な<dfn>De Morganの法則</dfn>について証明していく．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>De Morganの法則</h5>
+      <h4>De Morganの法則</h4>
       <p>
         論理式$F\p{x},A,B$について，
         $$\lnot\p{A\lor B}\iff\lnot A\land\lnot B.$$
@@ -756,8 +736,7 @@
       論理式における<dfn>双対</dfn>とは，$\land$と$\lor$，$\forall$と$\exists$を交換した論理式のことである．このとき，次の定理が成り立つ．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>双対性</h5>
+      <h4>双対性</h4>
       <p>
         $n$個の論理式または述語を引数に取る論理式$F\p{B_1,\dots,B_n}$の双対$F^*\p{B_1,\dots,B_n}$としたとき，
         $$\lnot F\p{B_1,\dots,B_n}\iff F^*\p{\lnot B_1,\dots,\lnot B_n}.$$
@@ -777,13 +756,13 @@
       トートロジー$\top$を次のように定義する．トートロジーは恒真命題である．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>トートロジー</h5>
+      <h4>トートロジー</h4>
       <p>
         $$\top\Def\lnot\bot.$$
       </p>
-      <h4>定理</h4>
-      <h5>トートロジー</h5>
+    </section>
+    <section class="thm">
+      <h4>トートロジー</h4>
       <p>
         $\top$は定理である．
       </p>
@@ -794,7 +773,7 @@
           $$\infer{\lnot\bot}{\infer{\bot\to\bot}{}}$$
         </p>
       </details>
-      <h5>任意の定理とトートロジーの同値性</h5>
+      <h4>任意の定理とトートロジーの同値性</h4>
       <p>
         定理$A$について，
         $$A\iff\top.$$
@@ -817,8 +796,7 @@
     </p>
 
     <section class="thm">
-      <h4>定理</h4>
-      <h5>交換律</h5>
+      <h4>交換律</h4>
       <p>
         論理式$A,B$について，
         $$A\land B\iff B\land A.$$
@@ -846,7 +824,7 @@
           よって，$A\lor B\iff B\lor A$が成り立つ．
         </p>
       </details>
-      <h5>結合律</h5>
+      <h4>結合律</h4>
       <p>
         論理式$A,B,C$について，
         $$A\land\p{B\land C}\iff\p{A\land B}\land C.$$
@@ -860,7 +838,7 @@
           交換律を用いると逆も成り立つ．また，双対性より$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$が成り立つ．
         </p>
       </details>
-      <h5>冪等律</h5>
+      <h4>冪等律</h4>
       <p>
         論理式$A$について，
         $$A\land A\iff A.$$
@@ -874,7 +852,7 @@
           双対性より$A\lor A\iff A$も成り立つ．
         </p>
       </details>
-      <h5>分配律</h5>
+      <h4>分配律</h4>
       <p>
         論理式$A,B,C$について，
         $$A\land\p{B\lor C}\iff\p{A\land B}\lor \p{A\land C}.$$
@@ -892,7 +870,7 @@
           双対性より$A\lor\p{B\land C}\iff\p{A\lor B}\land\p{A\lor C}$も成り立つ．
         </p>
       </details>
-      <h5>恒等律</h5>
+      <h4>恒等律</h4>
       <p>
         論理式$A$について，
         $$A\land\top\iff A.$$
@@ -909,7 +887,7 @@
           $A\land\bot\iff\bot$は$\land\rm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\top\iff\top$も成り立つ．
         </p>
       </details>
-      <h5>矛盾律</h5>
+      <h4>矛盾律</h4>
       <p>
         論理式$A$について，
         $$\lnot\p{A\land\lnot A}.$$
@@ -923,7 +901,7 @@
         \end{align*}
         より真である．
       </details>
-      <h5>吸収律</h5>
+      <h4>吸収律</h4>
       <p>
         論理式$A,B$について，
         $$A\land\p{A\lor B}\iff A.$$
@@ -949,7 +927,7 @@
           したがって，$A\land\p{A\lor B}\iff A$は成り立つ．また，双対性より，$A\lor\p{A\land B}\iff A$も成り立つ．
         </p>
       </details>
-      <h5>推移律</h5>
+      <h4>推移律</h4>
       <p>
         論理式$A,B,C$について，
         $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}.$$
@@ -960,12 +938,12 @@
           $$\infer[2]{\p{A\to B}\land\p{B\to C}\to\p{A\to C}}{\infer[1]{A\to C}{\infer{C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer[2]{\p{A\to B}\land\p{B\to C}}{}}}\quad\infer{B\to C}{\infer[2]{\p{A\to B}\land\p{B\to C}}}}}}$$
         </p>
       </details>
-      <h5>移入律</h5>
+      <h4>移入律</h4>
       <p>
         論理式$A,B,C$について，
         $$\p{A\to B\to C}\to\p{A\land B\to C}.$$
       </p>
-      <h5>移出律</h5>
+      <h4>移出律</h4>
       <p>
         論理式$A,B,C$について，
         $$\p{A\land B\to C}\to\p{A\to B\to C}.$$
@@ -982,7 +960,7 @@
           \end{align*}
         </p>
       </details>
-      <h5>対偶律</h5>
+      <h4>対偶律</h4>
       <p>
         論理式$A,B$について，
         $$\p{A\to B}\iff\lnot B\to\lnot A.$$
@@ -1009,8 +987,7 @@
       量化子の重要な定理のうち，まだ紹介していないものを次にまとめる．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>束縛変数の文字置換</h5>
+      <h4>束縛変数の文字置換</h4>
       <p>
         論理式$F\p{x}$について，
         $$\forall xF\p{x}\iff\forall yF\p{y}.$$
@@ -1024,7 +1001,7 @@
           $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xF\p{x}\iff\exists yF\p{y}$も成り立つ．
         </p>
       </details>
-      <h5>量化子の変換</h5>
+      <h4>量化子の変換</h4>
       <p>
         論理式$F\p{x}$について，
         $$\forall xF\p{x}\to\exists xF\p{x}.$$
@@ -1036,7 +1013,7 @@
           $$\infer[1]{\forall xF\p{x}\to\exists xF\p{x}}{\infer{\exists xF\p{x}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
         </p>
       </details>
-      <h5>量化の交換</h5>
+      <h4>量化の交換</h4>
       <p>
         論理式$F\p{x,y}$について，
         $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}.$$
@@ -1060,7 +1037,7 @@
           $$\infer[2]{\exists x\forall yF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\infer[2]{\exists x\forall yF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
         </p>
       </details>
-      <h5>量化の分配</h5>
+      <h4>量化の分配</h4>
       <p>
         論理式$F\p{x}$について，
         $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}.$$

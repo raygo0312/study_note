@@ -31,12 +31,11 @@
       集合に用意されている2項述語は$=$と$\in$である．$=$は相等関係をもつ．$\in$はZFC公理系で性質を定められている．$a\in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$\in$を<dfn>帰属関係</dfn>という．$=$の公理を次にまとめると，
     </p>
     <section class="def">
-      <h4>公理</h4>
-      <h5>反射律</h5>
+      <h4>反射律</h4>
       <p>
         $$\forall x,x=x.$$
       </p>
-      <h5>代入原理</h5>
+      <h4>代入原理</h4>
       <p>
         述語$F$について，
         $$\forall xy,x=y\to\p{F\p{x}\iff F\p{y}}.$$
@@ -46,8 +45,7 @@
       相等関係は同値関係の一種である．<dfn>同値関係</dfn>とは<dfn>反射律</dfn>，<dfn>対称律</dfn>，<dfn>推移律</dfn>が成り立つ関係のことである．つまり，反射律と代入原理から，対象律と推移律を示すことができる．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>対称律</h5>
+      <h4>対称律</h4>
       <p>
         $$\forall xy,x=y\to y=x.$$
       </p>
@@ -63,7 +61,7 @@
           </p>
         </details>
       </details>
-      <h5>推移律</h5>
+      <h4>推移律</h4>
       <p>
         $$\forall xyz,x=y\land y=z\to x=z.$$
       </p>
@@ -95,8 +93,7 @@
       集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a\subset b$と表し，$a$は$b$に<dfn>含まれる</dfn>，$a$は$b$の部分集合という．$\subset$を<dfn>包含関係</dfn>という．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>部分集合</h5>
+      <h4>部分集合</h4>
       <p>
         \begin{align*}
         a\subset b&\Def\forall x,x\in a\to x\in b,\\
@@ -107,7 +104,7 @@
         <summary>読み</summary>
         $a$は$b$に含まれる．
       </details>
-      <h5>真部分集合</h5>
+      <h4>真部分集合</h4>
       <p>
         \begin{align*}
         a\subsetneq b&\Def a\subset b\land a\neq b,\\
@@ -119,8 +116,7 @@
       定義より$\subset$は$\to$のように扱える．つまり$\to$と同様の性質が使える．しかし，$\subset$は集合から論理値を返す述語だからすべての性質が使えるわけではないので注意が必要である．次の3つの性質を満たす関係を<dfn>順序関係</dfn>という．つまり，$\subset$は順序関係である．反対称律は外延性公理から導ける．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>反射律</h5>
+      <h4>反射律</h4>
       <p>
         $$\forall x,x\subset x.$$
       </p>
@@ -132,7 +128,7 @@
           となる．同一律よりこれは真である．よって示された．
         </p>
       </details>
-      <h5>推移律</h5>
+      <h4>推移律</h4>
       <p>
         $$\forall xyz,x\subset y\land y\subset z\to x\subset z.$$
       </p>
@@ -150,7 +146,7 @@
           だから，示された．
         </p>
       </details>
-      <h5>反対称律</h5>
+      <h4>反対称律</h4>
       <p>
         $$\forall xy,x\subset y\land y\subset x\to x=y.$$
       </p>
@@ -159,7 +155,6 @@
       $\subset$の順序関係以外の性質についても述べる．
     </p>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         集合$a,b,c$について，
         $$a\in b\land b\subset c\To a\in c.$$
@@ -188,9 +183,8 @@
       これを的確に表現した論理式がこれ
     </div>
 
-    <section class="def">
-      <h4>公理</h4>
-      <h5>外延性公理</h5>
+    <section class="axm">
+      <h4>外延性公理</h4>
       <p>
         \begin{align*}
         &\forall xy,\forall z\p{z\in x\iff z\in y}\to x=y\\
@@ -252,14 +246,14 @@
     </div>
 
     <section class="def">
-      <h4>定義</h4>
-      <h5>空集合</h5>
+      <h4>空集合</h4>
       <p>
         空集合$0$とは，
         $$\forall x,x\notin 0.$$
       </p>
-      <h4>公理</h4>
-      <h5>空集合公理</h5>
+    </section>
+    <section class="axm">
+      <h4>空集合公理</h4>
       <p>
         \begin{align*}
         &\exists x\forall y,y\notin x\\
@@ -271,8 +265,7 @@
       空集合は任意の集合を持たない．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>空集合の一意性</h5>
+      <h4>空集合の一意性</h4>
       <p>
         $0$は一意である．
       <details>
@@ -289,14 +282,14 @@
       <dfn>対</dfn>(<dfn>非順序対</dfn>)とは二つの集合$a,b$のみを元とする集合$\set{a,b}$のことをいう．対公理は他の公理から証明できる．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>対</h5>
+      <h4>対</h4>
       <p>
         集合$a,b$について，$a,b$の対$\set{a,b}$とは，
         $$\forall x,x\in\set{a,b}\iff x=a\lor x=b.$$
       </p>
-      <h4>公理</h4>
-      <h5>対公理</h5>
+    </section>
+    <section class="axm">
+      <h4>対公理</h4>
       <p>
         \begin{align*}
         &\forall xy\exists z\forall w,w\in z\iff w=x\lor w=y\\
@@ -305,8 +298,7 @@
       </p>
     </section>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>対の一意性</h5>
+      <h4>対の一意性</h4>
       <p>
         集合$a,b$について，
         $\set{a,b}$は一意である．
@@ -322,7 +314,6 @@
       $\iff$で公理化されている集合は同じやり方で一意性を証明できるから省略するね
     </div>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         集合$a,b,c$について，
         $$\set{a,b}=\set{b,a}.$$
@@ -376,8 +367,7 @@
       <dfn>1元集合</dfn>とは元$a$をただ1つのみもつ集合$\set{a}$のことである．外延性公理と対公理を用いることで1元集合の性質が説明できる．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>1元集合</h5>
+      <h4>1元集合</h4>
       <p>
         集合$a$について，
         $$\set{a}\def\set{a,a}.$$
@@ -387,7 +377,6 @@
       1元集合は対から定義されるから，対の性質から直ちにわかる性質がある．
     </p>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         集合$a,b,c$について，
         $$a\in\set{a}.$$
@@ -401,15 +390,13 @@
       <dfn>順序対</dfn>とは順序を持った対を$\p{a,b}$のように表す．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>順序対</h5>
+      <h4>順序対</h4>
       <p>
         集合$a,b$について，$a,b$の順序対とは，
         $$\p{a,b}\def\set{\set{a},\set{a,b}}.$$
       </p>
     </section>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         集合$a,b,a',b'$について，
         $$\p{a,b}=\p{a',b'}\Iff a=a'\land b=b'.$$
@@ -462,30 +449,28 @@
       順序対を$n$個の組として拡張する．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>順序組</h5>
-      <h5>0組(空集合)</h5>
+      <h4>順序組</h4>
+      <h4>0組(空集合)</h4>
       <p>
         $$\p{}\def0.$$
       </p>
-      <h5>1組(1元集合)</h5>
+      <h4>1組(1元集合)</h4>
       <p>
         集合$a$について，
         $$\p{a}\def a.$$
       </p>
-      <h5>2組(順序対)</h5>
+      <h4>2組(順序対)</h4>
       <p>
         集合$a,b$について，
         $$\p{a,b}\def\set{\set{a},\set{a,b}}.$$
       </p>
-      <h5>$n$組</h5>
+      <h4>$n$組</h4>
       <p>
         集合$a_1,\dots,a_n$について，
         $$\p{a_1,\dots,a_n}\def\p{a_1,\p{a_2,\dots,a_n}}.$$
       </p>
     </section>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         集合$a_1,\dots,a_n,b_1,\dots,b_n$について，
         $$\p{a_1,\dots,a_n}=\p{b_1,\dots,b_n}\Iff a_1=b_1\land\cdots\land a_n=b_n.$$
@@ -514,8 +499,7 @@
       対公理と和集合公理より有限個の集合の存在が示せる．そのような集合を表す表記を定義する．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>外延記法</h5>
+      <h4>外延記法</h4>
       <p>
         集合$a_1,\dots,a_n$について，外延記法の集合$\set{a_1,\dots,a_n}$とは，
         $$\forall x,x\in\set{a_1,\dots,a_n}\iff x=a_1\lor\cdots\lor x=a_n.$$
@@ -525,14 +509,14 @@
       <dfn>和集合</dfn>(<dfn>合併</dfn>)とはその集合の元の元の全体の集合である．$a$の和集合を$\bigcup a$と表す．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>和集合</h5>
+      <h4>和集合</h4>
       <p>
         集合$a$について，$a$の和集合$\bigcup a$とは，
         $$\forall x,x\in\bigcup a\iff\exists y\p{x\in y\land y\in a}.$$
       </p>
-      <h4>公理</h4>
-      <h5>和集合公理</h5>
+    </section>
+    <section class="axm">
+      <h4>和集合公理</h4>
       <p>
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff\exists w\p{z\in w\land w\in x}\\
@@ -563,8 +547,7 @@
       逆はどれか一つでもいいから$\set{\set{0},\set{0,1,2},\set{2,3,5}}$から元を取ってきてその元を持っていればいいことから$\bigcup a=\set{0,1,2,3,5}$になるね
     </div>
     <section class="def">
-      <h4>定義</h4>
-      <h5>和集合の演算子</h5>
+      <h4>和集合の演算子</h4>
       <p>
         集合$a,b$について，
         $$a\cup b\def\bigcup\set{a,b}.$$
@@ -585,14 +568,14 @@
       <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$\scr{P}\p{a}$と表す．冪集合公理は冪集合の存在を保証する．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>冪集合</h5>
+      <h4>冪集合</h4>
       <p>
         集合$a$について，冪集合$2^a$とは，
         $$\forall x,x\in2^a\iff x\subset a.$$
       </p>
-      <h4>公理</h4>
-      <h5>冪集合公理</h5>
+    </section>
+    <section class="axm">
+      <h4>冪集合公理</h4>
       <p>
         \begin{align*}
         &\forall x\exists y\forall z,z\in y\iff z\subset x\\
@@ -607,7 +590,6 @@
       になるね
     </div>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         集合$a,b$について，
         $$a\in b\To\set{a}\in2^b.$$
@@ -663,14 +645,14 @@
       <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F\p{x}$を満たす$x$の集合を$\setsep{x}{F\p{x}}$と表すものである．しかし，自由に使うと矛盾を生じることがある．分出公理で$\setsep{x\in a}{F\p{x}}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数なことに注意する．他の公理から証明できる．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>内包表記</h5>
+      <h4>内包表記</h4>
       <p>
         論理式$F\p{x}$，集合$a$について，内包表記の集合$\setsep{x\in a}{F\p{x}}$とは，
         $$\forall x,x\in\setsep{x\in a}{F\p{x}}\iff x\in a\land F\p{x}.$$
       </p>
-      <h4>公理</h4>
-      <h5>分出公理</h5>
+    </section>
+    <section class="axm">
+      <h4>分出公理</h4>
       <p>
         論理式$F\p{x}$について，
         \begin{align*}
@@ -685,13 +667,12 @@
       <dfn>積集合</dfn>(<dfn>共通部分</dfn>)とは全ての集合の元なものの全体の集合である．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>積集合</h5>
+      <h4>積集合</h4>
       <p>
         $a,b$の積集合とは，
         $$a\cap b\def\setsep{x\in a}{x\in b}.$$
       </p>
-      <h5>互いに素</h5>
+      <h4>互いに素</h4>
       <p>
         $a,b$が互いに素とは，
         $$a\cap b=0.$$
@@ -709,13 +690,12 @@
       <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a-b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，登場するすべての集合を含む集合である．文脈によって決まる．このとき差集合$U-a$を$a$の<dfn>補集合</dfn>という．$a$の補集合をたまに$\bar{a}$と表すことがあるが，あまり使わない．今回は定理の紹介で使うとする．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>差集合</h5>
+      <h4>差集合</h4>
       <p>
         $a,b$の差集合とは，
         $$a-b\def\setsep{x\in a}{x\notin b}.$$
       </p>
-      <h5>補集合</h5>
+      <h4>補集合</h4>
       <p>
         全体集合$U$について，$a$の補集合とは，
         $$U-a.$$
@@ -727,7 +707,6 @@
       になる．
     </p>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         全体集合$U\supset a$について，$U\neq a$なら$U-a\neq0$．
       </p>
@@ -753,8 +732,7 @@
       <dfn>対称差</dfn>とはどちらか一方の集合のみに属してる元の全体の集合のことである．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>対称差</h5>
+      <h4>対称差</h4>
       <p>
         $a,b$の対象差とは，
         $$a\bigtriangleup b\def\p{a-b}\cup\p{b-a}.$$
@@ -777,8 +755,7 @@
       <dfn>直積集合</dfn>とは二つの集合$a,b$の元$x,y$の組$\p{x,y}$の全体の集合である．この集合を$a\times b$と表す．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>直積集合</h5>
+      <h4>直積集合</h4>
       <p>
         $a,b$の直積集合とは，
         $$a\times b\def\setsep{z\in\scr{P}\p{\scr{P}\p{a\cup b}}}{\exists xy,z=\p{x,y}\land x\in a\land y\in b}.$$
@@ -796,44 +773,43 @@
       今まで紹介した集合演算子(和集合，積集合，補集合)について成り立つ定理を紹介する．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>縮小律</h5>
+      <h4>縮小律</h4>
       <p>
         集合$a,b$について，
         $$a\subset a\cup b.$$
         $$b\subset a\cup b.$$
       </p>
-      <h5>拡大律</h5>
+      <h4>拡大律</h4>
       <p>
         集合$a,b$について，
         $$a\cap b\subset a.$$
         $$a\cap b\subset b.$$
       </p>
-      <h5>交換律</h5>
+      <h4>交換律</h4>
       <p>
         集合$a,b$について，
         $$a\cap b=b\cap a.$$
         $$a\cup b=b\cup a.$$
       </p>
-      <h5>結合律</h5>
+      <h4>結合律</h4>
       <p>
         集合$a,b,c$について，
         $$a\cap\p{b\cap c}=\p{a\cap b}\cap c.$$
         $$a\cup\p{b\cup c}=\p{a\cup b}\cup c.$$
       </p>
-      <h5>冪等律</h5>
+      <h4>冪等律</h4>
       <p>
         集合$a$について，
         $$a\cap a=a.$$
         $$a\cup a=a.$$
       </p>
-      <h5>分配律</h5>
+      <h4>分配律</h4>
       <p>
         集合$a,b,c$について，
         $$a\cap\p{b\cup c}=\p{a\cap b}\cup \p{a\cap c}.$$
         $$a\cup\p{b\cap c}=\p{a\cup b}\cap \p{a\cup c}.$$
       </p>
-      <h5>恒等律</h5>
+      <h4>恒等律</h4>
       <p>
         全体集合$U$の部分集合$a$について，
         $$a\cap U=a.$$
@@ -841,27 +817,27 @@
         $$a\cap0=0.$$
         $$a\cup U=U.$$
       </p>
-      <h5>矛盾律</h5>
+      <h4>矛盾律</h4>
       <p>
         全体集合$U$の部分集合$a$について，
         $$\p{a\cap \p{U-a}}=0.$$
       </p>
-      <h5>吸収律</h5>
+      <h4>吸収律</h4>
       <p>
         集合$a,b$について，
         $$a\cap\p{a\cup b}=a.$$
         $$a\cup\p{a\cap b}=a.$$
       </p>
-      <h5>対偶律</h5>
+      <h4>対偶律</h4>
       <p>
         全体集合$U$の部分集合$a,b$について，
         $$a\subset b\iff U-b\subset U-a.$$
       </p>
-      <h5>二重否定</h5>
+      <h4>二重否定</h4>
       <p>
         $$a=U-\p{U-a}.$$
       </p>
-      <h5>De Morganの法則</h5>
+      <h4>De Morganの法則</h4>
       <p>
         $$\p{U-\p{a\cup b}}=\p{U-a}\cap\p{U-b}.$$
         $$\p{U-\p{a\cap b}}=\p{U-a}\cup\p{U-b}.$$
@@ -877,8 +853,7 @@
       <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f\p{3}$は$6$になる．これを$\p{3,6}\in f$となるような集合とする．つまり，$f=\set{\p{0,0},\p{1,2},\p{2,4},\p{3,6},\dots}$である．写像をさらに一般化した<dfn>関係</dfn>から順に定義する．関係は返ってくる元が一つとは限らないものである．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>関係</h5>
+      <h4>関係</h4>
       <p>
         集合$a,b$について，$a,b$の関係$f$とは，
         $$f\subset a\times b.$$
@@ -905,8 +880,7 @@
       </details>
     </section>
     <section class="def">
-      <h4>定義</h4>
-      <h5>写像</h5>
+      <h4>写像</h4>
       <p>
         $a,b$の関係$f:a\to b$について，$a,b$の写像$f$とは，写像$f:a\to b$と表し，
         $$\forall x\in a\exists!y,\p{x,y}\in f.$$
@@ -931,7 +905,7 @@
           これは$2\in a$について$y$が二つ存在する．
         </p>
       </details>
-      <h5>恒等写像</h5>
+      <h4>恒等写像</h4>
       <p>
         写像$f:a\to a$について，恒等写像$f$とは，
         $$f\def\setsep{\p{x,x}\in a\times a}{x\in a}.$$
@@ -947,7 +921,6 @@
       </details>
     </section>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         写像$f:a\to b$，$g:a\to b$について，
         $$f\p{x}=g\p{x}\To f=g.$$
@@ -961,18 +934,17 @@
     </section>
 
     <section class="def">
-      <h4>定義</h4>
-      <h5>像</h5>
+      <h4>像</h4>
       <p>
         写像$f:a\to b$，$a'\subset a$について，$f$による$a'$の像$f\sq{a'}$とは，
         $$f\sq{a'}\def\setsep{y\in b}{\exists x\in a',\p{x,y}\in f}.$$
       </p>
-      <h5>逆像</h5>
+      <h4>逆像</h4>
       <p>
         写像$f:a\to b$，$b'\subset b$について，$f$による$b'$の逆像$f^{-1}\sq{b'}$とは，
         $$f^{-1}\sq{b'}\def\setsep{x\in a}{\exists y\in b',\p{x,y}\in f}.$$
       </p>
-      <h5>値域</h5>
+      <h4>値域</h4>
       <p>
         写像$f:a\to b$について，$a$を$f$の定義域といい，$f$の値域とは，
         $$f\sq{a}.$$
@@ -987,17 +959,17 @@
           $$f\sq{a}=\set{1,3,5,9}.$$
         </p>
       </details>
-      <h5>写像全体の集合</h5>
+      <h4>写像全体の集合</h4>
       <p>
         集合$a,b$について，
         $$b^a\def\setsep{f\in\scr{P}\p{a\times b}}{fは写像}.$$
       </p>
-      <h5>制限</h5>
+      <h4>制限</h4>
       <p>
         写像$f:a\to b$，$a'\subset a$について，$f$の$a'$への制限$f|a'$とは，
         $$f|a'\def f\cap\p{a'\times b}.$$
       </p>
-      <h5>合成写像(写像の積)</h5>
+      <h4>合成写像(写像の積)</h4>
       <p>
         写像$f:a\to b$，写像$g:b\to c$について，
         $$g\circ f\def\setsep{\p{x,z}\in a\times c}{\p{f\p{x},z}\in g}.$$
@@ -1005,7 +977,6 @@
       </p>
     </section>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         写像$f:a\to b$，部分集合$a'\subset a$について，
         $$x\in a'\To f\p{x}\in f\sq{a'}.$$
@@ -1018,7 +989,7 @@
           が成り立つ．写像$f$の定義と前提より，$f\p{x}\in b$かつ$x\in a'$かつ$\p{x,f\p{x}}\in f$が成り立つから，$f\p{x}$は$f\sq{a'}$の元である．よって示された．
         </p>
       </details>
-      <h5>合成写像の結合律</h5>
+      <h4>合成写像の結合律</h4>
       <p>
         写像$f:a\to b$，$g:b\to c$，$h:c\to d$について，
         $$\p{h\circ g}\circ f=h\circ\p{g\circ f}.$$
@@ -1039,8 +1010,7 @@
     </section>
 
     <section class="def">
-      <h4>定義</h4>
-      <h5>単射</h5>
+      <h4>単射</h4>
       <p>
         写像$f:a\to b$について，$f$が単射とは，
         $$\forall xy\in a,f\p{x}=f\p{y}\to x=y.$$
@@ -1053,7 +1023,7 @@
           は写像先によって写像前の1つの元があるので単射である．
         </p>
       </details>
-      <h5>全射</h5>
+      <h4>全射</h4>
       <p>
         写像$f:a\to b$について，$f$が全射とは，
         $$\forall y\in b\exists x\in a,f\p{x}=y.$$
@@ -1066,11 +1036,11 @@
           は写像先がすべて存在するので全射である．
         </p>
       </details>
-      <h5>全単射</h5>
+      <h4>全単射</h4>
       <p>
         写像$f:a\to b$について，$f$が全単射とは$f$が単射かつ全射である．
       </p>
-      <h5>逆写像</h5>
+      <h4>逆写像</h4>
       <p>
         写像$f:a\to b$について，次のように定義される$f^{-1}$が写像のとき，$f^{-1}$を$f$の逆写像という．
         $$f^{-1}\p{x}\def\setsep{\p{y,x}\in\scr{P}\p{b\times a}}{\p{x,y}\in f}.$$
@@ -1079,8 +1049,7 @@
 
     <h3>関数論理式</h3>
     <section class="def">
-      <h4>定義</h4>
-      <h5>関数論理式</h5>
+      <h4>関数論理式</h4>
       <p>
         関数論理式$F\p{x,y}$とは，
         $$\forall xyz,F\p{x,y}\land F\p{x,z}\to y=z.$$
@@ -1095,15 +1064,15 @@
       ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字集合</dfn>(<dfn>添字域</dfn>)とする<dfn>族</dfn>といい，$\setsep{x}{\exists i\in I\p{F\p{i,x}}}$と表す．これの存在を認める公理が置換公理である．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>族</h5>
+      <h4>族</h4>
       <p>
         論理関数式$F\p{x,y}$について，$I$を添字集合とする族$\setsep{x}{\exists i\in I\p{F\p{i,x}}}$とは，
         $$\forall x,x\in \setsep{x}{\exists i\in I\p{F\p{i,x}}}\iff\exists i\p{i\in I\land F\p{i,x}}.$$
         $i$を添字という．
       </p>
-      <h4>公理</h4>
-      <h5>置換公理</h5>
+    </section>
+    <section class="axm">
+      <h4>置換公理</h4>
       <p>
         論理関数式$F\p{x,y}$について，
         \begin{align*}
@@ -1116,20 +1085,18 @@
       この論理関数式$F$を写像とした方が使い勝手が良い．$F\p{x,y}\Def y=f\p{x}$とする．この述語$F$は関数論理式である．よって，$\setsep{f\p{i}}{i\in I}\def\setsep{x}{\exists i\in I\p{x=f\p{i}}}$の表記も認める．また，$f:i\mapsto a_i$としたとき集合族を$\set{a_i}_{i\in I}\def\setsep{a_i}{i\in I}$とし，明らかな場合は$I$を省略してよい．和集合と積集合を族で拡張させる．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>添字和集合</h5>
+      <h4>添字和集合</h4>
       <p>
         族$\set{a_i}_{i\in I}$の和集合$\bigcup_{i\in I}a_i$とは，
         $$\bigcup_{i\in I}a_i\def\bigcup\set{a_i}_{i\in I}.$$
       </p>
-      <h5>添字積集合</h5>
+      <h4>添字積集合</h4>
       <p>
         族$\set{a_i}_{i\in I}$の積集合$\bigcap_{i\in I}a_i$とは，
         $$\bigcap_{i\in I}a_i\def\bigcap\set{a_i}_{i\in I}\def\setsep{x\in\bigcup_{i\in I}a_i}{\forall i\in I\p{x\in a_i}}.$$
       </p>
     </section>
     <section class="thm">
-      <h4>定理</h4>
       <p>
         族$\set{a_i}_{i\in I}$について，
         $$\bigcup_{i\in I}a_i\cap b=\bigcup_{i\in I}\p{a_i\cap b}.$$
@@ -1147,13 +1114,12 @@
       自然数の集合は具体的に書くと$\set{0,1,2,\dots}$のことである．これを$\bm{N}$と表す．自然数の定義は後に紹介する．ここでは集合で表現することのみ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．無限公理は後者の存在を認める公理である．
     </p>
     <section class="def">
-      <h4>定義</h4>
-      <h5>後者</h5>
+      <h4>後者</h4>
       <p>
         $a$の後者とは，
         $$\suc\p{a}\def n\cup\set{n}.$$
       </p>
-      <h5>数字</h5>
+      <h4>数字</h4>
       <p>
         \begin{align*}
         1&\def\suc\p{0}=0\cup\set{0}=\set{0}=\set{\set{}}.\\
@@ -1167,8 +1133,9 @@
         9&\def\suc\p{8}=\set{0,1,2,3,4,5,6,7,8}.\\
         \end{align*}
       </p>
-      <h4>公理</h4>
-      <h5>無限公理</h5>
+    </section>
+    <section class="axm">
+      <h4>無限公理</h4>
       <p>
         \begin{align*}
         &\exists x,0\in x\land\forall y\p{y\in x\to y\cup\set{y}\in x}\\
@@ -1181,17 +1148,15 @@
     <p>
       矛盾を生み出すものを集合と認めないための公理が<dfn>正則性公理</dfn>である．
     </p>
-    <section class="def">
-      <h4>公理</h4>
-      <h5>正則性公理</h5>
+    <section class="axm">
+      <h4>正則性公理</h4>
       <p>
         $$\forall x\neq0\exists y\in x,y\cap x=0.$$
       </p>
     </section>
 
     <section class="thm">
-      <h4>定理</h4>
-      <h5>正則性公理から導かれる定理</h5>
+      <h4>正則性公理から導かれる定理</h4>
       <p>
         $$\forall x,x\notin x.$$
       </p>
@@ -1247,9 +1212,8 @@
     <p>
       <dfn>選択公理</dfn>は$x$の空集合でない各元から1つ選ぶような写像が存在するという主張である．
     </p>
-    <section class="def">
-      <h4>公理</h4>
-      <h5>選択公理</h5>
+    <section class="axm">
+      <h4>選択公理</h4>
       <p>
         $$\forall x\exists f\in\p{\bigcup x}^x\forall y\in x,y\neq0\to f\p{y}\in y.$$
       </p>
@@ -1264,8 +1228,7 @@
       この章ではZFC公理に必要のない公理を他の公理から証明する．
     </p>
     <section class="thm">
-      <h4>定理</h4>
-      <h5>ZFC公理からの導出</h5>
+      <h4>ZFC公理からの導出</h4>
       <p>
         置換公理$\To$分出公理．
       </p>
