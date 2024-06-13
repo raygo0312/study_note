@@ -12,15 +12,27 @@
   --white: #f0f0f0;
   --gray: #dddddd;
   --black: #333333;
-  --accent: #6d7993;
   --main: #9099a2;
+  --menu: #555555;
   --header: #66a5ad;
   --h2: #96858f;
   --h3: #c09f80;
-  --ex: #c5c2bd;
-  --axm: #d5c5c5;
-  --def: #c0c4d0;
-  --thm: #bdc6c0;
+  --ex: #e3e2b4;
+  --axm: #e2d2d2;
+  --def: #bfc8d7;
+  --thm: #a2b59f;
+}
+
+.pastel {
+  --main: #F0E9D9;
+  --menu: #7462ca;
+  --header: #FBD8B5;
+  --h2: #F9D3E3;
+  --h3: #D3EDFB;
+  --ex: #F9F8C4;
+  --axm: #F8CED3;
+  --def: #D2D5EC;
+  --thm: #DAECD4;
 }
 
 body {
@@ -54,7 +66,8 @@ footer {
 
 h1 {
   font-family: var(--heading);
-  margin-left: calc(2 * var(--space));
+  text-shadow: 1px 1px 1px var(--white);
+  margin: 0 calc(2 * var(--space));
 }
 
 h2 {
@@ -75,6 +88,7 @@ h3 {
 
 h4 {
   margin-top: var(--space);
+  margin-left: var(--space);
   font-family: var(--sans);
 }
 
@@ -101,10 +115,10 @@ a:active {
 
 dfn {
   font-weight: bold;
+  font-style: normal;
 }
 
 section {
-  margin: var(--space) calc(4 * var(--space));
   padding: calc(0.5 * var(--space));
   position: relative;
   padding-top: 3rem;
@@ -119,34 +133,42 @@ section>details {
 }
 
 section.def {
-  background-color: var(--def);
+  border: var(--def) solid thin;
+  background-color: rgb(from var(--def) r g b / 0.3);
 }
 
 section.def::before {
+  background-color: var(--def);
   content: "定義";
 }
 
 section.axm {
-  background-color: var(--axm);
+  border: var(--axm) solid thin;
+  background-color: rgb(from var(--axm) r g b / 0.3);
 }
 
 section.axm::before {
+  background-color: var(--axm);
   content: "公理";
 }
 
 section.thm {
-  background-color: var(--thm);
+  border: var(--thm) solid thin;
+  background-color: rgb(from var(--thm) r g b / 0.3);
 }
 
 section.thm::before {
+  background-color: var(--thm);
   content: "定理";
 }
 
 section.ex {
-  background-color: var(--ex);
+  border: var(--ex) solid thin;
+  background-color: rgb(from var(--ex) r g b / 0.3);
 }
 
 section.ex::before {
+  background-color: var(--ex);
   content: "例";
 }
 
@@ -155,8 +177,7 @@ section.axm::before,
 section.thm::before,
 section.ex::before {
   position: absolute;
-  background: rgb(from var(--accent) r g b / 0.3);
-  color: var(--white);
+  box-sizing: border-box;
   font-weight: bold;
   padding: calc(0.5 * var(--space));
   width: 100%;
@@ -167,7 +188,7 @@ section.ex::before {
 details {
   margin: 0.5rem;
   border: var(--black) solid 1px;
-  background-color: rgb(from var(--black) r g b / 0.1);
+  background-color: rgb(from var(--menu) r g b / 0.1);
 }
 
 details+details {
@@ -177,7 +198,7 @@ details+details {
 summary {
   padding-left: var(--space);
   border-bottom: var(--border);
-  background-color: rgb(from var(--black) r g b / 0.1);
+  background-color: rgb(from var(--menu) r g b / 0.1);
   font-family: "Noto Sans JP";
 }
 
@@ -190,6 +211,23 @@ div.tree div {
   border-left: var(--border);
 }
 
+button {
+  text-align: center;
+  text-decoration: none;
+  width: 120px;
+  margin: auto;
+  padding: calc(0.5 * var(--space));
+  font-weight: bold;
+  border: 2px solid var(--header);
+  color: var(--header);
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: var(--header);
+  color: white;
+}
+
 /* チャット */
 .you::before {
   position: absolute;
@@ -198,7 +236,7 @@ div.tree div {
   border-radius: 50%;
   width: 2.5em;
   height: 2.5em;
-  background: url("../img/teacher.png") no-repeat;
+  background: url("teacher.png") no-repeat;
   background-size: contain;
   content: "";
 }
@@ -258,4 +296,8 @@ div.tree div {
   margin: 0 0.25rem;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+#change-theme {
+  text-align: center;
 }
