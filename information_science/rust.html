@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>Rust</title>
+  <script src="../lib/main.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1 id="h1"></h1>
+    <a href="../">ホーム</a> / <a href="./">情報科学</a> /
+  </header>
+  <main>
+    <details id="setting"></details>
+    <h2><a href="https://docs.rs/ac-library-rs/latest/ac_library/modint/index.html">剰余体</a></h2>
+    modintを使用したい場合はac-library-rsを使用する．1e9+7の場合はModInt1000000007．998244353の場合はModInt998244353を使用する．その他の場合はModIntを使用する．ここではModintとして説明する．
+    <h4>初期化</h4>
+    <pre><code class="language-rust">use ac_library::ModInt as Mint; // ModIntをMintとして使用
+Mint::set_modulus(m); // mで剰余をとる
+let a = Mint::new(n); // nで初期化</code></pre>
+    <h4>乗法の逆元</h4>
+    逆元を使用する場合は，inv()を使用する．
+    <pre><code class="language-rust">n.inv(); // 1/n</code></pre>
+    <h4>階乗</h4>
+    階乗を使用する場合は，階乗を前計算しておく．
+    <pre><code class="language-rust">let mut fact_table = vec![Mint::new(1); n + 1];
+let mut factinv_table = vec![Mint::new(1); n + 1];
+for i in 1..=n {
+  fact_table[i] = fact_table[i - 1] * i;
+}
+factinv_table[n] = fact_table[n].inv();
+for i in (1..=n).rev() {
+  factinv_table[i - 1] = factinv_table[i] * i;
+}</code></pre>
+
+    <h2>組合せ論</h2>
+    <h3><a href="https://docs.rs/itertools/latest/itertools/">itertools::Itertools</a></h3>
+    <h4>順列</h4>
+    <pre><code class="language-rust">(0..n).permutations(r)</code></pre>
+    <h4>組合せ</h4>
+    <pre><code class="language-rust">(0..n).combinations(r)</code></pre>
+    <h4>重複組合せ</h4>
+    <pre><code class="language-rust">(0..n).combinations_with_replacement(r)</code></pre>
+    <h2>メモ化</h2>
+    <h3><a href="https://docs.rs/memoise/latest/memoise/">memoise::memoise</a></h3>
+    静的に指定する場合
+    <pre><code class="language-rust">#[memoise(n <= 100, m <= 50)]
+fn comb(n: usize, k: usize) -> usize {
+  if m == 0 {
+    return 1;
+  }
+  if n == 0 {
+    return 0;
+  }
+  comb(n - 1, k - 1) + comb(n - 1, k)
+}</code></pre>
+    条件は挟むことも式で書くこともできる
+    <pre><code class="language-rust">#[memoise(-100 <= n + k <= 100)]</code></pre>
+    動的に指定する場合
+    <pre><code class="language-rust">#[memoise(n, k)]</code></pre>
+    BTreeMapでメモ化する場合
+    <pre><code class="language-rust">#[memoise_map(n)]</code></pre>
+  </main>
+  <footer id="footer"></footer>
+</body>
+
+</html>

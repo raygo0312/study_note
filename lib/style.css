@@ -79,7 +79,7 @@ h2 {
 }
 
 h3 {
-  margin-top: calc(2 * var(--space));
+  margin-top: calc(3 * var(--space));
   border-bottom: var(--h3) solid medium;
   border-left: var(--h3) solid thick;
   padding-left: calc(0.5 * var(--space));
@@ -87,8 +87,8 @@ h3 {
 }
 
 h4 {
-  margin-top: var(--space);
-  margin-left: var(--space);
+  margin: 0;
+  margin-top: calc(2 * var(--space));
   font-family: var(--sans);
 }
 
@@ -293,7 +293,8 @@ button:hover {
 }
 
 .MathJax {
-  margin: 0 0.25rem;
+  margin: 0 0.15rem;
+  padding: 0.1rem;
   overflow-x: auto;
   overflow-y: hidden;
 }
