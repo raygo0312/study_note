@@ -14,8 +14,10 @@
   </header>
   <main>
     <details id="setting"></details>
-    <h2><a href="https://docs.rs/ac-library-rs/latest/ac_library/modint/index.html">剰余体</a></h2>
-    modintを使用したい場合はac-library-rsを使用する．1e9+7の場合はModInt1000000007．998244353の場合はModInt998244353を使用する．その他の場合はModIntを使用する．ここではModintとして説明する．
+    <h2>イテレータ</h2>
+    <h2>剰余体</h2>
+    <h3><a href="https://docs.rs/ac-library-rs/latest/ac_library/modint/index.html">ac_library::modint</a></h3>
+    1e9+7の場合はModInt1000000007，998244353の場合はModInt998244353，その他の場合はModIntを使用する．ここではModintとして説明する．
     <h4>初期化</h4>
     <pre><code class="language-rust">use ac_library::ModInt as Mint; // ModIntをMintとして使用
 Mint::set_modulus(m); // mで剰余をとる
@@ -62,6 +64,29 @@ fn comb(n: usize, k: usize) -> usize {
     <pre><code class="language-rust">#[memoise(n, k)]</code></pre>
     BTreeMapでメモ化する場合
     <pre><code class="language-rust">#[memoise_map(n)]</code></pre>
+    <h2>テクニック</h2>
+    <h4>隣接マスを参照する</h4>
+    i,jがusizeのとき，(i, j)の隣接マスを参照する．
+    <pre><code class="language-rust">for (di, dj) in [(-1, 0), (1, 0), (0, -1), (0, 1)] {
+  let ni = i.wrapping_add_signed(di);
+  let nj = j.wrapping_add_signed(dj);
+  if ni < h && nj < w {
+    // ここに処理
+  }
+}</code></pre>
+    <h2>format!</h2>
+    format!やprintln!で使用することができる．
+    <pre><code class="language-rust">// 6桁で表示して0埋め
+format!("{:06}", 152) // 000152
+// 四捨五入して小数点以下8桁で表示
+format!("{:.8}", std::f64::consts::PI) // 3.14159265
+// 指数表記
+format!("{:e}", 998244353) // 9.98244353e8
+// 2進数
+format!("{:b}", 152) // 10011000
+// 16進数
+format!("{:x}", 152) // 98
+</code></pre>
   </main>
   <footer id="footer"></footer>
 </body>
