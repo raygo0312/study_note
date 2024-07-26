@@ -35,11 +35,28 @@
   --thm: #DAECD4;
 }
 
+.dark {
+  --white: #333333;
+  --gray: #666666;
+  --black: #f0f0f0;
+  --main: #000000;
+  --menu: #ffffff;
+  --header: #483b6d;
+  --h2: #96858f;
+  --h3: #c09f80;
+  --ex: #53531f;
+  --axm: #612828;
+  --def: #2b4263;
+  --thm: #2b5e24;
+}
+
 body {
+  color: var(--black);
   margin: 0;
   background-color: var(--main);
   font-family: var(--serif);
   line-break: strict;
+  -webkit-text-size-adjust: 100%;
 }
 
 header {
@@ -54,7 +71,7 @@ main {
   border: var(--border);
   padding: var(--space);
   min-height: 100vh;
-  max-width: 60rem;
+  max-width: 60em;
   background-color: var(--white);
 }
 
@@ -93,7 +110,7 @@ h4 {
 }
 
 p {
-  text-indent: 1rem;
+  text-indent: 1em;
 }
 
 a:link {
@@ -121,15 +138,16 @@ dfn {
 section {
   padding: calc(0.5 * var(--space));
   position: relative;
-  padding-top: 3rem;
+  padding-top: 3em;
   border: var(--border);
+  margin: var(--space);
 }
 
 section>p,
 section>ol,
 section>ul,
 section>details {
-  margin-left: 2rem;
+  margin-left: 2em;
 }
 
 section.def {
@@ -186,7 +204,7 @@ section.ex::before {
 }
 
 details {
-  margin: 0.5rem;
+  margin: 0.5em;
   border: var(--black) solid 1px;
   background-color: rgb(from var(--menu) r g b / 0.1);
 }
@@ -207,7 +225,7 @@ summary+* {
 }
 
 div.tree div {
-  margin-left: 1rem;
+  margin-left: 1em;
   border-left: var(--border);
 }
 
@@ -231,12 +249,11 @@ button:hover {
 /* チャット */
 .you::before {
   position: absolute;
-  top: -0.5rem;
-  left: -3rem;
-  border-radius: 50%;
+  top: -0.5em;
+  left: -3em;
   width: 2.5em;
   height: 2.5em;
-  background: url("teacher.png") no-repeat;
+  background: url("cleanness-teacher.png") no-repeat;
   background-size: contain;
   content: "";
 }
@@ -244,57 +261,36 @@ button:hover {
 .you {
   width: fit-content;
   position: relative;
-  margin: 2.5rem auto 2rem 3rem;
-  border-radius: 1rem;
-  padding: 0.1rem 0.5rem;
-  padding-right: 0.3rem;
+  margin: 2.5em auto 2em 3em;
+  border-radius: 1em;
+  padding: 0.1em 0.5em;
+  padding-right: 0.3em;
   max-width: 70%;
   background: var(--gray);
 }
 
-.you::after {
-  position: absolute;
-  top: -0.1rem;
-  left: -1rem;
-  border: solid 0.3rem transparent;
-  border-right: solid 1rem var(--gray);
-  transform: rotate(35deg);
-  content: "";
-}
-
 .you+.me {
-  margin-top: -1.5rem
+  margin-top: -1.5em
 }
 
 .me {
   width: fit-content;
   position: relative;
-  margin: 2rem 1rem 2rem auto;
-  border-radius: 1rem;
-  padding: 0.1rem 0.5rem;
-  padding-right: 0.3rem;
+  margin: 2em 1em 2em auto;
+  border-radius: 1em;
+  padding: 0.1em 0.5em;
+  padding-right: 0.3em;
   max-width: 70%;
   background: var(--gray);
   text-align: left;
 }
 
-.me:after {
-  position: absolute;
-  top: -0.1rem;
-  right: -1rem;
-  border: solid 0.3rem transparent;
-  border-left: solid 1rem var(--gray);
-  transform: rotate(-35deg);
-  content: "";
-}
-
 .me+.you {
-  margin-top: -1rem
+  margin-top: -1em
 }
 
 .MathJax {
-  margin: 0 0.15rem;
-  padding: 0.1rem;
+  padding: 0.1em 0.25em;
   overflow-x: auto;
   overflow-y: hidden;
 }
