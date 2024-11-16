@@ -15,7 +15,7 @@
     <details id="setting"></details>
     <h2>集合</h2>
     <p>
-      <dfn>集合</dfn>とは数学的対象の集まりを1つの対象としたものだが，現代の数学では全ての数学的対象を集合とすることを目的としている，厳密に定義すると集合の公理を満たしたものになる．この集合の公理は，今回はZFC公理系を採用し，紹介する．今ある完成されたものではなく，集合を構成する，ZFC公理系を作っていく流れで議論を進める．
+      <dfn>集合</dfn>とは数学的対象の集まりを1つの対象としたものだが，現代の数学では全ての数学的対象を集合とすることを目的としている，数学的対象を厳密に定義すると集合の公理を満たしたものになる．今回は集合の公理系としてZFC公理系を採用する．ZFC公理系と一緒に集合を作っていくように進めていく．
     </p>
     <p>
       集合に用意されている2項述語は$=$と$\in$である．$=$は相等関係をもつ．$\in$はZFC公理系で性質を定められている．$a\in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$\in$を<dfn>帰属関係</dfn>という．$=$の公理を次にまとめると，
@@ -44,12 +44,6 @@
         <p>
           $F\p{t}\Def t=x$とする．反射律より，$x=x$は真である．つまり，$F\p{x}$は真である．前提$x=y$と代入原理より，$F\p{y}$すなわち$y=x$も真である．
         </p>
-        <details>
-          <summary>証明図</summary>
-          <p>
-            $$\infer{\forall xy,x=y\to y=x}{\infer[1]{a=b\to b=a}{\infer{b=a}{\infer{a=a}{\infer{\forall x,x=x}{}}\quad\infer{a=a\to b=a}{\infer{a=a\iff b=a}{\infer[1]{a=b}{}\quad\infer{a=b\to\p{a=a\iff b=a}}{\infer{\forall xy,x=y\to\p{x=x\iff y=x}}}}}}}}$$
-          </p>
-        </details>
       </details>
       <h4>推移律</h4>
       <p>
@@ -60,17 +54,8 @@
         <p>
           $F\p{t}\Def t=z$とする．前提より$y=z$だから$F\p{y}$は真である．前提$x=y$と代入原理より，$F\p{x}$すなわち$x=z$も真である．
         </p>
-        <details>
-          <summary>証明図</summary>
-          <p>
-            $$\infer{\forall xyz,x=y\land y=z\to x=z}{\infer[1]{a=b\land b=c\to a=c}{\infer{a=c}{\infer{b=c}{\infer[1]{a=b\land b=c}{}}\quad\infer{b=c\to a=c}{\infer{a=c\iff b=c}{\infer{a=b}{\infer[1]{a=b\land b=c}{}}\quad\infer{a=b\to\p{a=c\iff b=c}}{\infer{\forall xy,x=y\to\p{x=c\iff y=c}}{}}}}}}}$$
-          </p>
-        </details>
       </details>
     </section>
-    <div class="you">
-      こんな感じで証明図を日本語で書いていくよ
-    </div>
 
     <h3>ZFC公理系</h3>
     <p>

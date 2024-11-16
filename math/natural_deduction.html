@@ -27,19 +27,48 @@
       <h4>推論図</h4>
       <p>
         $A_1,A_2,\dots,A_n\To A$を次の図のように表し，
-        $$\infer{A}{A_1\quad A_2\quad\cdots\quad A_n}$$
-        を推論図という．このとき，$A_1,A_2,\dots,A_n$を前提，$A$を結論という．$\mathcal{A_1},\mathcal{A_2},\dots,\mathcal{A_n}$が推論図のとき，$\mathcal{A_1},\mathcal{A_2},\dots,\mathcal{A_n}\To A$を次の図のように表し，
-        $$\infer{A}{\mathcal{A_1}\quad\mathcal{A_2}\quad\cdots\quad\mathcal{A_n}}$$
+        \begin{prooftree}
+        \AXC{$A_1$}
+        \AXC{$A_2$}
+        \AXC{$\cdots$}
+        \AXC{$A_n$}
+        \QuaternaryInfC{$A$}
+        \end{prooftree}
+        を推論図という．このとき，$A_1,A_2,\dots,A_n$を前提，$A$を結論という．$\cal{A_1},\cal{A_2},\dots,\cal{A_n}$が推論図のとき，$\cal{A_1},\cal{A_2},\dots,\cal{A_n}\To A$を次の図のように表し，
+        \begin{prooftree}
+        \AXC{$\cal{A_1}$}
+        \AXC{$\cal{A_2}$}
+        \AXC{$\cdots$}
+        \AXC{$\cal{A_n}$}
+        \QuaternaryInfC{$A$}
+        \end{prooftree}
         も推論図という．
       </p>
       <h4>演繹図</h4>
       <p>
         推論規則$\rm{R}$が$A_1,A_2,\dots,A_n\To A$のとき，次の図のように表し，
-        $$\rm{R}\infer{A}{A_1\quad A_2\quad\cdots\quad A_n}$$
+        \begin{prooftree}
+        \AXC{$A_1$}
+        \AXC{$A_2$}
+        \AXC{$\cdots$}
+        \AXC{$A_n$}
+        \LL{R}
+        \QuaternaryInfC{$A$}
+        \end{prooftree}
         を演繹図という．このとき，$A$を帰結という．推論規則$\rm{R}$が明らかなとき省略してよい．また，公理$A$について，次の図のように表し，
-        $$\infer{A}{}$$
-        を演繹図という．$\mathcal{A_1},\mathcal{A_2},\dots,\mathcal{A_n}$がそれぞれ$A_1,A_2,\dots,A_n$を帰結とする演繹図とする．推論規則$\rm{R}$が$A_1,A_2,\dots,A_n\To A$のとき，次の図のように表し，
-        $$\rm{R}\infer{A}{\mathcal{A_1}\quad\mathcal{A_2}\quad\cdots\quad\mathcal{A_n}}$$
+        \begin{prooftree}
+        \AXC{}
+        \UIC{$A$}
+        \end{prooftree}
+        を演繹図という．$\cal{A_1},\cal{A_2},\dots,\cal{A_n}$がそれぞれ$A_1,A_2,\dots,A_n$を帰結とする演繹図とする．推論規則$\rm{R}$が$A_1,A_2,\dots,A_n\To A$のとき，次の図のように表し，
+        \begin{prooftree}
+        \AXC{$\cal{A_1}$}
+        \AXC{$\cal{A_2}$}
+        \AXC{$\cdots$}
+        \AXC{$\cal{A_n}$}
+        \LL{R}
+        \QuaternaryInfC{$A$}
+        \end{prooftree}
         も演繹図という．前提がないとき，演繹図を証明図という．
       </p>
       <h4>演繹可能</h4>
@@ -79,18 +108,45 @@
       これは<dfn>構成的仮言的三段論法</dfn>(前件肯定式)という名前で知られる．また，$\to,\proof$はそれぞれ同じ意味として扱いたいので，
       $$\p{A\proof B}\To\p{\proof A\to B}$$
       を認めるとする．この推論規則を用いるときは，前提を打ち消しという操作ができる．
-      $$\infer{B}{\infer{\vdots}{A}}$$
+      \begin{prooftree}
+      \AXC{$A$}
+      \UIC{$\vdots$}
+      \UIC{$B$}
+      \end{prooftree}
       この推論図は$A$を前提に$B$を推論すると読む．この推論図を次のように推論するとき，
-      $$\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{A}}}$$
+      \begin{prooftree}
+      \AXC{$A$}
+      \UIC{$\vdots$}
+      \UIC{$B$}
+      \RL{$i$}
+      \UIC{$A\to B$}
+      \end{prooftree}
       Aを仮定としたので，上にバーをつけて前提から除外することができる．
-      $$\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$
+      \begin{prooftree}
+      \AXC{}
+      \RL{$i$}
+      \UIC{$A$}
+      \UIC{$\vdots$}
+      \UIC{$B$}
+      \RL{$i$}
+      \UIC{$A\to B$}
+      \end{prooftree}
       としてよい．
     </p>
     <section class="axm">
       <h4>$\to\rm{I}$</h4>
       <p>
         論理式$A,B$について，
-        $$\to\rm{I}\infer[i]{A\to B}{\infer{B}{\infer{\vdots}{\infer[i]{A}{}}}}$$
+        \begin{prooftree}
+        \AXC{}
+        \RL{$i$}
+        \UIC{$A$}
+        \UIC{$\vdots$}
+        \UIC{$B$}
+        \RL{$i$}
+        \LL{$\to I$}
+        \UIC{$A\to B$}
+        \end{prooftree}
       </p>
       <details>
         <summary>読み</summary>
@@ -101,7 +157,12 @@
       <h4>$\to\rm{E}$</h4>
       <p>
         論理式$A,B$について，
-        $$\to\rm{E}\infer{B}{A\quad A\to B}$$
+        \begin{prooftree}
+        \AXC{$A$}
+        \AXC{$A\to B$}
+        \LL{$\to E$}
+        \BIC{$B$}
+        \end{prooftree}
       </p>
       <details>
         <summary>読み</summary>
@@ -122,7 +183,18 @@
     <section class="ex">
       <p>
         $A,A\to B,A\to B\to C$を前提として推論をする．
-        $$\to\rm{E}\infer{C}{\to\rm{E}\infer{B}{A\quad A\to B}\quad\to\rm{E}\infer{B\to C}{A\quad A\to B\to C}}$$
+        \begin{prooftree}
+        \AXC{$A$}
+        \AXC{$A\to B$}
+        \LL{$\to E$}
+        \BIC{$B$}
+        \AXC{$A$}
+        \AXC{$A\to B\to C$}
+        \LL{$\to E$}
+        \BIC{$B\to C$}
+        \LL{$\to E$}
+        \BIC{$C$}
+        \end{prooftree}
         よって，$A,A\to B,A\to B\to C\proof C$である．
       </p>
     </section>
@@ -139,16 +211,48 @@
     </div>
     <section class="ex">
       <p>
-        $$\to\rm{I}\infer[2]{A\to\p{A\to B}\to B}{\to\rm{I}\infer[1]{\p{A\to B}\to B}{\to\rm{E}\infer{B}{\infer[2]{A}{}\quad \infer[1]{A\to B}{}}}}$$
+        \begin{prooftree}
+        \AXC{}
+        \RL{$2$}
+        \UIC{$A$}
+        \AXC{}
+        \RL{$1$}
+        \UIC{$A\to B$}
+        \LL{$\to E$}
+        \BIC{$B$}
+        \RL{$1$}
+        \LL{$\to I$}
+        \UIC{$\p{A\to B}\to B$}
+        \RL{$2$}
+        \LL{$\to I$}
+        \UIC{$A\to\p{A\to B}\to B$}
+        \end{prooftree}
         よって，$\proof A\to\p{A\to B}\to B$である．
       </p>
     </section>
     <p>
-      打ち消しの対応に使った数字は数字な必要はなく，順序にも意味はない．打ち消しでどの打ち消し線が引かれたかが分かればどんな文字を用いてもよい．複数の前提が同じ論理式のときは一度の推論で複数打ち消すこともできる．また，使用した推論規則を明記する必要もない．
+      打ち消しの対応に使った数字は数字な必要はなく，順序にも意味はない．打ち消しでどの打ち消し線が引かれたかが分かればどんな文字を用いてもよい．複数の前提が同じ論理式のときは一度の推論で複数打ち消すこともできる．また，使用した推論規則や打消しの対応に使った数字は明らならば省略してもよい．
     </p>
     <section class="ex">
       <p>
-        $$\infer[0]{\p{A\to A\to B}\to A\to B\to B}{\infer[\star]{A\to B\to B}{\infer{B\to B}{\infer{B}{\infer[\star]{A}{}\quad\infer{A\to B}{\infer[\star]{A}{}\quad\infer[0]{A\to A\to B}{}}}}}}$$
+        \begin{prooftree}
+        \AXC{}
+        \RL{$\star$}
+        \UIC{$A$}
+        \AXC{}
+        \RL{$\star$}
+        \UIC{$A$}
+        \AXC{}
+        \RL{$0$}
+        \UIC{$A\to A\to B$}
+        \BIC{$A\to B$}
+        \BIC{$B$}
+        \UIC{$B\to B$}
+        \RL{$\star$}
+        \UIC{$A\to B\to B$}
+        \RL{$0$}
+        \UIC{$\p{A\to B\to B}\to A\to B\to B$}
+        \end{prooftree}
       </p>
     </section>
     <div class="you">
@@ -166,22 +270,51 @@
       <h4>$\land\rm{I}$</h4>
       <p>
         論理式$A_1,A_2$について，
-        $$\infer{A_1\land A_2}{A_1\quad A_2}$$
+        \begin{prooftree}
+        \AXC{$A_1$}
+        \AXC{$A_2$}
+        \LL{$\land I$}
+        \BIC{$A_1\land A_2$}
+        \end{prooftree}
       </p>
       <h4>$\land\rm{E}$</h4>
       <p>
         論理式$A_1,A_2$について，
-        $$\infer{A_1}{A_1\land A_2}\qquad\infer{A_2}{A_1\land A_2}$$
+        \begin{prooftree}
+        \AXC{$A_1\land A_2$}
+        \LL{$\land E$}
+        \UIC{$A_1$}
+        \end{prooftree}
+        \begin{prooftree}
+        \AXC{$A_1\land A_2$}
+        \LL{$\land E$}
+        \UIC{$A_2$}
+        \end{prooftree}
       </p>
       <h4>$\lor\rm{I}$</h4>
       <p>
         論理式$A_1,A_2$について，
-        $$\infer{A_1\lor A_2}{A_1}\qquad\infer{A_1\lor A_2}{A_2}$$
+        \begin{prooftree}
+        \AXC{$A_1$}
+        \LL{$\lor I$}
+        \UIC{$A_1\lor A_2$}
+        \end{prooftree}
+        \begin{prooftree}
+        \AXC{$A_2$}
+        \LL{$\lor I$}
+        \UIC{$A_1\lor A_2$}
+        \end{prooftree}
       </p>
       <h4>$\lor\rm{E}$</h4>
       <p>
         論理式$A_1,A_2,B$について，
-        $$\infer{B}{A_1\lor A_2\quad A_1\to B\quad A_2\to B}$$
+        \begin{prooftree}
+        \AXC{$A_1\lor A_2$}
+        \AXC{$A_1\to B$}
+        \AXC{$A_2\to B$}
+        \LL{$\lor E$}
+        \TIC{$B$}
+        \end{prooftree}
       </p>
     </section>
 
@@ -196,23 +329,40 @@
       <h4>$\forall\rm{I}$</h4>
       <p>
         論理式$F\p{x}$について，
-        $$\infer{\forall xF\p{x}}{F\p{a}}$$
+        \begin{prooftree}
+        \AXC{$F\p{a}$}
+        \LL{$\forall I$}
+        \UIC{$\forall xF\p{x}$}
+        \end{prooftree}
         ただし，$a$は打ち消されていない仮定と$\forall xF\p{x}$の自由変数に含まれていない．
       </p>
       <h4>$\forall\rm{E}$</h4>
       <p>
         論理式$F\p{x}$について，
-        $$\infer{F\p{t}}{\forall xF\p{x}}$$
+        \begin{prooftree}
+        \AXC{$\forall xF\p{x}$}
+        \LL{$\forall E$}
+        \UIC{$F\p{t}$}
+        \end{prooftree}
       </p>
       <h4>$\exists\rm{I}$</h4>
       <p>
         論理式$F\p{x}$について，
-        $$\infer{\exists xF\p{x}}{F\p{t}}$$
+        \begin{prooftree}
+        \AXC{$F\p{t}$}
+        \LL{$\exists I$}
+        \UIC{$\exists xF\p{x}$}
+        \end{prooftree}
       </p>
       <h4>$\exists\rm{E}$</h4>
       <p>
         論理式$F\p{x},A$について，
-        $$\infer{A}{\exists xF\p{x}\quad F\p{a}\to A}$$
+        \begin{prooftree}
+        \AXC{$\exists xF\p{x}$}
+        \AXC{$F\p{a}\to A$}
+        \LL{$\exists E$}
+        \BIC{$A$}
+        \end{prooftree}
         ただし，$a$は$F\p{a}\to A$の打ち消されていない仮定と$A$と$\exists xF\p{x}$の自由変数に含まれていない．
       </p>
     </section>
@@ -229,12 +379,21 @@
       <h4>$\lnot\rm{I}$</h4>
       <p>
         論理式$A$について，
-        $$\infer{\lnot A}{A\to\bot}$$
+        \begin{prooftree}
+        \AXC{$A\to\bot$}
+        \LL{$\lnot I$}
+        \UIC{$\lnot A$}
+        \end{prooftree}
       </p>
       <h4>$\lnot\rm{E}$</h4>
       <p>
         論理式$A$について，
-        $$\infer{\bot}{A\quad\lnot A}$$
+        \begin{prooftree}
+        \AXC{$A$}
+        \AXC{$\lnot A$}
+        \LL{$\lnot E$}
+        \BIC{$\bot$}
+        \end{prooftree}
       </p>
     </section>
     <p>
@@ -253,7 +412,22 @@
       <h4>$\lor\rm{E}$</h4>
       <p>
         論理式$A_1,A_2,B$について，
-        $$\infer[i]{B}{A_1\lor A_2\quad\infer{B}{\infer{\vdots}{\infer[i]{A_1}{}}}\quad\infer{B}{\infer{\vdots}{\infer[i]{A_2}{}}}}$$
+        \begin{prooftree}
+        \AXC{$A_1\lor A_2$}
+        \AXC{}
+        \RL{$i$}
+        \UIC{$A_1$}
+        \UIC{$\vdots$}
+        \UIC{$B$}
+        \AXC{}
+        \RL{$i$}
+        \UIC{$A_2$}
+        \UIC{$\vdots$}
+        \UIC{$B$}
+        \RL{$i$}
+        \LL{$\lor E$}
+        \TIC{$B$}
+        \end{prooftree}
       </p>
       <details>
         <summary>読み</summary>
@@ -264,12 +438,31 @@
       <h4>$\exists\rm{E}$</h4>
       <p>
         論理式$F\p{x},B$について，
-        $$\infer[i]{B}{\exists x,F\p{x}\quad\infer{B}{\infer{\vdots}{\infer[i]{F\p{a}}{}}}}$$
+        \begin{prooftree}
+        \AXC{$\exists xF\p{x}$}
+        \AXC{}
+        \RL{$i$}
+        \UIC{$F\p{a}$}
+        \UIC{$\vdots$}
+        \UIC{$B$}
+        \RL{$i$}
+        \LL{$\exists E$}
+        \BIC{$B$}
+        \end{prooftree}
       </p>
       <h4>$\lnot\rm{I}$</h4>
       <p>
         論理式$A$について，
-        $$\infer[i]{\lnot A}{\infer{\bot}{\infer{\vdots}{\infer[i]{A}{}}}}$$
+        \begin{prooftree}
+        \AXC{}
+        \RL{$i$}
+        \UIC{$A$}
+        \UIC{$\vdots$}
+        \UIC{$\bot$}
+        \RL{$i$}
+        \LL{$\lnot I$}
+        \UIC{$\lnot A$}
+        \end{prooftree}
       </p>
       <details>
         <summary>読み</summary>
@@ -361,7 +554,10 @@
       <h4>爆発律</h4>
       <p>
         論理式$A$について，
-        $$\infer{A}{\bot}$$
+        \begin{prooftree}
+        \AXC{$\bot$}
+        \UIC{$A$}
+        \end{prooftree}
       </p>
     </section>
     <p>
@@ -377,7 +573,13 @@
         <summary>証明</summary>
         <p>
           次の証明図が存在する．
-          $$\infer[1]{A\to A}{\infer[1]{A}{}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \RL{$1$}
+          \UIC{$A\to A$}
+          \end{prooftree}
         </p>
       </details>
       <h4>爆発律と選言的三段論法の等価性</h4>
@@ -391,11 +593,43 @@
         </p>
         <p>
           最小論理と爆発律を用いて選言的三段論法を導出する．
-          $$\infer[2]{\p{A\lor B}\land\lnot B\to A}{\infer[1]{A}{\infer{A\lor B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}\quad\infer{A\to A}{}\quad\infer{A}{\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[2]{\p{A\lor B}\land\lnot B}{}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\p{A\lor B}\land\lnot B$}
+          \UIC{$A\lor B$}
+          \AXC{}
+          \UIC{$A\to A$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$B$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\p{A\lor B}\land\lnot B$}
+          \UIC{$\lnot B$}
+          \BIC{$\bot$}
+          \UIC{$A$}
+          \RL{$1$}
+          \TIC{$A$}
+          \RL{$2$}
+          \UIC{$\p{A\lor B}\land\lnot B\to A$}
+          \end{prooftree}
         </p>
         <p>
           最小論理と選言的三段論法を用いて爆発律を導出する．
-          $$\infer[1]{\bot\to A}{\infer{A}{\infer{\p{A\lor\bot}\land\lnot\bot}{\infer{A\lor\bot}{\infer[1]{\bot}{}}\quad\infer{\lnot\bot}{\infer{\bot\to\bot}{}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\bot$}
+          \UIC{$A\lor\bot$}
+          \AXC{}
+          \UIC{$\bot\to\bot$}
+          \UIC{$\lnot\bot$}
+          \BIC{$\p{A\lor\bot}\land\lnot\bot$}
+          \UIC{$A$}
+          \RL{$1$}
+          \UIC{$\bot\to A$}
+          \end{prooftree}
         </p>
       </details>
     </section>
@@ -432,17 +666,80 @@
         </p>
         <p>
           最小論理と爆発律と排中律を用いて二重否定の除去を導出する．
-          $$\infer[2]{\lnot\lnot A\to A}{\infer[1]{A}{\infer{A\lor\lnot A}{}\quad\infer{A\to A}{}\quad\infer{A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer[2]{\lnot\lnot A}{}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \UIC{$A\lor\lnot A$}
+          \AXC{}
+          \UIC{$A\to A$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\lnot A$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\lor\lnot A$}
+          \BIC{$\bot$}
+          \UIC{$A$}
+          \RL{$1$}
+          \TIC{$A$}
+          \RL{$2$}
+          \UIC{$\lnot\lnot A\to A$}
+          \end{prooftree}
         </p>
         <p>
           最小論理と二重否定の除去を用いて排中律を導出する．
-          $$\infer{A\lor\lnot A}{\infer[2]{\lnot\lnot\p{A\lor\lnot A}}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{\lnot A}{\infer{\bot}{\infer{A\lor\lnot A}{\infer[1]{A}{}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}\quad\infer[2]{\lnot\p{A\lor\lnot A}}{}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \UIC{$A\lor\lnot A$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\lnot\p{A\lor\lnot A}$}
+          \BIC{$\bot$}
+          \RL{$1$}
+          \UIC{$\lnot A$}
+          \UIC{$A\lor\lnot A$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\lnot\p{A\lor\lnot A}$}
+          \BIC{$\bot$}
+          \RL{$2$}
+          \UIC{$\lnot\lnot\p{A\lor\lnot A}$}
+          \UIC{$A\lor\lnot A$}
+          \end{prooftree}
         </p>
         <p>
           最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$B\to A\to B$を証明する．
-          $$\infer[2]{B\to A\to B}{\infer[1]{A\to B}{\infer{B}{\infer{A\land B}{\infer[1]{A}{}\quad\infer[2]{B}{}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$B$}
+          \BIC{$A\land B$}
+          \UIC{$B$}
+          \RL{$1$}
+          \UIC{$A\to B$}
+          \RL{$2$}
+          \UIC{$B\to A\to B$}
+          \end{prooftree}
           この補題より$B\proof A\to B$で，必要としない論理式を前提として追加してもよいという推論である．この$B$を$\bot$として利用する．
-          $$\infer[2]{\bot\to A}{\infer{A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[1]{\lnot A}{}\quad\infer{A\to\bot}{\infer[2]{\bot}{}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\lnot A$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\bot$}
+          \UIC{$A\to\bot$}
+          \BIC{$\bot$}
+          \RL{$1$}
+          \UIC{$\lnot\lnot A$}
+          \UIC{$A$}
+          \RL{$2$}
+          \UIC{$\bot\to A$}
+          \end{prooftree}
         </p>
       </details>
     </section>
@@ -464,11 +761,52 @@
         <summary>証明</summary>
         <p>
           $\p{A\to B}\to\lnot A\lor B$の証明である．
-          $$\infer[2]{\p{A\to B}\to\lnot A\lor B}{\infer[1]{\lnot A\lor B}{\infer{A\lor\lnot A}{}\quad\infer{\lnot A\lor B}{\infer{B}{\infer[1]{A}{}\quad\infer[2]{A\to B}{}}}\quad\infer{\lnot A\lor B}{\infer[1]{\lnot A}{}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \UIC{$A\lor\lnot A$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$A\to B$}
+          \BIC{$B$}
+          \UIC{$\lnot A\lor B$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\lnot A$}
+          \UIC{$\lnot A\lor B$}
+          \RL{$1$}
+          \TIC{$\lnot A\lor B$}
+          \RL{$2$}
+          \UIC{$\p{A\to B}\to\lnot A\lor B$}
+          \end{prooftree}
         </p>
         <p>
           $\lnot A\lor B\to\p{A\to B}$の証明である．
-          $$\infer[3]{\lnot A\lor B\to A\to B}{\infer[2]{A \to B}{\infer[3]{\lnot A\lor B}{}\quad\infer[1]{A\to B}{\infer{B}{\infer{\bot}{\infer[1]{A}{}\quad\infer[2]{\lnot A}{}}}}\quad\infer{A\to B}{\infer[2]{B}{}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$3$}
+          \UIC{$\lnot A\lor B$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\lnot A$}
+          \BIC{$\bot$}
+          \UIC{$B$}
+          \RL{$1$}
+          \UIC{$A\to B$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$B$}
+          \UIC{$A\to B$}
+          \RL{$2$}
+          \TIC{$A\to B$}
+          \RL{$3$}
+          \UIC{$\lnot A\lor B\to A\to B$}
+          \end{prooftree}
         </p>
       </details>
     </section>
@@ -503,16 +841,68 @@
         </p>
         <p>
           $F\p{A}=\lnot A$のとき，次の証明である．
-          $$\infer[2]{\lnot A\to\lnot B}{\infer[1]{\lnot B}{\infer{\bot}{\infer{A}{\infer[1]{B}{}\quad\infer{B\to A}{\infer{A\iff B}{}}}\quad\infer[2]{\lnot A}{}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$B$}
+          \AXC{}
+          \UIC{$A\iff B$}
+          \UIC{$B\to A$}
+          \BIC{$A$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\lnot A$}
+          \BIC{$\bot$}
+          \RL{$1$}
+          \UIC{$\lnot B$}
+          \RL{$2$}
+          \UIC{$\lnot A\to\lnot B$}
+          \end{prooftree}
         </p>
         <p>
           $F\p{A}=A\land C$のとき，次の証明である．
-          $$\infer[1]{A\land C\to B\land C}{\infer{B\land C}{\infer{B}{\infer{A}{\infer[1]{A\land C}{}}\quad\infer{A\to B}{\infer{A\iff B}{}}}\quad\infer{C}{\infer[1]{A\land C}{}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land C$}
+          \UIC{$A$}
+          \AXC{}
+          \UIC{$A\iff B$}
+          \UIC{$A\to B$}
+          \BIC{$B$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land C$}
+          \UIC{$C$}
+          \BIC{$B\land C$}
+          \RL{$1$}
+          \UIC{$A\land C\to B\land C$}
+          \end{prooftree}
           同様に，$F\p{A}=C\land A$のときでも成り立つ．
         </p>
         <p>
           $F\p{A}=A\lor C$のとき，次の証明である．
-          $$\infer[2]{A\lor C\to B\lor C}{\infer[1]{B\lor C}{\infer[2]{A\lor C}{}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer{A\iff B}{}}}}\quad\infer{B\lor C}{\infer[1]{C}{}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$A\lor C$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \AXC{}
+          \UIC{$A\iff B$}
+          \UIC{$A\to B$}
+          \BIC{$B$}
+          \UIC{$B\lor C$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$C$}
+          \UIC{$B\lor C$}
+          \RL{$1$}
+          \TIC{$B\lor C$}
+          \RL{$2$}
+          \UIC{$A\lor C\to B\lor C$}
+          \end{prooftree}
           同様に，$F\p{A}=C\lor A$のときでも成り立つ．
         </p>
         <p>
@@ -521,11 +911,39 @@
         </p>
         <p>
           $F\p{A}=\forall a,A\p{a}$のとき，次の証明である．
-          $$\infer[1]{\forall x,A\p{x}\to\forall x,B\p{x}}{\infer{\forall x,B\p{x}}{\infer{B\p{a}}{\infer{A\p{a}}{\infer[1]{\forall x,A\p{x}}{}}\quad\infer{A\p{a}\to B\p{a}}{\infer{A\p{a}\iff B\p{a}}{}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall x,A\p{x}$}
+          \UIC{$A\p{a}$}
+          \AXC{}
+          \UIC{$A\p{a}\iff B\p{a}$}
+          \UIC{$A\p{a}\to B\p{a}$}
+          \BIC{$B\p{a}$}
+          \UIC{$\forall x,B\p{x}$}
+          \RL{$1$}
+          \UIC{$\forall x,A\p{x}\to\forall x,B\p{x}$}
+          \end{prooftree}
         </p>
         <p>
           $F\p{A}=\exists a,A\p{a}$のとき，次の証明である．
-          $$\infer[2]{\exists x,A\p{x}\to\exists x,B\p{x}}{\infer[1]{\exists x,B\p{x}}{\infer[2]{\exists x,A\p{x}}{}\quad\infer{\exists x,B\p{x}}{\infer{B\p{a}}{\infer[1]{A\p{a}}{}\quad\infer{A\p{a}\to B\p{a}}{\infer{A\p{a}\iff B\p{a}}{}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\exists x,A\p{x}$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\p{a}$}
+          \AXC{}
+          \UIC{$A\p{a}\iff B\p{a}$}
+          \UIC{$A\p{a}\to B\p{a}$}
+          \BIC{$B\p{a}$}
+          \UIC{$\exists x,B\p{x}$}
+          \RL{$1$}
+          \BIC{$\exists x,B\p{x}$}
+          \RL{$2$}
+          \UIC{$\exists x,A\p{x}\to\exists x,B\p{x}$}
+          \end{prooftree}
         </p>
         <p>
           $A\iff B$で$F\p{A}\iff F\p{B}$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'\p{F\p{A}}$について前述したことを用いて$F'\p{F\p{A}}\iff F'\p{F\p{B}}$である．よって，任意の論理式で$F\p{A}\iff F\p{B}$が成り立つ．
@@ -613,7 +1031,19 @@
         <summary>証明</summary>
         <p>
           $\p{\to}$の証明である．
-          $$\infer[2]{A\to\lnot\lnot A}{\infer[1]{\lnot\lnot A}{\infer{\bot}{\infer[2]{A}{}\quad\infer[1]{\lnot A}{}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RightLabel{$2$}
+          \UIC{$A$}
+          \AXC{}
+          \RightLabel{$1$}
+          \UIC{$\lnot A$}
+          \BIC{$\bot$}
+          \RL{$1$}
+          \UIC{$\lnot\lnot A$}
+          \RL{$2$}
+          \UIC{$A\to\lnot\lnot A$}
+          \end{prooftree}
         </p>
         <p>
           $\p{\rto}$は二重否定の除去そのものである．
@@ -635,11 +1065,61 @@
         <summary>証明</summary>
         <p>
           $\p{\to}$の証明である．
-          $$\infer[3]{\lnot\p{A\lor B}\to\lnot A\land\lnot B}{\infer{\lnot A\land\lnot B}{\infer[1]{\lnot A}{\infer{\bot}{\infer{A\lor B}{\infer[1]{A}{}}\quad\infer[3]{\lnot\p{A\lor B}{}}}}\quad\infer[2]{\lnot B}{\infer{\bot}{\infer{A\lor B}{\infer[2]{B}{}}\quad\infer[3]{\lnot\p{A\lor B}}{}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \UIC{$A\lor B$}
+          \AXC{}
+          \RL{$3$}
+          \UIC{$\lnot\p{A\lor B}$}
+          \BIC{$\bot$}
+          \RL{$1$}
+          \UIC{$\lnot A$}
+          \AXC{}
+          \UIC{$B$}
+          \RL{$2$}
+          \UIC{$A\lor B$}
+          \AXC{}
+          \RL{$3$}
+          \UIC{$\lnot\p{A\lor B}$}
+          \BIC{$\bot$}
+          \RL{$2$}
+          \UIC{$\lnot B$}
+          \BIC{$\lnot A\land\lnot B$}
+          \RL{$3$}
+          \UIC{$\lnot\p{A\lor B}\to\lnot A\land\lnot B$}
+          \end{prooftree}
         </p>
         <p>
           $\p{\rto}$の証明である．
-          $$\infer[3]{\lnot A\land\lnot B\to\lnot\p{A\lor B}}{\infer[2]{\lnot\p{A\lor B}}{\infer[1]{\bot}{\infer[2]{A\lor B}{}\quad\infer{\bot}{\infer[1]{A}{}\quad\infer{\lnot A}{\infer[3]{\lnot A\land\lnot B}{}}}\quad\infer{\bot}{\infer[1]{B}{}\quad\infer{\lnot B}{\infer[3]{\lnot A\land\lnot B}{}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$A\lor B$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$3$}
+          \UIC{$\lnot A\land\lnot B$}
+          \UIC{$\lnot A$}
+          \BIC{$\bot$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$B$}
+          \AXC{}
+          \RL{$3$}
+          \UIC{$\lnot A\land\lnot B$}
+          \UIC{$\lnot B$}
+          \BIC{$\bot$}
+          \RL{$1$}
+          \TIC{$\bot$}
+          \RL{$2$}
+          \UIC{$\lnot\p{A\lor B}$}
+          \RL{$3$}
+          \UIC{$\lnot A\land\lnot B\to\lnot\p{A\lor B}$}
+          \end{prooftree}
         </p>
       </details>
       <p>
@@ -664,12 +1144,44 @@
       <details>
         <summary>証明</summary>
         <p>
-          $\p{\to}$をF\p{x}$に含まれていない$a$を用いて証明する．
-          $$\infer[2]{\lnot\exists xF\p{x}\to\forall x\lnot F\p{x}}{\infer{\forall x\lnot F\p{x}}{\infer[1]{\lnot F\p{a}}{\infer{\bot}{\infer{\exists xF\p{x}}{\infer[1]{F\p{a}}{}}\quad\infer[2]{\lnot\exists xF\p{x}}{}}}}}$$
+          $\p{\to}$を$F\p{x}$に含まれていない$a$を用いて証明する．
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$F\p{a}$}
+          \UIC{$\exists xF\p{x}$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\lnot\exists xF\p{x}$}
+          \BIC{$\bot$}
+          \RL{$1$}
+          \UIC{$\lnot F\p{a}$}
+          \UIC{$\forall x\lnot F\p{x}$}
+          \RL{$2$}
+          \UIC{$\lnot\exists xF\p{x}\to\forall x\lnot F\p{x}$}
+          \end{prooftree}
         </p>
         <p>
           $\p{\rto}$を$F\p{x}$に含まれていない$a$を用いて証明する．
-          $$\infer[3]{\forall x\lnot F\p{x}\to\lnot\exists xF\p{x}}{\infer[2]{\lnot\exists xF\p{x}}{\infer[1]{\bot}{\infer[2]{\exists xF\p{x}}{}\quad\infer{\bot}{\infer[1]{F\p{a}}{}\quad\infer{\lnot F\p{a}}{\infer[3]{\forall x\lnot F\p{x}}{}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\exists xF\p{x}$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$F\p{a}$}
+          \AXC{}
+          \RL{$3$}
+          \UIC{$\forall x\lnot F\p{x}$}
+          \UIC{$\lnot F\p{a}$}
+          \BIC{$\bot$}
+          \RL{$1$}
+          \BIC{$\bot$}
+          \RL{$2$}
+          \UIC{$\lnot\exists xF\p{x}$}
+          \RL{$3$}
+          \UIC{$\forall x\lnot F\p{x}\to\lnot\exists xF\p{x}$}
+          \end{prooftree}
         </p>
       </details>
       <p>
@@ -760,7 +1272,11 @@
         <summary>証明</summary>
         <p>
           同一律より$\bot\to\bot$が成り立つから，次の証明図が存在する．
-          $$\infer{\lnot\bot}{\infer{\bot\to\bot}{}}$$
+          \begin{prooftree}
+          \AXC{}
+          \UIC{$\bot\to\bot$}
+          \UIC{$\lnot\bot$}
+          \end{prooftree}
         </p>
       </details>
       <h4>任意の定理とトートロジーの同値性</h4>
@@ -772,7 +1288,11 @@
         <summary>証明</summary>
         <p>
           $\p{\To}$$\top$は定理だから，次の証明図が存在する．
-          $$\infer{A\to\top}{\infer{\top}{}}$$
+          \begin{prooftree}
+          \AXC{}
+          \UIC{$\bot$}
+          \UIC{$A\to\bot$}
+          \end{prooftree}
         </p>
         <p>
           $\p{\rTo}$逆も同様．
@@ -795,7 +1315,19 @@
         <summary>証明</summary>
         <p>
           $A\land B\to B\land A$を証明する．
-          $$\infer[1]{A\land B\to B\land A}{\infer{B\land A}{\infer{B}{\infer[1]{A\land B}{}}\quad\infer{A}{\infer[1]{A\land B}{}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land B$}
+          \UIC{$B$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land B$}
+          \UIC{$A$}
+          \BIC{$B\land A$}
+          \RL{$1$}
+          \UIC{$A\land B\to B\land A$}
+          \end{prooftree}
           $A$と$B$を交換すると逆も成り立つ．
         </p>
       </details>
@@ -824,7 +1356,26 @@
         <summary>証明</summary>
         <p>
           $A\land\p{B\land C}\to\p{A\land B}\land C$の証明する．
-          $$\infer[1]{A\land\p{B\land C}\to\p{A\land B}\land C}{\infer{\p{A\land B}\land C}{\infer{A\land B}{\infer{A}{\infer[1]{A\land\p{B\land C}}{}}\quad\infer{B}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}\quad\infer{C}{\infer{B\land C}{\infer[1]{A\land\p{B\land C}}{}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land\p{B\land C}$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land\p{B\land C}$}
+          \UIC{$B\land C$}
+          \UIC{$B$}
+          \BIC{$A\land B$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land\p{B\land C}$}
+          \UIC{$B\land C$}
+          \UIC{$C$}
+          \BIC{$\p{A\land B}\land C$}
+          \RL{$1$}
+          \UIC{$A\land\p{B\land C}\to\p{A\land B}\land C$}
+          \end{prooftree}
           交換律を用いると逆も成り立つ．また，双対性より$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$が成り立つ．
         </p>
       </details>
@@ -838,7 +1389,17 @@
         <summary>証明</summary>
         <p>
           $A\land A\to A$は$\land\rm{E}$そのものなので逆を証明する．
-          $$\infer[1]{A\to A\land A}{\infer{A\land A}{\infer[1]{A}{}\quad\infer[1]{A}{}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \BIC{$A\land A$}
+          \RL{$1$}
+          \UIC{$A\to A\land A$}
+          \end{prooftree}
           双対性より$A\lor A\iff A$も成り立つ．
         </p>
       </details>
@@ -852,11 +1413,65 @@
         <summary>証明</summary>
         <p>
           $A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$を証明する．
-          $$\infer[2]{A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}}{\infer[1]{\p{A\land B}\lor\p{A\land C}}{\infer{B\lor C}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land B}{\infer{A}{\infer[2]{A\land\p{B\lor C}}}\quad\infer[1]{B}{}}}\quad\infer{\p{A\land B}\lor\p{A\land C}}{\infer{A\land C}{\infer{A}{\infer[2]{A\land\p{B\lor C}}{}}\quad\infer[1]{C}{}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$A\land\p{B\lor C}$}
+          \UIC{$B\lor C$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$A\land\p{B\lor C}$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$B$}
+          \BIC{$A\land B$}
+          \UIC{$\p{A\land B}\lor\p{A\land C}$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$A\land\p{B\lor C}$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$C$}
+          \BIC{$A\land C$}
+          \UIC{$\p{A\land B}\lor\p{A\land C}$}
+          \RL{$1$}
+          \TIC{$\p{A\land B}\lor\p{A\land C}$}
+          \RL{$2$}
+          \UIC{$A\land\p{B\lor C}\to\p{A\land B}\lor\p{A\land C}$}
+          \end{prooftree}
         </p>
         <p>
           $\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}$を証明する．
-          $$\infer[2]{\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}}{\infer[1]{A\land\p{B\lor C}}{\infer[2]{\p{A\land B}\lor\p{A\land C}}{}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer[1]{A\land B}{}}\quad\infer{B\lor C}{\infer{B}{\infer[1]{A\land B}{}}}}\quad\infer{A\land\p{B\lor C}}{\infer{A}{\infer{A\land C}{}}\quad\infer{B\lor C}{\infer{C}{\infer[1]{A\land C}{}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\p{A\land B}\lor\p{A\land C}$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land B$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land B$}
+          \UIC{$B$}
+          \UIC{$B\lor C$}
+          \BIC{$A\land\p{B\lor C}$}
+          \AXC{}
+          \UIC{$A\land C$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A\land C$}
+          \UIC{$C$}
+          \UIC{$B\lor C$}
+          \BIC{$A\land\p{B\lor C}$}
+          \RL{$1$}
+          \TIC{$A\land\p{B\lor C}$}
+          \RL{$2$}
+          \UIC{$\p{A\land B}\lor\p{A\land C}\to A\land\p{B\lor C}$}
+          \end{prooftree}
           双対性より$A\lor\p{B\land C}\iff\p{A\lor B}\land\p{A\lor C}$も成り立つ．
         </p>
       </details>
@@ -872,7 +1487,16 @@
         <summary>証明</summary>
         <p>
           $A\land\top\to A$は$\land\rm{E}$そのものなので逆を証明する．
-          $$\infer[1]{A\to\top\land A}{\infer{\top\land A}{\infer{\top}{}\quad\infer[1]{A}{}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \UIC{$\top$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \BIC{$\top\land A$}
+          \RL{$1$}
+          \UIC{$A\to\top\land A$}
+          \end{prooftree}
           双対性より$A\lor\bot\iff A$も成り立つ．
           $A\land\bot\iff\bot$は$\land\rm{E}$そのもので，逆は爆発律そのものである．双対性より$A\lor\top\iff\top$も成り立つ．
         </p>
@@ -925,7 +1549,25 @@
       <details>
         <summary>証明</summary>
         <p>
-          $$\infer[2]{\p{A\to B}\land\p{B\to C}\to\p{A\to C}}{\infer[1]{A\to C}{\infer{C}{\infer{B}{\infer[1]{A}{}\quad\infer{A\to B}{\infer[2]{\p{A\to B}\land\p{B\to C}}{}}}\quad\infer{B\to C}{\infer[2]{\p{A\to B}\land\p{B\to C}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\p{A\to B}\land\p{B\to C}$}
+          \UIC{$A\to B$}
+          \BIC{$B$}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\p{A\to B}\land\p{B\to C}$}
+          \UIC{$B\to C$}
+          \BIC{$C$}
+          \RL{$1$}
+          \UIC{$A\to C$}
+          \RL{$2$}
+          \UIC{$\p{A\to B}\land\p{B\to C}\to\p{A\to C}$}
+          \end{prooftree}
         </p>
       </details>
       <h4>移入律</h4>
@@ -986,8 +1628,16 @@
       <details>
         <summary>証明</summary>
         <p>
-          $\forall xF\p{x}\to\forall yF\p{y}$をF\p{x}$に含まれない$a$を用いて証明する．
-          $$\infer[1]{\forall xF\p{x}\to\forall yF\p{y}}{\infer{\forall yF\p{y}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
+          $\forall xF\p{x}\to\forall yF\p{y}$を$F\p{x}$に含まれない$a$を用いて証明する．
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall xF\p{x}$}
+          \UIC{$F\p{a}$}
+          \UIC{$\forall yF\p{y}$}
+          \RL{$1$}
+          \UIC{$\forall xF\p{x}\to\forall yF\p{y}$}
+          \end{prooftree}
           $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xF\p{x}\iff\exists yF\p{y}$も成り立つ．
         </p>
       </details>
@@ -1000,7 +1650,15 @@
         <summary>証明</summary>
         <p>
           $F\p{x}$に含まれない$a$を用いて証明する．
-          $$\infer[1]{\forall xF\p{x}\to\exists xF\p{x}}{\infer{\exists xF\p{x}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall xF\p{x}$}
+          \UIC{$F\p{a}$}
+          \UIC{$\exists xF\p{x}$}
+          \RL{$1$}
+          \UIC{$\forall xF\p{x}\to\exists xF\p{x}$}
+          \end{prooftree}
         </p>
       </details>
       <h4>量化の交換</h4>
@@ -1013,7 +1671,17 @@
         <summary>証明</summary>
         <p>
           $\forall xyF\p{x,y}\to\forall yxF\p{x,y}$を$F\p{x,y}$に含まれない$a,b$を用いて証明する．
-          $$\infer[1]{\forall xyF\p{x,y}\to\forall yxF\p{x,y}}{\infer{\forall yxF\p{x,y}}{\infer{\forall xF\p{x,b}}{\infer{F\p{a,b}}{\infer{\forall yF\p{a,y}}{\infer[1]{\forall xyF\p{x,y}}{}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall xyF\p{x,y}$}
+          \UIC{$\forall yF\p{a,y}$}
+          \UIC{$F\p{a,b}$}
+          \UIC{$\forall xF\p{x,b}$}
+          \UIC{$\forall yxF\p{x,y}$}
+          \RL{$1$}
+          \UIC{$\forall xyF\p{x,y}\to\forall yxF\p{x,y}$}
+          \end{prooftree}
           $x$と$y$を入れ替えると逆も成り立つ．双対性より，$\exists xyF\p{x,y}\iff\exists yx,F\p{x,y}$も成り立つ．
         </p>
       </details>
@@ -1024,7 +1692,21 @@
         <summary>証明</summary>
         <p>
           また，$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$を$F\p{x,y}$に含まれない$a,b$を用いて証明する．
-          $$\infer[2]{\exists x\forall yF\p{x,y}\to\forall x\exists yF\p{x,y}}{\infer{\forall x\exists yF\p{x,y}}{\infer[1]{\exists yF\p{a,y}}{\infer[2]{\exists x\forall yF\p{x,y}}{}\quad\infer{\exists yF\p{a,y}}{\infer{F\p{a,b}}{\infer[1]{\forall xF\p{x,b}}{}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\exists x\forall yF\p{x,y}$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall xF\p{x,b}$}
+          \UIC{$F\p{a,b}$}
+          \UIC{$\exists xF\p{x,b}$}
+          \RL{$1$}
+          \BIC{$\exists xF(x,b)$}
+          \UIC{$\forall y\exists xF\p{x,y}$}
+          \RL{$2$}
+          \UIC{$\exists x\forall yF\p{x,y}\to\forall y\exists x\p{x,y}$}
+          \end{prooftree}
         </p>
       </details>
       <h4>量化の分配</h4>
@@ -1037,11 +1719,42 @@
         <summary>証明</summary>
         <p>
           $\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}$を$F\p{x},G\p{x}$に含まれない$a$を用いて証明する．
-          $$\infer[1]{\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}\land\forall xG\p{x}}{\infer{\forall xF\p{x}}{\infer{F\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}\quad\infer{\forall xG\p{x}}{\infer{G\p{a}}{\infer{F\p{a}\land G\p{a}}{\infer[1]{\forall x\p{F\p{x}\land G\p{x}}{}}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall x\p{F\p{x}\land G\p{x}}$}
+          \UIC{$F\p{a}\land G\p{a}$}
+          \UIC{$F\p{a}$}
+          \UIC{$\forall xF\p{x}$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall x\p{F\p{x}\land G\p{x}}$}
+          \UIC{$F\p{a}\land G\p{a}$}
+          \UIC{$G\p{a}$}
+          \UIC{$\forall xG\p{x}$}
+          \BIC{$\forall xF\p{x}\land\forall xG\p{x}$}
+          \RL{$1$}
+          \UIC{$\forall x\p{F\p{x}\land G\p{x}}\to\forall xF\p{x}\land\forall xG\p{x}$}
+          \end{prooftree}
         </p>
         <p>
           逆も$F\p{x}$に含まれない$a$を用いて証明する．
-          $$\infer[1]{\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}}{\infer{\forall x\p{F\p{x}\land G\p{x}}}{\infer{F\p{a}\land G\p{a}}{\infer{F\p{a}}{\infer{\forall xF\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}{}}}\quad\infer{G\p{a}}{\infer{\forall xG\p{x}}{\infer[1]{\forall xF\p{x}\land\forall xG\p{x}}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall xF\p{x}\land\forall xG\p{x}$}
+          \UIC{$\forall xF\p{x}$}
+          \UIC{$F\p{a}$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall xF\p{x}\land\forall xG\p{x}$}
+          \UIC{$\forall xG\p{x}$}
+          \UIC{$G\p{a}$}
+          \BIC{$F\p{a}\land G\p{a}$}
+          \UIC{$\forall x\p{F\p{x}\land G\p{x}}$}
+          \RL{$1$}
+          \UIC{$\forall xF\p{x}\land\forall xG\p{x}\to\forall x\p{F\p{x}\land G\p{x}}$}
+          \end{prooftree}
           双対性より，$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$も成り立つ．
         </p>
       </details>
@@ -1053,7 +1766,26 @@
         <summary>証明</summary>
         <p>
           また，$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$を$F\p{x},G\p{x}$に含まれない$a$を用いて証明する．
-          $$\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}}{\infer{\forall x\p{F\p{x}\lor G\p{x}}}{\infer[1]{F\p{a}\lor G\p{a}}{\infer[2]{\forall xF\p{x}\lor\forall xG\p{x}}{}\quad\infer{F\p{a}\lor G\p{a}}{\infer{F\p{a}}{\infer[1]{\forall xF\p{x}}{}}}\quad\infer{F\p{a}\lor G\p{a}}{\infer{G\p{a}}{\infer[1]{\forall xG\p{x}}{}}}}}}$$
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$\forall xF\p{x}\lor\forall xG\p{x}$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall xF\p{x}$}
+          \UIC{$F\p{a}$}
+          \BIC{$F\p{a}\lor G\p{a}$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$\forall xG\p{x}$}
+          \UIC{$G\p{a}$}
+          \BIC{$F\p{a}\lor G\p{a}$}
+          \RL{$1$}
+          \UIC{$F\p{a}\lor G\p{a}$}
+          \UIC{$\forall x\p{F\p{x}\lor G\p{x}}$}
+          \RL{$2$}
+          \UIC{$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$}
+          \end{prooftree}
           対偶律より，$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$も成り立つ．
         </p>
       </details>

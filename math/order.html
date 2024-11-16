@@ -47,8 +47,8 @@
       \begin{align*}
       x\lt y&\Iff x\le y\land x\neq y,\\
       x\lt y\lor x=y&\Iff x\le y\land x\neq y\lor x=y,\\
-      x\lt y\lor x=y&\Iff \p{x\le y\lor x=y}\land \p{x\neq y\lor x=y},\\
-      x\le y&\Iff x\lt y\lor x=y.
+      &\Iff \p{x\le y\lor x=y}\land \p{x\neq y\lor x=y},\\
+      &\Iff x\le y.
       \end{align*}
       狭義順序は次の性質を満たす．
     </p>
@@ -60,21 +60,19 @@
       <details>
         <summary>証明</summary>
         <p>
-          $x\lt x$と仮定すると，定義より$x\neq x$だから反する．よって，$\lnot\p{x\lt x}$である．
+          $x\lt x$と仮定すると，定義の$x\neq x$に反する．よって，$\lnot\p{x\lt x}$である．
         </p>
       </details>
       <p>
-        $A$上の狭義順序$\lt$について，
         $$\forall xy\in A,\lnot\p{x\lt y\land y\lt x}.$$
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $x\lt y\land y\lt x$と仮定すると，定義より$x\le y$かつ$y\le x$かつ$x\neq y$が成り立つ．反射律より$x=y$が成り立つから反する．よって，$\lnot\p{x\lt y\land y\lt x}$である．
+          $x\lt y\land y\lt x$と仮定すると，定義より$x\le y$かつ$y\le x$かつ$x\neq y$が成り立つ．反対称律より$x=y$が成り立つから反する．よって，$\lnot\p{x\lt y\land y\lt x}$である．
         </p>
       </details>
       <p>
-        $A$上の狭義順序$\lt$について，
         $$\forall xyz\in A,x\lt y\land y\lt z\to x\lt z.$$
       </p>
       <details>
@@ -85,7 +83,7 @@
       </details>
     </section>
     <p>
-      逆に，狭義順序を定義したとき順序の公理を示せるので，狭義順序からも順序が定義可能．
+      逆に，狭義順序を上の定理が成り立つとして定義したとき順序の満たすべき性質を示せるので，狭義順序からも順序が定義可能．
     </p>
     <details>
       <summary>狭義順序から反射律の証明</summary>
@@ -115,6 +113,7 @@
         &\forall xy\in A,x\le y\lor y\le x&&(完全律)\\
         \Iff&\forall x\in A,x\lt y\lor x=y\lor y\lt x.&&(三分律)
         \end{align*}
+        が成り立つことである。
       </p>
     </section>
 
@@ -226,7 +225,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          $A$の任意の部分対集合$\set{a,b}$について，最小値が存在することから，$a\le b\lor b\le a$である．よって$A$は全順序集合である．
+          $A$の任意の元$a,b$について，部分集合$\set{a,b}$について，最小値が存在することから，$a\le b\lor b\le a$である．よって$A$は全順序集合である．
         </p>
       </details>
       <p>

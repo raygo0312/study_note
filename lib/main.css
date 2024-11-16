@@ -23,33 +23,6 @@
   --thm: #a2b59f;
 }
 
-.pastel {
-  --main: #F0E9D9;
-  --menu: #7462ca;
-  --header: #FBD8B5;
-  --h2: #F9D3E3;
-  --h3: #D3EDFB;
-  --ex: #F9F8C4;
-  --axm: #F8CED3;
-  --def: #D2D5EC;
-  --thm: #DAECD4;
-}
-
-.dark {
-  --white: #333333;
-  --gray: #666666;
-  --black: #f0f0f0;
-  --main: #000000;
-  --menu: #ffffff;
-  --header: #483b6d;
-  --h2: #96858f;
-  --h3: #c09f80;
-  --ex: #53531f;
-  --axm: #612828;
-  --def: #2b4263;
-  --thm: #2b5e24;
-}
-
 body {
   color: var(--black);
   margin: 0;
@@ -245,6 +218,27 @@ button:hover {
   background-color: var(--header);
   color: white;
 }
+
+input {
+  position: relative;
+  width: auto;
+  margin: 40px 0;
+  font: 15px/1.6 sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.3em;
+  color: #000000;
+  border: 1px solid #1b2538;
+  border-radius: 4px;
+  transition: 0.5s;
+}
+
+input:focus {
+  border: 1px solid #da3c41;
+  box-shadow: 0 0 5px 1px rgba(218, 60, 65, .5);
+  outline: none;
+}
+
 
 /* チャット */
 .you::before {
