@@ -173,6 +173,7 @@ section.ex::before {
   left: 0;
 }
 
+/* functional tags */
 details {
   margin: 0.5em;
   border: var(--black) solid 1px;
@@ -234,6 +235,25 @@ input:focus {
   border: 1px solid #da3c41;
   box-shadow: 0 0 5px 1px rgba(218, 60, 65, .5);
   outline: none;
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  padding: 10px;
+  background: #778ca3;
+  border: solid 1px #666666;
+  color: #ffffff;
+}
+
+td {
+  padding: 10px;
+  border: solid 1px #666666;
 }
 
 
