@@ -12,7 +12,7 @@
   --black: #333333;
   --main: #9099a2;
   --menu: #555555;
-  --header: #66a5ad;
+  --header: #84c0c7;
   --h2: #96858f;
   --h3: #c09f80;
   --ex: #e3e2b4;
@@ -53,14 +53,14 @@ main {
 
 footer {
   border-top: var(--border);
-  color: var(--gray);
+  color: var(--white);
   background-color: var(--black);
 }
 
 h1 {
   font-family: var(--heading);
-  text-shadow: 1px 1px 1px var(--white);
-  margin: 0 20pt;
+  text-shadow: 1px 1px 3px var(--gray);
+  margin: 0 5em;
 }
 
 h2 {
@@ -122,6 +122,7 @@ section {
 section>p,
 section>ol,
 section>ul,
+section>dl,
 section>details {
   margin-left: 2em;
 }
@@ -318,6 +319,20 @@ td {
   border: solid 1px #666666;
 }
 
+dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+  column-gap: 0.5em;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0;
+}
+
 
 /* チャット */
 .you::before {
@@ -366,4 +381,19 @@ td {
   padding: 0.1em 0.25em;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+.remark {
+  background: var(--header);
+  border-radius: 0.2em;
+}
+
+.nest {
+  border: var(--border);
+  border-right: none;
+}
+
+#logo {
+  position: absolute;
+  height: 2.5em;
 }

@@ -3,24 +3,23 @@
 
 <head>
   <title>自然演繹</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../lib/main.css">
   <script src="../lib/main.js" defer></script>
 </head>
 
 <body>
   <header>
-    <h1 id="h1"></h1>
     <a href="../">ホーム</a> / <a href="./">数学</a> /
   </header>
   <main>
-    <details id="setting"></details>
     <h2>証明体系</h2>
     <p>
-      証明体系は推論規則と公理からなる．1階述語論理の証明体系は2つの考えを組み合わせて名前が付けられている．1つ目は推論の形式についてで，ヒルベルト流H，自然演繹N，シーケント計算Lの3つが知られてる．2つ目は定理の範囲についてで，最小論理M，直観主義論理J，古典論理Kの3つが知られてる．それぞれの組み合わせにより，HM，HJ，HK，NM，NJ，NK，LM，LJ，LKの9つの証明体系がよく知られている．自然演繹が初学者にとって分かりやすいのでこれを採用する．
+      証明体系は推論規則と公理からなる．自然演繹が初学者にとって分かりやすいのでこれを採用する．
     </p>
 
     <h2>自然演繹</h2>
+    <p>
+      自然演繹は推論規則を木構造で表す．視覚的に理解しやすい．
+    </p>
     <h3>証明図</h3>
     <p>
       推論の流れの表し方を考える．<dfn>推論図</dfn>とは推論の流れを木のように表す図である．ある推論規則では前提を取り除く，<dfn>打ち消し</dfn>という操作がある．打ち消される前提を<dfn>仮定</dfn>という．推論規則のみを用いているとき，推論図を<dfn>演繹図</dfn>という．前提がないとき，演繹図を<dfn>証明図</dfn>という．
@@ -90,17 +89,11 @@
         論理式$A$が証明可能なとき，$A$を定理という．
       </p>
     </section>
-    <div class="you">
-      例はすぐにたくさん出てくるから待ってて
-    </div>
 
     <h3>自然演繹</h3>
     <p>
       <dfn>自然演繹</dfn>とは証明の構造を視覚で理解しやすい体系である．証明図を使って論理式の推論を表すことが特徴である．推論規則は各論理演算子についての<dfn>挿入</dfn>と<dfn>除去</dfn>の規則から成り立つ．
     </p>
-    <div class="you">
-      $\to,\lor,\land,\forall,\exists,\lnot$とそれぞれの挿入と除去で合計12個の推論規則があるってことだね
-    </div>
 
     <h2>自然演繹の推論規則</h2>
     <h3>$\to$の推論規則</h3>
@@ -137,8 +130,10 @@
     </p>
     <section class="axm">
       <h4>$\to\rm{I}$</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
         \begin{prooftree}
         \AXC{}
         \RL{$i$}
@@ -157,8 +152,10 @@
         </p>
       </details>
       <h4>$\to\rm{E}$</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
         \begin{prooftree}
         \AXC{$A$}
         \AXC{$A\to B$}
@@ -173,15 +170,6 @@
         </p>
       </details>
     </section>
-    <div class="you">
-      推論規則名のIとEはそれぞれInsert，Eraseを意味してるよ
-    </div>
-    <div class="me">
-      推論規則ってどう使うの？
-    </div>
-    <div class="you">
-      実際にこの推論規則を使って推論図を書いてみようか
-    </div>
     <section class="ex">
       <p>
         $A,A\to B,A\to B\to C$を前提として推論をする．
@@ -200,17 +188,6 @@
         よって，$A,A\to B,A\to B\to C\proof C$である．
       </p>
     </section>
-    <div class="you">
-      完成された推論図を見るのではなくて，上から推論規則を使いながら推論図を作っていくイメージを持ってほしいな
-    </div>
-    <div class="me">
-      分数みたいな棒の上から下に推論規則を適用させればいいんだね<br>
-      もう一個の規則は使わないの？
-    </div>
-    <div class="you">
-      もう一個の規則は推論規則の中でも重要なもので唯一前提を消せるんだ<br>
-      これは証明図を書くときによく使うよ
-    </div>
     <section class="ex">
       <p>
         \begin{prooftree}
@@ -257,9 +234,6 @@
         \end{prooftree}
       </p>
     </section>
-    <div class="you">
-      分かりづらいから，1から順番に使ってね
-    </div>
 
     <h3>$\land$と$\lor$の推論規則</h3>
     <p>
@@ -270,8 +244,10 @@
     </p>
     <section class="axm">
       <h4>$\land\rm{I}$</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A_1,A_2$について，
         \begin{prooftree}
         \AXC{$A_1$}
         \AXC{$A_2$}
@@ -280,8 +256,10 @@
         \end{prooftree}
       </p>
       <h4>$\land\rm{E}$</h4>
+      <ul>
+        <li>$A_1\land A_2$: 論理式</li>
+      </ul>
       <p>
-        論理式$A_1,A_2$について，
         \begin{prooftree}
         \AXC{$A_1\land A_2$}
         \LL{$\land E$}
@@ -294,8 +272,10 @@
         \end{prooftree}
       </p>
       <h4>$\lor\rm{I}$</h4>
+      <ul>
+        <li>$A_1,A_2$: 論理式</li>
+      </ul>
       <p>
-        論理式$A_1,A_2$について，
         \begin{prooftree}
         \AXC{$A_1$}
         \LL{$\lor I$}
@@ -308,8 +288,10 @@
         \end{prooftree}
       </p>
       <h4>$\lor\rm{E}$</h4>
+      <ul>
+        <li>$A_1,A_2,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A_1,A_2,B$について，
         \begin{prooftree}
         \AXC{$A_1\lor A_2$}
         \AXC{$A_1\to B$}
@@ -323,14 +305,16 @@
     <h3>$\forall$と$\exists$の推論規則</h3>
     <p>
       $\forall$はすべてについて成り立つという意味だが，これは対象の集合$\set{a_1,a_2,\dots}$の元すべてで成り立つということである．また，$\exists$も成り立つ元が一つ以上あるという意味である．つまり，
-      $$\forall F\p{x}\Iff F\p{a_1}\land F\p{a_2}\land\cdots.$$
-      $$\exists F\p{x}\Iff F\p{a_1}\lor F\p{a_2}\lor\cdots.$$
+      $$\forall F\p{x}\Iff F\p{a_1}\land F\p{a_2}\land\cdots$$
+      $$\exists F\p{x}\Iff F\p{a_1}\lor F\p{a_2}\lor\cdots$$
       と書きたいが，これだと無限に列挙することになってしまうため量化子を用いて表しているに過ぎない．これをもとに推論規則を定める．
     </p>
     <section class="axm">
       <h4>$\forall\rm{I}$</h4>
+      <ul>
+        <li>$F\p{x}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x}$について，
         \begin{prooftree}
         \AXC{$F\p{a}$}
         \LL{$\forall I$}
@@ -339,8 +323,10 @@
         ただし，$a$は打ち消されていない仮定と$\forall xF\p{x}$の自由変数に含まれていない．
       </p>
       <h4>$\forall\rm{E}$</h4>
+      <ul>
+        <li>$F\p{x}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x}$について，
         \begin{prooftree}
         \AXC{$\forall xF\p{x}$}
         \LL{$\forall E$}
@@ -348,8 +334,10 @@
         \end{prooftree}
       </p>
       <h4>$\exists\rm{I}$</h4>
+      <ul>
+        <li>$F\p{x}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x}$について，
         \begin{prooftree}
         \AXC{$F\p{t}$}
         \LL{$\exists I$}
@@ -357,8 +345,10 @@
         \end{prooftree}
       </p>
       <h4>$\exists\rm{E}$</h4>
+      <ul>
+        <li>$F\p{x},A$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x},A$について，
         \begin{prooftree}
         \AXC{$\exists xF\p{x}$}
         \AXC{$F\p{a}\to A$}
@@ -369,18 +359,16 @@
       </p>
     </section>
 
-    <div class="you">
-      推論規則を用いるのに自由変数の条件が定められていることに注意してね
-    </div>
-
     <h3>$\lnot$の推論規則</h3>
     <p>
       $\lnot A$は$A$でないことを意味する．背理法の論法を推論規則に定める．また，$A$とその否定$\lnot A$から矛盾$\bot$を推論できるとする．
     </p>
     <section class="axm">
       <h4>$\lnot\rm{I}$</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
         \begin{prooftree}
         \AXC{$A\to\bot$}
         \LL{$\lnot I$}
@@ -388,8 +376,10 @@
         \end{prooftree}
       </p>
       <h4>$\lnot\rm{E}$</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
         \begin{prooftree}
         \AXC{$A$}
         \AXC{$\lnot A$}
@@ -401,10 +391,6 @@
     <p>
       しかし，これは$\lnot A$が$A\to\bot$と定義しているに過ぎない．実際に置き換えてみても自然である．
     </p>
-    <div class="you">
-      結局，$\bot$が何なのかわかってないから，$\lnot$もどういうものなのか分からないままなんだ<br>
-      これでも十分いろいろな命題を証明できるよ
-    </div>
 
     <h3>推論規則の別表記</h3>
     <p>
@@ -412,8 +398,10 @@
     </p>
     <section class="axm">
       <h4>$\lor\rm{E}$</h4>
+      <ul>
+        <li>$A_1,A_2,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A_1,A_2,B$について，
         \begin{prooftree}
         \AXC{$A_1\lor A_2$}
         \AXC{}
@@ -431,15 +419,11 @@
         \TIC{$B$}
         \end{prooftree}
       </p>
-      <details>
-        <summary>読み</summary>
-        <p>
-          $A_1$または$A_2$が成り立つから，場合分けを行う．$A_1$のとき$B$である．$A_2$のとき$B$である．ゆえに$B$である．
-        </p>
-      </details>
       <h4>$\exists\rm{E}$</h4>
+      <ul>
+        <li>$F\p{x},B$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x},B$について，
         \begin{prooftree}
         \AXC{$\exists xF\p{x}$}
         \AXC{}
@@ -453,8 +437,10 @@
         \end{prooftree}
       </p>
       <h4>$\lnot\rm{I}$</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
         \begin{prooftree}
         \AXC{}
         \RL{$i$}
@@ -467,11 +453,6 @@
         \end{prooftree}
       </p>
       <details>
-        <summary>読み</summary>
-        <p>
-          $A$を仮定すると，$\dots$，矛盾する．ゆえに$\lnot A$である．
-        </p>
-      </details>
     </section>
     <p>
       便利な方を使って証明を行う．
@@ -479,35 +460,31 @@
 
     <h2>古典論理</h2>
     <p>
-      これらの推論規則のみからなる論理体系を<dfn>最小論理</dfn>という．この論理体系では今後紹介する双対性すら成り立たない．これに，<dfn>選言的三段論法</dfn>を満たす公理を追加すると，<dfn>直観主義論理</dfn>(<dfn>直感論理</dfn>，<dfn>構成的論理</dfn>)という論理体系となる．さらに，<dfn>排中律</dfn>という公理を追加すると，<dfn>古典論理</dfn>(<dfn>標準論理</dfn>)という論理体系になる．一般的な数学では古典論理が採用されているため，古典論理で成り立つ範囲について扱う．また，<dfn>二重否定の除去</dfn>は「選言的三段論法かつ排中律」と同値として知られているため，最小論理に二重否定の除去を推論規則として古典論理を構成することもある．同値なことの証明は後で行う．
+      これらの推論規則のみからなる論理体系を<dfn>最小論理</dfn>という．この論理体系では今後紹介する双対性すら成り立たない．これに，<dfn>選言的三段論法</dfn>を満たす公理を追加すると，<dfn>直観主義論理</dfn>[<dfn>直感論理</dfn>，<dfn>構成的論理</dfn>]という論理体系となる．さらに，<dfn>排中律</dfn>という公理を追加すると，<dfn>古典論理</dfn>という論理体系になる．一般的な数学では古典論理が採用されているため，古典論理で成り立つ範囲について扱う．また，<dfn>二重否定の除去</dfn>は「選言的三段論法かつ排中律」と同値として知られているため，最小論理に二重否定の除去を推論規則として古典論理を構成することもある．同値なことの証明は後で行う．
     </p>
-    <section class="def">
+    <section class="axm">
       <h4>選言的三段論法</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\p{A\lor B}\land\lnot B\to A.$$
+        $$\p{A\lor B}\land\lnot B\to A$$
       </p>
       <h4>排中律</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$A\lor\lnot A.$$
+        $$A\lor\lnot A$$
       </p>
       <h4>二重否定の除去</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$\lnot\lnot A\to A.$$
+        $$\lnot\lnot A\to A$$
       </p>
     </section>
-    <div class="me">
-      さっき，二重否定の除去は推論規則って言っていたのに，なんで公理として紹介してるの？<br>
-      あと，選言的三段論法も名前から推論規則のような感じがするんだけど
-    </div>
-    <div class="you">
-      いいところに気が付いたね<br>
-      そこに疑問を抱けるのはちゃんと感覚に頼らずに論理を追えている証拠よ<br>
-      実のところ，推論規則と$\to$を含む公理は扱いが同じなんだ<br>
-      理由として次の命題を証明してみよう
-    </div>
 
     <h3>演繹定理</h3>
     <p>
@@ -515,9 +492,12 @@
     </p>
     <section class="thm">
       <h4>演繹定理</h4>
+      <ul>
+        <li>$\Gamma$: 論理式の集合</li>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式の集合$\Gamma$，論理式$A,B$について，
-        $$\Gamma,A\proof B\Iff\Gamma\proof A\to B.$$
+        $$\Gamma,A\proof B\Iff\Gamma\proof A\to B$$
       </p>
       <details>
         <summary>証明</summary>
@@ -536,26 +516,16 @@
       </details>
     </section>
 
-    <div class="you">
-      この命題によって，$A$から$B$を演繹できたとき，$A\to B$って書けることを意味してるから，推論と$\to$が含まれる論理式に違いがないことがわかるね
-    </div>
-    <div class="me">
-      せっかく証明図を勉強したのに，使わないで証明しちゃうの？
-    </div>
-    <div class="you">
-      これは$\proof$が入っていて，対象が論理式ではないから，自然演繹では扱えない<br>
-      この定理の証明は今行っている体系を組み立てて，論理体系を定義し直したときに，初めて論理的に証明できる<br>
-      演繹定理を使わなくても複雑になるけど同じ命題を証明できるから数学を構成する上では問題ないよ
-    </div>
-
     <h3>爆発律</h3>
     <p>
       <dfn>爆発律</dfn>は矛盾からは任意の論理式が導けるという推論規則で，感覚的には間違えてそうである．
     </p>
     <section class="def">
       <h4>爆発律</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
         \begin{prooftree}
         \AXC{$\bot$}
         \UIC{$A$}
@@ -567,9 +537,11 @@
     </p>
     <section class="thm">
       <h4>同一律</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$A\to A.$$
+        $$A\to A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -635,22 +607,6 @@
         </p>
       </details>
     </section>
-
-    <div class="you">
-      個々の証明では演繹定理と切断規則を使用しているよ<br>
-      カット規則は$A\proof B$のときに$A\To B$を演繹していいという規則だよ<br>
-      証明図が長くなるから使用しているんだ
-    </div>
-    <div class="me">
-      それじゃあ違う証明体系で証明したことにならない？
-    </div>
-    <div class="you">
-      確かにそうなんだけど，切断除去定理というのがあって，<br>
-      切断規則を用いて証明されたことは切断規則を用いない証明が存在する<br>
-      というのがあるんだ<br>
-      実際に別の証明図を用意できることが確かめられるから，形式化する上で使用しても問題ないよ<br>
-      証明は演繹定理同様にメタ論理での証明になるから後回しにするよ
-    </div>
 
     <h3>二重否定の除去</h3>
     <p>
@@ -755,9 +711,11 @@
     </p>
     <section class="thm">
       <h4>$\to$の置換</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\p{A\to B}\iff\lnot A\lor B.$$
+        $$\p{A\to B}\iff\lnot A\lor B$$
       </p>
       <details>
         <summary>証明</summary>
@@ -814,9 +772,11 @@
     </section>
     <section class="thm">
       <h4>$\iff$の反射律</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$A\iff A.$$
+        $$A\iff A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -825,9 +785,12 @@
         </p>
       </details>
       <h4>$\iff$の代入原理</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+        <li>$F\p{X}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{X},A,B$について，
-        $$A\iff B\To F\p{A}\iff F\p{B}.$$
+        $$A\iff B\To F\p{A}\iff F\p{B}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -955,16 +918,22 @@
     <section class="def">
       <h4>$=$</h4>
       <p>
-        $=$とは反射律と代入原理を満たす集合の関係である．
+        $=$とは反射律と代入原理を満たす項の関係演算子である．
       </p>
       <h4>$=$の反射律</h4>
+      <ul>
+        <li>$a$: 項</li>
+      </ul>
       <p>
-        $$\forall a,a=a.$$
+        $$\forall a,a=a$$
       </p>
       <h4>$=$の代入原理</h4>
+      <ul>
+        <li>$a,b$: 項</li>
+        <li>$F\p{x}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x}$について，
-        $$\forall ab,a=b\to\p{F\p{a}\iff F\p{b}}.$$
+        $$\forall ab,a=b\to\p{F\p{a}\iff F\p{b}}$$
       </p>
     </section>
     <p>
@@ -972,9 +941,11 @@
     </p>
     <section class="thm">
       <h4>$\iff$の対称律</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$A\iff B\Iff B\iff A.$$
+        $$A\iff B\Iff B\iff A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -989,9 +960,11 @@
         が推論された．逆も同様．
       </details>
       <h4>$\iff$の推移律</h4>
+      <ul>
+        <li>$A,B,C$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B,C$について，
-        $$\p{A\iff B}\land\p{B\iff C}\To A\iff C.$$
+        $$\p{A\iff B}\land\p{B\iff C}\To A\iff C$
       </p>
       <details>
         <summary>証明</summary>
@@ -1025,9 +998,11 @@
     </p>
     <section class="thm">
       <h4>二重否定律</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$A\iff\lnot\lnot A.$$
+        $$A\iff\lnot\lnot A$
       </p>
       <details>
         <summary>証明</summary>
@@ -1059,9 +1034,12 @@
     </p>
     <section class="thm">
       <h4>De Morganの法則</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+        <li>$F\p{x}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x},A,B$について，
-        $$\lnot\p{A\lor B}\iff\lnot A\land\lnot B.$$
+        $$\lnot\p{A\lor B}\iff\lnot A\land\lnot B$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1125,7 +1103,7 @@
         </p>
       </details>
       <p>
-        $$\lnot\p{A\land B}\iff\lnot A\lor\lnot B.$$
+        $$\lnot\p{A\land B}\iff\lnot A\lor\lnot B$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1141,7 +1119,7 @@
         </p>
       </details>
       <p>
-        $$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}.$$
+        $$\lnot\exists xF\p{x}\iff\forall x\lnot F\p{x}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1187,7 +1165,7 @@
         </p>
       </details>
       <p>
-        $$\lnot\forall xF\p{x}\iff\exists x\lnot F\p{x}.$$
+        $$\lnot\forall xF\p{x}\iff\exists x\lnot F\p{x}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1202,7 +1180,7 @@
         </p>
       </details>
       <p>
-        $$\lnot\exists F\p{x},A\iff\forall F\p{x},\lnot A.$$
+        $$\lnot\exists F\p{x},A\iff\forall F\p{x},\lnot A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1219,7 +1197,7 @@
         </p>
       </details>
       <p>
-        $$\lnot\forall F\p{x},A\iff\exists \lnot F\p{x},A.$$
+        $$\lnot\forall F\p{x},A\iff\exists \lnot F\p{x},A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1243,7 +1221,7 @@
       <h4>双対性</h4>
       <p>
         $n$個の論理式または述語を引数に取る論理式$F\p{B_1,\dots,B_n}$の双対$F^*\p{B_1,\dots,B_n}$としたとき，
-        $$\lnot F\p{B_1,\dots,B_n}\iff F^*\p{\lnot B_1,\dots,\lnot B_n}.$$
+        $$\lnot F\p{B_1,\dots,B_n}\iff F^*\p{\lnot B_1,\dots,\lnot B_n}$$
         が成り立つ．
       </p>
       <details>
@@ -1262,7 +1240,7 @@
     <section class="def">
       <h4>トートロジー</h4>
       <p>
-        $$\top\Def\lnot\bot.$$
+        $$\top\Def\lnot\bot$$
       </p>
     </section>
     <section class="thm">
@@ -1282,9 +1260,11 @@
         </p>
       </details>
       <h4>任意の定理とトートロジーの同値性</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        定理$A$について，
-        $$A\iff\top.$$
+        $$A\iff\top$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1309,9 +1289,11 @@
 
     <section class="thm">
       <h4>交換律</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$A\land B\iff B\land A.$$
+        $$A\land B\iff B\land A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1334,7 +1316,7 @@
         </p>
       </details>
       <p>
-        $$A\lor B\iff B\lor A.$$
+        $$A\lor B\iff B\lor A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1349,10 +1331,12 @@
         </p>
       </details>
       <h4>結合律</h4>
+      <ul>
+        <li>$A,B,C$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B,C$について，
-        $$A\land\p{B\land C}\iff\p{A\land B}\land C.$$
-        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C.$$
+        $$A\land\p{B\land C}\iff\p{A\land B}\land C$$
+        $$A\lor\p{B\lor C}\iff\p{A\lor B}\lor C$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1382,10 +1366,12 @@
         </p>
       </details>
       <h4>冪等律</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$A\land A\iff A.$$
-        $$A\lor A\iff A.$$
+        $$A\land A\iff A$$
+        $$A\lor A\iff A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1406,10 +1392,12 @@
         </p>
       </details>
       <h4>分配律</h4>
+      <ul>
+        <li>$A,B,C$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B,C$について，
-        $$A\land\p{B\lor C}\iff\p{A\land B}\lor \p{A\land C}.$$
-        $$A\lor\p{B\land C}\iff\p{A\lor B}\land \p{A\lor C}.$$
+        $$A\land\p{B\lor C}\iff\p{A\land B}\lor \p{A\land C}$$
+        $$A\lor\p{B\land C}\iff\p{A\lor B}\land \p{A\lor C}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1478,12 +1466,14 @@
         </p>
       </details>
       <h4>恒等律</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$A\land\top\iff A.$$
-        $$A\lor\bot\iff A.$$
-        $$A\land\bot\iff\bot.$$
-        $$A\lor\top\iff\top.$$
+        $$A\land\top\iff A$$
+        $$A\lor\bot\iff A$$
+        $$A\land\bot\iff\bot$$
+        $$A\lor\top\iff\top$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1504,9 +1494,11 @@
         </p>
       </details>
       <h4>矛盾律</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$\lnot\p{A\land\lnot A}.$$
+        $$\lnot\p{A\land\lnot A}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1518,10 +1510,12 @@
         より真である．
       </details>
       <h4>吸収律</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$A\land\p{A\lor B}\iff A.$$
-        $$A\lor\p{A\land B}\iff A.$$
+        $$A\land\p{A\lor B}\iff A$$
+        $$A\lor\p{A\land B}\iff A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1544,9 +1538,11 @@
         </p>
       </details>
       <h4>推移律</h4>
+      <ul>
+        <li>$A,B,C$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B,C$について，
-        $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}.$$
+        $$\p{A\to B}\land\p{B\to C}\to\p{A\to C}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1573,14 +1569,18 @@
         </p>
       </details>
       <h4>移入律</h4>
+      <ul>
+        <li>$A,B,C$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B,C$について，
-        $$\p{A\to B\to C}\to\p{A\land B\to C}.$$
+        $$\p{A\to B\to C}\to\p{A\land B\to C}$$
       </p>
       <h4>移出律</h4>
+      <ul>
+        <li>$A,B,C$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B,C$について，
-        $$\p{A\land B\to C}\to\p{A\to B\to C}.$$
+        $$\p{A\land B\to C}\to\p{A\to B\to C}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1595,9 +1595,11 @@
         </p>
       </details>
       <h4>対偶律</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\p{A\to B}\iff\lnot B\to\lnot A.$$
+        $$\p{A\to B}\iff\lnot B\to\lnot A$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1612,20 +1614,18 @@
       </details>
     </section>
 
-    <div class="you">
-      こんな感じで，一方の命題は双対性を用いて簡単に証明できるので省略することにするね
-    </div>
-
     <h3>量化子に関する定理</h3>
     <p>
       量化子の重要な定理のうち，まだ紹介していないものを次にまとめる．
     </p>
     <section class="thm">
       <h4>束縛変数の文字置換</h4>
+      <ul>
+        <li>$F\p{x}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x}$について，
-        $$\forall xF\p{x}\iff\forall yF\p{y}.$$
-        $$\exists xF\p{x}\iff\exists yF\p{y}.$$
+        $$\forall xF\p{x}\iff\forall yF\p{y}$$
+        $$\exists xF\p{x}\iff\exists yF\p{y}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1644,9 +1644,11 @@
         </p>
       </details>
       <h4>量化子の変換</h4>
+      <ul>
+        <li>$F\p{x}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x}$について，
-        $$\forall xF\p{x}\to\exists xF\p{x}.$$
+        $$\forall xF\p{x}\to\exists xF\p{x}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1664,10 +1666,12 @@
         </p>
       </details>
       <h4>量化の交換</h4>
+      <ul>
+        <li>$F\p{x,y}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x,y}$について，
-        $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}.$$
-        $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}.$$
+        $$\forall xyF\p{x,y}\iff\forall yxF\p{x,y}$$
+        $$\exists xyF\p{x,y}\iff\exists yxF\p{x,y}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1688,7 +1692,7 @@
         </p>
       </details>
       <p>
-        $$\exists x\forall y\p{F\p{x,y}}\to\forall y\exists x\p{x,y}.$$
+        $$\exists x\forall y\p{F\p{x,y}}\to\forall y\exists x\p{x,y}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1712,10 +1716,12 @@
         </p>
       </details>
       <h4>量化の分配</h4>
+      <ul>
+        <li>$F\p{x},G\p{x}$: 論理式</li>
+      </ul>
       <p>
-        論理式$F\p{x}$について，
-        $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}.$$
-        $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}.$$
+        $$\forall x\p{F\p{x}\land G\p{x}}\iff\forall xF\p{x}\land\forall xG\p{x}$$
+        $$\exists x\p{F\p{x}\lor G\p{x}}\iff\exists xF\p{x}\lor\exists xG\p{x}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1761,8 +1767,8 @@
         </p>
       </details>
       <p>
-        $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}.$$
-        $$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}.$$
+        $$\forall xF\p{x}\lor\forall xG\p{x}\to\forall x\p{F\p{x}\lor G\p{x}}$$
+        $$\exists x\p{F\p{x}\land G\p{x}}\to\exists xF\p{x}\land\exists xG\p{x}$$
       </p>
       <details>
         <summary>証明</summary>
@@ -1793,7 +1799,6 @@
       </details>
     </section>
   </main>
-  <footer id="footer"></footer>
 </body>
 
 </html>

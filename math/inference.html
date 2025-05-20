@@ -3,77 +3,67 @@
 
 <head>
   <title>推論</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../lib/main.css">
   <script src="../lib/main.js" defer></script>
 </head>
 
 <body>
   <header>
-    <h1 id="h1"></h1>
     <a href="../">ホーム</a> / <a href="./">数学</a> /
   </header>
   <main>
-    <details id="setting"></details>
-    <div class="you">
-      まだ証明論の議論をするのに言葉が足りないからここでいくつかの言葉を定義するね
-    </div>
+    これまで，一般的な1階述語論理について説明したが，ここからはよく使われる記法に限って説明する．
     <h2>定義</h2>
     <p>
       以前に定義の定義をしたが，数学を形式化するためには定義の形式化も必要である．そこで，次の表現を用いる．
     </p>
     <section class="def">
-      <h4>定義</h4>
+      <h4>論理式の定義</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，$A$を$B$で定義するとは，
-        $$A\Def B.$$
-        項$a,b$について，$a$を$b$で定義するとは，
-        $$a\def b.$$
+        「$A$を$B$で定義する」とは
+        $$A\Def B$$
+      </p>
+      <h4>項の定義</h4>
+      <ul>
+        <li>$a,b$: 項</li>
+      </ul>
+      <p>
+        「$a$を$b$で定義する」とは
+        $$a\def b$$
       </p>
     </section>
     <p>
       と表し，それぞれ次の述語が成り立つとする．
     </p>
-    <section class="def">
-      <h4>$A$と$B$は等価である</h4>
+    <section class="thm">
+      <h4>論理式の定義の言い換え</h4>
+      <ul>
+        <li>$B$: 論理式</li>
+        <li>$A$: $B$で定義された論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$A\Iff B.$$
+        $$A\Iff B$$
       </p>
-      <h4>$a$と$b$は恒等である</h4>
+      <h4>項の定義の言い換え</h4>
+      <ul>
+        <li>$b$: 項</li>
+        <li>$a$: $b$で定義された項</li>
+      </ul>
       <p>
-        項$a,b$について，
-        $$a=b.$$
+        $$a=b$$
       </p>
     </section>
     <p>
+      この記号の定義は後ほど行う．
+    </p>
+    <p>
       $A,a$を<dfn>左辺</dfn>，$B,b$を<dfn>右辺</dfn>という．左辺と右辺の両方を<dfn>両辺</dfn>という．
     </p>
-    <div class="me">
-      同じ扱いができるならこの表記いらなくない？
-    </div>
-    <div class="you">
-      定義でやってはいけないこと覚えてる？<br>
-      例えば，循環定義はダメだったね<br>
-      でも，等価なら両辺に同じ自由変数が存在しても問題ない<br>
-      これを区別するために，表現も分けられてる
-    </div>
-    <div class="me">
-      じゃあ同じじゃないじゃん……
-    </div>
     <p>
       <dfn>等価</dfn>や<dfn>恒等</dfn>なことを<dfn>等しい</dfn>ともいう．等しい関係を<dfn>相等関係</dfn>といい，相等関係が満たすべき性質を<dfn>等価性</dfn>という．等価性については今後述べる．
     </p>
-    <div class="you">
-      等価は普通同値って言われるけど，同値関係で使われる同値と区別するためにあえて別の言い方をしたよ
-    </div>
-    <div class="me">
-      等価と恒等って何が違うの？
-    </div>
-    <div class="you">
-      本質は同じだよ<br>
-      論理としての値と，項としての値が等しいことを区別して言い分けてるよ
-    </div>
     <h2>1階述語論理で使われる文字</h2>
     <h3>真理関数</h3>
     <p>
@@ -81,112 +71,123 @@
     </p>
     <section class="def">
       <h4>否定</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$\lnot\p{A}.$$
+        $$\lnot\p{A}$$
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $A$ではない．
+          $A$ではない
         </p>
       </details>
       <h4>連言</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\land\p{A,B}.$$
+        $$\land\p{A,B}$$
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $A$かつ$B$．
+          $A$かつ$B$
         </p>
       </details>
       <h4>選言</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\lor\p{A,B}.$$
+        $$\lor\p{A,B}$$
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $A$または$B$．
+          $A$または$B$
         </p>
       </details>
       <h4>含意</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\to\p{A,B}.$$
+        $$\to\p{A,B}$$
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $A$ならば$B$．
+          $A$ならば$B$
         </p>
       </details>
     </section>
-    <div class="you">
-      真理関数の意味はここでは定義しないけど，意味が想像しやすいように読みを載せたよ
-    </div>
     <p>
       このままでは扱いづらいので，真理関数を演算子として扱いたい．このとき，<dfn>論理演算子</dfn>ともいう．次のように表す．
     </p>
     <section class="def">
       <h4>$\lnot$演算子</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+      </ul>
       <p>
-        論理式$A$について，
-        $$\p{\lnot A}\Def\lnot\p{A}.$$
+        $$\p{\lnot A}\Def\lnot\p{A}$$
       </p>
       <h4>$\land$演算子</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\p{A\land B}\Def\land\p{A,B}.$$
+        $$\p{A\land B}\Def\land\p{A,B}$$
       </p>
       <h4>$\lor$演算子</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\p{A\lor B}\Def\lor\p{A,B}.$$
+        $$\p{A\lor B}\Def\lor\p{A,B}$$
       </p>
       <h4>$\to$演算子</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\p{A\to B}\Def\to\p{A,B}.$$
+        $$\p{A\to B}\Def\to\p{A,B}$$
       </p>
     </section>
+
     <p>
-      2項演算子におけるこの記法を<dfn>中置記法</dfn>という．一方，前に置く記法を<dfn>前置記法</dfn>(<dfn>ポーランド記法</dfn>)という．後ろに置く記法を<dfn>後置記法</dfn>(<dfn>逆ポーランド記法</dfn>)という．便利なのでこれらのほかにもう2つ演算子を定義する．
+      2項演算子におけるこの記法を<dfn>中置記法</dfn>という．一方，前に置く記法を<dfn>前置記法</dfn>[<dfn>ポーランド記法</dfn>]という．後ろに置く記法を<dfn>後置記法</dfn>[<dfn>逆ポーランド記法</dfn>]という．便利なのでこれらのほかにもう2つ演算子を定義する．
     </p>
     <section class="def">
       <h4>同値</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\p{A\iff B}\Def{\p{A\to B}\land\p{B\to A}}.$$
+        $$\p{A\iff B}\Def{\p{A\to B}\land\p{B\to A}}$$
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $A$と$B$は同値．
+          $A$と$B$は同値
         </p>
       </details>
       <h4>排他的論理和</h4>
+      <ul>
+        <li>$A,B$: 論理式</li>
+      </ul>
       <p>
-        論理式$A,B$について，
-        $$\p{A\veebar B}\Def\p{A\land\p{\lnot B}\lor\p{\lnot A}\land B}.$$
+        $$\p{A\veebar B}\Def\p{A\land\p{\lnot B}\lor\p{\lnot A}\land B}$$
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $A$と$B$はどちらか一方．
+          $A$と$B$はどちらか一方
         </p>
       </details>
     </section>
-    <div class="me">
-      $\Iff$と$\iff$は何が違うの？
-    </div>
-    <div class="you">
-      $\Iff$は推論の意味で論理式の関係を表していて，どっちからでも推論可能なことを示してるよ<br>
-      $\iff$は論理式の文字で変形も可能だよ
-    </div>
 
     <h3>量化子</h3>
     <section class="ex">
@@ -198,14 +199,6 @@
         <li>$f\p{x}\gt0$を満たす$x$が存在する．</li>
       </ol>
     </section>
-    <div class="me">
-      数学でこんな問題が出てきたんだけど<br>
-      すべてと存在の違いって何？条件もよくわからない……
-    </div>
-    <div class="you">
-      前に量化という表現を導入したよね<br>
-      それに関係してるよ
-    </div>
     <p>
       2つの量化表現を導入する．量化子$\lambda$は項$x$を用いて，$\lambda x$と表すことで論理式に対して1項演算子を表す．
     </p>
@@ -236,14 +229,6 @@
       x\p{F\p{x}}$と表し，<dfn>全称量化</dfn>という．また，「$F\p{x}$となる$x$が存在する」を$\exists
       x\p{F\p{x}}$と表し，<dfn>存在量化</dfn>という．
     </p>
-    <div class="me">
-      さっきの問題は，
-      <ol>
-        <li>$\forall x\p{f\p{x}\gt0}$</li>
-        <li>$\exists x\p{f\p{x}\gt0}$</li>
-      </ol>
-      って表せるね
-    </div>
 
     <h3>項と述語</h3>
     <p>
@@ -253,41 +238,38 @@
     <h2>省略</h2>
     <h3>演算子の優先順位</h3>
     <p>
-      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$\p{\p{\p{\p{\lnot P}\land Q}\iff P}\to\p{P\lor Q}}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<dfn>優先順位</dfn>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．<dfn>右結合</dfn>は優先順位が同じときに，右側の演算子を優先することである．左側の場合は<dfn>左結合</dfn>である．
-    </p>
-    <p>
-      省略の方針について述べる．一項演算子は適応する項の左につけることが多く，優先順位の解釈が一意に定まるから，右結合として優先順位を最高で同列とする．その次に二項演算子内で優先順位を定める．基本的には右結合だが，演算子が結合律を満たすとき，右結合としても左結合としても結果が変わらない．
+      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$\p{\p{\p{\p{\lnot P}\land Q}\iff P}\to\p{P\lor Q}}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<dfn>優先順位</dfn>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．<dfn>右結合</dfn>は優先順位が同じときに，文の右側の演算子を優先することである．左側の場合は<dfn>左結合</dfn>である．
     </p>
     <section class="def">
       <h4>括弧の省略</h4>
       <p>
-        $\p{a}$が演算子の引数ではないとき，
-        $$a\Def\p{a}.$$
+        $\p{a}$が演算子の引数ではないとき
+        $$a\Def\p{a}$$
       </p>
       <h4>一項演算子についての省略</h4>
       <p>
-        $a$の一項演算子$\star$に対して，
-        $$\star\,a\Def\p{\star a}.$$
+        $a$の一項演算子$\star$に対して
+        $$\star\,a\Def\p{\star a}$$
       </p>
       <h4>二項演算子についての優先順位</h4>
       <p>
-        $a,b,c$の二項演算子$\star_1$が$\star_2$より優先順位が高いとき，
-        $$a\,\star_1\,b\,\star_2\,c\Def\p{a\,\star_1\,b}\,\star_2\,c.$$
-        $$a\,\star_2\,b\,\star_1\,c\Def a\,\star_2\,\p{b\,\star_1\,c}.$$
+        $a,b,c$の二項演算子$\star_1$が$\star_2$より優先順位が高いとき
+        $$a\,\star_1\,b\,\star_2\,c\Def\p{a\,\star_1\,b}\,\star_2\,c$$
+        $$a\,\star_2\,b\,\star_1\,c\Def a\,\star_2\,\p{b\,\star_1\,c}$$
       </p>
       <h4>左結合</h4>
       <p>
-        $a,b,c$の二項演算子$\star$が左結合のとき，
-        $$a\,\star\,b\,\star\,c\Def\p{a\,\star\,b}\,\star\,c.$$
+        $a,b,c$の二項演算子$\star$が左結合のとき
+        $$a\,\star\,b\,\star\,c\Def\p{a\,\star\,b}\,\star\,c$$
       </p>
       <h4>右結合</h4>
       <p>
-        $a,b,c$の二項演算子$\star$が右結合のとき，
-        $$a\,\star\,b\,\star\,c\Def a\,\star\,(b\,\star\,c).$$
+        $a,b,c$の二項演算子$\star$が右結合のとき
+        $$a\,\star\,b\,\star\,c\Def a\,\star\,(b\,\star\,c)$$
       </p>
     </section>
     <p>
-      この省略は論理演算子について定めたものだが，ほかの演算子についても同様に定める．各種演算子ごとの大まかな優先順位を定める．推論文字($\To,\Iff,\proof,\models$)の優先順位は最下位とする，算術演算とは($+,-,\cup$など)数字や集合など同士の演算子である．
+      各種演算子ごとの大まかな優先順位を定める．推論文字($\To,\Iff,\proof,\models$)の優先順位は最下位とする，算術演算とは($+,-,\cup$など)数字や集合など同士の演算子である．
     </p>
     <section class="def">
       <p>
@@ -300,19 +282,21 @@
       </ul>
     </section>
     <p>
-      二項論理演算子について優先順位を定める．
+      論理演算子について優先順位を定める．
     </p>
     <section class="def">
       <p>
         上から順に優先順位が高いとする．
       </p>
       <ul>
-        <li>$\land$</li>
-        <li>$\lor$</li>
-        <li>$\to$</li>
-        <li>$\iff$</li>
+        <li>$\lnot$(右)</li>
+        <li>$\land$(左)</li>
+        <li>$\lor$(左)</li>
+        <li>$\to$(右)</li>
+        <li>$\iff$(左)</li>
       </ul>
     </section>
+
     <section class="ex">
       <p>
         命題$P,Q,R$に対して，次を満たす．
@@ -399,34 +383,34 @@
     <section class="def">
       <h4>適用範囲の省略</h4>
       <p>
-        量化子$\lambda$，論理式$\lambda x\p{A}$が演算子の引数ではないときについて，
-        $$\lambda x,A\Def\lambda x\p{A}.$$
+        量化子$\lambda$，論理式$\lambda x\p{A}$が演算子の引数ではないときについて
+        $$\lambda x,A\Def\lambda x\p{A}$$
       </p>
       <h4>同量化の省略</h4>
       <p>
-        量化子$\lambda$について，
-        $$\lambda xy\p{A}\Def\lambda x\lambda y\p{A}.$$
+        量化子$\lambda$について
+        $$\lambda xy\p{A}\Def\lambda x\lambda y\p{A}$$
       </p>
       <h4>量化子の別記</h4>
       <p>
-        $$^\lambda x,A\Def\lambda x,A.$$
+        $$^\lambda x,A\Def\lambda x,A$$
       </p>
       <h4>$\forall$の条件の省略</h4>
       <p>
-        論理式$A$，述語$F$について，
-        $$\forall F\p{x_1,\dots,x_n},A\Def\forall x_1\cdots x_n,F\p{x_1,\dots,x_n}\to A.$$
-        $$\forall F\p{x_1,\dots,x_n}\Def\forall F\p{x_1,\dots,x_n},\bot.$$
+        論理式$A$，述語$F$について
+        $$\forall F\p{x_1,\dots,x_n},A\Def\forall x_1\cdots x_n,F\p{x_1,\dots,x_n}\to A$$
+        $$\forall F\p{x_1,\dots,x_n}\Def\forall F\p{x_1,\dots,x_n},\bot$$
       </p>
       <h4>$\exists$の条件の省略</h4>
       <p>
-        論理式$A$，述語$F$について，
-        $$\exists F\p{x_1,\dots,x_n},A\Def\exists x_1\cdots x_n,F\p{x_1,\dots,x_n}\land A.$$
-        $$\exists F\p{x_1,\dots,x_n}\Def\exists F\p{x_1,\dots,x_n},\top.$$
+        論理式$A$，述語$F$について
+        $$\exists F\p{x_1,\dots,x_n},A\Def\exists x_1\cdots x_n,F\p{x_1,\dots,x_n}\land A$$
+        $$\exists F\p{x_1,\dots,x_n}\Def\exists F\p{x_1,\dots,x_n},\top$$
       </p>
       <h4>唯一存在量化子</h4>
       <p>
-        述語$F$について，
-        $$\exists!F\p{x}\Def\exists F\p{x}\land\forall F\p{x}\land F\p{y}\p{x=y}.$$
+        述語$F$について
+        $$\exists!F\p{x}\Def\exists F\p{x}\land\forall F\p{x}\land F\p{y}\p{x=y}$$
       </p>
     </section>
 
@@ -437,13 +421,13 @@
     <section class="def">
       <h4>量化子の否定</h4>
       <p>
-        量化子$\lambda$について，
-        $$\cancel{\lambda} x,A\Def\lnot\p{\lambda x,A}.$$
+        量化子$\lambda$について
+        $$\cancel{\lambda} x,A\Def\lnot\p{\lambda x,A}$$
       </p>
       <h4>関係演算子の否定</h4>
       <p>
-        変数$x,y$の関係演算子$\star$について，
-        $$x\cancel{\star}y\Def\lnot\p{x\star y}.$$
+        変数$x,y$の関係演算子$\star$について
+        $$x\cancel{\star}y\Def\lnot\p{x\star y}$$
       </p>
     </section>
 
@@ -454,8 +438,8 @@
     <section class="def">
       <h4>反転記法</h4>
       <p>
-        関係演算子$\prec$に対して，
-        $$B\succ A\Def A\prec B.$$
+        関係演算子$\prec$に対して
+        $$B\succ A\Def A\prec B$$
       </p>
     </section>
 
@@ -470,14 +454,17 @@
     </p>
     <section class="def">
       <h4>推論</h4>
+      <ul>
+        <li>$\Gamma$: 前提の集合</li>
+        <li>$A$: 結論</li>
+      </ul>
       <p>
-        任意の前提の集合$\Gamma$，結論$A$について，
-        $$\Gamma\To A.$$
+        $$\Gamma\To A$$
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $\Gamma$から$A$へ推論．
+          $\Gamma$から$A$へ推論
         </p>
       </details>
     </section>
@@ -491,9 +478,12 @@
     </p>
     <section class="def">
       <h4>論理的帰結</h4>
+      <ul>
+        <li>$\Gamma$: 命題の集合</li>
+        <li>$A$: 命題</li>
+      </ul>
       <p>
-        命題の集合$\Gamma$，命題$A$について，
-        $$\Gamma\models A.$$
+        $$\Gamma\models A$$
       </p>
       <details>
         <summary>読み</summary>
@@ -523,25 +513,32 @@
     </p>
     <section class="def">
       <h4>演繹可能</h4>
+      <ul>
+        <li>$\kappa$: 論理体系</li>
+        <li>$\Gamma$: 命題の集合</li>
+        <li>$A$: 命題</li>
+      </ul>
       <p>
-        論理体系$\kappa$，命題の集合$\Gamma$，命題$A$について，
-        $$\Gamma\vdash_\kappa A.$$
+        $$\Gamma\vdash_\kappa A$$
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $\kappa$で$\Gamma$から$A$へ導ける．
+          $\kappa$で$\Gamma$から$A$へ導ける
         </p>
       </details>
       <h4>証明可能</h4>
+      <ul>
+        <li>$\kappa$: 論理体系</li>
+        <li>$A$: 命題</li>
+      </ul>
       <p>
-        論理体系$\kappa$，命題$A$について，
-        $$\vdash_\kappa A.$$
+        $$\vdash_\kappa A$$
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $\kappa$で$A$は示された．
+          $\kappa$で$A$は示された
         </p>
       </details>
     </section>
@@ -551,10 +548,10 @@
     <section class="def">
       <h4>集合の省略</h4>
       <p>
-        命題の集合$\set{A_1,\dots,A_n}$，命題$A$について，次の表記を認める．
-        $$A_1,\dots,A_n\To A\Def\set{A_1,\dots,A_n}\To A.$$
-        $$A_1,\dots,A_n\models A\Def\set{A_1,\dots,A_n}\models A.$$
-        $$A_1,\dots,A_n\vdash A\Def\set{A_1,\dots,A_n}\vdash A.$$
+        命題の集合$\set{A_1,\dots,A_n}$，命題$A$について
+        $$A_1,\dots,A_n\To A\Def\set{A_1,\dots,A_n}\To A$$
+        $$A_1,\dots,A_n\models A\Def\set{A_1,\dots,A_n}\models A$$
+        $$A_1,\dots,A_n\vdash A\Def\set{A_1,\dots,A_n}\vdash A$$
       </p>
     </section>
     <p>
@@ -563,21 +560,15 @@
     <section class="def">
       <h4>$\To$記法の拡張</h4>
       <p>
-        命題$A_1,\dots,A_n,B_1,\dots,B_n$について，次の表記を認める．
-        「$A_1,\dots,A_n\To B_1$」または$\cdots$または「$A_1,\dots,A_n\To B_n$」のとき，
-        $$A_1,\dots,A_n\To B_1,\dots,B_n.$$
-        $\To$の前後が空のとき，
-        $$\To\Def\top\To\bot.$$
-        「$A_1,A_2,\dots,A_n\To B_1,B_2,\dots,B_n$」かつ「$B_1,B_2,\dots,B_n\To A_1,A_2,\dots,A_n$」のとき，
-        $$A_1,A_2,\dots,A_n\Iff B_1,B_2,\dots,B_n.$$
+        命題$A_1,\dots,A_n,B_1,\dots,B_n$について，
+        「$A_1,\dots,A_n\To B_1$」または$\cdots$または「$A_1,\dots,A_n\To B_n$」のとき
+        $$A_1,\dots,A_n\To B_1,\dots,B_n$$
+        $\To$の前後が空のとき
+        $$\To\Def\top\To\bot$$
+        「$A_1,A_2,\dots,A_n\To B_1,B_2,\dots,B_n$」かつ「$B_1,B_2,\dots,B_n\To A_1,A_2,\dots,A_n$」のとき
+        $$A_1,A_2,\dots,A_n\Iff B_1,B_2,\dots,B_n$$
       </p>
     </section>
-
-    <div class="you">
-      $\To,\Iff,\proof,\models$はそれぞれ論理式の文字ではなく，論理式同士の関係を表した文字なんだ<br>
-      この論理式を客観的に見た視点を<def>メタ論理</def>というよ<br>
-      だから本当はメタ論理の記号の定義に$\Def$を使ってはいけないんだけど，勘違いしない限りはこれを使っていくよ
-    </div>
 
     <h3>関係式の省略</h3>
     <p>
@@ -586,19 +577,15 @@
     <section class="def">
       <h4>関係式の拡張</h4>
       <p>
-        $a,b,c$を引数にとる関係(推論文字，関係演算子)を表す記号$\prec$について，
-        $$a\prec b\prec c\Def a\prec b\land b\prec c.$$
+        $a,b,c$を引数にとる関係(推論文字，関係演算子)を表す記号$\prec$について
+        $$a\prec b\prec c\Def a\prec b\land b\prec c$$
       </p>
     </section>
-
-    <div class="you">
-      ここでも，もし$\To$が推論文字ならば，$\land$は使えないけど，勘違いしないので使ってるよ
-    </div>
 
     <h2>命題定数</h2>
     <h3>トートロジー</h3>
     <p>
-      <dfn>トートロジー</dfn>(<dfn>恒真命題</dfn>)とは意味論的には常に真な命題である．証明論的には証明された命題である．トートロジーを表す文字として次のを用いる．
+      <dfn>トートロジー</dfn>[<dfn>恒真命題</dfn>]とは意味論的には常に真な命題である．証明論的には証明された命題である．トートロジーを表す文字として次のを用いる．
     </p>
     <section class="def">
       <h4>トートロジー</h4>
@@ -609,7 +596,7 @@
 
     <h3>矛盾</h3>
     <p>
-      <dfn>矛盾</dfn>(<dfn>恒偽命題</dfn>)とは意味論的には常に偽な命題である．
+      <dfn>矛盾</dfn>[<dfn>恒偽命題</dfn>]とは意味論的には常に偽な命題である．
     </p>
     <section class="def">
       <h4>矛盾</h4>
@@ -617,20 +604,7 @@
         $$\bot$$
       </p>
     </section>
-    <div class="me">
-      常に真とか偽とかそんな命題あるの？
-    </div>
-    <div class="you">
-      例えば，$1=1$って真だし，$0=1$は偽だよね
-    </div>
-    <div class="me">
-      でも，よく頭のいい人が$0=1$を証明してるよね
-    </div>
-    <div class="you">
-      あれは間違った証明をネタでやってるものだから，信じてはいけないよ
-    </div>
   </main>
-  <footer id="footer"></footer>
 </body>
 
 </html>

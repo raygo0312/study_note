@@ -3,22 +3,18 @@
 
 <head>
   <title>順序</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="../lib/main.css">
   <script src="../lib/main.js" defer></script>
 </head>
 
 <body>
   <header>
-    <h1 id="h1"></h1>
     <a href="../">ホーム</a> / <a href="./">数学</a> /
   </header>
   <main>
-    <details id="setting"></details>
     <h2>順序集合</h2>
     <h3>順序</h3>
     <p>
-      <dfn>順序</dfn>(<dfn>半順序</dfn>，<dfn>広義順序</dfn>)とは<dfn>反射律</dfn>，<dfn>反対称律</dfn>，<dfn>推移律</dfn>を満たす関係のことである．
+      <dfn>順序</dfn>[<dfn>半順序</dfn>，<dfn>広義順序</dfn>]とは<dfn>反射律</dfn>，<dfn>反対称律</dfn>，<dfn>推移律</dfn>を満たす関係のことである．
     </p>
     <section class="def">
       <h4>順序</h4>
@@ -37,13 +33,6 @@
         $$\forall xy\in A,x\lt y\Def x\le y\land x\neq y.$$
       </p>
     </section>
-    <div class="me">
-      順序って小なりイコールと同じ？
-    </div>
-    <div class="you">
-      同じというか，$\le$を一般化した概念になってるね<br>
-      同じ記号を使ってるけど，実数で使うときは断りがなければいつも通りだよ
-    </div>
     <p>
       狭義順序は定義より次のように変形できる．
       \begin{align*}
@@ -123,9 +112,6 @@
     <p>
       順序集合の元の性質を調べたい．そこで順序について性質の定義をする．
     </p>
-    <div class="you">
-      順序集合の部分集合は順序集合になるよ
-    </div>
     <section class="def">
       <h4>最大元</h4>
       <p>
@@ -174,17 +160,6 @@
         $$\cancel\exists x\in B,x\lt a.$$
       </p>
     </section>
-    <div class="you">
-      いままで定義してきた性質をもつ元は順序集合に存在するとは限らないよ
-    </div>
-    <div class="me">
-      最大元と上界が同じ条件に見えるけど，違うものなの？
-    </div>
-    <div class="you">
-      前提条件が少し違うね<br>
-      最大元は$B$の元，上界は$A$の元になってるね<br>
-      $B$は$A$の部分集合だから最大元は上界になるよ
-    </div>
 
     <h3>順序同型</h3>
     <p>
@@ -204,10 +179,6 @@
         が成り立つとき，$f$を準同型写像といい，$f$は順序を保つという．$f$が逆写像$f^{-1}$をもち，$f^{-1}$も準同型であるとき，$f$を同型写像，$A,B$は同型といい，$A\cong B$と表す．
       </p>
     </section>
-    <div class="you">
-      順序は関係だったね<br>
-      順序集合は順序に関する代数系だよ
-    </div>
 
     <h2>整列集合</h2>
     <section class="def">
@@ -216,10 +187,6 @@
         全順序集合$A$について，空でない任意の部分集合が最小元をもつとき，$A$を整列集合という．
       </p>
     </section>
-    <div class="you">
-      整列集合の前提には順序集合で十分なんだ<br>
-      整列集合の条件から全順序であることが示せるよ
-    </div>
     <section class="thm">
       <p>
         順序集合$A$について，空でない任意の部分集合が最小元をもつとき，$A$は全順序集合である．
@@ -564,7 +531,6 @@
     <h2>自然数</h2>
     <h2>整列定理</h2>
   </main>
-  <footer id="footer"></footer>
 </body>
 
 </html>
