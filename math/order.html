@@ -19,58 +19,36 @@
     <section class="def">
       <h4>順序</h4>
       <p>
-        $A$上の関係$\le$について，順序$\le$とは次を満たす．
-        \begin{align*}
-        &\forall x\in A,x\le x.&&(反射律)\\
-        &\forall xy\in A,x\le y\land y\le x\to x=y.&&(反対称律)\\
-        &\forall xyz\in A,x\le y\land y\le z\to x\le z.&&(推移律)
-        \end{align*}
-        このとき，$A$は$\le$による順序集合という．
-      </p>
+        $A$上の関係$le$について，順序$le$とは次を満たす． $ & orall x in A, x lex.\ & orall x y in A, x ley and y lex arrow x=y.\ & orall x y z in A, x ley and y le z arrow x le z. $ このとき，$A$は$le$による順序集合という． </p>
       <h4>狭義順序</h4>
       <p>
-        $A$上の関係$\lt$について，狭義順序$\lt$とは，
-        $$\forall xy\in A,x\lt y\Def x\le y\land x\neq y.$$
-      </p>
+        $A$上の関係$lt$について，狭義順序$lt$とは， $ forall x y in A, x lt y :arrow.l.double> x le y and x !=y. $ </p>
     </section>
     <p>
       狭義順序は定義より次のように変形できる．
-      \begin{align*}
-      x\lt y&\Iff x\le y\land x\neq y,\\
-      x\lt y\lor x=y&\Iff x\le y\land x\neq y\lor x=y,\\
-      &\Iff \p{x\le y\lor x=y}\land \p{x\neq y\lor x=y},\\
-      &\Iff x\le y.
-      \end{align*}
-      狭義順序は次の性質を満たす．
-    </p>
+      $
+      x lt y & rrow.l.r x le y and x !=y, \ x lt y or x=y & rrow.l.r x le y and x !=y or x=y, \ & rrow.l.r (x le y or x=y) and (x !=y or x=y), \ & rrow.l.r x le y. $ 狭義順序は次の性質を満たす． </p>
     <section class="thm">
       <p>
-        $A$上の狭義順序$\lt$について，
-        $$\forall x\in A,\lnot\p{x\lt x}.$$
-      </p>
+        $A$上の狭義順序$lt$について， $ forall x in A, not(x lt x). $ </p>
       <details>
         <summary>証明</summary>
         <p>
-          $x\lt x$と仮定すると，定義の$x\neq x$に反する．よって，$\lnot\p{x\lt x}$である．
-        </p>
+          $x lt x$と仮定すると，定義の$x !=x$に反する．よって，$not (x lt x)$である． </p>
       </details>
       <p>
-        $$\forall xy\in A,\lnot\p{x\lt y\land y\lt x}.$$
-      </p>
+        $ forall x y in A, not (x lt y and y lt x). $ </p>
       <details>
         <summary>証明</summary>
         <p>
-          $x\lt y\land y\lt x$と仮定すると，定義より$x\le y$かつ$y\le x$かつ$x\neq y$が成り立つ．反対称律より$x=y$が成り立つから反する．よって，$\lnot\p{x\lt y\land y\lt x}$である．
-        </p>
+          $x lt y and y lt x$と仮定すると，定義より$x le y$かつ$y le x$かつ$x != y$が成り立つ．反対称律より$x=y$が成り立つから反する．よって，$not (x lt y and y lt x)$である． </p>
       </details>
       <p>
-        $$\forall xyz\in A,x\lt y\land y\lt z\to x\lt z.$$
-      </p>
+        $ forall x y z in A, x lt y and y lt z arrow x lt z. $ </p>
       <details>
         <summary>証明</summary>
         <p>
-          前提より，$x\le y$かつ$y\le z$が成り立ち，推移律より$x\le z$である．また，$x=z$と仮定すると，反対称律より$x=y=z$であるが前提に反する．よって，$x\neq z$が成り立ち$x\lt z$である．
-        </p>
+          前提より，$x le y$かつ$y le z$が成り立ち，推移律より$x le z$である．また，$x = z$と仮定すると，反対称律より$x = y = z$であるが前提に反する．よって，$x != z$が成り立ち$x lt z$である． </p>
       </details>
     </section>
     <p>
@@ -79,33 +57,24 @@
     <details>
       <summary>狭義順序から反射律の証明</summary>
       <p>
-        $x\lt x\lor x=x$は成り立つから$x\le x$である．
-      </p>
+        $x lt x or x = x$は成り立つから$x le x$である． </p>
     </details>
     <details>
       <summary>狭義順序から反対称律の証明</summary>
       <p>
-        前提より$x\le y\land y\le x$すなわち$x\lt y\land y\lt x\lor x=y$が成り立つ．$x\lt y\land y\lt x$は偽であるから，$x=y$である．
-      </p>
+        前提より$x le y and y lex$すなわち$x lt y and y lt x or x = y$が成り立つ．$x lt y and y lt x$は偽であるから，$x = y$である． </p>
     </details>
     <details>
       <summary>狭義順序から推移律の証明</summary>
       <p>
-        前提より$x\le y\land y\le z$すなわち$\p{x\lt y\lor x=y}\land\p{y\lt z\lor y=z}$が成り立つ．これについて場合分けをする．$x\lt y\land y\lt z$のとき$x\lt z$である．$x\lt y\land y=z$のとき$x\lt z$である．$x=y\land y\lt z$のとき$x\lt z$である．$x\lt z$から$x\le z$である．$x=y\land y=z$より$x=z$であるから反射律より$x\le z$である．
-      </p>
+        前提より$x le y and y le z$すなわち$(x lt y or x=y) and (y lt z or y = z)$が成り立つ．これについて場合分けをする．$x lt y and y lt z$のとき$x lt z$である．$x lt y and y = z$のとき$x lt z$である．$x=y and y lt z$のとき$x lt z$である．$x lt z$から$x le z$である．$x = y and y = z$より$x = z$であるから反射律より$x le z$である． </p>
     </details>
 
     <h3>全順序</h3>
     <section class="def">
       <h4>全順序</h4>
       <p>
-        $A$上の順序$\le$について，全順序$\le$とは，
-        \begin{align*}
-        &\forall xy\in A,x\le y\lor y\le x&&(完全律)\\
-        \Iff&\forall x\in A,x\lt y\lor x=y\lor y\lt x.&&(三分律)
-        \end{align*}
-        が成り立つことである。
-      </p>
+        $A$上の順序$le$について，全順序$le$とは， $ & orall x y in A, x ley or y lex\ arrow.l.r & orall x in A, x lt y or x=y or y lt x. $ が成り立つことである。 </p>
     </section>
 
     <h3>順序集合の元</h3>
@@ -115,26 +84,20 @@
     <section class="def">
       <h4>最大元</h4>
       <p>
-        順序集合$A$の部分集合$B$について，$B$の最大元$\max B$とは，
-        $$\forall x\in B,x\le \max B.$$
-      </p>
+        順序集合$A$の部分集合$B$について，$B$の最大元$max B$とは，
+        $ forall x in B, x le max B. $ </p>
       <h4>最小元</h4>
       <p>
-        順序集合$A$の部分集合$B$について，$B$の最小元$\min B$とは，
-        $$\forall x\in B,\min B\le x.$$
-      </p>
+        順序集合$A$の部分集合$B$について，$B$の最小元$min B$とは，
+        $ forall x in B, min B le x. $ </p>
       <h4>上界</h4>
       <p>
         順序集合$A$の部分集合$B$，$A$の元$a$について，$B$の上界$a$とは，
-        $$\forall x\in B,x\le a.$$
-        $B$の上界が存在するとき$B$は上に有界という．
-      </p>
+        $ forall x in B, x le a. $ $B$の上界が存在するとき$B$は上に有界という． </p>
       <h4>下界</h4>
       <p>
         順序集合$A$の部分集合$B$，$A$の元$a$について，$B$の下界$a$とは，
-        $$\forall x\in B,a\le x.$$
-        $B$の下界が存在するとき$B$は下に有界という．
-      </p>
+        $ forall x in B, a le x. $ $B$の下界が存在するとき$B$は下に有界という． </p>
       <h4>有界</h4>
       <p>
         順序集合$A$の部分集合$B$について，$B$が有界とは上に有界かつ下に有界．
@@ -142,23 +105,21 @@
       <h4>上限</h4>
       <p>
         順序集合$A$の部分集合$B$について，$B$の上限とは，
-        $$\sup B\def\min\setsep{x\in A}{xはBの上界}.$$
+        $ sup B :arrow.l.double> min {x in A middle x"は"B"の上界"}. $
       </p>
       <h4>上限</h4>
       <p>
         順序集合$A$の部分集合$B$について，$B$の下限とは，
-        $$\inf B\def\max\setsep{x\in A}{xはBの下界}.$$
+        $ inf B :arrow.l.double> max {x in A middle x"は"B"の下界"}. $
       </p>
       <h4>極大元</h4>
       <p>
         順序集合$A$の部分集合$B$について，$B$の極大元$a$とは，
-        $$\cancel\exists x\in B,a\lt x.$$
-      </p>
+        $ exists.not x in B, a lt x. $ </p>
       <h4>極小元</h4>
       <p>
         順序集合$A$の部分集合$B$について，$B$の極小元$a$とは，
-        $$\cancel\exists x\in B,x\lt a.$$
-      </p>
+        $ exists.not x in B, x lt a. $ </p>
     </section>
 
     <h3>順序同型</h3>
@@ -172,11 +133,11 @@
       </p>
       <h4>同型</h4>
       <p>
-        代数系$A,B$の任意の関係$\star$，$f:A\to B$について，
-        $$\forall xy\in A,x\star y\to f\p{x}\star f\p{y}.$$
-        任意の算術$\star$について，
-        $$\forall xy\in A,f\p{x\star y}=f\p{x}\star f\p{y}$$
-        が成り立つとき，$f$を準同型写像といい，$f$は順序を保つという．$f$が逆写像$f^{-1}$をもち，$f^{-1}$も準同型であるとき，$f$を同型写像，$A,B$は同型といい，$A\cong B$と表す．
+        代数系$A, B$の任意の関係$star$，$f: A arrow B$について，
+        $ forall x y in A, x star y arrow f(x) star f(y). $
+        任意の算術$star$について，
+        $ forall x y in A, f(x star y) = f(x) star f(y) $
+        が成り立つとき，$f$を準同型写像といい，$f$は順序を保つという．$f$が逆写像$f^{-1}$をもち，$f^{-1}$も準同型であるとき，$f$を同型写像，$A, B$は同型といい，$A tilde.equiv B$と表す．
       </p>
     </section>
 
@@ -194,8 +155,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          $A$の任意の元$a,b$について，部分集合$\set{a,b}$について，最小値が存在することから，$a\le b\lor b\le a$である．よって$A$は全順序集合である．
-        </p>
+          $A$の任意の元$a, b$について，部分集合${a, b}$について，最小値が存在することから，$a le b or b lea$である．よって$A$は全順序集合である． </p>
       </details>
       <p>
         帰属関係の全順序集合$A$は整列集合である．
@@ -203,7 +163,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          $A$の空でない部分集合$B$について，正則性公理から$c\in B$で$B\cap c=0$となるものが存在する．任意の$x\in B$に対して$x\in c$と仮定すると$B\cap c=0$に反する．よって$c\in x$であるから$c$は最小元となる．ゆえに$A$は整列集合である．
+          $A$の空でない部分集合$B$について，正則性公理から$c in B$で$B inter c = 0$となるものが存在する．任意の$x in B$に対して$x in c$と仮定すると$B inter c = 0$に反する．よって$c in x$であるから$c$は最小元となる．ゆえに$A$は整列集合である．
         </p>
       </details>
       <p>
@@ -212,7 +172,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          部分集合$B\subset A$の空でない部分集合$C\neq0$は$C\subset A$より最小元をもつ．よって$B$は整列集合である．
+          部分集合$B subset A$の空でない部分集合$C != 0$は$C subset A$より最小元をもつ．よって$B$は整列集合である．
         </p>
       </details>
     </section>
@@ -222,20 +182,16 @@
       <h4>直後</h4>
       <p>
         全順序集合$A$の元$a$について，直後$a^+$とは，
-        $$a^+\def\min\setsep{x\in A}{a\lt x}.$$
-        全順序集合$A$の元$a$について，直前$a^-$とは，
-        $$a^-\def\max\setsep{x\in A}{x\lt a}.$$
-      </p>
+        $ a^+ :arrow.l.double> min {x in A middle a lt x}. $ 全順序集合$A$の元$a$について，直前$a^-$とは， $ a^- :arrow.l.double> max {x in A middle x lt a}. $ </p>
     </section>
     <section class="thm">
       <p>
-        整列集合$A$，$A$の元$a$について，$a\neq\max A$なら$a^+$が存在する．
+        整列集合$A$，$A$の元$a$について，$a != max A$なら$a^+$が存在する．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $a\neq\max A$より$a\lt x$となる$A$の元$x$が存在する．よって，$A$の部分集合$\setsep{x\in A}{a\lt x}$は空でないから最小元$a^+$が存在する．
-        </p>
+          $a != max A$より$a lt x$となる$A$の元$x$が存在する．よって，$A$の部分集合${x in A middle a lt x}$は空でないから最小元$a^+$が存在する． </p>
       </details>
     </section>
 
@@ -243,23 +199,21 @@
     <section class="def">
       <h4>切片</h4>
       <p>
-        全順序集合$A$の元$a$について，切片$A\agl{a}$とは，
-        $$A\agl{a}\def\setsep{x\in A}{x\lt a}.$$
-      </p>
+        全順序集合$A$の元$a$について，切片$A angle.l a angle.r$とは，
+        $ A angle.l a angle.r :arrow.l.double> {x in A middle x lt a}. $ </p>
     </section>
     <section class="thm">
       <p>
         整列集合$A$，$A$の元$a$について，
       </p>
       <ul>
-        <li>$a^-$が存在しないとき$a=\sup A\agl{a}$．</li>
+        <li>$a^-$が存在しないとき$a = sup A angle.l a angle.r$．</li>
         <details>
           <summary>証明</summary>
           <p>
-            定義より$a$は$A\agl{a}$の上界である．$A\agl{a}$の上界$b$について，$b\lt a$と仮定すると$b\in A\agl{a}$より$b=\max A\agl{a}$すなわち$b=a^-$より$a^-$が存在しないことに反する．よって示された．
-          </p>
+            定義より$a$は$A angle.l a angle.r$の上界である．$A angle.l a angle.r$の上界$b$について，$b lt a$と仮定すると$b in A angle.l a angle.r$より$b=max A angle.l a angle.r$すなわち$b=a^-$より$a^-$が存在しないことに反する．よって示された． </p>
         </details>
-        <li>$a^-$が存在するとき$a^-=\max A\agl{a}$．</li>
+        <li>$a^-$が存在するとき$a^- = max A angle.l a angle.r$．</li>
         <details>
           <summary>証明</summary>
           <p>
@@ -271,35 +225,32 @@
     <section class="thm">
       <h4>整列集合の超限帰納法</h4>
       <p>
-        整列集合$A$，論理式$F\p{x}$について，
-        $$\forall x\in A\p{\forall y\in A\p{y\lt x\to F\p{y}}\to F\p{x}}\to\forall x\in A\p{F\p{x}}.$$
-      </p>
+        整列集合$A$，論理式$F(x)$について，
+        $ forall x in A (forall y in A(y lt x arrow F(y))arrow F(x)) arrow forall x in A (F(x)). $ </p>
       <details>
         <summary>証明</summary>
         <details>
           <summary>補題</summary>
           <p>
-            整列集合$A$の部分集合$B$について，$A$の任意の元$a$で切片$A\agl{a}$が$B$の部分集合なら$a\in B$が成り立つとき，$B=A$である．
-            $$\forall a\in A\p{A\agl{a}\subset B\to a\in B}\to B=A.$$
+            整列集合$A$の部分集合$B$について，$A$の任意の元$a$で切片$A angle.l a angle.r$が$B$の部分集合なら$a in B$が成り立つとき，$B = A$である．
+            $ forall a in A (A angle.l a) subset B arrow a in B angle.r arrow B = A. $
           </p>
           <p>
-            $B\neq A$と仮定すると，$A-B$は空でないから最小元$a$が存在する．最小元の定義から切片$A\agl{a}$は$A-B$と互いに素である．よって$A\agl{a}\subset B$である．前提より，$a\in B$であるが，$a\in A-B$に反する．よって示された．
+            $B != A$と仮定すると，$A - B$は空でないから最小元$a$が存在する．最小元の定義から切片$A angle.l a angle.r$は$A - B$と互いに素である．よって$A angle.l a angle.r subset B$である．前提より，$a in B$であるが，$a in A - B$に反する．よって示された．
           </p>
         </details>
         <p>
-          $B=\setsep{x\in A}{F\p{x}}$とする．任意の$a\in A$をとる．$a'\in A\agl{a}$すなわち$a'\lt a$について$F(a')$が成り立つ，つまり$A\agl{a}\subset B$とすると，前提から$F(a)$，つまり$a\in B$である．補題より$B=A$である．よって示された．
-        </p>
+          $B = {x in A middle F(x)}$とする．任意の$a in A$をとる．$a' in A angle.l a angle.r$すなわち$a' lt a$について$F(a')$が成り立つ，つまり$A angle.l a angle.r subset B$とすると，前提から$F(a)$，つまり$a in B$である．補題より$B=A$である．よって示された． </p>
       </details>
     </section>
 
     <section class="thm">
       <p>
-        整列集合$A$から$A$への狭義順序準同型写像$f$，任意の$x$について，$x\le f\p{x}$が成り立つ．
-      </p>
+        整列集合$A$から$A$への狭義順序準同型写像$f$，任意の$x$について，$x le f(x)$が成り立つ． </p>
       <details>
         <summary>証明</summary>
         <p>
-          $x\ge f\p{x}$となる$A$の元$x$があると仮定すると，$A$の部分集合$B=\setsep{x\in A}{x\ge f\p{x}}$は空でないから最小限$a$をもつ．$a\ge f\p{a}$より準同型写像の定義から$f\p{a}\ge f\p{f\p{a}}$となり，$f\p{a}\in B$である．しかし，$a$が最小元であることと$a\ge f\p{a}$が反する．よって，示された．
+          $x >= f(x)$となる$A$の元$x$があると仮定すると，$A$の部分集合$B = {x in A middle x >= f(x)}$は空でないから最小限$a$をもつ．$a >= f(a)$より準同型写像の定義から$f(a) >= f(f(a))$となり，$f(a) in B$である．しかし，$a$が最小元であることと$a >= f(a)$が反する．よって，示された．
         </p>
       </details>
       <p>
@@ -308,16 +259,15 @@
       <details>
         <summary>証明</summary>
         <p>
-          $A$から$A$への順序同型写像$f$，$A$の元$x$について，前提より$x\le f\p{x}\le f^{-1}\p{f\p{x}}=x$であるから$f$は恒等写像である．
-        </p>
+          $A$から$A$への順序同型写像$f$，$A$の元$x$について，前提より$x le f(x) lef^{-1}(f(x))=x$であるから$f$は恒等写像である． </p>
       </details>
       <p>
-        整列集合$A,B$について，$A$から$B$への順序同型写像は高々1つである．
+        整列集合$A, B$について，$A$から$B$への順序同型写像は高々1つである．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $A$と$B$の順序同型写像$f,g$について，$g^{-1}\circ f$は$A$から$A$への順序同型写像だから$g^{-1}\circ f=\rid$．よって$f=g$である．
+          $A$と$B$の順序同型写像$f, g$について，$g^{-1} compose f$は$A$から$A$への順序同型写像だから$g^{-1} compose f = id$．よって$f=g$である．
         </p>
       </details>
       <p>
@@ -326,25 +276,23 @@
       <details>
         <summary>証明</summary>
         <p>
-          $A$の元$a$について，順序同型写像$f:A\to A\agl{a}$が存在すると仮定すると，$f\p{a}\in A\agl{a}$であるから$f\p{a}\lt a$である．整列集合の性質に反するから示された．
-        </p>
+          $A$の元$a$について，順序同型写像$f: A arrow A angle.l a angle.r$が存在すると仮定すると，$f(a) in A angle.l a angle.r$であるから$f(a)< a$である．整列集合の性質に反するから示された． </p>
       </details>
       <p>
-        整列集合$A$の元$a,b$について，$a\neq b$なら$A\agl{a}$と$A\agl{b}$は順序同型でない．
+        整列集合$A$の元$a, b$について，$a != b$なら$A angle.l a angle.r$と$A angle.l b angle.r$は順序同型でない．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $a\lt b$とする．$A\agl{a}=A\agl{b}\agl{a}$であるから，整列集合の性質に反するから示された．
-        </p>
+          $a lt b$とする．$A angle.l a angle.r=A angle.l b angle.r angle.l a angle.r$であるから，整列集合の性質に反するから示された． </p>
       </details>
       <p>
-        順序同型な整列集合$A,A'$について，$A$の任意の元$a$に対し，$A'$のある元$a'$をとると，$A\agl{a}\cong A'\agl{a'}$である．
+        順序同型な整列集合$A, A'$について，$A$の任意の元$a$に対し，$A'$のある元$a'$をとると，$A angle.l a angle.r tilde.equiv A'angle.l a' angle.r$である．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $A$から$A'$への順序同型写像$f$について，$a'=f\p{a}$とすれば同型となる．
+          $A$から$A'$への順序同型写像$f$について，$a' = f(a)$とすれば同型となる．
         </p>
       </details>
     </section>
@@ -352,28 +300,27 @@
     <section class="thm">
       <h4>整列集合の比較定理</h4>
       <p>
-        整列集合$A,A'$について，次のうちどれか1つのみを満たす．
+        整列集合$A, A'$について，次のうちどれか1つのみを満たす．
       </p>
       <ol>
-        <li>$A\cong A'.$</li>
-        <li>$\exists a\in A,A\agl{a}\cong A'$</li>
-        <li>$\exists a'\in A',A\cong A'\agl{a'}$</li>
+        <li>$A tilde.equiv A'.$</li>
+        <li>$exists a in A, A angle.l a angle.r tilde.equiv A'$</li>
+        <li>$exists a' in A', A tilde.equiv A' angle.l a' angle.r$</li>
       </ol>
       <details>
         <summary>証明</summary>
         <p>
-          (I)~(III)が同時に成立しないことを示す．(I)かつ(II)のとき，$A\cong A'$かつある元$a\in A$をとると$A\agl{a}\cong A'$が成り立つが，$A\cong A\agl{a}$になり反する．(I)かつ(III)も同様．また，(II)かつ(III)のとき，$a$に対してある元$b'\in A'\agl{a'}$をとると，$A'\agl{a'}\agl{b'}\cong A\agl{a}$であるから，$A'\agl{a'}\agl{b'}\cong A'$になり反する．よって，それぞれは両立しない．
+          (I)~(III)が同時に成立しないことを示す．(I)かつ(II)のとき，$A tilde.equiv A'$かつある元$a in A$をとると$A angle.l a angle.r tilde.equiv A'$が成り立つが，$A tilde.equiv A angle.l a angle.r$になり反する．(I)かつ(III)も同様．また，(II)かつ(III)のとき，$a$に対してある元$b' in A' angle.l a' angle.r$をとると，$A' angle.l a' angle.r angle.l b' angle.r tilde.equiv A angle.l a angle.r$であるから，$A' angle.l a' angle.r angle.l b' angle.r tilde.equiv A'$になり反する．よって，それぞれは両立しない．
         </p>
         <p>
           次の集合を考える．
-          \begin{align*}
-          B&=\setsep{x\in A}{\exists x',A\agl{x}\cong A'\agl{x'}},\\
-          B'&=\setsep{x'\in A'}{\exists x,A\agl{x}\cong A'\agl{x'}}.\\
-          \end{align*}
-          $B,B'$は$A,A'$の部分集合だから整列集合である．写像$f\setsep{\p{x,x'}\in B\times B'}{x\in B\land A\agl{x}\cong A'\agl{x'}}$は全単射である．$b\in B$，$a\in A$，$a\lt b$のとき$A\agl{b}\cong A'\agl{f\p{b}}$であるからある元$f\p{a}\in A'\agl{f\p{b}}$が存在して，$A\agl{b}\agl{a}\cong A'\agl{f\p{b}}\agl{f\p{a}}$が成り立つ．よって$a\in B$．また$f\p{a}\lt f\p{b}$であるから$B\cong B'$である．
-        </p>
+          $
+          B & {x in A middle exists x', A angle.l x angle.r tilde.equiv A' angle.l x' angle.r}, \
+          B' & {x' in A' middle exists x, A angle.l x angle.r tilde.equiv A' angle.l x' angle.r}.\
+          $
+          $B, B'$は$A, A'$の部分集合だから整列集合である．写像$f{(x, x') in B times B' middle x in B and A angle.l x angle.r tilde.equiv A' angle.l x' angle.r}$は全単射である．$b in B$，$a in A$，$a lt b$のとき$A angle.l b angle.r tilde.equiv A' angle.l f(b) angle.r$であるからある元$f(a) in A'angle.l f(b) angle.r$が存在して，$A angle.l b angle.r angle.l a angle.r tilde.equiv A' angle.l f(b) angle.r angle.l f(a) angle.r$が成り立つ．よって$a in B$．また$f(a) lt f(b)$であるから$B tilde.equiv B'$である． </p>
         <p>
-          $B=A$または$A$のある元$a$が存在して$B=A\agl{a}$である．同様に$B'=A'$または$A'$のある元$a'$が存在して$B'=A'\agl{a'}$である．これについて場合分けを行う．$B=A$かつ$B'=A'$のとき(I)が成り立つ．$B=A$かつ$\exists a'\in A',B'=A'\agl{a'}$のとき(III)が成り立つ．$B'=A'$かつ$\exists a\in A,B=A\agl{a}$のとき(II)が成り立つ．$\exists a'\in A',B'=A'\agl{a'}$かつ$\exists a\in A,B=A\agl{a}$のとき$A'\agl{a'}\cong A\agl{a}$より$a\in B$であるから$B=A\agl{a}$に反する．よって示された．
+          $B = A$または$A$のある元$a$が存在して$B = A angle.l a angle.r$である．同様に$B' = A'$または$A'$のある元$a'$が存在して$B' = A' angle.l a' angle.r$である．これについて場合分けを行う．$B = A$かつ$B' = A'$のとき(I)が成り立つ．$B = A$かつ$exists a' in A', B' = A' angle.l a' angle.r$のとき(III)が成り立つ．$B' = A'$かつ$exists a in A, B = A angle.l a angle.r$のとき(II)が成り立つ．$exists a' in A', B' = A' angle.l a' angle.r$かつ$exists a in A, B = A angle.l a angle.r$のとき$A' angle.l a' angle.r tilde.equiv A angle.l a angle.r$より$a in B$であるから$B = A angle.l a angle.r$に反する．よって示された．
         </p>
       </details>
     </section>
@@ -383,10 +330,10 @@
       <h4>推移的</h4>
       <p>
         $a$が推移的とは，
-        \begin{align*}
-        &\forall xy,x\in a\land y\in x\to y\in a\\
-        &\Iff\bigcup a\subset a.
-        \end{align*}
+        $
+        & orall x y, x in a and y in x arrow y in a\
+        & rrow.l.r union.big a subset a.
+        $
       </p>
       <h4>順序数</h4>
       <p>
@@ -394,12 +341,12 @@
       </p>
       <ul>
         <li>$a$は推移的である．</li>
-        <li>$a$は帰属関係$\in$の全順序集合である．</li>
+        <li>$a$は帰属関係$in$の全順序集合である．</li>
       </ul>
       <details>
         <summary>例</summary>
         <p>
-          $0$は順序数である．順序数$\alpha$の後者$\suc\p{\alpha}$は順序数である．
+          $0$は順序数である．順序数$alpha$の後者$suc(alpha)$は順序数である．
         </p>
       </details>
     </section>
@@ -408,17 +355,17 @@
     </dev>
     <section class="thm">
       <p>
-        順序数$\alpha$について，$\alpha$の元は順序数である．
+        順序数$alpha$について，$alpha$の元は順序数である．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $x\in\alpha$について$z\in y\land y\in x$とすると，$\alpha$は順序数より$y\in\alpha$であり，$z\in\alpha$である．$\alpha$は全順序集合より$z\in x$である．よって$x$は推移的であり，全順序集合であるから順序数である．
+          $x in alpha$について$z in y and y in x$とすると，$alpha$は順序数より$y in alpha$であり，$z in alpha$である．$alpha$は全順序集合より$z in x$である．よって$x$は推移的であり，全順序集合であるから順序数である．
         </p>
       </details>
       <p>
-        順序数$\alpha$について，
-        $$\forall\beta\in\alpha,\alpha\agl{\beta}=\beta.$$
+        順序数$alpha$について，
+        $ forall beta in alpha, alpha angle.l beta angle.r = beta. $
       </p>
       <details>
         <summary>証明</summary>
@@ -427,91 +374,91 @@
         </p>
       </details>
       <p>
-        順序数$\alpha$は$\alpha$より小さい順序数の全体である．
+        順序数$alpha$は$alpha$より小さい順序数の全体である．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $\alpha$の元は順序数なので$\alpha=\setsep{x\in\alpha}{xは順序数}$である．
+          $alpha$の元は順序数なので$alpha = {x in alpha middle x"は順序数"}$である．
         </p>
       </details>
       <p>
-        順序数$\alpha$，$X\subsetneq\alpha$について，$X$が推移的なら$X\in\alpha$である．
+        順序数$alpha$，$X subset.neq alpha$について，$X$が推移的なら$X in alpha$である．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $\alpha$は整列集合なので空でない部分集合$\alpha-X$は最小元$\beta$をもつ．$\beta\notin X$である．$x\in\beta$とすると，$\beta$は$\alpha-X$の最小元なので$x\in\alpha-X$であり，$x\in X$である．よって$\beta\subset X$．また，$x\in X$とすると，$\beta\notin X$から$\beta\notin x$である．$\beta$は全順序集合なので$x\in \beta$である．よって，$\beta=X$であり，$X\in\alpha$である．
+          $alpha$は整列集合なので空でない部分集合$alpha - X$は最小元$beta$をもつ．$beta in.not X$である．$x in beta$とすると，$beta$は$alpha - X$の最小元なので$x in alpha - X$であり，$x in X$である．よって$beta subset X$．また，$x in X$とすると，$beta in.not X$から$beta in.not x$である．$beta$は全順序集合なので$x in beta$である．よって，$beta = X$であり，$X in alpha$である．
         </p>
       </details>
       <p>
-        順序数$\alpha,\beta$について，$\beta\subsetneq\alpha$なら$\beta\in\alpha$である．
+        順序数$alpha, beta$について，$beta subset.neq alpha$なら$beta in alpha$である．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $\beta$は推移的なので$\beta\in\alpha$である．
+          $beta$は推移的なので$beta in alpha$である．
         </p>
       </details>
       <p>
-        順序数$\alpha,\beta$について，$\alpha\subset\beta$または$\beta\subset\alpha$である．
+        順序数$alpha, beta$について，$alpha subset beta$または$beta subset alpha$である．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $X=\alpha\cap\beta$とする．$x\in y\in X$のとき$x\in\alpha$かつ$x\in\beta$より$x\in X$なので$X$は推移的である．よって，$X$は順序数．$X=\alpha$または$X=\beta$のときは$\alpha\subset\beta$または$\beta\subset\alpha$である．そうでないとき，$X\in X=\alpha\cap\beta$より正則性公理に反する．
+          $X = alpha inter beta$とする．$x in y in X$のとき$x in alpha$かつ$x in beta$より$x in X$なので$X$は推移的である．よって，$X$は順序数．$X = alpha$または$X = beta$のときは$alpha subset beta$または$beta subset alpha$である．そうでないとき，$X in X = alpha inter beta$より正則性公理に反する．
         </p>
       </details>
     </section>
     <section class="thm">
       <h4>順序数の比較定理</h4>
       <p>
-        順序数$\alpha,\beta$について，$\alpha=\beta$，$\alpha\in\beta$，$\beta\in\alpha$のどれかひとつが成り立つ．
+        順序数$alpha, beta$について，$alpha = beta$，$alpha in beta$，$beta in alpha$のどれかひとつが成り立つ．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $\alpha\neq\beta$なら$\alpha\subsetneq\beta$または$\beta\subsetneq\alpha$だから$\alpha\in\beta$，$\beta\in\alpha$のどちらかが成り立つ．
+          $alpha != beta$なら$alpha subset.neq beta$または$beta subset.neq alpha$だから$alpha in beta$，$beta in alpha$のどちらかが成り立つ．
         </p>
       </details>
     </section>
 
     <h3>クラス</h3>
     <p>
-      $x$が順序数であることを$\rm{On}\p{x}$と表す．このとき，順序数の集合を$\On=\setsep{x}{\rm{On}\p{x}}$と表すことができるが，これはZFC公理系上では集合ではない．これを<dfn>クラス</dfn>ということにする．
+      $x$が順序数であることを$On(x)$と表す．このとき，順序数の集合を$On={x middle On(x)}$と表すことができるが，これはZFC公理系上では集合ではない．これを<dfn>クラス</dfn>ということにする．
     </p>
     <section class="def">
       <h4>クラス</h4>
       <p>
-        集合$x$，論理式$F\p{x}$について，
-        $$\setsep{x}{F\p{x}}$$
+        集合$x$，論理式$F(x)$について，
+        $ {x middle F(x)} $
         をクラスという．このクラスを$F$と表し，クラスの帰属関係を，
-        $$x\cin F\Def F\p{x}.$$
+        $ x cin F :arrow.l.double> F(x). $
         と表す．その他，集合で定義した記号をクラスに拡張したものを上にclassと記して表す．集合でないクラスを真のクラスという．
       </p>
       <h4>宇宙</h4>
       <p>
-        $$\U\def\setsep{x}{\top}$$
+        $ Universe :arrow.l.double> {x middle top} $
       </p>
     </section>
 
     <section class="thm">
       <p>
-        $\On$は集合でない．
+        $On$は集合でない．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $\On$が集合と仮定すると，$\alpha\in\beta\in\On$のとき，$\beta$が順序数であるから$\alpha$も順序数である．よって，$\alpha\in\On$であるから$\On$は推移的である．順序数の比較定理より$\On$は帰属関係の全順序集合である．よって，$\On$は順序数となるが，$\On\in\On$より正則性公理に反する．
+          $On$が集合と仮定すると，$alpha in beta in On$のとき，$beta$が順序数であるから$alpha$も順序数である．よって，$alpha in On$であるから$On$は推移的である．順序数の比較定理より$On$は帰属関係の全順序集合である．よって，$On$は順序数となるが，$On in On$より正則性公理に反する．
         </p>
       </details>
       <p>
-        $\U$は集合でない．
+        $Universe$は集合でない．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $\U$が集合と仮定すると，定義より，$\U\in\U$である．これは$\forall x,x\notin x$に矛盾する．よって$\U$は集合でない．
+          $Universe$が集合と仮定すると，定義より，$Universe in Universe$である．これは$forall x, x in.not x$に矛盾する．よって$Universe$は集合でない．
         </p>
       </details>
     </section>

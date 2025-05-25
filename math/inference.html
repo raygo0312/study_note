@@ -19,19 +19,19 @@
     <section class="def">
       <h4>論理式の定義</h4>
       <ul>
-        <li>$A,B$: 論理式</li>
+        <li>$A, B$: 論理式</li>
       </ul>
       <p>
         「$A$を$B$で定義する」とは
-        $$A\Def B$$
+        $ A :arrow.l.r.double.long B $
       </p>
       <h4>項の定義</h4>
       <ul>
-        <li>$a,b$: 項</li>
+        <li>$a, b$: 項</li>
       </ul>
       <p>
         「$a$を$b$で定義する」とは
-        $$a\def b$$
+        $ a := b $
       </p>
     </section>
     <p>
@@ -44,7 +44,7 @@
         <li>$A$: $B$で定義された論理式</li>
       </ul>
       <p>
-        $$A\Iff B$$
+        $ A arrow.l.r.double.long B $
       </p>
       <h4>項の定義の言い換え</h4>
       <ul>
@@ -52,14 +52,14 @@
         <li>$a$: $b$で定義された項</li>
       </ul>
       <p>
-        $$a=b$$
+        $ a = b $
       </p>
     </section>
     <p>
       この記号の定義は後ほど行う．
     </p>
     <p>
-      $A,a$を<dfn>左辺</dfn>，$B,b$を<dfn>右辺</dfn>という．左辺と右辺の両方を<dfn>両辺</dfn>という．
+      $A, a$を<dfn>左辺</dfn>，$B, b$を<dfn>右辺</dfn>という．左辺と右辺の両方を<dfn>両辺</dfn>という．
     </p>
     <p>
       <dfn>等価</dfn>や<dfn>恒等</dfn>なことを<dfn>等しい</dfn>ともいう．等しい関係を<dfn>相等関係</dfn>といい，相等関係が満たすべき性質を<dfn>等価性</dfn>という．等価性については今後述べる．
@@ -75,7 +75,7 @@
         <li>$A$: 論理式</li>
       </ul>
       <p>
-        $$\lnot\p{A}$$
+        $ not (A) $
       </p>
       <details>
         <summary>読み</summary>
@@ -85,10 +85,10 @@
       </details>
       <h4>連言</h4>
       <ul>
-        <li>$A,B$: 論理式</li>
+        <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $$\land\p{A,B}$$
+        $ and (A, B) $
       </p>
       <details>
         <summary>読み</summary>
@@ -98,10 +98,10 @@
       </details>
       <h4>選言</h4>
       <ul>
-        <li>$A,B$: 論理式</li>
+        <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $$\lor\p{A,B}$$
+        $ or (A, B) $
       </p>
       <details>
         <summary>読み</summary>
@@ -111,10 +111,10 @@
       </details>
       <h4>含意</h4>
       <ul>
-        <li>$A,B$: 論理式</li>
+        <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $$\to\p{A,B}$$
+        $ arrow (A, B) $
       </p>
       <details>
         <summary>読み</summary>
@@ -127,33 +127,33 @@
       このままでは扱いづらいので，真理関数を演算子として扱いたい．このとき，<dfn>論理演算子</dfn>ともいう．次のように表す．
     </p>
     <section class="def">
-      <h4>$\lnot$演算子</h4>
+      <h4>$not$演算子</h4>
       <ul>
         <li>$A$: 論理式</li>
       </ul>
       <p>
-        $$\p{\lnot A}\Def\lnot\p{A}$$
+        $ (not A) :arrow.l.r.double.long not(A) $
       </p>
-      <h4>$\land$演算子</h4>
+      <h4>$and$演算子</h4>
       <ul>
-        <li>$A,B$: 論理式</li>
+        <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $$\p{A\land B}\Def\land\p{A,B}$$
+        $ (A and B) :arrow.l.r.double.long and (A, B) $
       </p>
-      <h4>$\lor$演算子</h4>
+      <h4>$or$演算子</h4>
       <ul>
-        <li>$A,B$: 論理式</li>
+        <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $$\p{A\lor B}\Def\lor\p{A,B}$$
+        $ (A or B) :arrow.l.r.double.long or (A, B) $
       </p>
-      <h4>$\to$演算子</h4>
+      <h4>$arrow$演算子</h4>
       <ul>
-        <li>$A,B$: 論理式</li>
+        <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $$\p{A\to B}\Def\to\p{A,B}$$
+        $ (A arrow B) :arrow.l.r.double.long arrow (A, B) $
       </p>
     </section>
 
@@ -163,10 +163,10 @@
     <section class="def">
       <h4>同値</h4>
       <ul>
-        <li>$A,B$: 論理式</li>
+        <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $$\p{A\iff B}\Def{\p{A\to B}\land\p{B\to A}}$$
+        $ (A arrow.l.r B) :arrow.l.r.double.long ((A arrow B) and (B arrow A)) $
       </p>
       <details>
         <summary>読み</summary>
@@ -176,10 +176,10 @@
       </details>
       <h4>排他的論理和</h4>
       <ul>
-        <li>$A,B$: 論理式</li>
+        <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $$\p{A\veebar B}\Def\p{A\land\p{\lnot B}\lor\p{\lnot A}\land B}$$
+        $ (A or.bar B) :arrow.l.r.double.long (A and (not B) or (not A) and B) $
       </p>
       <details>
         <summary>読み</summary>
@@ -192,20 +192,20 @@
     <h3>量化子</h3>
     <section class="ex">
       <p>
-        二次関数$f\p{x}=ax^2+bx+c$が次の条件を満たす$a,b,c$の必要十分条件を求めよ．
+        二次関数$f(x) = a x^2 + b x + c$が次の条件を満たす$a, b, c$の必要十分条件を求めよ．
       </p>
       <ol>
-        <li>すべての$x$で$f\p{x}\gt0$を満たす．</li>
-        <li>$f\p{x}\gt0$を満たす$x$が存在する．</li>
+        <li>すべての$x$で$gt$を満たす．</li>
+        <li>$gt$を満たす$x$が存在する．</li>
       </ol>
     </section>
     <p>
-      2つの量化表現を導入する．量化子$\lambda$は項$x$を用いて，$\lambda x$と表すことで論理式に対して1項演算子を表す．
+      2つの量化表現を導入する．量化子$lambda$は項$x$を用いて，$lambda x$と表すことで論理式に対して1項演算子を表す．
     </p>
     <section class="def">
       <h4>全称量化子</h4>
       <p>
-        $$\forall$$
+        $ forall $
       </p>
       <details>
         <summary>読み</summary>
@@ -215,7 +215,7 @@
       </details>
       <h4>存在量化子</h4>
       <p>
-        $$\exists$$
+        $ exists $
       </p>
       <details>
         <summary>読み</summary>
@@ -225,51 +225,49 @@
       </details>
     </section>
     <p>
-      具体的には，論理式$F$に対して「すべての$x$について$F\p{x}$である」を$\forall
-      x\p{F\p{x}}$と表し，<dfn>全称量化</dfn>という．また，「$F\p{x}$となる$x$が存在する」を$\exists
-      x\p{F\p{x}}$と表し，<dfn>存在量化</dfn>という．
+      具体的には，論理式$F$に対して「すべての$x$について$F(x)$である」を$forall x(F(x))$と表し，<dfn>全称量化</dfn>という．また，「$F(x)$となる$x$が存在する」を$exists x (F(x))$と表し，<dfn>存在量化</dfn>という．
     </p>
 
     <h3>項と述語</h3>
     <p>
-      一般的な数学において項は集合のみとし，述語には$\in$と$=$を用いる．述語を演算子として扱うとき，<dfn>関係演算子</dfn>という．これも論理演算子と同様に中置記法で表す．詳しくは集合論で扱う．
+      一般的な数学において項は集合のみとし，述語には$in$と$=$を用いる．述語を演算子として扱うとき，<dfn>関係演算子</dfn>という．これも論理演算子と同様に中置記法で表す．詳しくは集合論で扱う．
     </p>
 
     <h2>省略</h2>
     <h3>演算子の優先順位</h3>
     <p>
-      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$\p{\p{\p{\p{\lnot P}\land Q}\iff P}\to\p{P\lor Q}}$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<dfn>優先順位</dfn>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．<dfn>右結合</dfn>は優先順位が同じときに，文の右側の演算子を優先することである．左側の場合は<dfn>左結合</dfn>である．
+      論理演算子を用いると，「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても$((((not P) and Q) arrow.l.r P) arrow (P or Q))$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<dfn>優先順位</dfn>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．<dfn>右結合</dfn>は優先順位が同じときに，文の右側の演算子を優先することである．左側の場合は<dfn>左結合</dfn>である．
     </p>
     <section class="def">
       <h4>括弧の省略</h4>
       <p>
-        $\p{a}$が演算子の引数ではないとき
-        $$a\Def\p{a}$$
+        $(a)$が演算子の引数ではないとき
+        $ a :arrow.l.r.double.long (a) $
       </p>
       <h4>一項演算子についての省略</h4>
       <p>
-        $a$の一項演算子$\star$に対して
-        $$\star\,a\Def\p{\star a}$$
+        $a$の一項演算子$star$に対して
+        $ star a :arrow.l.r.double.long (star a) $
       </p>
       <h4>二項演算子についての優先順位</h4>
       <p>
-        $a,b,c$の二項演算子$\star_1$が$\star_2$より優先順位が高いとき
-        $$a\,\star_1\,b\,\star_2\,c\Def\p{a\,\star_1\,b}\,\star_2\,c$$
-        $$a\,\star_2\,b\,\star_1\,c\Def a\,\star_2\,\p{b\,\star_1\,c}$$
+        $a, b, c$の二項演算子$star_1$が$star_2$より優先順位が高いとき
+        $ a star_1 b star_2 c:arrow.l.r.double.long(a star_1 b) star_2 c $
+        $ a star_2 b star_1 c:arrow.l.r.double.long a star_2 (b star_1 c) $
       </p>
       <h4>左結合</h4>
       <p>
-        $a,b,c$の二項演算子$\star$が左結合のとき
-        $$a\,\star\,b\,\star\,c\Def\p{a\,\star\,b}\,\star\,c$$
+        $a, b, c$の二項演算子$star$が左結合のとき
+        $ a star b star c:arrow.l.r.double.long(a star b) star c $
       </p>
       <h4>右結合</h4>
       <p>
-        $a,b,c$の二項演算子$\star$が右結合のとき
-        $$a\,\star\,b\,\star\,c\Def a\,\star\,(b\,\star\,c)$$
+        $a, b, c$の二項演算子$star$が右結合のとき
+        $ a star b star c:arrow.l.r.double.long a star (b star c) $
       </p>
     </section>
     <p>
-      各種演算子ごとの大まかな優先順位を定める．推論文字($\To,\Iff,\proof,\models$)の優先順位は最下位とする，算術演算とは($+,-,\cup$など)数字や集合など同士の演算子である．
+      各種演算子ごとの大まかな優先順位を定める．推論文字($arrow, arrow.l.r.double.long, tack, tack.double$)の優先順位は最下位とする，算術演算とは($+, -, union$など)数字や集合など同士の演算子である．
     </p>
     <section class="def">
       <p>
@@ -289,22 +287,22 @@
         上から順に優先順位が高いとする．
       </p>
       <ul>
-        <li>$\lnot$(右)</li>
-        <li>$\land$(左)</li>
-        <li>$\lor$(左)</li>
-        <li>$\to$(右)</li>
-        <li>$\iff$(左)</li>
+        <li>$not$(右)</li>
+        <li>$and$(左)</li>
+        <li>$or$(左)</li>
+        <li>$arrow$(右)</li>
+        <li>$arrow.l.r$(左)</li>
       </ul>
     </section>
 
     <section class="ex">
       <p>
-        命題$P,Q,R$に対して，次を満たす．
-        $$\lnot P\land Q\Iff\p{\lnot P}\land Q.$$
-        $$P\land Q\lor Q\land R\Iff\p{P\land Q}\lor\p{Q\land R}.$$
-        $$\lnot\lnot P\Iff\lnot\p{\lnot P}.$$
-        $$P\to Q\to R\Iff P\to\p{Q\to R}.$$
-        $$\lnot\p{P\lor Q}\land R\Iff\p{\lnot\p{P\lor Q}}\land R.$$
+        命題$P, Q, R$に対して，次を満たす．
+        $ not P and Q arrow.l.r.double.long (not P) and Q. $
+        $ P and Q or Q and R arrow.l.r.double.long (P and Q) or (Q and R). $
+        $ not not P arrow.l.r.double.long not (not P). $
+        $ P arrow Q arrow R arrow.l.r.double.long P arrow (Q arrow R). $
+        $ not (P or Q) and R arrow.l.r.double.long (not (P or Q)) and R. $
       </p>
     </section>
     <details>
@@ -313,9 +311,9 @@
         次の括弧が省略された命題に括弧をつけなさい．
       </p>
       <ol>
-        <li>$\lnot P\land Q.$</li>
-        <li>$P\land Q\lor R\to P\lor\lnot Q\land R.$</li>
-        <li>$P\to Q\to P\iff Q.$</li>
+        <li>$not P and Q.$</li>
+        <li>$P and Q or R arrow P or not Q and R.$</li>
+        <li>$P arrow Q arrow P arrow.l.r Q.$</li>
       </ol>
       <details>
         <summary>解答</summary>
@@ -323,21 +321,21 @@
           優先順位が高い演算子から括弧をくくる．
         </p>
         <ol>
-          <li>$\p{\p{\lnot P}\land Q}.$</li>
-          <li>$\p{\p{\p{P\land Q}\lor R}\to\p{P\lor\p{\p{\lnot Q}\land R}}}.$</li>
-          <li>$\p{\p{P\to \p{Q\to P}}\iff Q}.$</li>
+          <li>$((not P) and Q).$</li>
+          <li>$(((P and Q) or R)arrow(P or ((not Q) and R))).$</li>
+          <li>$((P arrow (Q arrow P)) arrow.l.r Q).$</li>
         </ol>
       </details>
     </details>
     <details>
       <summary>練習問題2</summary>
       <p>
-        次の式が命題論理における論理式なことを示せ．ただし，$P,Q$は原子命題とする．
+        次の式が命題論理における論理式なことを示せ．ただし，$P, Q$は原子命題とする．
       </p>
       <ol>
-        <li>$P\to P.$</li>
-        <li>$\lnot P\land Q.$</li>
-        <li>$P\iff P.$</li>
+        <li>$P arrow P.$</li>
+        <li>$not P and Q.$</li>
+        <li>$P arrow.l.r P.$</li>
       </ol>
       <details>
         <summary>解答</summary>
@@ -347,30 +345,29 @@
         <ol>
           <li>
             与式を変形する．
-            \begin{align*}
-            &P\to P\\
-            \Iff&\to\p{P,P}.\\
-            \end{align*}
-            $P$は原子命題より$P$は論理式である．$\to$は二項真理関数で$P$は論理式より$\to\p{P,P}$は論理式である．したがって，$P\to P$は論理式である．
+            $
+            & P arrow P\
+            arrow.l.r.double.long & arrow (P, P).
+            $
+            $P$は原子命題より$P$は論理式である．$arrow$は二項真理関数で$P$は論理式より$arrow (P, P)$は論理式である．したがって，$P arrow P$は論理式である．
           </li>
           <li>
             与式を変形する．
-            \begin{align*}
-            &\lnot P\land Q\\
-            \Iff&\p{\p{\lnot P}\land Q}\\
-            \Iff&\land\p{\lnot\p{P},Q}.\\
-            \end{align*}
-            $P$は原子命題より$P$は論理式である．$\lnot$は一項真理関数で$P$は論理式より$\lnot\p{P}$は論理式である．また，$Q$は原子命題より$Q$は論理式である．よって，$\land$は二項真理関数で$\lnot\p{P}$と$Q$は論理式より$\land\p{\lnot\p{P},Q}$は論理式である．したがって，$\lnot P\land Q$は論理式である．
+            $
+            & not P and Q\
+            arrow.l.r.double.long & ((not P) and Q)\
+            arrow.l.r.double.long & and (not (P), Q).
+            $
+            $P$は原子命題より$P$は論理式である．$not$は一項真理関数で$P$は論理式より$not (P)$は論理式である．また，$Q$は原子命題より$Q$は論理式である．よって，$and$は二項真理関数で$not (P)$と$Q$は論理式より$and (not (P), Q)$は論理式である．したがって，$not P and Q$は論理式である．
           </li>
           <li>
             与式を変形する．
-            \begin{align*}
-            &P\iff P\\
-            \Iff&\p{P\to P}\land\p{P\to P}\\
-            \Iff&\land\p{P\to P,P\to P}.\\
-            \end{align*}
-            (1)より$P\to P$は論理式である．$\land$は二項真理関数で$P\to P$は論理式より$\land\p{P\to P,P\to
-            P}$は論理式である．したがって，$P\iff P$は論理式である．
+            $
+            & arrow.l.r P\
+            arrow.l.r.double.long & (P arrow P) and (P arrow P)\
+            arrow.l.r.double.long & and (P arrow P, P arrow P).
+            $
+            (1)より$P arrow P$は論理式である．$and$は二項真理関数で$P arrow P$は論理式より$gt$は論理式である．したがって，$P arrow.l.r P$は論理式である．
           </li>
         </ol>
       </details>
@@ -383,51 +380,51 @@
     <section class="def">
       <h4>適用範囲の省略</h4>
       <p>
-        量化子$\lambda$，論理式$\lambda x\p{A}$が演算子の引数ではないときについて
-        $$\lambda x,A\Def\lambda x\p{A}$$
+        量化子$lambda$，論理式$lambda x (A)$が演算子の引数ではないときについて
+        $ lambda x, A :arrow.l.r.double.long lambda x (A) $
       </p>
       <h4>同量化の省略</h4>
       <p>
-        量化子$\lambda$について
-        $$\lambda xy\p{A}\Def\lambda x\lambda y\p{A}$$
+        量化子$lambda$について
+        $ lambda x y (A) :arrow.l.r.double.long lambda x lambda y (A) $
       </p>
       <h4>量化子の別記</h4>
       <p>
-        $$^\lambda x,A\Def\lambda x,A$$
+        $ ^lambda x, A :arrow.l.r.double.long lambda x, A $
       </p>
-      <h4>$\forall$の条件の省略</h4>
+      <h4>$forall$の条件の省略</h4>
       <p>
         論理式$A$，述語$F$について
-        $$\forall F\p{x_1,\dots,x_n},A\Def\forall x_1\cdots x_n,F\p{x_1,\dots,x_n}\to A$$
-        $$\forall F\p{x_1,\dots,x_n}\Def\forall F\p{x_1,\dots,x_n},\bot$$
+        $ forall F(x_1, dots, x_n), A :arrow.l.r.double.long forall x_1 dots.c x_n, F(x_1, dots, x_n) arrow A $
+        $ forall F(x_1, dots, x_n) :arrow.l.r.double.long forall F(x_1, dots, x_n), bot $
       </p>
-      <h4>$\exists$の条件の省略</h4>
+      <h4>$exists$の条件の省略</h4>
       <p>
         論理式$A$，述語$F$について
-        $$\exists F\p{x_1,\dots,x_n},A\Def\exists x_1\cdots x_n,F\p{x_1,\dots,x_n}\land A$$
-        $$\exists F\p{x_1,\dots,x_n}\Def\exists F\p{x_1,\dots,x_n},\top$$
+        $ exists F(x_1, dots, x_n), A :arrow.l.r.double.long exists x_1 dots.c x_n, F(x_1, dots, x_n) and A $
+        $ exists F(x_1, dots, x_n) :arrow.l.r.double.long exists F(x_1, dots, x_n), top $
       </p>
       <h4>唯一存在量化子</h4>
       <p>
         述語$F$について
-        $$\exists!F\p{x}\Def\exists F\p{x}\land\forall F\p{x}\land F\p{y}\p{x=y}$$
+        $ exists! F(x) :arrow.l.r.double.long exists F(x) and forall F(x) and F(y) (x=y) $
       </p>
     </section>
 
     <h3>否定の省略</h3>
     <p>
-      否定した命題や述語はよく使われる．そのたびに，先頭に$\lnot$をつけて括弧でくくっていては，冗長的で認識しづらい．量化子や関係演算子に斜線を入れることで否定を表現する．
+      否定した命題や述語はよく使われる．そのたびに，先頭に$not$をつけて括弧でくくっていては，冗長的で認識しづらい．量化子や関係演算子に斜線を入れることで否定を表現する．
     </p>
     <section class="def">
       <h4>量化子の否定</h4>
       <p>
-        量化子$\lambda$について
-        $$\cancel{\lambda} x,A\Def\lnot\p{\lambda x,A}$$
+        量化子$lambda$について
+        $ cancel(lambda) x, A :arrow.l.r.double.long not (lambda x, A) $
       </p>
       <h4>関係演算子の否定</h4>
       <p>
-        変数$x,y$の関係演算子$\star$について
-        $$x\cancel{\star}y\Def\lnot\p{x\star y}$$
+        変数$x, y$の関係演算子$star$について
+        $ x cancel(star) y:arrow.l.r.double.longnot (x star y) $
       </p>
     </section>
 
@@ -438,14 +435,14 @@
     <section class="def">
       <h4>反転記法</h4>
       <p>
-        関係演算子$\prec$に対して
-        $$B\succ A\Def A\prec B$$
+        関係演算子$prec$に対して
+        $ B succ A :arrow.l.r.double.long A prec B $
       </p>
     </section>
 
     <h2>推論</h2>
     <p>
-      $A\to B$は重要な命題である．この命題が真のとき，$B$を$A$に対して<dfn>必要条件</dfn>，$A$を$B$に対して<dfn>十分条件</dfn>という．必要条件で十分条件のとき<dfn>必要十分条件</dfn>という．また，この命題の<dfn>逆</dfn>とは$B\to A$のことで，<dfn>裏</dfn>とは$\lnot A\to\lnot B$のことで，<dfn>対偶</dfn>とは$\lnot B\to\lnot A$のことである．これらの用語は証明の際にたびたび登場する．
+      $A arrow B$は重要な命題である．この命題が真のとき，$B$を$A$に対して<dfn>必要条件</dfn>，$A$を$B$に対して<dfn>十分条件</dfn>という．必要条件で十分条件のとき<dfn>必要十分条件</dfn>という．また，この命題の<dfn>逆</dfn>とは$B arrow A$のことで，<dfn>裏</dfn>とは$not A arrow not B$のことで，<dfn>対偶</dfn>とは$not B arrow not A$のことである．これらの用語は証明の際にたびたび登場する．
     </p>
 
     <h3>演繹と帰納</h3>
@@ -455,16 +452,16 @@
     <section class="def">
       <h4>推論</h4>
       <ul>
-        <li>$\Gamma$: 前提の集合</li>
+        <li>$Gamma$: 前提の集合</li>
         <li>$A$: 結論</li>
       </ul>
       <p>
-        $$\Gamma\To A$$
+        $ Gamma arrow.r.double A $
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $\Gamma$から$A$へ推論
+          $Gamma$から$A$へ推論
         </p>
       </details>
     </section>
@@ -479,16 +476,16 @@
     <section class="def">
       <h4>論理的帰結</h4>
       <ul>
-        <li>$\Gamma$: 命題の集合</li>
+        <li>$Gamma$: 命題の集合</li>
         <li>$A$: 命題</li>
       </ul>
       <p>
-        $$\Gamma\models A$$
+        $ Gamma tack.double A $
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $\Gamma$がすべて真のとき$A$が偽となりえない．
+          $Gamma$がすべて真のとき$A$が偽となりえない．
         </p>
       </details>
     </section>
@@ -514,59 +511,59 @@
     <section class="def">
       <h4>演繹可能</h4>
       <ul>
-        <li>$\kappa$: 論理体系</li>
-        <li>$\Gamma$: 命題の集合</li>
+        <li>$kappa$: 論理体系</li>
+        <li>$Gamma$: 命題の集合</li>
         <li>$A$: 命題</li>
       </ul>
       <p>
-        $$\Gamma\vdash_\kappa A$$
+        $ Gamma tack_kappa A $
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $\kappa$で$\Gamma$から$A$へ導ける
+          $kappa$で$Gamma$から$A$へ導ける
         </p>
       </details>
       <h4>証明可能</h4>
       <ul>
-        <li>$\kappa$: 論理体系</li>
+        <li>$kappa$: 論理体系</li>
         <li>$A$: 命題</li>
       </ul>
       <p>
-        $$\vdash_\kappa A$$
+        $ tack_kappa A $
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $\kappa$で$A$は示された
+          $kappa$で$A$は示された
         </p>
       </details>
     </section>
     <p>
-      証明体系が明らかなときは体系名を省略して$\vdash$を用いてよい．また，$a_1,a_2,\dots,a_n$の集合を$\set{a_1,a_2,\dots,a_n}$と表すが，集合の本来の文字を用いると，認識しづらくなるので次の表現を使う．
+      証明体系が明らかなときは体系名を省略して$tack$を用いてよい．また，$a_1, a_2, dots, a_n$の集合を${a_1, a_2, dots, a_n}$と表すが，集合の本来の文字を用いると，認識しづらくなるので次の表現を使う．
     </p>
     <section class="def">
       <h4>集合の省略</h4>
       <p>
-        命題の集合$\set{A_1,\dots,A_n}$，命題$A$について
-        $$A_1,\dots,A_n\To A\Def\set{A_1,\dots,A_n}\To A$$
-        $$A_1,\dots,A_n\models A\Def\set{A_1,\dots,A_n}\models A$$
-        $$A_1,\dots,A_n\vdash A\Def\set{A_1,\dots,A_n}\vdash A$$
+        命題の集合${A_1, dots, A_n}$，命題$A$について
+        $ A_1, dots, A_n arrow.r.double A :arrow.l.r.double.long {A_1, dots, A_n} arrow.r.double A $
+        $ A_1, dots, A_n tack.double A :arrow.l.r.double.long {A_1, dots, A_n} tack.double A $
+        $ A_1, dots, A_n tack A :arrow.l.r.double.long {A_1, dots, A_n} tack A $
       </p>
     </section>
     <p>
       また，これらを拡張した書き方も認めることとする．
     </p>
     <section class="def">
-      <h4>$\To$記法の拡張</h4>
+      <h4>$arrow.r.double$記法の拡張</h4>
       <p>
-        命題$A_1,\dots,A_n,B_1,\dots,B_n$について，
-        「$A_1,\dots,A_n\To B_1$」または$\cdots$または「$A_1,\dots,A_n\To B_n$」のとき
-        $$A_1,\dots,A_n\To B_1,\dots,B_n$$
-        $\To$の前後が空のとき
-        $$\To\Def\top\To\bot$$
-        「$A_1,A_2,\dots,A_n\To B_1,B_2,\dots,B_n$」かつ「$B_1,B_2,\dots,B_n\To A_1,A_2,\dots,A_n$」のとき
-        $$A_1,A_2,\dots,A_n\Iff B_1,B_2,\dots,B_n$$
+        命題$A_1, dots, A_n, B_1, dots, B_n$について，
+        「$A_1, dots, A_n arrow.r.double B_1$」または$dots.c$または「$A_1, dots, A_n arrow.r.double B_n$」のとき
+        $ A_1, dots, A_n arrow.r.double B_1, dots, B_n $
+        $arrow.r.double$の前後が空のとき
+        $ arrow.r.double :arrow.l.r.double.long top arrow.r.double bot $
+        「$A_1, A_2, dots, A_n arrow.r.double B_1, B_2, dots, B_n$」かつ「$B_1, B_2, dots, B_n arrow.r.double A_1, A_2, dots, A_n$」のとき
+        $ A_1, A_2, dots, A_n arrow.l.r.double.long B_1, B_2, dots, B_n $
       </p>
     </section>
 
@@ -577,8 +574,8 @@
     <section class="def">
       <h4>関係式の拡張</h4>
       <p>
-        $a,b,c$を引数にとる関係(推論文字，関係演算子)を表す記号$\prec$について
-        $$a\prec b\prec c\Def a\prec b\land b\prec c$$
+        $a, b, c$を引数にとる関係(推論文字，関係演算子)を表す記号$prec$について
+        $ a prec b prec c :arrow.l.r.double.long a prec b and b prec c $
       </p>
     </section>
 
@@ -590,7 +587,7 @@
     <section class="def">
       <h4>トートロジー</h4>
       <p>
-        $$\top$$
+        $ top $
       </p>
     </section>
 
@@ -601,7 +598,7 @@
     <section class="def">
       <h4>矛盾</h4>
       <p>
-        $$\bot$$
+        $ bot $
       </p>
     </section>
   </main>
