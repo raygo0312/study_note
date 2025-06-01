@@ -19,15 +19,25 @@
     <section class="def">
       <h4>順序</h4>
       <p>
-        $A$上の関係$le$について，順序$le$とは次を満たす． $ & orall x in A, x lex.\ & orall x y in A, x ley and y lex arrow x=y.\ & orall x y z in A, x ley and y le z arrow x le z. $ このとき，$A$は$le$による順序集合という． </p>
+        $A$上の関係$lt.eq$について，順序$lt.eq$とは次を満たす．
+        $
+        & orall x in A, x le.eq x.\
+        & orall x y in A, x le.eq y and y le.eq x arrow x=y.\
+        & orall x y z in A, x le.eq y and y lt.eq z arrow x lt.eq z.
+        $
+        このとき，$A$は$lt.eq$による順序集合という． </p>
       <h4>狭義順序</h4>
       <p>
-        $A$上の関係$lt$について，狭義順序$lt$とは， $ forall x y in A, x lt y :arrow.l.double> x le y and x !=y. $ </p>
+        $A$上の関係$lt$について，狭義順序$lt$とは， $ forall x y in A, x lt y :arrow.l.double> x lt.eq y and x !=y. $ </p>
     </section>
     <p>
       狭義順序は定義より次のように変形できる．
       $
-      x lt y & rrow.l.r x le y and x !=y, \ x lt y or x=y & rrow.l.r x le y and x !=y or x=y, \ & rrow.l.r (x le y or x=y) and (x !=y or x=y), \ & rrow.l.r x le y. $ 狭義順序は次の性質を満たす． </p>
+      x lt y & rrow.l.r x lt.eq y and x !=y, \
+      x lt y or x=y & rrow.l.r x lt.eq y and x !=y or x=y, \
+      & rrow.l.r (x lt.eq y or x=y) and (x !=y or x=y), \
+      & rrow.l.r x lt.eq y.
+      $ 狭義順序は次の性質を満たす． </p>
     <section class="thm">
       <p>
         $A$上の狭義順序$lt$について， $ forall x in A, not(x lt x). $ </p>
@@ -41,14 +51,14 @@
       <details>
         <summary>証明</summary>
         <p>
-          $x lt y and y lt x$と仮定すると，定義より$x le y$かつ$y le x$かつ$x != y$が成り立つ．反対称律より$x=y$が成り立つから反する．よって，$not (x lt y and y lt x)$である． </p>
+          $x lt y and y lt x$と仮定すると，定義より$x lt.eq y$かつ$y lt.eq x$かつ$x != y$が成り立つ．反対称律より$x=y$が成り立つから反する．よって，$not (x lt y and y lt x)$である． </p>
       </details>
       <p>
         $ forall x y z in A, x lt y and y lt z arrow x lt z. $ </p>
       <details>
         <summary>証明</summary>
         <p>
-          前提より，$x le y$かつ$y le z$が成り立ち，推移律より$x le z$である．また，$x = z$と仮定すると，反対称律より$x = y = z$であるが前提に反する．よって，$x != z$が成り立ち$x lt z$である． </p>
+          前提より，$x lt.eq y$かつ$y lt.eq z$が成り立ち，推移律より$x lt.eq z$である．また，$x = z$と仮定すると，反対称律より$x = y = z$であるが前提に反する．よって，$x != z$が成り立ち$x lt z$である． </p>
       </details>
     </section>
     <p>
@@ -57,24 +67,29 @@
     <details>
       <summary>狭義順序から反射律の証明</summary>
       <p>
-        $x lt x or x = x$は成り立つから$x le x$である． </p>
+        $x lt x or x = x$は成り立つから$x lt.eq x$である． </p>
     </details>
     <details>
       <summary>狭義順序から反対称律の証明</summary>
       <p>
-        前提より$x le y and y lex$すなわち$x lt y and y lt x or x = y$が成り立つ．$x lt y and y lt x$は偽であるから，$x = y$である． </p>
+        前提より$x lt.eq y and y le.eq x$すなわち$x lt y and y lt x or x = y$が成り立つ．$x lt y and y lt x$は偽であるから，$x = y$である． </p>
     </details>
     <details>
       <summary>狭義順序から推移律の証明</summary>
       <p>
-        前提より$x le y and y le z$すなわち$(x lt y or x=y) and (y lt z or y = z)$が成り立つ．これについて場合分けをする．$x lt y and y lt z$のとき$x lt z$である．$x lt y and y = z$のとき$x lt z$である．$x=y and y lt z$のとき$x lt z$である．$x lt z$から$x le z$である．$x = y and y = z$より$x = z$であるから反射律より$x le z$である． </p>
+        前提より$x lt.eq y and y lt.eq z$すなわち$(x lt y or x=y) and (y lt z or y = z)$が成り立つ．これについて場合分けをする．$x lt y and y lt z$のとき$x lt z$である．$x lt y and y = z$のとき$x lt z$である．$x=y and y lt z$のとき$x lt z$である．$x lt z$から$x lt.eq z$である．$x = y and y = z$より$x = z$であるから反射律より$x lt.eq z$である． </p>
     </details>
 
     <h3>全順序</h3>
     <section class="def">
       <h4>全順序</h4>
       <p>
-        $A$上の順序$le$について，全順序$le$とは， $ & orall x y in A, x ley or y lex\ arrow.l.r & orall x in A, x lt y or x=y or y lt x. $ が成り立つことである。 </p>
+        $A$上の順序$lt.eq$について，全順序$lt.eq$とは，
+        $
+        & orall x y in A, x le.eq y or y le.eq x\
+        arrow.l.r & orall x in A, x lt y or x=y or y lt x.
+        $
+        が成り立つことである。 </p>
     </section>
 
     <h3>順序集合の元</h3>
@@ -85,19 +100,19 @@
       <h4>最大元</h4>
       <p>
         順序集合$A$の部分集合$B$について，$B$の最大元$max B$とは，
-        $ forall x in B, x le max B. $ </p>
+        $ forall x in B, x lt.eq max B. $ </p>
       <h4>最小元</h4>
       <p>
         順序集合$A$の部分集合$B$について，$B$の最小元$min B$とは，
-        $ forall x in B, min B le x. $ </p>
+        $ forall x in B, min B lt.eq x. $ </p>
       <h4>上界</h4>
       <p>
         順序集合$A$の部分集合$B$，$A$の元$a$について，$B$の上界$a$とは，
-        $ forall x in B, x le a. $ $B$の上界が存在するとき$B$は上に有界という． </p>
+        $ forall x in B, x lt.eq a. $ $B$の上界が存在するとき$B$は上に有界という． </p>
       <h4>下界</h4>
       <p>
         順序集合$A$の部分集合$B$，$A$の元$a$について，$B$の下界$a$とは，
-        $ forall x in B, a le x. $ $B$の下界が存在するとき$B$は下に有界という． </p>
+        $ forall x in B, a lt.eq x. $ $B$の下界が存在するとき$B$は下に有界という． </p>
       <h4>有界</h4>
       <p>
         順序集合$A$の部分集合$B$について，$B$が有界とは上に有界かつ下に有界．
@@ -155,7 +170,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          $A$の任意の元$a, b$について，部分集合${a, b}$について，最小値が存在することから，$a le b or b lea$である．よって$A$は全順序集合である． </p>
+          $A$の任意の元$a, b$について，部分集合${a, b}$について，最小値が存在することから，$a lt.eq b or b lea$である．よって$A$は全順序集合である． </p>
       </details>
       <p>
         帰属関係の全順序集合$A$は整列集合である．
@@ -246,7 +261,7 @@
 
     <section class="thm">
       <p>
-        整列集合$A$から$A$への狭義順序準同型写像$f$，任意の$x$について，$x le f(x)$が成り立つ． </p>
+        整列集合$A$から$A$への狭義順序準同型写像$f$，任意の$x$について，$x lt.eq f(x)$が成り立つ． </p>
       <details>
         <summary>証明</summary>
         <p>
@@ -259,7 +274,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          $A$から$A$への順序同型写像$f$，$A$の元$x$について，前提より$x le f(x) lef^{-1}(f(x))=x$であるから$f$は恒等写像である． </p>
+          $A$から$A$への順序同型写像$f$，$A$の元$x$について，前提より$x lt.eq f(x) lef^{-1}(f(x))=x$であるから$f$は恒等写像である． </p>
       </details>
       <p>
         整列集合$A, B$について，$A$から$B$への順序同型写像は高々1つである．
