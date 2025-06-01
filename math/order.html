@@ -21,20 +21,21 @@
       <p>
         $A$上の関係$lt.eq$について，順序$lt.eq$とは次を満たす．
         $
-        & forall x in A, x le.eq x.\
-        & forall x y in A, x le.eq y and y le.eq x arrow x=y.\
-        & forall x y z in A, x le.eq y and y lt.eq z arrow x lt.eq z.
+        & forall x in A, x lt.eq x.\
+        & forall x y in A, x lt.eq y and y lt.eq x arrow x=y.\
+        & forall x y z in A, x lt.eq y and y lt.eq z arrow x lt.eq z.
         $
         このとき，$A$は$lt.eq$による順序集合という． </p>
       <h4>狭義順序</h4>
       <p>
-        $A$上の関係$lt$について，狭義順序$lt$とは， $ forall x y in A, x lt y :arrow.l.double> x lt.eq y and x !=y. $ </p>
+        $A$上の関係$lt$について，狭義順序$lt$とは，
+        $ forall x y in A, x lt y :arrow.r.l.double.long x lt.eq y and x !=y. $ </p>
     </section>
     <p>
       狭義順序は定義より次のように変形できる．
       $
-      x lt y & rrow.l.r x lt.eq y and x !=y, \
-      x lt y or x=y & rrow.l.r x lt.eq y and x !=y or x=y, \
+      x lt y & arrow.l.r x lt.eq y and x !=y, \
+      x lt y or x=y & arrow.l.r x lt.eq y and x !=y or x=y, \
       & arrow.l.r (x lt.eq y or x=y) and (x !=y or x=y), \
       & arrow.l.r x lt.eq y.
       $ 狭義順序は次の性質を満たす． </p>
@@ -72,7 +73,7 @@
     <details>
       <summary>狭義順序から反対称律の証明</summary>
       <p>
-        前提より$x lt.eq y and y le.eq x$すなわち$x lt y and y lt x or x = y$が成り立つ．$x lt y and y lt x$は偽であるから，$x = y$である． </p>
+        前提より$x lt.eq y and y lt.eq x$すなわち$x lt y and y lt x or x = y$が成り立つ．$x lt y and y lt x$は偽であるから，$x = y$である． </p>
     </details>
     <details>
       <summary>狭義順序から推移律の証明</summary>
@@ -86,7 +87,7 @@
       <p>
         $A$上の順序$lt.eq$について，全順序$lt.eq$とは，
         $
-        & forall x y in A, x le.eq y or y le.eq x\
+        & forall x y in A, x lt.eq y or y lt.eq x\
         arrow.l.r & forall x in A, x lt y or x=y or y lt x.
         $
         が成り立つことである。 </p>
