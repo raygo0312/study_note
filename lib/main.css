@@ -15,10 +15,11 @@
   --header: #84c0c7;
   --h2: #96858f;
   --h3: #c09f80;
-  --ex: #e3e2b4;
   --axm: #e2d2d2;
-  --def: #bfc8d7;
-  --thm: #a2b59f;
+  --def: #e3e2b4;
+  --thm: #c4db9a;
+  --prob: #bfc1d7;
+  --ex: #9fb1b5;
 }
 
 body {
