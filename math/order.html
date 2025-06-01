@@ -21,9 +21,9 @@
       <p>
         $A$上の関係$lt.eq$について，順序$lt.eq$とは次を満たす．
         $
-        & orall x in A, x le.eq x.\
-        & orall x y in A, x le.eq y and y le.eq x arrow x=y.\
-        & orall x y z in A, x le.eq y and y lt.eq z arrow x lt.eq z.
+        & forall x in A, x le.eq x.\
+        & forall x y in A, x le.eq y and y le.eq x arrow x=y.\
+        & forall x y z in A, x le.eq y and y lt.eq z arrow x lt.eq z.
         $
         このとき，$A$は$lt.eq$による順序集合という． </p>
       <h4>狭義順序</h4>
@@ -35,8 +35,8 @@
       $
       x lt y & rrow.l.r x lt.eq y and x !=y, \
       x lt y or x=y & rrow.l.r x lt.eq y and x !=y or x=y, \
-      & rrow.l.r (x lt.eq y or x=y) and (x !=y or x=y), \
-      & rrow.l.r x lt.eq y.
+      & arrow.l.r (x lt.eq y or x=y) and (x !=y or x=y), \
+      & arrow.l.r x lt.eq y.
       $ 狭義順序は次の性質を満たす． </p>
     <section class="thm">
       <p>
@@ -86,8 +86,8 @@
       <p>
         $A$上の順序$lt.eq$について，全順序$lt.eq$とは，
         $
-        & orall x y in A, x le.eq y or y le.eq x\
-        arrow.l.r & orall x in A, x lt y or x=y or y lt x.
+        & forall x y in A, x le.eq y or y le.eq x\
+        arrow.l.r & forall x in A, x lt y or x=y or y lt x.
         $
         が成り立つことである。 </p>
     </section>
@@ -330,8 +330,8 @@
         <p>
           次の集合を考える．
           $
-          B & {x in A middle exists x', A angle.l x angle.r tilde.equiv A' angle.l x' angle.r}, \
-          B' & {x' in A' middle exists x, A angle.l x angle.r tilde.equiv A' angle.l x' angle.r}.\
+          B & = {x in A middle exists x', A angle.l x angle.r tilde.equiv A' angle.l x' angle.r}, \
+          B' & = {x' in A' middle exists x, A angle.l x angle.r tilde.equiv A' angle.l x' angle.r}.\
           $
           $B, B'$は$A, A'$の部分集合だから整列集合である．写像$f{(x, x') in B times B' middle x in B and A angle.l x angle.r tilde.equiv A' angle.l x' angle.r}$は全単射である．$b in B$，$a in A$，$a lt b$のとき$A angle.l b angle.r tilde.equiv A' angle.l f(b) angle.r$であるからある元$f(a) in A'angle.l f(b) angle.r$が存在して，$A angle.l b angle.r angle.l a angle.r tilde.equiv A' angle.l f(b) angle.r angle.l f(a) angle.r$が成り立つ．よって$a in B$．また$f(a) lt f(b)$であるから$B tilde.equiv B'$である． </p>
         <p>
@@ -346,8 +346,8 @@
       <p>
         $a$が推移的とは，
         $
-        & orall x y, x in a and y in x arrow y in a\
-        & rrow.l.r union.big a subset a.
+        & forall x y, x in a and y in x arrow y in a\
+        & arrow.l.r union.big a subset a.
         $
       </p>
       <h4>順序数</h4>
