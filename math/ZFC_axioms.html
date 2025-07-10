@@ -11,6 +11,10 @@
     <a href="../">ホーム</a> / <a href="./">数学</a> /
   </header>
   <main>
+    この章では証明木での証明を添えている．
+    <div class="you">
+      証明木内の推論にはギャップがあるけど許してね
+    </div>
     <h2>集合</h2>
     <p>
       <dfn>集合</dfn>とは数学的対象の集まりを1つの対象としたものだが，現代の数学では全ての数学的対象を集合とすることを目的としている，数学的対象を厳密に定義すると集合の公理を満たしたものになる．今回は集合の公理系としてZFC公理系を採用する．ZFC公理系と一緒に集合を作っていくように進めていく．
@@ -28,7 +32,7 @@
         <li>$F$: 述語</li>
       </ul>
       <p>
-        $ forall x y, x = y arrow (F(x) arrow.l.r F(y)) $
+        $ forall x y, x = y -> (F(x) <-> F(y)) $
       </p>
     </section>
     <p>
@@ -37,53 +41,66 @@
     <section class="thm">
       <h4>対称律</h4>
       <p>
-        $ forall x y, x = y arrow y = x $
+        $ forall x y, x = y -> y = x $
       </p>
       <details>
         <summary>証明</summary>
         <span class="remark">前提</span>
         <ul>
           <li>$x, y$: 集合[項]</li>
-          <li>$x = y$ ……(A)</li>
+          <li>$x = y$</li>
         </ul>
         <span class="remark">結論</span>
         <p>$y = x$</p>
         <span class="remark">道具</span>
-        <ul>
-          <li>代入原理</li>
-          <li>反射律</li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          $F(t) :arrow.l.r.double.long t = x$とすると
-          <li>$x = x arrow.l.r y = x$ ∵(A)，代入原理</li>
-          <li>∴$y = x$ ∵(1)，反射律</li>
+          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#reflexivity-of-equality">反射律</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{}
+          \LL{A}
+          \UIC{$x = x$}
+          \AXC{$x = y$}
+          \LL{B}
+          \UIC{$x = x <-> y = x$}
+          \BIC{$y = x$}
+          \end{prooftree}
+        </p>
+        <pre><code class="language-lean">
+        {% include_relative lean/ZFCAxioms.lean %}
+        </code></pre>
       </details>
       <h4>推移律</h4>
       <p>
-        $ forall x y z, x = y and y = z arrow x = z $
+        $ forall x y z, x = y and y = z -> x = z $
       </p>
       <details>
         <summary>証明</summary>
         <span class="remark">前提</span>
         <ul>
           <li>$x, y, z$: 集合[項]</li>
-          <li>$x = y$ ……(A)</li>
-          <li>$y = z$ ……(B)</li>
+          <li>$x = y$</li>
+          <li>$y = z$</li>
         </ul>
         <span class="remark">結論</span>
         <p>$x = z$</p>
         <span class="remark">道具</span>
-        <ul>
-          <li>代入原理</li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          $F(t) :arrow.l.r.double.long t = z$とすると
-          <li>$x = z arrow.l.r y = z$ ∵代入原理，(A)</li>
-          <li>∴$y = x$ ∵(1)，(B)</li>
+          <li><a href="#substitution-principle">代入原理</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{$y = z$}
+          \AXC{$x = y$}
+          \LL{A}
+          \UIC{$x = z <-> y = z$}
+          \BIC{$x = z$}
+          \end{prooftree}
+        </p>
       </details>
     </section>
 
@@ -97,23 +114,19 @@
     <p>
       集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a subset b$と表し，$a$は$b$に<dfn>含まれる</dfn>，$a$は$b$の部分集合という．$subset$を<dfn>包含関係</dfn>という．
     </p>
-    <section class="def">
+    <section class="def" id="subset">
       <h4>部分集合</h4>
       <p>
         $
-        a subset b & arrow.l.r.double.long forall x, x in a arrow x in b\
-        b supset a & arrow.l.r.double.long a subset b
+        a subset b & <==> forall x, x in a -> x in b\
+        b supset a & <==> a subset b
         $
       </p>
-      <details>
-        <summary>読み</summary>
-        $a$は$b$に含まれる．
-      </details>
       <h4>真部分集合</h4>
       <p>
         $
-        a subset.neq b & arrow.l.r.double.long a subset b and a != b\
-        b supset.neq a & arrow.l.r.double.long a subset.neq b
+        a subset.neq b & <==> a subset b and a != b\
+        b supset.neq a & <==> a subset.neq b
         $
       </p>
     </section>
@@ -121,15 +134,15 @@
       $subset$の定義からわかる定理を示す．
     </p>
     <section class="thm" id="law-of-immediately-subset">
-      <h4>部分集合の系</h4>
+      <h4>部分集合の性質</h4>
       <p>
         集合$a, b, c$について，
-        $ a in b and b subset c arrow a in c $
+        $ a in b and b subset c ==> a in c $
       </p>
     </section>
 
     <p>
-      定義より$subset$は$arrow$のように扱える．つまり$arrow$と同様の性質が使える．しかし，$subset$は集合から論理値を返す述語だからすべての性質が使えるわけではないので注意が必要である．次の3つの性質を満たす関係を<dfn>順序関係</dfn>という．つまり，$subset$は順序関係である．反対称律は外延性公理から導ける．
+      定義より$subset$は$->$のように扱える．つまり$->$と同様の性質が使える．しかし，$subset$は集合から論理値を返す述語だからすべての性質が使えるわけではないので注意が必要である．次の3つの性質を満たす関係を<dfn>順序関係</dfn>という．つまり，$subset$は順序関係である．反対称律は外延性公理そのものである．
     </p>
     <section class="thm">
       <h4>反射律</h4>
@@ -138,48 +151,61 @@
       </p>
       <details>
         <summary>証明</summary>
-        結論$x subset x$は<br>
-        すなわち，$forall y, y in x arrow y in x$であるから，
+        <p>
+          結論$x subset x$は<br>
+          すなわち，$forall y, y in x -> y in x$であるから，
+        </p>
         <span class="remark">前提</span>
         <ul>
           <li>$x, y$: 集合</li>
-          <li>$y in x$ ……(A)</li>
+          <li>$y in x$</li>
         </ul>
         <span class="remark">結論</span>
         <p>$y in x$</p>
         <span class="remark">証明</span>
-        (A)そのものである．
+        <p>
+          前提から直ちに成り立つ．
+        </p>
       </details>
       <h4>推移律</h4>
       <p>
-        $ forall x y z, x subset y and y subset z arrow x subset z $
+        $ forall x y z, x subset y and y subset z -> x subset z $
       </p>
       <details>
         <summary>証明</summary>
-        結論$x subset z$は<br>
-        すなわち，$forall t, t in x arrow t in z$であるから，
+        <p>
+          結論$x subset z$は<br>
+          すなわち，$forall t, t in x -> t in z$であるから，
+        </p>
         <span class="remark">前提</span>
         <ul>
           <li>$x, y, z, t$: 集合</li>
-          <li>$x subset y$ ……(A)</li>
-          <li>$y subset z$ ……(B)</li>
-          <li>$t in x$ ……(C)</li>
+          <li>$x subset y$</li>
+          <li>$y subset z$</li>
+          <li>$t in x$</li>
         </ul>
         <span class="remark">結論</span>
         <p>$t in z$</p>
         <span class="remark">道具</span>
-        <ul>
-          <li><a href="#law-of-immediately-subset">部分集合の系</a></li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          <li>$t in y$ ∵部分集合の系，(A)，(C)</li>
-          <li>∴$t in z$ ∵部分集合の系，(B)，(1)</a></li>
+          <li><a href="#law-of-immediately-subset">部分集合の性質</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{$t in x$}
+          \AXC{$x subset y$}
+          \LL{A}
+          \BIC{$t in y$}
+          \AXC{$y subset z$}
+          \LL{A}
+          \BIC{$t in z$}
+          \end{prooftree}
+        </p>
       </details>
       <h4>反対称律</h4>
       <p>
-        $ forall x y, x subset y and y subset x arrow x = y $
+        $ forall x y, x subset y and y subset x -> x = y $
       </p>
     </section>
 
@@ -192,8 +218,8 @@
       <h4>外延性公理</h4>
       <p>
         $
-        & orall x y, forall z (z in x arrow.l.r z in y) arrow x = y\
-        arrow.l.r & orall x y, x subset y and y subset x arrow x = y.
+        & forall x y, forall z (z in x <-> z in y) -> x = y\
+        <==> & forall x y, x subset y and y subset x -> x = y
         $
       </p>
     </section>
@@ -204,7 +230,7 @@
     <details>
       <summary>練習問題</summary>
       <p>
-        $A :arrow.l.r.double.long {a, b, c, a}, B :arrow.l.r.double.long {c, a, b}$としたとき，$A = B$を示せ．
+        $A := {a, b, c, a}, B := {c, a, b}$としたとき，$A = B$を示せ．
       </p>
       <details>
         <summary>解答</summary>
@@ -219,7 +245,7 @@
       <dfn>空集合</dfn>とは要素が一つもない集合のことである．空集合を${}$や$0$と表す．
     </p>
 
-    <section class="def">
+    <section class="def" id="empty-set">
       <h4>空集合</h4>
       <p>
         「空集合$0$」とは
@@ -236,8 +262,8 @@
       <h4>空集合公理</h4>
       <p>
         $
-        & xists x forall y, y in.not x\
-        arrow.l.r & xists 0.
+        & exists x forall y, y in.not x\
+        <==> & exists 0
         $
       </p>
     </section>
@@ -249,7 +275,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          一意とは，存在し，二つは無いことを表す．空集合公理より存在することは言えるので，二つは無いことを次のように言い換え，証明する．「空集合$0, 0'$に対して，$0 = 0'$である．」
+          一意とは，存在し，2つは無いことを表す．空集合公理より存在することは言えるので，2つは無いことを次のように言い換え，証明する．「空集合$0, 0'$に対して，$0 = 0'$である．」
         </p>
         <p>
           また，$0 = 0'$は外延性公理から導ける．
@@ -261,30 +287,25 @@
         <span class="remark">結論</span>
         <p>$0 = 0'$</p>
         <span class="remark">道具</span>
-        <ul>
-          <li><a href="#axiom-of-extensionality">外延性公理</a></li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          <li>$forall x, x in 0 arrow.l.r x in 0'$</li>
-          これを証明する．
-          <div class="nest">
-            <span class="remark">前提</span>
-            <ul>
-              <li>$x$: 集合</li>
-            </ul>
-            <span class="remark">結論</span>
-            <p>$x in 0 arrow.l.r x in 0'$</p>
-            <span class="remark">証明</span>
-            <ol start="2">
-              <li>$x in.not 0$ ∵空集合の定義</li>
-              <li>$x in.not 0'$ ∵空集合の定義</li>
-              <li>$x in.not 0 arrow.l.r x in.not 0'$ ∵(2)，(3)</li>
-              <li>∴$x in 0 arrow.l.r x in 0'$ ∵(4)</li>
-            </ol>
-          </div>
-          <li>∴$0 = 0'$ ∵(1)，外延性公理</li>
+          <li><a href="#empty-set">空集合</a></li>
+          <li><a href="#axiom-of-extensionality">外延性公理</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{}
+          \LL{A}
+          \UIC{$x in.not 0$}
+          \AXC{}
+          \LL{A}
+          \UIC{$x in.not 0'$}
+          \BIC{$x in.not 0 <-> x in.not 0'$}
+          \UIC{$forall x, x in.not 0 <-> x in.not 0'$}
+          \LL{B}
+          \UIC{$0 = 0'$}
+          \end{prooftree}
+        </p>
       </details>
     </section>
 
@@ -292,14 +313,14 @@
     <p>
       <dfn>対</dfn>[<dfn>非順序対</dfn>]とは二つの集合$a, b$のみを元とする集合${a, b}$のことをいう．
     </p>
-    <section class="def">
+    <section class="def" id="pairing">
       <h4>対</h4>
       <ul>
         <li>$a, b$: 集合</li>
       </ul>
       <p>
         「対${a, b}$」とは
-        $ forall x, x in {a, b} arrow.l.r x = a or x = b $
+        $ forall x, x in {a, b} <-> x = a or x = b $
       </p>
     </section>
     <p>
@@ -316,26 +337,26 @@
       <details>
         <summary>証明</summary>
         <p>
-          対の一意性の証明と同様の手順である．
+          集合の$=$の証明は外延性公理を用いて行う．また，$a, b$の仮定に違いがないことから，一方の包含関係の証明のみを行えばよい．
         </p>
         <span class="remark">前提</span>
         <ul>
           <li>$a, b$: 集合</li>
           <li>$x$: 集合</li>
-          <li>$x in {a, b}$ ……(A)</li>
+          <li>$x in {a, b}$</li>
         </ul>
         <span class="remark">結論</span>
         <p>$x in {b, a}$</p>
-        <span class="remark">道具</span>
-        <ul>
-          <li><a href="#axiom-of-extensionality">外延性公理</a></li>
-        </ul>
         <span class="remark">証明</span>
-        <ol>
-          <li>$x = a or x = b$ ∵(A)</li>
-          <li>$x = b or x = a$ ∵(1)</li>
-          <li>∴$x in {b, a}$ ∵(2)</li>
-        </ol>
+        <p>
+          定義に従って変形する．
+          $
+          & x in {a, b}\
+          <==> & x = a or x = b\
+          <==> & x = b or x = a\
+          <==> & x in {b, a}
+          $
+        </p>
       </details>
       <ul>
         <li>$a, b$: 集合</li>
@@ -355,48 +376,68 @@
         <span class="remark">結論</span>
         <p>$a in {a, b}$</p>
         <span class="remark">道具</span>
-        <ul>
-          <li><a href="#reflexivity-of-equality">$=$の反射律</a></li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          <li>$a in {a, b} arrow.l.r a = a or a = b$ ∵対の定義</li>
-          <li>$a = a$ ∵$=$の反射律</li>
-          <li>∴$a in {a, b}$ ∵(1)，(2)</li>
+          <li><a href="#pairing">対</a></li>
+          <li><a href="#reflexivity-of-equality">$=$の反射律</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          Bより$a = a$が成り立つ．$a = a or a = b$も成り立つので，$x = a or x = b$となる$x$が存在する．よって，$a in {a, b}$である．
+        </p>
       </details>
       <ul>
         <li>$a, b, c$: 集合</li>
       </ul>
       <p>
-        $ {a, b} = {a, c} arrow.l.r b = c $
+        $ {a, b} = {a, c} <==> b = c $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          ($arrow.l.double$)は<a href="#substitution-principle">代入原理</a>から成り立つから，($arrow$)の証明のみを行う．
+          ($<==$)は<a href="#substitution-principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．
         </p>
         <span class="remark">前提</span>
         <ul>
           <li>$a, b, c$: 集合</li>
-          <li>${a, b} = {a, c}$ ……(A)</li>
+          <li>${a, b} = {a, c}$</li>
         </ul>
         <span class="remark">結論</span>
         <p>$b = c$</p>
         <span class="remark">道具</span>
-        <ul>
-          <li><a href="#reflexivity-of-equality">$=$の反射律</a></li>
-          <li><a href="#substitution-principle">代入原理</a></li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          <li>$b in {a, b}$ ∵対の性質</li>
-          <li>$b in {a, c}$ ∵代入原理，(1)，(A)</li>
-          <li>$b = a or b = c$ ∵，(2)</li>
-          <li>$c = a or c = b$ ∵(1)-(3)と同様に</li>
-          <li>$b = a and c = a or b = c$ ∵(3)，(4)</li>
-          <li>$b = c$ ∵(5)どちらの場合でも</li>
+          <li><a href="#pairing-property">対の性質</a></li>
+          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#pairing">対</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{${a, b} = {a, c}$}
+          \AXC{}
+          \LL{A}
+          \UIC{$b in {a, b}$}
+          \LL{B}
+          \BIC{$b in {a, c}$}
+          \LL{C}
+          \UIC{$b = a or b = c$}
+          \AXC{${a, b} = {a, c}$}
+          \AXC{}
+          \LL{A}
+          \UIC{$c in {a, c}$}
+          \LL{B}
+          \BIC{$c in {a, b}$}
+          \LL{C}
+          \UIC{$c = a or c = b$}
+          \BIC{$b = a and c = a or b = c$}
+          \AXC{}
+          \RL{1}
+          \UIC{$b = a and c = a$}
+          \UIC{$b = c$}
+          \RL{1}
+          \BIC{$b = c$}
+          \end{prooftree}
+        </p>
+        $b in {a, b}$と$c in {a, c}$が成り立つので，${a, b} = {a, c}$から$b in {a, c}$と$c in {a, b}$である．$b = a$なら，$c in {b, b}$なので，$c = b$である．よって，$b = c$
       </details>
     </section>
 
@@ -404,8 +445,8 @@
       <h4>対公理</h4>
       <p>
         $
-        & orall x y exists z forall w, w in z arrow.l.r w = x or w = y\
-        arrow.l.r & orall x y exists {x, y}.
+        & forall x y exists z forall w, w in z <-> w = x or w = y\
+        <==> & forall x y exists {x, y}.
         $
       </p>
     </section>
@@ -426,19 +467,20 @@
         <ul>
           <li>$a, b$: 集合</li>
           <li>$x$: 集合</li>
-          <li>$x in {a, b}$ ……(A)</li>
+          <li>$x in {a, b}$</li>
         </ul>
         <span class="remark">結論</span>
         <p>$x in {a, b}'$</p>
         <span class="remark">道具</span>
-        <ul>
-          <li><a href="#axiom-of-extensionality">外延性公理</a></li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          <li>$x = a or x = b$ ∵(A)</li>
-          <li>∴$x in {a, b}'$ ∵(1)</li>
+          <li><a href="#pairing">対</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          定義に従って変形する．
+          $ x in {a, b} <==> x = a or x = b <==> x in {a, b}' $
+          である．
+        </p>
       </details>
     </section>
 
@@ -453,7 +495,7 @@
       </ul>
       <p>
         「1元集合${a}$」とは
-        $ {a} :arrow.l.r.double.long {a, a} $
+        $ {a} := {a, a} $
       </p>
     </section>
     <p>
@@ -466,8 +508,8 @@
       </ul>
       <p>
         $ a in {a} $
-        $ {a} = {b, c} arrow.l.r a = b = c $
-        $ {a} = {b} arrow.l.r a = b $
+        $ {a} = {b, c} <==> a = b = c $
+        $ {a} = {b} <==> a = b $
       </p>
     </section>
 
@@ -475,14 +517,14 @@
     <p>
       <dfn>順序対</dfn>とは順序を持った対を$(a, b)$のように表す．
     </p>
-    <section class="def">
+    <section class="def" id="ordered-pair">
       <h4>順序対</h4>
       <ul>
         <li>$a, b$: 集合</li>
       </ul>
       <p>
         「順序対$(a, b)$」とは
-        $ (a, b) :arrow.l.r.double.long {{a}, {a, b}} $
+        $ (a, b) := {{a}, {a, b}} $
       </p>
     </section>
     <section class="thm">
@@ -491,17 +533,17 @@
         <li>$a, b, a', b'$: 集合</li>
       </ul>
       <p>
-        $ (a, b) = (a', b') arrow.l.r a = a' and b = b' $
+        $ (a, b) = (a', b') <==> a = a' and b = b' $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          ($arrow.l.double$)は<a href="#substitution-principle">代入原理</a>から成り立つから，($arrow$)の証明のみを行う．
+          ($<==$)は<a href="#substitution-principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．
         </p>
         <span class="remark">前提</span>
         <ul>
           <li>$a, b, a', b'$: 集合</li>
-          <li>$(a, b) = (a', b')$ ……(A)</li>
+          <li>$(a, b) = (a', b')$</li>
         </ul>
         <span class="remark">結論</span>
         <ul>
@@ -509,69 +551,138 @@
           <li>$b = b'$</li>
         </ul>
         <span class="remark">道具</span>
-        <ul>
-          <li><a href="#pairing-property">対の性質</a></li>
-          <li><a href="#singleton-property">1元集合の性質</a></li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          <li>${a} in (a, b)$ ∵対の性質</li>
-          <li>${a} in (a', b')$ ∵代入原理，(A)，(1)</li>
-          <li>${a} = {a'} or {a} = {a', b'}$ ∵(2)</li>
-          <li>$a = a' or a = a' = b'$ ∵(3)，1元集合の性質</li>
-          <li>$a' = a or a' = a = b$ ∵(1)-(4)と同様に</li>
-          <li>$a = a' or a = b = a' = b'$ ∵(4)，(5)</li>
-          <li>∴$a = a'$ ∵(6)どちらの場合でも</li>
-          <li>${a, b} in (a, b)$ ∵対の性質</li>
-          <li>${a, b} in (a', b')$ ∵代入原理，(A)，(8)</li>
-          <li>${a, b} in (a, b')$ ∵代入原理，(7)，(9)</li>
-          <li>${a, b} = {a} or {a, b} = {a, b'}$ ∵(10)，(11)</li>
-          <li>$a = b or b = b'$ ∵対の性質，(12)</li>
-          <li>$a = b' or b' = b$ ∵(8)-(12)と同様に</li>
-          <li>$b = a = b' or b = b'$ ∵(12)，(13)</li>
-          <li>∴$b = b'$ ∵(14)どちらの場合でも</li>
+          <li><a href="#pairing-property">対の性質</a></li>
+          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#pairing">対</a></li>
+          <li><a href="#singleton-property">1元集合の性質</a></li>
+          <li><a href="#ordered-pair">順序対</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{$(a, b) = (a', b')$}
+          \AXC{}
+          \LL{A}
+          \UIC{${a} in (a, b)$}
+          \LL{B}
+          \BIC{${a} in (a', b')$}
+          \LL{C}
+          \UIC{${a} = {a'} or {a} = {a', b'}$}
+          \LL{D}
+          \UIC{$a = a' or a = a' = b'$}
+          \UIC{$a = a'$}
+          \end{prooftree}
+          \begin{prooftree}
+          \AXC{$(a, b) = (a, b')$}
+          \AXC{}
+          \LL{A}
+          \UIC{${a, b} in (a, b)$}
+          \LL{B}
+          \BIC{${a, b} in (a, b')$}
+          \LL{C}
+          \UIC{${a, b} = {a} or {a, b} = {a, b'}$}
+          \LL{D}
+          \UIC{$a = b or b = b'$}
+          \AXC{}
+          \RL{1}
+          \UIC{$a = b$}
+          \AXC{}
+          \RL{1}
+          \UIC{$a = b$}
+          \AXC{$(a, b) = (a, b')$}
+          \LL{B}
+          \BIC{$(a, a) = (a, b')$}
+          \LL{E}
+          \UIC{${{a}} = {{a}, {a, b'}}$}
+          \LL{D}
+          \UIC{${a} = {a, b'}$}
+          \LL{D}
+          \UIC{$a = b'$}
+          \BIC{$b = b'$}
+          \RL{1}
+          \BIC{$b = b'$}
+          \end{prooftree}
+        </p>
+        <p>
+          ${a} in {{a}, {a, b}} = (a, b) = (a', b') = {{a'}, {a', b'}}$より，${a} = {a'} or {a} = {a', b'}$が成り立つ．どちらの場合も$a = a'$である．
+        </p>
+        <p>
+          $a = a'$を用いると，同様に，${a, b} in (a, b')$より，${a, b} = {a} or {a, b} = {a, b'}$が成り立つ．${a, b} = {a, b'}$のときは$b = b'$が成り立つので，$a = b$のときを考える．このとき，
+          $
+          (a, a) &= (a, b')\
+          {{a}} &= {{a}, {a, b'}}\
+          {a} &= {a, b'}\
+          a &= b'
+          $
+          となる．$a = b$より，$b = b'$が成り立つ．
+        </p>
       </details>
     </section>
 
-    <!-- <p>
-      順序対を$n$個の組として拡張する．
+    <p>
+      順序対を$n$個の組として拡張する．まだ自然数は定義していないが，自然数を定義するのに必要な順序組は高々有限個なので必要に応じて構成すればよい．
     </p>
     <section class="def">
       <h4>順序組</h4>
       <h4>0組(空集合)</h4>
       <p>
-        $ () :arrow.l.r.double.long 0 $
+        $ () :<==> 0 $
       </p>
       <h4>1組(1元集合)</h4>
       <p>
         集合$a$について，
-        $ (a) :arrow.l.r.double.long {a} $
+        $ (a) :<==> {a} $
       </p>
       <h4>2組(順序対)</h4>
       <p>
         集合$a, b$について，
-        $ (a, b) :arrow.l.r.double.long {{a}, {a, b}} $
+        $ (a, b) :<==> {{a}, {a, b}} $
       </p>
       <h4>$n$組</h4>
       <p>
         集合$a_1, dots, a_n$について，
-        $ (a_1, dots, a_n) :arrow.l.r.double.long (a_1, (a_2, dots, a_n)) $
+        $ (a_1, dots, a_n) :<==> (a_1, (a_2, dots, a_n)) $
       </p>
     </section>
     <section class="thm">
       <h4>順序組の性質</h4>
       <p>
         集合$a_1, dots, a_n, b_1, dots, b_n$について，
-        $ (a_1, dots, a_n) = (b_1, dots, b_n) arrow.l.r a_1 = b_1 and dots.c and a_n = b_n $
+        $ (a_1, dots, a_n) = (b_1, dots, b_n) <==> a_1 = b_1 and dots.c and a_n = b_n $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $n = 0, 1, 2$のときは示されてる．
+          $n = 0, 1, 2$のときは示されてる．($<==$)は代入原理から成り立つから，($==>$)の証明のみを行う．まだ正当性を示していないが，帰納法で示す．
+        </p>
+        <span class="remark">前提</span>
+        <ul>
+          <li>$a_1, dots, a_n, b_1, dots, b_n$: 集合</li>
+          <li>$(a_1, dots, a_n) = (b_1, dots, b_n)$</li>
+        </ul>
+        <span class="remark">結論</span>
+        <ul>
+          <li>$a_1 = b_1$</li>
+          <li>$dots.c$</li>
+          <li>$a_n = b_n$</li>
+        </ul>
+        <span class="remark">道具</span>
+        <ol>
+          <li>帰納法</li>
+        </ol>
+        <span class="remark">証明</span>
+        <p>
+          $n = k - 1 (3 <= k)$のときに成り立っていると仮定する．このとき，
+          $
+          (a_1, dots, a_k) = (b_1, dots, b_k) & <==> (a_1, (a_2, dots, a_k)) = (b_1, (b_2, dots, b_k))\
+          & <==> a_1 = b_1 and (a_2, dots, a_k) = (b_2, dots, b_k)\
+          & <==> a_1 = b_1 and a_2 = b_2 and dots.c and a_k = b_k
+          $
+          となる．
         </p>
       </details>
-    </section> -->
+    </section>
 
     <h2>和集合公理</h2>
     <h3>外延記法</h3>
@@ -585,33 +696,33 @@
         <li>$a_1, dots, a_n$: 集合</li>
       </ul>
       <p>「外延記法の集合${a_1, dots, a_n}$」とは
-        $ forall x, x in {a_1, dots, a_n} arrow.l.r x = a_1 or dots.c or x = a_n $
+        $ forall x, x in {a_1, dots, a_n} <-> x = a_1 or dots.c or x = a_n $
       </p>
     </section>
     <p>
-      <dfn>和集合</dfn>[<dfn>合併</dfn>]とはその集合の元の元の全体の集合である．$a$の和集合を$union.big a$と表す．
+      <dfn>和集合</dfn>[<dfn>合併</dfn>]とはその集合の元の元の全体である．$a$の和集合を$union.big a$と表す．
     </p>
-    <section class="def">
+    <section class="def" id="union">
       <h4>和集合</h4>
       <ul>
         <li>$a$: 集合</li>
       </ul>
       <p>
         「和集合$union.big a$」とは
-        $ forall x, x in union.big a arrow.l.r exists y(x in y and y in a) $
+        $ forall x, x in union.big a <-> exists y(x in y and y in a) $
       </p>
     </section>
     <section class="axm">
       <h4>和集合公理</h4>
       <p>
         $
-        & forall x exists y forall z, z in y arrow.l.r exists w (z in w and w in x)\
-        arrow.l.r & forall x exists union.big x.
+        & forall x exists y forall z, z in y <-> exists w (z in w and w in x)\
+        <==> & forall x exists union.big x
         $
       </p>
     </section>
     <p>
-      対の一意性からわかる通り，$forall x, x in A arrow.l.r F(A)$のような形で定義されていて，存在が保証されていれば一意であるため，和集合は一意である．
+      対の一意性からわかる通り，$forall x, x in A <-> F(A)$のような形で定義されていて，高々一つであることは同値変形によりわかる．よって，存在が保証されていれば一意であるため，和集合は一意である．
     </p>
     <section class="def">
       <h4>和集合の演算子</h4>
@@ -619,15 +730,15 @@
         <li>$a, b$: 集合</li>
       </ul>
       <p>
-        $ a union b :arrow.l.r.double.long union.big {a, b} $
+        $ a union b := union.big {a, b} $
       </p>
     </section>
     <p>
       公理を用いて性質を調べてみる．定義より，
       $
-      forall x, x in a union b & rrow.l.r exists y (x in y and y in {a, b}), \
-      forall x, x in a union b & rrow.l.r exists y (x in y and (y = a or y = b)), \
-      forall x, x in a union b & rrow.l.r x in a or x in b.
+      x in a union b & <==> exists y (x in y and y in {a, b}), \
+      & <==> exists y (x in y and (y = a or y = b)), \
+      & <==> x in a or x in b.
       $
       このことから$union$は$or$と同じ定理を使用することができることがわかる．
     </p>
@@ -636,73 +747,76 @@
     <p>
       <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$scr(P)(a)$と表す．冪集合公理は冪集合の存在を保証する．
     </p>
-    <section class="def">
+    <section class="def" id="power-set">
       <h4>冪集合</h4>
       <ul>
         <li>$a$: 集合</li>
       </ul>
       <p>
         「冪集合$2^a$」とは
-        $ forall x, x in 2^a arrow.l.r x subset a $
+        $ forall x, x in 2^a <-> x subset a $
       </p>
     </section>
     <section class="axm">
       <h4>冪集合公理</h4>
       <p>
         $
-        & forall x exists y forall z, z in y arrow.l.r z subset x\
-        arrow.l.r & forall x exists 2^x.
+        & forall x exists y forall z, z in y <-> z subset x\
+        <==> & forall x exists 2^x
         $
       </p>
     </section>
     <p>
       冪集合は一意である．
     </p>
-    <section class="thm">
+    <section class="thm" id="power-set-property">
+      <h4>冪集合の性質</h4>
       <ul>
         <li>$a, b$: 集合</li>
       </ul>
       <p>
-        $ a in b arrow {a} in 2^b $
+        $ a in b ==> {a} in 2^b $
       </p>
       <details>
         <summary>証明</summary>
         <span class="remark">前提</span>
         <ul>
           <li>$a, b$: 集合</li>
-          <li>$a in b$ ……(A)</li>
+          <li>$a in b$</li>
         </ul>
         <span class="remark">結論</span>
         <ul>
           <li>${a} in 2^b$</li>
         </ul>
         <span class="remark">道具</span>
-        <ul>
-          <a href="#substitution-principle">代入原理</a>
-          <li><a href="#singleton-property">1元集合の性質</a></li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          <li>${a} subset b$</li>
-          これを証明する．
-          <div class="nest">
-            <span class="remark">前提</span>
-            <ul>
-              <li>$x$: 集合</li>
-              <li>$x in {a}$ ……(B)</li>
-            </ul>
-            <span class="remark">結論</span>
-            <ul>
-              <li>$x in b$</li>
-            </ul>
-            <span class="remark">証明</span>
-            <ol start="2">
-              <li>$x = a$ ∵(B)，1元集合の性質</li>
-              <li>∴$x in b$ ∵(A)，代入原理，(2)</li>
-            </ol>
-          </div>
-          <li>∴${a} in 2^b$ ∵(1)</li>
+          <li><a href="#singleton-property">1元集合の性質</a></li>
+          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#subset">部分集合</a></li>
+          <li><a href="#power-set">冪集合</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{}
+          \RL{1}
+          \UIC{$x in {a}$}
+          \LL{A}
+          \UIC{$x = a$}
+          \AXC{$a in b$}
+          \LL{B}
+          \BIC{$x in b$}
+          \RL{1}
+          \UIC{$x in {a} -> x in b$}
+          \LL{C}
+          \UIC{${a} subset b$}
+          \LL{D}
+          \UIC{${a} in 2^b$}
+          \end{prooftree}
+        </p>
+        <p>
+          $a in b$より，${a} subset b$が成り立つ．よって，${a} in 2^b$である．
+        </p>
       </details>
       <ul>
         <li>$a$: 集合</li>
@@ -713,34 +827,91 @@
       <details>
         <summary>証明</summary>
         <p>
-          集合の$=$の証明なので，外延性公理を用いる．$arrow.l$と$arrow.r$の両方を証明する．
+          集合の$=$の証明なので，外延性公理を用いる．$<-$と$->$の両方を証明する．
         </p>
-        <span class="remark">前提</span>
-        <ul>
-          <li>$a$: 集合</li>
-          <li>$x in union.big 2^a$ ……(A)</li>
-        </ul>
-        <span class="remark">結論</span>
-        <ul>
-          <li>$x in a$</li>
-        </ul>
-        <span class="remark">道具</span>
-        <ul>
-        </ul>
-        <span class="remark">証明</span>
-        <ol>
-          <li>$exists y, x in y and y in 2^a$ ∵(A)</li>
-          このような$y$を考える．
-          <li>$x in y$ ∵(1)</li>
-          <li>$y subset a$ ∵(1)</li>
-          <li>∴$x in a$ ∵(2)，(3)</li>
-        </ol>
+        <div class="nest">
+          <span class="remark">前提</span>
+          <ul>
+            <li>$a$: 集合</li>
+            <li>$x$: 集合</li>
+            <li>$x in union.big 2^a$</li>
+          </ul>
+          <span class="remark">結論</span>
+          <ul>
+            <li>$x in a$</li>
+          </ul>
+          <span class="remark">道具</span>
+          <ol>
+            <li><a href="#union">和集合</a></li>
+            <li><a href="#power-set">冪集合</a></li>
+          </ol>
+          <span class="remark">証明</span>
+          <p>
+            \begin{prooftree}
+            \AXC{$x in union.big 2^a$}
+            \LL{A}
+            \UIC{$exists y, x in y and y in 2^a$}
+            \AXC{}
+            \RL{1}
+            \UIC{$x in y and y in 2^a$}
+            \UIC{$x in y$}
+            \AXC{}
+            \RL{1}
+            \UIC{$x in y and y in 2^a$}
+            \UIC{$y in 2^a$}
+            \LL{B}
+            \UIC{$y subset a$}
+            \BIC{$x in a$}
+            \RL{1}
+            \BIC{$x in a$}
+            \end{prooftree}
+          </p>
+          <p>
+            $x in union.big 2^a$より，$x in y and y in 2^a$となる集合$y$が存在する．$y in 2^a$より，$y subset a$だから$x in a$である．
+          </p>
+        </div>
+        <div class="nest">
+          <span class="remark">前提</span>
+          <ul>
+            <li>$a$: 集合</li>
+            <li>$x$: 集合</li>
+            <li>$x in a$</li>
+          </ul>
+          <span class="remark">結論</span>
+          <ul>
+            <li>$x in union.big 2^a$</li>
+          </ul>
+          <span class="remark">道具</span>
+          <ol>
+            <li><a href="#singleton-property">1元集合の性質</a></li>
+            <li><a href="#power-set-property">冪集合の性質</a></li>
+            <li><a href="#union">和集合</a></li>
+          </ol>
+          <span class="remark">証明</span>
+          <p>
+            \begin{prooftree}
+            \AXC{}
+            \LL{A}
+            \UIC{$x in {x}$}
+            \AXC{$x in a$}
+            \LL{B}
+            \UIC{${x} in 2^a$}
+            \BIC{$x in {x} and {x} subset a$}
+            \UIC{$exists y, x in y and y in 2^a$}
+            \LL{C}
+            \UIC{$x in union.big 2^a$}
+            \end{prooftree}
+          </p>
+          <p>
+            $x in a$より${x} in 2^a$である．よって$x in union.big 2^a$である．
+          </p>
+        </div>
       </details>
     </section>
 
     <h2>分出公理図式</h2>
     <p>
-      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F(x)$を満たす$x$の集合を${x middle F(x)}$と表すものである．しかし，自由に使うと矛盾を生じることがある．分出公理で${x in a middle F(x)}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数なことに注意する．他の公理から証明できる．
+      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F(x)$を満たす$x$の集合を${x mid(|) F(x)}$と表すものである．しかし，自由に使うと矛盾を生じることがある．分出公理で${x in a mid(|) F(x)}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数なことに注意する．他の公理から証明できる．
     </p>
     <p>
       公理図式とは公理の述語部分を変数$F$に置き換え，この$F$にそれぞれ1階述語論理の論理式を代入したものを公理とするものである．
@@ -752,8 +923,8 @@
         <li>$a$: 集合</li>
       </ul>
       <p>
-        「内包表記の集合${x in a middle F(x)}$」とは，
-        $ forall x, x in {x in a middle F(x)}arrow.l.r x in a and F(x) $
+        「内包表記の集合${x in a mid(|) F(x)}$」とは，
+        $ forall x, x in {x in a mid(|) F(x)} -> x in a and F(x) $
       </p>
     </section>
     <section class="axm">
@@ -763,24 +934,24 @@
       </ul>
       <p>
         $
-        & forall x exists y forall z, z in y arrow.l.r z in x and F(z)\
-        arrow.l.r & forall x exists {t in x middle F(x)}.
+        & forall x exists y forall z, z in y <-> z in x and F(z)\
+        <==> & forall x exists {t in x mid(|) F(x)}.
         $
       </p>
     </section>
 
     <h3>積集合</h3>
     <p>
-      <dfn>積集合</dfn>[<dfn>共通部分</dfn>]とは全ての集合の元であるものの全体の集合である．
+      <dfn>積集合</dfn>[<dfn>共通部分</dfn>]とは全ての集合の元であるものの全体である．
     </p>
-    <section class="def">
+    <section class="def" id="set-intersection">
       <h4>積集合</h4>
       <ul>
         <li>$a, b$: 集合</li>
       </ul>
       <p>
         「積集合$a inter b$」とは，
-        $ a inter b :arrow.l.r.double.long {x in a middle x in b} $
+        $ a inter b := {x in a mid(|) x in b} $
       </p>
       <h4>互いに素</h4>
       <ul>
@@ -794,27 +965,27 @@
     </section>
     <p>
       公理を用いて性質を調べてみる．定義より，
-      $ forall x, x in a inter b arrow.l.r x in a and x in b. $
+      $ x in a inter b <==> x in a and x in b. $
       このことから$inter$は$and$と同じ定理を使用することができることがわかる．
     </p>
 
     <h3>差集合</h3>
     <p>
-      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a without b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，登場するすべての集合を含む集合である．文脈によって決まる．このとき差集合$U without a$を$a$の<dfn>補集合</dfn>という．$a$の補集合をたまに$overline{a}$と表すことがあるが，あまり使わない．今回は定理の紹介で使うとする．
+      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a without b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，登場するすべての集合を含む集合である．文脈によって決まる．このとき差集合$U without a$を$a$の<dfn>補集合</dfn>という．$a$の補集合をたまに$overline(a)$と表すことがあるが，あまり使わない．今回は定理の紹介で使うとする．
     </p>
-    <section class="def">
+    <section class="def" id="set-difference">
       <h4>差集合</h4>
       <ul>
         <li>$a, b$: 集合</li>
       </ul>
       <p>
         「差集合$a without b$」とは，
-        $ a without b :arrow.l.r.double.long {x in a middle x in.not b} $
+        $ a without b := {x in a mid(|) x in.not b} $
       </p>
       <h4>補集合</h4>
       <ul>
-        <li>$a$: 集合</li>
         <li>$U$: 全体集合</li>
+        <li>$a$: 集合</li>
       </ul>
       <p>
         「$a$の補集合」とは，
@@ -823,132 +994,212 @@
     </section>
     <p>
       公理を用いて性質を調べてみる．定義より，
-      $ forall x, x in a without b arrow.l.r x in a and x in.not b $
+      $ x in a without b <==> x in a and x in.not b $
       になる．
     </p>
     <section class="thm">
+      <h4>差集合の性質</h4>
       <ul>
         <li>$a$: 集合</li>
         <li>$U$: 全体集合</li>
       </ul>
       <p>
-        $ U without a = 0 arrow.r.double.long U = a $
-      </p>
-      <details>
-        <summary>証明</summary>
-        $U$は全体集合だから，$U supset a$なので，$U subset a$を示せばよい．
-        <span class="remark">前提</span>
-        <ul>
-          <li>$a$: 集合</li>
-          <li>$U$: 全体集合</li>
-          <li>$U without a = 0$ ……(A)</li>
-          <li>$x$: 集合</li>
-          <li>$x in U$ ……(B)</li>
-        </ul>
-        <span class="remark">結論</span>
-        <ul>
-          <li>$x in a$</li>
-        </ul>
-        <span class="remark">道具</span>
-        <ul>
-          <li><a href="#substitution-principle">代入原理</a></li>
-          <li><a href="natural_deduction.html#double-negation-elimination">二重否定の除去</a></li>
-          <li><a href="natural_deduction.html#disjunctive-syllogism">選言的三段論法</a></li>
-        </ul>
-        <span class="remark">証明</span>
-        <ol>
-          <li>$x in.not 0$ ∵空集合の定義</li>
-          <li>$x in.not U without a$ ∵(1)，代入原理，(A)</li>
-          <li>$not (x in U and x in.not a)$ ∵(2)</li>
-          <li>$x in.not U or x in a$ ∵(3)，二重否定の除去</li>
-          <li>∴$x in a$ ∵(4)，(B)，選言的三段論法</li>
-        </ol>
-      </details>
-      <ul>
-        <li>$a, b$: 集合</li>
-        <li>$u$: 全体集合</li>
-      </ul>
-      <p>
-        $U without a$と$b$が互いに素なら$b subset a$．
-        $ (U without a) inter b = 0 arrow.r.double.long b subset a $
+        $ U without a = 0 <==> U = a $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-
+          ($<==$)は<a href="#substitution-principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．$U$は全体集合だから，$U supset a$なので，$U subset a$を示せばよい．
         </p>
         <span class="remark">前提</span>
         <ul>
+          <li>$a$: 集合</li>
           <li>$U$: 全体集合</li>
-          <li>$a, b$: 集合</li>
-          <li>$(U without a) inter b = 0$ ……(A)</li>
+          <li>$U without a = 0$</li>
           <li>$x$: 集合</li>
-          <li>$x in b$ ……(B)</li>
+          <li>$x in U$</li>
         </ul>
         <span class="remark">結論</span>
         <ul>
           <li>$x in a$</li>
         </ul>
         <span class="remark">道具</span>
-        <ul>
-          <li><a href="#substitution-principle">代入原理</a></li>
-          <li><a href="natural_deduction.html#double-negation-elimination">二重否定の除去</a></li>
-          <li><a href="natural_deduction.html#disjunctive-syllogism">選言的三段論法</a></li>
-        </ul>
-        <span class="remark">証明</span>
         <ol>
-          <li>$x in.not 0$ ∵空集合の定義</li>
-          <li>$x in.not (U without a) inter b$ ∵(1)，代入原理，(A)</li>
-          <li>$not (x in U and x in.not a and x in b)$ ∵(2)</li>
-          <li>$x in.not U or x in a or x in.not b$ ∵(3)</li>
-          <li>$x in U$ ∵(B)</li>
-          <li>∴$x in a$ ∵(4)，(B)，(5)，選言的三段論法</li>
+          <li><a href="#set-difference">差集合</a></li>
+          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#empty-set">空集合</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{$U without a = 0$}
+          \AXC{}
+          \RL{1}
+          \UIC{$x in.not a$}
+          \AXC{$x in U$}
+          \LL{A}
+          \BIC{$x in U without a$}
+          \LL{B}
+          \BIC{$x in 0$}
+          \AXC{}
+          \LL{C}
+          \UIC{$x in.not 0$}
+          \BIC{$bot$}
+          \UIC{$x in a$}
+          \end{prooftree}
+        </p>
+        <p>
+          $x in.not a$が成り立つと仮定すると，$x in U without a = 0$であるが，これは空集合の定義の矛盾する．よって，$x in a$が成り立つ．
+        </p>
+      </details>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$U$: 全体集合</li>
+      </ul>
+      <p>
+        $U without a$と$b$が互いに素と$b subset a$が同値である．
+        $ (U without a) inter b = 0 <==> b subset a $
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          ($<==$)と($==>$)の両方を証明する．
+        </p>
+        <div class="nest">
+          <span class="remark">前提</span>
+          <ul>
+            <li>$a, b$: 集合</li>
+            <li>$U$: 全体集合</li>
+            <li>$(U without a) inter b = 0$</li>
+            <li>$x$: 集合</li>
+            <li>$x in b$</li>
+          </ul>
+          <span class="remark">結論</span>
+          <ul>
+            <li>$x in a$</li>
+          </ul>
+          <span class="remark">道具</span>
+          <ol>
+            <li><a href="#empty-set">空集合</a></li>
+            <li><a href="#substitution-principle">代入原理</a></li>
+            <li><a href="#set-intersection">共通集合</a></li>
+            <li><a href="#set-difference">差集合</a></li>
+            <li><a href="natural_deduction.html#disjunctive-syllogism">選言的三段論法</a></li>
+          </ol>
+          <span class="remark">証明</span>
+          <p>
+            \begin{prooftree}
+            \AXC{$(U without a) inter b = 0$}
+            \AXC{}
+            \LL{A}
+            \UIC{$x in.not 0$}
+            \LL{B}
+            \BIC{$x in.not (U without a) inter b$}
+            \LL{C,D}
+            \UIC{$not (x in U and x in.not a and x in b)$}
+            \UIC{$x in.not U or x in a or x in.not b$}
+            \AXC{$x in b$}
+            \AXC{}
+            \UIC{$b subset U$}
+            \BIC{$x in U$}
+            \AXC{$x in b$}
+            \LL{E}
+            \TIC{$x in a$}
+            \end{prooftree}
+          </p>
+          <p>
+            $(U without a) inter b$は空であるから，$x in.not (U without a) inter b$すなわち$x in.not U$または$x in a$またｈ$x in.not b$である．しかし，$x in U$，$x in b$なので，$x in U$である．
+          </p>
+        </div>
+        <div class="nest">
+          <div>
+            <span class="remark">前提</span>
+            <ul>
+              <li>$a, b$: 集合</li>
+              <li>$U$: 全体集合</li>
+              <li>$b subset a$</li>
+            </ul>
+            <span class="remark">結論</span>
+            <ul>
+              <li>$(U without a) inter b = 0$</li>
+            </ul>
+            <span class="remark">道具</span>
+            <ol>
+              <li><a href="#set-difference">差集合</a></li>
+              <li><a href="#set-intersection">共通集合</a></li>
+              <li><a href="#subset">部分集合</a></li>
+              <li><a href="#empty-set">空集合</a></li>
+            </ol>
+            <span class="remark">証明</span>
+            <p>
+              \begin{prooftree}
+              \AXC{}
+              \RL{2}
+              \UIC{$exists x, x in (U without a) inter b$}
+              \AXC{}
+              \RL{1}
+              \UIC{$x in (U without a) inter b$}
+              \LL{A,B}
+              \UIC{$x in U and x in.not a and x in b$}
+              \AXC{$b subset a$}
+              \LL{C}
+              \BIC{$x in.not a and x in a$}
+              \UIC{$bot$}
+              \RL{1}
+              \BIC{$bot$}
+              \RL{2}
+              \LL{D}
+              \UIC{$(U without a) inter b = 0$}
+              \end{prooftree}
+            </p>
+            <p>
+              $x in (U without a) inter b$となる$x$が存在すると仮定すると，$x in.not a$かつ$x in b$が成り立つ．$b subset a$より，$x in a$であるが，矛盾する．よって$(U without a) inter b = 0$である．
+            </p>
+          </div>
       </details>
     </section>
 
     <h3>対称差</h3>
     <p>
-      <dfn>対称差</dfn>とはどちらか一方の集合のみに属してる元の全体の集合のことである．
-    </p>
+        <dfn>対称差</dfn>とはどちらか一方の集合のみに属してる元の全体のことである．
+      </p>
     <section class="def">
       <h4>対称差</h4>
       <ul>
         <li>$a, b$: 集合</li>
       </ul>
       <p>
-        「対象差$a triangle.stroked.t b$」とは，
-        $ a triangle.stroked.t b :arrow.l.r.double.long (a without b) union (b without a) $
+        「対象差$a triangle.t b$」とは，
+        $ a triangle.t b := (a without b) union (b without a) $
       </p>
     </section>
     <p>
       公理を用いて性質を調べてみる．任意の$x$について定義より，
       $
-      & in a triangle.stroked.t b, \
-      & in (a without b) union (b without a), \
-      & in (a without b) or x in (b without a), \
-      & in a and x in.not b or x in b and x in.not a, \
-      & in a or.bar x in b.
+      x in a triangle.t b & <==> x in (a without b) union (b without a), \
+      & <==> x in (a without b) or x in (b without a), \
+      & <==> x in a and x in.not b or x in b and x in.not a, \
+      & <==> x in a or.bar x in b.
       $
-      このことから$triangle.stroked.t$は$or.bar$と同じ定理を使用することができることがわかる．
+      このことから$triangle.t$は$or.bar$と同じ定理を使用することができることがわかる．
     </p>
 
     <h3>直積集合</h3>
     <p>
-      <dfn>直積集合</dfn>とは二つの集合$a, b$の元$x, y$の組$(x, y)$の全体の集合である．この集合を$a times b$と表す．
+      <dfn>直積集合</dfn>とは二つの集合$a, b$の元$x, y$の組$(x, y)$の全体である．この集合を$a times b$と表す．
     </p>
-    <section class="def">
+    <section class="def" id="direct-product">
       <h4>直積集合</h4>
       <ul>
         <li>$a, b$: 集合</li>
       </ul>
       <p>
         「直積集合$a times b$」とは，
-        $ a times b :arrow.l.r.double.long {z in scr(P)(scr(P)(a union b)) middle exists x y, z = (x, y) and x in a and y in b} $
+        $ a times b := {(x, y) in scr(P)(scr(P)(a union b)) mid(|) x in a and y in b} $
       </p>
     </section>
     <p>
-      $scr(P)(scr(P)(a union b))$はとんでもなく大きい集合を持ってきたものである．条件の方を読むと，$x$は$a$の元で，$y$は$b$の元のときの$(x, y)$と書かれているので，これで組を表現できている．しかし，分出公理より大きい集合の部分集合出なければならないので，任意の組を元にもつような集合を考えなければならない．組は定義より${{x}, {x, y}}$である．$x, y in a union b$なことから，${x}, {x, y} in scr(P)(a union b)$で，${{x}, {x, y}} in scr(P)(scr(P)(a union b))$である．よって，この定義は直積集合を表している．
+      $scr(P)(scr(P)(a union b))$はとんでもなく大きい集合を持ってきたものである．$a$または$b$の元を元の元の全体である．条件の方を読むと，$x$は$a$の元で，$y$は$b$の元のときの$(x, y)$と書かれているので，これで組を表現できている．しかし，分出公理より大きい集合の部分集合出なければならないので，任意の組を元にもつような集合を考えなければならない．組は定義より${{x}, {x, y}}$である．$x, y in a union b$なことから，${x}, {x, y} in scr(P)(a union b)$で，${{x}, {x, y}} in scr(P)(scr(P)(a union b))$である．よって，この定義は直積集合を表している．
     </p>
     <p>
       $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x_1, (x_2, dots, x_n)) = (x_1, dots, x_n)$の集合になる．
@@ -1040,7 +1291,7 @@
         <li>$U$: 全体集合</li>
       </ul>
       <p>
-        $ a subset b arrow.l.r U without b subset U without a $
+        $ a subset b <-> U without b subset U without a $
       </p>
       <h4>二重否定</h4>
       <ul>
@@ -1061,10 +1312,10 @@
       </p>
     </section>
 
-    <h2>置換公理図式</h2>
-    <h3>写像</h3>
+    <h2>写像</h2>
+    <h3>関係</h3>
     <p>
-      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f(3)$は$6$になる．これを$(3, 6) in f$となるような集合とする．つまり，$f = {(0, 0), (1, 2), (2, 4), (3, 6), dots}$である．写像をさらに一般化した<dfn>関係</dfn>から順に定義する．関係は返ってくる元が一つとは限らないものである．
+      まずは<dfn>関係</dfn>から順に定義する．関係は返ってくる元が一つとは限らないものである．
     </p>
     <section class="def">
       <h4>関係</h4>
@@ -1072,46 +1323,50 @@
         <li>$a, b$: 集合</li>
       </ul>
       <p>
-        「$f$が関係である」とは，
-        $ f subset a times b $
+        「$R$が$a$と$b$の関係である」とは，
+        $ R subset a times b $
       </p>
-      この$a$を始域，$b$を終域という．
       <details>
         <summary>関係の例</summary>
         <p>
-          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，$f: a arrow b$が関係のとき，$a times b$に含まれている必要があるから，
-          $ f = {}, $
-          $ f = {(0, 1), (0, 2), (0, 8), (3, 8), (4, 8)}, $
-          などは関係である．$(3, 8) in f$なので，$3$は$8$に$f$で関係しているという．
+          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，$R$が$a$と$b$の関係のとき，$a times b$に含まれている必要があるから，
+          $ R = {}, $
+          $ R' = {(0, 1), (0, 2), (0, 8), (3, 8), (4, 8)}, $
+          などは関係である．$(3, 8) in R'$なので，$3$と$8$は$R'$の関係があるという．
         </p>
       </details>
       <details>
         <summary>関係でない例</summary>
         <p>
-          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，次の例は関係$f:aarrow b$でない．
-          $ f = {(0, 1), (0, 2), (3, 8), (4, 8), 5}. $
+          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，次の例は$a$と$b$の関係でない．
+          $ {(0, 1), (0, 2), (3, 8), (4, 8), 5}. $
           これは順序対でない$5$が属している．
-          $ f = {(0, 1), (0, 2), (3, 8), (4, 8), (5, 5)}. $
-          これは$a arrow b$の関係ではない．$(a union {5}) arrow b$の関係ではある．
+          $ {(0, 1), (0, 2), (3, 8), (4, 8), (5, 5)}. $
+          これは$a$と$b$の関係ではない．$(a union {5})$と$b$の関係ではある．
         </p>
       </details>
     </section>
+    <h3>写像</h3>
+    <p>
+      <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f(3)$は$6$になる．これを$(3, 6) in f$となるような集合とする．つまり，$f = {(0, 0), (1, 2), (2, 4), (3, 6), dots}$である．
+    </p>
     <section class="def">
-      <h4>写像</h4>
+      <h4 id="mapping">写像</h4>
       <ul>
         <li>$a, b$: 集合</li>
-        <li>$f: a arrow b$: 関係</li>
+        <li>$f$: $a$と$b$の関係</li>
       </ul>
       <p>
         「$f$が写像である」とは，
         $ forall x in a exists! y, (x, y) in f $
         $y$を$f(x)$と表す．つまり，
         $ forall x in a, (x, f(x)) in f $
+        が成り立つ．また，$a$を始域，$b$を終域と呼ぶ．
       </p>
       <details>
         <summary>写像の例</summary>
         <p>
-          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，写像$f: a arrow b$は$a$の任意の元について$y$が一つな必要があるから，
+          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，写像$f: a -> b$は$a$の任意の元について$y$が一つな必要があるから，
           $ f = {(0, 3), (1, 1), (2, 9), (3, 3), (4, 5)} $
           は写像である．$(2, 9) in f$なので，$f(2) = 8$と表せる．
         </p>
@@ -1119,7 +1374,7 @@
       <details>
         <summary>写像でない例</summary>
         <p>
-          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，次の例は写像$f: aarrow b$でない．
+          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，次の例は写像$f: a -> b$でない．
           $ f = {(0, 3), (1, 1), (2, 9), (4, 5)}. $
           これは$3 in a$について$y$が存在しない．
           $ f = {(0, 3), (1, 1), (2, 6), (2, 9), (3, 3), (4, 5)}. $
@@ -1129,176 +1384,312 @@
       <h4>恒等写像</h4>
       <ul>
         <li>$a$: 集合</li>
-        <li>$id: a arrow a$: 関係</li>
+        <li>$id: a -> a$</li>
       </ul>
       <p>
-        「恒等写像$id$」とは，
-        $ id :arrow.l.r.double.long {(x, x) in a times a middle x in a} $
+        「$a$の恒等写像$id$」とは，
+        $ id := {(x, x) in a times a mid(|) x in a} $
+      </p>
+      <p>
+        恒等写像はどんな集合に対しても一意に存在する．
       </p>
       <details>
         <summary>恒等写像の例</summary>
         <p>
-          $a = {0, 1, 2, 3, 4}$について，恒等写像$id: a arrow a$は$(x, x)$を元にもつから，
+          $a = {0, 1, 2, 3, 4}$について，恒等写像$id: a -> a$は$(x, x)$を元にもつから，
           $ id = {(0, 0), (1, 1), (2, 2), (3, 3), (4, 4)} $
           もちろん$forall x in a, id(x) = x$である．
         </p>
       </details>
     </section>
     <section class="thm">
+      <h4>写像の外延性</h4>
       <ul>
         <li>$a, b$: 集合</li>
-        <li>$f: a arrow b$: 写像</li>
-        <li>$g: a arrow b$: 写像</li>
+        <li>$f: a -> b$</li>
+        <li>$g: a -> b$</li>
       </ul>
       <p>
-        $ forall x (f(x) = g(x)) arrow.r.double.long f = g $
+        $ forall x (f(x) = g(x)) ==> f = g $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          外延性公理を用いて$subset$と$supset$の両方を証明する．
+          外延性公理を用いて$subset$と$supset$の両方を証明する．$f$と$g$の仮定に違いはないので，一方を証明すればよい．
         </p>
-        <span class="remark">道具</span>
-        <ul>
-          <li><a href="#axiom-of-extensionality">外延性公理</a></li>
-        </ul>
         <span class="remark">前提</span>
         <ul>
-          <li>$f: a arrow.r b$: 写像</li>
-          <li>$g: a arrow.r b$: 写像</li>
-          <li>$2^b$: 冪集合</li>
-          <li>$a in b$ ……(A)</li>
+          <li>$a, b$: 集合</li>
+          <li>$f: a -> b$</li>
+          <li>$g: a -> b$</li>
+          <li>$x$: 集合</li>
+          <li>$x in a$</li>
+          <li>$f(x) = g(x)$</li>
+          <li>$y in f$</li>
         </ul>
         <span class="remark">結論</span>
         <ul>
-          <li>$f = g$</li>
+          <li>$y in g$</li>
         </ul>
-        <span class="remark">証明</span>
+        <span class="remark">道具</span>
         <ol>
+          <li><a href="mapping">写像</a></li>
+          <li><a href="#substitution-principle">代入原理</a></li>
         </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{$f(x) = g(x)$}
+          \AXC{$y in f$}
+          \LL{A}
+          \UIC{$y = (x, f(x))$}
+          \LL{B}
+          \BIC{$y = (x, g(x))$}
+          \AXC{}
+          \LL{A}
+          \UIC{$(x, g(x)) in g$}
+          \LL{B}
+          \BIC{$y in g$}
+          \end{prooftree}
+        </p>
+        <p>
+          任意の元$(x, f(x)) in f$について，
+          $ (x, f(x)) = (x, g(x)) in g $
+          である．よって，$f subset g$が成り立つ．
+        </p>
       </details>
     </section>
 
     <section class="def">
-      <h4>像</h4>
+      <h4 id="image">像</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$f: a -> b$</li>
+        <li>$a': "集合" subset a$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$，$a' subset a$について，$f$による$a'$の像$f[a']$とは，
-        $ f[a'] :arrow.l.r.double.long {y in b middle exists x in a', (x, y) in f} $
+        「像$f(a')$」とは，
+        $ f(a') := {y in b mid(|) exists x in a', (x, y) in f} $
       </p>
       <h4>逆像</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$f: a -> b$</li>
+        <li>$b': "集合" subset b$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$，$b' subset b$について，$f$による$b'$の逆像$f^(-1)[b']$とは，
-        $ f^(-1)[b'] :arrow.l.r.double.long {x in a middle exists y in b', (x, y) in f} $
+        「逆像$f^(-1)(b')$」とは，
+        $ f^(-1)(b') := {x in a mid(|) exists y in b', (x, y) in f} $
       </p>
       <h4>値域</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$f: a -> b$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$について，$a$を$f$の定義域といい，$f$の値域とは，
-        $ f[a] $
+        $a$を$f$の定義域といい，「$f$の値域」とは，
+        $ f(a) $
       </p>
       <details>
         <summary>像・値域の例</summary>
         <p>
-          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，写像$f: a arrow b$を$f = {(0, 3), (1, 1), (2, 9), (3, 3), (4, 5)}$として，
-          $ f[{0, 1, 2]} = {1, 3, 9}, $
-          $ f[{0, 1, 3]} = {1, 3}. $
+          $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，写像$f: a -> b$を$f = {(0, 3), (1, 1), (2, 9), (3, 3), (4, 5)}$として，
+          $ f({0, 1, 2}) = {1, 3, 9}, $
+          $ f({0, 1, 3}) = {1, 3}. $
           このとき，$f$の値域は
-          $ f[a] = {1, 3, 5, 9}. $
+          $ f(a) = {1, 3, 5, 9}. $
         </p>
       </details>
-      <h4>写像全体の集合</h4>
+      <h4>写像全体</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+      </ul>
       <p>
-        集合$a, b$について，
-        $ b^a :arrow.l.r.double.long {f in scr(P)(a times b) middle f "は写像"} $
+        「$a$から$b$への写像全体」を次のように表す．
+        $ b^a := {f in scr(P)(a times b) mid(|) f "は写像"} $
       </p>
       <h4>制限</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$f: a -> b$</li>
+        <li>$a'$: 集合</li>
+      </ul>
       <p>
-        写像$f: a arrow b$，$a' subset a$について，$f$の$a'$への制限$f|a'$とは，
-        $ f|a' :arrow.l.r.double.long f inter (a' times b) $
+        「制限$f|_a'$」とは，
+        $ f|_a' := f inter (a' times b) $
       </p>
       <h4>合成写像(写像の積)</h4>
+      <ul>
+        <li>$a, b, c$: 集合</li>
+        <li>$f: a -> b$</li>
+        <li>$g: b -> c$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$，写像$g: b arrow c$について，
-        $ g compose f :arrow.l.r.double.long {(x, z) in a times c middle (f(x), z) in g} $
+        「合成写像$g compose f$」とは，
+        $ g compose f := {(x, z) in a times c mid(|) (f(x), z) in g} $
         つまり，$g compose f(x) = g(f(x))$である．
       </p>
     </section>
     <section class="thm">
+      <h4>像の性質</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$f: a -> b$</li>
+        <li>$a': "集合" subset a$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$，部分集合$a' subset a$について，
-        $ x in a' arrow f(x) in f[a'] $
+        $ x in a' ==> f(x) in f(a') $
       </p>
       <details>
         <summary>証明</summary>
+        <span class="remark">前提</span>
+        <ul>
+          <li>$a, b$: 集合</li>
+          <li>$f: a -> b$</li>
+          <li>$a'$: 集合</li>
+          <li>$a' subset a$</li>
+          <li>$x in a'$</li>
+        </ul>
+        <span class="remark">結論</span>
+        <ul>
+          <li>$f(x) in f(a')$</li>
+        </ul>
+        <span class="remark">道具</span>
+        <ol>
+          <li><a href="#mapping">写像</a></li>
+          <li><a href="#subset">部分集合</a></li>
+          <li><a href="#direct-product">直積集合</a></li>
+          <li><a href="#image">像</a></li>
+        </ol>
+        <span class="remark">証明</span>
         <p>
-          定義より，$f[a']$に属している元$y$は，
+          \begin{prooftree}
+          \AXC{}
+          \LL{A}
+          \UIC{$(x, f(x)) in f$}
+          \AXC{}
+          \LL{A}
+          \UIC{$f subset a times b$}
+          \LL{B}
+          \BIC{$(x, f(x)) in a times b$}
+          \LL{C}
+          \UIC{$x in a and f(x) in b$}
+          \UIC{$f(x) in b$}
+          \AXC{$x in a'$}
+          \AXC{}
+          \LL{A}
+          \UIC{$(x, f(x)) in f$}
+          \BIC{$exists x in a', (x, f(x)) in f$}
+          \LL{D}
+          \BIC{$f(x) in f(a')$}
+          \end{prooftree}
+        </p>
+        <p>
+          定義より，$f(a')$に属している元$y$は，
           $ exists x, y in b and x in a' and (x, y) in f $
           が成り立つ．写像$f$の定義と前提より，$f(x) in b$かつ$x in a'$かつ$(x, f(x)) in f$が成り立つから，$f(x)$は$f[a']$の元である．よって示された．
         </p>
       </details>
       <h4>合成写像の結合律</h4>
+      <ul>
+        <li>$a, b, c, d$: 集合</li>
+        <li>$f: a -> b$</li>
+        <li>$g: b -> c$</li>
+        <li>$h: c -> d$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$，$g: b arrow c$，$h: c arrow d$について，
         $ (h compose g) compose f = h compose (g compose f) $
       </p>
       <details>
         <summary>証明</summary>
+        <span class="remark">前提</span>
+        <ul>
+          <li>$a, b, c, d$: 集合</li>
+          <li>$f: a -> b$</li>
+          <li>$g: b -> c$</li>
+          <li>$h: c -> d$</li>
+        </ul>
+        <span class="remark">結論</span>
+        <p>$(h compose g) compose f = h compose (g compose f)$</p>
+        <span class="remark">証明</span>
         <p>
-          定義より変形を行う．
+          定義に従って変形する．
           $
-          (h compose g) compose f(x) & h compose g(f(x)), \
-          & h(g(f(x))), \
-          & h(g compose f(x)), \
-          & h compose (g compose f)(x).
+          (h compose g) compose f(x) & = h compose g(f(x)), \
+          & = h(g(f(x))), \
+          & = h(g compose f(x)), \
+          & = h compose (g compose f)(x).
           $
-          よって，写像の性質より$(h compose g) compose f = h compose (g compose f)$である．
+          よって，$(h compose g) compose f = h compose (g compose f)$である．
         </p>
       </details>
     </section>
 
     <section class="def">
       <h4>単射</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$f: a -> b$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$について，$f$が単射とは，
-        $ forall x y in a, f(x) = f(y) arrow x = y $
+        「$f$が単射」とは，
+        $ forall x y in a, f(x) = f(y) -> x = y $
       </p>
       <details>
         <summary>単射の例</summary>
         <p>
-          $a = {0, 1, 2, 3, 4}$，$b = {a, b, c, d, e}$，写像$f: a arrow b$について，
+          $a = {0, 1, 2, 3, 4}$，$b = {a, b, c, d, e}$，写像$f: a -> b$について，
           $ {(0, d), (1, a), (2, c), (3, b), (4, e)} $
           は写像先によって写像前の1つの元があるので単射である．
         </p>
       </details>
       <h4>全射</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$f: a -> b$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$について，$f$が全射とは，
+        「$f$が全射」とは，
         $ forall y in b exists x in a, f(x) = y $
       </p>
       <details>
         <summary>全射の例</summary>
         <p>
-          $a = {0, 1, 2, 3, 4}$，$b = {a, b}$，写像$f: a arrow b$について，
+          $a = {0, 1, 2, 3, 4}$，$b = {a, b}$，写像$f: a -> b$について，
           $ {(0, a), (1, a), (2, b), (3, b), (4, a)} $
           は写像先がすべて存在するので全射である．
         </p>
       </details>
       <h4>全単射</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$f: a -> b$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$について，$f$が全単射とは$f$が単射かつ全射である．
+        「$f$が全単射」とは「$f$が単射かつ全射」である．
       </p>
       <h4>逆写像</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+        <li>$f: a -> b$</li>
+      </ul>
       <p>
-        写像$f: a arrow b$について，次のように定義される$f^{-1}$が写像のとき，$f^{-1}$を$f$の逆写像という．
-        $ f^{-1}(x) :arrow.l.r.double.long {(y, x) in scr(P)(b times a) middle (x, y) in f} $
+        次のように定義される$f^(-1)$が写像のとき，$f^(-1)$を$f$の逆写像という．
+        $ f^(-1) := {(y, x) in scr(P)(b times a) mid(|) (x, y) in f} $
       </p>
     </section>
 
+    <h2>置換公理図式</h2>
     <h3>関数論理式</h3>
     <section class="def">
       <h4>関数論理式</h4>
+      <ul>
+        <li>$F$: 述語</li>
+        <li>$x, y$: 集合</li>
+      </ul>
       <p>
-        関数論理式$F(x, y)$とは，
-        $ forall x y z, F(x, y) and F(x, z) arrow y = z $
+        「関数論理式$F(x, y)$」とは，
+        $ forall x y z, F(x, y) and F(x, z) -> y = z $
       </p>
     </section>
     <p>
@@ -1307,50 +1698,81 @@
 
     <h3>置換公理</h3>
     <p>
-      ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字集合</dfn>[<dfn>添字域</dfn>]とする<dfn>族</dfn>といい，${x middle exists i in I(F(i, x))}$と表す．これの存在を認める公理が置換公理である．
+      ある集合$I$の元$i$から関数論理式で導かれた集合$x$を集めた集合を認めることとする．これを$I$を<dfn>添字集合</dfn>[<dfn>添字域</dfn>]とする<dfn>族</dfn>といい，${x mid(|) exists i in I(F(i, x))}$と表す．この存在を認める公理が置換公理である．
     </p>
     <section class="def">
       <h4>族</h4>
+      <ul>
+        <li>$I$: 集合</li>
+        <li>$F(x, y)$: 関数論理式</li>
+      </ul>
       <p>
-        論理関数式$F(x, y)$について，$I$を添字集合とする族${x middle exists i in I(F(i, x))}$とは，
-        $ forall x, x in {x middle exists i in I(F(i, x))} arrow.l.r exists i(i in I and F(i, x)) $
-        $i$を添字という．
+        「族${x mid(|) exists i in I(F(i, x))}$」とは，
+        $ forall x, x in {x mid(|) exists i in I(F(i, x))} <-> exists i(i in I and F(i, x)) $
+        $I$を添字集合．$i$を添字という．
       </p>
     </section>
     <section class="axm">
       <h4>置換公理</h4>
+      <ul>
+        <li>$F(x, y)$: 関数論理式</li>
+      </ul>
       <p>
-        論理関数式$F(x, y)$について，
         $
-        & orall x exists y forall z, z in y arrow.l.r exists w (w in x and F(w, z))\
-        arrow.l.r & orall x exists {t middle exists i in x (F(i, t))}.
+        & forall x exists y forall z, z in y <-> exists w (w in x and F(w, z))\
+        <==> & forall x exists {t mid(|) exists i in x (F(i, t))}.
         $
       </p>
     </section>
     <p>
-      この論理関数式$F$を写像とした方が使い勝手が良い．$F(x, y) :arrow.l.r.double.long y = f(x)$とする．この述語$F$は関数論理式である．よって，${f(i) middle i in I}:arrow.l.r.double.long{x middle exists i in I(x = f(i))}$の表記も認める．また，$f: i |arrow a_i$としたとき集合族を${a_i}_(i in I) :arrow.l.r.double.long {a_i middle i in I}$とし，明らかな場合は$I$を省略してよい．和集合と積集合を族で拡張させる．
+      族が集合であることが認められたことによって，この論理関数式$F$を写像として表現することができる．$F(x, y) <==> y = f(x)$とする．$f: I -> {t mid(|) exists i in x (F(i, t))}$である．もちろん述語$F$は関数論理式である．よって，${f(i) mid(|) i in I} := {x mid(|) exists i in I(x = f(i))}$とも表記する．また，$f: i |-> a_i$としたとき集合族を${a_i}_(i in I) := {a_i mid(|) i in I}$とも表記し，明らかな場合は$I$を省略してよい．和集合と積集合を添字集合を用いた表記も定義する．
     </p>
     <section class="def">
       <h4>添字和集合</h4>
       <p>
-        族${a_i}_(i in I)$の和集合$union.big_(i in I) a_i$とは，
-        $ union.big_(i in I) a_i :arrow.l.r.double.long union.big {a_i}_(i in I) $
+        「族${a_i}_(i in I)$の和集合$union.big_(i in I) a_i$」とは，
+        $ union.big_(i in I) a_i := union.big {a_i}_(i in I) $
       </p>
       <h4>添字積集合</h4>
       <p>
-        族${a_i}_(i in I)$の積集合$inter.big_(i in I)a_i$とは，
-        $ inter.big_(i in I) a_i :arrow.l.r.double.long inter.big {a_i}_(i in I) :arrow.l.r.double.long {x in union.big_(i in I)a_i middle forall i in I(x in a_i)} $
+        「族${a_i}_(i in I)$の積集合$inter.big_(i in I)a_i$」とは，
+        $ inter.big_(i in I) a_i := inter.big {a_i}_(i in I) := {x in union.big_(i in I)a_i mid(|) forall i in I(x in a_i)} $
       </p>
     </section>
+    $I = 0$であるとき，${a_i}_(i in I) = 0$であるから，
+    $
+    union.big_(i in I) a_i & = 0,\
+    inter.big_(i in I) a_i & = union.big_(i in I)a_i = 0.
+    $
+    となる．
     <section class="thm">
+      <h4>添字和集合・添字積集合の性質</h4>
+      <ul>
+        <li>$I, b$: 集合</li>
+        <li>${a_i}_(i in I)$: 族</li>
+      </ul>
       <p>
-        族${a_i}_(i in I)$について，
         $ union.big_(i in I)a_i inter b = union.big_(i in I)(a_i inter b) $
-        族${a_i}_(i in I)$について，
+      </p>
+      <ul>
+        <li>$I, b$: 集合</li>
+        <li>${a_i}_(i in I)$: 族</li>
+      </ul>
+      <p>
         $ inter.big_(i in I) a_i union b = inter.big_(i in I) (a_i union b) $
-        族${a_i}_(i in I)$について，
+      </p>
+      <ul>
+        <li>$I$: 集合</li>
+        <li>${a_i}_(i in I)$: 族</li>
+      </ul>
+      <p>
         $ overline(union.big_(i in I) a_i) = inter.big_(i in I) overline(a_i) $
-        族${a_i}_(i in I)$について，
+      </p>
+      <ul>
+        <li>$I$: 集合</li>
+        <li>${a_i}_(i in I)$: 族</li>
+      </ul>
+      <p>
         $ overline(inter.big_(i in I)a_i) = union.big_(i in I) overline{a_i} $
       </p>
     </section>
@@ -1362,21 +1784,22 @@
     <section class="def">
       <h4>後者</h4>
       <p>
-        $a$の後者とは，
-        $ suc(a) :arrow.l.r.double.long n union {n} $
+        「$a$の後者」とは，
+        $ suc (a) := n union {n} $
       </p>
       <h4>数字</h4>
       <p>
         $
-        1 & arrow.l.r.double.long suc(0) = 0 union {0} = {0} = {{}}.\
-        2 & arrow.l.r.double.long suc(1) = 1 union {1} = {0, 1} = {{}, {{}}}.\
-        3 & arrow.l.r.double.long suc(2) = {0, 1, 2} = {{}, {{}}, {{}, {{}}}}.\
-        4 & arrow.l.r.double.long suc(3) = {0, 1, 2, 3}={{}, {{}}, {{}, {{}}}, {{}, {{}}, {{}, {{}}}}}.\
-        5 & arrow.l.r.double.long suc(4) = {0, 1, 2, 3, 4}.\
-        6 & arrow.l.r.double.long suc(5) = {0, 1, 2, 3, 4, 5}.\
-        7 & arrow.l.r.double.long suc(6) = {0, 1, 2, 3, 4, 5, 6}.\
-        8 & arrow.l.r.double.long suc(7) = {0, 1, 2, 3, 4, 5, 6, 7}.\
-        9 & arrow.l.r.double.long suc(8) = {0, 1, 2, 3, 4, 5, 6, 7, 8}.\
+        0 &.\
+        1 & := suc (0) = 0 union {0} = {0} = {{}}.\
+        2 & := suc (1) = 1 union {1} = {0, 1} = {{}, {{}}}.\
+        3 & := suc (2) = {0, 1, 2} = {{}, {{}}, {{}, {{}}}}.\
+        4 & := suc (3) = {0, 1, 2, 3}={{}, {{}}, {{}, {{}}}, {{}, {{}}, {{}, {{}}}}}.\
+        5 & := suc (4) = {0, 1, 2, 3, 4}.\
+        6 & := suc (5) = {0, 1, 2, 3, 4, 5}.\
+        7 & := suc (6) = {0, 1, 2, 3, 4, 5, 6}.\
+        8 & := suc (7) = {0, 1, 2, 3, 4, 5, 6, 7}.\
+        9 & := suc (8) = {0, 1, 2, 3, 4, 5, 6, 7, 8}.\
         $
       </p>
     </section>
@@ -1384,8 +1807,8 @@
       <h4>無限公理</h4>
       <p>
         $
-        & xists x, 0 in x and forall y (y in x arrow y union {y} in x)\
-        arrow.l.r & xists x, 0 in x and forall y (y in x arrow suc(y) in x).
+        & exists x, 0 in x and forall y (y in x -> y union {y} in x)\
+        <==> & exists x, 0 in x and forall y (y in x -> suc (y) in x).
         $
       </p>
     </section>
@@ -1394,7 +1817,7 @@
     <p>
       矛盾を生み出すものを集合と認めないための公理が<dfn>正則性公理</dfn>である．
     </p>
-    <section class="axm">
+    <section class="axm" id="axiom-of-regularity">
       <h4>正則性公理</h4>
       <p>
         $ forall x != 0 exists y in x, y inter x = 0 $
@@ -1409,11 +1832,40 @@
       <details>
         <summary>証明</summary>
         <p>
-          $x in x$と仮定する．${x}$は空集合ではないから，正則性公理より，
-          $ y inter {x} = 0 $
-          になる$y in {x}$が存在する．1元集合の性質より$y = x$だから，$=$の代入原理より，
-          $ x inter {x} = 0. $
-          仮定より$x in x and x in {x}$だから，$x in x inter {x}$になるが，$x inter {x} = 0$に反する．よって，$x in.not x$である．
+          <a href="#axiom-of-regularity">正則性公理</a>より$exists y in {x}, y inter {x} = 0$．すなわち，$x inter {x} = 0$が成り立つ．これを用いて証明を行う．
+        </p>
+        <span class="remark">前提</span>
+        <ul>
+          <li>$x$: 集合</li>
+        </ul>
+        <span class="remark">結論</span>
+        <p>$x in.not x$</p>
+        <span class="remark">道具</span>
+        <ol>
+          <li><a href="#singleton-property">1元集合の性質</a></li>
+          <li><a href="#axiom-of-regularity">正則性公理</a></li>
+        </ol>
+        <span class="remark">証明</span>
+        <p>
+          \begin{prooftree}
+          \AXC{}
+          \RL{1}
+          \UIC{$x in x$}
+          \AXC{}
+          \LL{A}
+          \UIC{$x in {x}$}
+          \BIC{$x in {x} inter x$}
+          \AXC{}
+          \LL{B}
+          \UIC{$x inter {x} = 0$}
+          \UIC{$x in.not {x} inter x$}
+          \BIC{$bot$}
+          \RL{1}
+          \UIC{$x in.not x$}
+          \end{prooftree}
+        </p>
+        <p>
+          正則性公理より$x inter {x} = 0$が成り立つ．$x in x$と仮定すると，$x in {x} inter x = 0$となるが，これは空集合に矛盾する．よって，$x in.not x$である．
         </p>
       </details>
       <p>
@@ -1421,26 +1873,93 @@
       </p>
       <details>
         <summary>証明</summary>
+        <span class="remark">前提</span>
+        <ul>
+          <li>$x, y$: 集合</li>
+        </ul>
+        <span class="remark">結論</span>
+        <p>$x in.not y or y in.not x$</p>
+        <span class="remark">道具</span>
+        <ol>
+          <li><a href="#axiom-of-regularity">正則性公理</a></li>
+          <li><a href="#pairing">対</a></li>
+          <li><a href="#pairing-property">対の性質</a></li>
+          <li><a href="#set-intersection">積集合</a></li>
+        </ol>
+        <span class="remark">証明</span>
         <p>
-          $x in y and y in x$と仮定すると，$x in y$と$x in {x, y}$より$x in y inter {x, y}$である．同様に，$y in x inter {x, y}$である．
+          次の推論を$R_1$とする．
+          \begin{prooftree}
+          \AXC{$x in y and y in x$}
+          \UIC{$x in y$}
+          \AXC{}
+          \LL{C}
+          \UIC{$x in {x, y}$}
+          \LL{D}
+          \BIC{$x in y inter {x, y}$}
+          \AXC{$z = x and z inter {x, y} = 0$}
+          \UIC{$x inter {x, y} = 0$}
+          \BIC{$bot$}
+          \end{prooftree}
         </p>
         <p>
-          ${x, y}$は空集合ではないから，正則性公理より，
-          $ z inter {x, y} = 0 $
-          になる$z in {x, y}$が存在する．対の定義より$z = x$または$z = y$である．
+          次の推論を$R_2$とする．
+          \begin{prooftree}
+          \AXC{$x in y and y in x$}
+          \UIC{$y in x$}
+          \AXC{}
+          \LL{C}
+          \UIC{$y in {x, y}$}
+          \LL{D}
+          \BIC{$y in x inter {x, y}$}
+          \AXC{$z = y and z inter {x, y} = 0$}
+          \UIC{$y inter {x, y} = 0$}
+          \BIC{$bot$}
+          \end{prooftree}
         </p>
         <p>
-          $z = x$のとき，
-          $ x inter {x, y} = 0 $
-          は$y in x inter {x, y}$に反する．
+          次の推論を$R_3$とする．
+          \begin{prooftree}
+          \AXC{$z in {x, y} and z inter {x, y} = 0$}
+          \LL{B}
+          \UIC{$(z = x or z = y) and z inter {x, y} = 0$}
+          \AXC{$x in y and y in x$}
+          \AXC{}
+          \RL{1}
+          \UIC{$z = x and z inter {x, y} = 0$}
+          \LL{$R_1$}
+          \BIC{$bot$}
+          \AXC{$x in y and y in x$}
+          \AXC{}
+          \RL{1}
+          \UIC{$z = y and z inter {x, y} = 0$}
+          \LL{$R_2$}
+          \BIC{$bot$}
+          \RL{1}
+          \TIC{$bot$}
+          \end{prooftree}
         </p>
         <p>
-          $z = y$のとき，
-          $ y inter {x, y} = 0 $
-          は$x in y inter {x, y}$に反する．
+          \begin{prooftree}
+          \AXC{}
+          \LL{A}
+          \UIC{$exists z in {x, y}, z inter {x, y} = 0$}
+          \AXC{}
+          \RL{1}
+          \UIC{$z in {x, y} and z inter {x, y} = 0$}
+          \AXC{}
+          \RL{2}
+          \UIC{$x in y and y in x$}
+          \LL{$R_3$}
+          \BIC{$bot$}
+          \RL{1}
+          \BIC{$bot$}
+          \RL{2}
+          \UIC{$x in.not y or y in.not x$}
+          \end{prooftree}
         </p>
         <p>
-          よって，$x in.not y or y in.not x$である．
+          $x in y and y in x$と仮定すると，$x in {x, y}$かつ$y in x inter {x, y}$となり，正則性公理に矛盾する．また，$y in {x, y}$かつ$x in y inter {x, y}$も同様である．よって，$x in.not y or y in.not x$が成り立つ．
         </p>
       </details>
       <p>
@@ -1449,7 +1968,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          $forall y, y in u$と仮定すると，$u in u$より偽．
+          $forall y, y in U$と仮定すると，$U in U$より偽．
         </p>
       </details>
     </section>
@@ -1461,7 +1980,7 @@
     <section class="axm">
       <h4>選択公理</h4>
       <p>
-        $ forall x exists f in (union.big x)^x forall y in x, y != 0 arrow f(y) in y $
+        $ forall x exists f in (union.big x)^x forall y in x, y != 0 -> f(y) in y $
       </p>
     </section>
 
@@ -1472,44 +1991,44 @@
     <section class="thm">
       <h4>ZFC公理からの導出</h4>
       <p>
-        置換公理$arrow$分出公理．
+        置換公理$==>$分出公理．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          論理式$G(x, y) :arrow.l.r.double.long F(x) and x = y$とすると，$G$は関数論理式である．なぜなら，$G(x, y)$と$G(x, z)$を仮定すると，$x = y = z$である．置換公理より，
+          論理式$G(x, y) :<==> F(x) and x = y$とすると，$G$は関数論理式である．なぜなら，$G(x, y)$と$G(x, z)$を仮定すると，$x = y = z$である．置換公理より，
           $
-          forall x exists y forall z, z in y & rrow.l.r exists w (w in x and G(w, z)), \
-          forall x exists y forall z, z in y & rrow.l.r exists w(w in x and F(w) and w = z), \
-          forall x exists y forall z, z in y & rrow.l.r z in x and F(z). \
+          forall x exists y forall z, z in y & <-> exists w (w in x and G(w, z)), \
+          forall x exists y forall z, z in y & <-> exists w(w in x and F(w) and w = z), \
+          forall x exists y forall z, z in y & <-> z in x and F(z). \
           $
           分出公理が導けた．
         </p>
       </details>
       <p>
-        空集合公理，冪集合，置換公理$arrow$対公理．
+        空集合公理，冪集合，置換公理$==>$対公理．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $c :arrow.l.r.double.long scr(P)(scr(P)(0)) = {0, 1}$とすると，空集合公理と冪集合から存在する．$F(x, y) :arrow.l.r.double.long x = 0 and y = a or x = 1 and y = b$とすると$F$は論理関数式である．置換公理より，
+          $c :<==> scr(P)(scr(P)(0)) = {0, 1}$とすると，空集合公理と冪集合から存在する．$F(x, y) :<==> x = 0 and y = a or x = 1 and y = b$とすると$F$は論理関数式である．置換公理より，
           $
-          forall x exists y forall z, z in y & rrow.l.r exists w (w in x and (w = 0 and z = a or w = 1 and z = b)), \
-          forall x exists y forall z, z in y & rrow.l.r 0 in x and z = a or 1 in x and z = b, \
-          exists y forall z, z in y & rrow.l.r 0 in c and z = a or 1 in c and z = b, \
-          exists y forall z, z in y & rrow.l.r z = a or z = b, \
-          forall x y exists z forall w, w in z & rrow.l.r w = x or w = y. \
+          forall x exists y forall z, z in y & <-> exists w (w in x and (w = 0 and z = a or w = 1 and z = b)), \
+          forall x exists y forall z, z in y & <-> 0 in x and z = a or 1 in x and z = b, \
+          exists y forall z, z in y & <-> 0 in c and z = a or 1 in c and z = b, \
+          exists y forall z, z in y & <-> z = a or z = b, \
+          forall x y exists z forall w, w in z & <-> w = x or w = y. \
           $
           対公理が導けた．
         </p>
       </details>
       <p>
-        無限公理，分出公理$arrow$空集合公理．
+        無限公理，分出公理$==>$空集合公理．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          1は無限公理より存在する．このとき，$0 = {x in 1 middle x != x}$が成り立ち，これは分出公理より存在する．
+          1は無限公理より存在する．このとき，$0 = {x in 1 mid(|) x != x}$が成り立ち，これは分出公理より存在する．
         </p>
       </details>
     </section>

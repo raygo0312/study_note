@@ -27,7 +27,7 @@
     <section class="def">
       <h4>推論図</h4>
       <p>
-        $A_1, A_2, dots, A_n arrow.r.double A$を次の図のように表し，
+        $A_1, A_2, dots, A_n ==> A$を次の図のように表し，
         \begin{prooftree}
         \AXC{$A_1$}
         \AXC{$A_2$}
@@ -35,7 +35,7 @@
         \AXC{$A_n$}
         \QuaternaryInfC{$A$}
         \end{prooftree}
-        を推論図という．このとき，$A_1, A_2, dots, A_n$を前提，$A$を結論という．$cal(A_1), cal(A_2), dots, cal(A_n)$が推論図のとき，$cal(A_1), cal(A_2), dots, cal(A_n) arrow.r.double A$を次の図のように表し，
+        を推論図という．このとき，$A_1, A_2, dots, A_n$を前提，$A$を結論という．$cal(A_1), cal(A_2), dots, cal(A_n)$が推論図のとき，$cal(A_1), cal(A_2), dots, cal(A_n) ==> A$を次の図のように表し，
         \begin{prooftree}
         \AXC{$cal(A_1)$}
         \AXC{$cal(A_2)$}
@@ -47,7 +47,7 @@
       </p>
       <h4>演繹図</h4>
       <p>
-        推論規則$"R"$が$A_1, A_2, dots, A_n arrow.r.double A$のとき，次の図のように表し，
+        推論規則$"R"$が$A_1, A_2, dots, A_n ==> A$のとき，次の図のように表し，
         \begin{prooftree}
         \AXC{$A_1$}
         \AXC{$A_2$}
@@ -61,7 +61,7 @@
         \AXC{}
         \UIC{$A$}
         \end{prooftree}
-        を演繹図という．$cal(A_1), cal(A_2), dots, cal(A_n)$がそれぞれ$A_1, A_2, dots, A_n$を帰結とする演繹図とする．推論規則$"R"$が$A_1, A_2, dots, A_n arrow.r.double A$のとき，次の図のように表し，
+        を演繹図という．$cal(A_1), cal(A_2), dots, cal(A_n)$がそれぞれ$A_1, A_2, dots, A_n$を帰結とする演繹図とする．推論規則$"R"$が$A_1, A_2, dots, A_n ==> A$のとき，次の図のように表し，
         \begin{prooftree}
         \AXC{$cal(A_1)$}
         \AXC{$cal(A_2)$}
@@ -96,11 +96,11 @@
     </p>
 
     <h2>自然演繹の推論規則</h2>
-    <h3>$arrow$の推論規則</h3>
+    <h3>$->$の推論規則</h3>
     <p>
-      $gt$は$A$ならば$B$である．すなわち，$A$が成り立つときは$B$が成り立つことを意味する．これに$A$が成り立つという情報があれば，$B$が成り立つことが導ける．つまり次の推論が成り立つ．
-      $ A, A arrow B arrow.r.double B. $
-      これは<dfn>構成的仮言的三段論法</dfn>(前件肯定式)という名前で知られる．また，$arrow, tack$はそれぞれ同じ意味として扱いたいので，
+      $->$は$A$ならば$B$である．すなわち，$A$が成り立つときは$B$が成り立つことを意味する．これに$A$が成り立つという情報があれば，$B$が成り立つことが導ける．つまり次の推論が成り立つ．
+      $ A, A -> B ==> B. $
+      これは<dfn>構成的仮言的三段論法</dfn>(前件肯定式)という名前で知られる．また，$->, tack$はそれぞれ同じ意味として扱いたいので，
       $gt$
       を認めるとする．この推論規則を用いるときは，前提を打ち消しという操作ができる．
       \begin{prooftree}
@@ -114,7 +114,7 @@
       \UIC{$dots.v$}
       \UIC{$B$}
       \RL{$i$}
-      \UIC{$A arrow B$}
+      \UIC{$A -> B$}
       \end{prooftree}
       Aを仮定としたので，上にバーをつけて前提から除外することができる．
       \begin{prooftree}
@@ -124,12 +124,12 @@
       \UIC{$dots.v$}
       \UIC{$B$}
       \RL{$i$}
-      \UIC{$A arrow B$}
+      \UIC{$A -> B$}
       \end{prooftree}
       としてよい．
     </p>
     <section class="axm">
-      <h4>$arrow "I"$</h4>
+      <h4>$-> "I"$</h4>
       <ul>
         <li>$A, B$: 論理式</li>
       </ul>
@@ -141,51 +141,51 @@
         \UIC{$dots.v$}
         \UIC{$B$}
         \RL{$i$}
-        \LL{$arrow I$}
-        \UIC{$A arrow B$}
+        \LL{$-> I$}
+        \UIC{$A -> B$}
         \end{prooftree}
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $A$より，$dots$，よって$B$．ゆえに$A arrow B$．
+          $A$より，$dots$，よって$B$．ゆえに$A -> B$．
         </p>
       </details>
-      <h4>$arrow "E"$</h4>
+      <h4>$-> "E"$</h4>
       <ul>
         <li>$A, B$: 論理式</li>
       </ul>
       <p>
         \begin{prooftree}
         \AXC{$A$}
-        \AXC{$A arrow B$}
-        \LL{$arrow E$}
+        \AXC{$A -> B$}
+        \LL{$-> E$}
         \BIC{$B$}
         \end{prooftree}
       </p>
       <details>
         <summary>読み</summary>
         <p>
-          $A arrow B$が成り立つから，$A$．ゆえに$B$．
+          $A -> B$が成り立つから，$A$．ゆえに$B$．
         </p>
       </details>
     </section>
     <section class="ex">
       <p>
-        $A, A arrow B, A arrow B arrow C$を前提として推論をする．
+        $A, A -> B, A -> B -> C$を前提として推論をする．
         \begin{prooftree}
         \AXC{$A$}
-        \AXC{$A arrow B$}
-        \LL{$arrow E$}
+        \AXC{$A -> B$}
+        \LL{$-> E$}
         \BIC{$B$}
         \AXC{$A$}
-        \AXC{$A arrow B arrow C$}
-        \LL{$arrow E$}
-        \BIC{$B arrow C$}
-        \LL{$arrow E$}
+        \AXC{$A -> B -> C$}
+        \LL{$-> E$}
+        \BIC{$B -> C$}
+        \LL{$-> E$}
         \BIC{$C$}
         \end{prooftree}
-        よって，$A, A arrow B, A arrow B arrow C tack C$である．
+        よって，$A, A -> B, A -> B -> C tack C$である．
       </p>
     </section>
     <section class="ex">
@@ -196,17 +196,17 @@
         \UIC{$A$}
         \AXC{}
         \RL{$1$}
-        \UIC{$A arrow B$}
-        \LL{$arrow E$}
+        \UIC{$A -> B$}
+        \LL{$-> E$}
         \BIC{$B$}
         \RL{$1$}
-        \LL{$arrow I$}
-        \UIC{$(A arrow B) arrow B$}
+        \LL{$-> I$}
+        \UIC{$(A -> B) -> B$}
         \RL{$2$}
-        \LL{$arrow I$}
-        \UIC{$A arrow (A arrow B) arrow B$}
+        \LL{$-> I$}
+        \UIC{$A -> (A -> B) -> B$}
         \end{prooftree}
-        よって，$tack A arrow (A arrow B) arrow B$である．
+        よって，$tack A -> (A -> B) -> B$である．
       </p>
     </section>
     <p>
@@ -223,14 +223,14 @@
         \UIC{$A$}
         \AXC{}
         \RL{$0$}
-        \UIC{$A arrow A arrow B$}
-        \BIC{$A arrow B$}
+        \UIC{$A -> A -> B$}
+        \BIC{$A -> B$}
         \BIC{$B$}
-        \UIC{$B arrow B$}
+        \UIC{$B -> B$}
         \RL{$star$}
-        \UIC{$A arrow B arrow B$}
+        \UIC{$A -> B -> B$}
         \RL{$0$}
-        \UIC{$(A arrow B arrow B) arrow A arrow B arrow B$}
+        \UIC{$(A -> B -> B) -> A -> B -> B$}
         \end{prooftree}
       </p>
     </section>
@@ -294,8 +294,8 @@
       <p>
         \begin{prooftree}
         \AXC{$A_1 or A_2$}
-        \AXC{$A_1 arrow B$}
-        \AXC{$A_2 arrow B$}
+        \AXC{$A_1 -> B$}
+        \AXC{$A_2 -> B$}
         \LL{$or E$}
         \TIC{$B$}
         \end{prooftree}
@@ -305,8 +305,8 @@
     <h3>$forall$と$exists$の推論規則</h3>
     <p>
       $forall$はすべてについて成り立つという意味だが，これは対象の集合${a_1, a_2, dots}$の元すべてで成り立つということである．また，$exists$も成り立つ元が一つ以上あるという意味である．つまり，
-      $ forall F(x) arrow.l.r.double.long F(a_1) and F(a_2) and dots.c $
-      $ exists F(x) arrow.l.r.double.long F(a_1)or F(a_2) or dots.c $
+      $ forall F(x) <==> F(a_1) and F(a_2) and dots.c $
+      $ exists F(x) <==> F(a_1)or F(a_2) or dots.c $
       と書きたいが，これだと無限に列挙することになってしまうため量化子を用いて表しているに過ぎない．これをもとに推論規則を定める．
     </p>
     <section class="axm">
@@ -351,11 +351,11 @@
       <p>
         \begin{prooftree}
         \AXC{$exists x F(x)$}
-        \AXC{$F(a) arrow A$}
+        \AXC{$F(a) -> A$}
         \LL{$exists E$}
         \BIC{$A$}
         \end{prooftree}
-        ただし，$a$は$F(a) arrow A$の打ち消されていない仮定と$A$と$exists x F(x)$の自由変数に含まれていない．
+        ただし，$a$は$F(a) -> A$の打ち消されていない仮定と$A$と$exists x F(x)$の自由変数に含まれていない．
       </p>
     </section>
 
@@ -370,7 +370,7 @@
       </ul>
       <p>
         \begin{prooftree}
-        \AXC{$A arrow bot$}
+        \AXC{$A -> bot$}
         \LL{$not I$}
         \UIC{$not A$}
         \end{prooftree}
@@ -389,12 +389,12 @@
       </p>
     </section>
     <p>
-      しかし，これは$not A$が$A arrow bot$と定義しているに過ぎない．実際に置き換えてみても自然である．
+      しかし，これは$not A$が$A -> bot$と定義しているに過ぎない．実際に置き換えてみても自然である．
     </p>
 
     <h3>推論規則の別表記</h3>
     <p>
-      $arrow$が含まれている推論規則には二つの問題点がある．一つ目はもしこの論理体系で$arrow$を使用しない場合にこの推論規則を使用することができない．二つ目は冗長なこと．$arrow$からの推論をするために，$arrow$を作る推論が必要がある．そのため，$arrow "I"$を一緒に使用することが多い．これをまとめて1つの推論規則とするほうが都合がいい．
+      $->$が含まれている推論規則には二つの問題点がある．一つ目はもしこの論理体系で$->$を使用しない場合にこの推論規則を使用することができない．二つ目は冗長なこと．$->$からの推論をするために，$->$を作る推論が必要がある．そのため，$-> "I"$を一緒に使用することが多い．これをまとめて1つの推論規則とするほうが都合がいい．
     </p>
     <section class="axm">
       <h4>$or "E"$</h4>
@@ -467,7 +467,7 @@
         <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $ (A or B) and not B arrow A $
+        $ (A or B) and not B -> A $
       </p>
       <h4>排中律</h4>
       <ul>
@@ -481,7 +481,7 @@
         <li>$A$: 論理式</li>
       </ul>
       <p>
-        $ not not A arrow A $
+        $ not not A -> A $
       </p>
     </section>
 
@@ -496,18 +496,18 @@
         <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $ Gamma, A tack B arrow.l.r.double.long Gamma tack A arrow B $
+        $ Gamma, A tack B <==> Gamma tack A -> B $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $(arrow.r.double)$$arrow "I"$そのものである．
+          $(==>)$$-> "I"$そのものである．
         </p>
         <p>
-          $(arrow.l.double)$前提より， $ Gamma tack A arrow B. $
+          $(==>)$前提より， $ Gamma tack A -> B. $
           前提に$A$を追加すると，
-          $ A, Gamma tack A, A arrow B. $
-          となり，$A, A arrow B arrow.r.double B$だから，
+          $ A, Gamma tack A, A -> B. $
+          となり，$A, A -> B ==> B$だから，
           $ Gamma, A tack B. $
           が成り立つ．
         </p>
@@ -539,7 +539,7 @@
         <li>$A$: 論理式</li>
       </ul>
       <p>
-        $ A arrow A $
+        $ A -> A $
       </p>
       <details>
         <summary>証明</summary>
@@ -550,7 +550,7 @@
           \RL{$1$}
           \UIC{$A$}
           \RL{$1$}
-          \UIC{$A arrow A$}
+          \UIC{$A -> A$}
           \end{prooftree}
         </p>
       </details>
@@ -571,7 +571,7 @@
           \UIC{$(A or B) and not B$}
           \UIC{$A or B$}
           \AXC{}
-          \UIC{$A arrow A$}
+          \UIC{$A -> A$}
           \AXC{}
           \RL{$1$}
           \UIC{$B$}
@@ -584,7 +584,7 @@
           \RL{$1$}
           \TIC{$A$}
           \RL{$2$}
-          \UIC{$(A or B) and not B arrow A$}
+          \UIC{$(A or B) and not B -> A$}
           \end{prooftree}
         </p>
         <p>
@@ -595,12 +595,12 @@
           \UIC{$bot$}
           \UIC{$A or bot$}
           \AXC{}
-          \UIC{$bot arrow bot$}
+          \UIC{$bot -> bot$}
           \UIC{$not bot$}
           \BIC{$(A or bot) and not bot$}
           \UIC{$A$}
           \RL{$1$}
-          \UIC{$bot arrow A$}
+          \UIC{$bot -> A$}
           \end{prooftree}
         </p>
       </details>
@@ -626,19 +626,19 @@
           \AXC{}
           \UIC{$A or not A$}
           \AXC{}
-          \UIC{$A arrow A$}
+          \UIC{$A -> A$}
           \AXC{}
           \RL{$1$}
           \UIC{$not A$}
           \AXC{}
           \RL{$2$}
-          \UIC{$or not A$}
+          \UIC{$not not A$}
           \BIC{$bot$}
           \UIC{$A$}
           \RL{$1$}
           \TIC{$A$}
           \RL{$2$}
-          \UIC{$not not A arrow A$}
+          \UIC{$not not A -> A$}
           \end{prooftree}
         </p>
         <p>
@@ -660,12 +660,12 @@
           \UIC{$not (A or not A)$}
           \BIC{$bot$}
           \RL{$2$}
-          \UIC{$not not(A or not A)$}
+          \UIC{$not not (A or not A)$}
           \UIC{$A or not A$}
           \end{prooftree}
         </p>
         <p>
-          最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$B arrow A arrow B$を証明する．
+          最小論理と二重否定の除去を用いて爆発律を導出する．まず補題$B -> A -> B$を証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -676,11 +676,11 @@
           \BIC{$A and B$}
           \UIC{$B$}
           \RL{$1$}
-          \UIC{$A arrow B$}
+          \UIC{$A -> B$}
           \RL{$2$}
-          \UIC{$B arrow A arrow B$}
+          \UIC{$B -> A -> B$}
           \end{prooftree}
-          この補題より$B tack A arrow B$で，必要としない論理式を前提として追加してもよいという推論である．この$B$を$bot$として利用する．
+          この補題より$B tack A -> B$で，必要としない論理式を前提として追加してもよいという推論である．この$B$を$bot$として利用する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -688,13 +688,13 @@
           \AXC{}
           \RL{$2$}
           \UIC{$bot$}
-          \UIC{$A arrow bot$}
+          \UIC{$A -> bot$}
           \BIC{$bot$}
           \RL{$1$}
           \UIC{$not not A$}
           \UIC{$A$}
           \RL{$2$}
-          \UIC{$bot arrow A$}
+          \UIC{$bot -> A$}
           \end{prooftree}
         </p>
       </details>
@@ -702,23 +702,23 @@
 
     <h2>等価性</h2>
     <p>
-      以前に$=$と$arrow.l.r$は相等関係と説明した．相当関係とは等価性を満たすものだが，等価性は反射律かつ代入原理である．$=$は集合に対する相等関係と定義されているが，$arrow.l.r$は別の定義が既に存在しているので，その定義で相等関係になるかを調べる必要がある．
+      以前に$=$と$<->$は相等関係と説明した．相当関係とは等価性を満たすものだが，等価性は反射律かつ代入原理である．$=$は集合に対する相等関係と定義されているが，$<->$は別の定義が既に存在しているので，その定義で相等関係になるかを調べる必要がある．
     </p>
     <p>
       代入原理を示すために次の定理を用意する．
     </p>
     <section class="thm">
-      <h4>$arrow$の置換</h4>
+      <h4>$->$の置換</h4>
       <ul>
         <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $ (A arrow B) arrow.l.r not A or B $
+        $ (A -> B) <-> not A or B $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $(A arrow B) arrow not A or B$の証明である．
+          $(A -> B) -> not A or B$の証明である．
           \begin{prooftree}
           \AXC{}
           \UIC{$A or not A$}
@@ -727,7 +727,7 @@
           \UIC{$A$}
           \AXC{}
           \RL{$2$}
-          \UIC{$A arrow B$}
+          \UIC{$A -> B$}
           \BIC{$B$}
           \UIC{$not A or B$}
           \AXC{}
@@ -737,11 +737,11 @@
           \RL{$1$}
           \TIC{$not A or B$}
           \RL{$2$}
-          \UIC{$(A arrow B) arrow not A or B$}
+          \UIC{$(A -> B) -> not A or B$}
           \end{prooftree}
         </p>
         <p>
-          $not A or Barrow (A arrow B)$の証明である．
+          $not A or B -> (A -> B)$の証明である．
           \begin{prooftree}
           \AXC{}
           \RL{$3$}
@@ -755,61 +755,61 @@
           \BIC{$bot$}
           \UIC{$B$}
           \RL{$1$}
-          \UIC{$A arrow B$}
+          \UIC{$A -> B$}
           \AXC{}
           \RL{$2$}
           \UIC{$B$}
-          \UIC{$A arrow B$}
+          \UIC{$A -> B$}
           \RL{$2$}
-          \TIC{$A arrow B$}
+          \TIC{$A -> B$}
           \RL{$3$}
-          \UIC{$not A or B arrow A arrow B$}
+          \UIC{$not A or B -> A -> B$}
           \end{prooftree}
         </p>
       </details>
     </section>
     <section class="thm">
-      <h4>$arrow.l.r$の反射律</h4>
+      <h4>$<->$の反射律</h4>
       <ul>
         <li>$A$: 論理式</li>
       </ul>
       <p>
-        $ A arrow.l.r A $
+        $ A <-> A $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          同一律より，$A arrow A$だから成り立つ．
+          同一律より，$A -> A$だから成り立つ．
         </p>
       </details>
-      <h4>$arrow.l.r$の代入原理</h4>
+      <h4>$<->$の代入原理</h4>
       <ul>
         <li>$A, B$: 論理式</li>
         <li>$F(X)$: 論理式</li>
       </ul>
       <p>
-        $ A arrow.l.r B arrow.r.double F(A) arrow.l.r F(B) $
+        $ A <-> B ==> F(A) <-> F(B) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          論理式は再帰的定義によって定義されていたため，論理式の数学的帰納法によって証明する．また，$A arrow.l.r B, F(A) arrow F(B)$が証明できれば，$A arrow.l.r B arrow.r.double F(B) arrow F(A)$も同様に証明できので，片方のみでよい．
+          論理式は再帰的定義によって定義されていたため，論理式の数学的帰納法によって証明する．また，$A <-> B, F(A) -> F(B)$が証明できれば，$A <-> B ==> F(B) -> F(A)$も同様に証明できので，片方のみでよい．
         </p>
         <p>
-          $F(A) = A$のとき，そのものだから成り立つ．
+          $F(A) <==> A$のとき，そのものだから成り立つ．
         </p>
         <p>
-          $F(A)$に$A$が含まれない$C$のとき，$C arrow.l.r C$だから成り立つ．
+          $F(A)$に$A$が含まれない$C$のとき，$C <-> C$だから成り立つ．
         </p>
         <p>
-          $F(A) = not A$のとき，次の証明である．
+          $F(A) <==> not A$のとき，次の証明である．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
           \UIC{$B$}
           \AXC{}
-          \UIC{$A arrow.l.r B$}
-          \UIC{$B arrow A$}
+          \UIC{$A <-> B$}
+          \UIC{$B -> A$}
           \BIC{$A$}
           \AXC{}
           \RL{$2$}
@@ -818,19 +818,19 @@
           \RL{$1$}
           \UIC{$not B$}
           \RL{$2$}
-          \UIC{$not A arrow not B$}
+          \UIC{$not A -> not B$}
           \end{prooftree}
         </p>
         <p>
-          $F(A)=Aand C$のとき，次の証明である．
+          $F(A) <==> A and C$のとき，次の証明である．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
           \UIC{$A and C$}
           \UIC{$A$}
           \AXC{}
-          \UIC{$A arrow.l.r B$}
-          \UIC{$A arrow B$}
+          \UIC{$A <-> B$}
+          \UIC{$A -> B$}
           \BIC{$B$}
           \AXC{}
           \RL{$1$}
@@ -838,12 +838,12 @@
           \UIC{$C$}
           \BIC{$B and C$}
           \RL{$1$}
-          \UIC{$A and C arrow B and C$}
+          \UIC{$A and C -> B and C$}
           \end{prooftree}
           同様に，$F(A)=C and A$のときでも成り立つ．
         </p>
         <p>
-          $F(A)=A or C$のとき，次の証明である．
+          $F(A) <==> A or C$のとき，次の証明である．
           \begin{prooftree}
           \AXC{}
           \RL{$2$}
@@ -852,8 +852,8 @@
           \RL{$1$}
           \UIC{$A$}
           \AXC{}
-          \UIC{$A arrow.l.r B$}
-          \UIC{$A arrow B$}
+          \UIC{$A <-> B$}
+          \UIC{$A -> B$}
           \BIC{$B$}
           \UIC{$B or C$}
           \AXC{}
@@ -863,32 +863,32 @@
           \RL{$1$}
           \TIC{$B or C$}
           \RL{$2$}
-          \UIC{$A or C arrow B or C$}
+          \UIC{$A or C -> B or C$}
           \end{prooftree}
           同様に，$F(A) = C or A$のときでも成り立つ．
         </p>
         <p>
-          $F(A) = A arrow C$のとき，前述したことを用いて，$A arrow.l.r B arrow.r.double A arrow C arrow.l.r B arrow C$が示せる．
-          同様に，$F(A) = C arrow A$のときでも成り立つ．
+          $F(A) = A -> C$のとき，前述したことを用いて，$A <-> B ==> A -> C <-> B -> C$が示せる．
+          同様に，$F(A) = C -> A$のときでも成り立つ．
         </p>
         <p>
-          $F(A)=forall a, A(a)$のとき，次の証明である．
+          $F(A) <==> forall a, A(a)$のとき，次の証明である．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
           \UIC{$forall x, A(x)$}
           \UIC{$A(a)$}
           \AXC{}
-          \UIC{$A(a) arrow.l.r B(a)$}
-          \UIC{$A(a) arrow B(a)$}
+          \UIC{$A(a) <-> B(a)$}
+          \UIC{$A(a) -> B(a)$}
           \BIC{$B(a)$}
           \UIC{$forall x, B(x)$}
           \RL{$1$}
-          \UIC{$forall x, A(x) arrow forall x, B(x)$}
+          \UIC{$forall x, A(x) -> forall x, B(x)$}
           \end{prooftree}
         </p>
         <p>
-          $F(A) = exists a, A(a)$のとき，次の証明である．
+          $F(A) <==> exists a, A(a)$のとき，次の証明である．
           \begin{prooftree}
           \AXC{}
           \RL{$2$}
@@ -897,18 +897,18 @@
           \RL{$1$}
           \UIC{$A(a)$}
           \AXC{}
-          \UIC{$A(a) arrow.l.r B(a)$}
-          \UIC{$A(a) arrow B(a)$}
+          \UIC{$A(a) <-> B(a)$}
+          \UIC{$A(a) -> B(a)$}
           \BIC{$B(a)$}
           \UIC{$exists x, B(x)$}
           \RL{$1$}
           \BIC{$exists x, B(x)$}
           \RL{$2$}
-          \UIC{$exists x, A(x) arrow exists x, B(x)$}
+          \UIC{$exists x, A(x) -> exists x, B(x)$}
           \end{prooftree}
         </p>
         <p>
-          $A arrow.l.r B$で$F(A) arrow.l.r F(B)$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'(F(A))$について前述したことを用いて$F'(F(A))arrow.l.r F'(F(B))$である．よって，任意の論理式で$F(A)arrow.l.r F(B)$が成り立つ．
+          $A <-> B$で$F(A) <-> F(B)$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'(F(A))$について前述したことを用いて$F'(F(A)) <-> F'(F(B))$である．よって，任意の論理式で$F(A) <-> F(B)$が成り立つ．
         </p>
       </details>
     </section>
@@ -930,63 +930,67 @@
         <li>$F(x)$: 論理式</li>
       </ul>
       <p>
-        $ forall a b, a = b arrow (F(a) arrow.l.r F(b)) $
+        $ forall a b, a = b -> (F(a) <-> F(b)) $
       </p>
     </section>
     <p>
       等価性は同値性を満たす．<dfn>同値性</dfn>とは反射律，対称律，推移律が成り立つことである．等価性から同値性のそれぞれの性質を証明する．
     </p>
     <section class="thm">
-      <h4>$arrow.l.r$の対称律</h4>
+      <h4>$<->$の対称律</h4>
       <ul>
         <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $ A arrow.l.r B arrow.l.r.double.long B arrow.l.r A $
+        $ A <-> B <==> B <-> A $
       </p>
       <details>
         <summary>証明</summary>
-        代入原理を用いて次のように変形する．
-        $
-        & arrow.l.r B\
-        arrow.r.double & A arrow.l.r A) arrow.l.r (B arrow.l.r A)\
-        arrow.r.double & A arrow.l.r A) arrow (B arrow.l.r A).
-        $
-        反射律より$A arrow.l.r A$は定理なので，
-        $ (B arrow.l.r A) $
-        が推論された．逆も同様．
+        <p>
+          代入原理を用いて次のように変形する．
+          $
+          & A <-> B,\
+          ==> & (A <-> A) <-> (B <-> A),\
+          ==> & (A <-> A) -> (B <-> A).
+          $
+          反射律より$A <-> A$は定理なので，
+          $ (B <-> A) $
+          が推論された．逆も同様．
+        </p>
       </details>
-      <h4>$arrow.l.r$の推移律</h4>
+      <h4>$<->$の推移律</h4>
       <ul>
         <li>$A, B, C$: 論理式</li>
       </ul>
       <p>
-        $$(A arrow.l.r B) and (B arrow.l.r C) arrow.r.double A arrow.l.r C$
+        $ (A <-> B) and (B <-> C) ==> A <-> C $
       </p>
       <details>
         <summary>証明</summary>
-        代入原理を用いて次のように変形する．
-        $
-        & arrow.l.r B\
-        arrow.r.double & A arrow.l.r C) arrow.l.r (B arrow.l.r C)\
-        arrow.r.double & B arrow.l.r C) arrow (A arrow.l.r C).
-        $
-        同様に代入原理を用いて次のように変形する．
-        $
-        & arrow.l.r C\
-        arrow.r.double & B arrow.l.r C) arrow.l.r (C arrow.l.r C)\
-        arrow.r.double & C arrow.l.r C) arrow (B arrow.l.r C).
-        $
-        反射律より$C arrow.l.r C$なので，
-        $ (B arrow.l.r C) $
-        が推論され，
-        $ (A arrow.l.r C) $
-        も推論される．逆も同様．
+        <p>
+          代入原理を用いて次のように変形する．
+          $
+          & A <-> B,\
+          ==> & (A <-> C) <-> (B <-> C),\
+          ==> & (B <-> C) -> (A <-> C).
+          $
+          同様に代入原理を用いて次のように変形する．
+          $
+          & B <-> C,\
+          ==> & (B <-> C) <-> (C <-> C),\
+          ==> & (C <-> C) -> (B <-> C).
+          $
+          反射律より$C <-> C$なので，
+          $ B <-> C $
+          が推論され，
+          $ A <-> C $
+          も推論される．逆も同様．
+        </p>
       </details>
     </section>
     <p>
-      $arrow.l.r$と$=$の対称律と推移律の証明は等価性以外の$arrow.l.r, =$の性質を用いずに求めれば本質的に同じなので$arrow.l.r$のみ証明を行う．
-    </p>
+      $<->$と$=$の対称律と推移律の証明は等価性以外の$<->, =$の性質を用いずに求めれば本質的に同じなので$<->$のみ証明を行う．
+    </p>>
 
     <h2>双対</h2>
     <h3>二重否定律</h3>
@@ -999,12 +1003,12 @@
         <li>$A$: 論理式</li>
       </ul>
       <p>
-        $ A arrow.l.r not not A $
+        $ A <-> not not A $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $(arrow)$の証明である．
+          $(->)$の証明である．
           \begin{prooftree}
           \AXC{}
           \RightLabel{$2$}
@@ -1016,11 +1020,12 @@
           \RL{$1$}
           \UIC{$not not A$}
           \RL{$2$}
-          \UIC{$A arrow not not A$}
+          \UIC{$A -> not not A$}
           \end{prooftree}
         </p>
         <p>
-          $(arrow.l.double)$は二重否定の除去そのものである． </p>
+          $(<-)$は二重否定の除去そのものである．
+        </p>
       </details>
     </section>
 
@@ -1035,12 +1040,12 @@
         <li>$F(x)$: 論理式</li>
       </ul>
       <p>
-        $ not (A or B) arrow.l.r not A and not B $
+        $ not (A or B) <-> not A and not B $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $(arrow)$の証明である．
+          $(->)$の証明である．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -1064,36 +1069,62 @@
           \UIC{$not B$}
           \BIC{$not A and not B$}
           \RL{$3$}
-          \UIC{$not (A or B) arrow not A and not B$}
+          \UIC{$not (A or B) -> not A and not B$}
           \end{prooftree}
         </p>
         <p>
-          $(arrow.l.double)$の証明である． \begin{prooftree} \AXC{} \RL{$2$} \UIC{$A or B$} \AXC{} \RL{$1$} \UIC{$A$} \AXC{} \RL{$3$} \UIC{$not A and not B$} \UIC{$not A$} \BIC{$bot$} \AXC{} \RL{$1$} \UIC{$B$} \AXC{} \RL{$3$} \UIC{$not A and not B$} \UIC{$not B$} \BIC{$bot$} \RL{$1$} \TIC{$bot$} \RL{$2$} \UIC{$not (A or B)$} \RL{$3$} \UIC{$not A and not B arrow not (A or B)$}
+          $(<-)$の証明である．
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$A or B$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$A$}
+          \AXC{}
+          \RL{$3$}
+          \UIC{$not A and not B$}
+          \UIC{$not A$}
+          \BIC{$bot$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$B$}
+          \AXC{}
+          \RL{$3$}
+          \UIC{$not A and not B$}
+          \UIC{$not B$}
+          \BIC{$bot$}
+          \RL{$1$}
+          \TIC{$bot$}
+          \RL{$2$}
+          \UIC{$not (A or B)$}
+          \RL{$3$}
+          \UIC{$not A and not B -> not (A or B)$}
           \end{prooftree}
         </p>
       </details>
       <p>
-        $ not (A and B) arrow.l.r not A or not B $
+        $ not (A and B) <-> not A or not B $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          De Morganの法則より，$not (A or B) arrow.l.r not A and not B$が成り立つから，この$A$と$B$をそれぞれ$not A$と$not B$に置き換えて，代入原理と二重否定律を用いて変形する．
+          De Morganの法則より，$not (A or B) <-> not A and not B$が成り立つから，この$A$と$B$をそれぞれ$not A$と$not B$に置き換えて，代入原理と二重否定律を用いて変形する．
           $
-          not(not A or not B) & rrow.l.r not not A and not not B, \
-          not not (not A or not B) & rrow.l.r not (not not A and not not B), \
-          not A or not B & rrow.l.r not (A and B), \
-          not (A and B) & rrow.l.r not A or not B.
+          not (not A or not B) & <-> not not A and not not B, \
+          not not (not A or not B) & <-> not (not not A and not not B), \
+          not A or not B & <-> not (A and B), \
+          not (A and B) & <-> not A or not B.
           $
         </p>
       </details>
       <p>
-        $ not exists x F(x) arrow.l.r forall x not F(x) $
+        $ not exists x F(x) <-> forall x not F(x) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $(arrow)$を$F(x)$に含まれていない$a$を用いて証明する．
+          $(->)$を$F(x)$に含まれていない$a$を用いて証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -1107,58 +1138,76 @@
           \UIC{$not F(a)$}
           \UIC{$forall x not F(x)$}
           \RL{$2$}
-          \UIC{$not exists x F(x) arrow forall x not F(x)$}
+          \UIC{$not exists x F(x) -> forall x not F(x)$}
           \end{prooftree}
         </p>
         <p>
-          $(arrow.l.double)$を$F(x)$に含まれていない$a$を用いて証明する． \begin{prooftree} \AXC{} \RL{$2$} \UIC{$exists x F(x)$} \AXC{} \RL{$1$} \UIC{$F(a)$} \AXC{} \RL{$3$} \UIC{$forall x not F(x)$} \UIC{$not F(a)$} \BIC{$bot$} \RL{$1$} \BIC{$bot$} \RL{$2$} \UIC{$not exists x F(x)$} \RL{$3$} \UIC{$forall x not F(x) arrow not exists x F(x)$}
+          $(<-)$を$F(x)$に含まれていない$a$を用いて証明する．
+          \begin{prooftree}
+          \AXC{}
+          \RL{$2$}
+          \UIC{$exists x F(x)$}
+          \AXC{}
+          \RL{$1$}
+          \UIC{$F(a)$}
+          \AXC{}
+          \RL{$3$}
+          \UIC{$forall x not F(x)$}
+          \UIC{$not F(a)$}
+          \BIC{$bot$}
+          \RL{$1$}
+          \BIC{$bot$}
+          \RL{$2$}
+          \UIC{$not exists x F(x)$}
+          \RL{$3$}
+          \UIC{$forall x not F(x) -> not exists x F(x)$}
           \end{prooftree}
         </p>
       </details>
       <p>
-        $ not forall x F(x) arrow.l.r exists x not F(x) $
+        $ not forall x F(x) <-> exists x not F(x) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          De Morganの法則より，$not exists x F(x) arrow.l.r forall x not F(x)$が成り立つから，この$F(x)$を$not F(x)$に置き換えて，代入原理と二重否定律を用いて変形する．
+          De Morganの法則より，$not exists x F(x) <-> forall x not F(x)$が成り立つから，この$F(x)$を$not F(x)$に置き換えて，代入原理と二重否定律を用いて変形する．
           $
-          not exists x not F(x) & rrow.l.r forall x not not F(x), \
-          not not exists x not F(x) & rrow.l.rnot forall x not not F(x), \
-          exists x not F(x) & rrow.l.r not forall x F(x), \
-          not forall x F(x) & rrow.l.r exists x not F(x).
+          not exists x not F(x) & <-> forall x not not F(x), \
+          not not exists x not F(x) & <-> not forall x not not F(x), \
+          exists x not F(x) & <-> not forall x F(x), \
+          not forall x F(x) & <-> exists x not F(x).
           $
         </p>
       </details>
       <p>
-        $ not exists F(x), A arrow.l.r forall F(x), not A $
+        $ not exists F(x), A <-> forall F(x), not A $
       </p>
       <details>
         <summary>証明</summary>
         <p>
           同値変形を行う．
           $
-          & ot exists F(x), A\
-          arrow.l.r.double.long & ot exists x, F(x) and A\
-          arrow.l.r.double.long & orall x, not (F(x) and A)\
-          arrow.l.r.double.long & orall x, not F(x) or not A\
-          arrow.l.r.double.long & orall x, F(x) arrow not A\
-          arrow.l.r.double.long & orall F(x), not A
+          & not exists F(x), A,\
+          <==> & not exists x, F(x) and A,\
+          <==> & forall x, not (F(x) and A),\
+          <==> & forall x, not F(x) or not A,\
+          <==> & forall x, F(x) -> not A,\
+          <==> & forall F(x), not A.
           $
         </p>
       </details>
       <p>
-        $ not forall F(x), A arrow.l.r exists not F(x), A $
+        $ not forall F(x), A <-> exists not F(x), A $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          De Morganの法則より，$not exists F(x), A arrow.l.r forall F(x), not A$が成り立つから，$A$を$not A$として，代入原理と二重否定律を用いて変形する．
+          De Morganの法則より，$not exists F(x), A <-> forall F(x), not A$が成り立つから，$A$を$not A$として，代入原理と二重否定律を用いて変形する．
           $
-          not exists F(x), not A & rrow.l.r forall F(x), not not A, \
-          not not exists F(x), not A & rrow.l.r not forall F(x), A, \
-          exists F(x), not A & rrow.l.r not forall F(x), A, \
-          not forall F(x), A & rrow.l.r exists F(x), not A.
+          not exists F(x), not A & <-> forall F(x), not not A, \
+          not not exists F(x), not A & <-> not forall F(x), A, \
+          exists F(x), not A & <-> not forall F(x), A, \
+          not forall F(x), A & <-> exists F(x), not A.
           $
         </p>
       </details>
@@ -1172,13 +1221,13 @@
       <h4>双対性</h4>
       <p>
         $n$個の論理式または述語を引数に取る論理式$F(B_1, dots, B_n)$の双対$F^*(B_1, dots, B_n)$としたとき，
-        $ not F(B_1, dots, B_n) arrow.l.r F^*(not B_1, dots, not B_n) $
+        $ not F(B_1, dots, B_n) <-> F^*(not B_1, dots, not B_n) $
         が成り立つ．
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          代入原理の証明と同様に数学的帰納法で証明する．$not F(B_1, B_2, dots, B_n) arrow.l.r F^*(not B_1, not B_2, dots, not B_n)$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'(F(B_1, B_2, dots, B_n))$についてDe Morganの法則を用いて$not F'(F(B_1, B_2, dots, B_n)) arrow.l.r F'^*(not F(B_1, B_2, dots, B_n))$である．また仮定より，$F'^*(not F(B_1, B_2, dots, B_n)) arrow.l.r F'^*(F^*(not B_1, not B_2, dots, not B_n))$が成り立つ．よって，任意の論理式で$not F(B_1, B_2, dots, B_n) arrow.l.r F^*(not B_1, not B_2, dots, not B_n)$が成り立つ．
+          代入原理の証明と同様に数学的帰納法で証明する．$not F(B_1, B_2, dots, B_n) <-> F^*(not B_1, not B_2, dots, not B_n)$が成り立っていると仮定する．すると，1つの真理関数または量化子を用いて出来た論理式$F'(F(B_1, B_2, dots, B_n))$についてDe Morganの法則を用いて$not F'(F(B_1, B_2, dots, B_n)) <-> F'^*(not F(B_1, B_2, dots, B_n))$である．また仮定より，$F'^*(not F(B_1, B_2, dots, B_n)) <-> F'^*(F^*(not B_1, not B_2, dots, not B_n))$が成り立つ．よって，任意の論理式で$not F(B_1, B_2, dots, B_n) <-> F^*(not B_1, not B_2, dots, not B_n)$が成り立つ．
         </p>
       </details>
     </section>
@@ -1191,7 +1240,7 @@
     <section class="def">
       <h4>トートロジー</h4>
       <p>
-        $ top :arrow.l.r.double.long not bot $
+        $ top :<==> not bot $
       </p>
     </section>
     <section class="thm">
@@ -1202,10 +1251,10 @@
       <details>
         <summary>証明</summary>
         <p>
-          同一律より$bot arrow bot$が成り立つから，次の証明図が存在する．
+          同一律より$bot -> bot$が成り立つから，次の証明図が存在する．
           \begin{prooftree}
           \AXC{}
-          \UIC{$bot arrow bot$}
+          \UIC{$bot -> bot$}
           \UIC{$not bot$}
           \end{prooftree}
         </p>
@@ -1215,20 +1264,20 @@
         <li>$A$: 論理式</li>
       </ul>
       <p>
-        $ A arrow.l.rtop $
+        $ A <-> top $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $(arrow.r.double)$$top$は定理だから，次の証明図が存在する．
+          $(->)$$top$は定理だから，次の証明図が存在する．
           \begin{prooftree}
           \AXC{}
           \UIC{$bot$}
-          \UIC{$A arrow bot$}
+          \UIC{$A -> bot$}
           \end{prooftree}
         </p>
         <p>
-          $(arrow.l.double)$逆も同様． </p>
+          $(<-)$逆も同様． </p>
       </details>
     </section>
 
@@ -1243,12 +1292,12 @@
         <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $ A and B arrow.l.r B and A $
+        $ A and B <-> B and A $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $A and B arrow B and A$を証明する．
+          $A and B -> B and A$を証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -1260,24 +1309,24 @@
           \UIC{$A$}
           \BIC{$B and A$}
           \RL{$1$}
-          \UIC{$A and B arrow B and A$}
+          \UIC{$A and B -> B and A$}
           \end{prooftree}
           $A$と$B$を交換すると逆も成り立つ．
         </p>
       </details>
       <p>
-        $ A or B arrow.l.r B or A $
+        $ A or B <-> B or A $
       </p>
       <details>
         <summary>証明</summary>
         <p>
           双対性と代入原理を用いて，
           $
-          & and B arrow.l.r B and A\
-          arrow.l.r.double.long & ot (A and B) arrow.l.r not (B and A)\
-          arrow.l.r.double.long& not A or not B arrow.l.r not B or not A.
+          & A and B <-> B and A\
+          <==> & not (A and B) <-> not (B and A)\
+          <==> & not A or not B <-> not B or not A.
           $
-          よって，$A or B arrow.l.r B or A$が成り立つ．
+          よって，$A or B <-> B or A$が成り立つ．
         </p>
       </details>
       <h4>結合律</h4>
@@ -1285,13 +1334,13 @@
         <li>$A, B, C$: 論理式</li>
       </ul>
       <p>
-        $ A and (B and C) arrow.l.r (A and B) and C $
-        $ A or (B or C) arrow.l.r (A or B) or C $
+        $ A and (B and C) <-> (A and B) and C $
+        $ A or (B or C) <-> (A or B) or C $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $A and (B and C) arrow (A and B) and C$の証明する．
+          $A and (B and C) -> (A and B) and C$の証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -1310,9 +1359,9 @@
           \UIC{$C$}
           \BIC{$(A and B) and C$}
           \RL{$1$}
-          \UIC{$A and (B and C) arrow (A and B) and C$}
+          \UIC{$A and (B and C) -> (A and B) and C$}
           \end{prooftree}
-          交換律を用いると逆も成り立つ．また，双対性より$A or (B or C) arrow.l.r (A or B) or C$が成り立つ．
+          交換律を用いると逆も成り立つ．また，双対性より$A or (B or C) <-> (A or B) or C$が成り立つ．
         </p>
       </details>
       <h4>冪等律</h4>
@@ -1320,13 +1369,13 @@
         <li>$A$: 論理式</li>
       </ul>
       <p>
-        $ A and A arrow.l.r A $
-        $ A or A arrow.l.r A $
+        $ A and A <-> A $
+        $ A or A <-> A $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $A and A arrow A$は$and "E"$そのものなので逆を証明する．
+          $A and A -> A$は$and "E"$そのものなので逆を証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -1336,9 +1385,9 @@
           \UIC{$A$}
           \BIC{$A and A$}
           \RL{$1$}
-          \UIC{$A arrow A and A$}
+          \UIC{$A -> A and A$}
           \end{prooftree}
-          双対性より$A or A arrow.l.r A$も成り立つ．
+          双対性より$A or A <-> A$も成り立つ．
         </p>
       </details>
       <h4>分配律</h4>
@@ -1346,13 +1395,13 @@
         <li>$A, B, C$: 論理式</li>
       </ul>
       <p>
-        $ A and (B or C) arrow.l.r (A and B) or (A and C) $
-        $ A or (B and C) arrow.l.r (A or B) and (A or C) $
+        $ A and (B or C) <-> (A and B) or (A and C) $
+        $ A or (B and C) <-> (A or B) and (A or C) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $A and (B or C) arrow (A and B) or (A and C)$を証明する．
+          $A and (B or C) -> (A and B) or (A and C)$を証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$2$}
@@ -1379,11 +1428,11 @@
           \RL{$1$}
           \TIC{$(A and B) or (A and C)$}
           \RL{$2$}
-          \UIC{$A and (B or C) arrow (A and B) or (A and C)$}
+          \UIC{$A and (B or C) -> (A and B) or (A and C)$}
           \end{prooftree}
         </p>
         <p>
-          $(A and B) or (A and C) arrow A and (B or C)$を証明する．
+          $(A and B) or (A and C) -> A and (B or C)$を証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$2$}
@@ -1410,9 +1459,9 @@
           \RL{$1$}
           \TIC{$A and (B or C)$}
           \RL{$2$}
-          \UIC{$(A and B) or (A and C) arrow A and (B or C)$}
+          \UIC{$(A and B) or (A and C) -> A and (B or C)$}
           \end{prooftree}
-          双対性より$A or (B and C) arrow.l.r (A or B) and (A or C)$も成り立つ．
+          双対性より$A or (B and C) <-> (A or B) and (A or C)$も成り立つ．
         </p>
       </details>
       <h4>恒等律</h4>
@@ -1420,15 +1469,15 @@
         <li>$A$: 論理式</li>
       </ul>
       <p>
-        $ A and top arrow.l.r A $
-        $ A or bot arrow.l.r A $
-        $ A and bot arrow.l.r bot $
-        $ A or top arrow.l.r top $
+        $ A and top <-> A $
+        $ A or bot <-> A $
+        $ A and bot <-> bot $
+        $ A or top <-> top $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $A and top arrow A$は$and "E"$そのものなので逆を証明する．
+          $A and top -> A$は$and "E"$そのものなので逆を証明する．
           \begin{prooftree}
           \AXC{}
           \UIC{$top$}
@@ -1437,10 +1486,10 @@
           \UIC{$A$}
           \BIC{$top and A$}
           \RL{$1$}
-          \UIC{$A arrow top and A$}
+          \UIC{$A -> top and A$}
           \end{prooftree}
-          双対性より$A or bot arrow.l.r A$も成り立つ．
-          $A and bot arrow.l.r bot$は$and "E"$そのもので，逆は爆発律そのものである．双対性より$A or top arrow.l.r top$も成り立つ．
+          双対性より$A or bot <-> A$も成り立つ．
+          $A and bot <-> bot$は$and "E"$そのもので，逆は爆発律そのものである．双対性より$A or top <-> top$も成り立つ．
         </p>
       </details>
       <h4>矛盾律</h4>
@@ -1452,39 +1501,41 @@
       </p>
       <details>
         <summary>証明</summary>
-        $
-        & ot (A and not B)\
-        arrow.l.r.double.long & ot A or A\
-        arrow.l.r.double.long & or not A.
-        $
-        より真である．
+        <p>
+          $
+          & not (A and not A)\
+          <==> & not A or A\
+          <==> & A or not A.
+          $
+          より真である．
+        </p>
       </details>
       <h4>吸収律</h4>
       <ul>
         <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $ A and (A or B) arrow.l.r A $
-        $ A or (A and B) arrow.l.r A $
+        $ A and (A or B) <-> A $
+        $ A or (A and B) <-> A $
       </p>
       <details>
         <summary>証明</summary>
         <p>
           $(A or B) and (A or not B)$について考える．
           $
-          & A or B) and (A or not B)\
-          arrow.l.r.double.long&A or (B and not B)\
-          arrow.l.r.double.long&A or bot\
-          arrow.l.r.double.long&A.
+          & (A or B) and (A or not B)\
+          <==> & A or (B and not B)\
+          <==> & A or bot\
+          <==> & A.
           $
           よって，$A and (A or B)$に$(A or B) and (A or not B)$を代入する．
           $
-          & and (A or B)\
-          arrow.l.r.double.long&(A or B) and (A or not B) and (A or B)\
-          arrow.l.r.double.long&(A or B) and (A or not B)\
-          arrow.l.r.double.long&A.
+          & A and (A or B)\
+          <==> & (A or B) and (A or not B) and (A or B)\
+          <==> & (A or B) and (A or not B)\
+          <==> & A.
           $
-          したがって，$A and (A or B) arrow.l.r A$は成り立つ．また，双対性より，$A or (A and B) arrow.l.r A$も成り立つ．
+          したがって，$A and (A or B) <-> A$は成り立つ．また，双対性より，$A or (A and B) <-> A$も成り立つ．
         </p>
       </details>
       <h4>推移律</h4>
@@ -1492,7 +1543,7 @@
         <li>$A, B, C$: 論理式</li>
       </ul>
       <p>
-        $ (A arrow B) and (B arrow C) arrow (A arrow C) $
+        $ (A -> B) and (B -> C) -> (A -> C) $
       </p>
       <details>
         <summary>証明</summary>
@@ -1503,18 +1554,18 @@
           \UIC{$A$}
           \AXC{}
           \RL{$2$}
-          \UIC{$(A arrow B) and (B arrow C)$}
-          \UIC{$A arrow B$}
+          \UIC{$(A -> B) and (B -> C)$}
+          \UIC{$A -> B$}
           \BIC{$B$}
           \AXC{}
           \RL{$2$}
-          \UIC{$(A arrow B) and (B arrow C)$}
-          \UIC{$B arrow C$}
+          \UIC{$(A -> B) and (B -> C)$}
+          \UIC{$B -> C$}
           \BIC{$C$}
           \RL{$1$}
-          \UIC{$A arrow C$}
+          \UIC{$A -> C$}
           \RL{$2$}
-          \UIC{$(A arrow B) and (B arrow C) arrow (A arrow C)$}
+          \UIC{$(A -> B) and (B -> C) -> (A -> C)$}
           \end{prooftree}
         </p>
       </details>
@@ -1523,24 +1574,24 @@
         <li>$A, B, C$: 論理式</li>
       </ul>
       <p>
-        $ (A arrow B arrow C) arrow (A and B arrow C) $
+        $ (A -> B -> C) -> (A and B -> C) $
       </p>
       <h4>移出律</h4>
       <ul>
         <li>$A, B, C$: 論理式</li>
       </ul>
       <p>
-        $ (A and B arrow C) arrow (A arrow B arrow C) $
+        $ (A and B -> C) -> (A -> B -> C) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
           $
-          & arrow B arrow C\
-          arrow.l.r.double.long & arrow not B or C\
-          arrow.l.r.double.long & ot A or not B or C\
-          arrow.l.r.double.long & ot (A and B) or C\
-          arrow.l.r.double.long & and B arrow C.
+          & A -> B -> C\
+          <==> & A -> not B or C\
+          <==> & not A or not B or C\
+          <==> & not (A and B) or C\
+          <==> & A and B -> C.
           $
         </p>
       </details>
@@ -1549,16 +1600,16 @@
         <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $ (A arrow B) arrow.l.r not B arrow not A $
+        $ (A -> B) <-> not B -> not A $
       </p>
       <details>
         <summary>証明</summary>
         <p>
           $
-          & arrow B\
-          arrow.l.r.double.long & ot A or B\
-          arrow.l.r.double.long & or not A\
-          arrow.l.r.double.long & ot B arrow not A.
+          & A -> B\
+          <==> & not A or B\
+          <==> & B or not A\
+          <==> & not B -> not A.
           $
         </p>
       </details>
@@ -1574,13 +1625,13 @@
         <li>$F(x)$: 論理式</li>
       </ul>
       <p>
-        $ forall x F(x) arrow.l.r forall y F(y) $
-        $ exists x F(x) arrow.l.r exists y F(y) $
+        $ forall x F(x) <-> forall y F(y) $
+        $ exists x F(x) <-> exists y F(y) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $forall x F(x) arrow forall y F(y)$を$F(x)$に含まれない$a$を用いて証明する．
+          $forall x F(x) -> forall y F(y)$を$F(x)$に含まれない$a$を用いて証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -1588,9 +1639,9 @@
           \UIC{$F(a)$}
           \UIC{$forall y F(y)$}
           \RL{$1$}
-          \UIC{$forall x F(x) arrow forall y F(y)$}
+          \UIC{$forall x F(x) -> forall y F(y)$}
           \end{prooftree}
-          $x$と$y$を入れ替えると逆も成り立つ．双対性より，$exists x F(x) arrow.l.r exists y F(y)$も成り立つ．
+          $x$と$y$を入れ替えると逆も成り立つ．双対性より，$exists x F(x) <-> exists y F(y)$も成り立つ．
         </p>
       </details>
       <h4>量化子の変換</h4>
@@ -1598,7 +1649,7 @@
         <li>$F(x)$: 論理式</li>
       </ul>
       <p>
-        $ forall x F(x) arrow exists x F(x) $
+        $ forall x F(x) -> exists x F(x) $
       </p>
       <details>
         <summary>証明</summary>
@@ -1611,7 +1662,7 @@
           \UIC{$F(a)$}
           \UIC{$exists x F(x)$}
           \RL{$1$}
-          \UIC{$forall x F(x) arrow exists x F(x)$}
+          \UIC{$forall x F(x) -> exists x F(x)$}
           \end{prooftree}
         </p>
       </details>
@@ -1620,13 +1671,13 @@
         <li>$F(x, y)$: 論理式</li>
       </ul>
       <p>
-        $ forall x y F(x, y) arrow.l.r forall y x F(x, y) $
-        $ exists x y F(x, y) arrow.l.r exists y x F(x, y) $
+        $ forall x y F(x, y) <-> forall y x F(x, y) $
+        $ exists x y F(x, y) <-> exists y x F(x, y) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $forall x y F(x, y) arrow forall y x F(x, y)$を$F(x, y)$に含まれない$a, b$を用いて証明する．
+          $forall x y F(x, y) -> forall y x F(x, y)$を$F(x, y)$に含まれない$a, b$を用いて証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -1636,18 +1687,18 @@
           \UIC{$forall x F(x, b)$}
           \UIC{$forall y x F(x, y)$}
           \RL{$1$}
-          \UIC{$forall x y F(x, y) arrow forall y x F(x, y)$}
+          \UIC{$forall x y F(x, y) -> forall y x F(x, y)$}
           \end{prooftree}
-          $x$と$y$を入れ替えると逆も成り立つ．双対性より，$exists x y F(x, y) arrow.l.r exists y x, F(x, y)$も成り立つ．
+          $x$と$y$を入れ替えると逆も成り立つ．双対性より，$exists x y F(x, y) <-> exists y x, F(x, y)$も成り立つ．
         </p>
       </details>
       <p>
-        $ exists x forall y (F(x, y)) arrow forall y exists x (x, y) $
+        $ exists x forall y (F(x, y)) -> forall y exists x (x, y) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          また，$exists x forall y F(x, y) arrow forall y exists x (x, y)$を$F(x, y)$に含まれない$a, b$を用いて証明する．
+          また，$exists x forall y F(x, y) -> forall y exists x (x, y)$を$F(x, y)$に含まれない$a, b$を用いて証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$2$}
@@ -1661,7 +1712,7 @@
           \BIC{$exists x F(x, b)$}
           \UIC{$forall y exists x F(x, y)$}
           \RL{$2$}
-          \UIC{$exists x forall y F(x, y) arrow forall y exists x (x, y)$}
+          \UIC{$exists x forall y F(x, y) -> forall y exists x (x, y)$}
           \end{prooftree}
         </p>
       </details>
@@ -1670,13 +1721,13 @@
         <li>$F(x), G(x)$: 論理式</li>
       </ul>
       <p>
-        $ forall x (F(x) and G(x)) arrow.l.r forall x F(x) and forall x G(x) $
-        $ exists x(F(x) or G(x)) arrow.l.r exists x F(x) or exists x G(x) $
+        $ forall x (F(x) and G(x)) <-> forall x F(x) and forall x G(x) $
+        $ exists x (F(x) or G(x)) <-> exists x F(x) or exists x G(x) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          $forall x(F(x) and G(x)) arrow forall x F(x) and forall x G(x)$を$F(x), G(x)$に含まれない$a$を用いて証明する．
+          $forall x (F(x) and G(x)) -> forall x F(x) and forall x G(x)$を$F(x), G(x)$に含まれない$a$を用いて証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}
@@ -1692,7 +1743,7 @@
           \UIC{$forall x G(x)$}
           \BIC{$forall x F(x) and forall x G(x)$}
           \RL{$1$}
-          \UIC{$forall x (F(x) and G(x)) arrow forall x F(x) and forall x G(x)$}
+          \UIC{$forall x (F(x) and G(x)) -> forall x F(x) and forall x G(x)$}
           \end{prooftree}
         </p>
         <p>
@@ -1711,19 +1762,19 @@
           \BIC{$F(a) and G(a)$}
           \UIC{$forall x (F(x) and G(x))$}
           \RL{$1$}
-          \UIC{$forall x F(x) and forall x G(x) arrow forall x(F(x) and G(x))$}
+          \UIC{$forall x F(x) and forall x G(x) -> forall x (F(x) and G(x))$}
           \end{prooftree}
-          双対性より，$exists x (F(x) or G(x)) arrow.l.r exists x F(x) or exists x G(x)$も成り立つ．
+          双対性より，$exists x (F(x) or G(x)) <-> exists x F(x) or exists x G(x)$も成り立つ．
         </p>
       </details>
       <p>
-        $ forall x F(x) or forall x G(x) arrow forall x (F(x) or G(x)) $
-        $ exists x (F(x) and G(x)) arrow exists x F(x) and exists x G(x) $
+        $ forall x F(x) or forall x G(x) -> forall x (F(x) or G(x)) $
+        $ exists x (F(x) and G(x)) -> exists x F(x) and exists x G(x) $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          また，$forall x F(x) or forall x G(x) arrow forall x (F(x) or G(x))$を$F(x), G(x)$に含まれない$a$を用いて証明する．
+          また，$forall x F(x) or forall x G(x) -> forall x (F(x) or G(x))$を$F(x), G(x)$に含まれない$a$を用いて証明する．
           \begin{prooftree}
           \AXC{}
           \RL{$2$}
@@ -1742,9 +1793,9 @@
           \UIC{$F(a) or G(a)$}
           \UIC{$forall x (F(x) or G(x))$}
           \RL{$2$}
-          \UIC{$forall x F(x) or forall x G(x) arrow forall x (F(x) or G(x))$}
+          \UIC{$forall x F(x) or forall x G(x) -> forall x (F(x) or G(x))$}
           \end{prooftree}
-          対偶律より，$exists x (F(x) and G(x)) arrow exists x F(x) and exists x G(x)$も成り立つ．
+          双対性より，$exists x (F(x) and G(x)) -> exists x F(x) and exists x G(x)$も成り立つ．
         </p>
       </details>
     </section>

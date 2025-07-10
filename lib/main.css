@@ -389,6 +389,10 @@ dd {
   border-radius: 0.2em;
 }
 
+.remark+ol {
+  list-style: upper-alpha;
+}
+
 .nest {
   border: var(--border);
   border-right: none;
@@ -397,4 +401,9 @@ dd {
 #logo {
   position: absolute;
   height: 2.5em;
+}
+
+.test {
+  width: 10cm;
+  background-color: #6b8e23;
 }
