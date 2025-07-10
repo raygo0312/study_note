@@ -1,2 +1,5 @@
 plugins:
   - jekyll-sitemap
+
+markdown: kramdown
+highlighter: rouge
