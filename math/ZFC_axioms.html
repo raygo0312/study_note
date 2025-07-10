@@ -23,11 +23,11 @@
       集合に用意されている2項述語は$=$と$in$である．$=$は相等関係をもつ．$in$はZFC公理系で性質を定められている．$a in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$in$を<dfn>帰属関係</dfn>という．$=$の公理を次にまとめると，
     </p>
     <section class="axm">
-      <h4 id="reflexivity-of-equality">反射律</h4>
+      <h4 id="reflexivity_of_equality">反射律</h4>
       <p>
         $ forall x, x = x $
       </p>
-      <h4 id="substitution-principle">代入原理</h4>
+      <h4 id="substitution_principle">代入原理</h4>
       <ul>
         <li>$F$: 述語</li>
       </ul>
@@ -39,7 +39,7 @@
       相等関係は同値関係の一種である．<dfn>同値関係</dfn>とは<dfn>反射律</dfn>，<dfn>対称律</dfn>，<dfn>推移律</dfn>が成り立つ関係のことである．つまり，反射律と代入原理から，対象律と推移律を示すことができる．
     </p>
     <section class="thm">
-      <h4>対称律</h4>
+      <h4 id="symmetric_of_equality">対称律</h4>
       <p>
         $ forall x y, x = y -> y = x $
       </p>
@@ -54,8 +54,8 @@
         <p>$y = x$</p>
         <span class="remark">道具</span>
         <ol>
-          <li><a href="#substitution-principle">代入原理</a></li>
-          <li><a href="#reflexivity-of-equality">反射律</a></li>
+          <li><a href="#substitution_principle">代入原理</a></li>
+          <li><a href="#reflexivity_of_equality">反射律</a></li>
         </ol>
         <span class="remark">証明</span>
         <p>
@@ -72,7 +72,7 @@
         <script src="https://gist-it.appspot.com/https://github.com/raygo0312/study_note/tree/master/math/lean/ZFCAxioms.lean?slice=1:4"></script>
         <iframe src="https://github.com/raygo0312/study_note/tree/master/math/lean/ZFCAxioms.lean" width="100%" height="300" frameborder="0"></iframe>
       </details>
-      <h4>推移律</h4>
+      <h4 id="transitive_of_equality">推移律</h4>
       <p>
         $ forall x y z, x = y and y = z -> x = z $
       </p>
@@ -88,7 +88,7 @@
         <p>$x = z$</p>
         <span class="remark">道具</span>
         <ol>
-          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#substitution_principle">代入原理</a></li>
         </ol>
         <span class="remark">証明</span>
         <p>
@@ -377,7 +377,7 @@
         <span class="remark">道具</span>
         <ol>
           <li><a href="#pairing">対</a></li>
-          <li><a href="#reflexivity-of-equality">$=$の反射律</a></li>
+          <li><a href="#reflexivity_of_equality">$=$の反射律</a></li>
         </ol>
         <span class="remark">証明</span>
         <p>
@@ -393,7 +393,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          ($<==$)は<a href="#substitution-principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．
+          ($<==$)は<a href="#substitution_principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．
         </p>
         <span class="remark">前提</span>
         <ul>
@@ -405,7 +405,7 @@
         <span class="remark">道具</span>
         <ol>
           <li><a href="#pairing-property">対の性質</a></li>
-          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#substitution_principle">代入原理</a></li>
           <li><a href="#pairing">対</a></li>
         </ol>
         <span class="remark">証明</span>
@@ -537,7 +537,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          ($<==$)は<a href="#substitution-principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．
+          ($<==$)は<a href="#substitution_principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．
         </p>
         <span class="remark">前提</span>
         <ul>
@@ -552,7 +552,7 @@
         <span class="remark">道具</span>
         <ol>
           <li><a href="#pairing-property">対の性質</a></li>
-          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#substitution_principle">代入原理</a></li>
           <li><a href="#pairing">対</a></li>
           <li><a href="#singleton-property">1元集合の性質</a></li>
           <li><a href="#ordered-pair">順序対</a></li>
@@ -790,7 +790,7 @@
         <span class="remark">道具</span>
         <ol>
           <li><a href="#singleton-property">1元集合の性質</a></li>
-          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#substitution_principle">代入原理</a></li>
           <li><a href="#subset">部分集合</a></li>
           <li><a href="#power-set">冪集合</a></li>
         </ol>
@@ -1008,7 +1008,7 @@
       <details>
         <summary>証明</summary>
         <p>
-          ($<==$)は<a href="#substitution-principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．$U$は全体集合だから，$U supset a$なので，$U subset a$を示せばよい．
+          ($<==$)は<a href="#substitution_principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．$U$は全体集合だから，$U supset a$なので，$U subset a$を示せばよい．
         </p>
         <span class="remark">前提</span>
         <ul>
@@ -1025,7 +1025,7 @@
         <span class="remark">道具</span>
         <ol>
           <li><a href="#set-difference">差集合</a></li>
-          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#substitution_principle">代入原理</a></li>
           <li><a href="#empty-set">空集合</a></li>
         </ol>
         <span class="remark">証明</span>
@@ -1080,7 +1080,7 @@
           <span class="remark">道具</span>
           <ol>
             <li><a href="#empty-set">空集合</a></li>
-            <li><a href="#substitution-principle">代入原理</a></li>
+            <li><a href="#substitution_principle">代入原理</a></li>
             <li><a href="#set-intersection">共通集合</a></li>
             <li><a href="#set-difference">差集合</a></li>
             <li><a href="natural_deduction.html#disjunctive-syllogism">選言的三段論法</a></li>
@@ -1433,7 +1433,7 @@
         <span class="remark">道具</span>
         <ol>
           <li><a href="mapping">写像</a></li>
-          <li><a href="#substitution-principle">代入原理</a></li>
+          <li><a href="#substitution_principle">代入原理</a></li>
         </ol>
         <span class="remark">証明</span>
         <p>

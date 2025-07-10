@@ -2,21 +2,21 @@
 -- Lean4の標準ライブラリには=の定義があるため、ここの定理は使わない
 namespace equal
 -- 相等関係の定義
-axiom equal : Set → Set → Prop
-infix:50 " = " => equal
+axiom equality : Set → Set → Prop
+infix:50 " = " => equality
 -- 相等関係の反射律
-axiom equal_reflexive : ∀ x : Set, equal x x
+axiom reflexivity_of_equality : ∀ x : Set, equality x x
 -- 相等関係の代入原理
-axiom equal_substitute (F : Set → Prop): ∀ x y : Set, equal x y → (F x ↔ F y)
+axiom substitution_principle (F : Set → Prop): ∀ x y : Set, equality x y → (F x ↔ F y)
 -- 相等関係の対称律
-theorem equal_symmetric : ∀ (x y : Set), equal x y → equal y x := by
+theorem symmetric_of_equality : ∀ (x y : Set), equality x y → equality y x := by
   intros x y h
-  have h1 : (equal x x) ↔ (equal y x) := equal_substitute (fun z => equal z x) x y h
-  exact h1.mp (equal_reflexive x)
+  have h1 : (equality x x) ↔ (equality y x) := substitution_principle (fun z => equality z x) x y h
+  exact h1.mp (reflexivity_of_equality x)
 -- 相等関係の推移律
-theorem equal_transitive : ∀ (x y z : Set), equal x y ∧ equal y z → equal x z := by
+theorem equal_transitive : ∀ (x y z : Set), equality x y ∧ equality y z → equality x z := by
   intros x y z h
-  have h1 : (equal x z) ↔ (equal y z) := equal_substitute (fun w => equal w z) x y h.left
+  have h1 : (equality x z) ↔ (equality y z) := substitution_principle (fun w => equality w z) x y h.left
   exact h1.mpr h.right
 end equal
 
