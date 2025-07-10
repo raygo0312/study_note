@@ -1,4 +1,3 @@
-
 -- Lean4の標準ライブラリには=の定義があるため、ここの定理は使わない
 namespace equal
 -- 相等関係の定義
@@ -29,6 +28,5 @@ def subset (a b : Set) : Prop := ∀ (x : Set), x ∈ a → x ∈ b
 infix:50 " ⊆ " => subset
 axiom emptySet : Set
 notation "∅" => emptySet
-
 
 end ZFC
