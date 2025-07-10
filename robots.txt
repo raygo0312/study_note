@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://raygo0312.github.io/study_note/sitemap.xml
