@@ -8,26 +8,22 @@
 
 <body>
   <header>
-    <a href="../">ホーム</a> / <a href="./">数学</a> /
+    <div class="both"><span><a href="../">ホーム</a> / <a href="./">数学</a> /</span> <a href="https://github.com/raygo0312/study_note/blob/master/math/lean/ZFCAxioms.lean" target="_blank"><button>Leanコード</button></a></div>
   </header>
   <main>
-    この章では証明木での証明を添えている．
-    <div class="you">
-      証明木内の推論にはギャップがあるけど許してね
-    </div>
     <h2>集合</h2>
     <p>
       <dfn>集合</dfn>とは数学的対象の集まりを1つの対象としたものだが，現代の数学では全ての数学的対象を集合とすることを目的としている，数学的対象を厳密に定義すると集合の公理を満たしたものになる．今回は集合の公理系としてZFC公理系を採用する．ZFC公理系と一緒に集合を作っていくように進めていく．
     </p>
     <p>
-      集合に用意されている2項述語は$=$と$in$である．$=$は相等関係をもつ．$in$はZFC公理系で性質を定められている．$a in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$in$を<dfn>帰属関係</dfn>という．$=$の公理を次にまとめると，
+      集合に用意されている2項述語は$=$と$in$である．$=$は等号関係をもつ．$in$はZFC公理系で性質を定められている．$a in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$in$を<dfn>帰属関係</dfn>という．$=$の公理を次にまとめると，
     </p>
     <section class="axm">
-      <h4 id="reflexivity_of_equality"><a href="https://github.com/raygo0312/study_note/blob/master/math/lean/ZFCAxioms.lean#L6-L7" target="_blank">反射律</a></h4>
+      <h4>等号関係の反射律</h4>
       <p>
         $ forall x, x = x $
       </p>
-      <h4 id="substitution_principle"><a href="https://github.com/raygo0312/study_note/blob/master/math/lean/ZFCAxioms.lean#L8-L9" target="_blank">代入原理</a></h4>
+      <h4>等号関係の代入原理</h4>
       <ul>
         <li>$F$: 述語</li>
       </ul>
@@ -36,10 +32,10 @@
       </p>
     </section>
     <p>
-      相等関係は同値関係の一種である．<dfn>同値関係</dfn>とは<dfn>反射律</dfn>，<dfn>対称律</dfn>，<dfn>推移律</dfn>が成り立つ関係のことである．つまり，反射律と代入原理から，対象律と推移律を示すことができる．
+      等号関係は同値関係の一種である．<dfn>同値関係</dfn>とは<dfn>反射律</dfn>，<dfn>対称律</dfn>，<dfn>推移律</dfn>が成り立つ関係のことである．つまり，反射律と代入原理から，対象律と推移律を示すことができる．
     </p>
     <section class="thm">
-      <h4 id="symmetric_of_equality"><a href="https://github.com/raygo0312/study_note/blob/master/math/lean/ZFCAxioms.lean#L10-L14" target="_blank">対称律</a></h4>
+      <h4>等号関係の対称律</h4>
       <p>
         $ forall x y, x = y -> y = x $
       </p>
@@ -52,25 +48,19 @@
         </ul>
         <span class="remark">結論</span>
         <p>$y = x$</p>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#substitution_principle">代入原理</a></li>
-          <li><a href="#reflexivity_of_equality">反射律</a></li>
-        </ol>
+        <span class="remark">方針</span>
+        <p>
+          $x = y$で代入原理を用いる
+        </p>
         <span class="remark">証明</span>
         <p>
-          \begin{prooftree}
-          \AXC{}
-          \LL{A}
-          \UIC{$x = x$}
-          \AXC{$x = y$}
-          \LL{B}
-          \UIC{$x = x <-> y = x$}
-          \BIC{$y = x$}
-          \end{prooftree}
+          $x = y$で代入原理を用いると，
+          $ x = x <-> y = x $
+          となる．$x = x$は反射律から成り立つので，$y = x$が成り立つ．
         </p>
+        <iframe data-src="https://live.lean-lang.org/#codez=LTAEklvR35UItTCH5Q7BkFnahK/wFAEMAeBLA9gW1AFMBHAV3QBtsAXAT1AC5QBlIm0QJMJX2vQAFAE64ADqmwA7AGbZMjAKwAGUACJQAXlUaAfMXJVadVCAgwEgWeVAIDqBo/Qw4CoQUSmUiOAG6GA+rilfSFNT0TKCAAESgmCFsNAA0eoGGERHGYFBw8IDHcoCmioD5yoBgLnZ4hADOZABGxTS0ZFW4El4igpIAxtgirqAAFABiUbzcQqIAlMzhkQzM0XEBBsHjfD1JgCmEoL10Qymm6YB/2oAPnrY0ABZEuE4ldPj47E3NPn4zQRNhXfOT7EPT+o9JDNwPiQxIoxNGUjKBQJIaMJij9QIdUODDuh3EQ4QBGEKdf5zCJDUArLFfAG4piaUoVKo0Gp4eqNFptDqdKRkCSgABeOniswYHMwePm8PBbnQzQ4hzRADp8CIuk4XG5sJ56Hd/ES5kMgA"></iframe>
       </details>
-      <h4 id="transitive_of_equality"><a href="https://github.com/raygo0312/study_note/blob/master/math/lean/ZFCAxioms.lean#L15-L19">推移律</a></h4>
+      <h4>等号関係の推移律</h4>
       <p>
         $ forall x y z, x = y and y = z -> x = z $
       </p>
@@ -84,123 +74,118 @@
         </ul>
         <span class="remark">結論</span>
         <p>$x = z$</p>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#substitution_principle">代入原理</a></li>
-        </ol>
+        <span class="remark">方針</span>
+        <p>
+          $x = y$で代入原理を用いる．
+        </p>
         <span class="remark">証明</span>
         <p>
-          \begin{prooftree}
-          \AXC{$y = z$}
-          \AXC{$x = y$}
-          \LL{A}
-          \UIC{$x = z <-> y = z$}
-          \BIC{$x = z$}
-          \end{prooftree}
+          $x = y$で代入原理を用いると，
+          $ x = z <-> y = z $
+          となる．$y = z$は前提から成り立つので，
+          $ therefore x = z. $
         </p>
+        <iframe data-src="https://live.lean-lang.org/#codez=LTAEklvR35UItTCH5Q7BkFnahK/wFAEMAeBLA9gW1AFMBHAV3QBtsAXAT1AC5QBlIm0QJMJX2vQAFAE64ADqmwA7AGbZMjAKwAGUACJQAXlUaAfMXJVadVCAgwEgY7lApoqB85UBgLhhwFQAZzIAjZzVpkvuCQH0RQUkAY2wRSiJQAAoAMSYeDm4hUQBKZkAAIlBMUAZmNhoAGj0Kanps3L44isAUwlB4ulTjMCg4eEAK40Bvz0Bo/VQaAAsiXEEiQlJS/xpBdAlnWmwANyjMmJyGAC8EgtTi8YNytdBAciIS/YYNvj2yhhzNxk03I1BQSSncZwqL/tRn/vQl0D9ACMCWiV0MFXWqVAdTB+mulShTE0rg8XhoPjwASCoXCkRiUjIElAAHcdKcEWSkYd+gA6SJSGg/YiYdAhDjA2n4IKA2nBADm/RoQA"></iframe>
       </details>
     </section>
 
     <h3>ZFC公理系</h3>
     <p>
-      <dfn>ZFC公理系</dfn>とは一般的に使われている集合の公理系である．ZFC公理系には<dfn>外延性公理</dfn>，<dfn>和集合公理</dfn>，<dfn>無限公理</dfn>，<dfn>冪集合公理</dfn>，<dfn>置換公理</dfn>，<dfn>正則性公理</dfn>，<dfn>選択公理</dfn>があり，Fは置換公理，Cは選択公理を表す．また，$"ZFC"^-$のように$^-$をつけたものは正則性公理を除いた公理系を表す．
+      <dfn>ZFC公理系</dfn>とは一般的に使われている集合の公理系である．ZFC公理系には<dfn>外延性公理</dfn>，<dfn>和集合公理</dfn>，<dfn>無限公理</dfn>，<dfn>冪集合公理</dfn>，<dfn>置換公理</dfn>，<dfn>正則性公理</dfn>，<dfn>選択公理</dfn>があり，Fは置換公理，Cは選択公理を表す．また，$"ZFC"^-$のように$""^-$をつけたものは正則性公理を除いた公理系を表す．
     </p>
 
     <h2>外延性公理</h2>
     <h3>部分集合</h3>
     <p>
-      集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a subset b$と表し，$a$は$b$に<dfn>含まれる</dfn>，$a$は$b$の部分集合という．$subset$を<dfn>包含関係</dfn>という．
+      集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a subset b$と表し，$a$は$b$に<dfn>含まれる</dfn>，$a$は$b$の部分集合という．$subset$を<dfn>包含関係</dfn>という．$subset$を$subset.eq$とも書く．
     </p>
-    <section class="def" id="subset">
+    <section class="def">
       <h4>部分集合</h4>
       <p>
         $
-        a subset b & <==> forall x, x in a -> x in b\
-        b supset a & <==> a subset b
+        a subset b & :<==> forall x, x in a -> x in b\
+        b supset a & :<==> a subset b
         $
       </p>
       <h4>真部分集合</h4>
       <p>
-        $
-        a subset.neq b & <==> a subset b and a != b\
-        b supset.neq a & <==> a subset.neq b
-        $
+        $ a subset.neq b :<==> a subset b and a != b $
       </p>
     </section>
     <p>
       $subset$の定義からわかる定理を示す．
     </p>
-    <section class="thm" id="law-of-immediately-subset">
-      <h4>部分集合の性質</h4>
+    <section class="thm">
+      <h4>部分集合の要素包含性</h4>
       <p>
         集合$a, b, c$について，
         $ a in b and b subset c ==> a in c $
       </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          部分集合の定義から明らかである．
+        </p>
+        <iframe data-src="https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAC4TAMCUUVAATEkdQAGcAVy10o3F0UC0DUjJFAysbKiDQQAAiUHFMYvJFABpQRoCC0w7CuycXdy9fQCCiQNCM7NyyaNB4lHhAcgNAK5jUMgALElxdTVASABtNEnsyAH0AY1xj9AcNY/qCorOm0vq1wECCAwKArTLxNcAgggMRVGZzK1C+oCelGqWjoqFAoF0AHdQABtLI5cgAXVA6AoAPhu0w6DO+MBBXeQA"></iframe>
+      </details>
     </section>
 
     <p>
       定義より$subset$は$->$のように扱える．つまり$->$と同様の性質が使える．しかし，$subset$は集合から論理値を返す述語だからすべての性質が使えるわけではないので注意が必要である．次の3つの性質を満たす関係を<dfn>順序関係</dfn>という．つまり，$subset$は順序関係である．反対称律は外延性公理そのものである．
     </p>
     <section class="thm">
-      <h4>反射律</h4>
+      <h4>部分集合の反射律</h4>
+      <ul>
+        <li>$a$: 集合</li>
+      </ul>
       <p>
-        $ forall x, x subset x $
+        $ a subset a $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          結論$x subset x$は<br>
-          すなわち，$forall y, y in x -> y in x$であるから，
+          部分集合の定義より，$a subset a$は
+          $ forall x, x in a -> x in a $
+          である．これは成り立つ．
         </p>
-        <span class="remark">前提</span>
-        <ul>
-          <li>$x, y$: 集合</li>
-          <li>$y in x$</li>
-        </ul>
-        <span class="remark">結論</span>
-        <p>$y in x$</p>
-        <span class="remark">証明</span>
-        <p>
-          前提から直ちに成り立つ．
-        </p>
+        <iframe data-src="https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAC4TAMCUUVAATEkdQAGcAVy10o3F0UC0DUjJFAysbKiDQQAAiUHFMYvJFABpQRoCC0w7CuycXdy9fQCCiQNCM7NyyaNB4lHhAWeVAEB1AaP1UMgALElxdTVBdxwAbEhwAN2wyOgB9XEcrrJy8guoSsuoC0efqrTpUUFAHGRrOl2qANn9QCd0ABjCgbIA"></iframe>
       </details>
-      <h4>推移律</h4>
+      <h4>部分集合の推移律</h4>
+      <ul>
+        <li>$a, b, c$: 集合</li>
+      </ul>
       <p>
-        $ forall x y z, x subset y and y subset z -> x subset z $
+        $ forall a b c, a subset b and b subset c -> a subset c $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          結論$x subset z$は<br>
-          すなわち，$forall t, t in x -> t in z$であるから，
+          結論$a subset c$は$forall t, t in a -> t in c$であるから，
         </p>
         <span class="remark">前提</span>
         <ul>
-          <li>$x, y, z, t$: 集合</li>
-          <li>$x subset y$</li>
-          <li>$y subset z$</li>
-          <li>$t in x$</li>
+          <li>$a, b, c$: 集合</li>
+          <li>$a subset b$</li>
+          <li>$b subset c$</li>
+          <li>$x$: 集合</li>
+          <li>$x in a$</li>
         </ul>
         <span class="remark">結論</span>
-        <p>$t in z$</p>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#law-of-immediately-subset">部分集合の性質</a></li>
-        </ol>
+        <p>$x in c$</p>
+        <span class="remark">方針</span>
+        <p>
+          $x in a$を要素包含性で求めていく．
+        </p>
         <span class="remark">証明</span>
         <p>
-          \begin{prooftree}
-          \AXC{$t in x$}
-          \AXC{$x subset y$}
-          \LL{A}
-          \BIC{$t in y$}
-          \AXC{$y subset z$}
-          \LL{A}
-          \BIC{$t in z$}
-          \end{prooftree}
+          $x in a$と$a subset b$より，
+          $ x in b $
+          さらに$b subset c$より，
+          $ therefore x in c. $
         </p>
+        <iframe data-src="https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAC4TAMCUUVAATEkdQAGcAVy10o3F0UC0DUjJFAysbKiDQQAAiUHFMYvJFABpQRoCC0w7CuycXdy9fQCCiQNCM7NyyaNB4lHhAcgNAK5jUMgALElxdTVASABtNEnsyAH0AY1xj9AcNY/qCorOm0vq1wECCAwKArTLxNcAgggMRVGZzK1C+oCelGqWjoqFAoF0AHdQABtLI5cgAXVA6AoAPhu0w6DO+MBBXeMzmyHggArjQDfnoBo/VWGy2OzIunQ9nS2DI2AAbry6CdcI4ThipvdCpDnr93p9QKMfq9AdRgZCwbjFTLoYU4QiHBzcOl2qA1gBGQlrdD8khmgBMVV2B1upwuVxuRwojQeZvNZrehJIxNJzsOx3OlzI13srtNjwdZv+QA"></iframe>
       </details>
-      <h4>反対称律</h4>
+      <h4>部分集合の反対称律</h4>
       <p>
         $ forall x y, x subset y and y subset x -> x = y $
       </p>
@@ -211,7 +196,7 @@
       <dfn>外延性</dfn>とは論理学的に，具体例を表すことである．集合論では具体例が重複している場合，1つとしてみる．また，具体例に順番がない性質のことである．
     </p>
 
-    <section class="axm" id="axiom-of-extensionality">
+    <section class="axm">
       <h4>外延性公理</h4>
       <p>
         $
@@ -239,10 +224,10 @@
 
     <h2>空集合公理</h2>
     <p>
-      <dfn>空集合</dfn>とは要素が一つもない集合のことである．空集合を${}$や$0$と表す．
+      <dfn>空集合</dfn>とは要素が一つもない集合のことである．空集合を${}$，$0$，$emptyset$と表す．
     </p>
 
-    <section class="def" id="empty-set">
+    <section class="def">
       <h4>空集合</h4>
       <p>
         「空集合$0$」とは
@@ -250,7 +235,7 @@
       </p>
     </section>
     <p>
-      空集合は任意の集合を持たない．$0$と書けるのは，次の定理が成り立つからである．
+      空集合は任意の集合を持たない．$0$と表せるのは1つしかないからである．
     </p>
     <p>
       空集合公理とは，空集合の存在を認めることである．空集合公理は他の公理から証明できるが，議論の流れとして，空集合を作っておきたかったので載せた．
@@ -272,37 +257,21 @@
       <details>
         <summary>証明</summary>
         <p>
-          一意とは，存在し，2つは無いことを表す．空集合公理より存在することは言えるので，2つは無いことを次のように言い換え，証明する．「空集合$0, 0'$に対して，$0 = 0'$である．」
-        </p>
-        <p>
-          また，$0 = 0'$は外延性公理から導ける．
+          一意とは，存在して2つは無いことを表す．空集合公理より存在することは言えるので，2つは無いことを次のように言い換えて証明する．「空集合$0, 0'$に対して，$0 = 0'$である．」また，$0 = 0'$は外延性公理から導け，$0$と$0'$の条件に違いがないことから，$0 subset 0'$の証明のみを行えばよい．
         </p>
         <span class="remark">前提</span>
         <ul>
           <li>$0, 0'$: 空集合</li>
+          <li>$x$: 集合</li>
+          <li>$x in 0$</li>
         </ul>
         <span class="remark">結論</span>
-        <p>$0 = 0'$</p>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#empty-set">空集合</a></li>
-          <li><a href="#axiom-of-extensionality">外延性公理</a></li>
-        </ol>
+        <p>$x in 0'$</p>
         <span class="remark">証明</span>
         <p>
-          \begin{prooftree}
-          \AXC{}
-          \LL{A}
-          \UIC{$x in.not 0$}
-          \AXC{}
-          \LL{A}
-          \UIC{$x in.not 0'$}
-          \BIC{$x in.not 0 <-> x in.not 0'$}
-          \UIC{$forall x, x in.not 0 <-> x in.not 0'$}
-          \LL{B}
-          \UIC{$0 = 0'$}
-          \end{prooftree}
+          $x in 0$は空集合の定義と矛盾する．よって，$x in 0'$である．
         </p>
+        <iframe data-src="https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBANE1AN71AcgNAG0VAMBcVPEIsDIB9XEdskkwyEnsAZzx7dAAbbDI6A0AAIlBxTFB66lIyRQAaZqaALwNO3sGA1sAUwlBRtsUTUFagtujQQC8vFHhAADlAeEME1DIACxJcXU1QAFd7bABHM5KSUtLc/M0GOtKjcXQARlB0ACYhuRZuJ9oBAgka80BZF6ABrmq0At9FMD9oAggghrQ65Fh8P8vz+yIM32C+Koiy0dFQoF+DAYVXqWQITwKRRK5VwlRqdSpoAcZGs8x5AGMOaV+WchWRjjyAHS8+z83A86n7dAANxIoDBZK14MwytAIoVunQABNsJKKrL5YqDaqNVr0ZRFmjBdTqUb+WaLWQKkA"></iframe>
       </details>
     </section>
 
@@ -310,7 +279,7 @@
     <p>
       <dfn>対</dfn>[<dfn>非順序対</dfn>]とは二つの集合$a, b$のみを元とする集合${a, b}$のことをいう．
     </p>
-    <section class="def" id="pairing">
+    <section class="def">
       <h4>対</h4>
       <ul>
         <li>$a, b$: 集合</li>
@@ -323,8 +292,8 @@
     <p>
       対の定義からわかる性質を示す．
     </p>
-    <section class="thm" id="pairing-property">
-      <h4>対の性質</h4>
+    <section class="thm">
+      <h4>対の交換則</h4>
       <ul>
         <li>$a, b$: 集合</li>
       </ul>
@@ -354,7 +323,9 @@
           <==> & x in {b, a}
           $
         </p>
+        <iframe data-src="https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBANE1AN71AcgNAG0VAMBcVPEIsDIB9XEdskkwyEnsAZzx7dAAbbDI6A0AAIlBxTFB66lIyRQAaZqaALwNO3sGA1sAUwlBRtsUTUFagtujQQD/tdLUGdGxdBwBzZvRQLSHyWY7yVHtcMnQyCp8Ab19D717fY+8AX19Q0E3tvagQ5adaEf47ey7bLYUrZcEHI4nLqNeZI3qtALgwHA0CTBZA0CACiJUYsQawVvAEoArmNQZAAFiRcLpNKAAMYEfAAVxudwAbrU6Ll8ljIQjjudkdQRfscYtpYjDpRSXRUKAgQwGFV6lkCEKCkUSuVcJUanVVaAHGRrPNzeyylbOayyEzzQA6C32K24UB081q3QAd1AAG1pdDYeDegB5XSu9n4fC9QAJhGGYXCtroALpAii+tVqwroJ0+t0er0l/OgQMh1MRjPR2PxxOgFMZvbh9PbbO3Cv5wvFulAA"></iframe>
       </details>
+      <h4>対の左・対の右</h4>
       <ul>
         <li>$a, b$: 集合</li>
       </ul>
@@ -372,27 +343,28 @@
         </ul>
         <span class="remark">結論</span>
         <p>$a in {a, b}$</p>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#pairing">対</a></li>
-          <li><a href="#reflexivity_of_equality">$=$の反射律</a></li>
-        </ol>
+        <span class="remark">方針</span>
+        <p>
+          対の定義を用いる．
+        </p>
         <span class="remark">証明</span>
         <p>
-          Bより$a = a$が成り立つ．$a = a or a = b$も成り立つので，$x = a or x = b$となる$x$が存在する．よって，$a in {a, b}$である．
+          $a = a$が成り立つから，
+          $ a = a or a = b $
+          である．よって，
+          $ therefore a in {a, b}. $
         </p>
+        <iframe data-src="https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAP+0VPEIGdGxdBwBzUHF0UC0DUjJFPPJUe1wydDI8ex8Ab19s7wAaQNzvAF9fUNAklPTQbK14tR7U+zSAfWwAZ3GRzIGigoNAACJQTEXm9YCRvoXAFMI14P7QQAoiQ6Cc6NAY+EAz3VQyAAsSXF1NbuTRiYAbEkcKLI5RaFajZbafXZAygXLR0VCgUC6ADuoAA2jsxpMZiMALrw/oMBjfOigADyugAdA5vviSJh0ABjCi6Rw01g3QDPyg9nq93hiJqk0o8AQtqPkQUDwb0xsdctCcnCEci0fysbNPniEehCcSyZSHFEEXTGczWUA"></iframe>
       </details>
+      <h4>対の等号性</h4>
       <ul>
         <li>$a, b, c$: 集合</li>
       </ul>
       <p>
-        $ {a, b} = {a, c} <==> b = c $
+        $ {a, b} = {a, c} ==> b = c $
       </p>
       <details>
         <summary>証明</summary>
-        <p>
-          ($<==$)は<a href="#substitution_principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．
-        </p>
         <span class="remark">前提</span>
         <ul>
           <li>$a, b, c$: 集合</li>
@@ -400,41 +372,17 @@
         </ul>
         <span class="remark">結論</span>
         <p>$b = c$</p>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#pairing-property">対の性質</a></li>
-          <li><a href="#substitution_principle">代入原理</a></li>
-          <li><a href="#pairing">対</a></li>
-        </ol>
-        <span class="remark">証明</span>
+        <span class="remark">方針</span>
         <p>
-          \begin{prooftree}
-          \AXC{${a, b} = {a, c}$}
-          \AXC{}
-          \LL{A}
-          \UIC{$b in {a, b}$}
-          \LL{B}
-          \BIC{$b in {a, c}$}
-          \LL{C}
-          \UIC{$b = a or b = c$}
-          \AXC{${a, b} = {a, c}$}
-          \AXC{}
-          \LL{A}
-          \UIC{$c in {a, c}$}
-          \LL{B}
-          \BIC{$c in {a, b}$}
-          \LL{C}
-          \UIC{$c = a or c = b$}
-          \BIC{$b = a and c = a or b = c$}
-          \AXC{}
-          \RL{1}
-          \UIC{$b = a and c = a$}
-          \UIC{$b = c$}
-          \RL{1}
-          \BIC{$b = c$}
-          \end{prooftree}
+          $b in {a, b} = {a, c}$であることを用いる
         </p>
-        $b in {a, b}$と$c in {a, c}$が成り立つので，${a, b} = {a, c}$から$b in {a, c}$と$c in {a, b}$である．$b = a$なら，$c in {b, b}$なので，$c = b$である．よって，$b = c$
+        <span class="remark">証明</span>
+        対の右より，
+        $ b in {a, b} "と" c in {a, c} $
+        が成り立つので，${a, b} = {a, c}$から
+        $ b in {a, c} "と" c in {a, b} $
+        である．$b = a$なら，$c in {b, b}$なので，$c = b$である．よって，$b = c$
+        <iframe data-src="https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAP+0VPEIGdGxdBwBzUHF0UC0DUjJFPPJUe1wydDI8ex8Ab19s7wAaQNzvAF9fUNAklPTQbK14tR7U+zSAfWwAZ3GRzIGigoNAACJQTEXm9YCRvoXAFMI14P7QQAoiQ6Cc6NAY+EBn5VQyAAsSXF1NbuTRidS0x4osnKLQrUXLbT67QGUC5aOioUCgXQAd1AAG0dmNJjMRgBdOH9BgMAA2dFAAHldAA6BxReEkTDoADGFF0jkJVxugElvQDvyoByAwez1e73RExIAEdxrhHOMxfNAQygZlHoBAggMwuOuQuauyDOBgIu8qhOVh8Me6AAbiRQI8AIxUTXgjE/P7qvGmi1WgBMdo+vUd2F+FG1eKRqOV2P6FBtweRKMACYRhiOe6Oo4WY2afcMVK3WvEM9BTEhTbOgRHYJ54gA+oAchOLoTx8JDcZtmcjHobCJjqem6ZSraT8MbMde4wLhMczTF4wZBHw/ce7cHoDpjLbler9n0NuCIQ7K6Z2aAA"></iframe>
       </details>
     </section>
 
@@ -468,10 +416,6 @@
         </ul>
         <span class="remark">結論</span>
         <p>$x in {a, b}'$</p>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#pairing">対</a></li>
-        </ol>
         <span class="remark">証明</span>
         <p>
           定義に従って変形する．
@@ -496,25 +440,58 @@
       </p>
     </section>
     <p>
-      1元集合は対から定義されるから，<a href="#pairing-property">対の性質</a>から直ちにわかる性質がある．
+      1元集合は対から定義されるから，対の性質から直ちにわかる性質がある．
     </p>
-    <section class="thm" id="singleton-property">
-      <h4>1元集合の性質</h4>
+    <section class="thm">
+      <h4>1元集合の元</h4>
+      <ul>
+        <li>$a$: 集合</li>
+      </ul>
+      <p>
+        $ a in {a} $
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          1元集合の定義を使って変形する．
+        </p>
+        <iframe data-src="https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcJJEA/7XNWdjgme0CAcyQtECQbJy5uEzqeLGAWbhBuVmBYgG846piAGiTamIBfOLSkYtLgCuqbAssZ8oB9JihVmcqFpoanQAAiJAY94ZPElbmkXcAUwmOU66RACiJ75JqcgEZAYUVaFpZgeBsGAAV3aNgANsgACYQIJIKDlSHcf47PaNPhvS7za5/dqdFExPqPIZJAYTFLpBFzJEokCfH40ChfLDcAAWEBY9ky8MRPH+qwgkMgwF4VTRTmqiSpZRp3WqGJqwiwSCQ9gA7kgANrS2XDLHrTYzYac1ZQQVBAC6WAgwChqEwQA"></iframe>
+      </details>
+      <h4>1元集合と対の等号性</h4>
       <ul>
         <li>$a, b, c$: 集合</li>
       </ul>
       <p>
-        $ a in {a} $
-        $ {a} = {b, c} <==> a = b = c $
-        $ {a} = {b} <==> a = b $
+        $ {a} = {b, c} ==> a = b = c $
       </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          1元集合の定義を使って変形する．
+        </p>
+        <iframe data-src="https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcJJEA0TUA3vUByA0AbRUAwF3NWdkZKgH0WIJqIBm4IYChWUAAbJm5hJ0AAIiQtBiQ+gS5uEwAaIcGALycJmYXEkcAUwiQV0ZM3JBHk0ZzAP+0Kyzgme0CAcyGQJBtFnh3xnixgFm4Qbg7YgG84u4xGZxB4xAC+cTSSHOl2ANzuNlO7Bh1xqTCgNRht3uj0mAz2uJmI0SKLhSARSA2+3JSEAFEQEg6IvBII4UQAlcoBt40A4kpYbgACwgLHsmSQ8DYYAArp9vgA3HrCOoNUk3LQUl54gTKmkPA5ah53PiM4RYJDkmAwTp9apsRWNZqtdosLryk1IQLcXx7V1itoeiXwbhC10AOjdwA9LCQfNdpvsAHckABtZVojEwmYAeXswbFYDAM0ACYQp9GYkAXAC65N40dNpqaCGrIbDEajMaQ8aTxbTZfsmezufzSCLPdRJZhla+rdrSHrAdbzNZgGflXkCoUilOXK583iqnHq544kkjslqo2ujvJ49XVOliuukDmy1ILPBwL2V2z3j2IKdY4UQCS3oA78qFCugrCsiV6NAAjraEBQdiDzwLiOxaHygCBBE4WoUrqV40vAB46qK/BnqafIgDKyB8gAjMR0KQZu27aq6ZEUVGABMtEbkwW68Hc8DngmiboRO1ZUQJSYFsJVbseJl4XKO3YVtJ1HeiAUDQFGNFxj0NZIAAPmGnSaSkqRtheklUSJMnTheXa3vYVl8mxZmCUKNTqZ0QQzHBNQDo5znTp+1n6WGjjUSZbZBSpzJUYAwoq0G8Tq5jAUogDYnTIAAJhAQRIO0cIZYGwDYvunG4XcICJdKPwxP8NJAkkgIQiZeXXIVTrkjkcW0BQsWgWu7D5Vc7XAI0GWQOGJUeAedyJENI00oa9zGrGgnzTwTozHZ6ZIG5HlBOWXXxTQRCskBIH8mBIrrUV0H2ai9TQQhRGlahaECDdHV3Dh8lkohM0pDigDkRDiBxIUtNgrVG5GURxAiza1BUbcVBoHJ9o0QONrS8bJ6FbZBY49v5qnqVA7FINp/KugZgRGU5EU2YJTkzOjjloW2LGURhS0pj5j1wTiiFRuzgUMA2SCABfkzPC4Al+TU6F5NpC5SbS6zyki7WF4DqlsryraeqimzHMw8LZW/defMNALSFIQ86HK0JaHE4zSY+X56uRWLc5S2xMzoXLrSZagmBAA"></iframe>
+      </details>
+      <h4>1元集合の等号性</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+      </ul>
+      <p>
+        $ {a} = {b} ==> a = b $
+      </p>
+      <details>
+        <summary>証明</summary>
+        <p>
+          1元集合の定義を使って変形する．
+        </p>
+        <iframe data-src="https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcJJEA0TUA3vUByA0AbRUAwF3NWdkZKgH0WIJqIBm4IYChWUAAbJm5hJ0AAIiQtBiQ+gS5uEwAaIcGALycJmYXEkcAUwiQV0ZM3JBHk0ZzAP+0Kyzgme0CAcyGQJBtFnh3xnixgFm4Qbg7YgG84u4xGZxB4xAC+cTSSHOl2ANzuNlO7Bh1xqTCgNRht3uj0mAz2uJmI0SKLhSARSA2+3JSEAFEQEg6IvBII4UQAlcoBt40A4kpYbgACwgLHsmSQ8DYYAArp9vgA3HrCOoNUk3LQUl54gTKmkPA5ah53PiM4RYJDkmAwTp9apsRWNZqtdosLryk1IQLcXx7V1itoeiXwbhC10AOjdwA9LCQfNdpvsAHckABtZVojEwmYAeXswbFYDAM0ACYQp9GYkAXAC65N40dNpqaCGrIbDEajMaQ8aTxbTZfsmezufzSCLPdRJZhla+rdrSHrAdbzNZgGflXkCoUilOXK583iqnHq544kkjslqo2ujvJ49XVOliuukDmy1ILPBwL2V2z3j2IKdY4UQCS3oA78qFCugrCsiV6NAAjraEBQdiDzwLiOxaHygCBBE4WoUrqV40vAB46qK/BnqafIgDKyB8gAjMR0KQZu27aq6ZEUVGABMtEbkwW68Hc8DngmiboRO1ZUQJSYFsJVbseJl4XKO3YVtJ1HeiAUDQFGNFxj0NZIAAPmGnSaSkqRtheklUSJMnTheXa3vYVl8mxZmCUKNTqZ0QQzHBNQDo5znTp+1n6WGjjUSZbZBSpzJUYAwoq0G8Tq5jAUogDYnTIAAJhAQRIO0cIZYGwDYvunG4XcICJdKPwxP8NJAkkgIQiZeXXIVTrkjkcW0BQsWgWu7D5Vc7XAI0GWQOGJUeAedyJENI00oa9zGrGgnzTwTozHZ6ZIG5HlBOWXXxTQRCskBIH8mBIrrUV0H2ai9TQQhRGlahaECDdHV3Dh8lkohM0pDigDkRDiBxIUtNgrVG5GURxAiza1BUbcVBoHJ9o0QONrS8bJ6FbZBY49v5qnqVA7FINp/KugZgRGU5EU2YJTkzOjjloW2LGURhS0pj5j1wTiiFRuzgUMA2SCABfkzPC4Al+TU6F5NpC5SbS6zyki7WF4DqlsryraeqimzHMw8LZW/defMNALSFIQ86HK0JaHE4zSY+X56uRWLc5S2xMzoXLMXHQBwH9eBiPDcjd38/Bu4PK96FOOjNJo21yP3ADjK0ZDsno95MHu5O9ukSbCdLejd0ptHOIVcLzEl9zBzocGGVBNwslu+KRt1l71bs60mWoJgQA"></iframe>
+      </details>
     </section>
 
     <h3>順序対</h3>
     <p>
       <dfn>順序対</dfn>とは順序を持った対を$(a, b)$のように表す．
     </p>
-    <section class="def" id="ordered-pair">
+    <section class="def">
       <h4>順序対</h4>
       <ul>
         <li>$a, b$: 集合</li>
@@ -525,18 +502,15 @@
       </p>
     </section>
     <section class="thm">
-      <h4>順序対の性質</h4>
+      <h4>順序対の等号性</h4>
       <ul>
         <li>$a, b, a', b'$: 集合</li>
       </ul>
       <p>
-        $ (a, b) = (a', b') <==> a = a' and b = b' $
+        $ (a, b) = (a', b') ==> a = a' and b = b' $
       </p>
       <details>
         <summary>証明</summary>
-        <p>
-          ($<==$)は<a href="#substitution_principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．
-        </p>
         <span class="remark">前提</span>
         <ul>
           <li>$a, b, a', b'$: 集合</li>
@@ -547,60 +521,7 @@
           <li>$a = a'$</li>
           <li>$b = b'$</li>
         </ul>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#pairing-property">対の性質</a></li>
-          <li><a href="#substitution_principle">代入原理</a></li>
-          <li><a href="#pairing">対</a></li>
-          <li><a href="#singleton-property">1元集合の性質</a></li>
-          <li><a href="#ordered-pair">順序対</a></li>
-        </ol>
         <span class="remark">証明</span>
-        <p>
-          \begin{prooftree}
-          \AXC{$(a, b) = (a', b')$}
-          \AXC{}
-          \LL{A}
-          \UIC{${a} in (a, b)$}
-          \LL{B}
-          \BIC{${a} in (a', b')$}
-          \LL{C}
-          \UIC{${a} = {a'} or {a} = {a', b'}$}
-          \LL{D}
-          \UIC{$a = a' or a = a' = b'$}
-          \UIC{$a = a'$}
-          \end{prooftree}
-          \begin{prooftree}
-          \AXC{$(a, b) = (a, b')$}
-          \AXC{}
-          \LL{A}
-          \UIC{${a, b} in (a, b)$}
-          \LL{B}
-          \BIC{${a, b} in (a, b')$}
-          \LL{C}
-          \UIC{${a, b} = {a} or {a, b} = {a, b'}$}
-          \LL{D}
-          \UIC{$a = b or b = b'$}
-          \AXC{}
-          \RL{1}
-          \UIC{$a = b$}
-          \AXC{}
-          \RL{1}
-          \UIC{$a = b$}
-          \AXC{$(a, b) = (a, b')$}
-          \LL{B}
-          \BIC{$(a, a) = (a, b')$}
-          \LL{E}
-          \UIC{${{a}} = {{a}, {a, b'}}$}
-          \LL{D}
-          \UIC{${a} = {a, b'}$}
-          \LL{D}
-          \UIC{$a = b'$}
-          \BIC{$b = b'$}
-          \RL{1}
-          \BIC{$b = b'$}
-          \end{prooftree}
-        </p>
         <p>
           ${a} in {{a}, {a, b}} = (a, b) = (a', b') = {{a'}, {a', b'}}$より，${a} = {a'} or {a} = {a', b'}$が成り立つ．どちらの場合も$a = a'$である．
         </p>
@@ -614,6 +535,7 @@
           $
           となる．$a = b$より，$b = b'$が成り立つ．
         </p>
+        <iframe data-src="https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcJJEA0TUA3vUByA0AbRUAwF3NWdkZKgH0WIJqIBm4IYChWUAAbJm5hJ0AAIiQtBiQ+gS5uEwAaIcGALycJmYXEkcAUwiQV0ZM3JBHk0ZzAP+0Kyzgme0CAcyGQJBtFnh3xnixgFm4Qbg7YgG84u4xGZxB4xAC+cTSSHOl2ANzuNlO7Bh1xqTCgNRht3uj0mAz2uJmI0SKLhSARSA2+3JSEAFEQEg6IvBII4UQAlcoBt40A4kpYbgACwgLHsmSQ8DYYAArp9vgA3HrCOoNUk3LQUl54gTKmkPA5ah53PiM4RYJDkmAwTp9apsRWNZqtdosLryk1IQLcXx7V1itoeiXwbhC10AOjdwA9LCQfNdpvsAHckABtZVojEwmYAeXswbFYDAM0ACYQp9GYkAXAC65N40dNpqaCGrIbDEajMaQ8aTxbTZfsmezufzSCLPdRJZhla+rdrSHrAdbzNZgDPdXkCoUilOdCBBXiqnHq540kkjslqo2ujvJ49XVOliuukDmy1ILPBwKdV2z3j2ILvhcUQDPyiugrCsiV41JcVx8juaoeAeDxHhc1zavwZ6xgml6IXCN7jvej59C+gT2B+DANu2P7HBQgCS3oA78qFEBa6gZh14QAAjrarHYg88C4jsWh8oAgQROFqFK6leNLwHBKSiih9zGqafIgDKyB8gAjDJKYQVB2qugpSlRgATOpYGabwdzwOe6ECRO1YqRZSYFlZVYGXZGGwteY49tZUa2aa8AgFA0DeUgcY9DWSAAD5hp0QVpG2F4OSpXl8vpcXoV2t72ElKXTheQo1AFnRBDMrE1AOWVtp+zmmpFhExakFUkXOqk5CpgDCirQbxOrmMBSiANibkgAAmW5IO0cKboGwDYvuRlMTSICddKPwxP8NJAkkgIQik6RjVcE1OuSLXtTQFCtfRIGjdc+3AI0m6QOG02wU4dyJLt100oaskuW9PBOjM6XpkgeUFUE5ZHbQRCsjRdH8sBIo/ZNjRsSm9RI5x0kzXx/ECAjB13KJc1cQe+M4oA5EQ4gc3GfTYclRopymGQIL2XeNv1TQaBy4zdEB3a0pkuQJ/1gR5FZOcl3r+YFyXBaFro1cA0XS7FOWWfpMxc0l/FtrpymCZ9KYlajHEPFxUZa9OlWABfkyUzAJgCX5HLYaOEr9Uq0mNss3tbOa6lSYDr1sryraeqij70462bs1uUj7EsdJ3EPAJvuJo5k7i27iYlWVYvm7WVse/b4MndD53w1dbMx0bce7g8mMCU4XM0pz5eTfcxNSbXqHtuhXPFWx2dp7nEf159XMxyjDTG/NZs6fTkefQJwabtuLlZ+KYczo11Za8ygBgGYA8XonO8wDdb1/XIMNQRA/Yw3CoNGXozN+tiVojcgLxwlt4tXzLVoG2xMCHEcQTCQnSEKW+EB75YgRDkA+UNaKl3YOAhwkCMqV0ntXCkIAADk9xcF1z1tfCBUCezIQOMgu+D8cF4Pbgcah5MdR4JkjTWeekFLPSktQ6mtN5Jz1Ug3FueMEhEJQSQi4yFn5MRqMvHcb8P5iQRGYDOgsRGUMBgDTyYsfK1j8gFKAQUQr8jbPLRWallbTk3qRMehsMHzVwc1ac8tnZmNdhY4ealR6CO5sjMCVc7FMIcRYyqqkl5bm4N6J0UA/QBiDKaUMwSFpxLpmwjx0IFE4kSBQ1B0C9xdwzlksRmU2x1i3mkqRJkhhyKGJ/GwSjazxQUhvNC7t+IzAKRlIWUiRaZS0W2XRUs1KGLCtVKKdVindyTGvPMSVtHhz4R45urNEYlQnmjO4FJAlzJSTJEJJlxkNJUm0m+oiOmqOyZowe4zh56wJtHGxaNX5ePJPIua6yXluW1NgnYScLHJN1lHVE9yOLrICbnZRiUc7jOCWCiKTsxm/PcQCrCQK44UhsPY2ZedSnNVaINVAmAgA"></iframe>
       </details>
     </section>
 
@@ -664,10 +586,6 @@
           <li>$dots.c$</li>
           <li>$a_n = b_n$</li>
         </ul>
-        <span class="remark">道具</span>
-        <ol>
-          <li>帰納法</li>
-        </ol>
         <span class="remark">証明</span>
         <p>
           $n = k - 1 (3 <= k)$のときに成り立っていると仮定する．このとき，
@@ -699,7 +617,7 @@
     <p>
       <dfn>和集合</dfn>[<dfn>合併</dfn>]とはその集合の元の元の全体である．$a$の和集合を$union.big a$と表す．
     </p>
-    <section class="def" id="union">
+    <section class="def">
       <h4>和集合</h4>
       <ul>
         <li>$a$: 集合</li>
@@ -744,7 +662,7 @@
     <p>
       <dfn>冪集合</dfn>とはその集合の部分集合全部からなる集合のことである．$a$の冪集合を$2^a$や$scr(P)(a)$と表す．冪集合公理は冪集合の存在を保証する．
     </p>
-    <section class="def" id="power-set">
+    <section class="def">
       <h4>冪集合</h4>
       <ul>
         <li>$a$: 集合</li>
@@ -766,55 +684,8 @@
     <p>
       冪集合は一意である．
     </p>
-    <section class="thm" id="power-set-property">
-      <h4>冪集合の性質</h4>
-      <ul>
-        <li>$a, b$: 集合</li>
-      </ul>
-      <p>
-        $ a in b ==> {a} in 2^b $
-      </p>
-      <details>
-        <summary>証明</summary>
-        <span class="remark">前提</span>
-        <ul>
-          <li>$a, b$: 集合</li>
-          <li>$a in b$</li>
-        </ul>
-        <span class="remark">結論</span>
-        <ul>
-          <li>${a} in 2^b$</li>
-        </ul>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#singleton-property">1元集合の性質</a></li>
-          <li><a href="#substitution_principle">代入原理</a></li>
-          <li><a href="#subset">部分集合</a></li>
-          <li><a href="#power-set">冪集合</a></li>
-        </ol>
-        <span class="remark">証明</span>
-        <p>
-          \begin{prooftree}
-          \AXC{}
-          \RL{1}
-          \UIC{$x in {a}$}
-          \LL{A}
-          \UIC{$x = a$}
-          \AXC{$a in b$}
-          \LL{B}
-          \BIC{$x in b$}
-          \RL{1}
-          \UIC{$x in {a} -> x in b$}
-          \LL{C}
-          \UIC{${a} subset b$}
-          \LL{D}
-          \UIC{${a} in 2^b$}
-          \end{prooftree}
-        </p>
-        <p>
-          $a in b$より，${a} subset b$が成り立つ．よって，${a} in 2^b$である．
-        </p>
-      </details>
+    <section class="thm">
+      <h4>冪和同一性</h4>
       <ul>
         <li>$a$: 集合</li>
       </ul>
@@ -837,32 +708,7 @@
           <ul>
             <li>$x in a$</li>
           </ul>
-          <span class="remark">道具</span>
-          <ol>
-            <li><a href="#union">和集合</a></li>
-            <li><a href="#power-set">冪集合</a></li>
-          </ol>
           <span class="remark">証明</span>
-          <p>
-            \begin{prooftree}
-            \AXC{$x in union.big 2^a$}
-            \LL{A}
-            \UIC{$exists y, x in y and y in 2^a$}
-            \AXC{}
-            \RL{1}
-            \UIC{$x in y and y in 2^a$}
-            \UIC{$x in y$}
-            \AXC{}
-            \RL{1}
-            \UIC{$x in y and y in 2^a$}
-            \UIC{$y in 2^a$}
-            \LL{B}
-            \UIC{$y subset a$}
-            \BIC{$x in a$}
-            \RL{1}
-            \BIC{$x in a$}
-            \end{prooftree}
-          </p>
           <p>
             $x in union.big 2^a$より，$x in y and y in 2^a$となる集合$y$が存在する．$y in 2^a$より，$y subset a$だから$x in a$である．
           </p>
@@ -878,37 +724,18 @@
           <ul>
             <li>$x in union.big 2^a$</li>
           </ul>
-          <span class="remark">道具</span>
-          <ol>
-            <li><a href="#singleton-property">1元集合の性質</a></li>
-            <li><a href="#power-set-property">冪集合の性質</a></li>
-            <li><a href="#union">和集合</a></li>
-          </ol>
           <span class="remark">証明</span>
-          <p>
-            \begin{prooftree}
-            \AXC{}
-            \LL{A}
-            \UIC{$x in {x}$}
-            \AXC{$x in a$}
-            \LL{B}
-            \UIC{${x} in 2^a$}
-            \BIC{$x in {x} and {x} subset a$}
-            \UIC{$exists y, x in y and y in 2^a$}
-            \LL{C}
-            \UIC{$x in union.big 2^a$}
-            \end{prooftree}
-          </p>
           <p>
             $x in a$より${x} in 2^a$である．よって$x in union.big 2^a$である．
           </p>
         </div>
+        <iframe data-src="https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcJJEALhMAwJVosABMIIKQoAFcbKBctECQbJy5uEycfP35kpEAAIiQtBmaeEwAaJEHEhvcJxoDg0IjouMAgoiS0iura7hyC2gpAcgNAK5isbgALCBZ7TKQIABtMiGBuAH14FieQQMgn/oam+CGrX6p0AgQROBqJGxtLSnQBBBE4mqt4G0BBCkAC+N0bMIsEgkPYAO5IADaVRqPAAukgQLw4bibgwELT4Q1QTlAGiagDe9faAG0VAGAu5lY7EYQueLCCzwgDG4jygrFAtyY3GETj6AyQKoELVG/T6AC9AWMDYlBoAUwiQxo1bWmKQ1OUAf9qCyxwJj2QIAc1+jUBKI8WGALG4NPlsQA3nEGjExnEmjEAL5xdYut3AT1/J3sZMe55MKDPZNeppa4aq8aGsuJLOp6ne82DboNQAURGWsQ6KIASuUA28aAcSUTudLtc3mAwJUg9wmAA3JXCMUSque+re4tAgTzmtNbprpoNTGNHF4kAwGC3FUitizyXS2XykCK5X0wLcXzjelvYBQJ+VeDcS70gB0SCPs+pz0nihIkvOOZ5smYwAPL2H+Q5gGMgAJhJBub5p89hUjSSAgXieJSkyeH/oBTzAaB+JEsS6HQVhcEIUhqG0Zhro4bSlFEd+JF4Eg9oUIAZ7p9hcVyZlh2b3EEvCLkWHi+mia5/F0e70uBNHiamUGsdh9KHseKrwX+gS3PSXG8PYQQmbx/GAM/KwkDmJrrZm67qnNJSnLr6TSVhpaZLli+5URBvlacmFK6UeJ5IIZgT2KZjLcRZVn4PxgCS3oA78r7PZolIJBEAAI4XgVhboj6wJgquvnrrainol5toYgF9KnCAE7IKcACMymQS5bnrs1rXtQATN1IW9bwDTwKp1GguxeEddNJIobN1K0kNi3qU5mkYWFq3za+IC1FA81IASSr4UgAA+ZG3CdaSUWpy0dXNpzrQRQWbSm7qhVhL1vQRamXM8tS3EEYwFa8bBgH9nEJWt9LXbFd2pLDxGdTkHWAMKKRQBsAQ4wKOIA2PcSClOUcqpvcP7AF6nmjVtfkgP6gbBu8YYRrE0Y1vGibpBT7pU2zTO8VjeyY9l1z84LwCSvc3zuWVqIJBUHrSzWu7YhtUs8O8YwsTBSBAyDQThbxgAxKkUZ7sJUwDylstNyYCzNjiGMSAMNEHPrDbdsuEzVtIN77xbFpgc04udPqnTAgzKH9sNOagDARBq5YzCqgDkRMnkzM3jbAE0GxPIGTAe22zMmK90sd1LVUJzCEYQAGxLEggBURGs6ShzkgBVipbFiZiwBIOPb4eO8uzuszTMSAKwbgDVO576QwP3g++xmuWL/Ywc7WvDvav0gxRxWq8D+vvtIHWSCrML+Cd2bgAwKoAAHJZWcInXAvR/B6HOalE807byWAiV9JV+S8JptAbMpTWB5Iqnl7kVK874bx3kCkBFgL48Rvg/PYL8P44p4gAsg/a701IAJDiXYAL0FrvRYDYIMgQkCAAvyYQYxOrPA6kwjqzwhqAEvyZS6NCHUSAcfF4m8j7kI4ajbidwHhPEhh8L4jxeCDFPPNFhyj/p4PIig3hANqLEIwqHcK709JRQAKLMA/FAIyGj+ja2puMMw710Gfm/L+d6AEzIq0pjrGWkj5aoIIgBNSAiN7QTXgY96ZEnwoJVK9SiYFqI2N1rlEKO16KG3sMDO4Js9oxPCR9ZaQ1yGxIZGjBajxiioEwEAA"></iframe>
       </details>
     </section>
 
     <h2>分出公理図式</h2>
     <p>
-      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F(x)$を満たす$x$の集合を${x mid(|) F(x)}$と表すものである．しかし，自由に使うと矛盾を生じることがある．分出公理で${x in a mid(|) F(x)}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数なことに注意する．他の公理から証明できる．
+      <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F(x)$を満たす$x$の集合を${x mid(|) F(x)}$と表すものである．しかし，自由に用いると矛盾を生じることがある．分出公理で${x in a mid(|) F(x)}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数なことに注意する．他の公理から証明できる．
     </p>
     <p>
       公理図式とは公理の述語部分を変数$F$に置き換え，この$F$にそれぞれ1階述語論理の論理式を代入したものを公理とするものである．
@@ -932,7 +759,7 @@
       <p>
         $
         & forall x exists y forall z, z in y <-> z in x and F(z)\
-        <==> & forall x exists {t in x mid(|) F(x)}.
+        <==> & forall x exists {t in x mid(|) F(t)}.
         $
       </p>
     </section>
@@ -941,7 +768,7 @@
     <p>
       <dfn>積集合</dfn>[<dfn>共通部分</dfn>]とは全ての集合の元であるものの全体である．
     </p>
-    <section class="def" id="set-intersection">
+    <section class="def">
       <h4>積集合</h4>
       <ul>
         <li>$a, b$: 集合</li>
@@ -968,9 +795,9 @@
 
     <h3>差集合</h3>
     <p>
-      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a without b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，登場するすべての集合を含む集合である．文脈によって決まる．このとき差集合$U without a$を$a$の<dfn>補集合</dfn>という．$a$の補集合をたまに$overline(a)$と表すことがあるが，あまり使わない．今回は定理の紹介で使うとする．
+      <dfn>差集合</dfn>とは集合$a$に含まれていて，集合$b$に含まれていない集合のことである．この集合を$a without b$で表す．また<dfn>全体集合</dfn>$U$を定義する．これは，登場するすべての集合を含む集合である．文脈によって決まる．このとき差集合$U without a$を$a$の<dfn>補集合</dfn>という．$a$の補集合をたまに$overline(a)$と表すことがあるが，あまり使わない．今回は定理の紹介で用いるとする．
     </p>
-    <section class="def" id="set-difference">
+    <section class="def">
       <h4>差集合</h4>
       <ul>
         <li>$a, b$: 集合</li>
@@ -992,169 +819,9 @@
     <p>
       公理を用いて性質を調べてみる．定義より，
       $ x in a without b <==> x in a and x in.not b $
-      になる．
+      になる．$a$が全体集合$U$であるとき，$x in a$は必ず真となるので，
+      $ x in U without b <==> not (x in b) $
     </p>
-    <section class="thm">
-      <h4>差集合の性質</h4>
-      <ul>
-        <li>$a$: 集合</li>
-        <li>$U$: 全体集合</li>
-      </ul>
-      <p>
-        $ U without a = 0 <==> U = a $
-      </p>
-      <details>
-        <summary>証明</summary>
-        <p>
-          ($<==$)は<a href="#substitution_principle">代入原理</a>から成り立つから，($==>$)の証明のみを行う．$U$は全体集合だから，$U supset a$なので，$U subset a$を示せばよい．
-        </p>
-        <span class="remark">前提</span>
-        <ul>
-          <li>$a$: 集合</li>
-          <li>$U$: 全体集合</li>
-          <li>$U without a = 0$</li>
-          <li>$x$: 集合</li>
-          <li>$x in U$</li>
-        </ul>
-        <span class="remark">結論</span>
-        <ul>
-          <li>$x in a$</li>
-        </ul>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#set-difference">差集合</a></li>
-          <li><a href="#substitution_principle">代入原理</a></li>
-          <li><a href="#empty-set">空集合</a></li>
-        </ol>
-        <span class="remark">証明</span>
-        <p>
-          \begin{prooftree}
-          \AXC{$U without a = 0$}
-          \AXC{}
-          \RL{1}
-          \UIC{$x in.not a$}
-          \AXC{$x in U$}
-          \LL{A}
-          \BIC{$x in U without a$}
-          \LL{B}
-          \BIC{$x in 0$}
-          \AXC{}
-          \LL{C}
-          \UIC{$x in.not 0$}
-          \BIC{$bot$}
-          \UIC{$x in a$}
-          \end{prooftree}
-        </p>
-        <p>
-          $x in.not a$が成り立つと仮定すると，$x in U without a = 0$であるが，これは空集合の定義の矛盾する．よって，$x in a$が成り立つ．
-        </p>
-      </details>
-      <ul>
-        <li>$a, b$: 集合</li>
-        <li>$U$: 全体集合</li>
-      </ul>
-      <p>
-        $U without a$と$b$が互いに素と$b subset a$が同値である．
-        $ (U without a) inter b = 0 <==> b subset a $
-      </p>
-      <details>
-        <summary>証明</summary>
-        <p>
-          ($<==$)と($==>$)の両方を証明する．
-        </p>
-        <div class="nest">
-          <span class="remark">前提</span>
-          <ul>
-            <li>$a, b$: 集合</li>
-            <li>$U$: 全体集合</li>
-            <li>$(U without a) inter b = 0$</li>
-            <li>$x$: 集合</li>
-            <li>$x in b$</li>
-          </ul>
-          <span class="remark">結論</span>
-          <ul>
-            <li>$x in a$</li>
-          </ul>
-          <span class="remark">道具</span>
-          <ol>
-            <li><a href="#empty-set">空集合</a></li>
-            <li><a href="#substitution_principle">代入原理</a></li>
-            <li><a href="#set-intersection">共通集合</a></li>
-            <li><a href="#set-difference">差集合</a></li>
-            <li><a href="natural_deduction.html#disjunctive-syllogism">選言的三段論法</a></li>
-          </ol>
-          <span class="remark">証明</span>
-          <p>
-            \begin{prooftree}
-            \AXC{$(U without a) inter b = 0$}
-            \AXC{}
-            \LL{A}
-            \UIC{$x in.not 0$}
-            \LL{B}
-            \BIC{$x in.not (U without a) inter b$}
-            \LL{C,D}
-            \UIC{$not (x in U and x in.not a and x in b)$}
-            \UIC{$x in.not U or x in a or x in.not b$}
-            \AXC{$x in b$}
-            \AXC{}
-            \UIC{$b subset U$}
-            \BIC{$x in U$}
-            \AXC{$x in b$}
-            \LL{E}
-            \TIC{$x in a$}
-            \end{prooftree}
-          </p>
-          <p>
-            $(U without a) inter b$は空であるから，$x in.not (U without a) inter b$すなわち$x in.not U$または$x in a$またｈ$x in.not b$である．しかし，$x in U$，$x in b$なので，$x in U$である．
-          </p>
-        </div>
-        <div class="nest">
-          <div>
-            <span class="remark">前提</span>
-            <ul>
-              <li>$a, b$: 集合</li>
-              <li>$U$: 全体集合</li>
-              <li>$b subset a$</li>
-            </ul>
-            <span class="remark">結論</span>
-            <ul>
-              <li>$(U without a) inter b = 0$</li>
-            </ul>
-            <span class="remark">道具</span>
-            <ol>
-              <li><a href="#set-difference">差集合</a></li>
-              <li><a href="#set-intersection">共通集合</a></li>
-              <li><a href="#subset">部分集合</a></li>
-              <li><a href="#empty-set">空集合</a></li>
-            </ol>
-            <span class="remark">証明</span>
-            <p>
-              \begin{prooftree}
-              \AXC{}
-              \RL{2}
-              \UIC{$exists x, x in (U without a) inter b$}
-              \AXC{}
-              \RL{1}
-              \UIC{$x in (U without a) inter b$}
-              \LL{A,B}
-              \UIC{$x in U and x in.not a and x in b$}
-              \AXC{$b subset a$}
-              \LL{C}
-              \BIC{$x in.not a and x in a$}
-              \UIC{$bot$}
-              \RL{1}
-              \BIC{$bot$}
-              \RL{2}
-              \LL{D}
-              \UIC{$(U without a) inter b = 0$}
-              \end{prooftree}
-            </p>
-            <p>
-              $x in (U without a) inter b$となる$x$が存在すると仮定すると，$x in.not a$かつ$x in b$が成り立つ．$b subset a$より，$x in a$であるが，矛盾する．よって$(U without a) inter b = 0$である．
-            </p>
-          </div>
-      </details>
-    </section>
 
     <h3>対称差</h3>
     <p>
@@ -1185,7 +852,7 @@
     <p>
       <dfn>直積集合</dfn>とは二つの集合$a, b$の元$x, y$の組$(x, y)$の全体である．この集合を$a times b$と表す．
     </p>
-    <section class="def" id="direct-product">
+    <section class="def">
       <h4>直積集合</h4>
       <ul>
         <li>$a, b$: 集合</li>
@@ -1348,7 +1015,7 @@
       <dfn>写像</dfn>とは関数の一般化である．ある集合の元を引数として，もう一つの集合に属する1つの元が返ってくるものである．これを集合で表す．よく$f$で表され，自然数を2倍する写像なら$f(3)$は$6$になる．これを$(3, 6) in f$となるような集合とする．つまり，$f = {(0, 0), (1, 2), (2, 4), (3, 6), dots}$である．
     </p>
     <section class="def">
-      <h4 id="mapping">写像</h4>
+      <h4>写像</h4>
       <ul>
         <li>$a, b$: 集合</li>
         <li>$f$: $a$と$b$の関係</li>
@@ -1428,27 +1095,7 @@
         <ul>
           <li>$y in g$</li>
         </ul>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="mapping">写像</a></li>
-          <li><a href="#substitution_principle">代入原理</a></li>
-        </ol>
         <span class="remark">証明</span>
-        <p>
-          \begin{prooftree}
-          \AXC{$f(x) = g(x)$}
-          \AXC{$y in f$}
-          \LL{A}
-          \UIC{$y = (x, f(x))$}
-          \LL{B}
-          \BIC{$y = (x, g(x))$}
-          \AXC{}
-          \LL{A}
-          \UIC{$(x, g(x)) in g$}
-          \LL{B}
-          \BIC{$y in g$}
-          \end{prooftree}
-        </p>
         <p>
           任意の元$(x, f(x)) in f$について，
           $ (x, f(x)) = (x, g(x)) in g $
@@ -1458,7 +1105,7 @@
     </section>
 
     <section class="def">
-      <h4 id="image">像</h4>
+      <h4>像</h4>
       <ul>
         <li>$a, b$: 集合</li>
         <li>$f: a -> b$</li>
@@ -1551,36 +1198,7 @@
         <ul>
           <li>$f(x) in f(a')$</li>
         </ul>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#mapping">写像</a></li>
-          <li><a href="#subset">部分集合</a></li>
-          <li><a href="#direct-product">直積集合</a></li>
-          <li><a href="#image">像</a></li>
-        </ol>
         <span class="remark">証明</span>
-        <p>
-          \begin{prooftree}
-          \AXC{}
-          \LL{A}
-          \UIC{$(x, f(x)) in f$}
-          \AXC{}
-          \LL{A}
-          \UIC{$f subset a times b$}
-          \LL{B}
-          \BIC{$(x, f(x)) in a times b$}
-          \LL{C}
-          \UIC{$x in a and f(x) in b$}
-          \UIC{$f(x) in b$}
-          \AXC{$x in a'$}
-          \AXC{}
-          \LL{A}
-          \UIC{$(x, f(x)) in f$}
-          \BIC{$exists x in a', (x, f(x)) in f$}
-          \LL{D}
-          \BIC{$f(x) in f(a')$}
-          \end{prooftree}
-        </p>
         <p>
           定義より，$f(a')$に属している元$y$は，
           $ exists x, y in b and x in a' and (x, y) in f $
@@ -1814,7 +1432,7 @@
     <p>
       矛盾を生み出すものを集合と認めないための公理が<dfn>正則性公理</dfn>である．
     </p>
-    <section class="axm" id="axiom-of-regularity">
+    <section class="axm">
       <h4>正則性公理</h4>
       <p>
         $ forall x != 0 exists y in x, y inter x = 0 $
@@ -1822,14 +1440,14 @@
     </section>
 
     <section class="thm">
-      <h4>正則性公理から導かれる定理</h4>
+      <h4>帰属関係の非反射性</h4>
       <p>
         $ forall x, x in.not x $
       </p>
       <details>
         <summary>証明</summary>
         <p>
-          <a href="#axiom-of-regularity">正則性公理</a>より$exists y in {x}, y inter {x} = 0$．すなわち，$x inter {x} = 0$が成り立つ．これを用いて証明を行う．
+          正則性公理より$exists y in {x}, y inter {x} = 0$．すなわち，$x inter {x} = 0$が成り立つ．これを用いて証明を行う．
         </p>
         <span class="remark">前提</span>
         <ul>
@@ -1837,34 +1455,13 @@
         </ul>
         <span class="remark">結論</span>
         <p>$x in.not x$</p>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#singleton-property">1元集合の性質</a></li>
-          <li><a href="#axiom-of-regularity">正則性公理</a></li>
-        </ol>
         <span class="remark">証明</span>
-        <p>
-          \begin{prooftree}
-          \AXC{}
-          \RL{1}
-          \UIC{$x in x$}
-          \AXC{}
-          \LL{A}
-          \UIC{$x in {x}$}
-          \BIC{$x in {x} inter x$}
-          \AXC{}
-          \LL{B}
-          \UIC{$x inter {x} = 0$}
-          \UIC{$x in.not {x} inter x$}
-          \BIC{$bot$}
-          \RL{1}
-          \UIC{$x in.not x$}
-          \end{prooftree}
-        </p>
         <p>
           正則性公理より$x inter {x} = 0$が成り立つ．$x in x$と仮定すると，$x in {x} inter x = 0$となるが，これは空集合に矛盾する．よって，$x in.not x$である．
         </p>
+        <iframe data-src="https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcsABMIIKRgFm4AfWs7Ry0QJBsnLm4TJx8/fmSkABqkKoSas0CQsKikwEgiJLTC4rLMiokkQC8vWnNWdkyYbmEoFwF6rCLuEG5WYFjAUCI48dX1ze4ly0uNnhKmKBL7p0AAIiQGOp4AGg6ut9EiczHgkIA/7Vu7DgTHsgQA5l1qrVtjxGqibnsDkdYgBvOLVGL/OK1GIAX3O6RhcOAiORUKQ1IRTxe1KRNR+DQ+X05/yBjJAsIRSGRSEAKYQ8trVQAURJKarMAIyAYUVFkVgPA2DAAK77GwAG2QeQKUARBu4LGO3Qx6LaTNpIpFu2K2IteIJsWJDvJlKQJtpZtdIEVKpoFCVWG4AAsICx7JlfaaeBbXgbIMBeFaPOiHYk/fCA8dqnw2jZhFgkEh7AB3JAAbTzBf+dvhLJK1P+sZKmz1QQAurNAMbWgHElQDkBoAbRUAYC4MxjLEosIIlOPwrV6kBw9aAzmNLSRwCBBE5voADIiQIKcgGAiJDCXmXnrfQDkREhPgAva8vxJX9wv0YMWb6YwUQA9dMAWeVABAdEcI2jWN4zVRd8gNZgADcmHWOcF3KBxN2tA8kG/VoajLCtAm4XwkEjBVy1IkAEOQSMACYnAbJNjiPE88NLCjCPTEi6I4yjqNIgBmPD7muVs3h/CsK0jKiaIAFjwxjzWAFNMggdMvl46s6zo3sRV4SNZN4jUuJAHImHgQ4LQo6T+LovCZzYVDYOXVd1yvLRFNdBhGh4isWBsfZAiQQAL8mEf46JKBVwtokpaMAS/I8N8ysa3rRMlKbQUaRbZ420yjt7C7CAe10g5SJi8iKy02sIoVEr9Ji2jrJkwTEoankyKa2z5OLBN/SYlS014CSkGM4jTPMyzgCwNSclQTAgA"></iframe>
       </details>
+      <h4>帰属関係の非対称性</h4>
       <p>
         $ forall x y, x in.not y or y in.not x $
       </p>
@@ -1876,89 +1473,13 @@
         </ul>
         <span class="remark">結論</span>
         <p>$x in.not y or y in.not x$</p>
-        <span class="remark">道具</span>
-        <ol>
-          <li><a href="#axiom-of-regularity">正則性公理</a></li>
-          <li><a href="#pairing">対</a></li>
-          <li><a href="#pairing-property">対の性質</a></li>
-          <li><a href="#set-intersection">積集合</a></li>
-        </ol>
         <span class="remark">証明</span>
-        <p>
-          次の推論を$R_1$とする．
-          \begin{prooftree}
-          \AXC{$x in y and y in x$}
-          \UIC{$x in y$}
-          \AXC{}
-          \LL{C}
-          \UIC{$x in {x, y}$}
-          \LL{D}
-          \BIC{$x in y inter {x, y}$}
-          \AXC{$z = x and z inter {x, y} = 0$}
-          \UIC{$x inter {x, y} = 0$}
-          \BIC{$bot$}
-          \end{prooftree}
-        </p>
-        <p>
-          次の推論を$R_2$とする．
-          \begin{prooftree}
-          \AXC{$x in y and y in x$}
-          \UIC{$y in x$}
-          \AXC{}
-          \LL{C}
-          \UIC{$y in {x, y}$}
-          \LL{D}
-          \BIC{$y in x inter {x, y}$}
-          \AXC{$z = y and z inter {x, y} = 0$}
-          \UIC{$y inter {x, y} = 0$}
-          \BIC{$bot$}
-          \end{prooftree}
-        </p>
-        <p>
-          次の推論を$R_3$とする．
-          \begin{prooftree}
-          \AXC{$z in {x, y} and z inter {x, y} = 0$}
-          \LL{B}
-          \UIC{$(z = x or z = y) and z inter {x, y} = 0$}
-          \AXC{$x in y and y in x$}
-          \AXC{}
-          \RL{1}
-          \UIC{$z = x and z inter {x, y} = 0$}
-          \LL{$R_1$}
-          \BIC{$bot$}
-          \AXC{$x in y and y in x$}
-          \AXC{}
-          \RL{1}
-          \UIC{$z = y and z inter {x, y} = 0$}
-          \LL{$R_2$}
-          \BIC{$bot$}
-          \RL{1}
-          \TIC{$bot$}
-          \end{prooftree}
-        </p>
-        <p>
-          \begin{prooftree}
-          \AXC{}
-          \LL{A}
-          \UIC{$exists z in {x, y}, z inter {x, y} = 0$}
-          \AXC{}
-          \RL{1}
-          \UIC{$z in {x, y} and z inter {x, y} = 0$}
-          \AXC{}
-          \RL{2}
-          \UIC{$x in y and y in x$}
-          \LL{$R_3$}
-          \BIC{$bot$}
-          \RL{1}
-          \BIC{$bot$}
-          \RL{2}
-          \UIC{$x in.not y or y in.not x$}
-          \end{prooftree}
-        </p>
         <p>
           $x in y and y in x$と仮定すると，$x in {x, y}$かつ$y in x inter {x, y}$となり，正則性公理に矛盾する．また，$y in {x, y}$かつ$x in y inter {x, y}$も同様である．よって，$x in.not y or y in.not x$が成り立つ．
         </p>
+        <iframe data-src="https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcsABMIIKRgFm4AfWs7Ry0QJBsnLm4TJx8/fmSkABqkKoSas0CQsKikwEgiJLTC4rLMiokkQC8vWnNWdkyYbmEoFwF6rCLuEG5WYFjAUCI48dX1ze4ly0uNnhKmKBL7p0AAIiQGOp4AGg6ut9EiczHgkIA/7Vu7DgTHsgQA5l1qrVtjxGqibnsDkdYgBvOLVGL/OK1GIAX3O6RhcOAiORUKQ1IRTxe1KRNR+DQ+X05/yBjJAsIRSGRSEAKYQ8trVQAURJKarMAIyAYUVFkVgPA2DAAK77GwAG2QeQKUARBu4LGO3Qx6LaTNpIpFu2K2IteIJsWJDvJlKQJtpZtdIEVKpoFCVWG4AAsICx7JlfaaeBbXgbIMBeFaPOiHYk/fCA8dqnw2jZhFgkEh7AB3JAAbTzBf+dvhLJK1P+sZKmz1QQAurNAMbWgHElQDkBoAbRUAYC4MxjLEosIIlOPwrV6kBw9aAzmNLSRwCBBE5voADIiQIKcgGAiJDCXmXnrfQDkREhPgAva8vxJX9wv0YMWb6YwUQA9dMAWeVABAdEcI2jWN4zVRd8gNZgADcmHWOcF3KBxN2tA8kG/VoajLCtAm4XwkEjBVy1IkAEOQSMACYnAbJNjiPE88NLCjCPTEi6I4yjqNIgBmPD7muVs3h/CsK0jKiaIAFjwxjzWAFNMggdMvl46s6zo3sRV4SNZN4jUuJAHImHgQ4LQo6T+LovCZzYVDYOXVd1yvLRFNdBhGh4isWBsfZAiQQAL8mEf46JKBVwtokpaMAS/I8N8ysa3rRMlKbQUaRbZ420yjt7C7CAe10g5SJi8iKy02sIoVEr9Ji2jrJkwTEoankyKa2z5OLBN/SYlS014CSkGM4jTPMyzgCwNSclQTAgA"></iframe>
       </details>
+      <h4>宇宙の非存在性</h4>
       <p>
         $ exists.not x forall y, y in x $
       </p>
@@ -1967,6 +1488,7 @@
         <p>
           $forall y, y in U$と仮定すると，$U in U$より偽．
         </p>
+        <iframe data-src="https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcsABMIIKRgFm4AfWs7Ry0QJBsnLm4TJx8/fmSkABqkKoSas0CQsKikwEgiJLTC4rLMiokkQC8vWnNWdkyYbmEoFwF6rCLuEG5WYFjAUCI48dX1ze4ly0uNnhKmKBL7p0AAIiQGOp4AGg6ut9EiczHgkIA/7Vu7DgTHsgQA5l1qrVtjxGqibnsDkdYgBvOLVGL/OK1GIAX3O6RhcOAiORUKQ1IRTxe1KRNR+DQ+X05/yBjJAsIRSGRSEAKYQ8trVQAURJKarMAIyAYUVFkVgPA2DAAK77GwAG2QeQKUARBu4LGO3Qx6LaTNpIpFu2K2IteIJsWJDvJlKQJtpZtdIEVKpoFCVWG4AAsICx7JlfaaeBbXgbIMBeFaPOiHYk/fCA8dqnw2jZhFgkEh7AB3JAAbTzBf+dvhLJK1P+sZKmz1QQAurNAMbWgHElQDkBoAbRUAYC4MxjLEosIIlOPwrV6kBw9aAzmNLSRwCBBE5voADIiQIKcgGAiJDCXmXnrfQDkREhPgAva8vxJX9wv0YMWb6YwUQA9dMAWeVABAdEcI2jWN4zVRd8gNZgADcmHWOcF3KBxN2tA8kG/VoajLCtAm4XwkEjBVy1IkAEOQSMACYnAbJNjiPE88NLCjCPTEi6I4yjqNIgBmPD7muVs3h/CsK0jKiaIAFjwxjzWAFNMggdMvl46s6zo3sRV4SNZN4jUuJAHImHgQ4LQo6T+LovCZzYVDYOXVd1yvLRFNdBhGh4isWBsfZAiQQAL8mEf46JKBVwtokpaMAS/I8N8ysa3rRMlKbQUaRbZ420yjt7C7CAe10g5SJi8iKy02sIoVEr9Ji2jrJkwTEoankyKa2z5OLBN/SYlS014CSkGM4jTPMyzgFmQBw7UATO1AMADW1AAp1cCoxjON2C1YAmGo+xNhKPZXmYKBuCgJxOgvb4MX+T4r2um9EiuksCKQIjuIqpB/MC45gq1cKFQSnqOqk5qyMShUkC1TqaPonqYLjIJ4J25DhCc9DHChitRvscaLKOLA1JyVBMCAA"></iframe>
       </details>
     </section>
 
