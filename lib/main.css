@@ -7,12 +7,13 @@
   --sans: "Noto Sans JP";
   --heading: "Shippori Mincho B1";
   --border: var(--black) solid thin;
+  --accentborder: var(--main) solid thin;
   --white: #f0f0f0;
   --gray: #dddddd;
   --black: #333333;
-  --main: #9099a2;
+  --background: #9099a2;
   --menu: #555555;
-  --header: #84c0c7;
+  --main: #91c0c0;
   --h2: #96858f;
   --h3: #c09f80;
   --axm: #e2d2d2;
@@ -20,12 +21,14 @@
   --thm: #c4db9a;
   --prob: #bfc1d7;
   --ex: #9fb1b5;
+  --lem: #ffffff;
 }
 
+/* 文書構造 */
 body {
   color: var(--black);
   margin: 0;
-  background-color: var(--main);
+  background-color: var(--background);
   font-family: var(--serif);
   line-break: strict;
 }
@@ -38,15 +41,15 @@ body {
 
 header {
   border-bottom: var(--border);
-  padding: 10pt;
-  background-color: var(--header);
+  padding: 10px;
+  background-color: var(--main);
   font-family: var(--heading);
 }
 
 main {
   margin: auto;
   border: var(--border);
-  padding: 10pt;
+  padding: 10px;
   min-height: 100vh;
   background-color: var(--white);
 }
@@ -64,24 +67,24 @@ h1 {
 }
 
 h2 {
-  margin-top: 40pt;
+  margin-top: 40px;
   border-left: var(--h2) solid thick;
-  padding-left: 10pt;
+  padding-left: 10px;
   background-color: rgb(from var(--h2) r g b / 0.3);
   font-family: var(--sans);
 }
 
 h3 {
-  margin-top: 30pt;
+  margin-top: 30px;
   border-bottom: var(--h3) solid medium;
   border-left: var(--h3) solid thick;
-  padding-left: 5pt;
+  padding-left: 5px;
   font-family: var(--sans);
 }
 
 h4 {
   margin: 0;
-  margin-top: 20pt;
+  margin-top: 20px;
   font-family: var(--sans);
 }
 
@@ -89,6 +92,9 @@ p {
   text-indent: 1em;
 }
 
+/* 意味付きテキスト */
+
+/* リンク */
 a:link {
   text-decoration: underline;
   color: var(--black);
@@ -106,24 +112,28 @@ a:active {
   color: var(--white);
 }
 
+/* 定義の用語 */
 dfn {
   font-weight: bold;
   font-style: normal;
 }
 
+/* 定義、定理、例などのセクション */
 section {
-  padding: 5pt;
+  padding: 5px;
   position: relative;
   padding-top: 3em;
-  margin: 10pt;
+  margin: 10px;
 }
 
-section>p,
-section>ol,
-section>ul,
-section>dl,
-section>details {
-  margin-left: 2em;
+section::before {
+  position: absolute;
+  box-sizing: border-box;
+  font-weight: bold;
+  padding: 5px;
+  width: 100%;
+  top: 0;
+  left: 0;
 }
 
 section.def {
@@ -133,7 +143,7 @@ section.def {
 
 section.def::before {
   background-color: var(--def);
-  content: "定義";
+  content: "定義： " attr(title);
 }
 
 section.axm {
@@ -143,7 +153,7 @@ section.axm {
 
 section.axm::before {
   background-color: var(--axm);
-  content: "公理";
+  content: "公理： " attr(title);
 }
 
 section.thm {
@@ -153,7 +163,7 @@ section.thm {
 
 section.thm::before {
   background-color: var(--thm);
-  content: "定理";
+  content: "定理： " attr(title);
 }
 
 section.ex {
@@ -163,72 +173,66 @@ section.ex {
 
 section.ex::before {
   background-color: var(--ex);
-  content: "例";
+  content: "例： " attr(title);
 }
 
-section.def::before,
-section.axm::before,
-section.thm::before,
-section.ex::before {
-  position: absolute;
-  box-sizing: border-box;
-  font-weight: bold;
-  padding: 5pt;
-  width: 100%;
-  top: 0;
-  left: 0;
+section.lem {
+  border: var(--lem) solid thin;
+  background-color: rgb(from var(--lem) r g b / 0.3);
 }
 
-/* functional tags */
+section.lem::before {
+  background-color: var(--lem);
+  content: "補題： " attr(title);
+}
+
+
+/* 折りたたみ */
 details {
-  margin: 0.5em;
-  border: var(--black) solid 1px;
-  background-color: rgb(from var(--menu) r g b / 0.1);
+  margin: 6px;
+  border: var(--accentborder);
+  background-color: rgb(from var(--white) r g b / 0.3);
 }
 
 details[open] {
+  margin-bottom: 10px;
   box-shadow: 5px 10px 3px rgba(0, 0, 0, 0.5);
   transform: translateY(-4px) translateX(-2px);
 }
 
 details+details {
-  margin-top: -6pt;
+  margin-top: -7px;
 }
 
-summary {
-  padding-left: 10pt;
-  border-bottom: var(--border);
-  background-color: rgb(from var(--menu) r g b / 0.1);
+details+details[open] {
+  margin-top: -3px;
+}
+
+details summary {
+  padding: 5px 10px;
   font-family: var(--sans);
+  font-size: 1.1em;
 }
 
-summary+* {
-  margin-top: 10pt;
+details[open] summary {
+  border-bottom: var(--accentborder);
 }
 
-div.tree div {
-  margin-left: 1em;
-  border-left: var(--border);
-}
-
-label {
-  margin: 1em;
-}
-
+/* ボタン */
 button {
   text-align: center;
   text-decoration: none;
   width: 120px;
   margin: auto;
-  padding: 5pt;
+  padding: 5px;
   font-weight: bold;
-  border: 2px solid var(--header);
-  color: var(--header);
+  border: 2px solid var(--main);
+  color: var(--main);
   transition: 0.5s;
 }
 
 button:hover {
-  background-color: var(--header);
+  background-color: var(--main);
   color: white;
 }
 
@@ -239,6 +243,7 @@ input {
   margin: 0 4px;
 }
 
+/* テキスト入力 */
 input[type="text"] {
   position: relative;
   width: auto;
@@ -259,6 +264,7 @@ input:focus {
   outline: none;
 }
 
+/* チェックボックス */
 input[type="checkbox"] {
   appearance: none;
   padding: 0.5px;
@@ -304,6 +310,7 @@ input[type="checkbox"]:checked::before {
   margin-left: 17px;
 }
 
+/* テーブル */
 table {
   width: 100%;
   text-align: center;
@@ -323,6 +330,7 @@ td {
   border: solid 1px #666666;
 }
 
+/* 定義リスト */
 dl {
   display: grid;
   grid-template-columns: max-content auto;
@@ -337,16 +345,11 @@ dd {
   margin: 0;
 }
 
+/* 外部リソース */
 iframe {
   width: 100%;
   height: 600px;
   border: none;
-}
-
-
-.both {
-  display: flex;
-  justify-content: space-between;
 }
 
 /* チャット */
@@ -392,14 +395,16 @@ iframe {
   margin-top: -1em
 }
 
+/* 数式 */
 .MathJax {
   padding: 0.1em 0.25em;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
+/* 見出しラベル */
 .remark {
-  background: var(--header);
+  background: var(--main);
   border-radius: 0.2em;
 }
 
@@ -407,17 +412,23 @@ iframe {
   list-style: upper-alpha;
 }
 
+/* ネストされたセクション */
 .nest {
   border: var(--border);
   border-right: none;
 }
 
+/* ロゴ */
 #logo {
   position: absolute;
   height: 2.5em;
 }
 
-.test {
-  width: 10cm;
-  background-color: #6b8e23;
+/* Mermaid */
+.mermaid {
+  text-align: center;
+}
+
+.mermaid p {
+  text-indent: 0;
 }

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <title>論理式の拡張</title>
+  <script src="../lib/main.js" defer></script>
+</head>
+
+<body>
+  <header>
+    <a href="../">ホーム</a> / <a href="./">数学</a> /
+  </header>
+  <main>
+    <h2>新しい真理関数</h2>
+    <p>
+      便利なので，真理関数として同値や排他的論理和を新たに定義する．
+    </p>
+    <section class="def">
+      <h4>同値</h4>
+      <ul>
+        <li>$A, B$: 論理式</li>
+      </ul>
+      <p>
+        $ (A <-> B) :<==> ((A -> B) and (B -> A)) $
+      </p>
+      <details>
+        <summary>読み</summary>
+        <p>
+          $A$と$B$は同値
+        </p>
+      </details>
+      <h4>排他的論理和</h4>
+      <ul>
+        <li>$A, B$: 論理式</li>
+      </ul>
+      <p>
+        $ (A xor B) :<==> (A and (not B) or (not A) and B) $
+      </p>
+      <details>
+        <summary>読み</summary>
+        <p>
+          $A$と$B$はどちらか一方
+        </p>
+      </details>
+    </section>
+
+    <h2>省略</h2>
+    <h3>演算子の優先順位</h3>
+    <p>
+      「$P$でないかつ$Q$のときのみ$P$ならば$P$または$Q$である」という曖昧で複雑な命題に対しても，真理関数を用いると，$((((not P) and Q) <-> P) -> (P or Q))$と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<dfn>優先順位</dfn>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．<dfn>右結合</dfn>は優先順位が同じときに，文の右側の演算子を優先することである．左側の場合は<dfn>左結合</dfn>である．
+    </p>
+    <p>
+      本サイトでは演算子の優先順位や，括弧の省略の形式的な定義は行わなず，例をもって説明する．
+    </p>
+    <section class="ex">
+      <p>
+        命題$P, Q, R$に対して，次を満たす．
+        $
+          not P and Q & <==> (not P) and Q .\
+          P and Q or Q and R & <==> (P and Q) or (Q and R) .\
+          not not P & <==> not (not P) .\
+          P -> Q -> R & <==> P -> (Q -> R) .\
+          not (P or Q) and R & <==> (not (P or Q)) and R .
+        $
+      </p>
+    </section>
+    <details>
+      <summary>練習問題</summary>
+      <p>
+        次の括弧が省略された命題に括弧をつけなさい．
+      </p>
+      <ol>
+        <li>$not P and Q$</li>
+        <li>$P and Q or R -> P or not Q and R$</li>
+        <li>$P -> Q -> P <-> Q$</li>
+      </ol>
+      <details>
+        <summary>解答</summary>
+        <p>
+          優先順位が高い演算子から括弧をくくる．
+        </p>
+        <ol>
+          <li>$((not P) and Q)$</li>
+          <li>$(((P and Q) or R) -> (P or ((not Q) and R)))$</li>
+          <li>$((P -> (Q -> P)) <-> Q)$</li>
+        </ol>
+      </details>
+    </details>
+
+    <h3>量化子の省略</h3>
+    <p>
+      量化子は適用範囲を決める必要があり，その範囲を括弧で囲わなければならない．しかし，変項が増えると括弧が煩雑になってしまうため，省略を考える．他にも便利な記法として次のものを定める．
+    </p>
+    <section class="def" title="量化子の拡張">
+      <h4>適用範囲の省略</h4>
+      <ul>
+        <li>$lambda$: 量化子</li>
+        <li>$x$: 変数</li>
+        <li>$A$: 論理式</li>
+      </ul>
+      <p>
+        $ lambda x, A :<==> lambda x (A) $
+      </p>
+      <h4>同量化の省略</h4>
+      <ul>
+        <li>$lambda$: 量化子</li>
+        <li>$x, y$: 項</li>
+        <li>$A$: 論理式</li>
+      </ul>
+      <p>
+        $ lambda x y (A) :<==> lambda x (lambda y (A)) $
+      </p>
+      <h4>量化子の別記</h4>
+      <ul>
+        <li>$lambda$: 量化子</li>
+        <li>$x$: 変数</li>
+        <li>$A$: 論理式</li>
+      </ul>
+      <p>
+        $ ""^lambda x, A :<==> lambda x, A $
+      </p>
+      <h4>$forall$の条件の省略</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+        <li>$x, a$: 項</li>
+      </ul>
+      <p>
+        $
+          forall x in a (A) & :<==> forall x ((x in a) -> A) \
+          forall x in a & :<==> forall x in a (bot)
+        $
+      </p>
+      <h4>$exists$の条件の省略</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+        <li>$x, a$: 項</li>
+      </ul>
+      <p>
+        $
+          exists x in a (A) & :<==> exists x ((x in a) and A) \
+          exists x in a & :<==> exists x in a (top)
+        $
+      </p>
+      <h4>唯一存在量化子</h4>
+      <ul>
+        <li>$A$: 論理式</li>
+        <li>$x, y$: 項</li>
+      </ul>
+      <p>
+        $ exists! x, A :<==> exists x, A(x) and forall y (A(y) -> y = x) $
+      </p>
+    </section>
+
+    <h3>否定の斜線</h3>
+    <p>
+      否定した命題や述語はよく使われる．そのたびに，先頭に$not$をつけて括弧でくくっていては，冗長的で認識しづらい．量化子や関係演算子に斜線を入れることで否定を表現する．
+    </p>
+    <section class="def" title="否定の拡張">
+      <h4>量化子の否定</h4>
+      <ul>
+        <li>$lambda$: 量化子</li>
+        <li>$x$: 変数</li>
+        <li>$A$: 論理式</li>
+      </ul>
+      <p>
+        $ cancel(lambda) x (A) :<==> not (lambda x (A)) $
+      </p>
+      <h4>演算子の否定</h4>
+      <ul>
+        <li>$star$: 演算子</li>
+        <li>$x, y$: 変数</li>
+      </ul>
+      <p>
+        $ x cancel(star) y :<==> not (x star y) $
+      </p>
+    </section>
+
+    <h3>演算子の反転</h3>
+    <p>
+      向きがある関係を表す演算子は表現力を上げるために逆向きで表すことがある．
+    </p>
+    <section class="def" title="演算子の反転">
+      <ul>
+        <li>$prec$: 関係演算子</li>
+        <li>$A, B$: 論理式</li>
+      </ul>
+      <p>
+        $ B succ A :<==> A prec B $
+      </p>
+    </section>
+
+    <h3>述語の連接</h3>
+    <p>
+      あまり好ましくないが，簡潔に表現するために次の省略を定義する．
+    </p>
+    <section class="def " title="関係式の拡張">
+      <ul>
+        <li>$prec$: 関係演算子</li>
+        <li>$A, B, C$: 論理式</li>
+      </ul>
+      <p>
+        $ a prec b prec c :<==> a prec b and b prec c $
+      </p>
+    </section>
+  </main>
+</body>
+
+</html>

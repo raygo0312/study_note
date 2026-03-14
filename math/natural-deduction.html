@@ -74,14 +74,14 @@
       </p>
       <h4>演繹可能</h4>
       <p>
-        前提$A_1, A_2, dots, A_n$，帰結$A$について，演繹図が存在するとき，
-        $ A_1, A_2, dots, A_n tack A $
+        前提$A_1, A_2, dots, A_n$，帰結$A$，演繹図が存在するとき，
+        $ A_1, A_2, dots, A_n prove A $
         と表し，$A_1, A_2, dots, A_n$から$A$に演繹可能という．
       </p>
       <h4>証明可能</h4>
       <p>
-        帰結$A$について，証明図が存在するとき，
-        $ tack A $
+        帰結$A$，証明図が存在するとき，
+        $ prove A $
         と表し，$A$は証明可能という．
       </p>
       <h4>定理</h4>
@@ -99,8 +99,8 @@
     <h3>$->$の推論規則</h3>
     <p>
       $->$は$A$ならば$B$である．すなわち，$A$が成り立つときは$B$が成り立つことを意味する．これに$A$が成り立つという情報があれば，$B$が成り立つことが導ける．つまり次の推論が成り立つ．
-      $ A, A -> B ==> B. $
-      これは<dfn>構成的仮言的三段論法</dfn>(前件肯定式)という名前で知られる．また，$->, tack$はそれぞれ同じ意味として扱いたいので，
+      $ A, A -> B ==> B . $
+      これは<dfn>構成的仮言的三段論法</dfn>(前件肯定式)という名前で知られる．また，$->, prove$はそれぞれ同じ意味として扱いたいので，
       $gt$
       を認めるとする．この推論規則を用いるときは，前提を打ち消しという操作ができる．
       \begin{prooftree}
@@ -185,7 +185,7 @@
         \LL{$-> E$}
         \BIC{$C$}
         \end{prooftree}
-        よって，$A, A -> B, A -> B -> C tack C$である．
+        よって，$A, A -> B, A -> B -> C prove C$である．
       </p>
     </section>
     <section class="ex">
@@ -206,7 +206,7 @@
         \LL{$-> I$}
         \UIC{$A -> (A -> B) -> B$}
         \end{prooftree}
-        よって，$tack A -> (A -> B) -> B$である．
+        よって，$prove A -> (A -> B) -> B$である．
       </p>
     </section>
     <p>
@@ -496,7 +496,7 @@
         <li>$A, B$: 論理式</li>
       </ul>
       <p>
-        $ Gamma, A tack B <==> Gamma tack A -> B $
+        $ Gamma, A prove B <==> Gamma prove A -> B $
       </p>
       <details>
         <summary>証明</summary>
@@ -504,11 +504,11 @@
           $(==>)$$-> "I"$そのものである．
         </p>
         <p>
-          $(==>)$前提より， $ Gamma tack A -> B. $
+          $(==>)$前提より， $ Gamma prove A -> B . $
           前提に$A$を追加すると，
-          $ A, Gamma tack A, A -> B. $
+          $ A, Gamma prove A, A -> B . $
           となり，$A, A -> B ==> B$だから，
-          $ Gamma, A tack B. $
+          $ Gamma, A prove B . $
           が成り立つ．
         </p>
       </details>
@@ -680,7 +680,7 @@
           \RL{$2$}
           \UIC{$B -> A -> B$}
           \end{prooftree}
-          この補題より$B tack A -> B$で，必要としない論理式を前提として追加してもよいという推論である．この$B$を$bot$として利用する．
+          この補題より$B prove A -> B$で，必要としない論理式を前提として追加してもよいという推論である．この$B$を$bot$として利用する．
           \begin{prooftree}
           \AXC{}
           \RL{$1$}

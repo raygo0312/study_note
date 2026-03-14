@@ -8,7 +8,7 @@
 
 <body>
   <header>
-    <div class="both"><span><a href="../">ホーム</a> / <a href="./">数学</a> /</span> <a href="https://github.com/raygo0312/study_note/blob/master/math/lean/ZFCAxioms.lean" target="_blank"><button>Leanコード</button></a></div>
+    <span><a href="../">ホーム</a> / <a href="./">数学</a> /</span>
   </header>
   <main>
     <h2>集合</h2>
@@ -18,7 +18,7 @@
     <p>
       集合に用意されている2項述語は$=$と$in$である．$=$は等号関係をもつ．$in$はZFC公理系で性質を定められている．$a in b$を$a$は$b$に<dfn>属する</dfn>といい，$a$を$b$の<dfn>元</dfn>という．$in$を<dfn>帰属関係</dfn>という．$=$の公理を次にまとめると，
     </p>
-    <section class="axm">
+    <section id="axm-equality" class="axm">
       <h4>等号関係の反射律</h4>
       <p>
         $ forall x, x = x $
@@ -83,7 +83,7 @@
           $x = y$で代入原理を用いると，
           $ x = z <-> y = z $
           となる．$y = z$は前提から成り立つので，
-          $ therefore x = z. $
+          $ therefore x = z . $
         </p>
         <iframe data-src="https://live.lean-lang.org/#codez=LTAEklvR35UItTCH5Q7BkFnahK/wFAEMAeBLA9gW1AFMBHAV3QBtsAXAT1AC5QBlIm0QJMJX2vQAFAE64ADqmwA7AGbZMjAKwAGUACJQAXlUaAfMXJVadVCAgwEgY7lApoqB85UBgLhhwFQAZzIAjZzVpkvuCQH0RQUkAY2wRSiJQAAoAMSYeDm4hUQBKZkAAIlBMUAZmNhoAGj0Kanps3L44isAUwlB4ulTjMCg4eEAK40Bvz0Bo/VQaAAsiXEEiQlJS/xpBdAlnWmwANyjMmJyGAC8EgtTi8YNytdBAciIS/YYNvj2yhhzNxk03I1BQSSncZwqL/tRn/vQl0D9ACMCWiV0MFXWqVAdTB+mulShTE0rg8XhoPjwASCoXCkRiUjIElAAHcdKcEWSkYd+gA6SJSGg/YiYdAhDjA2n4IKA2nBADm/RoQA"></iframe>
       </details>
@@ -97,7 +97,7 @@
     <h2>外延性公理</h2>
     <h3>部分集合</h3>
     <p>
-      集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a subset b$と表し，$a$は$b$に<dfn>含まれる</dfn>，$a$は$b$の部分集合という．$subset$を<dfn>包含関係</dfn>という．$subset$を$subset.eq$とも書く．
+      集合の関係を表す述語をもう一つ定義する．$a$の元の全てが$b$に属するとき，$a subset b$と表し，$a$は$b$に<dfn>含まれる</dfn>，$a$は$b$の部分集合という．$subset$を<dfn>包含関係</dfn>という．$subset$を$subset.eq$とも表す．
     </p>
     <section class="def">
       <h4>部分集合</h4>
@@ -117,8 +117,10 @@
     </p>
     <section class="thm">
       <h4>部分集合の要素包含性</h4>
+      <ul>
+        <li>$a, b, c$: 集合</li>
+      </ul>
       <p>
-        集合$a, b, c$について，
         $ a in b and b subset c ==> a in c $
       </p>
       <details>
@@ -181,7 +183,7 @@
           $x in a$と$a subset b$より，
           $ x in b $
           さらに$b subset c$より，
-          $ therefore x in c. $
+          $ therefore x in c . $
         </p>
         <iframe data-src="https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAC4TAMCUUVAATEkdQAGcAVy10o3F0UC0DUjJFAysbKiDQQAAiUHFMYvJFABpQRoCC0w7CuycXdy9fQCCiQNCM7NyyaNB4lHhAcgNAK5jUMgALElxdTVASABtNEnsyAH0AY1xj9AcNY/qCorOm0vq1wECCAwKArTLxNcAgggMRVGZzK1C+oCelGqWjoqFAoF0AHdQABtLI5cgAXVA6AoAPhu0w6DO+MBBXeMzmyHggArjQDfnoBo/VWGy2OzIunQ9nS2DI2AAbry6CdcI4ThipvdCpDnr93p9QKMfq9AdRgZCwbjFTLoYU4QiHBzcOl2qA1gBGQlrdD8khmgBMVV2B1upwuVxuRwojQeZvNZrehJIxNJzsOx3OlzI13srtNjwdZv+QA"></iframe>
       </details>
@@ -352,7 +354,7 @@
           $a = a$が成り立つから，
           $ a = a or a = b $
           である．よって，
-          $ therefore a in {a, b}. $
+          $ therefore a in {a, b} . $
         </p>
         <iframe data-src="https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAP+0VPEIGdGxdBwBzUHF0UC0DUjJFPPJUe1wydDI8ex8Ab19s7wAaQNzvAF9fUNAklPTQbK14tR7U+zSAfWwAZ3GRzIGigoNAACJQTEXm9YCRvoXAFMI14P7QQAoiQ6Cc6NAY+EAz3VQyAAsSXF1NbuTRiYAbEkcKLI5RaFajZbafXZAygXLR0VCgUC6ADuoAA2jsxpMZiMALrw/oMBjfOigADyugAdA5vviSJh0ABjCi6Rw01g3QDPyg9nq93hiJqk0o8AQtqPkQUDwb0xsdctCcnCEci0fysbNPniEehCcSyZSHFEEXTGczWUA"></iframe>
       </details>
@@ -549,25 +551,35 @@
         $ () :<==> 0 $
       </p>
       <h4>1組(1元集合)</h4>
+      <ul>
+        <li>$a$: 集合</li>
+      </ul>
       <p>
-        集合$a$について，
         $ (a) :<==> {a} $
       </p>
       <h4>2組(順序対)</h4>
+      <ul>
+        <li>$a, b$: 集合</li>
+      </ul>
       <p>
-        集合$a, b$について，
         $ (a, b) :<==> {{a}, {a, b}} $
       </p>
       <h4>$n$組</h4>
+      <ul>
+        <li>$n$: 自然数</li>
+        <li>$a_1, dots, a_n$: 集合</li>
+      </ul>
       <p>
-        集合$a_1, dots, a_n$について，
         $ (a_1, dots, a_n) :<==> (a_1, (a_2, dots, a_n)) $
       </p>
     </section>
     <section class="thm">
       <h4>順序組の性質</h4>
+      <ul>
+        <li>$n$: 自然数</li>
+        <li>$a_1, dots, a_n, b_1, dots, b_n$: 集合</li>
+      </ul>
       <p>
-        集合$a_1, dots, a_n, b_1, dots, b_n$について，
         $ (a_1, dots, a_n) = (b_1, dots, b_n) <==> a_1 = b_1 and dots.c and a_n = b_n $
       </p>
       <details>
@@ -653,7 +665,7 @@
       $
       x in a union b & <==> exists y (x in y and y in {a, b}), \
       & <==> exists y (x in y and (y = a or y = b)), \
-      & <==> x in a or x in b.
+      & <==> x in a or x in b .
       $
       このことから$union$は$or$と同じ定理を使用することができることがわかる．
     </p>
@@ -738,7 +750,7 @@
       <dfn>分出公理</dfn>は内包的記法を許すために作られた公理である．内包的記法とは条件$F(x)$を満たす$x$の集合を${x mid(|) F(x)}$と表すものである．しかし，自由に用いると矛盾を生じることがある．分出公理で${x in a mid(|) F(x)}$を満たす集合のみを認めるものとする．この$x$は分出公理より束縛変数なことに注意する．他の公理から証明できる．
     </p>
     <p>
-      公理図式とは公理の述語部分を変数$F$に置き換え，この$F$にそれぞれ1階述語論理の論理式を代入したものを公理とするものである．
+      公理図式とは公理の述語部分を変数$F$に置き換え，この$F$にそれぞれ述語論理の論理式を代入したものを公理とするものである．
     </p>
     <section class="def">
       <h4>内包表記</h4>
@@ -789,7 +801,7 @@
     </section>
     <p>
       公理を用いて性質を調べてみる．定義より，
-      $ x in a inter b <==> x in a and x in b. $
+      $ x in a inter b <==> x in a and x in b . $
       このことから$inter$は$and$と同じ定理を使用することができることがわかる．
     </p>
 
@@ -1003,9 +1015,9 @@
         <summary>関係でない例</summary>
         <p>
           $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，次の例は$a$と$b$の関係でない．
-          $ {(0, 1), (0, 2), (3, 8), (4, 8), 5}. $
+          $ {(0, 1), (0, 2), (3, 8), (4, 8), 5} . $
           これは順序対でない$5$が属している．
-          $ {(0, 1), (0, 2), (3, 8), (4, 8), (5, 5)}. $
+          $ {(0, 1), (0, 2), (3, 8), (4, 8), (5, 5)} . $
           これは$a$と$b$の関係ではない．$(a union {5})$と$b$の関係ではある．
         </p>
       </details>
@@ -1039,9 +1051,9 @@
         <summary>写像でない例</summary>
         <p>
           $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，次の例は写像$f: a -> b$でない．
-          $ f = {(0, 3), (1, 1), (2, 9), (4, 5)}. $
+          $ f = {(0, 3), (1, 1), (2, 9), (4, 5)} . $
           これは$3 in a$について$y$が存在しない．
-          $ f = {(0, 3), (1, 1), (2, 6), (2, 9), (3, 3), (4, 5)}. $
+          $ f = {(0, 3), (1, 1), (2, 6), (2, 9), (3, 3), (4, 5)} . $
           これは$2 in a$について$y$が二つ存在する．
         </p>
       </details>
@@ -1139,9 +1151,9 @@
         <p>
           $a = {0, 1, 2, 3, 4}$，$b = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9}$について，写像$f: a -> b$を$f = {(0, 3), (1, 1), (2, 9), (3, 3), (4, 5)}$として，
           $ f({0, 1, 2}) = {1, 3, 9}, $
-          $ f({0, 1, 3}) = {1, 3}. $
+          $ f({0, 1, 3}) = {1, 3} . $
           このとき，$f$の値域は
-          $ f(a) = {1, 3, 5, 9}. $
+          $ f(a) = {1, 3, 5, 9} . $
         </p>
       </details>
       <h4>写像全体</h4>
@@ -1249,6 +1261,7 @@
       <p>
         「$f$が単射」とは，
         $ forall x y in a, f(x) = f(y) -> x = y $
+        このとき，$f: a arrow.hook b$と表す．
       </p>
       <details>
         <summary>単射の例</summary>
@@ -1266,6 +1279,7 @@
       <p>
         「$f$が全射」とは，
         $ forall y in b exists x in a, f(x) = y $
+        このとき，$f: a arrow.twohead b$と表す．
       </p>
       <details>
         <summary>全射の例</summary>
@@ -1394,7 +1408,7 @@
 
     <h2>無限公理</h2>
     <p>
-      自然数の集合は具体的に書くと${0, 1, 2, dots}$のことである．これを$bold(N)$と表す．自然数の定義は後に紹介する．ここでは集合で表現することのみ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．無限公理は後者の存在を認める公理である．
+      自然数の集合は具体的に表すと${0, 1, 2, dots}$のことである．これを$bold(N)$と表す．自然数の定義は後に紹介する．ここでは集合で表現することのみ行う．ここでいう$0$は空集合$0$のことである．<dfn>後者</dfn>とは自然数において$+1$した数である．無限公理は後者の存在を認める公理である．
     </p>
     <section class="def">
       <h4>後者</h4>
