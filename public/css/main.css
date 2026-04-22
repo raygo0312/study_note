@@ -1,0 +1,448 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
+
+:root {
+  --serif: "Noto Serif JP";
+  --sans: "Noto Sans JP";
+  --heading: "Shippori Mincho B1";
+  --border: var(--black) solid thin;
+  --accentborder: var(--main) solid thin;
+  --white: #f0f0f0;
+  --gray: #dddddd;
+  --black: #333333;
+  --background: #9099a2;
+  --menu: #555555;
+  --main: #91c0c0;
+  --h2: #96858f;
+  --h3: #c09f80;
+  --axm: #e2d2d2;
+  --def: #e3e2b4;
+  --thm: #c4db9a;
+  --prob: #bfc1d7;
+  --ex: #9fb1b5;
+  --lem: #ffffff;
+}
+
+/* 文書構造 */
+body {
+  color: var(--black);
+  margin: 0;
+  background-color: var(--background);
+  font-family: var(--serif);
+  line-break: strict;
+}
+
+@media (max-width: 800px) {
+  body {
+    font-size: 12px;
+  }
+}
+
+header {
+  border-bottom: var(--border);
+  padding: 10px;
+  background-color: var(--main);
+  font-family: var(--heading);
+}
+
+main {
+  margin: auto;
+  border: var(--border);
+  padding: 10px;
+  min-height: 100vh;
+  background-color: var(--white);
+}
+
+@media (max-width: 500px) {
+  main {
+    padding: 2px;
+  }
+}
+
+@media (min-width: 1200px) {
+  main {
+    width: 1200px;
+    margin: auto;
+  }
+}
+
+footer {
+  border-top: var(--border);
+  color: var(--white);
+  background-color: var(--black);
+}
+
+h1 {
+  font-family: var(--heading);
+  text-shadow: 1px 1px 3px var(--gray);
+  margin: 0 5em;
+}
+
+h2 {
+  margin-top: 40px;
+  border-left: var(--h2) solid thick;
+  padding-left: 10px;
+  background-color: rgb(from var(--h2) r g b / 0.3);
+  font-family: var(--sans);
+}
+
+h3 {
+  margin-top: 30px;
+  border-bottom: var(--h3) solid medium;
+  border-left: var(--h3) solid thick;
+  padding-left: 5px;
+  font-family: var(--sans);
+}
+
+h4 {
+  margin: 0;
+  margin-top: 20px;
+  font-family: var(--sans);
+}
+
+p {
+  text-indent: 1em;
+  margin: 0;
+}
+
+/* 意味付きテキスト */
+
+/* リンク */
+a:link {
+  text-decoration: underline;
+  color: var(--black);
+}
+
+a:visited {
+  color: var(--black);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  color: var(--white);
+}
+
+/* 定義の用語 */
+dfn {
+  font-weight: bold;
+  font-style: normal;
+}
+
+/* 定義、定理、例などのセクション */
+section {
+  padding: 5px;
+  position: relative;
+  padding-top: 3em;
+  margin: 20px 5px;
+}
+
+section::before {
+  position: absolute;
+  box-sizing: border-box;
+  font-weight: bold;
+  padding: 5px;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+section.def {
+  border: var(--def) solid thin;
+  background-color: rgb(from var(--def) r g b / 0.3);
+}
+
+section.def::before {
+  background-color: var(--def);
+  content: "定義： " attr(title);
+}
+
+section.axm {
+  border: var(--axm) solid thin;
+  background-color: rgb(from var(--axm) r g b / 0.3);
+}
+
+section.axm::before {
+  background-color: var(--axm);
+  content: "公理： " attr(title);
+}
+
+section.thm {
+  border: var(--thm) solid thin;
+  background-color: rgb(from var(--thm) r g b / 0.3);
+}
+
+section.thm::before {
+  background-color: var(--thm);
+  content: "定理： " attr(title);
+}
+
+section.ex {
+  border: var(--ex) solid thin;
+  background-color: rgb(from var(--ex) r g b / 0.3);
+}
+
+section.ex::before {
+  background-color: var(--ex);
+  content: "例： " attr(title);
+}
+
+section.lem {
+  border: var(--lem) solid thin;
+  background-color: rgb(from var(--lem) r g b / 0.3);
+}
+
+section.lem::before {
+  background-color: var(--lem);
+  content: "補題： " attr(title);
+}
+
+
+/* 折りたたみ */
+details {
+  margin: 5px;
+  border: var(--accentborder);
+  background-color: rgb(from var(--white) r g b / 0.3);
+}
+
+details[open] {
+  margin-bottom: 10px;
+  box-shadow: 5px 10px 3px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px) translateX(-2px);
+}
+
+details+details {
+  margin-top: -7px;
+}
+
+details+details[open] {
+  margin-top: -3px;
+}
+
+details summary {
+  padding: 5px 10px;
+  font-family: var(--sans);
+  font-size: 1.1em;
+}
+
+details[open] summary {
+  border-bottom: var(--accentborder);
+}
+
+/* ボタン */
+button {
+  text-align: center;
+  text-decoration: none;
+  width: 120px;
+  margin: auto;
+  padding: 5px;
+  font-weight: bold;
+  border: 2px solid var(--main);
+  color: var(--main);
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: var(--main);
+  color: white;
+}
+
+input {
+  border: 1px solid #0c0c0d4d;
+  color: #737373;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+/* テキスト入力 */
+input[type="text"] {
+  position: relative;
+  width: auto;
+  margin: 40px 0;
+  font: 15px/1.6 sans-serif;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.3em;
+  color: #000000;
+  border: 1px solid #1b2538;
+  border-radius: 4px;
+  transition: 0.5s;
+}
+
+input:focus {
+  border: 1px solid #da3c41;
+  box-shadow: 0 0 5px 1px rgba(218, 60, 65, .5);
+  outline: none;
+}
+
+/* チェックボックス */
+input[type="checkbox"] {
+  appearance: none;
+  padding: 0.5px;
+  background-color: #0c0c0d1a;
+  border-radius: 8px;
+  height: 16px;
+  width: 32px;
+  margin: 0.5em;
+}
+
+input[type="checkbox"]:hover {
+  background-color: #0c0c0d33;
+  border-color: #0c0c0d7f;
+}
+
+input[type="checkbox"]:active {
+  background-color: #0c0c0d4d;
+}
+
+input[type="checkbox"]:focus {
+  box-shadow: 0 0 0 2px #6b8e23aa, 0 0 0 4px #6b8e2355;
+}
+
+input[type="checkbox"]:checked {
+  background-color: #6b8e23;
+  border-color: #6b8e23;
+}
+
+input[type="checkbox"]::before {
+  background-color: currentColor;
+  border-radius: 6px;
+  content: "";
+  display: inline-block;
+  height: 12px;
+  margin-left: 1px;
+  margin-top: 1px;
+  transition: margin-left .2s cubic-bezier(.07, .95, 0, 1);
+  width: 12px;
+}
+
+input[type="checkbox"]:checked::before {
+  background-color: #ffffff;
+  margin-left: 17px;
+}
+
+/* テーブル */
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+th {
+  padding: 10px;
+  background: #778ca3;
+  border: solid 1px #666666;
+  color: #ffffff;
+}
+
+td {
+  padding: 10px;
+  border: solid 1px #666666;
+}
+
+/* 定義リスト */
+dl {
+  display: grid;
+  grid-template-columns: max-content auto;
+  column-gap: 0.5em;
+}
+
+dt {
+  font-weight: bold;
+}
+
+dd {
+  margin: 0;
+}
+
+/* 外部リソース */
+iframe {
+  width: 100%;
+  height: 600px;
+  border: none;
+}
+
+/* チャット */
+.you::before {
+  position: absolute;
+  top: -0.5em;
+  left: -3em;
+  width: 2.5em;
+  height: 2.5em;
+  background: url("../favicon/cleanness-teacher.png") no-repeat;
+  background-size: contain;
+  content: "";
+}
+
+.you {
+  width: fit-content;
+  position: relative;
+  margin: 2.5em auto 2em 3em;
+  border-radius: 1em;
+  padding: 0.1em 0.5em;
+  padding-right: 0.3em;
+  max-width: 70%;
+  background: var(--gray);
+}
+
+.you+.me {
+  margin-top: -1.5em
+}
+
+.me {
+  width: fit-content;
+  position: relative;
+  margin: 2em 1em 2em auto;
+  border-radius: 1em;
+  padding: 0.1em 0.5em;
+  padding-right: 0.3em;
+  max-width: 70%;
+  background: var(--gray);
+  text-align: left;
+}
+
+.me+.you {
+  margin-top: -1em
+}
+
+/* 数式 */
+.MathJax {
+  padding: 0.1em 0.25em;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* 見出しラベル */
+.remark {
+  background: var(--main);
+  border-radius: 0.2em;
+}
+
+.remark+ol {
+  list-style: upper-alpha;
+}
+
+/* ネストされたセクション */
+.nest {
+  border: var(--border);
+  border-right: none;
+}
+
+/* ロゴ */
+#logo {
+  position: absolute;
+  height: 2.5em;
+}
+
+/* Mermaid */
+.mermaid {
+  text-align: center;
+}
+
+.mermaid p {
+  text-indent: 0;
+}

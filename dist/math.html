@@ -1,0 +1,49 @@
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜数学</title><link rel="icon" type="image/png" href="./favicon/icon.png"><link rel="stylesheet" href="./css/main.css"><script type="module" src="data:video/mp2t;base64,aW1wb3J0IG1lcm1haWQgZnJvbSAiaHR0cHM6Ly9jZG4uanNkZWxpdnIubmV0L25wbS9tZXJtYWlkQDEwL2Rpc3QvbWVybWFpZC5lc20ubWluLm1qcyI7CgptZXJtYWlkLmluaXRpYWxpemUoewogIHN0YXJ0T25Mb2FkOiB0cnVlLAogIHRoZW1lOiAibmV1dHJhbCIsCiAgc2VjdXJpdHlMZXZlbDogImxvb3NlIiwKfSk7Cg=="></script><script type="module" src="data:video/mp2t;base64,aW1wb3J0IFBhbnpvb20gZnJvbSAiaHR0cHM6Ly91bnBrZy5jb20vQHBhbnpvb20vcGFuem9vbUA0LjUuMS9kaXN0L3Bhbnpvb20uZXMuanMiOwoKY29uc3QgcGFuem9vbUxpc3QgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsPEhUTUxFbGVtZW50PigiLnBhbnpvb20iKTsKCnBhbnpvb21MaXN0LmZvckVhY2goKGVsZW1lbnQpID0+IHsKICBjb25zdCBwYXJlbnQgPSBlbGVtZW50LnBhcmVudEVsZW1lbnQ7CiAgaWYgKCFwYXJlbnQpIHJldHVybjsKCiAgY29uc3Qgb3V0ZXIgPSBkb2N1bWVudC5jcmVhdGVFbGVtZW50KCJkaXYiKTsKICBvdXRlci5zdHlsZS5wb3NpdGlvbiA9ICJyZWxhdGl2ZSI7CiAgb3V0ZXIuc3R5bGUub3ZlcmZsb3cgPSAiaGlkZGVuIjsKICBwYXJlbnQuaW5zZXJ0QmVmb3JlKG91dGVyLCBlbGVtZW50KTsKICBvdXRlci5hcHBlbmRDaGlsZChlbGVtZW50KTsKCiAgY29uc3QgcGFuem9vbSA9IFBhbnpvb20oZWxlbWVudCwgewogICAgY29udGFpbjogIm91dHNpZGUiLAogIH0pOwoKICBvdXRlci5hZGRFdmVudExpc3RlbmVyKCJ3aGVlbCIsIHBhbnpvb20uem9vbVdpdGhXaGVlbCk7Cn0pOwo="></script><script>
+        window.MathJax = {
+          loader: {
+            load: ["[tex]/physics", "[XyJax]/xypic.js", "[tex]/bussproofs"],
+            paths: { XyJax: "https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/" }
+          },
+          tex: {
+            tags: "ams",
+            packages: {
+              "[+]": ["physics", "xypic", "bussproofs"]
+            },
+            macros: {
+              abs: ["\\left|#1\\right|", 1],
+              coloneq: [":="],
+              entail: ["\\vDash"],
+              prove: ["\\vdash"],
+              xor: ["\\veebar"]
+            }
+          },
+          chtml: {
+            scale: 1,
+            mtextInheritFont: true
+          }
+        };
+      </script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head> <body> <header> <img src="./favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>数学</h1> <nav aria-label="パンくず">  <a href="./index.html">ホーム</a> /  </nav> <details> <summary>目次</summary> <ul> <li> <a href="#heading0" class="tocLink">数理論理学</a> <ul><li> <a href="#heading1" class="tocLink">数学の入門</a>  </li><li> <a href="#heading2" class="tocLink">数学基礎論</a>  </li><li> <a href="#heading3" class="tocLink">モデル理論</a>  </li><li> <a href="#heading4" class="tocLink">証明論</a>  </li><li> <a href="#heading5" class="tocLink">理論計算機科学</a>  </li></ul> </li><li> <a href="#heading6" class="tocLink">代数学</a>  </li><li> <a href="#heading7" class="tocLink">解析学</a>  </li><li> <a href="#heading8" class="tocLink">幾何学</a>  </li><li> <a href="#heading9" class="tocLink">統計学</a>  </li><li> <a href="#heading10" class="tocLink">数理最適化</a>  </li><li> <a href="#heading11" class="tocLink">離散数学</a>  </li><li> <a href="#heading12" class="tocLink">数値計算</a>  </li> </ul> </details>   </header> <main>  <details> <summary>各ページの関係</summary> <div class="mermaid panzoom">graph TB
+mathmatics-introduction[数学とは]
+click mathmatics-introduction href &quot;math/mathmatics-introduction.html&quot;
+logical-formula[論理式]
+click logical-formula href &quot;math/logical-formula.html&quot;
+proof[証明]
+click proof href &quot;math/proof.html&quot;
+logical-formula-extension[論理式の拡張]
+click logical-formula-extension href &quot;math/logical-formula-extension.html&quot;
+natural-deduction[自然演繹]
+click natural-deduction href &quot;math/natural-deduction.html&quot;
+ZFC-axioms[ZFC公理系]
+click ZFC-axioms href &quot;math/ZFC-axioms.html&quot;
+order[順序]
+click order href &quot;math/order.html&quot;
+mathmatics-introduction --&gt; logical-formula
+logical-formula --&gt; proof
+proof --&gt; logical-formula-extension
+logical-formula-extension --&gt; natural-deduction
+natural-deduction --&gt; ZFC-axioms
+ZFC-axioms --&gt; order</div> </details> <h2 id="heading0">数理論理学</h2> <p>
+数理論理学はメタ数学(数学それ自身)に対して研究する分野である．
+</p> <h3 id="heading1">数学の入門</h3> <p>
+ここでは，数学を勉強するにあたって，知っておきたい基礎的な知識を紹介する．入門に最低限な知識のみを紹介しているため，形式化や詳しい用語を省略している部分もある．
+</p> <ul> <li><a href="math/mathmatics-introduction.html">数学とは</a></li><li><a href="math/logical-formula.html">論理式</a></li><li><a href="math/proof.html">証明</a></li><li><a href="math/logical-formula-extension.html">論理式の拡張</a></li><li><a href="math/natural-deduction.html">自然演繹</a></li><li><a href="math/ZFC-axioms.html">ZFC公理系</a></li><li><a href="math/order.html">順序</a></li> </ul> <h3 id="heading2">数学基礎論</h3> <h3 id="heading3">モデル理論</h3> <ul> <li>命題論理</li> <li>述語論理</li> <li>高階述語論理</li> <li>様相論理</li> </ul> <h3 id="heading4">証明論</h3> <ul> <li>ヒルベルト流</li> <li>シークエント計算</li> <li>ゲンチェン流</li> </ul> <h3 id="heading5">理論計算機科学</h3> <ul> <li>言語</li> <li>オートマトン</li> <li>チューリングマシン</li> <li>不完全性定理</li> <li>\(\lambda\)計算</li> <li>型付き\(\lambda\)計算</li> </ul> <h2 id="heading6">代数学</h2> <h2 id="heading7">解析学</h2> <h2 id="heading8">幾何学</h2> <h2 id="heading9">統計学</h2> <h2 id="heading10">数理最適化</h2> <h2 id="heading11">離散数学</h2> <h2 id="heading12">数値計算</h2>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer> </body></html>

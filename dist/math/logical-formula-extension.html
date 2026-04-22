@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜論理式の拡張</title><link rel="icon" type="image/png" href="../favicon/icon.png"><link rel="stylesheet" href="../css/main.css"><script>
+        window.MathJax = {
+          loader: {
+            load: ["[tex]/physics", "[XyJax]/xypic.js", "[tex]/bussproofs"],
+            paths: { XyJax: "https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/" }
+          },
+          tex: {
+            tags: "ams",
+            packages: {
+              "[+]": ["physics", "xypic", "bussproofs"]
+            },
+            macros: {
+              abs: ["\\left|#1\\right|", 1],
+              coloneq: [":="],
+              entail: ["\\vDash"],
+              prove: ["\\vdash"],
+              xor: ["\\veebar"]
+            }
+          },
+          chtml: {
+            scale: 1,
+            mtextInheritFont: true
+          }
+        };
+      </script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head> <body> <header> <img src="../favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>論理式の拡張</h1> <nav aria-label="パンくず">  <a href="../index.html">ホーム</a> /  <a href="../math.html">数学</a> /  </nav> <details> <summary>目次</summary> <ul> <li> <a href="#heading0" class="tocLink">新しい真理関数</a>  </li><li> <a href="#heading1" class="tocLink">省略</a> <ul><li> <a href="#heading2" class="tocLink">演算子の優先順位</a>  </li><li> <a href="#heading3" class="tocLink">量化子の省略</a>  </li><li> <a href="#heading4" class="tocLink">否定の斜線</a>  </li><li> <a href="#heading5" class="tocLink">演算子の反転</a>  </li><li> <a href="#heading6" class="tocLink">述語の連接</a>  </li></ul> </li> </ul> </details> <details> <summary>定義される用語</summary> <a href="#define0" class="tocLink">優先順位</a> ，<a href="#define1" class="tocLink">右結合</a> ，<a href="#define2" class="tocLink">左結合</a>  </details>  </header> <main>  <h2 id="heading0">新しい真理関数</h2> <p>便利なので，真理関数として同値や排他的論理和を新たに定義する．</p> <section class="def"> <h4>同値</h4> <ul> <li>\(A, B\): 論理式</li> </ul> <p>
+\((A \leftrightarrow B) : \Longleftrightarrow ((A \rightarrow B) \land (B \rightarrow A))\)
+</p> <details> <summary>読み</summary> <p>\(A\)と\(B\)は同値</p> </details> <h4>排他的論理和</h4> <ul> <li>\(A, B\): 論理式</li> </ul> <p>\[(A \xor B) : \Longleftrightarrow (A \land (\neg B) \lor (\neg A) \land B)\]</p> <details> <summary>読み</summary> <p>\(A\)と\(B\)はどちらか一方</p> </details> </section> <h2 id="heading1">省略</h2> <h3 id="heading2">演算子の優先順位</h3> <p>
+「\(P\)でないかつ\(Q\)のときのみ\(P\)ならば\(P\)または\(Q\)である」という曖昧で複雑な命題に対しても，真理関数を用いると，\(((((\neg
+    P) \land Q) \leftrightarrow P) \rightarrow (P \lor
+    Q))\)と命題同士の関係を明確に記述することが出来る．しかし，括弧が冗長で式が煩雑である．そこで，演算子に<dfn id="define0">優先順位</dfn>を定める．演算子の優先順位とは括弧がない場合に優先して計算される順番のことである．<dfn id="define1">右結合</dfn>は優先順位が同じときに，文の右側の演算子を優先することである．左側の場合は<dfn id="define2">左結合</dfn>である．
+</p> <p>
+本サイトでは演算子の優先順位や，括弧の省略の形式的な定義は行わなず，例をもって説明する．
+</p> <section class="ex"> <p>命題\(P, Q, R\)に対して，次を満たす．</p> <ul> <li>\[\neg P \land Q : \Longleftrightarrow (\neg P) \land Q\]</li> <li>\[P \land Q \lor Q \land R : \Longleftrightarrow (P \land Q) \lor (Q \land R)\]</li> <li>\[\neg \neg P : \Longleftrightarrow \neg (\neg P)\]</li> <li>\[P \rightarrow Q \rightarrow R : \Longleftrightarrow P \rightarrow (Q \rightarrow R)\]</li> <li>\[\neg (P \lor Q) \land R : \Longleftrightarrow (\neg (P \lor Q)) \land R\]</li> </ul> </section> <details> <summary>練習問題</summary> <p>次の括弧が省略された命題に括弧をつけなさい．</p> <ol> <li>\(\neg P \land Q\)</li> <li>\(P \land Q \lor R \rightarrow P \lor \neg Q \land R\)</li> <li>\(P \rightarrow Q \rightarrow P \leftrightarrow Q\)</li> </ol> <details> <summary>解答</summary> <p>優先順位が高い演算子から括弧をくくる．</p> <ol> <li>\(((\neg P) \land Q)\)</li> <li>\((((P \land Q) \lor R) \rightarrow (P \lor ((\neg Q) \land R)))\)</li> <li>\(((P \rightarrow (Q \rightarrow P)) \leftrightarrow Q)\)</li> </ol> </details> </details> <h3 id="heading3">量化子の省略</h3> <p>
+量化子は適用範囲を決める必要があり，その範囲を括弧で囲わなければならない．しかし，変項が増えると括弧が煩雑になってしまうため，省略を考える．他にも便利な記法として次のものを定める．
+</p> <section class="def" title="量化子の拡張"> <h4>適用範囲の省略</h4> <ul> <li>\(\lambda\): 量化子</li> <li>\(x\): 変数</li> <li>\(A\): 論理式</li> </ul> <p>\[\lambda x, A : \Longleftrightarrow \lambda x (A)\]</p> <h4>同量化の省略</h4> <ul> <li>\(\lambda\): 量化子</li> <li>\(x, y\): 項</li> <li>\(A\): 論理式</li> </ul> <p>\[\lambda x y (A) : \Longleftrightarrow \lambda x (\lambda y (A))\]</p> <h4>量化子の別記</h4> <ul> <li>\(\lambda\): 量化子</li> <li>\(x\): 変数</li> <li>\(A\): 論理式</li> </ul> <p>量化子を肩に書く記法も用いる．</p> <p><code>lambda^ x, A</code> のような省略記法を使うことがある．</p> <h4>\(\forall\)の条件の省略</h4> <ul> <li>\(A\): 論理式</li> <li>\(x, a\): 項</li> </ul> <ul> <li>\[\forall x \in a (A) : \Longleftrightarrow \forall x ((x \in a) \rightarrow A)\]</li> <li>\[\forall x \in a : \Longleftrightarrow \forall x \in a (\bot)\]</li> </ul> <h4>\(\exists\)の条件の省略</h4> <ul> <li>\(A\): 論理式</li> <li>\(x, a\): 項</li> </ul> <ul> <li>\[\exists x \in a (A) : \Longleftrightarrow \exists x ((x \in a) \land A)\]</li> <li>\[\exists x \in a : \Longleftrightarrow \exists x \in a (\top)\]</li> </ul> <h4>唯一存在量化子</h4> <ul> <li>\(A\): 論理式</li> <li>\(x, y\): 項</li> </ul> <p>
+\(\exists! x, A : \Longleftrightarrow \exists x, A(x) \land \forall y (A(y)
+      \rightarrow y = x)\)
+</p> </section> <h3 id="heading4">否定の斜線</h3> <p>
+否定した命題や述語はよく使われる．そのたびに，先頭に\(\neg\)をつけて括弧でくくっていては，冗長的で認識しづらい．量化子や関係演算子に斜線を入れることで否定を表現する．
+</p> <section class="def" title="否定の拡張"> <h4>量化子の否定</h4> <ul> <li>\(\lambda\): 量化子</li> <li>\(x\): 変数</li> <li>\(A\): 論理式</li> </ul> <p>\[\cancel{\lambda} x (A) : \Longleftrightarrow \neg (\lambda x (A))\]</p> <h4>演算子の否定</h4> <ul> <li>\(\star\): 演算子</li> <li>\(x, y\): 変数</li> </ul> <p>\[x \cancel{\star} y : \Longleftrightarrow \neg (x \star y)\]</p> </section> <h3 id="heading5">演算子の反転</h3> <p>
+向きがある関係を表す演算子は表現力を上げるために逆向きで表すことがある．
+</p> <section class="def" title="演算子の反転"> <ul> <li>\(\prec\): 関係演算子</li> <li>\(A, B\): 論理式</li> </ul> <p>\[B \succ A : \Longleftrightarrow A \prec B\]</p> </section> <h3 id="heading6">述語の連接</h3> <p>あまり好ましくないが，簡潔に表現するために次の省略を定義する．</p> <section class="def" title="関係式の拡張"> <ul> <li>\(\prec\): 関係演算子</li> <li>\(A, B, C\): 論理式</li> </ul> <p>\[a \prec b \prec c : \Longleftrightarrow a \prec b \land b \prec c\]</p> </section>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer> </body></html>

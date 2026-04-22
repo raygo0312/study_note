@@ -1,0 +1,14 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import searchScriptUrl from "../scripts/search.ts?url";
+---
+
+<BaseLayout
+  title="用語検索"
+  breadcrumbs={[{ href: "/index.html", label: "ホーム" }]}
+  extraScripts={[{ src: searchScriptUrl }]}
+>
+    <input type="text" id="searchInput" placeholder="検索したい用語を入力">
+    <button id="searchButton">検索</button>
+    <div id="results"></div>
+</BaseLayout>

@@ -1,0 +1,249 @@
+---
+import { decodeNamedCharacterReference } from "decode-named-character-reference";
+import { typst2tex } from "tex2typst";
+import chatToggleScriptUrl from "../scripts/chat-toggle.ts?url";
+import lazyIframeScriptUrl from "../scripts/lazy-iframe.ts?url";
+import mermaidScriptUrl from "../scripts/mermaid.ts?url";
+import panzoomScriptUrl from "../scripts/panzoom.ts?url";
+
+interface Breadcrumb {
+  href: string;
+  label: string;
+}
+
+interface ScriptAsset {
+  src: string;
+}
+
+interface Props {
+  title: string;
+  breadcrumbs?: Breadcrumb[];
+  extraScripts?: ScriptAsset[];
+}
+
+const {
+  title,
+  breadcrumbs = [],
+  extraScripts = [],
+} = Astro.props;
+
+const normalizeSegments = (value: string) =>
+  value.split("/").filter(Boolean);
+
+const relativePath = (fromDir: string, toPath: string) => {
+  const fromParts = normalizeSegments(fromDir);
+  const toParts = normalizeSegments(toPath);
+
+  while (fromParts.length > 0 && toParts.length > 0 && fromParts[0] === toParts[0]) {
+    fromParts.shift();
+    toParts.shift();
+  }
+
+  const upward = fromParts.map(() => "..");
+  const result = [...upward, ...toParts].join("/");
+  return result === "" ? "." : result;
+};
+
+const withBase = (target: string) => {
+  if (/^[a-z][a-z0-9+.-]*:/i.test(target) || target.startsWith("//") || target.startsWith("#")) {
+    return target;
+  }
+
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const currentPath = Astro.url.pathname.replace(/\/$/, "");
+  const currentDir = currentPath.includes("/")
+    ? currentPath.slice(0, currentPath.lastIndexOf("/")) || "/"
+    : "/";
+  const normalized = target.startsWith("/") ? target : `/${target}`;
+  const absoluteTarget = `${base}${normalized}`;
+  const relativeTarget = relativePath(currentDir, absoluteTarget);
+
+  if (relativeTarget.startsWith(".")) return relativeTarget;
+  return `./${relativeTarget}`;
+};
+
+const rawContent = await Astro.slots.render("default");
+
+const decodeTextEntityReferences = (value: string) =>
+  value.replace(/&(#x[0-9a-fA-F]+|#\d+|[0-9a-zA-Z]+);/g, (match, entity: string) => {
+    const decoded = decodeNamedCharacterReference(entity);
+    return decoded === false ? match : decoded;
+  });
+
+const convertMathDelimiters = (html: string) =>
+  html.replace(/\$(.+?)\$/gs, (_match, inner: string) => {
+    const bothEdgesSpace = /^\s.*\s$/.test(inner);
+    const converted = typst2tex(inner.trim(), { blockMathMode: bothEdgesSpace });
+    return bothEdgesSpace ? `\\[${converted}\\]` : `\\(${converted}\\)`;
+  });
+
+const stripTags = (value: string) =>
+  decodeTextEntityReferences(value.replace(/<[^>]+>/g, "")).trim();
+
+type NavItem = {
+  href: string;
+  label: string;
+  level: number;
+  children: NavItem[];
+};
+
+const headings: NavItem[] = [];
+const terms: { href: string; label: string }[] = [];
+
+let headingId = 0;
+let termId = 0;
+
+const contentWithHeadingIds = rawContent.replace(
+  /<h([23])([^>]*)>([\s\S]*?)<\/h\1>/g,
+  (_match, levelText: string, attrs: string, inner: string) => {
+    const existingId = attrs.match(/\sid=(["'])(.*?)\1/);
+    const id = existingId?.[2] ?? `heading${headingId++}`;
+    const nextAttrs = existingId ? attrs : `${attrs} id="${id}"`;
+    headings.push({
+      href: `#${id}`,
+      label: stripTags(inner),
+      level: Number(levelText),
+      children: [],
+    });
+    return `<h${levelText}${nextAttrs}>${inner}</h${levelText}>`;
+  },
+);
+
+const contentWithTermIds = contentWithHeadingIds.replace(
+  /<dfn([^>]*)>([\s\S]*?)<\/dfn>/g,
+  (_match, attrs: string, inner: string) => {
+    const existingId = attrs.match(/\sid=(["'])(.*?)\1/);
+    const id = existingId?.[2] ?? `define${termId++}`;
+    const nextAttrs = existingId ? attrs : `${attrs} id="${id}"`;
+    terms.push({
+      href: `#${id}`,
+      label: stripTags(inner),
+    });
+    return `<dfn${nextAttrs}>${inner}</dfn>`;
+  },
+);
+
+const contentHtml = convertMathDelimiters(contentWithTermIds);
+
+const tocRoot: NavItem[] = [];
+const stack: NavItem[] = [];
+
+for (const heading of headings) {
+  while (stack.length > 0 && stack[stack.length - 1].level >= heading.level) {
+    stack.pop();
+  }
+  const item = { ...heading, children: [] };
+  if (stack.length === 0) {
+    tocRoot.push(item);
+  } else {
+    stack[stack.length - 1].children.push(item);
+  }
+  stack.push(item);
+}
+
+const hasChat = /class=(["']).*?\b(?:you|me)\b.*?\1/.test(contentHtml);
+const hasIframe = /<iframe\b/i.test(contentHtml);
+const hasMermaid = /class=(["']).*?\bmermaid\b.*?\1/.test(contentHtml);
+const hasPanzoom = /class=(["']).*?\bpanzoom\b.*?\1/.test(contentHtml);
+const hasMath = /\$[\s\S]+?\$/.test(rawContent);
+
+const pageTitle = `学問の鎖｜${title}`;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    <link rel="icon" type="image/png" href={withBase("/favicon/icon.png")} />
+    <link rel="stylesheet" href={withBase("/css/main.css")} />
+    {extraScripts.map((script) => <script type="module" src={withBase(script.src)}></script>)}
+    {hasMermaid && <script type="module" src={withBase(mermaidScriptUrl)}></script>}
+    {hasPanzoom && <script type="module" src={withBase(panzoomScriptUrl)}></script>}
+    {hasMath && (
+      <script is:inline>
+        window.MathJax = {
+          loader: {
+            load: ["[tex]/physics", "[XyJax]/xypic.js", "[tex]/bussproofs"],
+            paths: { XyJax: "https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/" }
+          },
+          tex: {
+            tags: "ams",
+            packages: {
+              "[+]": ["physics", "xypic", "bussproofs"]
+            },
+            macros: {
+              abs: ["\\left|#1\\right|", 1],
+              coloneq: [":="],
+              entail: ["\\vDash"],
+              prove: ["\\vdash"],
+              xor: ["\\veebar"]
+            }
+          },
+          chtml: {
+            scale: 1,
+            mtextInheritFont: true
+          }
+        };
+      </script>
+    )}
+    {hasMath && <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>}
+    {hasIframe && <script type="module" src={withBase(lazyIframeScriptUrl)}></script>}
+    {hasChat && <script type="module" src={withBase(chatToggleScriptUrl)}></script>}
+  </head>
+  <body>
+    <header>
+      <img src={withBase("/favicon/title.svg")} alt="学問の鎖のロゴ" id="logo" />
+      <h1>{title}</h1>
+      {breadcrumbs.length > 0 && (
+        <nav aria-label="パンくず">
+          {breadcrumbs.map((crumb) => (
+            <>
+              <a href={withBase(crumb.href)}>{crumb.label}</a>{" / "}
+            </>
+          ))}
+        </nav>
+      )}
+      {tocRoot.length > 0 && (
+        <details>
+          <summary>目次</summary>
+          <ul>
+            {tocRoot.map(function renderItem(item) {
+              return (
+                <li>
+                  <a href={item.href} class="tocLink">{item.label}</a>
+                  {item.children.length > 0 && <ul>{item.children.map(renderItem)}</ul>}
+                </li>
+              );
+            })}
+          </ul>
+        </details>
+      )}
+      {terms.length > 0 && (
+        <details>
+          <summary>定義される用語</summary>
+          {terms.map((term, index) => (
+            <>
+              {index > 0 && "，"}
+              <a href={term.href} class="tocLink">{term.label}</a>
+            </>
+          ))}
+        </details>
+      )}
+      {hasChat && (
+        <details>
+          <summary>設定</summary>
+          <label>
+            <input type="checkbox" data-chat-toggle checked />
+            会話を表示
+          </label>
+        </details>
+      )}
+    </header>
+    <main>
+      <Fragment set:html={contentHtml} />
+    </main>
+    <footer>Copyright © raygo All Rights Reserved since 2016.</footer>
+  </body>
+</html>
