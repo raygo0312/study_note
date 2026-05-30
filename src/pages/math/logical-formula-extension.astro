@@ -55,10 +55,16 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
     <p>命題$P, Q, R$に対して，次を満たす．</p>
     <ul>
       <li>$ not P and Q :arrow.l.r.double.long (not P) and Q $</li>
-      <li>$ P and Q or Q and R :arrow.l.r.double.long (P and Q) or (Q and R) $</li>
+      <li>
+        $ P and Q or Q and R :arrow.l.r.double.long (P and Q) or (Q and R) $
+      </li>
       <li>$ not not P :arrow.l.r.double.long not (not P) $</li>
-      <li>$ P arrow.r Q arrow.r R :arrow.l.r.double.long P arrow.r (Q arrow.r R) $</li>
-      <li>$ not (P or Q) and R :arrow.l.r.double.long (not (P or Q)) and R $</li>
+      <li>
+        $ P arrow.r Q arrow.r R :arrow.l.r.double.long P arrow.r (Q arrow.r R) $
+      </li>
+      <li>
+        $ not (P or Q) and R :arrow.l.r.double.long (not (P or Q)) and R $
+      </li>
     </ul>
   </section>
 
@@ -114,7 +120,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <li>$x, a$: 項</li>
     </ul>
     <ul>
-      <li>$ forall x in a (A) :arrow.l.r.double.long forall x ((x in a) arrow.r A) $</li>
+      <li>
+        $ forall x in a (A) :arrow.l.r.double.long forall x ((x in a) arrow.r A)
+        $
+      </li>
       <li>$ forall x in a :arrow.l.r.double.long forall x in a (bot) $</li>
     </ul>
     <h4>$exists$の条件の省略</h4>
@@ -123,7 +132,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       <li>$x, a$: 項</li>
     </ul>
     <ul>
-      <li>$ exists x in a (A) :arrow.l.r.double.long exists x ((x in a) and A) $</li>
+      <li>
+        $ exists x in a (A) :arrow.l.r.double.long exists x ((x in a) and A) $
+      </li>
       <li>$ exists x in a :arrow.l.r.double.long exists x in a (top) $</li>
     </ul>
     <h4>唯一存在量化子</h4>
