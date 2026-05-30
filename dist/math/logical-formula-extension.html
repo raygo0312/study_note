@@ -4,6 +4,10 @@
             load: ["[tex]/physics", "[XyJax]/xypic.js", "[tex]/bussproofs"],
             paths: { XyJax: "https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/" }
           },
+          startup: {
+            typeset: false,
+            pageReady: () => MathJax.startup.defaultPageReady().then(() => MathJax.typesetPromise())
+          },
           tex: {
             tags: "ams",
             packages: {
