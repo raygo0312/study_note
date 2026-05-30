@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜方向探索</title><link rel="icon" type="image/png" href="../favicon/icon.png"><link rel="stylesheet" href="../css/main.css"></head> <body> <header> <img src="../favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>方向探索</h1> <nav aria-label="パンくず">  <a href="../index.html">ホーム</a> /  <a href="../competitive-programming.html">競技プログラミング</a> /  </nav> <details> <summary>目次</summary> <ul> <li> <a href="#概要" class="tocLink">概要</a>  </li><li> <a href="#8方向" class="tocLink">8方向</a>  </li> </ul> </details>   </header> <main> <h2 id="概要">概要</h2>
+<p>マスの隣接するマスを探索する際の方法を紹介する．</p>
+<h2 id="8方向">8方向</h2>
+<p>8方向の探索をし，有効なマスの配列を返す関数．</p>
+<pre class="astro-code one-dark-pro" style="background-color:#282c34;color:#abb2bf; overflow-x: auto;" tabindex="0" data-language="rust"><code><span class="line"><span style="color:#C678DD">fn</span><span style="color:#61AFEF"> neighbors8</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">i</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">j</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">h</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">w</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">) -> </span><span style="color:#E5C07B">Vec</span><span style="color:#ABB2BF">&#x3C;(</span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">)> {</span></span>
+<span class="line"><span style="color:#C678DD">  let</span><span style="color:#E06C75"> dir</span><span style="color:#56B6C2"> =</span><span style="color:#ABB2BF"> [</span></span>
+<span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#56B6C2">!</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#56B6C2">!</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#56B6C2">!</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">, </span><span style="color:#56B6C2">!</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">, </span><span style="color:#56B6C2">!</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#56B6C2">!</span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">),</span></span>
+<span class="line"><span style="color:#ABB2BF">  ];</span></span>
+<span class="line"><span style="color:#C678DD">  let</span><span style="color:#C678DD"> mut</span><span style="color:#E06C75"> res</span><span style="color:#56B6C2"> =</span><span style="color:#E5C07B"> Vec</span><span style="color:#ABB2BF">::</span><span style="color:#61AFEF">new</span><span style="color:#ABB2BF">();</span></span>
+<span class="line"><span style="color:#C678DD">  for</span><span style="color:#ABB2BF"> (</span><span style="color:#E06C75">di</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">dj</span><span style="color:#ABB2BF">) </span><span style="color:#C678DD">in</span><span style="color:#E06C75"> dir</span><span style="color:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#C678DD">    let</span><span style="color:#ABB2BF"> (</span><span style="color:#E06C75">ni</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">nj</span><span style="color:#ABB2BF">) </span><span style="color:#56B6C2">=</span><span style="color:#ABB2BF"> (</span><span style="color:#E06C75">i</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">wrapping_add</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">di</span><span style="color:#ABB2BF">), </span><span style="color:#E06C75">j</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">wrapping_add</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">dj</span><span style="color:#ABB2BF">));</span></span>
+<span class="line"><span style="color:#C678DD">    if</span><span style="color:#E06C75"> ni</span><span style="color:#56B6C2"> &#x3C;</span><span style="color:#E06C75"> h</span><span style="color:#56B6C2"> &#x26;&#x26;</span><span style="color:#E06C75"> nj</span><span style="color:#56B6C2"> &#x3C;</span><span style="color:#E06C75"> w</span><span style="color:#ABB2BF"> {</span></span>
+<span class="line"><span style="color:#E06C75">      res</span><span style="color:#ABB2BF">.</span><span style="color:#61AFEF">push</span><span style="color:#ABB2BF">((</span><span style="color:#E06C75">ni</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">nj</span><span style="color:#ABB2BF">));</span></span>
+<span class="line"><span style="color:#ABB2BF">    }</span></span>
+<span class="line"><span style="color:#ABB2BF">  }</span></span>
+<span class="line"><span style="color:#E06C75">  res</span></span>
+<span class="line"><span style="color:#ABB2BF">}</span></span></code></pre> </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer> <script>
+        document.querySelectorAll("pre.astro-code").forEach((codeBlock) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "code-block-wrapper";
+          codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
+          wrapper.appendChild(codeBlock);
+
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "code-copy-button";
+          button.innerHTML = `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="8" y="8" width="10" height="12" rx="1.5"></rect>
+              <rect x="5" y="4" width="10" height="12" rx="1.5"></rect>
+            </svg>
+          `;
+          button.setAttribute("aria-label", "コードをコピー");
+
+          button.addEventListener("click", async () => {
+            const code = codeBlock.textContent ?? "";
+
+            try {
+              await navigator.clipboard.writeText(code);
+              button.classList.add("is-copied");
+              button.setAttribute("aria-label", "コピーしました");
+            } catch {
+              button.classList.add("is-failed");
+              button.setAttribute("aria-label", "コピーに失敗しました");
+            }
+
+            window.setTimeout(() => {
+              button.classList.remove("is-copied", "is-failed");
+              button.setAttribute("aria-label", "コードをコピー");
+            }, 1400);
+          });
+
+          wrapper.appendChild(button);
+        });
+      </script> </body> </html>

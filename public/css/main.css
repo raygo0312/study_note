@@ -5,6 +5,7 @@
 :root {
   --serif: "Noto Serif JP";
   --sans: "Noto Sans JP";
+  --code: "Moralerspace Neon", "Monaspace Neon", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
   --heading: "Shippori Mincho B1";
   --border: var(--black) solid thin;
   --accentborder: var(--main) solid thin;
@@ -357,6 +358,56 @@ dt {
 
 dd {
   margin: 0;
+}
+
+.code-block-wrapper {
+  position: relative;
+}
+
+pre.astro-code {
+  padding: 1em;
+}
+
+pre.astro-code code {
+  font-family: var(--code);
+  font-size: 1em;
+}
+
+.code-copy-button {
+  position: absolute;
+  top: 0.45em;
+  right: 0.45em;
+  z-index: 1;
+  width: auto;
+  margin: 0;
+  border: 1px solid rgb(255 255 255 / 0.2);
+  border-radius: 4px;
+  padding: 0.35em;
+  background: rgb(0 0 0 / 0.45);
+  color: #d6deeb;
+  line-height: 0;
+  transition: none;
+}
+
+.code-copy-button:hover {
+  background: rgb(255 255 255 / 0.14);
+  color: #ffffff;
+}
+
+.code-copy-button svg {
+  width: 1.15rem;
+  height: 1.15rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+}
+
+.code-copy-button.is-copied {
+  color: #98c379;
+}
+
+.code-copy-button.is-failed {
+  color: #e06c75;
 }
 
 /* 外部リソース */

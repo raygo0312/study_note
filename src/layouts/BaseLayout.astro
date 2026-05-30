@@ -16,16 +16,20 @@ interface ScriptAsset {
 }
 
 interface Props {
-  title: string;
+  title?: string;
   breadcrumbs?: Breadcrumb[];
   extraScripts?: ScriptAsset[];
+  frontmatter?: {
+    title?: string;
+    breadcrumbs?: Breadcrumb[];
+    extraScripts?: ScriptAsset[];
+  };
 }
 
-const {
-  title,
-  breadcrumbs = [],
-  extraScripts = [],
-} = Astro.props;
+const frontmatter = Astro.props.frontmatter ?? {};
+const title = Astro.props.title ?? frontmatter.title ?? "";
+const breadcrumbs = Astro.props.breadcrumbs ?? frontmatter.breadcrumbs ?? [];
+const extraScripts = Astro.props.extraScripts ?? frontmatter.extraScripts ?? [];
 
 const normalizeSegments = (value: string) =>
   value.split("/").filter(Boolean);
@@ -146,6 +150,7 @@ const hasIframe = /<iframe\b/i.test(contentHtml);
 const hasMermaid = /class=(["']).*?\bmermaid\b.*?\1/.test(contentHtml);
 const hasPanzoom = /class=(["']).*?\bpanzoom\b.*?\1/.test(contentHtml);
 const hasMath = /\$[\s\S]+?\$/.test(rawContent);
+const hasCodeBlock = /<pre\b[^>]*class=(["'])[^"']*\bastro-code\b/.test(contentHtml);
 
 const pageTitle = `学問の鎖｜${title}`;
 ---
@@ -245,5 +250,46 @@ const pageTitle = `学問の鎖｜${title}`;
       <Fragment set:html={contentHtml} />
     </main>
     <footer>Copyright © raygo All Rights Reserved since 2016.</footer>
+    {hasCodeBlock && (
+      <script is:inline>
+        document.querySelectorAll("pre.astro-code").forEach((codeBlock) => {
+          const wrapper = document.createElement("div");
+          wrapper.className = "code-block-wrapper";
+          codeBlock.parentNode?.insertBefore(wrapper, codeBlock);
+          wrapper.appendChild(codeBlock);
+
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "code-copy-button";
+          button.innerHTML = `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="8" y="8" width="10" height="12" rx="1.5"></rect>
+              <rect x="5" y="4" width="10" height="12" rx="1.5"></rect>
+            </svg>
+          `;
+          button.setAttribute("aria-label", "コードをコピー");
+
+          button.addEventListener("click", async () => {
+            const code = codeBlock.textContent ?? "";
+
+            try {
+              await navigator.clipboard.writeText(code);
+              button.classList.add("is-copied");
+              button.setAttribute("aria-label", "コピーしました");
+            } catch {
+              button.classList.add("is-failed");
+              button.setAttribute("aria-label", "コピーに失敗しました");
+            }
+
+            window.setTimeout(() => {
+              button.classList.remove("is-copied", "is-failed");
+              button.setAttribute("aria-label", "コードをコピー");
+            }, 1400);
+          });
+
+          wrapper.appendChild(button);
+        });
+      </script>
+    )}
   </body>
 </html>
