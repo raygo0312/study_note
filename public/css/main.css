@@ -158,7 +158,7 @@ section.def {
 
 section.def::before {
   background-color: var(--def);
-  content: "定義： " attr(title);
+  content: "定義： " attr(data-label);
 }
 
 section.axm {
@@ -168,7 +168,7 @@ section.axm {
 
 section.axm::before {
   background-color: var(--axm);
-  content: "公理： " attr(title);
+  content: "公理： " attr(data-label);
 }
 
 section.thm {
@@ -178,7 +178,7 @@ section.thm {
 
 section.thm::before {
   background-color: var(--thm);
-  content: "定理： " attr(title);
+  content: "定理： " attr(data-label);
 }
 
 section.ex {
@@ -188,7 +188,7 @@ section.ex {
 
 section.ex::before {
   background-color: var(--ex);
-  content: "例： " attr(title);
+  content: "例： " attr(data-label);
 }
 
 section.lem {
@@ -198,7 +198,7 @@ section.lem {
 
 section.lem::before {
   background-color: var(--lem);
-  content: "補題： " attr(title);
+  content: "補題： " attr(data-label);
 }
 
 

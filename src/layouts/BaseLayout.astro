@@ -31,6 +31,7 @@ const title = Astro.props.title ?? frontmatter.title ?? "";
 const breadcrumbs = Astro.props.breadcrumbs ?? frontmatter.breadcrumbs ?? [];
 const extraScripts = Astro.props.extraScripts ?? frontmatter.extraScripts ?? [];
 
+// `base` とページ階層を考慮して、内部リンクを現在ページからの相対パスにする。
 const normalizeSegments = (value: string) =>
   value.split("/").filter(Boolean);
 
@@ -66,6 +67,7 @@ const withBase = (target: string) => {
   return `./${relativeTarget}`;
 };
 
+// 以降の本文変換は、slot をレンダリングした HTML 文字列に対して行う。
 const rawContent = await Astro.slots.render("default");
 
 const decodeTextEntityReferences = (value: string) =>
@@ -74,6 +76,7 @@ const decodeTextEntityReferences = (value: string) =>
     return decoded === false ? match : decoded;
   });
 
+// `$...$` を Typst 風の簡易記法として扱い、MathJax 用の TeX に変換する。
 const convertMathDelimiters = (html: string) =>
   html.replace(/\$(.+?)\$/gs, (_match, inner: string) => {
     const bothEdgesSpace = /^\s.*\s$/.test(inner);
@@ -91,60 +94,96 @@ type NavItem = {
   children: NavItem[];
 };
 
-const headings: NavItem[] = [];
-const terms: { href: string; label: string }[] = [];
+type TermItem = {
+  href: string;
+  label: string;
+};
 
-let headingId = 0;
-let termId = 0;
+type ContentTransform<T> = {
+  html: string;
+  items: T[];
+};
 
-const contentWithHeadingIds = rawContent.replace(
-  /<h([23])([^>]*)>([\s\S]*?)<\/h\1>/g,
-  (_match, levelText: string, attrs: string, inner: string) => {
-    const existingId = attrs.match(/\sid=(["'])(.*?)\1/);
-    const id = existingId?.[2] ?? `heading${headingId++}`;
-    const nextAttrs = existingId ? attrs : `${attrs} id="${id}"`;
-    headings.push({
-      href: `#${id}`,
-      label: stripTags(inner),
-      level: Number(levelText),
-      children: [],
-    });
-    return `<h${levelText}${nextAttrs}>${inner}</h${levelText}>`;
-  },
-);
+// h2/h3 に id を補い、目次用の一覧を作る。
+const addHeadingIds = (html: string): ContentTransform<NavItem> => {
+  const items: NavItem[] = [];
+  let headingId = 0;
 
-const contentWithTermIds = contentWithHeadingIds.replace(
-  /<dfn([^>]*)>([\s\S]*?)<\/dfn>/g,
-  (_match, attrs: string, inner: string) => {
-    const existingId = attrs.match(/\sid=(["'])(.*?)\1/);
-    const id = existingId?.[2] ?? `define${termId++}`;
-    const nextAttrs = existingId ? attrs : `${attrs} id="${id}"`;
-    terms.push({
-      href: `#${id}`,
-      label: stripTags(inner),
-    });
-    return `<dfn${nextAttrs}>${inner}</dfn>`;
-  },
-);
+  const nextHtml = html.replace(
+    /<h([23])([^>]*)>([\s\S]*?)<\/h\1>/g,
+    (_match, levelText: string, attrs: string, inner: string) => {
+      const existingId = attrs.match(/\sid=(["'])(.*?)\1/);
+      const id = existingId?.[2] ?? `heading${headingId++}`;
+      const nextAttrs = existingId ? attrs : `${attrs} id="${id}"`;
 
-const contentHtml = convertMathDelimiters(contentWithTermIds);
+      items.push({
+        href: `#${id}`,
+        label: stripTags(inner),
+        level: Number(levelText),
+        children: [],
+      });
 
-const tocRoot: NavItem[] = [];
-const stack: NavItem[] = [];
+      return `<h${levelText}${nextAttrs}>${inner}</h${levelText}>`;
+    },
+  );
 
-for (const heading of headings) {
-  while (stack.length > 0 && stack[stack.length - 1].level >= heading.level) {
-    stack.pop();
+  return { html: nextHtml, items };
+};
+
+// dfn に id を補い、「定義される用語」用の一覧を作る。
+const addTermIds = (html: string): ContentTransform<TermItem> => {
+  const items: TermItem[] = [];
+  let termId = 0;
+
+  const nextHtml = html.replace(
+    /<dfn([^>]*)>([\s\S]*?)<\/dfn>/g,
+    (_match, attrs: string, inner: string) => {
+      const existingId = attrs.match(/\sid=(["'])(.*?)\1/);
+      const id = existingId?.[2] ?? `define${termId++}`;
+      const nextAttrs = existingId ? attrs : `${attrs} id="${id}"`;
+
+      items.push({
+        href: `#${id}`,
+        label: stripTags(inner),
+      });
+
+      return `<dfn${nextAttrs}>${inner}</dfn>`;
+    },
+  );
+
+  return { html: nextHtml, items };
+};
+
+// フラットな見出し一覧を、h2 の下に h3 が入る目次ツリーへ変換する。
+const buildTocTree = (headings: NavItem[]) => {
+  const tocRoot: NavItem[] = [];
+  const stack: NavItem[] = [];
+
+  for (const heading of headings) {
+    while (stack.length > 0 && stack[stack.length - 1].level >= heading.level) {
+      stack.pop();
+    }
+    const item = { ...heading, children: [] };
+    if (stack.length === 0) {
+      tocRoot.push(item);
+    } else {
+      stack[stack.length - 1].children.push(item);
+    }
+    stack.push(item);
   }
-  const item = { ...heading, children: [] };
-  if (stack.length === 0) {
-    tocRoot.push(item);
-  } else {
-    stack[stack.length - 1].children.push(item);
-  }
-  stack.push(item);
-}
 
+  return tocRoot;
+};
+
+// 本文変換の実行順。
+const withHeadingIds = addHeadingIds(rawContent);
+const withTermIds = addTermIds(withHeadingIds.html);
+const contentHtml = convertMathDelimiters(withTermIds.html);
+const headings = withHeadingIds.items;
+const terms = withTermIds.items;
+const tocRoot = buildTocTree(headings);
+
+// 本文に必要なものだけ、ページ単位で追加スクリプトを読み込む。
 const hasChat = /class=(["']).*?\b(?:you|me)\b.*?\1/.test(contentHtml);
 const hasIframe = /<iframe\b/i.test(contentHtml);
 const hasMermaid = /class=(["']).*?\bmermaid\b.*?\1/.test(contentHtml);

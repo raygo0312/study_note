@@ -11,7 +11,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 >
   <h2>推論</h2>
   <p>推論とは前提から結論を導くことである．推論を次のように表す．</p>
-  <section class="def" title="推論">
+  <section class="def" data-label="推論">
     <ul>
       <li>$A_1, A_2, dots, A_n, B$: 論理式</li>
     </ul>
@@ -24,7 +24,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       >という．
     </p>
   </section>
-  <section class="ex" title="推論の例">
+  <section class="ex" data-label="推論の例">
     <p>
       前提と結論には論理式を用いなければならないが，ここでは分かりやすいように自然言語での例も挙げる．
     </p>
@@ -72,7 +72,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       >推論規則</dfn
     >という．推論規則とは，成り立つとする推論のことである．
   </p>
-  <section class="ex" title="証明体系の例">
+  <section class="ex" data-label="証明体系の例">
     <p>例えば，次の</p>
     <ul>
       <li>公理図式A：$(P arrow.r (Q arrow.r P))$</li>
@@ -104,7 +104,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       >証明</dfn
     >という．
   </p>
-  <section class="ex" title="演繹と証明の例">
+  <section class="ex" data-label="演繹と証明の例">
     <p>前述の(下記の)証明体系について考える．</p>
     <ul>
       <li>公理図式A：$(P arrow.r (Q arrow.r P))$</li>
@@ -153,7 +153,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
   <p>
     以前に定義の定義をしたが，数学を形式化するためには定義の形式化も必要である．そこで，次の表現を用いる．
   </p>
-  <section class="def" title="論理式の定義">
+  <section class="def" data-label="論理式の定義">
     <ul>
       <li>$A, B$: 論理式</li>
     </ul>
@@ -162,7 +162,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
       と表し，このとき， $ A arrow.l.r.double.long B $ が成り立つ．
     </p>
   </section>
-  <section class="def" title="項の定義">
+  <section class="def" data-label="項の定義">
     <ul>
       <li>$a, b$: 項</li>
     </ul>

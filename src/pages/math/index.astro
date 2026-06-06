@@ -2,22 +2,10 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { mathEdges, mathSections } from "../../data/mathIndex";
 
-const mermaidGraph = [
-  "graph TB",
-  ...mathSections.flatMap((section) =>
-    section.pages.flatMap((page) => [
-      `${page.id}[${page.title}]`,
-      `click ${page.id} href "${page.href}"`,
-    ]),
-  ),
-  ...mathEdges.map(([from, to]) => `${from} --> ${to}`),
-].join("\n");
+const mermaidGraph = ["graph TB", ...mathSections.flatMap((section) => section.pages.flatMap((page) => [`${page.id}[${page.title}]`, `click ${page.id} href "${page.href}"`])), ...mathEdges.map(([from, to]) => `${from} --> ${to}`)].join("\n");
 ---
 
-<BaseLayout
-  title="数学"
-  breadcrumbs={[{ href: "/index.html", label: "ホーム" }]}
->
+<BaseLayout title="数学" breadcrumbs={[{ href: "/index.html", label: "ホーム" }]}>
   <details>
     <summary>各ページの関係</summary>
     <div class="mermaid panzoom">{mermaidGraph}</div>
@@ -25,9 +13,7 @@ const mermaidGraph = [
   <h2>数理論理学</h2>
   <p>数理論理学はメタ数学(数学それ自身)に対して研究する分野である．</p>
   <h3>数学の入門</h3>
-  <p>
-    数学を勉強するにあたって，知っておきたい基礎的な知識を紹介する．入門に最低限な知識のみを紹介しているため，形式化や詳しい用語を省略している部分もある．
-  </p>
+  <p>数学を勉強するにあたって，知っておきたい基礎的な知識を紹介する．入門に最低限な知識のみを紹介しているため，形式化や詳しい用語を省略している部分もある．</p>
   <ul>
     {
       mathSections
