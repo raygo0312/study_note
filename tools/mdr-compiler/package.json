@@ -1,0 +1,27 @@
+{
+  "name": "mdr-compiler",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Compiler and project builder for the MDR language",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "bin": {
+    "mdr": "src/cli.js"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "type": "commonjs",
+  "keywords": ["mdr", "markdown", "compiler", "static-site-generator"],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raygo0312/webCompiler.git"
+  },
+  "scripts": {
+    "compile": "node src/cli.js",
+    "test": "node --test"
+  }
+}

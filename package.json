@@ -28,6 +28,6 @@
     "tex2typst": "^0.6.0"
   },
   "devDependencies": {
-    "mdr-compiler": "file:../webCompiler"
+    "mdr-compiler": "file:tools/mdr-compiler"
   }
 }
