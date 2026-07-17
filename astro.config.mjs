@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { mdr } from 'mdr-compiler';
 
 export default defineConfig({
   site: 'https://raygo0312.github.io/study_note',
@@ -12,4 +13,5 @@ export default defineConfig({
   build: {
     format: 'file',
   },
+  integrations: [mdr()],
 });
