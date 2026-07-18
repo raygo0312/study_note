@@ -5,7 +5,8 @@
   "description": "Compiler and project builder for the MDR language",
   "main": "src/index.js",
   "exports": {
-    ".": "./src/index.js"
+    ".": "./src/index.js",
+    "./formatter": "./src/formatter.js"
   },
   "bin": {
     "mdr": "src/cli.js"

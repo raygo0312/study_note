@@ -1,5 +1,6 @@
 const fs = require('node:fs');
 const path = require('node:path');
+const { pathToFileURL } = require('node:url');
 const { findMdrFiles } = require('./project-compiler');
 const { compile, escapeHtml } = require('./compiler');
 const { transformMathLine } = require('./math');
@@ -145,41 +146,45 @@ function jsonAttribute(value, fallback) {
   return JSON.stringify(value ?? fallback);
 }
 
-function createGeneratedPage({ sourcePath, generatedPath, markdownPath, attributes }) {
+function createGeneratedPage({ sourcePath, generatedPath, html, attributes }) {
   const imports = [];
-  let layoutElement = '<Content />';
+  const contentElement = '<Fragment set:html={content} />';
+  let layoutElement = contentElement;
   if (attributes.layout) {
     const layoutPath = path.resolve(path.dirname(sourcePath), attributes.layout);
     let relativeLayout = path.relative(path.dirname(generatedPath), layoutPath)
       .replaceAll(path.sep, '/');
     if (!relativeLayout.startsWith('.')) relativeLayout = `./${relativeLayout}`;
     imports.push(`import Layout from ${JSON.stringify(relativeLayout)};`);
-    layoutElement = `<Layout title={${jsonAttribute(attributes.title, '')}} breadcrumbs={${jsonAttribute(attributes.breadcrumbs, [])}}><Content /></Layout>`;
+    layoutElement = `<Layout title={${jsonAttribute(attributes.title, '')}} breadcrumbs={${jsonAttribute(attributes.breadcrumbs, [])}}>${contentElement}</Layout>`;
   }
-  imports.push(`import { Content } from ${JSON.stringify(`./${path.basename(markdownPath)}`)};`);
-  return `---\n${imports.join('\n')}\n---\n${layoutElement}\n`;
+  return `---\n${imports.join('\n')}\nconst content = ${JSON.stringify(html)};\n---\n${layoutElement}\n`;
 }
 
-function generatePages(root, pagesDirectory) {
+async function generatePages(root, pagesDirectory, markdownProcessor) {
   const pagesRoot = path.resolve(root, pagesDirectory);
   if (!fs.existsSync(pagesRoot)) return [];
   // Keep generated modules outside Astro's own .astro directory. Astro may
   // recreate that directory during startup after the integration hook runs.
   const generatedRoot = path.join(root, '.mdr-generated');
+  fs.rmSync(generatedRoot, { recursive: true, force: true });
   const generated = [];
   for (const relativePage of findMdrFiles(pagesRoot)) {
     const sourcePath = path.join(pagesRoot, relativePage);
     const generatedRelative = relativePage.replace(/\.mdr$/, '');
     const generatedPath = path.join(generatedRoot, `${generatedRelative}.astro`);
-    const markdownPath = path.join(generatedRoot, `${generatedRelative}.md`);
     const document = resolveDocument(sourcePath);
-    const { attributes } = parseFrontmatter(document.source);
-    fs.mkdirSync(path.dirname(generatedPath), { recursive: true });
-    fs.writeFileSync(markdownPath, transformMdrToMarkdown(document.source, {
+    const { attributes, body } = parseFrontmatter(document.source);
+    const markdown = transformMdrToMarkdown(body, {
       tagDefinitions: document.definitions,
-    }));
+    });
+    const rendered = await markdownProcessor.render(markdown, {
+      fileURL: pathToFileURL(sourcePath),
+      frontmatter: attributes,
+    });
+    fs.mkdirSync(path.dirname(generatedPath), { recursive: true });
     fs.writeFileSync(generatedPath, createGeneratedPage({
-      sourcePath, generatedPath, markdownPath, attributes,
+      sourcePath, generatedPath, html: rendered.code, attributes,
     }));
     generated.push({ pattern: routePattern(relativePage), entrypoint: generatedPath });
   }
@@ -191,17 +196,19 @@ function mdr(options = {}) {
   return {
     name: 'mdr-astro',
     hooks: {
-      'astro:config:setup': ({ config, injectRoute, updateConfig, logger }) => {
+      'astro:config:setup': async ({ config, injectRoute, updateConfig, logger }) => {
         const root = new URL(config.root).pathname;
-        const registerPages = () => generatePages(root, pagesDirectory);
-        for (const page of registerPages()) injectRoute(page);
+        const { createMarkdownProcessor } = await import('@astrojs/markdown-remark');
+        const markdownProcessor = await createMarkdownProcessor(config.markdown);
+        const registerPages = () => generatePages(root, pagesDirectory, markdownProcessor);
+        for (const page of await registerPages()) injectRoute(page);
         updateConfig({
           vite: {
             plugins: [{
               name: 'mdr-astro-hmr',
-              handleHotUpdate(context) {
+              async handleHotUpdate(context) {
                 if (!context.file.endsWith('.mdr')) return;
-                registerPages();
+                await registerPages();
                 context.server.ws.send({ type: 'full-reload', path: '*' });
                 return [];
               },

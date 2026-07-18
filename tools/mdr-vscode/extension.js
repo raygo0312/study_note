@@ -1,5 +1,5 @@
 const vscode = require('vscode');
-const { format } = require('mdr-compiler');
+const { format } = require('mdr-compiler/formatter');
 
 const EMPTY_LIST_ITEM_PATTERN = /^\s*[+-]\s*$/;
 

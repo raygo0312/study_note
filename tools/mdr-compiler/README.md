@@ -76,7 +76,8 @@ const tokens = highlight('# Hello');
 lexerのトークンにエディタ向けのscope名を付けて返します。
 
 言語構文は[`docs/syntax.md`](docs/syntax.md)を参照してください。Astro連携は
-`.mdr`ページを`.mdr-generated`内のMarkdownとAstroルートへ変換します。
+MDRをAstroのMarkdown processorでHTML化し、`.mdr-generated`内の生成
+`.astro`ルートへ埋め込みます。中間`.md`ファイルは生成しません。
 
 ## 開発
 

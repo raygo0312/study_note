@@ -33,9 +33,10 @@ src/pages/**/*.mdr
 ```
 
 これにより、MDR 独自の構文に集中しながら、`study_note` を実際の検証環境に
-できる。最初の実装では `.mdr` の構文を標準 Markdown へ変換して Astro に
-渡す方式を優先する。AST から完全な HTML を直接生成する方式は、Astro では
-解決しにくい不便が明確になってから選ぶ。
+できる。MDRのMarkdown互換部分はAstroのMarkdown processorでHTML化し、
+integrationが生成する`.astro`へ埋め込む。中間`.md`ファイルは作らない。
+最終出力を`.astro`に統一することで、将来のTypeScript式やcomponent構文を
+同じ生成モジュールへ展開できるようにする。
 
 ## 段階
 
@@ -44,8 +45,8 @@ src/pages/**/*.mdr
 2. `.mdr` から既存の `BaseLayout.astro` を利用できるようにする。
 3. 実際に不便だったレイアウト指定、目次、用語、数式などを MDR の構文へ
    移す。
-4. Astro との結合が制約になった時点で、共通 AST を使った独自 HTML backend
-   と dev server を追加する。
+4. `:{ ... }`などのTypeScript領域を生成`.astro`の式やfrontmatterへ展開する。
+5. Astroとの結合が制約になった時点で、共通ASTを使った独自backendを検討する。
 
 当面の非目標は、Astro の機能を複製することと、独立したデプロイ基盤を作る
 ことである。

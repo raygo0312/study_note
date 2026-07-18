@@ -16,7 +16,8 @@ in MDR without literal HTML in MDR source.
 - `tag-definitions.js`: `@tag`, `@import`, and `src/mdr` resolution
 - `formatter.js`: AST-based source formatting
 - `highlighter.js`: compiler-side token scope mapping
-- `astro-integration.js`: frontmatter, Markdown bridge, generated Astro routes
+- `astro-integration.js`: frontmatter, Astro Markdown rendering, generated
+  `.astro` routes
 - `project-compiler.js`: standalone project output
 
 Do not merge editor-specific behavior into the compiler. `tools/mdr-vscode`
@@ -54,11 +55,15 @@ and that document when syntax changes.
 ## Astro Integration Invariants
 
 - Existing Astro/Markdown pages remain usable during MDR migration.
-- Generate bridge files under `.mdr-generated`, never under Astro's own cache.
+- Generate only `.astro` modules under `.mdr-generated`, never intermediate
+  `.md` files or files under Astro's own cache.
 - Compile block-tag contents before embedding HTML in Markdown because Markdown
   does not parse lists or paragraphs inside raw HTML blocks.
 - Keep MathJax delimiter escaping valid through both MDR and Markdown stages.
 - Imports and tag definitions are resolved before page transformation.
+- Use Astro's configured Markdown processor before embedding static HTML in the
+  generated `.astro`, preserving Shiki and Markdown behavior while making
+  `.astro` the compiler target for future TypeScript expressions.
 
 ## Validation
 

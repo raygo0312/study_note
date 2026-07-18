@@ -1,6 +1,8 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
-const { parseFrontmatter, transformMdrToMarkdown, routePattern } = require('../src/astro-integration');
+const {
+  createGeneratedPage, parseFrontmatter, transformMdrToMarkdown, routePattern,
+} = require('../src/astro-integration');
 
 test('reads MDR frontmatter and keeps the page body', () => {
   const document = parseFrontmatter(`---\ntitle: "論理式"\nlayout: ../../layouts/BaseLayout.astro\nbreadcrumbs:\n  - href: /index.html\n    label: ホーム\n---\n本文`);
@@ -21,6 +23,19 @@ test('maps MDR pages to Astro routes', () => {
   assert.equal(routePattern('index.mdr'), '/');
   assert.equal(routePattern('math/index.mdr'), '/math');
   assert.equal(routePattern('math/logical-formula.mdr'), '/math/logical-formula');
+});
+
+test('generates an Astro page with rendered HTML instead of a Markdown import', () => {
+  const page = createGeneratedPage({
+    sourcePath: '/project/src/pages/index.mdr',
+    generatedPath: '/project/.mdr-generated/index.astro',
+    html: '<h2>目次</h2>',
+    attributes: { layout: '../layouts/BaseLayout.astro', title: 'トップ' },
+  });
+  assert.match(page, /import Layout from "\.\.\/src\/layouts\/BaseLayout\.astro";/);
+  assert.ok(page.includes('const content = "<h2>目次</h2>";'));
+  assert.match(page, /<Fragment set:html=\{content\} \/>/);
+  assert.doesNotMatch(page, /\.md"|Content/);
 });
 
 const tagDefinitions = { section: [{ name: 'label', attribute: 'data-label' }] };

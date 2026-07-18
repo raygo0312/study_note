@@ -36,11 +36,11 @@ they require.
   - `tag-syntax.js` / `tag-definitions.js`: generic tags and imports
   - `formatter.js`: source formatter
   - `highlighter.js`: compiler-side token scopes
-  - `astro-integration.js`: `.mdr` route generation and Markdown bridge
+  - `astro-integration.js`: Markdown rendering and generated `.astro` routes
 - `tools/mdr-vscode`: `.mdr` language registration, TextMate grammar,
   formatter provider, and list-editing commands
 - `src/mdr`: shared MDR definitions imported by pages
-- `.mdr-generated`: temporary Astro/Markdown bridge output; ignored
+- `.mdr-generated`: temporary generated `.astro` output; ignored
 - `dist`: generated build output; do not edit manually or commit as part of
   source work unless the user explicitly requests generated deployment output
 
@@ -118,6 +118,11 @@ To reach full `.astro` replacement, MDR will eventually need explicit designs
 for page data, expressions, iteration/conditionals, component/layout
 composition, and client-side scripts. Add these only from concrete migration
 requirements, one user-selected problem at a time.
+
+MDR's Astro integration now renders Markdown-compatible MDR content with
+Astro's Markdown processor and embeds the resulting HTML in generated `.astro`
+modules. It no longer generates intermediate `.md` files. This `.astro` target
+is the foundation for future `:{ ... }` TypeScript regions.
 
 ## Current Astro Migration Blockers
 
