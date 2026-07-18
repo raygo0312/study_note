@@ -6,7 +6,7 @@ const LANGUAGE_ALIASES = {
   typ: 'typst',
   typc: 'typst-code',
 };
-const TYPST_LANGUAGES = new Set(['typst', 'typst-code']);
+const HIGHLIGHT_ONLY_LANGUAGES = new Set(['typst', 'typst-code', 'rust']);
 
 async function formatEmbedded(source, formatLanguage) {
   const lines = source.split('\n');
@@ -27,7 +27,7 @@ async function formatEmbedded(source, formatLanguage) {
 
     const language = LANGUAGE_ALIASES[fence[2]] || fence[2];
     const content = lines.slice(index + 1, end).join('\n');
-    const formatted = language && !TYPST_LANGUAGES.has(language)
+    const formatted = language && !HIGHLIGHT_ONLY_LANGUAGES.has(language)
       ? await formatLanguage(language, content) : undefined;
     output.push(lines[index]);
     output.push(...(formatted === undefined ? content : formatted.replace(/\n$/, '')).split('\n'));

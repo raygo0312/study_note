@@ -39,12 +39,13 @@ test('leaves embedded content unchanged when no formatter is available', async (
   assert.equal(await formatEmbedded(source, async () => undefined), source);
 });
 
-test('does not interpret math delimiters inside fenced code', async () => {
+test('leaves Rust fences unchanged without starting their formatter', async () => {
   const source = '```rust\nlet value = "$raw$";\n```';
   const calls = [];
-  await formatEmbedded(source, async (language, value) => {
+  const result = await formatEmbedded(source, async (language, value) => {
     calls.push({ language, value });
     return value;
   });
-  assert.deepEqual(calls, [{ language: 'rust', value: 'let value = "$raw$";' }]);
+  assert.equal(result, source);
+  assert.deepEqual(calls, []);
 });
