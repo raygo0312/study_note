@@ -55,6 +55,8 @@ they require.
 - Lists: `-` unordered, `+` ordered; indentation preserves nesting
 - Typst math: `$...$`, converted during MDR compilation rather than in Astro
 - Generic block tags: `:::tag.class#id arguments` through closing `:::`
+- HTML void tags such as `input` use the same opening syntax but need no
+  closing `:::`
 - Generic inline tags: `:tag.class#id[content]`
 - Grouped tag arguments: `(argument containing spaces)`
 - Definitions: `@tag section(label=data-label)`
@@ -129,8 +131,9 @@ content-string variable. Static braces are emitted as HTML entities so future
 
 - `math/index.astro`: imported page data, array transformations, generated
   Mermaid source, and iteration/lookup expressions
-- `search.astro`: imported client script URL, `extraScripts`, and form-control
-  attributes
+- `search.astro`: `input` attributes are now expressible through the shared
+  `@tag input` definition; imported client script URL, `extraScripts`, and
+  non-paragraph button content still need explicit MDR designs
 - `math/logical-formula-extension.astro`: `details`/`summary` structures whose
   phrasing content must not be wrapped in paragraphs
 - `math/mathmatics-introduction.astro`: chat containers plus inline/void HTML

@@ -1,3 +1,12 @@
+const VOID_TAGS = new Set([
+  'area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta',
+  'param', 'source', 'track', 'wbr',
+]);
+
+function isVoidTag(name) {
+  return VOID_TAGS.has(name);
+}
+
 function parseDescriptor(value) {
   const match = /^([a-z][a-z0-9-]*)((?:[.#][a-zA-Z_][\w-]*)*)$/.exec(value);
   if (!match) return null;
@@ -45,7 +54,12 @@ function parseBlockTagStart(line) {
   if (!match || match[2] === '') return null;
   const descriptor = parseDescriptor(match[2]);
   if (!descriptor) return null;
-  return { indent: match[1], descriptor, arguments: parseArguments(match[3] || '') };
+  return {
+    indent: match[1],
+    descriptor,
+    arguments: parseArguments(match[3] || ''),
+    void: isVoidTag(descriptor.name),
+  };
 }
 
 function formatDescriptor(node) {
@@ -53,4 +67,6 @@ function formatDescriptor(node) {
   return `${node.name}${classes}${node.id ? `#${node.id}` : ''}`;
 }
 
-module.exports = { formatDescriptor, parseArguments, parseBlockTagStart, parseDescriptor };
+module.exports = {
+  formatDescriptor, isVoidTag, parseArguments, parseBlockTagStart, parseDescriptor,
+};

@@ -87,7 +87,8 @@ function findBlockTagEnd(lines, start) {
       continue;
     }
     if (inFence) continue;
-    if (parseBlockTagStart(line)) depth += 1;
+    const tag = parseBlockTagStart(line);
+    if (tag && !tag.void) depth += 1;
     else if (TAG_END_PATTERN.test(line)) depth -= 1;
     if (depth === 0) return index;
   }
@@ -121,6 +122,10 @@ function transformMdrToMarkdown(source, options = {}) {
     const line = lines[index];
     const tag = parseBlockTagStart(line);
     if (tag) {
+      if (tag.void) {
+        output.push(compile(line, options));
+        continue;
+      }
       const end = findBlockTagEnd(lines, index);
       if (end === -1) throw new Error(`Unclosed tag: ${tag.descriptor.name}`);
       output.push(compile(lines.slice(index, end + 1).join('\n'), options));

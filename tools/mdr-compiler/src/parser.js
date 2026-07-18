@@ -88,6 +88,16 @@ function parse(source) {
     const current = tokens[index];
     if (current.type === TokenType.TagStart) {
       index += 1;
+      if (current.void) {
+        pushBlock({
+          type: 'tag',
+          ...current.descriptor,
+          arguments: current.arguments.map((value) => parseInline(lex(value))),
+          children: [],
+          void: true,
+        });
+        continue;
+      }
       if (tokens[index]?.type === TokenType.Newline) index += 1;
       const children = parseBlocks(true);
       if (tokens[index]?.type !== TokenType.TagEnd) {

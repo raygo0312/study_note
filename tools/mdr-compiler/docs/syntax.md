@@ -138,6 +138,13 @@ class、`#名前`はidで、両者の順序は問いません。
 @import "tags.mdr"
 ```
 
+`input`などのHTML void要素は閉じる`:::`を書かず、一行で完結します。
+
+```mdr
+@tag input(type=type, placeholder=placeholder)
+:::input#searchInput text 検索したい用語を入力
+```
+
 `@import`のパスは、記述しているページの場所にかかわらず、プロジェクトの
 `src/mdr`ディレクトリを基準にした相対パスです。
 

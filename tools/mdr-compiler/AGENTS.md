@@ -33,6 +33,8 @@ consumes the public formatter and owns TextMate grammar and editing commands.
 - `$...$` contains Typst and is converted to MathJax-compatible TeX before the
   Astro Markdown renderer sees it.
 - Block tags use `:::tag.class#id arguments` and closing `:::`.
+- Known HTML void tags, including `input`, use the block-tag opening syntax
+  without a closing `:::` and render without an HTML closing tag.
 - Inline tags use `:tag.class#id[content]`.
 - `.class` and `#id` may occur in either order; duplicate ids are invalid.
 - Parentheses group one positional argument containing spaces.

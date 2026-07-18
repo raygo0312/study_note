@@ -45,6 +45,19 @@ test('converts generic tags while keeping the MDR source tag-free', () => {
     '<section class="ex" data-label="命題">\n<p>本文</p>\n</section>\n');
 });
 
+test('converts a void tag without consuming the following content', () => {
+  const definitions = {
+    input: [
+      { name: 'type', attribute: 'type' },
+      { name: 'placeholder', attribute: 'placeholder' },
+    ],
+  };
+  assert.equal(transformMdrToMarkdown(
+    ':::input#searchInput text (検索したい用語を入力)\n次の内容',
+    { tagDefinitions: definitions },
+  ), '<input id="searchInput" type="text" placeholder="検索したい用語を入力">\n次の内容');
+});
+
 test('preserves code syntax while converting definitions', () => {
   assert.equal(transformMdrToMarkdown('これは `*code*` と *用語*。'),
     'これは `*code*` と <dfn>用語</dfn>。');

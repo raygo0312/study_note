@@ -51,6 +51,9 @@ function formatBlock(node) {
       return formatList(node, '-');
     case 'tag': {
       const argumentsText = formatArguments(node.arguments);
+      if (node.void) {
+        return `:::${formatDescriptor(node)}${argumentsText ? ` ${argumentsText}` : ''}`;
+      }
       const content = formatBlocks(node.children).replace(/^(?!$)/gm, '  ');
       return `:::${formatDescriptor(node)}${argumentsText ? ` ${argumentsText}` : ''}\n${content}\n:::`;
     }
@@ -80,7 +83,8 @@ function dedentTags(value) {
       return;
     }
     if (inFence) return;
-    if (parseBlockTagStart(line)) {
+    const tag = parseBlockTagStart(line);
+    if (tag && !tag.void) {
       stack.push(index);
     } else if (/^:::[ \t]*$/.test(line) && stack.length > 0) {
       const start = stack.pop();

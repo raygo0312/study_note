@@ -32,6 +32,11 @@ test('formats generic tags and grouped arguments', () => {
     ':::section.def#main (重要な 定義)\n  本文\n:::');
 });
 
+test('keeps void tags on one line without adding a closing marker', () => {
+  const source = ':::input#searchInput text 検索したい用語を入力';
+  assert.equal(format(source), source);
+});
+
 test('preserves relative list indentation inside block tags', () => {
   const source = [
     ':::section.ex 命題',

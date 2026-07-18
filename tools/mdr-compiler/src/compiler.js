@@ -89,6 +89,7 @@ function render(ast, options = {}) {
       case 'unordered-list':
         return renderList(node, 'ul', options);
       case 'tag': {
+        if (node.void) return `<${node.name}${renderAttributes(node, options)}>`;
         const content = renderChildren(node.children, options);
         return `<${node.name}${renderAttributes(node, options)}>\n${content}\n</${node.name}>`;
       }

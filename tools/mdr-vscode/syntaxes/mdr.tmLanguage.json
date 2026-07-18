@@ -4,6 +4,7 @@
   "patterns": [
     { "include": "#import-directive" },
     { "include": "#tag-directive" },
+    { "include": "#void-tag" },
     { "include": "#section" },
     { "include": "#tag" },
     { "include": "text.html.markdown" }
@@ -42,6 +43,15 @@
         },
         { "name": "punctuation.separator.parameters.mdr", "match": "," }
       ]
+    },
+    "void-tag": {
+      "name": "meta.tag.void.mdr",
+      "match": "^(\\s*)(:::)(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)((?:[.#][a-zA-Z_][\\w-]*)*)(?:\\s+([^\\n]+))?$",
+      "captures": {
+        "2": { "name": "punctuation.definition.tag.mdr" },
+        "3": { "name": "entity.name.tag.mdr" },
+        "4": { "name": "entity.other.attribute-name.mdr" }
+      }
     },
     "section": {
       "name": "meta.section.mdr",

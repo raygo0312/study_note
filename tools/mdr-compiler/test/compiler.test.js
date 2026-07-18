@@ -60,6 +60,18 @@ test('compiles generic tags with classes, ids, and defined arguments', () => {
   ].join('\n'));
 });
 
+test('compiles HTML void tags without a closing MDR marker', () => {
+  const definitions = {
+    input: [
+      { name: 'type', attribute: 'type' },
+      { name: 'placeholder', attribute: 'placeholder' },
+    ],
+  };
+  assert.equal(compile(':::input#searchInput text (検索したい用語を入力)', {
+    tagDefinitions: definitions,
+  }), '<input id="searchInput" type="text" placeholder="検索したい用語を入力">');
+});
+
 test('compiles inline tags without consuming Markdown links', () => {
   assert.equal(compile(':span.term[*項*] と [リンク](/reference)'),
     '<p><span class="term"><dfn>項</dfn></span> と <a href="/reference">リンク</a></p>');
