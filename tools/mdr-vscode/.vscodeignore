@@ -1,4 +1,6 @@
 extension.js
+embedded-formatter.js
+test
 node_modules
 package-lock.json
 README.md

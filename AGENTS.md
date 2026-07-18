@@ -89,6 +89,10 @@ MDR source should use these constructs instead of literal HTML tags.
 - Tab is intercepted only on an empty `-` or `+` item and indents by two spaces.
 - Formatter behavior must preserve blank-line counts and relative nested-list
   indentation. Generic tag content has one outer indentation level.
+- The VSCode formatter runs the compiler formatter first, then delegates each
+  `$...$` region through an untitled Typst document and each named code fence
+  through its registered VSCode language formatter. Missing embedded
+  formatters must leave source unchanged.
 - Keep VSIX version exactly `0.1.0`. Packaging must overwrite the single
   `mdr-language-support-0.1.0.vsix`; do not accumulate other versions.
 - Because the version is fixed, run `Developer: Reload Window` after reinstall.
