@@ -20,6 +20,9 @@ they require.
 - `src/pages/index.mdr` is the migrated static home page and verifies that a
   page containing only layout frontmatter, paragraphs, headings, lists, and
   links needs no page-specific Astro source.
+- `src/pages/competitive-programming/index.mdr`, `src/pages/reference.mdr`,
+  and `src/pages/math/proof.mdr` are static pages migrated without adding MDR
+  language features.
 - Existing `.astro` and Markdown pages must continue to build during migration.
 - After implementing an MDR feature, use it in `logical-formula.mdr` when it
   naturally applies.
@@ -115,3 +118,20 @@ To reach full `.astro` replacement, MDR will eventually need explicit designs
 for page data, expressions, iteration/conditionals, component/layout
 composition, and client-side scripts. Add these only from concrete migration
 requirements, one user-selected problem at a time.
+
+## Current Astro Migration Blockers
+
+- `math/index.astro`: imported page data, array transformations, generated
+  Mermaid source, and iteration/lookup expressions
+- `search.astro`: imported client script URL, `extraScripts`, and form-control
+  attributes
+- `math/logical-formula-extension.astro`: `details`/`summary` structures whose
+  phrasing content must not be wrapped in paragraphs
+- `math/mathmatics-introduction.astro`: chat containers plus inline/void HTML
+  semantics such as `br`, `ruby`, `rt`, `em`, and `s`
+- `math/ZFC-axioms.astro`, `math/natural-deduction.astro`, and
+  `math/order.astro`: `details`/`summary`, explicit heading ids, and, where
+  present, arbitrary iframe attributes
+
+Reassess these pages after implementing the relevant missing capability; do
+not mechanically migrate them into structurally invalid HTML.

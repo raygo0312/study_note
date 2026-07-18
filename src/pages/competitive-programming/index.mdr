@@ -1,0 +1,25 @@
+---
+layout: ../../layouts/BaseLayout.astro
+title: 競技プログラミング
+breadcrumbs:
+  - href: /index.html
+    label: ホーム
+---
+
+AtCoder向けの競技プログラミングで使用するアルゴリズムやライブラリをまとめている．言語は主にRustを対象としており，各種データ構造やアルゴリズムの使い方，実装例，計算量などを整理している．
+
+## Rust ライブラリ
+
+### 標準ライブラリ
+
+- [整数オーバーフロー](./competitive-programming/integer-overflow.html)
+- [可変配列 Vec](./competitive-programming/vector.html)
+- [仮想配列 BTreeMap](./competitive-programming/)
+
+### AtCoderライブラリ
+
+- [Union Find](./competitive-programming/union-find.html)
+
+## よく使う処理
+
+- [隣接方向探索](./competitive-programming/adjacent-direction-search.html)

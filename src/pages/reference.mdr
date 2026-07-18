@@ -1,0 +1,15 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: 参考文献
+breadcrumbs:
+  - href: /index.html
+    label: ホーム
+---
+
+## 数学
+
+### 数理論理学
+
+- 記号論理入門 新装版, 前原昭二, 日本評論社
+- 数学の基礎 集合・数・位相, 斎藤正彦, 東京大学出版会
+- 数理論理学, 戸次大介, 東京大学出版会
