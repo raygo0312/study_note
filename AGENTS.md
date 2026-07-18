@@ -77,6 +77,9 @@ MDR source should use these constructs instead of literal HTML tags.
   a left-priority injection for MDR inline syntax.
 - Language fences that need embedded-language tokenization may be declared by
   MDR before the Markdown fallback; Rust fences currently embed `source.rust`.
+- Inline-code injection must match only single-backtick delimiters; matching
+  any pair within triple backticks prevents fenced-language grammars from ever
+  starting.
 - Single-line directives such as `@tag` must end their TextMate scope at the
   same line so consecutive directives remain independently highlighted.
 - `-` and `+` continue on Enter. Enter/Backspace removes an empty item.
