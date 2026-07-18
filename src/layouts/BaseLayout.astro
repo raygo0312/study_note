@@ -188,7 +188,7 @@ const hasChat = /class=(["']).*?\b(?:you|me)\b.*?\1/.test(contentHtml);
 const hasIframe = /<iframe\b/i.test(contentHtml);
 const hasMermaid = /class=(["']).*?\bmermaid\b.*?\1/.test(contentHtml);
 const hasPanzoom = /class=(["']).*?\bpanzoom\b.*?\1/.test(contentHtml);
-const hasMath = /\$[\s\S]+?\$/.test(rawContent);
+const hasMath = /\$[\s\S]+?\$|\\\(|\\\[/.test(rawContent);
 const hasCodeBlock = /<pre\b[^>]*class=(["'])[^"']*\bastro-code\b/.test(contentHtml);
 
 const pageTitle = `学問の鎖｜${title}`;

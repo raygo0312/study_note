@@ -18,10 +18,14 @@
   "keywords": ["mdr", "markdown", "compiler", "static-site-generator"],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/raygo0312/webCompiler.git"
+    "url": "git+https://github.com/raygo0312/study_note.git",
+    "directory": "tools/mdr-compiler"
   },
   "scripts": {
     "compile": "node src/cli.js",
     "test": "node --test"
+  },
+  "dependencies": {
+    "tex2typst": "^0.6.0"
   }
 }

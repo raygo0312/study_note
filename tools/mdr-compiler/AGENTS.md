@@ -1,64 +1,84 @@
-# Project Context
+# MDR Compiler Guide
 
-## Goal
+## Purpose
 
-This directory is the workspace for creating a compiler for a new
-Markdown-like language, motivated by improving the author's `../study_note`
-project.
+This package implements the language core and Astro integration for MDR. The
+project-level final goal is to make every `study_note` `.astro` page expressible
+in MDR without literal HTML in MDR source.
 
-The project has three connected parts:
+## Module Boundaries
 
-1. Design and implement the language, including its syntax and semantics.
-2. Compile the language into a useful target representation or output.
-3. Provide developer tooling: syntax highlighting and a formatter.
+- `lexer.js`: source tokens and locations
+- `parser.js`: tokens to MDR AST
+- `compiler.js`: AST to escaped HTML
+- `math.js`: Typst math conversion, excluding code
+- `tag-syntax.js`: tag descriptors and positional argument parsing
+- `tag-definitions.js`: `@tag`, `@import`, and `src/mdr` resolution
+- `formatter.js`: AST-based source formatting
+- `highlighter.js`: compiler-side token scope mapping
+- `astro-integration.js`: frontmatter, Markdown bridge, generated Astro routes
+- `project-compiler.js`: standalone project output
 
-## Current State
+Do not merge editor-specific behavior into the compiler. `tools/mdr-vscode`
+consumes the public formatter and owns TextMate grammar and editing commands.
 
-- The project is at the initial stage.
-- A minimal lexer, parser, AST, HTML compiler, project compiler, and test suite
-  now exist.
-- The project compiler discovers `.mdr` pages under `src/pages/`, maps them to
-  Astro-style routes, copies `public/`, and writes the result under `dist/` by
-  default.
-- The compiler is packaged as `mdr-compiler` with an `mdr` CLI and a CommonJS
-  API for local use. The package is private and is not intended to be published
-  to npm.
-- Formatter and syntax highlighter are not implemented yet.
-- The shortest-term target is Astro integration for `study_note`; the standalone
-  compiler should not duplicate Astro's build and deployment infrastructure
-  before the actual writing problems are understood.
+## Language Invariants
 
-## Working Principles
+- MDR is Markdown-like but does not accept HTML tags as required authoring
+  syntax.
+- `*text*` is a term definition and renders as `<dfn>`, never italic.
+- `-` is unordered and `+` is ordered; indentation represents nested lists.
+- Code spans and fences suppress MDR interpretation.
+- `$...$` contains Typst and is converted to MathJax-compatible TeX before the
+  Astro Markdown renderer sees it.
+- Block tags use `:::tag.class#id arguments` and closing `:::`.
+- Inline tags use `:tag.class#id[content]`.
+- `.class` and `#id` may occur in either order; duplicate ids are invalid.
+- Parentheses group one positional argument containing spaces.
+- `@tag name(argument=attribute)` defines positional argument mappings.
+- `@import` is always resolved relative to the project `src/mdr` directory,
+  including imports made by imported definition files.
+- Rendered names and values must be validated or HTML-escaped.
 
-- Keep the language easy to read and write like Markdown, while making its
-  compiler-oriented capabilities explicit and extensible.
-- Separate parsing, the intermediate representation, compiler output, and
-  language tooling as the project grows. The compiler, formatter, and
-  highlighter should share the lexer/parser and source location information.
-- Prefer small executable examples and tests for each syntax decision.
-- Record important design decisions in this file or in a nearby design note so
-  a new Codex session can resume without relying on chat history.
-- Do not introduce a framework or dependency until it supports a concrete
-  project requirement.
+The durable user-facing syntax is documented in `docs/syntax.md`. Update tests
+and that document when syntax changes.
 
-## Session Handoff
+## Formatter Invariants
 
-Before making substantial changes, inspect this file and the current project
-tree. When a decision, milestone, or unresolved issue becomes important,
-update this file or add a focused note under `docs/`.
+- Do not add or remove blank lines.
+- Indent generic tag content by one level (two spaces).
+- Preserve relative indentation of nested lists inside tags.
+- Preserve frontmatter and directives.
+- Formatting an already formatted document should be idempotent.
 
-The first syntax decisions are recorded in `docs/syntax.md`:
+## Astro Integration Invariants
 
-- `*text*` renders as bold; italic syntax is not supported.
-- A line beginning with `+` is an ordered-list item, with numbering generated
-  during rendering.
-- A line beginning with `-` is an unordered-list item. A line beginning with
-  `*` is not a list item.
+- Existing Astro/Markdown pages remain usable during MDR migration.
+- Generate bridge files under `.mdr-generated`, never under Astro's own cache.
+- Compile block-tag contents before embedding HTML in Markdown because Markdown
+  does not parse lists or paragraphs inside raw HTML blocks.
+- Keep MathJax delimiter escaping valid through both MDR and Markdown stages.
+- Imports and tag definitions are resolved before page transformation.
 
-The minimal language example is in `examples/basic.mdr`. The motivation and
-shortest implementation path are described in `docs/motivation.md`; the planned
-shared pipeline is described in `docs/architecture.md`.
+## Validation
 
-The next useful step is to derive a small lexer/parser and its tests from the
-example, keeping the compiler, formatter, and highlighter as separate
-consumers of the parsed representation.
+Run after language or integration changes:
+
+```sh
+npm test
+cd ../.. && npm run build
+```
+
+Tests should cover lexer/parser AST, HTML output, formatting, highlighting,
+math conversion, imports, standalone project output, and Astro transformation.
+
+## Development Direction
+
+Use `src/pages/math/logical-formula.mdr` as the immediate acceptance page.
+Longer-term `.astro` replacement will require explicit data/template features,
+but those must be designed from concrete page migrations rather than inferred
+in advance. Follow the user's one-issue-per-chat rule outside an explicit
+refactoring request.
+
+Keep VSIX version and packaging policy in the project-level `AGENTS.md`; the
+editor implementation belongs to `tools/mdr-vscode`.

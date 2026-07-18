@@ -12,6 +12,8 @@ my-site/
 │   ├── pages/
 │   │   ├── index.mdr
 │   │   └── about.mdr
+│   ├── mdr/
+│   │   └── tags.mdr
 │   ├── components/
 │   └── layouts/
 └── public/
@@ -20,15 +22,14 @@ my-site/
 
 ## インストールとビルド
 
-コンパイラをローカルパスから開発用依存として追加する。
+このリポジトリではworkspace内のローカル依存として使用します。
 
 ```sh
-npm install --save-dev ../webCompiler
+npm install --save-dev ./tools/mdr-compiler
 npx mdr .
 ```
 
-`../webCompiler` は `mdr-compiler` のローカルパスに置き換える。npm へ公開
-せず、ローカルの Node プロジェクトから利用する想定です。
+npmへ公開せず、ローカルのNodeプロジェクトから利用する想定です。
 
 Astro から利用する場合は `astro.config.mjs` に Integration を追加する。
 
@@ -63,11 +64,19 @@ npx mdr . --pages-dir content/pages --out-dir public-build
 ## API
 
 ```js
-const { compile, compileProject } = require('mdr-compiler');
+const { compile, compileProject, format, highlight } = require('mdr-compiler');
 
 const html = compile('# Hello');
 compileProject(process.cwd());
+const formatted = format('## Hello\n\n本文');
+const tokens = highlight('# Hello');
 ```
+
+`format` はMDRの基本構文を正規化したソースを返します。`highlight` は共有
+lexerのトークンにエディタ向けのscope名を付けて返します。
+
+言語構文は[`docs/syntax.md`](docs/syntax.md)を参照してください。Astro連携は
+`.mdr`ページを`.mdr-generated`内のMarkdownとAstroルートへ変換します。
 
 ## 開発
 

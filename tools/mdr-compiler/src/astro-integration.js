@@ -1,6 +1,13 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { findMdrFiles } = require('./project-compiler');
+const { compile, escapeHtml } = require('./compiler');
+const { transformMathLine } = require('./math');
+const { resolveDocument } = require('./tag-definitions');
+const { parseBlockTagStart, parseDescriptor } = require('./tag-syntax');
+
+const CODE_FENCE_PATTERN = /^\s*```/;
+const TAG_END_PATTERN = /^:::[ \t]*$/;
 
 function unquote(value) {
   return value.trim().replace(/^("|')(.*)\1$/, '$2');
@@ -45,30 +52,86 @@ function parseFrontmatter(source) {
   return { attributes, body: source.slice(match[0].length) };
 }
 
-function transformMdrToMarkdown(source) {
+function transformInlineMdr(line) {
+  const parts = [];
+  let cursor = 0;
+  const codePattern = /`[^`\n]+`/g;
+  let match;
+  while ((match = codePattern.exec(line)) !== null) {
+    parts.push(line.slice(cursor, match.index)
+      .replace(/(?<![\\*])\*([^*\n]+?)(?<!\\)\*(?!\*)/g, '<dfn>$1</dfn>'));
+    parts.push(match[0]);
+    cursor = match.index + match[0].length;
+  }
+  parts.push(line.slice(cursor)
+    .replace(/(?<![\\*])\*([^*\n]+?)(?<!\\)\*(?!\*)/g, '<dfn>$1</dfn>'));
+  return parts.join('').replace(/:([a-z][a-z0-9-]*(?:[.#][a-zA-Z_][\w-]*)*)\[([^\]\n]*)\]/g,
+    (_, descriptorSource, content) => {
+      const descriptor = parseDescriptor(descriptorSource);
+      const attributes = [
+        descriptor.classes.length ? ` class="${escapeHtml(descriptor.classes.join(' '))}"` : '',
+        descriptor.id ? ` id="${escapeHtml(descriptor.id)}"` : '',
+      ].join('');
+      return `<${descriptor.name}${attributes}>${transformInlineMdr(content)}</${descriptor.name}>`;
+    });
+}
+
+function findBlockTagEnd(lines, start) {
+  let depth = 1;
+  let inFence = false;
+  for (let index = start + 1; index < lines.length; index += 1) {
+    const line = lines[index];
+    if (CODE_FENCE_PATTERN.test(line)) {
+      inFence = !inFence;
+      continue;
+    }
+    if (inFence) continue;
+    if (parseBlockTagStart(line)) depth += 1;
+    else if (TAG_END_PATTERN.test(line)) depth -= 1;
+    if (depth === 0) return index;
+  }
+  return -1;
+}
+
+function transformMarkdownLine(line, state) {
+  if (CODE_FENCE_PATTERN.test(line)) {
+    state.inFence = !state.inFence;
+    state.orderedNumber = 0;
+    return line;
+  }
+  if (state.inFence) return line;
+
+  const orderedItem = /^([ \t]*)\+\s+(.*)$/.exec(line);
+  if (orderedItem) {
+    state.orderedNumber += 1;
+    return `${orderedItem[1]}${state.orderedNumber}. ${orderedItem[2]}`;
+  }
+  if (line.trim() === '') state.orderedNumber = 0;
+  return transformInlineMdr(transformMathLine(line, { markdown: true }));
+}
+
+function transformMdrToMarkdown(source, options = {}) {
   const { body } = parseFrontmatter(source);
   const lines = body.split(/\r?\n/);
-  let inFence = false;
-  let orderedNumber = 0;
+  const output = [];
+  const state = { inFence: false, orderedNumber: 0 };
 
-  return lines.map((line) => {
-    if (/^\s*```/.test(line)) {
-      inFence = !inFence;
-      orderedNumber = 0;
-      return line;
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index];
+    const tag = parseBlockTagStart(line);
+    if (tag) {
+      const end = findBlockTagEnd(lines, index);
+      if (end === -1) throw new Error(`Unclosed tag: ${tag.descriptor.name}`);
+      output.push(compile(lines.slice(index, end + 1).join('\n'), options));
+      output.push('');
+      index = end;
+      continue;
     }
-    if (inFence) return line;
 
-    const orderedItem = /^([ \t]*)\+\s+(.*)$/.exec(line);
-    if (orderedItem) {
-      orderedNumber += 1;
-      return `${orderedItem[1]}${orderedNumber}. ${orderedItem[2]}`;
-    }
-    if (line.trim() === '') orderedNumber = 0;
+    output.push(transformMarkdownLine(line, state));
+  }
 
-    // MDR uses one pair of asterisks for bold; Markdown uses two.
-    return line.replace(/(^|[^*])\*([^*\n]+)\*(?!\*)/g, '$1**$2**');
-  }).join('\n');
+  return output.join('\n');
 }
 
 function routePattern(relativePage) {
@@ -109,9 +172,12 @@ function generatePages(root, pagesDirectory) {
     const generatedRelative = relativePage.replace(/\.mdr$/, '');
     const generatedPath = path.join(generatedRoot, `${generatedRelative}.astro`);
     const markdownPath = path.join(generatedRoot, `${generatedRelative}.md`);
-    const { attributes } = parseFrontmatter(fs.readFileSync(sourcePath, 'utf8'));
+    const document = resolveDocument(sourcePath);
+    const { attributes } = parseFrontmatter(document.source);
     fs.mkdirSync(path.dirname(generatedPath), { recursive: true });
-    fs.writeFileSync(markdownPath, transformMdrToMarkdown(fs.readFileSync(sourcePath, 'utf8')));
+    fs.writeFileSync(markdownPath, transformMdrToMarkdown(document.source, {
+      tagDefinitions: document.definitions,
+    }));
     fs.writeFileSync(generatedPath, createGeneratedPage({
       sourcePath, generatedPath, markdownPath, attributes,
     }));

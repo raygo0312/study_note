@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { compile } = require('./compiler');
+const { resolveDocument } = require('./tag-definitions');
 
 const IGNORED_DIRECTORIES = new Set(['.git', 'node_modules', 'dist']);
 
@@ -59,8 +60,11 @@ function compileProject(projectDirectory, options = {}) {
     const outputRelativePath = pageOutputPath(relativePage);
     const outputPath = path.join(outputRoot, outputRelativePath);
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
-    const source = fs.readFileSync(path.join(pagesRoot, relativePage), 'utf8');
-    fs.writeFileSync(outputPath, `${compile(source)}\n`);
+    const sourcePath = path.join(pagesRoot, relativePage);
+    const document = resolveDocument(sourcePath);
+    fs.writeFileSync(outputPath, `${compile(document.source, {
+      tagDefinitions: document.definitions,
+    })}\n`);
     files.push(outputRelativePath);
   }
 

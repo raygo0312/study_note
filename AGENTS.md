@@ -1,46 +1,111 @@
-# Project Context
+# study_note / MDR Project Guide
 
-This is the `study_note` Astro project and the primary workspace for the MDR
-language and its Astro integration.
+## Final Goal
 
-## Goal
+Create the MDR language so every page currently authored as `.astro` can
+eventually be expressed in MDR without writing HTML tags in MDR source.
+Astro remains the routing, layout, asset, Markdown-rendering, and deployment
+runtime while MDR incrementally gains the authoring and template features
+needed to replace page-level Astro source.
 
-Replace the parts of Astro authoring that are inconvenient for this site with
-the MDR language, while continuing to use Astro for routing, layouts, Markdown
-rendering, syntax highlighting, assets, and deployment.
+This is a long-term language-design goal. Do not convert dynamic Astro pages
+until MDR has an explicit, tested feature for the data or templating behavior
+they require.
 
-## Current State
+## Current Acceptance Targets
 
-- `mdr-compiler` lives at `tools/mdr-compiler` as a private local package.
-- `src/pages/math/logical-formula.mdr` is the first migrated page.
-- `astro.config.mjs` enables the local `mdr()` integration.
-- The integration converts `.mdr` to Astro-rendered Markdown and supports MDR
-  frontmatter, one-asterisk bold, and `+` ordered-list items.
-- Existing Astro pages and unmodified content should remain usable during the
-  migration.
+- `src/pages/math/logical-formula.mdr` is the primary language-design target.
+- `src/pages/competitive-programming/vector.mdr` verifies Markdown-compatible
+  code authoring.
+- Existing `.astro` and Markdown pages must continue to build during migration.
+- After implementing an MDR feature, use it in `logical-formula.mdr` when it
+  naturally applies.
 
-## Working Principles
+## Current Architecture
 
-- Keep Astro as the build and deployment runtime until MDR-specific needs make
-  that a real limitation.
-- Add language features based on actual `study_note` migration needs.
-- Preserve existing uncommitted user changes and do not mix generated `dist/`
-  output into source changes unless explicitly requested.
-- Keep compiler core, Astro integration, formatter, and highlighter separate.
-- Run `npm test` in `tools/mdr-compiler` and `npm run build` in this project
-  after changes affecting the integration.
+- `tools/mdr-compiler`: private local compiler package
+  - `lexer.js` / `parser.js`: shared MDR syntax and AST
+  - `compiler.js`: AST to HTML
+  - `math.js`: Typst math to MathJax-compatible TeX
+  - `tag-syntax.js` / `tag-definitions.js`: generic tags and imports
+  - `formatter.js`: source formatter
+  - `highlighter.js`: compiler-side token scopes
+  - `astro-integration.js`: `.mdr` route generation and Markdown bridge
+- `tools/mdr-vscode`: `.mdr` language registration, TextMate grammar,
+  formatter provider, and list-editing commands
+- `src/mdr`: shared MDR definitions imported by pages
+- `.mdr-generated`: temporary Astro/Markdown bridge output; ignored
+- `dist`: generated build output; do not edit manually or commit as part of
+  source work unless the user explicitly requests generated deployment output
 
-## Important Locations
+## Implemented MDR Syntax
 
-- `tools/mdr-compiler/src`: lexer, parser, compiler, and Astro integration
-- `tools/mdr-compiler/test`: compiler and integration tests
-- `src/pages`: Astro and MDR pages being migrated
-- `src/layouts`: shared Astro layouts
-- `public`: static assets
-- `dist`: generated output; do not edit manually
+- Markdown headings: `#` through `######`
+- Paragraphs separated by existing blank lines
+- Term definitions: `*term*` compiles to `<dfn>`; MDR has no italic meaning
+- Links: `[label](destination)`
+- Escapes: `\*`, `\$`, and other MDR punctuation
+- Inline and fenced code: backticks and triple backticks
+- Lists: `-` unordered, `+` ordered; indentation preserves nesting
+- Typst math: `$...$`, converted during MDR compilation rather than in Astro
+- Generic block tags: `:::tag.class#id arguments` through closing `:::`
+- Generic inline tags: `:tag.class#id[content]`
+- Grouped tag arguments: `(argument containing spaces)`
+- Definitions: `@tag section(label=data-label)`
+- Imports: `@import "tags.mdr"`, always relative to project `src/mdr`
 
-## Next Steps
+MDR source should use these constructs instead of literal HTML tags.
 
-Migrate the remaining static mathematics pages to `.mdr`. Pages that generate
-content with JavaScript, such as `math/index.astro`, can remain Astro pages until
-MDR has an explicit data/template feature.
+## VSCode Rules
+
+- `.mdr` files use language id `mdr` and formatter id
+  `raygo0312.mdr-language-support`.
+- The grammar delegates Markdown-compatible syntax to VSCode Markdown and uses
+  a left-priority injection for MDR inline syntax.
+- `-` and `+` continue on Enter. Enter/Backspace removes an empty item.
+- Tab is intercepted only on an empty `-` or `+` item and indents by two spaces.
+- Formatter behavior must preserve blank-line counts and relative nested-list
+  indentation. Generic tag content has one outer indentation level.
+- Keep VSIX version exactly `0.1.0`. Packaging must overwrite the single
+  `mdr-language-support-0.1.0.vsix`; do not accumulate other versions.
+- Because the version is fixed, run `Developer: Reload Window` after reinstall.
+- The attempted exact color matching of one-asterisk markers was inconclusive.
+  Do not revisit it unless the user explicitly asks again.
+
+## Working Rules
+
+- The user reports one MDR issue per chat. Change only that issue unless the
+  user explicitly groups multiple changes or requests a refactor.
+- Preserve unrelated uncommitted user changes. Inspect before staging.
+- The user authorizes `git add`, `commit`, and `push` when useful. Stage only
+  reviewed source changes; exclude generated output and unrelated edits.
+- Keep compiler core, Astro integration, formatter, and editor tooling separate.
+- Add executable tests for syntax and compiler behavior.
+- Update this file and `tools/mdr-compiler/AGENTS.md` when architecture,
+  language rules, validation steps, or the next major direction changes.
+- Keep durable syntax detail in `tools/mdr-compiler/docs/syntax.md`, not as a
+  chronological log in AGENTS files.
+
+## Required Validation
+
+After compiler or integration changes:
+
+```sh
+cd tools/mdr-compiler && npm test
+cd ../.. && npm run build
+```
+
+After VSCode changes:
+
+```sh
+cd tools/mdr-vscode && npm run package
+```
+
+Also run `git diff --check` and confirm only one `0.1.0` VSIX exists.
+
+## Long-Term Missing Capabilities
+
+To reach full `.astro` replacement, MDR will eventually need explicit designs
+for page data, expressions, iteration/conditionals, component/layout
+composition, and client-side scripts. Add these only from concrete migration
+requirements, one user-selected problem at a time.

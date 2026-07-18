@@ -1,0 +1,83 @@
+{
+  "name": "MDR Inline Syntax",
+  "scopeName": "mdr.inline.injection",
+  "injectionSelector": "L:source.mdr -markup.fenced_code -markup.inline.raw -meta.embedded.inline.typst.math.mdr",
+  "patterns": [
+    {
+      "name": "meta.inline.tag.mdr",
+      "begin": "(:)([a-z][a-z0-9-]*)(?:(\\.[a-zA-Z_][\\w-]*)|(#[a-zA-Z_][\\w-]*))?(?:(\\.[a-zA-Z_][\\w-]*)|(#[a-zA-Z_][\\w-]*))?(\\[)",
+      "end": "(\\])",
+      "beginCaptures": {
+        "1": { "name": "entity.name.tag.mdr" },
+        "2": { "name": "entity.name.tag.mdr" },
+        "3": { "name": "entity.other.attribute-name.class.css" },
+        "4": { "name": "entity.other.attribute-name.id.css" },
+        "5": { "name": "entity.other.attribute-name.class.css" },
+        "6": { "name": "entity.other.attribute-name.id.css" },
+        "7": { "name": "punctuation.definition.tag.mdr" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.tag.mdr" }
+      },
+      "patterns": [
+        { "include": "text.html.markdown" }
+      ]
+    },
+    {
+      "match": "(?<!\\\\)(`)([^`\\n]*)(`)",
+      "captures": {
+        "1": { "name": "comment.line.mdr" },
+        "2": { "name": "text.plain.mdr" },
+        "3": { "name": "comment.line.mdr" }
+      }
+    },
+    {
+      "match": "(?<!\\\\)(\\[)([^\\]\\n]+)(\\])(\\()([^)\\s\\n]+)(\\))",
+      "captures": {
+        "2": { "name": "text.plain.mdr" },
+        "5": { "name": "entity.other.attribute-name.id.css markup.underline.mdr" }
+      }
+    },
+    {
+      "name": "constant.character.escape.markdown",
+      "match": "\\\\[\\\\`*{}\\[\\]()#+\\-.!_$:>/]"
+    },
+    {
+      "name": "text.plain.mdr",
+      "match": "[()\\[\\]]"
+    },
+    {
+      "match": "(?<![\\\\*])(\\*)([^*\\n]+?)(?<!\\\\)(\\*)(?!\\*)",
+      "captures": {
+        "1": { "name": "markup.bold.markdown" },
+        "2": { "name": "markup.bold.markdown" },
+        "3": { "name": "markup.bold.markdown" }
+      }
+    },
+    {
+      "name": "meta.embedded.inline.typst.math.mdr",
+      "begin": "(?<![\\\\$])(\\$)(?!\\$)",
+      "end": "(?<![\\\\$])(\\$)(?!\\$)",
+      "beginCaptures": {
+        "1": { "name": "string.other.math.delimiter.mdr" }
+      },
+      "endCaptures": {
+        "1": { "name": "string.other.math.delimiter.mdr" }
+      },
+      "patterns": [
+        {
+          "name": "support.function.typst.math.word.mdr",
+          "match": "[\\p{L}\\p{N}_]{2,}(?=\\()"
+        },
+        {
+          "name": "markup.heading.3.markdown",
+          "match": "[\\p{L}\\p{N}_]{2,}"
+        },
+        {
+          "name": "punctuation.section.brackets.typst.math.mdr",
+          "match": "[()\\[\\]{}]"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "name": "MDR (Markdown)",
+  "scopeName": "source.mdr",
+  "patterns": [
+    { "include": "#import-directive" },
+    { "include": "#tag-directive" },
+    { "include": "#section" },
+    { "include": "#tag" },
+    { "include": "text.html.markdown" }
+  ],
+  "repository": {
+    "import-directive": {
+      "name": "meta.directive.import.mdr",
+      "match": "^(\\s*)(@import)(\\s+)([\"'])([^\"']+)(\\4)\\s*$",
+      "captures": {
+        "2": { "name": "keyword.control.directive.import.mdr" },
+        "4": { "name": "string.quoted.mdr" },
+        "5": { "name": "string.quoted.mdr" },
+        "6": { "name": "string.quoted.mdr" }
+      }
+    },
+    "tag-directive": {
+      "name": "meta.directive.tag.mdr",
+      "begin": "^(\\s*)(@tag)(\\s+)([a-z][a-z0-9-]*)(\\()",
+      "end": "(\\))\\s*$",
+      "beginCaptures": {
+        "2": { "name": "keyword.control.directive.tag.mdr" },
+        "4": { "name": "entity.name.tag.mdr" },
+        "5": { "name": "punctuation.definition.parameters.begin.mdr" }
+      },
+      "endCaptures": {
+        "1": { "name": "punctuation.definition.parameters.end.mdr" }
+      },
+      "patterns": [
+        {
+          "match": "([a-zA-Z_][\\w-]*)(\\s*)(=)(\\s*)([a-zA-Z_:][\\w:.-]*)",
+          "captures": {
+            "1": { "name": "variable.parameter.mdr" },
+            "3": { "name": "keyword.operator.assignment.mdr" },
+            "5": { "name": "entity.other.attribute-name.mdr" }
+          }
+        },
+        { "name": "punctuation.separator.parameters.mdr", "match": "," }
+      ]
+    },
+    "section": {
+      "name": "meta.section.mdr",
+      "begin": "^(\\s*)(:::)(section)((?:[.#][a-zA-Z_][\\w-]*)*)(?:\\s+([^\\n]+))?$",
+      "end": "^(\\s*)(:::)\\s*$",
+      "beginCaptures": {
+        "2": { "name": "punctuation.definition.heading.markdown" },
+        "3": { "name": "markup.heading.2.markdown" },
+        "4": { "name": "markup.heading.2.markdown" },
+        "5": { "name": "markup.bold.markdown" }
+      },
+      "endCaptures": {
+        "2": { "name": "punctuation.definition.heading.markdown" }
+      },
+      "patterns": [
+        { "include": "text.html.markdown" }
+      ]
+    },
+    "tag": {
+      "name": "meta.tag.mdr",
+      "begin": "^(\\s*)(:::)([a-z][a-z0-9-]*)((?:[.#][a-zA-Z_][\\w-]*)*)(?:\\s+([^\\n]+))?$",
+      "end": "^(\\s*)(:::)\\s*$",
+      "beginCaptures": {
+        "2": { "name": "punctuation.definition.tag.mdr" },
+        "3": { "name": "entity.name.tag.mdr" },
+        "4": { "name": "entity.other.attribute-name.mdr" }
+      },
+      "endCaptures": {
+        "2": { "name": "punctuation.definition.tag.mdr" }
+      },
+      "patterns": [
+        { "include": "text.html.markdown" }
+      ]
+    }
+  }
+}

@@ -14,11 +14,45 @@ test('reads MDR frontmatter and keeps the page body', () => {
 
 test('converts MDR-only syntax while preserving code fences', () => {
   assert.equal(transformMdrToMarkdown('+ 一つ\n+ 二つ\n\nこれは *重要*。\n\n```txt\n+ そのまま\n* そのまま\n```'),
-    '1. 一つ\n2. 二つ\n\nこれは **重要**。\n\n```txt\n+ そのまま\n* そのまま\n```');
+    '1. 一つ\n2. 二つ\n\nこれは <dfn>重要</dfn>。\n\n```txt\n+ そのまま\n* そのまま\n```');
 });
 
 test('maps MDR pages to Astro routes', () => {
   assert.equal(routePattern('index.mdr'), '/');
   assert.equal(routePattern('math/index.mdr'), '/math');
   assert.equal(routePattern('math/logical-formula.mdr'), '/math/logical-formula');
+});
+
+const tagDefinitions = { section: [{ name: 'label', attribute: 'data-label' }] };
+
+test('converts generic tags while keeping the MDR source tag-free', () => {
+  assert.equal(transformMdrToMarkdown(':::section.ex 命題\n本文\n:::', { tagDefinitions }),
+    '<section class="ex" data-label="命題">\n<p>本文</p>\n</section>\n');
+});
+
+test('preserves code syntax while converting definitions', () => {
+  assert.equal(transformMdrToMarkdown('これは `*code*` と *用語*。'),
+    'これは `*code*` と <dfn>用語</dfn>。');
+});
+
+test('converts MDR math before Astro Markdown rendering', () => {
+  assert.equal(transformMdrToMarkdown('これは $A <-> B$。\n\n```typ\n$A <-> B$\n```'),
+    'これは \\\\(A \\leftrightarrow B\\\\)。\n\n```typ\n$A <-> B$\n```');
+});
+
+test('uses one MathJax delimiter slash inside raw tags', () => {
+  assert.equal(transformMdrToMarkdown(':::section.ex 例\n$A <-> B$\n:::', { tagDefinitions }),
+    '<section class="ex" data-label="例">\n<p>\\(A \\leftrightarrow B\\)</p>\n</section>\n');
+});
+
+test('preserves links and escaped markers in and outside tags', () => {
+  assert.equal(transformMdrToMarkdown('[リンク](/reference.html) と \\*記号\\*'),
+    '[リンク](/reference.html) と \\*記号\\*');
+  assert.equal(transformMdrToMarkdown(':::section.ex 例\n[リンク](/reference.html) と \\*記号\\*\n:::', { tagDefinitions }),
+    '<section class="ex" data-label="例">\n<p><a href="/reference.html">リンク</a> と *記号*</p>\n</section>\n');
+});
+
+test('converts inline tags without confusing Markdown links', () => {
+  assert.equal(transformMdrToMarkdown(':span.note[説明] と [参照](/ref)'),
+    '<span class="note">説明</span> と [参照](/ref)');
 });

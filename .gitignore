@@ -1,3 +1,6 @@
 node_modules
+.astro
 .mdr-generated
 tools/mdr-compiler/node_modules
+tools/mdr-vscode/dist
+tools/mdr-vscode/*.vsix

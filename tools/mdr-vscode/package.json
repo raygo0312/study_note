@@ -1,0 +1,80 @@
+{
+  "name": "mdr-language-support",
+  "displayName": "MDR Language Support",
+  "publisher": "raygo0312",
+  "description": "Syntax highlighting and formatting for MDR documents.",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/extension.js",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "activationEvents": [
+    "onLanguage:mdr"
+  ],
+  "categories": [
+    "Programming Languages",
+    "Formatters"
+  ],
+  "scripts": {
+    "bundle": "esbuild extension.js --bundle --platform=node --external:vscode --outfile=dist/extension.js",
+    "package": "npm run bundle && vsce package --allow-missing-repository --skip-license --no-dependencies"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "mdr",
+        "aliases": ["MDR", "mdr"],
+        "extensions": [".mdr"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "mdr",
+        "scopeName": "source.mdr",
+        "path": "./syntaxes/mdr.tmLanguage.json"
+      },
+      {
+        "scopeName": "mdr.inline.injection",
+        "path": "./syntaxes/mdr-inline-injection.tmLanguage.json",
+        "injectTo": ["source.mdr"]
+      }
+    ],
+    "commands": [
+      {
+        "command": "mdr.indentListItem",
+        "title": "MDR: Indent List Item"
+      },
+      {
+        "command": "mdr.removeEmptyListItem",
+        "title": "MDR: Remove Empty List Item"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "mdr.indentListItem",
+        "key": "tab",
+        "when": "editorTextFocus && editorLangId == mdr && mdr.emptyListLine && !editorHasSelection && !inSnippetMode && !suggestWidgetVisible"
+      },
+      {
+        "command": "mdr.removeEmptyListItem",
+        "key": "enter",
+        "when": "editorTextFocus && editorLangId == mdr && mdr.emptyListItem"
+      },
+      {
+        "command": "mdr.removeEmptyListItem",
+        "key": "backspace",
+        "when": "editorTextFocus && editorLangId == mdr && mdr.emptyListItem"
+      }
+    ]
+  },
+  "dependencies": {
+    "mdr-compiler": "file:../mdr-compiler",
+    "tex2typst": "^0.6.0"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.0",
+    "esbuild": "^0.27.7"
+  }
+}
