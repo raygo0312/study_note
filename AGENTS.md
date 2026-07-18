@@ -23,13 +23,16 @@ they require.
 - `src/pages/competitive-programming/index.mdr`, `src/pages/reference.mdr`,
   and `src/pages/math/proof.mdr` are static pages migrated without adding MDR
   language features.
+- The competitive-programming articles `adjacent-direction-search.mdr`,
+  `integer-overflow.mdr`, and `union-find.mdr` are also migrated; no Markdown
+  page source remains under `src/pages`.
 - `src/pages/search.mdr` verifies void form controls, standalone generic tags,
   and page-specific client TypeScript loaded through frontmatter `scripts`.
 - Every route under `src/pages` is now authored as `.mdr`; there are no
   remaining page-level `.astro` files. The six final mathematics pages verify
   nested generic tags, iframes, chat containers, nested inline tags, Mermaid,
   and hard line breaks.
-- Existing `.astro` and Markdown pages must continue to build during migration.
+- Existing Astro layouts and non-page Markdown documentation must remain usable.
 - After implementing an MDR feature, use it in `logical-formula.mdr` when it
   naturally applies.
 
