@@ -17,6 +17,9 @@ they require.
 - `src/pages/math/logical-formula.mdr` is the primary language-design target.
 - `src/pages/competitive-programming/vector.mdr` verifies Markdown-compatible
   code authoring.
+- `src/pages/index.mdr` is the migrated static home page and verifies that a
+  page containing only layout frontmatter, paragraphs, headings, lists, and
+  links needs no page-specific Astro source.
 - Existing `.astro` and Markdown pages must continue to build during migration.
 - After implementing an MDR feature, use it in `logical-formula.mdr` when it
   naturally applies.
@@ -76,6 +79,9 @@ MDR source should use these constructs instead of literal HTML tags.
 
 - The user reports one MDR issue per chat. Change only that issue unless the
   user explicitly groups multiple changes or requests a refactor.
+- When inspection finds that a page needs no new MDR capability, migrate that
+  page to `.mdr` immediately and verify its route instead of stopping at a
+  migration report.
 - Preserve unrelated uncommitted user changes. Inspect before staging.
 - The user authorizes `git add`, `commit`, and `push` when useful. Stage only
   reviewed source changes; exclude generated output and unrelated edits.
