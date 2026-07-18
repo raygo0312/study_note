@@ -146,19 +146,23 @@ function jsonAttribute(value, fallback) {
   return JSON.stringify(value ?? fallback);
 }
 
+function escapeAstroStaticHtml(html) {
+  return html.replaceAll('{', '&#123;').replaceAll('}', '&#125;');
+}
+
 function createGeneratedPage({ sourcePath, generatedPath, html, attributes }) {
   const imports = [];
-  const contentElement = '<Fragment set:html={content} />';
-  let layoutElement = contentElement;
+  const staticHtml = escapeAstroStaticHtml(html);
+  let pageTemplate = staticHtml;
   if (attributes.layout) {
     const layoutPath = path.resolve(path.dirname(sourcePath), attributes.layout);
     let relativeLayout = path.relative(path.dirname(generatedPath), layoutPath)
       .replaceAll(path.sep, '/');
     if (!relativeLayout.startsWith('.')) relativeLayout = `./${relativeLayout}`;
     imports.push(`import Layout from ${JSON.stringify(relativeLayout)};`);
-    layoutElement = `<Layout title={${jsonAttribute(attributes.title, '')}} breadcrumbs={${jsonAttribute(attributes.breadcrumbs, [])}}>${contentElement}</Layout>`;
+    pageTemplate = `<Layout title={${jsonAttribute(attributes.title, '')}} breadcrumbs={${jsonAttribute(attributes.breadcrumbs, [])}}>\n${staticHtml}\n</Layout>`;
   }
-  return `---\n${imports.join('\n')}\nconst content = ${JSON.stringify(html)};\n---\n${layoutElement}\n`;
+  return `---\n${imports.join('\n')}\n---\n${pageTemplate}\n`;
 }
 
 async function generatePages(root, pagesDirectory, markdownProcessor) {
@@ -228,4 +232,5 @@ module.exports = {
   transformMdrToMarkdown,
   routePattern,
   createGeneratedPage,
+  escapeAstroStaticHtml,
 };

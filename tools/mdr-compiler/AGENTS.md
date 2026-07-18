@@ -61,9 +61,10 @@ and that document when syntax changes.
   does not parse lists or paragraphs inside raw HTML blocks.
 - Keep MathJax delimiter escaping valid through both MDR and Markdown stages.
 - Imports and tag definitions are resolved before page transformation.
-- Use Astro's configured Markdown processor before embedding static HTML in the
-  generated `.astro`, preserving Shiki and Markdown behavior while making
-  `.astro` the compiler target for future TypeScript expressions.
+- Use Astro's configured Markdown processor, then write its elements directly
+  into the generated `.astro` template. Do not use `set:html` or a content
+  string. Protect braces in static HTML as entities, reserving actual Astro
+  expression braces for future MDR TypeScript syntax.
 
 ## Validation
 

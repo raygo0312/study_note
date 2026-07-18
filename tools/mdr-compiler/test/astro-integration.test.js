@@ -25,17 +25,17 @@ test('maps MDR pages to Astro routes', () => {
   assert.equal(routePattern('math/logical-formula.mdr'), '/math/logical-formula');
 });
 
-test('generates an Astro page with rendered HTML instead of a Markdown import', () => {
+test('generates Astro template markup instead of a content string', () => {
   const page = createGeneratedPage({
     sourcePath: '/project/src/pages/index.mdr',
     generatedPath: '/project/.mdr-generated/index.astro',
-    html: '<h2>目次</h2>',
+    html: '<h2>目次</h2><code>const value = { key: 1 };</code>',
     attributes: { layout: '../layouts/BaseLayout.astro', title: 'トップ' },
   });
   assert.match(page, /import Layout from "\.\.\/src\/layouts\/BaseLayout\.astro";/);
-  assert.ok(page.includes('const content = "<h2>目次</h2>";'));
-  assert.match(page, /<Fragment set:html=\{content\} \/>/);
-  assert.doesNotMatch(page, /\.md"|Content/);
+  assert.ok(page.includes('<h2>目次</h2>'));
+  assert.ok(page.includes('<code>const value = &#123; key: 1 &#125;;</code>'));
+  assert.doesNotMatch(page, /set:html|const content|\.md"|Content/);
 });
 
 const tagDefinitions = { section: [{ name: 'label', attribute: 'data-label' }] };

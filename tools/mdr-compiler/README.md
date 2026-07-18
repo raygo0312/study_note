@@ -77,7 +77,8 @@ lexerのトークンにエディタ向けのscope名を付けて返します。
 
 言語構文は[`docs/syntax.md`](docs/syntax.md)を参照してください。Astro連携は
 MDRをAstroのMarkdown processorでHTML化し、`.mdr-generated`内の生成
-`.astro`ルートへ埋め込みます。中間`.md`ファイルは生成しません。
+`.astro`テンプレートへ要素として直接書き込みます。中間`.md`ファイルや
+`set:html`は使用しません。
 
 ## 開発
 

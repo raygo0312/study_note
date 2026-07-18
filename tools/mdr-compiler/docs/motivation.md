@@ -34,7 +34,8 @@ src/pages/**/*.mdr
 
 これにより、MDR 独自の構文に集中しながら、`study_note` を実際の検証環境に
 できる。MDRのMarkdown互換部分はAstroのMarkdown processorでHTML化し、
-integrationが生成する`.astro`へ埋め込む。中間`.md`ファイルは作らない。
+integrationが生成する`.astro`のtemplateへ要素として直接書き込む。
+中間`.md`ファイルや`set:html`は使わない。
 最終出力を`.astro`に統一することで、将来のTypeScript式やcomponent構文を
 同じ生成モジュールへ展開できるようにする。
 

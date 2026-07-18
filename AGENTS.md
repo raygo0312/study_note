@@ -119,10 +119,11 @@ for page data, expressions, iteration/conditionals, component/layout
 composition, and client-side scripts. Add these only from concrete migration
 requirements, one user-selected problem at a time.
 
-MDR's Astro integration now renders Markdown-compatible MDR content with
-Astro's Markdown processor and embeds the resulting HTML in generated `.astro`
-modules. It no longer generates intermediate `.md` files. This `.astro` target
-is the foundation for future `:{ ... }` TypeScript regions.
+MDR's Astro integration renders Markdown-compatible MDR content with Astro's
+Markdown processor and writes the resulting elements directly into generated
+`.astro` templates. It does not use intermediate `.md` files, `set:html`, or a
+content-string variable. Static braces are emitted as HTML entities so future
+`:{ ... }` TypeScript regions can map to real Astro expressions.
 
 ## Current Astro Migration Blockers
 
