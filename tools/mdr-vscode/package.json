@@ -12,6 +12,9 @@
   "activationEvents": [
     "onLanguage:mdr"
   ],
+  "extensionDependencies": [
+    "myriad-dreamin.tinymist"
+  ],
   "categories": [
     "Programming Languages",
     "Formatters"
@@ -35,7 +38,8 @@
         "scopeName": "source.mdr",
         "path": "./syntaxes/mdr.tmLanguage.json",
         "embeddedLanguages": {
-          "meta.embedded.block.rust": "rust"
+          "meta.embedded.block.rust": "rust",
+          "meta.embedded.inline.typst.math.mdr": "typst"
         }
       },
       {

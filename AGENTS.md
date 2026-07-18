@@ -77,6 +77,9 @@ MDR source should use these constructs instead of literal HTML tags.
   a left-priority injection for MDR inline syntax.
 - Language fences that need embedded-language tokenization may be declared by
   MDR before the Markdown fallback; Rust fences currently embed `source.rust`.
+- MDR math delimiters remain MDR syntax, while their contents include
+  Tinymist's `source.typst#math` TextMate rule. The VSCode extension therefore
+  depends on `myriad-dreamin.tinymist` for Typst tokenization.
 - Inline-code injection must match only single-backtick delimiters; matching
   any pair within triple backticks prevents fenced-language grammars from ever
   starting.

@@ -9,6 +9,7 @@
 VSCode標準のMarkdownにはドキュメントフォーマッタが含まれていないため、
 フォーマッタはMDRコンパイラのMarkdown互換formatterを使用します。MDRの
 `+`リストや`:::section.ex`を含む汎用タグなどを壊さずに整形できます。
+`$...$`の内側はTinymistのTypst数式grammarを利用してハイライトします。
 
 ## 開発版の使い方
 

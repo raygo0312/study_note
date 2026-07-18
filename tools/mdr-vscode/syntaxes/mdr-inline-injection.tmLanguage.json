@@ -65,18 +65,7 @@
         "1": { "name": "string.other.math.delimiter.mdr" }
       },
       "patterns": [
-        {
-          "name": "support.function.typst.math.word.mdr",
-          "match": "[\\p{L}\\p{N}_]{2,}(?=\\()"
-        },
-        {
-          "name": "markup.heading.3.markdown",
-          "match": "[\\p{L}\\p{N}_]{2,}"
-        },
-        {
-          "name": "punctuation.section.brackets.typst.math.mdr",
-          "match": "[()\\[\\]{}]"
-        }
+        { "include": "source.typst#math" }
       ]
     }
   ]
