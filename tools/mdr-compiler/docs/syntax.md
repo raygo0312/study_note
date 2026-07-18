@@ -148,6 +148,15 @@ class、`#名前`はidで、両者の順序は問いません。
 `@import`のパスは、記述しているページの場所にかかわらず、プロジェクトの
 `src/mdr`ディレクトリを基準にした相対パスです。
 
+ページ固有のクライアントscriptはfrontmatterの`scripts`へ、MDRページからの
+相対パスで記述します。生成されたAstroページのローカルscript importとなり、
+Astro/Viteによってブラウザ用JavaScriptへ変換・bundleされます。
+
+```mdr
+scripts:
+  - ../scripts/search.ts
+```
+
 インラインタグは`:span[text]`、class付きなら`:span.note[text]`と書きます。
 先頭の`:`により、Markdownリンク`[label](destination)`とは区別されます。
 

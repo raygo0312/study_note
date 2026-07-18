@@ -20,12 +20,20 @@ function parseFrontmatter(source) {
 
   const attributes = {};
   const breadcrumbs = [];
+  const scripts = [];
   let currentBreadcrumb;
+  let currentList;
   for (const line of match[1].split(/\r?\n/)) {
     const property = /^([\w-]+):\s*(.*)$/.exec(line);
     if (property) {
       const [, key, value] = property;
       if (key === 'title' || key === 'layout') attributes[key] = unquote(value);
+      currentList = value === '' ? key : undefined;
+      continue;
+    }
+    const scriptValue = /^\s*-\s+(.+)$/.exec(line);
+    if (currentList === 'scripts' && scriptValue) {
+      scripts.push(unquote(scriptValue[1]));
       continue;
     }
     const breadcrumbValue = /^\s*-\s+(href|label):\s*(.*)$/.exec(line);
@@ -50,6 +58,7 @@ function parseFrontmatter(source) {
     }
   }
   if (breadcrumbs.length > 0) attributes.breadcrumbs = breadcrumbs;
+  if (scripts.length > 0) attributes.scripts = scripts;
   return { attributes, body: source.slice(match[0].length) };
 }
 
@@ -165,7 +174,16 @@ function createGeneratedPage({ sourcePath, generatedPath, html, attributes }) {
       .replaceAll(path.sep, '/');
     if (!relativeLayout.startsWith('.')) relativeLayout = `./${relativeLayout}`;
     imports.push(`import Layout from ${JSON.stringify(relativeLayout)};`);
-    pageTemplate = `<Layout title={${jsonAttribute(attributes.title, '')}} breadcrumbs={${jsonAttribute(attributes.breadcrumbs, [])}}>\n${staticHtml}\n</Layout>`;
+    const pageScripts = (attributes.scripts || []).map((scriptPath) => {
+      const absoluteScript = path.resolve(path.dirname(sourcePath), scriptPath);
+      let relativeScript = path.relative(path.dirname(generatedPath), absoluteScript)
+        .replaceAll(path.sep, '/');
+      if (!relativeScript.startsWith('.')) relativeScript = `./${relativeScript}`;
+      return `<script>import ${JSON.stringify(relativeScript)};</script>`;
+    }).join('\n');
+    const scriptSlot = pageScripts
+      ? `\n<Fragment slot="page-scripts">\n${pageScripts}\n</Fragment>` : '';
+    pageTemplate = `<Layout title={${jsonAttribute(attributes.title, '')}} breadcrumbs={${jsonAttribute(attributes.breadcrumbs, [])}}>\n${staticHtml}${scriptSlot}\n</Layout>`;
   }
   return `---\n${imports.join('\n')}\n---\n${pageTemplate}\n`;
 }

@@ -63,10 +63,17 @@ and that document when syntax changes.
   does not parse lists or paragraphs inside raw HTML blocks.
 - Keep MathJax delimiter escaping valid through both MDR and Markdown stages.
 - Imports and tag definitions are resolved before page transformation.
+- Frontmatter `scripts` entries are resolved relative to the MDR page and
+  emitted into BaseLayout's `page-scripts` slot as local imports inside
+  Astro-processed client script tags. This keeps script source outside the
+  layout's default-slot content transforms. Do not
+  use `?url`: it exposes raw TypeScript to the browser instead of transpiling
+  and bundling it.
 - Use Astro's configured Markdown processor, then write its elements directly
   into the generated `.astro` template. Do not use `set:html` or a content
   string. Protect braces in static HTML as entities, reserving actual Astro
-  expression braces for future MDR TypeScript syntax.
+  expression braces for future MDR TypeScript syntax. Generated local script
+  tags are compiler output, not HTML authoring syntax exposed by MDR.
 
 ## Validation
 

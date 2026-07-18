@@ -1,0 +1,13 @@
+---
+layout: ../layouts/BaseLayout.astro
+title: 用語検索
+breadcrumbs:
+  - href: /index.html
+    label: ホーム
+scripts:
+  - ../scripts/search.ts
+---
+@import "tags.mdr"
+:::input#searchInput text 検索したい用語を入力
+:button#searchButton[検索]
+:div#results[]

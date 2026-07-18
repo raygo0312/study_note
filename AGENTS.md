@@ -23,6 +23,8 @@ they require.
 - `src/pages/competitive-programming/index.mdr`, `src/pages/reference.mdr`,
   and `src/pages/math/proof.mdr` are static pages migrated without adding MDR
   language features.
+- `src/pages/search.mdr` verifies void form controls, standalone generic tags,
+  and page-specific client TypeScript loaded through frontmatter `scripts`.
 - Existing `.astro` and Markdown pages must continue to build during migration.
 - After implementing an MDR feature, use it in `logical-formula.mdr` when it
   naturally applies.
@@ -61,6 +63,9 @@ they require.
 - Grouped tag arguments: `(argument containing spaces)`
 - Definitions: `@tag section(label=data-label)`
 - Imports: `@import "tags.mdr"`, always relative to project `src/mdr`
+- Page scripts: a frontmatter `scripts` list is emitted as local Astro client
+  script imports in BaseLayout's `page-scripts` slot so Astro/Vite transpiles
+  and bundles TypeScript dependencies outside body-content transformations
 
 MDR source should use these constructs instead of literal HTML tags.
 
@@ -131,9 +136,6 @@ content-string variable. Static braces are emitted as HTML entities so future
 
 - `math/index.astro`: imported page data, array transformations, generated
   Mermaid source, and iteration/lookup expressions
-- `search.astro`: `input` attributes are now expressible through the shared
-  `@tag input` definition; imported client script URL, `extraScripts`, and
-  non-paragraph button content still need explicit MDR designs
 - `math/logical-formula-extension.astro`: `details`/`summary` structures whose
   phrasing content must not be wrapped in paragraphs
 - `math/mathmatics-introduction.astro`: chat containers plus inline/void HTML
