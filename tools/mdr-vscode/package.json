@@ -33,7 +33,10 @@
       {
         "language": "mdr",
         "scopeName": "source.mdr",
-        "path": "./syntaxes/mdr.tmLanguage.json"
+        "path": "./syntaxes/mdr.tmLanguage.json",
+        "embeddedLanguages": {
+          "meta.embedded.block.rust": "rust"
+        }
       },
       {
         "scopeName": "mdr.inline.injection",

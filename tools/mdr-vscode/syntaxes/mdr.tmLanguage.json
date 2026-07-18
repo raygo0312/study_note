@@ -4,6 +4,7 @@
   "patterns": [
     { "include": "#import-directive" },
     { "include": "#tag-directive" },
+    { "include": "#fenced-code-rust" },
     { "include": "#void-tag" },
     { "include": "#section" },
     { "include": "#tag" },
@@ -23,14 +24,11 @@
     "tag-directive": {
       "name": "meta.directive.tag.mdr",
       "begin": "^(\\s*)(@tag)(\\s+)([a-z][a-z0-9-]*)(\\()",
-      "end": "(\\))\\s*$",
+      "end": "(?=$)",
       "beginCaptures": {
         "2": { "name": "keyword.control.directive.tag.mdr" },
         "4": { "name": "entity.name.tag.mdr" },
         "5": { "name": "punctuation.definition.parameters.begin.mdr" }
-      },
-      "endCaptures": {
-        "1": { "name": "punctuation.definition.parameters.end.mdr" }
       },
       "patterns": [
         {
@@ -39,7 +37,24 @@
             "0": { "name": "entity.other.attribute-name.mdr" }
           }
         },
-        { "name": "punctuation.separator.parameters.mdr", "match": "," }
+        { "name": "punctuation.separator.parameters.mdr", "match": "," },
+        { "name": "punctuation.definition.parameters.end.mdr", "match": "\\)" }
+      ]
+    },
+    "fenced-code-rust": {
+      "name": "markup.fenced_code.block.markdown",
+      "begin": "^(\\s*)(```)(rust)(?:\\s+.*)?$",
+      "end": "^(\\s*)(```)\\s*$",
+      "contentName": "meta.embedded.block.rust source.rust",
+      "beginCaptures": {
+        "2": { "name": "punctuation.definition.markdown" },
+        "3": { "name": "fenced_code.block.language.markdown" }
+      },
+      "endCaptures": {
+        "2": { "name": "punctuation.definition.markdown" }
+      },
+      "patterns": [
+        { "include": "source.rust" }
       ]
     },
     "void-tag": {
@@ -65,6 +80,7 @@
         "2": { "name": "punctuation.definition.heading.markdown" }
       },
       "patterns": [
+        { "include": "#fenced-code-rust" },
         { "include": "text.html.markdown" }
       ]
     },
@@ -81,6 +97,7 @@
         "2": { "name": "punctuation.definition.tag.mdr" }
       },
       "patterns": [
+        { "include": "#fenced-code-rust" },
         { "include": "text.html.markdown" }
       ]
     }

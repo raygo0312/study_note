@@ -75,6 +75,10 @@ MDR source should use these constructs instead of literal HTML tags.
   `raygo0312.mdr-language-support`.
 - The grammar delegates Markdown-compatible syntax to VSCode Markdown and uses
   a left-priority injection for MDR inline syntax.
+- Language fences that need embedded-language tokenization may be declared by
+  MDR before the Markdown fallback; Rust fences currently embed `source.rust`.
+- Single-line directives such as `@tag` must end their TextMate scope at the
+  same line so consecutive directives remain independently highlighted.
 - `-` and `+` continue on Enter. Enter/Backspace removes an empty item.
 - Tab is intercepted only on an empty `-` or `+` item and indents by two spaces.
 - Formatter behavior must preserve blank-line counts and relative nested-list
