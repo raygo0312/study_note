@@ -6,29 +6,7 @@ const LANGUAGE_ALIASES = {
   typ: 'typst',
   typc: 'typst-code',
 };
-
-async function replaceAsync(value, pattern, replacer) {
-  const matches = [...value.matchAll(pattern)];
-  if (matches.length === 0) return value;
-  let output = '';
-  let cursor = 0;
-  for (const match of matches) {
-    output += value.slice(cursor, match.index) + await replacer(match);
-    cursor = match.index + match[0].length;
-  }
-  return output + value.slice(cursor);
-}
-
-async function formatMath(line, formatLanguage) {
-  return replaceAsync(line, /(?<![\\$])\$([^$\n]+?)(?<!\\)\$/g, async (match) => {
-    const wrapped = `$${match[1]}$`;
-    const formatted = await formatLanguage('typst', wrapped);
-    if (!formatted) return match[0];
-    const trimmed = formatted.trim();
-    if (!trimmed.startsWith('$') || !trimmed.endsWith('$')) return match[0];
-    return trimmed;
-  });
-}
+const TYPST_LANGUAGES = new Set(['typst', 'typst-code']);
 
 async function formatEmbedded(source, formatLanguage) {
   const lines = source.split('\n');
@@ -36,7 +14,7 @@ async function formatEmbedded(source, formatLanguage) {
   for (let index = 0; index < lines.length; index += 1) {
     const fence = /^(\s*)```\s*([^\s`]*)[^`]*$/.exec(lines[index]);
     if (!fence) {
-      output.push(await formatMath(lines[index], formatLanguage));
+      output.push(lines[index]);
       continue;
     }
 
@@ -49,7 +27,8 @@ async function formatEmbedded(source, formatLanguage) {
 
     const language = LANGUAGE_ALIASES[fence[2]] || fence[2];
     const content = lines.slice(index + 1, end).join('\n');
-    const formatted = language ? await formatLanguage(language, content) : undefined;
+    const formatted = language && !TYPST_LANGUAGES.has(language)
+      ? await formatLanguage(language, content) : undefined;
     output.push(lines[index]);
     output.push(...(formatted === undefined ? content : formatted.replace(/\n$/, '')).split('\n'));
     output.push(lines[end]);

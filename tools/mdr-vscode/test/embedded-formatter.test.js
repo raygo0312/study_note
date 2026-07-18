@@ -2,14 +2,26 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const { formatEmbedded } = require('../embedded-formatter');
 
-test('formats Typst math through the Typst document formatter', async () => {
+test('leaves Typst math unchanged without starting its formatter', async () => {
   const calls = [];
   const result = await formatEmbedded('前 $a+b$ 後', async (language, value) => {
     calls.push({ language, value });
     return '$ a + b $';
   });
-  assert.equal(result, '前 $ a + b $ 後');
-  assert.deepEqual(calls, [{ language: 'typst', value: '$a+b$' }]);
+  assert.equal(result, '前 $a+b$ 後');
+  assert.deepEqual(calls, []);
+});
+
+test('leaves Typst fences unchanged without starting their formatter', async () => {
+  for (const language of ['typst', 'typ', 'typc']) {
+    const source = `\`\`\`${language}\na+b\n\`\`\``;
+    let called = false;
+    assert.equal(await formatEmbedded(source, async () => {
+      called = true;
+      return 'a + b';
+    }), source);
+    assert.equal(called, false);
+  }
 });
 
 test('formats fenced code with language aliases and preserves its markers', async () => {
