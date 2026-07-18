@@ -10,10 +10,8 @@ VSCode標準のMarkdownにはドキュメントフォーマッタが含まれて
 フォーマッタはMDRコンパイラのMarkdown互換formatterを使用します。MDRの
 `+`リストや`:::section.ex`を含む汎用タグなどを壊さずに整形できます。
 `$...$`の内側はTinymistのTypst数式grammarを利用してハイライトします。
-Tinymistのformatterは起動せず、数式とTypstコードフェンスは変更しません。
-Rustコードフェンスもformatterへ渡さず、ハイライトだけを適用します。
-それ以外の言語名付きコードフェンスは対応するVSCode formatterへ渡します。
-formatterが利用できない言語のコードは変更しません。
+数式とコードフェンスでは埋め込み言語のformatterを一切起動せず、
+各言語のgrammarによるハイライトだけを適用します。
 
 ## 開発版の使い方
 

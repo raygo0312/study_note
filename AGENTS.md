@@ -94,11 +94,9 @@ MDR source should use these constructs instead of literal HTML tags.
 - Tab is intercepted only on an empty `-` or `+` item and indents by two spaces.
 - Formatter behavior must preserve blank-line counts and relative nested-list
   indentation. Generic tag content has one outer indentation level.
-- The VSCode formatter runs the compiler formatter first, then delegates named
-  code fences other than Typst and Rust through their registered VSCode language
-  formatters. Tinymist and the Rust grammar are used for highlighting only:
-  `$...$`, Typst fences, and Rust fences must never start embedded formatters.
-  Missing embedded formatters leave source unchanged.
+- The VSCode formatter only runs the MDR compiler formatter. Math and all code
+  fences use embedded-language grammars for highlighting only and must never
+  start embedded-language formatters.
 - Keep VSIX version exactly `0.1.0`. Packaging must overwrite the single
   `mdr-language-support-0.1.0.vsix`; do not accumulate other versions.
 - Because the version is fixed, run `Developer: Reload Window` after reinstall.
