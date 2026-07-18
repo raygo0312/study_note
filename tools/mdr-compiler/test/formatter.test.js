@@ -68,3 +68,8 @@ test('preserves links and escaped MDR markers', () => {
   const source = '[*リンク*](/reference.html) と \\*記号\\* と \\$';
   assert.equal(format(source), source);
 });
+
+test('preserves trailing-backslash hard line breaks', () => {
+  const source = '一行目\\\n二行目';
+  assert.equal(format(source), source);
+});

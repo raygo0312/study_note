@@ -1,0 +1,67 @@
+---
+layout: ../../layouts/BaseLayout.astro
+title: 数学
+breadcrumbs:
+  - href: /index.html
+    label: ホーム
+---
+@import "tags.mdr"
+:::details
+  :summary[各ページの関係]
+
+  :div.mermaid.panzoom[graph TB; mathmatics-introduction[数学とは]; click mathmatics-introduction href "math/mathmatics-introduction.html"; logical-formula[論理式]; click logical-formula href "math/logical-formula.html"; proof[証明]; click proof href "math/proof.html"; logical-formula-extension[論理式の拡張]; click logical-formula-extension href "math/logical-formula-extension.html"; natural-deduction[自然演繹]; click natural-deduction href "math/natural-deduction.html"; ZFC-axioms[ZFC公理系]; click ZFC-axioms href "math/ZFC-axioms.html"; order[順序]; click order href "math/order.html"; mathmatics-introduction --> logical-formula; logical-formula --> proof; proof --> logical-formula-extension; logical-formula-extension --> natural-deduction; natural-deduction --> ZFC-axioms; ZFC-axioms --> order]
+:::
+
+## 数理論理学
+
+数理論理学はメタ数学(数学それ自身)に対して研究する分野である．
+
+### 数学の入門
+
+数学を勉強するにあたって，知っておきたい基礎的な知識を紹介する．入門に最低限な知識のみを紹介しているため，形式化や詳しい用語を省略している部分もある．
+
+- [数学とは](math/mathmatics-introduction.html)
+- [論理式](math/logical-formula.html)
+- [証明](math/proof.html)
+- [論理式の拡張](math/logical-formula-extension.html)
+- [自然演繹](math/natural-deduction.html)
+- [ZFC公理系](math/ZFC-axioms.html)
+- [順序](math/order.html)
+
+### 数学基礎論
+
+### モデル理論
+
+- 命題論理
+- 述語論理
+- 高階述語論理
+- 様相論理
+
+### 証明論
+
+- ヒルベルト流
+- シークエント計算
+- ゲンチェン流
+
+### 理論計算機科学
+
+- 言語
+- オートマトン
+- チューリングマシン
+- 不完全性定理
+- $lambda$計算
+- 型付き$lambda$計算
+
+## 代数学
+
+## 解析学
+
+## 幾何学
+
+## 統計学
+
+## 数理最適化
+
+## 離散数学
+
+## 数値計算

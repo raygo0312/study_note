@@ -24,7 +24,7 @@ function token(type, value, start, end, line, column, metadata = {}) {
 
 function lexInline(text, offset, line, column) {
   const tokens = [];
-  const inlinePattern = /\\([\\`*{}\[\]()#+\-.!_$:>\/])|:([a-z][a-z0-9-]*(?:[.#][a-zA-Z_][\w-]*)*)\[([^\]\n]*)\]|\[([^\]\n]+)\]\(([^)\s\n]+)\)|\*([^*\n]+)\*|`([^`\n]+)`/g;
+  const inlinePattern = /\\([\\`*{}\[\]()#+\-.!_$:>\/])|:([a-z][a-z0-9-]*(?:[.#][a-zA-Z_][\w-]*)*)\[([^\[\]\n]*(?:\[[^\[\]\n]*\][^\[\]\n]*)*)\]|\[([^\]\n]+)\]\(([^)\s\n]+)\)|\*([^*\n]+)\*|`([^`\n]+)`/g;
   let cursor = 0;
   let match;
 

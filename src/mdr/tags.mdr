@@ -1,2 +1,3 @@
 @tag section(data-label)
 @tag input(type, placeholder)
+@tag iframe(data-src)

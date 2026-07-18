@@ -3,12 +3,12 @@ const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 const { findMdrFiles } = require('./project-compiler');
 const { compile, escapeHtml } = require('./compiler');
-const { transformMathLine } = require('./math');
+const { PROTECTED_MATH_ASTERISK, transformMathLine } = require('./math');
 const { resolveDocument } = require('./tag-definitions');
 const { parseBlockTagStart, parseDescriptor } = require('./tag-syntax');
 
 const CODE_FENCE_PATTERN = /^\s*```/;
-const TAG_END_PATTERN = /^:::[ \t]*$/;
+const TAG_END_PATTERN = /^\s*:::[ \t]*$/;
 
 function unquote(value) {
   return value.trim().replace(/^("|')(.*)\1$/, '$2');
@@ -118,7 +118,7 @@ function transformMarkdownLine(line, state) {
     return `${orderedItem[1]}${state.orderedNumber}. ${orderedItem[2]}`;
   }
   if (line.trim() === '') state.orderedNumber = 0;
-  return transformInlineMdr(transformMathLine(line, { markdown: true }));
+  return transformInlineMdr(transformMathLine(line, { markdown: true, protectMdr: true }));
 }
 
 function transformMdrToMarkdown(source, options = {}) {
@@ -146,7 +146,7 @@ function transformMdrToMarkdown(source, options = {}) {
     output.push(transformMarkdownLine(line, state));
   }
 
-  return output.join('\n');
+  return output.join('\n').replaceAll(PROTECTED_MATH_ASTERISK, '*');
 }
 
 function routePattern(relativePage) {

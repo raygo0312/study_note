@@ -25,6 +25,10 @@ they require.
   language features.
 - `src/pages/search.mdr` verifies void form controls, standalone generic tags,
   and page-specific client TypeScript loaded through frontmatter `scripts`.
+- Every route under `src/pages` is now authored as `.mdr`; there are no
+  remaining page-level `.astro` files. The six final mathematics pages verify
+  nested generic tags, iframes, chat containers, nested inline tags, Mermaid,
+  and hard line breaks.
 - Existing `.astro` and Markdown pages must continue to build during migration.
 - After implementing an MDR feature, use it in `logical-formula.mdr` when it
   naturally applies.
@@ -54,6 +58,7 @@ they require.
 - Links: `[label](destination)`
 - Escapes: `\*`, `\$`, and other MDR punctuation
 - Inline and fenced code: backticks and triple backticks
+- Hard line breaks: a trailing `\` compiles to `<br>`
 - Lists: `-` unordered, `+` ordered; indentation preserves nesting
 - Typst math: `$...$`, converted during MDR compilation rather than in Astro
 - Generic block tags: `:::tag.class#id arguments` through closing `:::`
@@ -146,17 +151,10 @@ Markdown processor and writes the resulting elements directly into generated
 content-string variable. Static braces are emitted as HTML entities so future
 `:{ ... }` TypeScript regions can map to real Astro expressions.
 
-## Current Astro Migration Blockers
+## Completed Astro Page Migration
 
-- `math/index.astro`: imported page data, array transformations, generated
-  Mermaid source, and iteration/lookup expressions
-- `math/logical-formula-extension.astro`: `details`/`summary` structures whose
-  phrasing content must not be wrapped in paragraphs
-- `math/mathmatics-introduction.astro`: chat containers plus inline/void HTML
-  semantics such as `br`, `ruby`, `rt`, `em`, and `s`
-- `math/ZFC-axioms.astro`, `math/natural-deduction.astro`, and
-  `math/order.astro`: `details`/`summary`, explicit heading ids, and, where
-  present, arbitrary iframe attributes
-
-Reassess these pages after implementing the relevant missing capability; do
-not mechanically migrate them into structurally invalid HTML.
+All page routes have MDR sources. Astro remains intentionally in `src/layouts`
+and in generated `.mdr-generated` modules as the runtime/integration target.
+The mathematics index currently contains the expanded values from
+`src/data/mathIndex.ts`; if that data becomes frequently edited, add an MDR
+data/template feature before restoring generated page authoring.

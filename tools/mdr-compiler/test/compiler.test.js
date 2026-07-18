@@ -49,6 +49,11 @@ test('groups consecutive text lines into one paragraph', () => {
   ].join('\n'));
 });
 
+test('compiles a trailing backslash as a hard line break', () => {
+  assert.equal(compile('一行目\\\n二行目'), '<p>一行目<br>二行目</p>');
+  assert.equal(compile('最終行\\'), '<p>最終行<br></p>');
+});
+
 test('compiles generic tags with classes, ids, and defined arguments', () => {
   const definitions = { section: [{ attribute: 'data-label' }] };
   assert.equal(compile(':::section#main.ex (重要な 命題)\n本文です。\n:::', {
@@ -75,6 +80,15 @@ test('compiles HTML void tags without a closing MDR marker', () => {
 test('compiles inline tags without consuming Markdown links', () => {
   assert.equal(compile(':span.term[*項*] と [リンク](/reference)'),
     '<p><span class="term"><dfn>項</dfn></span> と <a href="/reference">リンク</a></p>');
+});
+
+test('compiles nested inline tags', () => {
+  assert.equal(compile(':ruby[Hilbert:rt[ヒルベルト]]'),
+    '<ruby>Hilbert<rt>ヒルベルト</rt></ruby>');
+});
+
+test('does not wrap a standalone inline tag in a paragraph', () => {
+  assert.equal(compile(':summary[証明]'), '<summary>証明</summary>');
 });
 
 test('compiles nested arbitrary block tags', () => {
@@ -109,6 +123,16 @@ test('compiles inline code and fenced code blocks', () => {
 
 test('converts Typst math before HTML compilation', () => {
   assert.equal(compile('$A <-> B$'), '<p>\\(A \\leftrightarrow B\\)</p>');
+});
+
+test('does not interpret a Typst superscript asterisk as an MDR definition', () => {
+  assert.equal(compile('$F^*$'), '<p>\\(F^*\\)</p>');
+});
+
+test('does not interpret TeX backslashes as MDR escapes or hard breaks', () => {
+  const html = compile('$ & a \\ b $');
+  assert.doesNotMatch(html, /<br>/);
+  assert.match(html, /\\begin\{aligned\}|\\\\/);
 });
 
 test('compiles Markdown-style links and escaped MDR markers', () => {

@@ -7,6 +7,7 @@ function formatInline(nodes) {
     if (node.type === 'strong') return `*${formatInline(node.children)}*`;
     if (node.type === 'code') return `\`${formatInline(node.children)}\``;
     if (node.type === 'escape') return `\\${node.value}`;
+    if (node.type === 'line-break') return '\\\n';
     if (node.type === 'link') return `[${formatInline(node.children)}](${node.destination})`;
     if (node.type === 'inline-tag') return `:${formatDescriptor(node)}[${formatInline(node.children)}]`;
     throw new Error(`Unknown inline node: ${node.type}`);

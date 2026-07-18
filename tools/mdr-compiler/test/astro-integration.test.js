@@ -62,6 +62,23 @@ test('converts generic tags while keeping the MDR source tag-free', () => {
     '<section class="ex" data-label="命題">\n<p>本文</p>\n</section>\n');
 });
 
+test('finds indented closing markers in nested block tags', () => {
+  assert.equal(transformMdrToMarkdown([
+    ':::section.def',
+    '  :::details',
+    '    :summary[証明]',
+    '  :::',
+    ':::',
+  ].join('\n')), [
+    '<section class="def">',
+    '<details>',
+    '<summary>証明</summary>',
+    '</details>',
+    '</section>',
+    '',
+  ].join('\n'));
+});
+
 test('converts a void tag without consuming the following content', () => {
   const definitions = {
     input: [
@@ -83,6 +100,12 @@ test('preserves code syntax while converting definitions', () => {
 test('converts MDR math before Astro Markdown rendering', () => {
   assert.equal(transformMdrToMarkdown('これは $A <-> B$。\n\n```typ\n$A <-> B$\n```'),
     'これは \\\\(A \\leftrightarrow B\\\\)。\n\n```typ\n$A <-> B$\n```');
+});
+
+test('protects TeX asterisks and newlines from Markdown syntax', () => {
+  const transformed = transformMdrToMarkdown('$ F^* \\ G $');
+  assert.match(transformed, /F\^\*/);
+  assert.doesNotMatch(transformed, /<dfn>|\\\n/);
 });
 
 test('uses one MathJax delimiter slash inside raw tags', () => {

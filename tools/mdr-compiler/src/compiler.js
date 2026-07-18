@@ -1,5 +1,5 @@
 const { parse } = require('./parser');
-const { PROTECTED_MATH_SLASH, transformMath } = require('./math');
+const { PROTECTED_MATH_ASTERISK, PROTECTED_MATH_SLASH, transformMath } = require('./math');
 
 function escapeHtml(value) {
   return value.replace(/[&<>"']/g, (character) => ({
@@ -39,6 +39,8 @@ function renderInline(nodes, options = {}) {
         return `<code>${renderInline(node.children, options)}</code>`;
       case 'escape':
         return escapeHtml(node.value);
+      case 'line-break':
+        return '<br>';
       case 'link':
         return `<a href="${escapeHtml(node.destination)}">${renderInline(node.children, options)}</a>`;
       case 'inline-tag':
@@ -79,6 +81,13 @@ function render(ast, options = {}) {
         }
         return `<h${node.level}>${renderInline(node.children, options)}</h${node.level}>`;
       case 'paragraph':
+        {
+          const meaningful = node.children.filter((child) =>
+            child.type !== 'text' || child.value.trim() !== '');
+          if (meaningful.length === 1 && meaningful[0].type === 'inline-tag') {
+            return renderInline(meaningful, options);
+          }
+        }
         return `<p>${renderInline(node.children, options)}</p>`;
       case 'code-block': {
         const className = node.info ? ` class="language-${escapeHtml(node.info)}"` : '';
@@ -100,8 +109,12 @@ function render(ast, options = {}) {
 }
 
 function compile(source, options = {}) {
-  return render(parse(transformMath(source, { protectDelimiters: true })), options)
-    .replaceAll(PROTECTED_MATH_SLASH, '\\');
+  return render(parse(transformMath(source, {
+    protectDelimiters: true,
+    protectMdr: true,
+  })), options)
+    .replaceAll(PROTECTED_MATH_SLASH, '\\')
+    .replaceAll(PROTECTED_MATH_ASTERISK, '*');
 }
 
 module.exports = { compile, escapeHtml, render };

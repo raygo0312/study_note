@@ -1,7 +1,10 @@
 const { typst2tex } = require('tex2typst');
 const PROTECTED_MATH_SLASH = '\uE000';
+const PROTECTED_MATH_ASTERISK = '\uE001';
 
-function transformMathLine(line, { markdown = false, protectDelimiters = false } = {}) {
+function transformMathLine(line, {
+  markdown = false, protectDelimiters = false, protectMdr = false,
+} = {}) {
   const parts = [];
   let cursor = 0;
   const codePattern = /`[^`\n]+`/g;
@@ -9,7 +12,10 @@ function transformMathLine(line, { markdown = false, protectDelimiters = false }
 
   const convert = (text) => text.replace(/(?<!\\)\$(.+?)(?<!\\)\$/g, (_match, inner) => {
     const blockMathMode = /^\s.*\s$/.test(inner);
-    const converted = typst2tex(inner.trim(), { blockMathMode });
+    let converted = typst2tex(inner.trim(), { blockMathMode });
+    if (markdown) converted = converted.replace(/\r?\n/g, ' ');
+    if (protectMdr) converted = converted.replaceAll('*', PROTECTED_MATH_ASTERISK);
+    if (protectDelimiters) converted = converted.replaceAll('\\', PROTECTED_MATH_SLASH);
     const slash = protectDelimiters ? PROTECTED_MATH_SLASH : '\\';
     const open = blockMathMode ? (markdown ? `\\\\[` : `${slash}[`) : (markdown ? `\\\\(` : `${slash}(`);
     const close = blockMathMode ? (markdown ? `\\\\]` : `${slash}]`) : (markdown ? `\\\\)` : `${slash})`);
@@ -36,4 +42,6 @@ function transformMath(source, options = {}) {
   }).join('\n');
 }
 
-module.exports = { PROTECTED_MATH_SLASH, transformMath, transformMathLine };
+module.exports = {
+  PROTECTED_MATH_ASTERISK, PROTECTED_MATH_SLASH, transformMath, transformMathLine,
+};

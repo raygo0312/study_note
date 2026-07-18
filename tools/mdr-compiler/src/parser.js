@@ -4,7 +4,7 @@ function textNode(value) {
   return { type: 'text', value };
 }
 
-function parseInline(tokens) {
+function parseInline(tokens, hardBreakAtEnd = false) {
   const children = [];
   let text = '';
   const flush = () => {
@@ -14,7 +14,11 @@ function parseInline(tokens) {
 
   for (let index = 0; index < tokens.length; index += 1) {
     const current = tokens[index];
-    if (current.type === TokenType.BoldMarker && tokens[index + 2]?.type === TokenType.BoldMarker) {
+    if (current.type === TokenType.Newline && text.endsWith('\\')) {
+      text = text.slice(0, -1);
+      flush();
+      children.push({ type: 'line-break' });
+    } else if (current.type === TokenType.BoldMarker && tokens[index + 2]?.type === TokenType.BoldMarker) {
       flush();
       children.push({ type: 'strong', children: [textNode(tokens[index + 1].value)] });
       index += 2;
@@ -42,6 +46,11 @@ function parseInline(tokens) {
     } else {
       text += current.value;
     }
+  }
+  if (hardBreakAtEnd && text.endsWith('\\')) {
+    text = text.slice(0, -1);
+    flush();
+    children.push({ type: 'line-break' });
   }
   flush();
   return children;
@@ -181,7 +190,10 @@ function parse(source) {
       }
       end = lineEnd(next);
     }
-    pushBlock({ type: 'paragraph', children: parseInline(tokens.slice(start, end)) });
+    pushBlock({
+      type: 'paragraph',
+      children: parseInline(tokens.slice(start, end), true),
+    });
     index = end;
     }
     Object.defineProperty(blocks, 'trailingBlankLines', {
