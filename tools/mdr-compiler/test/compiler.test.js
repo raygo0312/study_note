@@ -50,7 +50,7 @@ test('groups consecutive text lines into one paragraph', () => {
 });
 
 test('compiles generic tags with classes, ids, and defined arguments', () => {
-  const definitions = { section: [{ name: 'label', attribute: 'data-label' }] };
+  const definitions = { section: [{ attribute: 'data-label' }] };
   assert.equal(compile(':::section#main.ex (重要な 命題)\n本文です。\n:::', {
     tagDefinitions: definitions,
   }), [
@@ -63,8 +63,8 @@ test('compiles generic tags with classes, ids, and defined arguments', () => {
 test('compiles HTML void tags without a closing MDR marker', () => {
   const definitions = {
     input: [
-      { name: 'type', attribute: 'type' },
-      { name: 'placeholder', attribute: 'placeholder' },
+      { attribute: 'type' },
+      { attribute: 'placeholder' },
     ],
   };
   assert.equal(compile(':::input#searchInput text (検索したい用語を入力)', {

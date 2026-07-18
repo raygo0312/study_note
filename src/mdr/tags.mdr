@@ -1,2 +1,2 @@
-@tag section(label=data-label)
-@tag input(type=type, placeholder=placeholder)
+@tag section(data-label)
+@tag input(type, placeholder)

@@ -134,14 +134,14 @@ class、`#名前`はidで、両者の順序は問いません。
 引数名と出力属性は、別のMDRファイルで定義してimportできます。
 
 ```mdr
-@tag section(label=data-label)
+@tag section(data-label)
 @import "tags.mdr"
 ```
 
 `input`などのHTML void要素は閉じる`:::`を書かず、一行で完結します。
 
 ```mdr
-@tag input(type=type, placeholder=placeholder)
+@tag input(type, placeholder)
 :::input#searchInput text 検索したい用語を入力
 ```
 

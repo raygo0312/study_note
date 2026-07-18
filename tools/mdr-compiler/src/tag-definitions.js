@@ -8,9 +8,10 @@ function parseDefinitions(source) {
     if (!match) continue;
     definitions[match[1]] = match[2].split(',').map((entry) => entry.trim()).filter(Boolean)
       .map((entry) => {
-        const binding = /^([a-zA-Z_][\w-]*)\s*=\s*([a-zA-Z_:][\w:.-]*)$/.exec(entry);
-        if (!binding) throw new Error(`Invalid tag argument definition: ${entry}`);
-        return { name: binding[1], attribute: binding[2] };
+        if (!/^[a-zA-Z_:][\w:.-]*$/.test(entry)) {
+          throw new Error(`Invalid tag attribute definition: ${entry}`);
+        }
+        return { attribute: entry };
       });
   }
   return definitions;

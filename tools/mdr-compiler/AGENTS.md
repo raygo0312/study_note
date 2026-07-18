@@ -38,7 +38,8 @@ consumes the public formatter and owns TextMate grammar and editing commands.
 - Inline tags use `:tag.class#id[content]`.
 - `.class` and `#id` may occur in either order; duplicate ids are invalid.
 - Parentheses group one positional argument containing spaces.
-- `@tag name(argument=attribute)` defines positional argument mappings.
+- `@tag name(attribute, other-attribute)` defines positional arguments by the
+  output attribute names, in order.
 - `@import` is always resolved relative to the project `src/mdr` directory,
   including imports made by imported definition files.
 - Rendered names and values must be validated or HTML-escaped.

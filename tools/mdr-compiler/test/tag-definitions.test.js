@@ -11,10 +11,10 @@ test('imports positional tag argument definitions from another MDR file', () => 
   const pagePath = path.join(directory, 'src', 'pages', 'page.mdr');
   fs.mkdirSync(path.dirname(definitionsPath), { recursive: true });
   fs.mkdirSync(path.dirname(pagePath), { recursive: true });
-  fs.writeFileSync(definitionsPath, '@tag section(label=data-label)\n');
+  fs.writeFileSync(definitionsPath, '@tag section(data-label)\n');
   fs.writeFileSync(pagePath, '@import "definitions/tags.mdr"\n:::section.def 命題\n本文\n:::');
   const document = resolveDocument(pagePath);
   assert.deepEqual(document.definitions,
-    { section: [{ name: 'label', attribute: 'data-label' }] });
+    { section: [{ attribute: 'data-label' }] });
   assert.equal(document.source, ':::section.def 命題\n本文\n:::');
 });

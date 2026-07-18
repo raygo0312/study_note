@@ -61,7 +61,7 @@ they require.
   closing `:::`
 - Generic inline tags: `:tag.class#id[content]`
 - Grouped tag arguments: `(argument containing spaces)`
-- Definitions: `@tag section(label=data-label)`
+- Positional attribute definitions: `@tag section(data-label)`
 - Imports: `@import "tags.mdr"`, always relative to project `src/mdr`
 - Page scripts: a frontmatter `scripts` list is emitted as local Astro client
   script imports in BaseLayout's `page-scripts` slot so Astro/Vite transpiles

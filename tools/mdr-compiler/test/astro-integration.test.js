@@ -55,7 +55,7 @@ test('emits frontmatter scripts through Astro client bundling', () => {
   assert.doesNotMatch(page, /extraScripts|\?url|\?worker/);
 });
 
-const tagDefinitions = { section: [{ name: 'label', attribute: 'data-label' }] };
+const tagDefinitions = { section: [{ attribute: 'data-label' }] };
 
 test('converts generic tags while keeping the MDR source tag-free', () => {
   assert.equal(transformMdrToMarkdown(':::section.ex 命題\n本文\n:::', { tagDefinitions }),
@@ -65,8 +65,8 @@ test('converts generic tags while keeping the MDR source tag-free', () => {
 test('converts a void tag without consuming the following content', () => {
   const definitions = {
     input: [
-      { name: 'type', attribute: 'type' },
-      { name: 'placeholder', attribute: 'placeholder' },
+      { attribute: 'type' },
+      { attribute: 'placeholder' },
     ],
   };
   assert.equal(transformMdrToMarkdown(
