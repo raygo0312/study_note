@@ -10,10 +10,9 @@ my-site/
 ├── package.json
 ├── src/
 │   ├── pages/
+│   │   ├── tags.mdrdef
 │   │   ├── index.mdr
 │   │   └── about.mdr
-│   ├── mdr/
-│   │   └── tags.mdr
 │   ├── components/
 │   └── layouts/
 └── public/
@@ -43,6 +42,8 @@ export default {
 
 `src/pages/index.mdr` は `dist/index.html` に、
 `src/pages/about.mdr` は `dist/about/index.html` に変換されます。
+各ページでは、`src/pages`からそのページのディレクトリまでにあるすべての
+`tags.mdrdef`がルート側から順に自動読込され、下位の定義が優先されます。
 `public/` のファイルはそのまま `dist/` へコピーされます。
 ページfrontmatterはメタデータとして読み取られ、スタンドアロンHTMLの本文には
 出力されません。

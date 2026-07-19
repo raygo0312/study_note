@@ -5,7 +5,6 @@ breadcrumbs:
   - href: /index.html
     label: ホーム
 ---
-@import "tags.mdr"
 :::details
   :summary[各ページの関係]
 

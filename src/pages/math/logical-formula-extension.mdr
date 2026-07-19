@@ -7,7 +7,6 @@ breadcrumbs:
   - href: /math.html
     label: 数学
 ---
-@import "tags.mdr"
 ## 新しい真理関数
 
 便利なので，真理関数として同値や排他的論理和を新たに定義する．

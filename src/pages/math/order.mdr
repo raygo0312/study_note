@@ -7,7 +7,6 @@ breadcrumbs:
   - href: /math.html
     label: 数学
 ---
-@import "tags.mdr"
 ## 順序集合
 
 ### 順序

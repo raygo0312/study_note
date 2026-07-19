@@ -7,7 +7,6 @@ breadcrumbs:
 scripts:
   - ../scripts/search.ts
 ---
-@import "tags.mdr"
 :::input#searchInput text 検索したい用語を入力
 :button#searchButton[検索]
 :div#results[]

@@ -73,7 +73,7 @@ function compileProject(projectDirectory, options = {}) {
     const outputPath = path.join(outputRoot, outputRelativePath);
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     const sourcePath = path.join(pagesRoot, relativePage);
-    const document = resolveDocument(sourcePath);
+    const document = resolveDocument(sourcePath, undefined, { pagesRoot });
     const { body } = parseFrontmatter(document.source);
     fs.writeFileSync(outputPath, `${compile(body, {
       tagDefinitions: document.definitions,

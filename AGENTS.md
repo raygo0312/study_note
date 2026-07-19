@@ -49,7 +49,8 @@ they require.
   - `astro-integration.js`: Markdown rendering and generated `.astro` routes
 - `tools/mdr-vscode`: `.mdr` language registration, TextMate grammar,
   formatter provider, and list-editing commands
-- `src/mdr`: shared MDR definitions imported by pages
+- `src/pages/**/tags.mdrdef`: hierarchical tag definitions, loaded from the
+  pages root through each page's directory with lower directories taking priority
 - `.mdr-generated`: temporary generated `.astro` output; ignored
 - `dist`: generated build output; do not edit manually or commit as part of
   source work unless the user explicitly requests generated deployment output
@@ -75,7 +76,9 @@ they require.
   `:.class[content]`, or `:#id[content]`).
 - Grouped tag arguments: `(argument containing spaces)`
 - Positional attribute definitions: `@tag section(data-label)`
-- Imports: `@import "tags.mdr"`, always relative to project `src/mdr`
+- Hierarchical tag definitions: every `tags.mdrdef` from the pages root through
+  the page directory is loaded automatically, with lower directories taking priority
+- Explicit imports: `@import "definitions.mdr"`, relative to project `src/mdr`
 - Page scripts: a frontmatter `scripts` list is emitted as local Astro client
   script imports in BaseLayout's `page-scripts` slot so Astro/Vite transpiles
   and bundles TypeScript dependencies outside body-content transformations
@@ -84,7 +87,7 @@ MDR source should use these constructs instead of literal HTML tags.
 
 ## VSCode Rules
 
-- `.mdr` files use language id `mdr` and formatter id
+- `.mdr` and `.mdrdef` files use language id `mdr`; the formatter id is
   `raygo0312.mdr-language-support`.
 - The grammar delegates Markdown-compatible syntax to VSCode Markdown and uses
   a left-priority injection for MDR inline syntax.

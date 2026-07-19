@@ -65,6 +65,34 @@ function findImportRoot(sourcePath) {
   throw new Error(`Cannot find src/mdr import root for: ${sourcePath}`);
 }
 
+function findPagesRoot(sourcePath) {
+  let directory = path.dirname(path.resolve(sourcePath));
+  while (true) {
+    if (path.basename(directory) === 'pages') return directory;
+    const parent = path.dirname(directory);
+    if (parent === directory) return null;
+    directory = parent;
+  }
+}
+
+function findHierarchicalDefinitionFiles(sourcePath, configuredPagesRoot) {
+  const pagesRoot = configuredPagesRoot
+    ? path.resolve(configuredPagesRoot) : findPagesRoot(sourcePath);
+  if (!pagesRoot) return [];
+  const relativePage = path.relative(pagesRoot, path.resolve(sourcePath));
+  if (relativePage.startsWith('..') || path.isAbsolute(relativePage)) return [];
+  const directories = [];
+  let directory = path.dirname(path.resolve(sourcePath));
+  while (true) {
+    directories.push(directory);
+    if (directory === pagesRoot) break;
+    directory = path.dirname(directory);
+  }
+  return directories.reverse()
+    .map((entry) => path.join(entry, 'tags.mdrdef'))
+    .filter((entry) => fs.existsSync(entry));
+}
+
 function resolveDocumentInternal(sourcePath, source, seen, importRoot) {
   const resolvedPath = path.resolve(sourcePath);
   const documentSource = source ?? fs.readFileSync(resolvedPath, 'utf8');
@@ -85,8 +113,22 @@ function resolveDocumentInternal(sourcePath, source, seen, importRoot) {
   return { source: stripDirectives(documentSource), definitions };
 }
 
-function resolveDocument(sourcePath, source = fs.readFileSync(sourcePath, 'utf8')) {
-  return resolveDocumentInternal(sourcePath, source, new Set(), findImportRoot(sourcePath));
+function resolveDocument(sourcePath, source = fs.readFileSync(sourcePath, 'utf8'), options = {}) {
+  const importRoot = findImportRoot(sourcePath);
+  const definitions = {};
+  for (const definitionPath of findHierarchicalDefinitionFiles(sourcePath, options.pagesRoot)) {
+    const resolved = resolveDocumentInternal(definitionPath, undefined, new Set(), importRoot);
+    Object.assign(definitions, resolved.definitions);
+  }
+  const document = resolveDocumentInternal(sourcePath, source, new Set(), importRoot);
+  Object.assign(definitions, document.definitions);
+  return { source: document.source, definitions };
 }
 
-module.exports = { findImportRoot, parseDefinitions, resolveDocument, stripDirectives };
+module.exports = {
+  findHierarchicalDefinitionFiles,
+  findImportRoot,
+  parseDefinitions,
+  resolveDocument,
+  stripDirectives,
+};

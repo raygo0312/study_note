@@ -7,7 +7,6 @@ breadcrumbs:
   - href: /math.html
     label: 数学
 ---
-@import "tags.mdr"
 ## 証明体系
 
 証明体系は推論規則と公理からなる．自然演繹が初学者にとって分かりやすいのでこれを採用する．
@@ -23,7 +22,15 @@ breadcrumbs:
 :::section.def
   #### 推論図
 
-  $A_1, A_2, dots, A_n arrow.r.double.long A$を次の図のように表し， \begin{prooftree} \AXC{$A_1$} \AXC{$A_2$} \AXC{$dots.c$} \AXC{$A_n$} \QuaternaryInfC{$A$} \end{prooftree} を推論図という．このとき，$A_1, A_2, dots, A_n$を前提，$A$を結論という．$cal(A_1), cal(A_2), dots, cal(A_n)$が推論図のとき，$cal(A_1), cal(A_2), dots, cal(A_n) arrow.r.double.long A$を次の図のように表し， \begin{prooftree} \AXC{$cal(A_1)$} \AXC{$cal(A_2)$} \AXC{$dots.c$} \AXC{$cal(A_n)$} \QuaternaryInfC{$A$} \end{prooftree} も推論図という．
+  $A_1, A_2, dots, A_n arrow.r.double.long A$を次の図のように表し，
+  \begin{prooftree}
+  \AXC{$A_1$}
+  \AXC{$A_2$}
+  \AXC{$dots.c$}
+  \AXC{$A_n$}
+  \QuaternaryInfC{$A$}
+  \end{prooftree}
+  を推論図という．このとき，$A_1, A_2, dots, A_n$を前提，$A$を結論という．$cal(A_1), cal(A_2), dots, cal(A_n)$が推論図のとき，$cal(A_1), cal(A_2), dots, cal(A_n) arrow.r.double.long A$を次の図のように表し， \begin{prooftree} \AXC{$cal(A_1)$} \AXC{$cal(A_2)$} \AXC{$dots.c$} \AXC{$cal(A_n)$} \QuaternaryInfC{$A$} \end{prooftree} も推論図という．
 
   #### 演繹図
 

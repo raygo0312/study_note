@@ -15,7 +15,7 @@ in MDR without literal HTML in MDR source.
 - `compiler.js`: AST to escaped HTML
 - `math.js`: Typst math conversion, excluding code
 - `tag-syntax.js`: tag descriptors and positional argument parsing
-- `tag-definitions.js`: `@tag`, `@import`, and `src/mdr` resolution
+- `tag-definitions.js`: hierarchical `tags.mdrdef`, `@tag`, and `@import` resolution
 - `formatter.js`: AST-based source formatting
 - `highlighter.js`: compiler-side token scope mapping
 - `astro-integration.js`: frontmatter, Astro Markdown rendering, generated
@@ -53,6 +53,9 @@ consumes the public formatter and owns TextMate grammar and editing commands.
 - Parentheses group one positional argument containing spaces.
 - `@tag name(attribute, other-attribute)` defines positional arguments by the
   output attribute names, in order.
+- Every `tags.mdrdef` from the configured pages root through the page's
+  directory is loaded automatically in root-to-leaf order. Lower directories
+  override definitions from higher directories.
 - `@import` is always resolved relative to the project `src/mdr` directory,
   including imports made by imported definition files.
 - Rendered names and values must be validated or HTML-escaped.

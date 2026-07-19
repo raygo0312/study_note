@@ -1,8 +1,14 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const {
-  createGeneratedPage, parseFrontmatter, transformMdrToMarkdown, routePattern,
+  createGeneratedPage, isMdrSourceFile, parseFrontmatter, transformMdrToMarkdown, routePattern,
 } = require('../src/astro-integration');
+
+test('recognizes MDR pages and hierarchical definition files as source files', () => {
+  assert.equal(isMdrSourceFile('/project/src/pages/index.mdr'), true);
+  assert.equal(isMdrSourceFile('/project/src/pages/tags.mdrdef'), true);
+  assert.equal(isMdrSourceFile('/project/src/pages/data.json'), false);
+});
 
 test('reads MDR frontmatter and keeps the page body', () => {
   const document = parseFrontmatter(`---\ntitle: "論理式"\nlayout: ../../layouts/BaseLayout.astro\nbreadcrumbs:\n  - href: /index.html\n    label: ホーム\nscripts:\n  - ../../scripts/search.ts\n---\n本文`);

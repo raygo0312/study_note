@@ -1,6 +1,6 @@
 # MDR Language Support for VSCode
 
-この拡張は`.mdr`ファイルに次を提供します。
+この拡張は`.mdr`と`.mdrdef`ファイルに次を提供します。
 
 - シンタックスハイライト
 - Format Document（`Shift+Alt+F` / `⇧⌥F`）

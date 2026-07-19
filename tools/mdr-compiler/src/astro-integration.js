@@ -13,6 +13,7 @@ const { matchCodeFence, splitSourceLines } = require('./source-syntax');
 
 const TAG_END_PATTERN = /^\s*:::[ \t]*$/;
 const LIST_ITEM_PATTERN = /^[ \t]*[+-][ \t]+/;
+const isMdrSourceFile = (file) => file.endsWith('.mdr') || file.endsWith('.mdrdef');
 
 function transformInlineNodes(nodes, insideHtml = false) {
   const output = [];
@@ -189,7 +190,7 @@ async function generatePages(root, pagesDirectory, markdownProcessor) {
     const sourcePath = path.join(pagesRoot, relativePage);
     const generatedRelative = relativePage.replace(/\.mdr$/, '');
     const generatedPath = path.join(generatedRoot, `${generatedRelative}.astro`);
-    const document = resolveDocument(sourcePath);
+    const document = resolveDocument(sourcePath, undefined, { pagesRoot });
     const { attributes, body } = parseFrontmatter(document.source);
     const markdown = transformMdrToMarkdown(body, {
       tagDefinitions: document.definitions,
@@ -223,7 +224,7 @@ function mdr(options = {}) {
             plugins: [{
               name: 'mdr-astro-hmr',
               async handleHotUpdate(context) {
-                if (!context.file.endsWith('.mdr')) return;
+                if (!isMdrSourceFile(context.file)) return;
                 await context.server.restart();
                 return [];
               },
@@ -245,4 +246,5 @@ module.exports = {
   routePattern,
   createGeneratedPage,
   escapeAstroStaticHtml,
+  isMdrSourceFile,
 };

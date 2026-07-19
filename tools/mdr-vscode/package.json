@@ -30,7 +30,7 @@
       {
         "id": "mdr",
         "aliases": ["MDR", "mdr"],
-        "extensions": [".mdr"],
+        "extensions": [".mdr", ".mdrdef"],
         "icon": {
           "light": "./icon.png",
           "dark": "./icon.png"

@@ -8,6 +8,7 @@ const { isVoidTag } = require('../../mdr-compiler/src/tag-syntax');
 test('registers the MDR image as the light and dark language icon', () => {
   const [language] = packageManifest.contributes.languages;
   assert.deepEqual(language.icon, { light: './icon.png', dark: './icon.png' });
+  assert.deepEqual(language.extensions, ['.mdr', '.mdrdef']);
 });
 
 test('matches inline tags with any number of class and id modifiers', () => {

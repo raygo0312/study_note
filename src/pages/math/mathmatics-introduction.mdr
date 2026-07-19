@@ -7,7 +7,6 @@ breadcrumbs:
   - href: /math.html
     label: 数学
 ---
-@import "tags.mdr"
 :::div.me
   数学のテスト返ってきたんだけどさ……\
   「論理が不十分です」って赤ペンで書かれて返されたんだよね\
