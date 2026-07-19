@@ -1,5 +1,6 @@
 const { parse } = require('./parser');
 const { formatDescriptor, parseBlockTagStart } = require('./tag-syntax');
+const { matchCodeFence } = require('./source-syntax');
 
 function formatInline(nodes) {
   return nodes.map((node) => {
@@ -35,7 +36,7 @@ function formatBlocks(nodes) {
     const content = formatBlock(node);
     return `${separator}${content}`;
   }).join('');
-  return `${formatted}${'\n'.repeat(nodes.trailingBlankLines ? nodes.trailingBlankLines + 1 : 0)}`;
+  return `${formatted}${'\n'.repeat(nodes.trailingBlankLines || 0)}`;
 }
 
 function formatBlock(node) {
@@ -79,7 +80,8 @@ function dedentTags(value) {
   const stack = [];
   let inFence = false;
   lines.forEach((line, index) => {
-    if (/^\s*```/.test(line)) {
+    const fence = matchCodeFence(line, inFence);
+    if (fence) {
       inFence = !inFence;
       return;
     }
@@ -87,7 +89,7 @@ function dedentTags(value) {
     const tag = parseBlockTagStart(line);
     if (tag && !tag.void) {
       stack.push(index);
-    } else if (/^:::[ \t]*$/.test(line) && stack.length > 0) {
+    } else if (/^\s*:::[ \t]*$/.test(line) && stack.length > 0) {
       const start = stack.pop();
       if (stack.length === 0) ranges.push({ start, end: index });
     }
@@ -107,12 +109,21 @@ function dedentTags(value) {
 }
 
 function format(source) {
-  const match = /^(?:\uFEFF)?---\r?\n[\s\S]*?\r?\n---(?=\r?\n|$)/.exec(source);
-  if (!match) return formatAst(parse(dedentTags(source)));
-  const body = source.slice(match[0].length);
-  const leadingNewlines = /^(?:\r?\n)*/.exec(body)[0];
-  const content = body.slice(leadingNewlines.length);
-  return `${match[0]}${leadingNewlines}${formatAst(parse(dedentTags(content)))}`;
+  const eol = source.includes('\r\n') ? '\r\n' : source.includes('\r') ? '\r' : '\n';
+  const normalized = source.replace(/\r\n|\r/g, '\n');
+  const formatBody = (body) => {
+    const leading = /^\n*/.exec(body)[0];
+    const afterLeading = body.slice(leading.length);
+    const trailing = /\n*$/.exec(afterLeading)[0];
+    const content = afterLeading.slice(0, afterLeading.length - trailing.length);
+    if (content === '') return body;
+    return `${leading}${formatAst(parse(dedentTags(content)))}${trailing}`;
+  };
+  const match = /^(?:\uFEFF)?---\n[\s\S]*?\n---(?:\n|$)/.exec(normalized);
+  const formatted = match
+    ? `${match[0]}${formatBody(normalized.slice(match[0].length))}`
+    : formatBody(normalized);
+  return eol === '\n' ? formatted : formatted.replaceAll('\n', eol);
 }
 
 module.exports = { format, formatAst };

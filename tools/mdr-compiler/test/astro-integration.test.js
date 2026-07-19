@@ -15,9 +15,15 @@ test('reads MDR frontmatter and keeps the page body', () => {
   assert.equal(document.body, '本文');
 });
 
+test('reads frontmatter with CR-only line endings', () => {
+  const document = parseFrontmatter('---\rtitle: Test\rlayout: ../Layout.astro\r---\rBody');
+  assert.deepEqual(document.attributes, { title: 'Test', layout: '../Layout.astro' });
+  assert.equal(document.body, 'Body');
+});
+
 test('converts MDR-only syntax while preserving code fences', () => {
   assert.equal(transformMdrToMarkdown('+ 一つ\n+ 二つ\n\nこれは *重要*。\n\n```txt\n+ そのまま\n* そのまま\n```'),
-    '1. 一つ\n2. 二つ\n\nこれは <dfn>重要</dfn>。\n\n```txt\n+ そのまま\n* そのまま\n```');
+    '<ol>\n  <li>一つ</li>\n  <li>二つ</li>\n</ol>\n\nこれは <dfn>重要</dfn>。\n\n```txt\n+ そのまま\n* そのまま\n```');
 });
 
 test('maps MDR pages to Astro routes', () => {
@@ -123,4 +129,30 @@ test('preserves links and escaped markers in and outside tags', () => {
 test('converts inline tags without confusing Markdown links', () => {
   assert.equal(transformMdrToMarkdown(':span.note[説明] と [参照](/ref)'),
     '<span class="note">説明</span> と [参照](/ref)');
+});
+
+test('uses the recursive inline parser for nested inline tags', () => {
+  assert.equal(transformMdrToMarkdown(':ruby[Hilbert:rt[ヒルベルト]]'),
+    '<ruby>Hilbert<rt>ヒルベルト</rt></ruby>');
+});
+
+test('does not interpret MDR tags inside code fences', () => {
+  const source = '```mdr\n:::div\n@tag section(data-label)\n```';
+  assert.equal(transformMdrToMarkdown(source), source);
+});
+
+test('renders nested ordered lists with MDR two-space indentation', () => {
+  assert.equal(transformMdrToMarkdown('+ outer\n  + inner\n+ outer2'), [
+    '<ol>',
+    '  <li>outer',
+    '<ol>',
+    '  <li>inner</li>',
+    '</ol></li>',
+    '  <li>outer2</li>',
+    '</ol>',
+  ].join('\n'));
+});
+
+test('rejects an unclosed code fence before Markdown rendering', () => {
+  assert.throws(() => transformMdrToMarkdown('```mdr\ntext'), /Unclosed code fence/);
 });

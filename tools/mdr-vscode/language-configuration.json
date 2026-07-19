@@ -37,14 +37,14 @@
       }
     },
     {
-      "beforeText": "^\\s*:::[a-z][a-z0-9-]*(?:[.#][a-zA-Z_][\\w-]*)*(?:\\s+.*)?$",
+      "beforeText": "^\\s*:::(?:[a-z][a-z0-9-]*(?:[.#][a-zA-Z_][\\w-]*)*|(?:[.#][a-zA-Z_][\\w-])+)(?:\\s+.*)?$",
       "action": {
         "indent": "indent"
       }
     }
   ],
   "indentationRules": {
-    "increaseIndentPattern": "^\\s*:::[a-z][a-z0-9-]*(?:[.#][a-zA-Z_][\\w-]*)*(?:\\s+.*)?$",
+    "increaseIndentPattern": "^\\s*:::(?:[a-z][a-z0-9-]*(?:[.#][a-zA-Z_][\\w-]*)*|(?:[.#][a-zA-Z_][\\w-])+)(?:\\s+.*)?$",
     "decreaseIndentPattern": "^\\s*:::\\s*$"
   }
 }

@@ -18,6 +18,7 @@ test('formats supported MDR blocks canonically', () => {
     '',
     '+ *項目*',
     '+ 次の項目',
+    '',
     '- 箇条書き',
   ].join('\n'));
 });
@@ -30,6 +31,11 @@ test('formats already canonical source without changing it', () => {
 test('formats generic tags and grouped arguments', () => {
   assert.equal(format(':::section#main.def (重要な 定義)\n本文\n:::'),
     ':::section.def#main (重要な 定義)\n  本文\n:::');
+});
+
+test('preserves omitted div and span names', () => {
+  const source = ':::#main.panel\n:[補足] と :.note[注記]\n:::';
+  assert.equal(format(source), ':::.panel#main\n  :[補足] と :.note[注記]\n:::');
 });
 
 test('keeps void tags on one line without adding a closing marker', () => {
@@ -59,6 +65,11 @@ test('formats inline and fenced code', () => {
   assert.equal(format(source), source);
 });
 
+test('keeps a code fence that immediately follows paragraph text', () => {
+  const source = '本文\n```rust\nlet value = 1;\n```';
+  assert.equal(format(source), source);
+});
+
 test('preserves frontmatter while formatting the body', () => {
   const source = '---\ntitle: Example\n---\n\n# 見出し\n\n本文';
   assert.equal(format(source), source);
@@ -71,5 +82,22 @@ test('preserves links and escaped MDR markers', () => {
 
 test('preserves trailing-backslash hard line breaks', () => {
   const source = '一行目\\\n二行目';
+  assert.equal(format(source), source);
+});
+
+test('preserves blank lines between adjacent lists', () => {
+  const source = '+ ordered\n\n- unordered';
+  assert.equal(format(source), source);
+});
+
+test('is idempotent when a block tag ends after a blank line', () => {
+  const source = ':::div\n  本文\\\n\n:::';
+  const formatted = format(source);
+  assert.equal(formatted, source);
+  assert.equal(format(formatted), formatted);
+});
+
+test('preserves the source line ending and final newline', () => {
+  const source = '# Heading\r\n\r\nBody\r\n';
   assert.equal(format(source), source);
 });

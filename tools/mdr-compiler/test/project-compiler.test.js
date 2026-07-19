@@ -47,3 +47,25 @@ test('compiles src/pages and copies public assets', () => {
 
   fs.rmSync(project, { recursive: true, force: true });
 });
+
+test('removes page frontmatter from standalone HTML output', () => {
+  const project = fs.mkdtempSync(path.join(os.tmpdir(), 'mdr-frontmatter-'));
+  fs.mkdirSync(path.join(project, 'src', 'pages'), { recursive: true });
+  fs.writeFileSync(path.join(project, 'src', 'pages', 'index.mdr'),
+    '---\ntitle: Home\nlayout: ../layouts/BaseLayout.astro\n---\n# Home');
+
+  compileProject(project);
+  assert.equal(fs.readFileSync(path.join(project, 'dist', 'index.html'), 'utf8'),
+    '<h1>Home</h1>\n');
+  fs.rmSync(project, { recursive: true, force: true });
+});
+
+test('rejects pages that map to the same output route', () => {
+  const project = fs.mkdtempSync(path.join(os.tmpdir(), 'mdr-collision-'));
+  fs.mkdirSync(path.join(project, 'src', 'pages', 'about'), { recursive: true });
+  fs.writeFileSync(path.join(project, 'src', 'pages', 'about.mdr'), 'About');
+  fs.writeFileSync(path.join(project, 'src', 'pages', 'about', 'index.mdr'), 'About index');
+
+  assert.throws(() => compileProject(project), /MDR route collision/);
+  fs.rmSync(project, { recursive: true, force: true });
+});

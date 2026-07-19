@@ -1,4 +1,5 @@
 const { typst2tex } = require('tex2typst');
+const { matchCodeFence, splitSourceLines } = require('./source-syntax');
 const PROTECTED_MATH_SLASH = '\uE000';
 const PROTECTED_MATH_ASTERISK = '\uE001';
 
@@ -33,13 +34,14 @@ function transformMathLine(line, {
 
 function transformMath(source, options = {}) {
   let inFence = false;
-  return source.split('\n').map((line) => {
-    if (/^\s*```/.test(line)) {
+  return splitSourceLines(source).map(({ text: line, newline }) => {
+    const fence = matchCodeFence(line, inFence);
+    if (fence) {
       inFence = !inFence;
-      return line;
+      return `${line}${newline}`;
     }
-    return inFence ? line : transformMathLine(line, options);
-  }).join('\n');
+    return `${inFence ? line : transformMathLine(line, options)}${newline}`;
+  }).join('');
 }
 
 module.exports = {

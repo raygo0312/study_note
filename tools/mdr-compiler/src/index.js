@@ -8,6 +8,7 @@ const { highlight, scopes } = require('./highlighter');
 const { transformMath, transformMathLine } = require('./math');
 const { findImportRoot, parseDefinitions, resolveDocument, stripDirectives } = require('./tag-definitions');
 const { parseArguments, parseBlockTagStart, parseDescriptor } = require('./tag-syntax');
+const { parseFrontmatter } = require('./frontmatter');
 
 module.exports = {
   TokenType, lex, parse, compile, escapeHtml, render,
@@ -15,5 +16,5 @@ module.exports = {
   mdr, transformInlineMdr, transformMath, transformMathLine,
   format, formatAst, highlight, scopes,
   findImportRoot, parseDefinitions, resolveDocument, stripDirectives,
-  parseArguments, parseBlockTagStart, parseDescriptor,
+  parseArguments, parseBlockTagStart, parseDescriptor, parseFrontmatter,
 };

@@ -65,6 +65,18 @@ test('parses inline tags separately from links', () => {
   ]);
 });
 
+test('defaults omitted block and inline tag names to div and span', () => {
+  const document = parse(':::.panel#main\n:[内容]\n:.note[注記]\n:::');
+  assert.equal(document.children[0].name, 'div');
+  assert.equal(document.children[0].source, '.panel#main');
+  assert.deepEqual(document.children[0].children[0].children.map(({ name, source }) =>
+    ({ name, source })), [
+    { name: 'span', source: '' },
+    { name: undefined, source: undefined },
+    { name: 'span', source: '.note' },
+  ]);
+});
+
 test('parses indented nested lists', () => {
   assert.deepEqual(parse('- 親\n  + 子'), {
     type: 'document',

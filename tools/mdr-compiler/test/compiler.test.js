@@ -87,6 +87,14 @@ test('compiles nested inline tags', () => {
     '<ruby>Hilbert<rt>ヒルベルト</rt></ruby>');
 });
 
+test('compiles omitted div and span tag names', () => {
+  assert.equal(compile(':::.panel#main\n本文 :[補足] と :.note[注記]\n:::'), [
+    '<div class="panel" id="main">',
+    '<p>本文 <span>補足</span> と <span class="note">注記</span></p>',
+    '</div>',
+  ].join('\n'));
+});
+
 test('does not wrap a standalone inline tag in a paragraph', () => {
   assert.equal(compile(':summary[証明]'), '<summary>証明</summary>');
 });
@@ -138,4 +146,29 @@ test('does not interpret TeX backslashes as MDR escapes or hard breaks', () => {
 test('compiles Markdown-style links and escaped MDR markers', () => {
   assert.equal(compile('これは [*リンク*](/reference.html) と \\*記号\\* と \\$。'),
     '<p>これは <a href="/reference.html"><dfn>リンク</dfn></a> と *記号* と $。</p>');
+});
+
+test('compiles CRLF documents without leaking carriage returns into syntax', () => {
+  assert.equal(compile('# Heading\r\nBody'), '<h1>Heading</h1>\n<p>Body</p>');
+  assert.equal(compile(':::div\r\nBody\r\n:::'), '<div>\n<p>Body</p>\n</div>');
+  assert.equal(compile('- one\r\n- two'), [
+    '<ul>',
+    '  <li>one</li>',
+    '  <li>two</li>',
+    '</ul>',
+  ].join('\n'));
+});
+
+test('rejects an unclosed code fence', () => {
+  assert.throws(() => compile('```js\nconst value = 1;'), /Unclosed code fence at 1:1/);
+});
+
+test('does not validate tag-like text inside a code fence', () => {
+  assert.equal(compile('```mdr\n:::div#first#second\n```'),
+    '<pre><code class="language-mdr">:::div#first#second</code></pre>');
+});
+
+test('compiles inline tags nested more than one level', () => {
+  assert.equal(compile(':ruby[:span[Hilbert:rt[ヒルベルト]]]'),
+    '<ruby><span>Hilbert<rt>ヒルベルト</rt></span></ruby>');
 });

@@ -40,6 +40,7 @@ they require.
 
 - `tools/mdr-compiler`: private local compiler package
   - `lexer.js` / `parser.js`: shared MDR syntax and AST
+  - `source-syntax.js` / `frontmatter.js`: shared source boundaries and page metadata
   - `compiler.js`: AST to HTML
   - `math.js`: Typst math to MathJax-compatible TeX
   - `tag-syntax.js` / `tag-definitions.js`: generic tags and imports
@@ -61,6 +62,7 @@ they require.
 - Links: `[label](destination)`
 - Escapes: `\*`, `\$`, and other MDR punctuation
 - Inline and fenced code: backticks and triple backticks
+- LF, CRLF, and CR source line endings; formatting preserves the existing style
 - Hard line breaks: a trailing `\` compiles to `<br>`
 - Lists: `-` unordered, `+` ordered; indentation preserves nesting
 - Typst math: `$...$`, converted during MDR compilation rather than in Astro
@@ -68,6 +70,9 @@ they require.
 - HTML void tags such as `input` use the same opening syntax but need no
   closing `:::`
 - Generic inline tags: `:tag.class#id[content]`
+- Generic block tags may omit `div` when a class or id follows (`:::.class` or
+  `:::#id`), and generic inline tags may omit `span` (`:[content]`,
+  `:.class[content]`, or `:#id[content]`).
 - Grouped tag arguments: `(argument containing spaces)`
 - Positional attribute definitions: `@tag section(data-label)`
 - Imports: `@import "tags.mdr"`, always relative to project `src/mdr`

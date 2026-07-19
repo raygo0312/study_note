@@ -9,6 +9,8 @@ in MDR without literal HTML in MDR source.
 ## Module Boundaries
 
 - `lexer.js`: source tokens and locations
+- `source-syntax.js`: shared source-line and code-fence recognition
+- `frontmatter.js`: shared page frontmatter extraction
 - `parser.js`: tokens to MDR AST
 - `compiler.js`: AST to escaped HTML
 - `math.js`: Typst math conversion, excluding code
@@ -30,13 +32,22 @@ consumes the public formatter and owns TextMate grammar and editing commands.
 - `*text*` is a term definition and renders as `<dfn>`, never italic.
 - `-` is unordered and `+` is ordered; indentation represents nested lists.
 - Code spans and fences suppress MDR interpretation.
+- Code-fence recognition is shared by compilation, math, directives,
+  formatting, and Astro transformation. Directive-looking text inside a fence
+  is always code.
+- LF, CRLF, and CR line endings are valid input. The formatter preserves the
+  source document's line-ending style.
 - A backslash at the end of a paragraph source line renders a hard `<br>`.
 - `$...$` contains Typst and is converted to MathJax-compatible TeX before the
   Astro Markdown renderer sees it.
 - Block tags use `:::tag.class#id arguments` and closing `:::`.
+- A block tag name may be omitted before `.class` or `#id`, defaulting to
+  `div`. The bare opening `:::` remains the closing marker.
 - Known HTML void tags, including `input`, use the block-tag opening syntax
   without a closing `:::` and render without an HTML closing tag.
 - Inline tags use `:tag.class#id[content]`.
+- An inline tag name may be omitted (`:[content]`, `:.class[content]`, or
+  `:#id[content]`), defaulting to `span`.
 - Inline-tag content can contain nested inline tags.
 - `.class` and `#id` may occur in either order; duplicate ids are invalid.
 - Parentheses group one positional argument containing spaces.
@@ -79,6 +90,9 @@ and that document when syntax changes.
   string. Protect braces in static HTML as entities, reserving actual Astro
   expression braces for future MDR TypeScript syntax. Generated local script
   tags are compiler output, not HTML authoring syntax exposed by MDR.
+- MDR lists and generic tags are rendered through the shared parser/compiler
+  before entering the Markdown processor so two-space nested-list semantics do
+  not depend on CommonMark marker widths.
 
 ## Validation
 

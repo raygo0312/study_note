@@ -7,9 +7,11 @@ function isVoidTag(name) {
   return VOID_TAGS.has(name);
 }
 
-function parseDescriptor(value) {
-  const match = /^([a-z][a-z0-9-]*)((?:[.#][a-zA-Z_][\w-]*)*)$/.exec(value);
+function parseDescriptor(value, defaultName) {
+  const match = /^([a-z][a-z0-9-]*)?((?:[.#][a-zA-Z_][\w-]*)*)$/.exec(value);
   if (!match) return null;
+  const name = match[1] || defaultName;
+  if (!name || (!match[1] && match[2] === '' && defaultName !== 'span')) return null;
   const classes = [];
   let id;
   for (const modifier of match[2].match(/[.#][a-zA-Z_][\w-]*/g) || []) {
@@ -19,7 +21,7 @@ function parseDescriptor(value) {
       id = modifier.slice(1);
     }
   }
-  return { name: match[1], classes, id, source: value };
+  return { name, classes, id, source: value };
 }
 
 function parseArguments(value = '') {
@@ -52,7 +54,7 @@ function parseArguments(value = '') {
 function parseBlockTagStart(line) {
   const match = /^([ \t]*):::([^\s]+)(?:[ \t]+(.*?))?[ \t]*$/.exec(line);
   if (!match || match[2] === '') return null;
-  const descriptor = parseDescriptor(match[2]);
+  const descriptor = parseDescriptor(match[2], 'div');
   if (!descriptor) return null;
   return {
     indent: match[1],
@@ -64,7 +66,8 @@ function parseBlockTagStart(line) {
 
 function formatDescriptor(node) {
   const classes = (node.classes || []).map((value) => `.${value}`).join('');
-  return `${node.name}${classes}${node.id ? `#${node.id}` : ''}`;
+  const omittedName = node.source === '' || /^[.#]/.test(node.source || '');
+  return `${omittedName ? '' : node.name}${classes}${node.id ? `#${node.id}` : ''}`;
 }
 
 module.exports = {

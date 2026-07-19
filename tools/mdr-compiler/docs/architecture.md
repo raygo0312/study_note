@@ -35,6 +35,8 @@ project/
 ```text
 source
   ↓
+source boundaries ──→ frontmatter / directives / protected code fences
+  ↓
 lexer ───────────────┬─→ syntax highlighter
   ↓                  └─→ parser
 AST / IR ────────────┬─→ compiler backend
@@ -42,12 +44,19 @@ AST / IR ────────────┬─→ compiler backend
 ```
 
 - Lexer はトークンとソース位置を生成する。
+- source boundaries は改行形式とコードフェンスを共通認識し、コード内の
+  MDR構文を他の処理系が誤解釈しないようにする。
 - Parser はトークン列から AST または共通 IR を生成する。
 - Compiler は共通 IR から対象となる出力を生成する。出力形式は実装時に
   決定する。
 - Highlighter はトークンと構文情報を使い、エディタ向けの色付け情報を
   生成する。
 - Formatter は AST / IR を正規化されたソースへ戻す。
+
+Astro連携は通常のMarkdown互換行をAstroのMarkdown processorへ渡す一方、
+MDR固有のインライン構文は共有lexer/parserで変換する。2文字インデントを使うMDRの
+リストと汎用タグは、CommonMarkとの差を避けるため共有parser/compilerで
+HTML化してからMarkdown processorへ渡す。
 
 コンパイラ、ハイライト、フォーマット処理で構文の解釈が分裂しないよう、
 言語仕様と lexer/parser を共有する。各機能固有の出力処理は別モジュールに

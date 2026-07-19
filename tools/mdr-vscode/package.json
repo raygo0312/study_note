@@ -3,6 +3,7 @@
   "displayName": "MDR Language Support",
   "publisher": "raygo0312",
   "description": "Syntax highlighting and formatting for MDR documents.",
+  "icon": "icon.png",
   "version": "0.1.0",
   "private": true,
   "main": "./dist/extension.js",
@@ -22,7 +23,7 @@
   "scripts": {
     "bundle": "esbuild extension.js --bundle --platform=node --external:vscode --outfile=dist/extension.js",
     "package": "npm run bundle && vsce package --allow-missing-repository --skip-license --no-dependencies",
-    "test": "node --check extension.js"
+    "test": "node --check extension.js && node --test test/*.test.js"
   },
   "contributes": {
     "languages": [
@@ -30,6 +31,10 @@
         "id": "mdr",
         "aliases": ["MDR", "mdr"],
         "extensions": [".mdr"],
+        "icon": {
+          "light": "./icon.png",
+          "dark": "./icon.png"
+        },
         "configuration": "./language-configuration.json"
       }
     ],

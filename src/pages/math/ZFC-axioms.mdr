@@ -22,7 +22,6 @@ breadcrumbs:
   #### 等号関係の代入原理
 
   - $F$: 述語
-
   $ forall x y, x = y arrow.r (F(x) arrow.l.r F(y)) $
 :::
 
@@ -40,7 +39,6 @@ breadcrumbs:
 
     - $x, y$: 集合[項]
     - $x = y$
-
     :span.remark[結論]
 
     $y = x$
@@ -52,9 +50,6 @@ breadcrumbs:
     :span.remark[証明]
 
     $x = y$で代入原理を用いると， $ x = x arrow.l.r y = x $ となる．$x = x$は反射律から成り立つので，$y = x$が成り立つ．
-
-    :::iframe https://live.lean-lang.org/#codez=LTAEklvR35UItTCH5Q7BkFnahK/wFAEMAeBLA9gW1AFMBHAV3QBtsAXAT1AC5QBlIm0QJMJX2vQAFAE64ADqmwA7AGbZMjAKwAGUACJQAXlUaAfMXJVadVCAgwEgWeVAIDqBo/Qw4CoQUSmUiOAG6GA+rilfSFNT0TKCAAESgmCFsNAA0eoGGERHGYFBw8IDHcoCmioD5yoBgLnZ4hADOZABGxTS0ZFW4El4igpIAxtgirqAAFABiUbzcQqIAlMzhkQzM0XEBBsHjfD1JgCmEoL10Qymm6YB/2oAPnrY0ABZEuE4ldPj47E3NPn4zQRNhXfOT7EPT+o9JDNwPiQxIoxNGUjKBQJIaMJij9QIdUODDuh3EQ4QBGEKdf5zCJDUArLFfAG4piaUoVKo0Gp4eqNFptDqdKRkCSgABeOniswYHMwePm8PBbnQzQ4hzRADp8CIuk4XG5sJ56Hd/ES5kMgA
-    :::
   :::
 
   #### 等号関係の推移律
@@ -69,7 +64,6 @@ breadcrumbs:
     - $x, y, z$: 集合[項]
     - $x = y$
     - $y = z$
-
     :span.remark[結論]
 
     $x = z$
@@ -81,9 +75,6 @@ breadcrumbs:
     :span.remark[証明]
 
     $x = y$で代入原理を用いると， $ x = z arrow.l.r y = z $ となる．$y = z$は前提から成り立つので， $ therefore x = z . $
-
-    :::iframe https://live.lean-lang.org/#codez=LTAEklvR35UItTCH5Q7BkFnahK/wFAEMAeBLA9gW1AFMBHAV3QBtsAXAT1AC5QBlIm0QJMJX2vQAFAE64ADqmwA7AGbZMjAKwAGUACJQAXlUaAfMXJVadVCAgwEgY7lApoqB85UBgLhhwFQAZzIAjZzVpkvuCQH0RQUkAY2wRSiJQAAoAMSYeDm4hUQBKZkAAIlBMUAZmNhoAGj0Kanps3L44isAUwlB4ulTjMCg4eEAK40Bvz0Bo/VQaAAsiXEEiQlJS/xpBdAlnWmwANyjMmJyGAC8EgtTi8YNytdBAciIS/YYNvj2yhhzNxk03I1BQSSncZwqL/tRn/vQl0D9ACMCWiV0MFXWqVAdTB+mulShTE0rg8XhoPjwASCoXCkRiUjIElAAHcdKcEWSkYd+gA6SJSGg/YiYdAhDjA2n4IKA2nBADm/RoQA
-    :::
   :::
 :::
 
@@ -113,16 +104,12 @@ $subset$の定義からわかる定理を示す．
   #### 部分集合の要素包含性
 
   - $a, b, c$: 集合
-
   $ a in b and b subset c arrow.r.double.long a in c $
 
   :::details
     :summary[証明]
 
     部分集合の定義から明らかである．
-
-    :::iframe https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAC4TAMCUUVAATEkdQAGcAVy10o3F0UC0DUjJFAysbKiDQQAAiUHFMYvJFABpQRoCC0w7CuycXdy9fQCCiQNCM7NyyaNB4lHhAcgNAK5jUMgALElxdTVASABtNEnsyAH0AY1xj9AcNY/qCorOm0vq1wECCAwKArTLxNcAgggMRVGZzK1C+oCelGqWjoqFAoF0AHdQABtLI5cgAXVA6AoAPhu0w6DO+MBBXeQA
-    :::
   :::
 :::
 
@@ -132,22 +119,17 @@ $subset$の定義からわかる定理を示す．
   #### 部分集合の反射律
 
   - $a$: 集合
-
   $ a subset a $
 
   :::details
     :summary[証明]
 
     部分集合の定義より，$a subset a$は $ forall x, x in a arrow.r x in a $ である．これは成り立つ．
-
-    :::iframe https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAC4TAMCUUVAATEkdQAGcAVy10o3F0UC0DUjJFAysbKiDQQAAiUHFMYvJFABpQRoCC0w7CuycXdy9fQCCiQNCM7NyyaNB4lHhAWeVAEB1AaP1UMgALElxdTVBdxwAbEhwAN2wyOgB9XEcrrJy8guoSsuoC0efqrTpUUFAHGRrOl2qANn9QCd0ABjCgbIA
-    :::
   :::
 
   #### 部分集合の推移律
 
   - $a, b, c$: 集合
-
   $ forall a b c, a subset b and b subset c arrow.r a subset c $
 
   :::details
@@ -162,7 +144,6 @@ $subset$の定義からわかる定理を示す．
     - $b subset c$
     - $x$: 集合
     - $x in a$
-
     :span.remark[結論]
 
     $x in c$
@@ -174,9 +155,6 @@ $subset$の定義からわかる定理を示す．
     :span.remark[証明]
 
     $x in a$と$a subset b$より， $ x in b $ さらに$b subset c$より， $ therefore x in c . $
-
-    :::iframe https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAC4TAMCUUVAATEkdQAGcAVy10o3F0UC0DUjJFAysbKiDQQAAiUHFMYvJFABpQRoCC0w7CuycXdy9fQCCiQNCM7NyyaNB4lHhAcgNAK5jUMgALElxdTVASABtNEnsyAH0AY1xj9AcNY/qCorOm0vq1wECCAwKArTLxNcAgggMRVGZzK1C+oCelGqWjoqFAoF0AHdQABtLI5cgAXVA6AoAPhu0w6DO+MBBXeMzmyHggArjQDfnoBo/VWGy2OzIunQ9nS2DI2AAbry6CdcI4ThipvdCpDnr93p9QKMfq9AdRgZCwbjFTLoYU4QiHBzcOl2qA1gBGQlrdD8khmgBMVV2B1upwuVxuRwojQeZvNZrehJIxNJzsOx3OlzI13srtNjwdZv+QA
-    :::
   :::
 
   #### 部分集合の反対称律
@@ -243,7 +221,6 @@ $subset$の定義からわかる定理を示す．
     - $0, 0'$: 空集合
     - $x$: 集合
     - $x in 0$
-
     :span.remark[結論]
 
     $x in 0'$
@@ -251,9 +228,6 @@ $subset$の定義からわかる定理を示す．
     :span.remark[証明]
 
     $x in 0$は空集合の定義と矛盾する．よって，$x in 0'$である．
-
-    :::iframe https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBANE1AN71AcgNAG0VAMBcVPEIsDIB9XEdskkwyEnsAZzx7dAAbbDI6A0AAIlBxTFB66lIyRQAaZqaALwNO3sGA1sAUwlBRtsUTUFagtujQQC8vFHhAADlAeEME1DIACxJcXU1QAFd7bABHM5KSUtLc/M0GOtKjcXQARlB0ACYhuRZuJ9oBAgka80BZF6ABrmq0At9FMD9oAggghrQ65Fh8P8vz+yIM32C+Koiy0dFQoF+DAYVXqWQITwKRRK5VwlRqdSpoAcZGs8x5AGMOaV+WchWRjjyAHS8+z83A86n7dAANxIoDBZK14MwytAIoVunQABNsJKKrL5YqDaqNVr0ZRFmjBdTqUb+WaLWQKkA
-    :::
   :::
 :::
 
@@ -265,7 +239,6 @@ $subset$の定義からわかる定理を示す．
   #### 対
 
   - $a, b$: 集合
-
   「対${a, b}$」とは $ forall x, x in {a, b} arrow.l.r x = a or x = b $
 :::
 
@@ -275,7 +248,6 @@ $subset$の定義からわかる定理を示す．
   #### 対の交換則
 
   - $a, b$: 集合
-
   $ {a, b} = {b, a} $
 
   :::details
@@ -288,7 +260,6 @@ $subset$の定義からわかる定理を示す．
     - $a, b$: 集合
     - $x$: 集合
     - $x in {a, b}$
-
     :span.remark[結論]
 
     $x in {b, a}$
@@ -296,15 +267,11 @@ $subset$の定義からわかる定理を示す．
     :span.remark[証明]
 
     定義に従って変形する． $ & x in {a, b}\ arrow.l.r.double.long & x = a or x = b\ arrow.l.r.double.long & x = b or x = a\ arrow.l.r.double.long & x in {b, a} $
-
-    :::iframe https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBANE1AN71AcgNAG0VAMBcVPEIsDIB9XEdskkwyEnsAZzx7dAAbbDI6A0AAIlBxTFB66lIyRQAaZqaALwNO3sGA1sAUwlBRtsUTUFagtujQQD/tdLUGdGxdBwBzZvRQLSHyWY7yVHtcMnQyCp8Ab19D717fY+8AX19Q0E3tvagQ5adaEf47ey7bLYUrZcEHI4nLqNeZI3qtALgwHA0CTBZA0CACiJUYsQawVvAEoArmNQZAAFiRcLpNKAAMYEfAAVxudwAbrU6Ll8ljIQjjudkdQRfscYtpYjDpRSXRUKAgQwGFV6lkCEKCkUSuVcJUanVVaAHGRrPNzeyylbOayyEzzQA6C32K24UB081q3QAd1AAG1pdDYeDegB5XSu9n4fC9QAJhGGYXCtroALpAii+tVqwroJ0+t0er0l/OgQMh1MRjPR2PxxOgFMZvbh9PbbO3Cv5wvFulAA
-    :::
   :::
 
   #### 対の左・対の右
 
   - $a, b$: 集合
-
   $ a in {a, b}, b in {a, b} $
 
   :::details
@@ -315,7 +282,6 @@ $subset$の定義からわかる定理を示す．
     :span.remark[前提]
 
     - $a, b$: 集合
-
     :span.remark[結論]
 
     $a in {a, b}$
@@ -327,15 +293,11 @@ $subset$の定義からわかる定理を示す．
     :span.remark[証明]
 
     $a = a$が成り立つから， $ a = a or a = b $ である．よって， $ therefore a in {a, b} . $
-
-    :::iframe https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAP+0VPEIGdGxdBwBzUHF0UC0DUjJFPPJUe1wydDI8ex8Ab19s7wAaQNzvAF9fUNAklPTQbK14tR7U+zSAfWwAZ3GRzIGigoNAACJQTEXm9YCRvoXAFMI14P7QQAoiQ6Cc6NAY+EAz3VQyAAsSXF1NbuTRiYAbEkcKLI5RaFajZbafXZAygXLR0VCgUC6ADuoAA2jsxpMZiMALrw/oMBjfOigADyugAdA5vviSJh0ABjCi6Rw01g3QDPyg9nq93hiJqk0o8AQtqPkQUDwb0xsdctCcnCEci0fysbNPniEehCcSyZSHFEEXTGczWUA
-    :::
   :::
 
   #### 対の等号性
 
   - $a, b, c$: 集合
-
   $ {a, b} = {a, c} arrow.r.double.long b = c $
 
   :::details
@@ -345,7 +307,6 @@ $subset$の定義からわかる定理を示す．
 
     - $a, b, c$: 集合
     - ${a, b} = {a, c}$
-
     :span.remark[結論]
 
     $b = c$
@@ -355,9 +316,6 @@ $subset$の定義からわかる定理を示す．
     $b in {a, b} = {a, c}$であることを用いる
 
     :span.remark[証明] 対の右より， $ b in {a, b} "と" c in {a, c} $ が成り立つので，${a, b} = {a, c}$から $ b in {a, c} "と" c in {a, b} $ である．$b = a$なら，$c in {b, b}$なので，$c = b$である．よって，$b = c$
-
-    :::iframe https://live.lean-lang.org/#codez=LTAElAMwLBkdQZDMGQ7BkGNpgIFQFAEMAeBLA9gW1AGUBTAF1AC5QAVATwAcTURQVBrBkCztQQIZBIhkBiGQPoMgB/jAeVEAKQAx6gPR1ARamAh+QCUGHAVD4S+AEYkATlWLlQgJMJDFUwAVduBqmwA7AGbZMlAKwAGUACJQgCCIfUABeAD51TR1dFjBAP+0VPEIGdGxdBwBzUHF0UC0DUjJFPPJUe1wydDI8ex8Ab19s7wAaQNzvAF9fUNAklPTQbK14tR7U+zSAfWwAZ3GRzIGigoNAACJQTEXm9YCRvoXAFMI14P7QQAoiQ6Cc6NAY+EBn5VQyAAsSXF1NbuTRidS0x4osnKLQrUXLbT67QGUC5aOioUCgXQAd1AAG0dmNJjMRgBdOH9BgMAA2dFAAHldAA6BxReEkTDoADGFF0jkJVxugElvQDvyoByAwez1e73RExIAEdxrhHOMxfNAQygZlHoBAggMwuOuQuauyDOBgIu8qhOVh8Me6AAbiRQI8AIxUTXgjE/P7qvGmi1WgBMdo+vUd2F+FG1eKRqOV2P6FBtweRKMACYRhiOe6Oo4WY2afcMVK3WvEM9BTEhTbOgRHYJ54gA+oAchOLoTx8JDcZtmcjHobCJjqem6ZSraT8MbMde4wLhMczTF4wZBHw/ce7cHoDpjLbler9n0NuCIQ7K6Z2aAA
-    :::
   :::
 :::
 
@@ -371,7 +329,6 @@ $subset$の定義からわかる定理を示す．
   #### 対の一意性
 
   - $a, b$: 集合
-
   ${a, b}$は一意である．
 
   :::details
@@ -384,7 +341,6 @@ $subset$の定義からわかる定理を示す．
     - $a, b$: 集合
     - $x$: 集合
     - $x in {a, b}$
-
     :span.remark[結論]
 
     $x in {a, b}'$
@@ -403,7 +359,6 @@ $subset$の定義からわかる定理を示す．
   #### 1元集合
 
   - $a$: 集合
-
   「1元集合${a}$」とは $ {a} := {a, a} $
 :::
 
@@ -413,46 +368,34 @@ $subset$の定義からわかる定理を示す．
   #### 1元集合の元
 
   - $a$: 集合
-
   $ a in {a} $
 
   :::details
     :summary[証明]
 
     1元集合の定義を使って変形する．
-
-    :::iframe https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcJJEA/7XNWdjgme0CAcyQtECQbJy5uEzqeLGAWbhBuVmBYgG846piAGiTamIBfOLSkYtLgCuqbAssZ8oB9JihVmcqFpoanQAAiJAY94ZPElbmkXcAUwmOU66RACiJ75JqcgEZAYUVaFpZgeBsGAAV3aNgANsgACYQIJIKDlSHcf47PaNPhvS7za5/dqdFExPqPIZJAYTFLpBFzJEokCfH40ChfLDcAAWEBY9ky8MRPH+qwgkMgwF4VTRTmqiSpZRp3WqGJqwiwSCQ9gA7kgANrS2XDLHrTYzYac1ZQQVBAC6WAgwChqEwQA
-    :::
   :::
 
   #### 1元集合と対の等号性
 
   - $a, b, c$: 集合
-
   $ {a} = {b, c} arrow.r.double.long a = b = c $
 
   :::details
     :summary[証明]
 
     1元集合の定義を使って変形する．
-
-    :::iframe https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcJJEA0TUA3vUByA0AbRUAwF3NWdkZKgH0WIJqIBm4IYChWUAAbJm5hJ0AAIiQtBiQ+gS5uEwAaIcGALycJmYXEkcAUwiQV0ZM3JBHk0ZzAP+0Kyzgme0CAcyGQJBtFnh3xnixgFm4Qbg7YgG84u4xGZxB4xAC+cTSSHOl2ANzuNlO7Bh1xqTCgNRht3uj0mAz2uJmI0SKLhSARSA2+3JSEAFEQEg6IvBII4UQAlcoBt40A4kpYbgACwgLHsmSQ8DYYAArp9vgA3HrCOoNUk3LQUl54gTKmkPA5ah53PiM4RYJDkmAwTp9apsRWNZqtdosLryk1IQLcXx7V1itoeiXwbhC10AOjdwA9LCQfNdpvsAHckABtZVojEwmYAeXswbFYDAM0ACYQp9GYkAXAC65N40dNpqaCGrIbDEajMaQ8aTxbTZfsmezufzSCLPdRJZhla+rdrSHrAdbzNZgGflXkCoUilOXK583iqnHq544kkjslqo2ujvJ49XVOliuukDmy1ILPBwL2V2z3j2IKdY4UQCS3oA78qFCugrCsiV6NAAjraEBQdiDzwLiOxaHygCBBE4WoUrqV40vAB46qK/BnqafIgDKyB8gAjMR0KQZu27aq6ZEUVGABMtEbkwW68Hc8DngmiboRO1ZUQJSYFsJVbseJl4XKO3YVtJ1HeiAUDQFGNFxj0NZIAAPmGnSaSkqRtheklUSJMnTheXa3vYVl8mxZmCUKNTqZ0QQzHBNQDo5znTp+1n6WGjjUSZbZBSpzJUYAwoq0G8Tq5jAUogDYnTIAAJhAQRIO0cIZYGwDYvunG4XcICJdKPwxP8NJAkkgIQiZeXXIVTrkjkcW0BQsWgWu7D5Vc7XAI0GWQOGJUeAedyJENI00oa9zGrGgnzTwTozHZ6ZIG5HlBOWXXxTQRCskBIH8mBIrrUV0H2ai9TQQhRGlahaECDdHV3Dh8lkohM0pDigDkRDiBxIUtNgrVG5GURxAiza1BUbcVBoHJ9o0QONrS8bJ6FbZBY49v5qnqVA7FINp/KugZgRGU5EU2YJTkzOjjloW2LGURhS0pj5j1wTiiFRuzgUMA2SCABfkzPC4Al+TU6F5NpC5SbS6zyki7WF4DqlsryraeqimzHMw8LZW/defMNALSFIQ86HK0JaHE4zSY+X56uRWLc5S2xMzoXLrSZagmBAA
-    :::
   :::
 
   #### 1元集合の等号性
 
   - $a, b$: 集合
-
   $ {a} = {b} arrow.r.double.long a = b $
 
   :::details
     :summary[証明]
 
     1元集合の定義を使って変形する．
-
-    :::iframe https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcJJEA0TUA3vUByA0AbRUAwF3NWdkZKgH0WIJqIBm4IYChWUAAbJm5hJ0AAIiQtBiQ+gS5uEwAaIcGALycJmYXEkcAUwiQV0ZM3JBHk0ZzAP+0Kyzgme0CAcyGQJBtFnh3xnixgFm4Qbg7YgG84u4xGZxB4xAC+cTSSHOl2ANzuNlO7Bh1xqTCgNRht3uj0mAz2uJmI0SKLhSARSA2+3JSEAFEQEg6IvBII4UQAlcoBt40A4kpYbgACwgLHsmSQ8DYYAArp9vgA3HrCOoNUk3LQUl54gTKmkPA5ah53PiM4RYJDkmAwTp9apsRWNZqtdosLryk1IQLcXx7V1itoeiXwbhC10AOjdwA9LCQfNdpvsAHckABtZVojEwmYAeXswbFYDAM0ACYQp9GYkAXAC65N40dNpqaCGrIbDEajMaQ8aTxbTZfsmezufzSCLPdRJZhla+rdrSHrAdbzNZgGflXkCoUilOXK583iqnHq544kkjslqo2ujvJ49XVOliuukDmy1ILPBwL2V2z3j2IKdY4UQCS3oA78qFCugrCsiV6NAAjraEBQdiDzwLiOxaHygCBBE4WoUrqV40vAB46qK/BnqafIgDKyB8gAjMR0KQZu27aq6ZEUVGABMtEbkwW68Hc8DngmiboRO1ZUQJSYFsJVbseJl4XKO3YVtJ1HeiAUDQFGNFxj0NZIAAPmGnSaSkqRtheklUSJMnTheXa3vYVl8mxZmCUKNTqZ0QQzHBNQDo5znTp+1n6WGjjUSZbZBSpzJUYAwoq0G8Tq5jAUogDYnTIAAJhAQRIO0cIZYGwDYvunG4XcICJdKPwxP8NJAkkgIQiZeXXIVTrkjkcW0BQsWgWu7D5Vc7XAI0GWQOGJUeAedyJENI00oa9zGrGgnzTwTozHZ6ZIG5HlBOWXXxTQRCskBIH8mBIrrUV0H2ai9TQQhRGlahaECDdHV3Dh8lkohM0pDigDkRDiBxIUtNgrVG5GURxAiza1BUbcVBoHJ9o0QONrS8bJ6FbZBY49v5qnqVA7FINp/KugZgRGU5EU2YJTkzOjjloW2LGURhS0pj5j1wTiiFRuzgUMA2SCABfkzPC4Al+TU6F5NpC5SbS6zyki7WF4DqlsryraeqimzHMw8LZW/defMNALSFIQ86HK0JaHE4zSY+X56uRWLc5S2xMzoXLMXHQBwH9eBiPDcjd38/Bu4PK96FOOjNJo21yP3ADjK0ZDsno95MHu5O9ukSbCdLejd0ptHOIVcLzEl9zBzocGGVBNwslu+KRt1l71bs60mWoJgQA
-    :::
   :::
 :::
 
@@ -464,7 +407,6 @@ $subset$の定義からわかる定理を示す．
   #### 順序対
 
   - $a, b$: 集合
-
   「順序対$(a, b)$」とは $ (a, b) := {{a}, {a, b}} $
 :::
 
@@ -472,7 +414,6 @@ $subset$の定義からわかる定理を示す．
   #### 順序対の等号性
 
   - $a, b, a', b'$: 集合
-
   $ (a, b) = (a', b') arrow.r.double.long a = a' and b = b' $
 
   :::details
@@ -482,20 +423,15 @@ $subset$の定義からわかる定理を示す．
 
     - $a, b, a', b'$: 集合
     - $(a, b) = (a', b')$
-
     :span.remark[結論]
 
     - $a = a'$
     - $b = b'$
-
     :span.remark[証明]
 
     ${a} in {{a}, {a, b}} = (a, b) = (a', b') = {{a'}, {a', b'}}$より，${a} = {a'} or {a} = {a', b'}$が成り立つ．どちらの場合も$a = a'$である．
 
     $a = a'$を用いると，同様に，${a, b} in (a, b')$より，${a, b} = {a} or {a, b} = {a, b'}$が成り立つ．${a, b} = {a, b'}$のときは$b = b'$が成り立つので，$a = b$のときを考える．このとき， $ (a, a) &= (a, b')\ {{a}} &= {{a}, {a, b'}}\ {a} &= {a, b'}\ a &= b' $ となる．$a = b$より，$b = b'$が成り立つ．
-
-    :::iframe https://live.lean-lang.org/#project=mathlib-stable&codez=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
-    :::
   :::
 :::
 
@@ -511,20 +447,17 @@ $subset$の定義からわかる定理を示す．
   #### 1組(1元集合)
 
   - $a$: 集合
-
   $ (a) :arrow.l.r.double.long {a} $
 
   #### 2組(順序対)
 
   - $a, b$: 集合
-
   $ (a, b) :arrow.l.r.double.long {{a}, {a, b}} $
 
   #### $n$組
 
   - $n$: 自然数
   - $a_1, dots, a_n$: 集合
-
   $ (a_1, dots, a_n) :arrow.l.r.double.long (a_1, (a_2, dots, a_n)) $
 :::
 
@@ -533,7 +466,6 @@ $subset$の定義からわかる定理を示す．
 
   - $n$: 自然数
   - $a_1, dots, a_n, b_1, dots, b_n$: 集合
-
   $ (a_1, dots, a_n) = (b_1, dots, b_n) arrow.l.r.double.long a_1 = b_1 and dots.c and a_n = b_n $
 
   :::details
@@ -545,13 +477,11 @@ $subset$の定義からわかる定理を示す．
 
     - $a_1, dots, a_n, b_1, dots, b_n$: 集合
     - $(a_1, dots, a_n) = (b_1, dots, b_n)$
-
     :span.remark[結論]
 
     - $a_1 = b_1$
     - $dots.c$
     - $a_n = b_n$
-
     :span.remark[証明]
 
     $n = k - 1 (3 <= k)$のときに成り立っていると仮定する．このとき， $ (a_1, dots, a_k) = (b_1, dots, b_k) & arrow.l.r.double.long (a_1, (a_2, dots, a_k)) = (b_1, (b_2, dots, b_k))\ & arrow.l.r.double.long a_1 = b_1 and (a_2, dots, a_k) = (b_2, dots, b_k)\ & arrow.l.r.double.long a_1 = b_1 and a_2 = b_2 and dots.c and a_k = b_k $ となる．
@@ -569,7 +499,6 @@ $subset$の定義からわかる定理を示す．
 
   - $n$: 自然数
   - $a_1, dots, a_n$: 集合
-
   「外延記法の集合${a_1, dots, a_n}$」とは $ forall x, x in {a_1, dots, a_n} arrow.l.r x = a_1 or dots.c or x = a_n $
 :::
 
@@ -579,7 +508,6 @@ $subset$の定義からわかる定理を示す．
   #### 和集合
 
   - $a$: 集合
-
   「和集合$union.big a$」とは $ forall x, x in union.big a arrow.l.r exists y(x in y and y in a) $
 :::
 
@@ -595,7 +523,6 @@ $subset$の定義からわかる定理を示す．
   #### 和集合の演算子
 
   - $a, b$: 集合
-
   $ a union b := union.big {a, b} $
 :::
 
@@ -609,7 +536,6 @@ $subset$の定義からわかる定理を示す．
   #### 冪集合
 
   - $a$: 集合
-
   「冪集合$2^a$」とは $ forall x, x in 2^a arrow.l.r x subset a $
 :::
 
@@ -625,7 +551,6 @@ $subset$の定義からわかる定理を示す．
   #### 冪和同一性
 
   - $a$: 集合
-
   $ union.big 2^a = a $
 
   :::details
@@ -639,11 +564,9 @@ $subset$の定義からわかる定理を示す．
       - $a$: 集合
       - $x$: 集合
       - $x in union.big 2^a$
-
       :span.remark[結論]
 
       - $x in a$
-
       :span.remark[証明]
 
       $x in union.big 2^a$より，$x in y and y in 2^a$となる集合$y$が存在する．$y in 2^a$より，$y subset a$だから$x in a$である．
@@ -655,17 +578,12 @@ $subset$の定義からわかる定理を示す．
       - $a$: 集合
       - $x$: 集合
       - $x in a$
-
       :span.remark[結論]
 
       - $x in union.big 2^a$
-
       :span.remark[証明]
 
       $x in a$より${x} in 2^a$である．よって$x in union.big 2^a$である．
-    :::
-
-    :::iframe https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcJJEALhMAwJVosABMIIKQoAFcbKBctECQbJy5uEycfP35kpEAAIiQtBmaeEwAaJEHEhvcJxoDg0IjouMAgoiS0iura7hyC2gpAcgNAK5isbgALCBZ7TKQIABtMiGBuAH14FieQQMgn/oam+CGrX6p0AgQROBqJGxtLSnQBBBE4mqt4G0BBCkAC+N0bMIsEgkPYAO5IADaVRqPAAukgQLw4bibgwELT4Q1QTlAGiagDe9faAG0VAGAu5lY7EYQueLCCzwgDG4jygrFAtyY3GETj6AyQKoELVG/T6AC9AWMDYlBoAUwiQxo1bWmKQ1OUAf9qCyxwJj2QIAc1+jUBKI8WGALG4NPlsQA3nEGjExnEmjEAL5xdYut3AT1/J3sZMe55MKDPZNeppa4aq8aGsuJLOp6ne82DboNQAURGWsQ6KIASuUA28aAcSUTudLtc3mAwJUg9wmAA3JXCMUSque+re4tAgTzmtNbprpoNTGNHF4kAwGC3FUitizyXS2XykCK5X0wLcXzjelvYBQJ+VeDcS70gB0SCPs+pz0nihIkvOOZ5smYwAPL2H+Q5gGMgAJhJBub5p89hUjSSAgXieJSkyeH/oBTzAaB+JEsS6HQVhcEIUhqG0Zhro4bSlFEd+JF4Eg9oUIAZ7p9hcVyZlh2b3EEvCLkWHi+mia5/F0e70uBNHiamUGsdh9KHseKrwX+gS3PSXG8PYQQmbx/GAM/KwkDmJrrZm67qnNJSnLr6TSVhpaZLli+5URBvlacmFK6UeJ5IIZgT2KZjLcRZVn4PxgCS3oA78r7PZolIJBEAAI4XgVhboj6wJgquvnrrainol5toYgF9KnCAE7IKcACMymQS5bnrs1rXtQATN1IW9bwDTwKp1GguxeEddNJIobN1K0kNi3qU5mkYWFq3za+IC1FA81IASSr4UgAA+ZG3CdaSUWpy0dXNpzrQRQWbSm7qhVhL1vQRamXM8tS3EEYwFa8bBgH9nEJWt9LXbFd2pLDxGdTkHWAMKKRQBsAQ4wKOIA2PcSClOUcqpvcP7AF6nmjVtfkgP6gbBu8YYRrE0Y1vGibpBT7pU2zTO8VjeyY9l1z84LwCSvc3zuWVqIJBUHrSzWu7YhtUs8O8YwsTBSBAyDQThbxgAxKkUZ7sJUwDylstNyYCzNjiGMSAMNEHPrDbdsuEzVtIN77xbFpgc04udPqnTAgzKH9sNOagDARBq5YzCqgDkRMnkzM3jbAE0GxPIGTAe22zMmK90sd1LVUJzCEYQAGxLEggBURGs6ShzkgBVipbFiZiwBIOPb4eO8uzuszTMSAKwbgDVO576QwP3g++xmuWL/Ywc7WvDvav0gxRxWq8D+vvtIHWSCrML+Cd2bgAwKoAAHJZWcInXAvR/B6HOalE807byWAiV9JV+S8JptAbMpTWB5Iqnl7kVK874bx3kCkBFgL48Rvg/PYL8P44p4gAsg/a701IAJDiXYAL0FrvRYDYIMgQkCAAvyYQYxOrPA6kwjqzwhqAEvyZS6NCHUSAcfF4m8j7kI4ajbidwHhPEhh8L4jxeCDFPPNFhyj/p4PIig3hANqLEIwqHcK709JRQAKLMA/FAIyGj+ja2puMMw710Gfm/L+d6AEzIq0pjrGWkj5aoIIgBNSAiN7QTXgY96ZEnwoJVK9SiYFqI2N1rlEKO16KG3sMDO4Js9oxPCR9ZaQ1yGxIZGjBajxiioEwEAA
     :::
   :::
 :::
@@ -681,7 +599,6 @@ $subset$の定義からわかる定理を示す．
 
   - $F(x)$: 論理式
   - $a$: 集合
-
   「内包表記の集合${x in a mid(|) F(x)}$」とは， $ forall x, x in {x in a mid(|) F(x)} arrow.r x in a and F(x) $
 :::
 
@@ -689,7 +606,6 @@ $subset$の定義からわかる定理を示す．
   #### 分出公理
 
   - $F(x)$: 論理式
-
   $ & forall x exists y forall z, z in y arrow.l.r z in x and F(z)\ arrow.l.r.double.long & forall x exists {t in x mid(|) F(t)}. $
 :::
 
@@ -701,13 +617,11 @@ $subset$の定義からわかる定理を示す．
   #### 積集合
 
   - $a, b$: 集合
-
   「積集合$a inter b$」とは， $ a inter b := {x in a mid(|) x in b} $
 
   #### 互いに素
 
   - $a, b$: 集合
-
   「$a$と$b$が互いに素」とは， $ a inter b = 0 $ が成り立つことである．
 :::
 
@@ -721,14 +635,12 @@ $subset$の定義からわかる定理を示す．
   #### 差集合
 
   - $a, b$: 集合
-
   「差集合$a without b$」とは， $ a without b := {x in a mid(|) x in.not b} $
 
   #### 補集合
 
   - $U$: 全体集合
   - $a$: 集合
-
   「$a$の補集合」とは， $ U without a $
 :::
 
@@ -742,7 +654,6 @@ $subset$の定義からわかる定理を示す．
   #### 対称差
 
   - $a, b$: 集合
-
   「対象差$a triangle.t b$」とは， $ a triangle.t b := (a without b) union (b without a) $
 :::
 
@@ -756,7 +667,6 @@ $subset$の定義からわかる定理を示す．
   #### 直積集合
 
   - $a, b$: 集合
-
   「直積集合$a times b$」とは， $ a times b := {(x, y) in scr(P)(scr(P)(a union b)) mid(|) x in a and y in b} $
 :::
 
@@ -772,78 +682,66 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   #### 縮小律
 
   - $a, b$: 集合
-
   $ a subset a union b $ $ b subset a union b $
 
   #### 拡大律
 
   - $a, b$: 集合
-
   $ a inter b subset a $ $ a inter b subset b $
 
   #### 交換律
 
   - $a, b$: 集合
-
   $ a inter b = b inter a $ $ a union b = b union a $
 
   #### 結合律
 
   - $a, b, c$: 集合
-
   $ a inter (b inter c) = (a inter b) inter c $ $ a union (b union c) = (a union b) union c $
 
   #### 冪等律
 
   - $a$: 集合
-
   $ a inter a = a $ $ a union a = a $
 
   #### 分配律
 
   - $a, b, c$: 集合
-
   $ a inter (b union c) = (a inter b) union (a inter c) $ $ a union (b inter c) = (a union b) inter (a union c) $
 
   #### 恒等律
 
   - $a$: 集合
   - $U$: 全体集合
-
   $ a inter U = a $ $ a union 0 = a $ $ a inter 0 = 0 $ $ a union U = U $
 
   #### 矛盾律
 
   - $a$: 集合
   - $U$: 全体集合
-
   $ (a inter (U without a)) = 0 $
 
   #### 吸収律
 
   - $a, b$: 集合
-
   $ a inter (a union b) = a $ $ a union (a inter b) = a $
 
   #### 対偶律
 
   - $a, b$: 集合
   - $U$: 全体集合
-
   $ a subset b arrow.l.r U without b subset U without a $
 
   #### 二重否定
 
   - $a$: 集合
   - $U$: 全体集合
-
   $ a = U without (U without a) $
 
   #### De Morganの法則
 
   - $a, b$: 集合
   - $U$: 全体集合
-
   $ (U without (a union b)) = (U without a) inter (U without b) $ $ (U without (a inter b)) = (U without a) union (U without b) $
 :::
 
@@ -857,7 +755,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   #### 関係
 
   - $a, b$: 集合
-
   「$R$が$a$と$b$の関係である」とは， $ R subset a times b $
 
   :::details
@@ -882,7 +779,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
 
   - $a, b$: 集合
   - $f$: $a$と$b$の関係
-
   「$f$が写像である」とは， $ forall x in a exists! y, (x, y) in f $ $y$を$f(x)$と表す．つまり， $ forall x in a, (x, f(x)) in f $ が成り立つ．また，$a$を始域，$b$を終域と呼ぶ．
 
   :::details
@@ -901,7 +797,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
 
   - $a$: 集合
   - $id: a arrow.r a$
-
   「$a$の恒等写像$id$」とは， $ id := {(x, x) in a times a mid(|) x in a} $
 
   恒等写像はどんな集合に対しても一意に存在する．
@@ -919,7 +814,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   - $a, b$: 集合
   - $f: a arrow.r b$
   - $g: a arrow.r b$
-
   $ forall x (f(x) = g(x)) arrow.r.double.long f = g $
 
   :::details
@@ -936,11 +830,9 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
     - $x in a$
     - $f(x) = g(x)$
     - $y in f$
-
     :span.remark[結論]
 
     - $y in g$
-
     :span.remark[証明]
 
     任意の元$(x, f(x)) in f$について， $ (x, f(x)) = (x, g(x)) in g $ である．よって，$f subset g$が成り立つ．
@@ -953,7 +845,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   - $a, b$: 集合
   - $f: a arrow.r b$
   - $a': "集合" subset a$
-
   「像$f(a')$」とは， $ f(a') := {y in b mid(|) exists x in a', (x, y) in f} $
 
   #### 逆像
@@ -961,14 +852,12 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   - $a, b$: 集合
   - $f: a arrow.r b$
   - $b': "集合" subset b$
-
   「逆像$f^(-1)(b')$」とは， $ f^(-1)(b') := {x in a mid(|) exists y in b', (x, y) in f} $
 
   #### 値域
 
   - $a, b$: 集合
   - $f: a arrow.r b$
-
   $a$を$f$の定義域といい，「$f$の値域」とは， $ f(a) $
 
   :::details
@@ -980,7 +869,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   #### 写像全体
 
   - $a, b$: 集合
-
   「$a$から$b$への写像全体」を次のように表す． $ b^a := {f in scr(P)(a times b) mid(|) f "は写像"} $
 
   #### 制限
@@ -988,7 +876,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   - $a, b$: 集合
   - $f: a arrow.r b$
   - $a'$: 集合
-
   「制限$f|_a'$」とは， $ f|_a' := f inter (a' times b) $
 
   #### 合成写像(写像の積)
@@ -996,7 +883,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   - $a, b, c$: 集合
   - $f: a arrow.r b$
   - $g: b arrow.r c$
-
   「合成写像$g compose f$」とは， $ g compose f := {(x, z) in a times c mid(|) (f(x), z) in g} $ つまり，$g compose f(x) = g(f(x))$である．
 :::
 
@@ -1006,7 +892,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   - $a, b$: 集合
   - $f: a arrow.r b$
   - $a': "集合" subset a$
-
   $ x in a' arrow.r.double.long f(x) in f(a') $
 
   :::details
@@ -1019,11 +904,9 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
     - $a'$: 集合
     - $a' subset a$
     - $x in a'$
-
     :span.remark[結論]
 
     - $f(x) in f(a')$
-
     :span.remark[証明]
 
     定義より，$f(a')$に属している元$y$は， $ exists x, y in b and x in a' and (x, y) in f $ が成り立つ．写像$f$の定義と前提より，$f(x) in b$かつ$x in a'$かつ$(x, f(x)) in f$が成り立つから，$f(x)$は$f[a']$の元である．よって示された．
@@ -1035,7 +918,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   - $f: a arrow.r b$
   - $g: b arrow.r c$
   - $h: c arrow.r d$
-
   $ (h compose g) compose f = h compose (g compose f) $
 
   :::details
@@ -1047,7 +929,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
     - $f: a arrow.r b$
     - $g: b arrow.r c$
     - $h: c arrow.r d$
-
     :span.remark[結論]
 
     $(h compose g) compose f = h compose (g compose f)$
@@ -1063,7 +944,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
 
   - $a, b$: 集合
   - $f: a arrow.r b$
-
   「$f$が単射」とは， $ forall x y in a, f(x) = f(y) arrow.r x = y $ このとき，$f: a arrow.hook b$と表す．
 
   :::details
@@ -1076,7 +956,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
 
   - $a, b$: 集合
   - $f: a arrow.r b$
-
   「$f$が全射」とは， $ forall y in b exists x in a, f(x) = y $ このとき，$f: a arrow.twohead b$と表す．
 
   :::details
@@ -1089,14 +968,12 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
 
   - $a, b$: 集合
   - $f: a arrow.r b$
-
   「$f$が全単射」とは「$f$が単射かつ全射」である．
 
   #### 逆写像
 
   - $a, b$: 集合
   - $f: a arrow.r b$
-
   次のように定義される$f^(-1)$が写像のとき，$f^(-1)$を$f$の逆写像という． $ f^(-1) := {(y, x) in scr(P)(b times a) mid(|) (x, y) in f} $
 :::
 
@@ -1109,7 +986,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
 
   - $F$: 述語
   - $x, y$: 集合
-
   「関数論理式$F(x, y)$」とは， $ forall x y z, F(x, y) and F(x, z) arrow.r y = z $
 :::
 
@@ -1124,7 +1000,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
 
   - $I$: 集合
   - $F(x, y)$: 関数論理式
-
   「族${x mid(|) exists i in I(F(i, x))}$」とは， $ forall x, x in {x mid(|) exists i in I(F(i, x))} arrow.l.r exists i(i in I and F(i, x)) $ $I$を添字集合．$i$を添字という．
 :::
 
@@ -1132,7 +1007,6 @@ $times$は右結合とする．このとき，$a_1 times dots.c times a_n$は$(x
   #### 置換公理
 
   - $F(x, y)$: 関数論理式
-
   $ & forall x exists y forall z, z in y arrow.l.r exists w (w in x and F(w, z))\ arrow.l.r.double.long & forall x exists {t mid(|) exists i in x (F(i, t))}. $
 :::
 
@@ -1155,22 +1029,18 @@ $I = 0$であるとき，${a_i}_(i in I) = 0$であるから， $ union.big_(i i
 
   - $I, b$: 集合
   - ${a_i}_(i in I)$: 族
-
   $ union.big_(i in I)a_i inter b = union.big_(i in I)(a_i inter b) $
 
   - $I, b$: 集合
   - ${a_i}_(i in I)$: 族
-
   $ inter.big_(i in I) a_i union b = inter.big_(i in I) (a_i union b) $
 
   - $I$: 集合
   - ${a_i}_(i in I)$: 族
-
   $ overline(union.big_(i in I) a_i) = inter.big_(i in I) overline(a_i) $
 
   - $I$: 集合
   - ${a_i}_(i in I)$: 族
-
   $ overline(inter.big_(i in I)a_i) = union.big_(i in I) overline{a_i} $
 :::
 
@@ -1217,7 +1087,6 @@ $I = 0$であるとき，${a_i}_(i in I) = 0$であるから， $ union.big_(i i
     :span.remark[前提]
 
     - $x$: 集合
-
     :span.remark[結論]
 
     $x in.not x$
@@ -1225,9 +1094,6 @@ $I = 0$であるとき，${a_i}_(i in I) = 0$であるから， $ union.big_(i i
     :span.remark[証明]
 
     正則性公理より$x inter {x} = 0$が成り立つ．$x in x$と仮定すると，$x in {x} inter x = 0$となるが，これは空集合に矛盾する．よって，$x in.not x$である．
-
-    :::iframe https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcsABMIIKRgFm4AfWs7Ry0QJBsnLm4TJx8/fmSkABqkKoSas0CQsKikwEgiJLTC4rLMiokkQC8vWnNWdkyYbmEoFwF6rCLuEG5WYFjAUCI48dX1ze4ly0uNnhKmKBL7p0AAIiQGOp4AGg6ut9EiczHgkIA/7Vu7DgTHsgQA5l1qrVtjxGqibnsDkdYgBvOLVGL/OK1GIAX3O6RhcOAiORUKQ1IRTxe1KRNR+DQ+X05/yBjJAsIRSGRSEAKYQ8trVQAURJKarMAIyAYUVFkVgPA2DAAK77GwAG2QeQKUARBu4LGO3Qx6LaTNpIpFu2K2IteIJsWJDvJlKQJtpZtdIEVKpoFCVWG4AAsICx7JlfaaeBbXgbIMBeFaPOiHYk/fCA8dqnw2jZhFgkEh7AB3JAAbTzBf+dvhLJK1P+sZKmz1QQAurNAMbWgHElQDkBoAbRUAYC4MxjLEosIIlOPwrV6kBw9aAzmNLSRwCBBE5voADIiQIKcgGAiJDCXmXnrfQDkREhPgAva8vxJX9wv0YMWb6YwUQA9dMAWeVABAdEcI2jWN4zVRd8gNZgADcmHWOcF3KBxN2tA8kG/VoajLCtAm4XwkEjBVy1IkAEOQSMACYnAbJNjiPE88NLCjCPTEi6I4yjqNIgBmPD7muVs3h/CsK0jKiaIAFjwxjzWAFNMggdMvl46s6zo3sRV4SNZN4jUuJAHImHgQ4LQo6T+LovCZzYVDYOXVd1yvLRFNdBhGh4isWBsfZAiQQAL8mEf46JKBVwtokpaMAS/I8N8ysa3rRMlKbQUaRbZ420yjt7C7CAe10g5SJi8iKy02sIoVEr9Ji2jrJkwTEoankyKa2z5OLBN/SYlS014CSkGM4jTPMyzgCwNSclQTAgA
-    :::
   :::
 
   #### 帰属関係の非対称性
@@ -1240,7 +1106,6 @@ $I = 0$であるとき，${a_i}_(i in I) = 0$であるから， $ union.big_(i i
     :span.remark[前提]
 
     - $x, y$: 集合
-
     :span.remark[結論]
 
     $x in.not y or y in.not x$
@@ -1248,9 +1113,6 @@ $I = 0$であるとき，${a_i}_(i in I) = 0$であるから， $ union.big_(i i
     :span.remark[証明]
 
     $x in y and y in x$と仮定すると，$x in {x, y}$かつ$y in x inter {x, y}$となり，正則性公理に矛盾する．また，$y in {x, y}$かつ$x in y inter {x, y}$も同様である．よって，$x in.not y or y in.not x$が成り立つ．
-
-    :::iframe https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcsABMIIKRgFm4AfWs7Ry0QJBsnLm4TJx8/fmSkABqkKoSas0CQsKikwEgiJLTC4rLMiokkQC8vWnNWdkyYbmEoFwF6rCLuEG5WYFjAUCI48dX1ze4ly0uNnhKmKBL7p0AAIiQGOp4AGg6ut9EiczHgkIA/7Vu7DgTHsgQA5l1qrVtjxGqibnsDkdYgBvOLVGL/OK1GIAX3O6RhcOAiORUKQ1IRTxe1KRNR+DQ+X05/yBjJAsIRSGRSEAKYQ8trVQAURJKarMAIyAYUVFkVgPA2DAAK77GwAG2QeQKUARBu4LGO3Qx6LaTNpIpFu2K2IteIJsWJDvJlKQJtpZtdIEVKpoFCVWG4AAsICx7JlfaaeBbXgbIMBeFaPOiHYk/fCA8dqnw2jZhFgkEh7AB3JAAbTzBf+dvhLJK1P+sZKmz1QQAurNAMbWgHElQDkBoAbRUAYC4MxjLEosIIlOPwrV6kBw9aAzmNLSRwCBBE5voADIiQIKcgGAiJDCXmXnrfQDkREhPgAva8vxJX9wv0YMWb6YwUQA9dMAWeVABAdEcI2jWN4zVRd8gNZgADcmHWOcF3KBxN2tA8kG/VoajLCtAm4XwkEjBVy1IkAEOQSMACYnAbJNjiPE88NLCjCPTEi6I4yjqNIgBmPD7muVs3h/CsK0jKiaIAFjwxjzWAFNMggdMvl46s6zo3sRV4SNZN4jUuJAHImHgQ4LQo6T+LovCZzYVDYOXVd1yvLRFNdBhGh4isWBsfZAiQQAL8mEf46JKBVwtokpaMAS/I8N8ysa3rRMlKbQUaRbZ420yjt7C7CAe10g5SJi8iKy02sIoVEr9Ji2jrJkwTEoankyKa2z5OLBN/SYlS014CSkGM4jTPMyzgCwNSclQTAgA
-    :::
   :::
 
   #### 宇宙の非存在性
@@ -1261,9 +1123,6 @@ $I = 0$であるとき，${a_i}_(i in I) = 0$であるから， $ union.big_(i i
     :summary[証明]
 
     $forall y, y in U$と仮定すると，$U in U$より偽．
-
-    :::iframe https://live.lean-lang.org/#project=mathlib-stable&codez=HYQwtgpgzgDiDGEAEAtAYgYQFAFodMFAMwCwZB1BkDMGQOwZAxtMAgVLEADwEsB7MJAZQgBckAuJABUAnjAi58tQNYMgLO1AgQyBIhkAxDIH0GQA/xgPKiAFIAY9QHo6gItTAQ/IBKeszZJIYAEYQATv048kgJMJnvdwAV7LGFiZgADMmBj4AVgAGJAAiJEAIIlikAF4APisIWwcsABMIIKRgFm4AfWs7Ry0QJBsnLm4TJx8/fmSkABqkKoSas0CQsKikwEgiJLTC4rLMiokkQC8vWnNWdkyYbmEoFwF6rCLuEG5WYFjAUCI48dX1ze4ly0uNnhKmKBL7p0AAIiQGOp4AGg6ut9EiczHgkIA/7Vu7DgTHsgQA5l1qrVtjxGqibnsDkdYgBvOLVGL/OK1GIAX3O6RhcOAiORUKQ1IRTxe1KRNR+DQ+X05/yBjJAsIRSGRSEAKYQ8trVQAURJKarMAIyAYUVFkVgPA2DAAK77GwAG2QeQKUARBu4LGO3Qx6LaTNpIpFu2K2IteIJsWJDvJlKQJtpZtdIEVKpoFCVWG4AAsICx7JlfaaeBbXgbIMBeFaPOiHYk/fCA8dqnw2jZhFgkEh7AB3JAAbTzBf+dvhLJK1P+sZKmz1QQAurNAMbWgHElQDkBoAbRUAYC4MxjLEosIIlOPwrV6kBw9aAzmNLSRwCBBE5voADIiQIKcgGAiJDCXmXnrfQDkREhPgAva8vxJX9wv0YMWb6YwUQA9dMAWeVABAdEcI2jWN4zVRd8gNZgADcmHWOcF3KBxN2tA8kG/VoajLCtAm4XwkEjBVy1IkAEOQSMACYnAbJNjiPE88NLCjCPTEi6I4yjqNIgBmPD7muVs3h/CsK0jKiaIAFjwxjzWAFNMggdMvl46s6zo3sRV4SNZN4jUuJAHImHgQ4LQo6T+LovCZzYVDYOXVd1yvLRFNdBhGh4isWBsfZAiQQAL8mEf46JKBVwtokpaMAS/I8N8ysa3rRMlKbQUaRbZ420yjt7C7CAe10g5SJi8iKy02sIoVEr9Ji2jrJkwTEoankyKa2z5OLBN/SYlS014CSkGM4jTPMyzgFmQBw7UATO1AMADW1AAp1cCoxjON2C1YAmGo+xNhKPZXmYKBuCgJxOgvb4MX+T4r2um9EiuksCKQIjuIqpB/MC45gq1cKFQSnqOqk5qyMShUkC1TqaPonqYLjIJ4J25DhCc9DHChitRvscaLKOLA1JyVBMCAA
-    :::
   :::
 :::
 

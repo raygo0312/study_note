@@ -5,16 +5,13 @@
   "patterns": [
     {
       "name": "meta.inline.tag.mdr",
-      "begin": "(:)([a-z][a-z0-9-]*)(?:(\\.[a-zA-Z_][\\w-]*)|(#[a-zA-Z_][\\w-]*))?(?:(\\.[a-zA-Z_][\\w-]*)|(#[a-zA-Z_][\\w-]*))?(\\[)",
+      "begin": "(:)([a-z][a-z0-9-]*)?((?:[.#][a-zA-Z_][\\w-]*)*)(\\[)",
       "end": "(\\])",
       "beginCaptures": {
         "1": { "name": "entity.name.tag.mdr" },
         "2": { "name": "entity.name.tag.mdr" },
-        "3": { "name": "entity.other.attribute-name.class.css" },
-        "4": { "name": "entity.other.attribute-name.id.css" },
-        "5": { "name": "entity.other.attribute-name.class.css" },
-        "6": { "name": "entity.other.attribute-name.id.css" },
-        "7": { "name": "punctuation.definition.tag.mdr" }
+        "3": { "name": "entity.other.attribute-name.mdr" },
+        "4": { "name": "punctuation.definition.tag.mdr" }
       },
       "endCaptures": {
         "1": { "name": "punctuation.definition.tag.mdr" }

@@ -1,89 +1,55 @@
 const fs = require('node:fs');
 const path = require('node:path');
-const { pathToFileURL } = require('node:url');
+const { fileURLToPath, pathToFileURL } = require('node:url');
 const { findMdrFiles } = require('./project-compiler');
 const { compile, escapeHtml } = require('./compiler');
 const { PROTECTED_MATH_ASTERISK, transformMathLine } = require('./math');
 const { resolveDocument } = require('./tag-definitions');
-const { parseBlockTagStart, parseDescriptor } = require('./tag-syntax');
+const { parseBlockTagStart } = require('./tag-syntax');
+const { lexInline } = require('./lexer');
+const { parseInline } = require('./parser');
+const { parseFrontmatter } = require('./frontmatter');
+const { matchCodeFence, splitSourceLines } = require('./source-syntax');
 
-const CODE_FENCE_PATTERN = /^\s*```/;
 const TAG_END_PATTERN = /^\s*:::[ \t]*$/;
+const LIST_ITEM_PATTERN = /^[ \t]*[+-][ \t]+/;
 
-function unquote(value) {
-  return value.trim().replace(/^("|')(.*)\1$/, '$2');
-}
-
-function parseFrontmatter(source) {
-  const match = /^(?:\uFEFF)?---\r?\n([\s\S]*?)\r?\n---\r?\n?/.exec(source);
-  if (!match) return { attributes: {}, body: source };
-
-  const attributes = {};
-  const breadcrumbs = [];
-  const scripts = [];
-  let currentBreadcrumb;
-  let currentList;
-  for (const line of match[1].split(/\r?\n/)) {
-    const property = /^([\w-]+):\s*(.*)$/.exec(line);
-    if (property) {
-      const [, key, value] = property;
-      if (key === 'title' || key === 'layout') attributes[key] = unquote(value);
-      currentList = value === '' ? key : undefined;
-      continue;
-    }
-    const scriptValue = /^\s*-\s+(.+)$/.exec(line);
-    if (currentList === 'scripts' && scriptValue) {
-      scripts.push(unquote(scriptValue[1]));
-      continue;
-    }
-    const breadcrumbValue = /^\s*-\s+(href|label):\s*(.*)$/.exec(line);
-    if (breadcrumbValue) {
-      const [, key, value] = breadcrumbValue;
-      currentBreadcrumb ??= {};
-      currentBreadcrumb[key] = unquote(value);
-      if (currentBreadcrumb.href && currentBreadcrumb.label) {
-        breadcrumbs.push(currentBreadcrumb);
-        currentBreadcrumb = undefined;
-      }
-      continue;
-    }
-    const breadcrumbProperty = /^\s+(href|label):\s*(.*)$/.exec(line);
-    if (breadcrumbProperty && currentBreadcrumb) {
-      const [, key, value] = breadcrumbProperty;
-      currentBreadcrumb[key] = unquote(value);
-      if (currentBreadcrumb.href && currentBreadcrumb.label) {
-        breadcrumbs.push(currentBreadcrumb);
-        currentBreadcrumb = undefined;
-      }
+function transformInlineNodes(nodes, insideHtml = false) {
+  const output = [];
+  for (const node of nodes) {
+    if (node.type === 'text') {
+      output.push(insideHtml ? escapeHtml(node.value) : node.value);
+    } else if (node.type === 'escape') {
+      output.push(insideHtml ? escapeHtml(node.value) : `\\${node.value}`);
+    } else if (node.type === 'strong') {
+      output.push(`<dfn>${transformInlineNodes(node.children, true)}</dfn>`);
+    } else if (node.type === 'code') {
+      const value = node.children.map((child) => child.value).join('');
+      output.push(insideHtml ? `<code>${escapeHtml(value)}</code>` : `\`${value}\``);
+    } else if (node.type === 'line-break') {
+      output.push('<br>');
+    } else if (node.type === 'link') {
+      const label = transformInlineNodes(node.children, insideHtml);
+      output.push(insideHtml
+        ? `<a href="${escapeHtml(node.destination)}">${label}</a>`
+        : `[${label}](${node.destination})`);
+    } else if (node.type === 'inline-tag') {
+      const attributes = [
+        node.classes.length ? ` class="${escapeHtml(node.classes.join(' '))}"` : '',
+        node.id ? ` id="${escapeHtml(node.id)}"` : '',
+      ].join('');
+      output.push(`<${node.name}${attributes}>${
+        transformInlineNodes(node.children, true)
+      }</${node.name}>`);
+    } else {
+      throw new Error(`Unknown inline node: ${node.type}`);
     }
   }
-  if (breadcrumbs.length > 0) attributes.breadcrumbs = breadcrumbs;
-  if (scripts.length > 0) attributes.scripts = scripts;
-  return { attributes, body: source.slice(match[0].length) };
+  return output.join('');
 }
 
 function transformInlineMdr(line) {
-  const parts = [];
-  let cursor = 0;
-  const codePattern = /`[^`\n]+`/g;
-  let match;
-  while ((match = codePattern.exec(line)) !== null) {
-    parts.push(line.slice(cursor, match.index)
-      .replace(/(?<![\\*])\*([^*\n]+?)(?<!\\)\*(?!\*)/g, '<dfn>$1</dfn>'));
-    parts.push(match[0]);
-    cursor = match.index + match[0].length;
-  }
-  parts.push(line.slice(cursor)
-    .replace(/(?<![\\*])\*([^*\n]+?)(?<!\\)\*(?!\*)/g, '<dfn>$1</dfn>'));
-  return parts.join('').replace(/:([a-z][a-z0-9-]*(?:[.#][a-zA-Z_][\w-]*)*)\[([^\]\n]*)\]/g,
-    (_, descriptorSource, content) => {
-      const descriptor = parseDescriptor(descriptorSource);
-      const attributes = [
-        descriptor.classes.length ? ` class="${escapeHtml(descriptor.classes.join(' '))}"` : '',
-        descriptor.id ? ` id="${escapeHtml(descriptor.id)}"` : '',
-      ].join('');
-      return `<${descriptor.name}${attributes}>${transformInlineMdr(content)}</${descriptor.name}>`;
-    });
+  return transformInlineNodes(parseInline(lexInline(line, 0, 1, 1)));
 }
 
 function findBlockTagEnd(lines, start) {
@@ -91,7 +57,8 @@ function findBlockTagEnd(lines, start) {
   let inFence = false;
   for (let index = start + 1; index < lines.length; index += 1) {
     const line = lines[index];
-    if (CODE_FENCE_PATTERN.test(line)) {
+    const fence = matchCodeFence(line, inFence);
+    if (fence) {
       inFence = !inFence;
       continue;
     }
@@ -105,30 +72,28 @@ function findBlockTagEnd(lines, start) {
 }
 
 function transformMarkdownLine(line, state) {
-  if (CODE_FENCE_PATTERN.test(line)) {
+  const fence = matchCodeFence(line, state.inFence);
+  if (fence) {
     state.inFence = !state.inFence;
-    state.orderedNumber = 0;
     return line;
   }
   if (state.inFence) return line;
-
-  const orderedItem = /^([ \t]*)\+\s+(.*)$/.exec(line);
-  if (orderedItem) {
-    state.orderedNumber += 1;
-    return `${orderedItem[1]}${state.orderedNumber}. ${orderedItem[2]}`;
-  }
-  if (line.trim() === '') state.orderedNumber = 0;
   return transformInlineMdr(transformMathLine(line, { markdown: true, protectMdr: true }));
 }
 
 function transformMdrToMarkdown(source, options = {}) {
   const { body } = parseFrontmatter(source);
-  const lines = body.split(/\r?\n/);
+  const lines = splitSourceLines(body).map(({ text }) => text);
   const output = [];
-  const state = { inFence: false, orderedNumber: 0 };
+  const state = { inFence: false };
 
   for (let index = 0; index < lines.length; index += 1) {
     const line = lines[index];
+    const fence = matchCodeFence(line, state.inFence);
+    if (state.inFence || fence) {
+      output.push(transformMarkdownLine(line, state));
+      continue;
+    }
     const tag = parseBlockTagStart(line);
     if (tag) {
       if (tag.void) {
@@ -136,15 +101,28 @@ function transformMdrToMarkdown(source, options = {}) {
         continue;
       }
       const end = findBlockTagEnd(lines, index);
-      if (end === -1) throw new Error(`Unclosed tag: ${tag.descriptor.name}`);
+      if (end === -1) {
+        throw new Error(`Unclosed tag ${tag.descriptor.name} at ${index + 1}:1`);
+      }
       output.push(compile(lines.slice(index, end + 1).join('\n'), options));
       output.push('');
       index = end;
       continue;
     }
 
+    if (LIST_ITEM_PATTERN.test(line)) {
+      let end = index + 1;
+      while (end < lines.length && LIST_ITEM_PATTERN.test(lines[end])) end += 1;
+      output.push(compile(lines.slice(index, end).join('\n'), options));
+      if (end < lines.length && lines[end].trim() !== '') output.push('');
+      index = end - 1;
+      continue;
+    }
+
     output.push(transformMarkdownLine(line, state));
   }
+
+  if (state.inFence) throw new Error('Unclosed code fence');
 
   return output.join('\n').replaceAll(PROTECTED_MATH_ASTERISK, '*');
 }
@@ -191,12 +169,23 @@ function createGeneratedPage({ sourcePath, generatedPath, html, attributes }) {
 async function generatePages(root, pagesDirectory, markdownProcessor) {
   const pagesRoot = path.resolve(root, pagesDirectory);
   if (!fs.existsSync(pagesRoot)) return [];
+  const pages = findMdrFiles(pagesRoot).map((relativePage) => ({
+    relativePage,
+    pattern: routePattern(relativePage),
+  }));
+  const routeSources = new Map();
+  for (const { relativePage, pattern } of pages) {
+    if (routeSources.has(pattern)) {
+      throw new Error(`MDR route collision: ${routeSources.get(pattern)} and ${relativePage}`);
+    }
+    routeSources.set(pattern, relativePage);
+  }
   // Keep generated modules outside Astro's own .astro directory. Astro may
   // recreate that directory during startup after the integration hook runs.
   const generatedRoot = path.join(root, '.mdr-generated');
   fs.rmSync(generatedRoot, { recursive: true, force: true });
   const generated = [];
-  for (const relativePage of findMdrFiles(pagesRoot)) {
+  for (const { relativePage, pattern } of pages) {
     const sourcePath = path.join(pagesRoot, relativePage);
     const generatedRelative = relativePage.replace(/\.mdr$/, '');
     const generatedPath = path.join(generatedRoot, `${generatedRelative}.astro`);
@@ -213,7 +202,7 @@ async function generatePages(root, pagesDirectory, markdownProcessor) {
     fs.writeFileSync(generatedPath, createGeneratedPage({
       sourcePath, generatedPath, html: rendered.code, attributes,
     }));
-    generated.push({ pattern: routePattern(relativePage), entrypoint: generatedPath });
+    generated.push({ pattern, entrypoint: generatedPath });
   }
   return generated;
 }
@@ -224,7 +213,7 @@ function mdr(options = {}) {
     name: 'mdr-astro',
     hooks: {
       'astro:config:setup': async ({ config, injectRoute, updateConfig, logger }) => {
-        const root = new URL(config.root).pathname;
+        const root = fileURLToPath(config.root);
         const { createMarkdownProcessor } = await import('@astrojs/markdown-remark');
         const markdownProcessor = await createMarkdownProcessor(config.markdown);
         const registerPages = () => generatePages(root, pagesDirectory, markdownProcessor);
@@ -235,14 +224,13 @@ function mdr(options = {}) {
               name: 'mdr-astro-hmr',
               async handleHotUpdate(context) {
                 if (!context.file.endsWith('.mdr')) return;
-                await registerPages();
-                context.server.ws.send({ type: 'full-reload', path: '*' });
+                await context.server.restart();
                 return [];
               },
             }],
           },
         });
-        logger?.info('mdr-astro', `registered pages from ${pagesDirectory}`);
+        logger?.info(`registered pages from ${pagesDirectory}`);
       },
     },
   };
@@ -252,6 +240,7 @@ module.exports = {
   mdr,
   default: mdr,
   parseFrontmatter,
+  transformInlineMdr,
   transformMdrToMarkdown,
   routePattern,
   createGeneratedPage,

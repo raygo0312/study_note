@@ -44,6 +44,8 @@ export default {
 `src/pages/index.mdr` は `dist/index.html` に、
 `src/pages/about.mdr` は `dist/about/index.html` に変換されます。
 `public/` のファイルはそのまま `dist/` へコピーされます。
+ページfrontmatterはメタデータとして読み取られ、スタンドアロンHTMLの本文には
+出力されません。
 
 プロジェクトの `package.json` にスクリプトを追加することもできます。
 

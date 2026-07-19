@@ -1,6 +1,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 const { compile } = require('./compiler');
+const { parseFrontmatter } = require('./frontmatter');
 const { resolveDocument } = require('./tag-definitions');
 
 const IGNORED_DIRECTORIES = new Set(['.git', 'node_modules', 'dist']);
@@ -49,20 +50,32 @@ function compileProject(projectDirectory, options = {}) {
   const pagesRoot = path.resolve(root, pagesDirectory);
   const outputRoot = path.resolve(root, outputDirectory);
   const pageFiles = fs.existsSync(pagesRoot) ? findMdrFiles(pagesRoot) : [];
+  const pageOutputs = pageFiles.map((relativePage) => ({
+    relativePage,
+    outputRelativePath: pageOutputPath(relativePage),
+  }));
   const files = [];
   const assets = [];
+  const outputSources = new Map();
+
+  for (const { relativePage, outputRelativePath } of pageOutputs) {
+    if (outputSources.has(outputRelativePath)) {
+      throw new Error(`MDR route collision: ${outputSources.get(outputRelativePath)} and ${relativePage}`);
+    }
+    outputSources.set(outputRelativePath, relativePage);
+  }
 
   if (fs.existsSync(path.join(root, 'public'))) {
     assets.push(...copyPublicDirectory(path.join(root, 'public'), outputRoot));
   }
 
-  for (const relativePage of pageFiles) {
-    const outputRelativePath = pageOutputPath(relativePage);
+  for (const { relativePage, outputRelativePath } of pageOutputs) {
     const outputPath = path.join(outputRoot, outputRelativePath);
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     const sourcePath = path.join(pagesRoot, relativePage);
     const document = resolveDocument(sourcePath);
-    fs.writeFileSync(outputPath, `${compile(document.source, {
+    const { body } = parseFrontmatter(document.source);
+    fs.writeFileSync(outputPath, `${compile(body, {
       tagDefinitions: document.definitions,
     })}\n`);
     files.push(outputRelativePath);

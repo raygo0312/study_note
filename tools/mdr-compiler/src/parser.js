@@ -110,7 +110,7 @@ function parse(source) {
       if (tokens[index]?.type === TokenType.Newline) index += 1;
       const children = parseBlocks(true);
       if (tokens[index]?.type !== TokenType.TagEnd) {
-        throw new Error(`Unclosed tag: ${current.descriptor.name}`);
+        throw new Error(`Unclosed tag ${current.descriptor.name} at ${current.line}:${current.column}`);
       }
       index += 1;
       pushBlock({
@@ -123,6 +123,7 @@ function parse(source) {
     }
     if (current.type === TokenType.CodeFenceStart) {
       const info = current.value;
+      const fenceStart = current;
       index += 1;
       if (tokens[index]?.type === TokenType.Newline) index += 1;
       let value = '';
@@ -131,14 +132,17 @@ function parse(source) {
         if (tokens[index].type === TokenType.Newline) value += '\n';
         index += 1;
       }
-      if (value.endsWith('\n')) value = value.slice(0, -1);
-      if (tokens[index]?.type === TokenType.CodeFenceEnd) index += 1;
+      value = value.replace(/\r?\n$/, '');
+      if (tokens[index]?.type !== TokenType.CodeFenceEnd) {
+        throw new Error(`Unclosed code fence at ${fenceStart.line}:${fenceStart.column}`);
+      }
+      index += 1;
       pushBlock({ type: 'code-block', info, value });
       continue;
     }
     if (current.type === TokenType.TagEnd) {
       if (stopAtTagEnd) break;
-      throw new Error('Unexpected tag end');
+      throw new Error(`Unexpected tag end at ${current.line}:${current.column}`);
     }
     if (current.type === TokenType.HeadingMarker) {
       const end = lineEnd(index);
@@ -156,7 +160,9 @@ function parse(source) {
           const end = lineEnd(index);
           const item = { type: 'list-item', children: parseInline(tokens.slice(index + 1, end)) };
           index = end;
-          if (tokens[index]?.type === TokenType.Newline) index += 1;
+          const next = tokens[index]?.type === TokenType.Newline ? tokens[index + 1] : undefined;
+          if (next?.type === TokenType.OrderedMarker
+            || next?.type === TokenType.UnorderedMarker) index += 1;
           if (tokens[index]?.type === TokenType.OrderedMarker
             || tokens[index]?.type === TokenType.UnorderedMarker) {
             if (tokens[index].indent > indent) {
@@ -184,6 +190,7 @@ function parse(source) {
         || tokens[next].type === TokenType.HeadingMarker
         || tokens[next].type === TokenType.OrderedMarker
         || tokens[next].type === TokenType.UnorderedMarker
+        || tokens[next].type === TokenType.CodeFenceStart
         || tokens[next].type === TokenType.TagStart
         || tokens[next].type === TokenType.TagEnd) {
         break;
@@ -206,4 +213,4 @@ function parse(source) {
   return { type: 'document', children: parseBlocks() };
 }
 
-module.exports = { parse };
+module.exports = { parse, parseInline };
