@@ -69,9 +69,9 @@
       "name": "meta.tag.void.mdr",
       "match": "^(\\s*)(:::)(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)((?:[.#][a-zA-Z_][\\w-]*)*)(?:\\s+([^\\n]+))?$",
       "captures": {
-        "2": { "name": "punctuation.definition.tag.mdr" },
-        "3": { "name": "entity.name.tag.mdr" },
-        "4": { "name": "entity.other.attribute-name.mdr" }
+        "2": { "name": "entity.name.tag.html" },
+        "3": { "name": "entity.name.tag.html" },
+        "4": { "name": "entity.other.attribute-name.class.css" }
       }
     },
     "section": {
@@ -79,13 +79,13 @@
       "begin": "^(\\s*)(:::)(section)((?:[.#][a-zA-Z_][\\w-]*)*)(?:\\s+([^\\n]+))?$",
       "end": "^(\\s*)(:::)\\s*$",
       "beginCaptures": {
-        "2": { "name": "punctuation.definition.heading.markdown" },
-        "3": { "name": "markup.heading.2.markdown" },
-        "4": { "name": "markup.heading.2.markdown" },
+        "2": { "name": "entity.name.tag.html" },
+        "3": { "name": "entity.name.tag.html" },
+        "4": { "name": "entity.other.attribute-name.class.css" },
         "5": { "name": "markup.bold.markdown" }
       },
       "endCaptures": {
-        "2": { "name": "punctuation.definition.heading.markdown" }
+        "2": { "name": "entity.name.tag.html" }
       },
       "patterns": [
         { "include": "#fenced-code-rust" },
@@ -97,11 +97,11 @@
       "begin": "^(\\s*)(:::)((?:[.#][a-zA-Z_][\\w-]*)+)(?:\\s+([^\\n]+))?$",
       "end": "^(\\s*)(:::)\\s*$",
       "beginCaptures": {
-        "2": { "name": "punctuation.definition.tag.mdr" },
-        "3": { "name": "entity.other.attribute-name.mdr" }
+        "2": { "name": "entity.name.tag.html" },
+        "3": { "name": "entity.other.attribute-name.class.css" }
       },
       "endCaptures": {
-        "2": { "name": "punctuation.definition.tag.mdr" }
+        "2": { "name": "entity.name.tag.html" }
       },
       "patterns": [
         { "include": "#fenced-code-rust" },
@@ -113,12 +113,12 @@
       "begin": "^(\\s*)(:::)([a-z][a-z0-9-]*)((?:[.#][a-zA-Z_][\\w-]*)*)(?:\\s+([^\\n]+))?$",
       "end": "^(\\s*)(:::)\\s*$",
       "beginCaptures": {
-        "2": { "name": "punctuation.definition.tag.mdr" },
-        "3": { "name": "entity.name.tag.mdr" },
-        "4": { "name": "entity.other.attribute-name.mdr" }
+        "2": { "name": "entity.name.tag.html" },
+        "3": { "name": "entity.name.tag.html" },
+        "4": { "name": "entity.other.attribute-name.class.css" }
       },
       "endCaptures": {
-        "2": { "name": "punctuation.definition.tag.mdr" }
+        "2": { "name": "entity.name.tag.html" }
       },
       "patterns": [
         { "include": "#fenced-code-rust" },

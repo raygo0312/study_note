@@ -29,7 +29,7 @@ test('reads frontmatter with CR-only line endings', () => {
 
 test('converts MDR-only syntax while preserving code fences', () => {
   assert.equal(transformMdrToMarkdown('+ 一つ\n+ 二つ\n\nこれは *重要*。\n\n```txt\n+ そのまま\n* そのまま\n```'),
-    '<ol>\n  <li>一つ</li>\n  <li>二つ</li>\n</ol>\n\nこれは <dfn>重要</dfn>。\n\n```txt\n+ そのまま\n* そのまま\n```');
+    '<ol>\n  <li>一つ</li>\n  <li>二つ</li>\n</ol>\n\nこれは <dfn id="define0">重要</dfn>。\n\n```txt\n+ そのまま\n* そのまま\n```');
 });
 
 test('maps MDR pages to Astro routes', () => {
@@ -106,7 +106,7 @@ test('converts a void tag without consuming the following content', () => {
 
 test('preserves code syntax while converting definitions', () => {
   assert.equal(transformMdrToMarkdown('これは `*code*` と *用語*。'),
-    'これは `*code*` と <dfn>用語</dfn>。');
+    'これは `*code*` と <dfn id="define0">用語</dfn>。');
 });
 
 test('converts MDR math before Astro Markdown rendering', () => {

@@ -44,6 +44,7 @@ they require.
   - `compiler.js`: AST to HTML
   - `math.js`: Typst math to MathJax-compatible TeX
   - `tag-syntax.js` / `tag-definitions.js`: generic tags and imports
+  - `term-dictionary.js`: global definition collection and automatic term links
   - `formatter.js`: source formatter
   - `highlighter.js`: compiler-side token scopes
   - `astro-integration.js`: Markdown rendering and generated `.astro` routes
@@ -60,6 +61,9 @@ they require.
 - Markdown headings: `#` through `######`
 - Paragraphs separated by existing blank lines
 - Term definitions: `*term*` compiles to `<dfn>`; MDR has no italic meaning
+- Builds collect every unique `*term*` into `definitions.json`, assign stable
+  `defineN` ids per page, auto-link plain-text matches with longest terms first,
+  and resolve `[label](*term)` dictionary references.
 - Links: `[label](destination)`
 - Escapes: `\*`, `\$`, and other MDR punctuation
 - Inline and fenced code: backticks and triple backticks

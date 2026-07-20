@@ -19,8 +19,8 @@ test('compiles src/pages and copies public assets', () => {
   fs.mkdirSync(path.join(project, 'src', 'components'), { recursive: true });
   fs.mkdirSync(path.join(project, 'public', 'images'), { recursive: true });
   fs.mkdirSync(path.join(project, 'node_modules', 'ignored'), { recursive: true });
-  fs.writeFileSync(path.join(project, 'src', 'pages', 'index.mdr'), '# Home');
-  fs.writeFileSync(path.join(project, 'src', 'pages', 'about.mdr'), 'About');
+  fs.writeFileSync(path.join(project, 'src', 'pages', 'index.mdr'), '# Home\n*用語*の定義。');
+  fs.writeFileSync(path.join(project, 'src', 'pages', 'about.mdr'), '用語について。');
   fs.writeFileSync(path.join(project, 'src', 'pages', 'blog', 'first-post.mdr'), '+ One');
   fs.writeFileSync(path.join(project, 'src', 'pages', 'not-a-page.txt'), 'Ignored');
   fs.writeFileSync(path.join(project, 'public', 'robots.txt'), 'User-agent: *');
@@ -40,8 +40,12 @@ test('compiles src/pages and copies public assets', () => {
     'index.html',
   ]);
   assert.deepEqual(result.assets, ['images/logo.svg', 'robots.txt']);
-  assert.equal(fs.readFileSync(path.join(project, 'dist', 'index.html'), 'utf8'), '<h1>Home</h1>\n');
-  assert.equal(fs.readFileSync(path.join(project, 'dist', 'about', 'index.html'), 'utf8'), '<p>About</p>\n');
+  assert.equal(fs.readFileSync(path.join(project, 'dist', 'index.html'), 'utf8'),
+    '<h1>Home</h1>\n<p><dfn id="define0">用語</dfn>の定義。</p>\n');
+  assert.equal(fs.readFileSync(path.join(project, 'dist', 'about', 'index.html'), 'utf8'),
+    '<p><a href="/index.html#define0">用語</a>について。</p>\n');
+  assert.deepEqual(JSON.parse(fs.readFileSync(path.join(project, 'dist', 'definitions.json'))),
+    { 用語: '/index.html#define0' });
   assert.equal(fs.readFileSync(path.join(project, 'dist', 'robots.txt'), 'utf8'), 'User-agent: *');
   assert.equal(fs.existsSync(path.join(project, 'dist', 'bad.mdr')), false);
 

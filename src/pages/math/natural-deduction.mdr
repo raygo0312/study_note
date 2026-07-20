@@ -7,21 +7,18 @@ breadcrumbs:
   - href: /math.html
     label: 数学
 ---
-## 証明体系
 
+## 証明体系
 証明体系は推論規則と公理からなる．自然演繹が初学者にとって分かりやすいのでこれを採用する．
 
 ## 自然演繹
-
 自然演繹は推論規則を木構造で表す．視覚的に理解しやすい．
 
 ### 証明図
-
 推論の流れの表し方を考える．*推論図*とは推論の流れを木のように表す図である．ある推論規則では前提を取り除く，*打ち消し*という操作がある．打ち消される前提を*仮定*という．推論規則のみを用いているとき，推論図を*演繹図*という．前提がないとき，演繹図を*証明図*という．
 
 :::section.def
   #### 推論図
-
   $A_1, A_2, dots, A_n arrow.r.double.long A$を次の図のように表し，
   \begin{prooftree}
   \AXC{$A_1$}
@@ -33,7 +30,6 @@ breadcrumbs:
   を推論図という．このとき，$A_1, A_2, dots, A_n$を前提，$A$を結論という．$cal(A_1), cal(A_2), dots, cal(A_n)$が推論図のとき，$cal(A_1), cal(A_2), dots, cal(A_n) arrow.r.double.long A$を次の図のように表し， \begin{prooftree} \AXC{$cal(A_1)$} \AXC{$cal(A_2)$} \AXC{$dots.c$} \AXC{$cal(A_n)$} \QuaternaryInfC{$A$} \end{prooftree} も推論図という．
 
   #### 演繹図
-
   推論規則$"R"$が$A_1, A_2, dots, A_n arrow.r.double.long A$のとき，次の図のように表し，
   \begin{prooftree}
   \AXC{$A_1$}
@@ -46,49 +42,39 @@ breadcrumbs:
   を演繹図という．このとき，$A$を帰結という．推論規則$"R"$が明らかなとき省略してよい．また，公理$A$について，次の図のように表し， \begin{prooftree} \AXC{} \UIC{$A$} \end{prooftree} を演繹図という．$cal(A_1), cal(A_2), dots, cal(A_n)$がそれぞれ$A_1, A_2, dots, A_n$を帰結とする演繹図とする．推論規則$"R"$が$A_1, A_2, dots, A_n arrow.r.double.long A$のとき，次の図のように表し， \begin{prooftree} \AXC{$cal(A_1)$} \AXC{$cal(A_2)$} \AXC{$dots.c$} \AXC{$cal(A_n)$} \LL{R} \QuaternaryInfC{$A$} \end{prooftree} も演繹図という．前提がないとき，演繹図を証明図という．
 
   #### 演繹可能
-
   前提$A_1, A_2, dots, A_n$，帰結$A$，演繹図が存在するとき， $ A_1, A_2, dots, A_n prove A $ と表し，$A_1, A_2, dots, A_n$から$A$に演繹可能という．
 
   #### 証明可能
-
   帰結$A$，証明図が存在するとき， $ prove A $ と表し，$A$は証明可能という．
 
   #### 定理
-
   論理式$A$が証明可能なとき，$A$を定理という．
 :::
 
 ### 自然演繹
-
 *自然演繹*とは証明の構造を視覚で理解しやすい体系である．証明図を使って論理式の推論を表すことが特徴である．推論規則は各論理演算子についての*挿入*と*除去*の規則から成り立つ．
 
 ## 自然演繹の推論規則
-
 ### $arrow.rrow.r$の推論規則
-
 $arrow.r row.r$は$A$ならば$B$である．すなわち，$A$が成り立つときは$B$が成り立つことを意味する．これに$A$が成り立つという情報があれば，$B$が成り立つことが導ける．つまり次の推論が成り立つ． $ A, A arrow.rrow.r B arrow.r.double.long B . $ これは*構成的仮言的三段論法*(前件肯定式)という名前で知られる．また，$arrow.r, prove$はそれぞれ同じ意味として扱いたいので， $gt$ を認めるとする．この推論規則を用いるときは，前提を打ち消しという操作ができる． \begin{prooftree} \AXC{$A$} \UIC{$dots.v$} \UIC{$B$} \end{prooftree} この推論図は$A$を前提に$B$を推論すると読む．この推論図を次のように推論するとき， \begin{prooftree} \AXC{$A$} \UIC{$dots.v$} \UIC{$B$} \RL{$i$} \UIC{$A arrow.rrow.r B$} \end{prooftree} Aを仮定としたので，上にバーをつけて前提から除外することができる． \begin{prooftree} \AXC{} \RL{$i$} \UIC{$A$} \UIC{$dots.v$} \UIC{$B$} \RL{$i$} \UIC{$A arrow.r B$} \end{prooftree} としてよい．
 
 :::section.axm
   #### $arrow.r "I"$
-
   - $A, B$: 論理式
   \begin{prooftree} \AXC{} \RL{$i$} \UIC{$A$} \UIC{$dots.v$} \UIC{$B$} \RL{$i$} \LL{$arrow.r I$} \UIC{$A arrow.r B$} \end{prooftree}
 
   :::details
     :summary[読み]
-
-    $A$より，$dots$，よって$B$．ゆえに$A arrow.r B$．
+      $A$より，$dots$，よって$B$．ゆえに$A arrow.r B$．
   :::
 
   #### $arrow.r "E"$
-
   - $A, B$: 論理式
   \begin{prooftree} \AXC{$A$} \AXC{$A arrow.r B$} \LL{$arrow.r E$} \BIC{$B$} \end{prooftree}
 
   :::details
     :summary[読み]
-
-    $A arrow.r B$が成り立つから，$A$．ゆえに$B$．
+      $A arrow.r B$が成り立つから，$A$．ゆえに$B$．
   :::
 :::
 

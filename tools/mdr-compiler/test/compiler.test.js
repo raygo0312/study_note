@@ -15,7 +15,7 @@ test('compiles the language into HTML', () => {
     '- B',
   ].join('\n')), [
     '<h1>タイトル</h1>',
-    '<p>これは <dfn>重要</dfn> です。</p>',
+    '<p>これは <dfn id="define0">重要</dfn> です。</p>',
     '<ol>',
     '  <li>一つ</li>',
     '  <li>二つ</li>',
@@ -79,7 +79,7 @@ test('compiles HTML void tags without a closing MDR marker', () => {
 
 test('compiles inline tags without consuming Markdown links', () => {
   assert.equal(compile(':span.term[*項*] と [リンク](/reference)'),
-    '<p><span class="term"><dfn>項</dfn></span> と <a href="/reference">リンク</a></p>');
+    '<p><span class="term"><dfn id="define0">項</dfn></span> と <a href="/reference">リンク</a></p>');
 });
 
 test('compiles nested inline tags', () => {
@@ -145,7 +145,7 @@ test('does not interpret TeX backslashes as MDR escapes or hard breaks', () => {
 
 test('compiles Markdown-style links and escaped MDR markers', () => {
   assert.equal(compile('これは [*リンク*](/reference.html) と \\*記号\\* と \\$。'),
-    '<p>これは <a href="/reference.html"><dfn>リンク</dfn></a> と *記号* と $。</p>');
+    '<p>これは <a href="/reference.html"><dfn id="define0">リンク</dfn></a> と *記号* と $。</p>');
 });
 
 test('compiles CRLF documents without leaking carriage returns into syntax', () => {

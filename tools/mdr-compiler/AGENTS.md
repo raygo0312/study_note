@@ -16,6 +16,7 @@ in MDR without literal HTML in MDR source.
 - `math.js`: Typst math conversion, excluding code
 - `tag-syntax.js`: tag descriptors and positional argument parsing
 - `tag-definitions.js`: hierarchical `tags.mdrdef`, `@tag`, and `@import` resolution
+- `term-dictionary.js`: cross-page term collection, duplicate validation, and links
 - `formatter.js`: AST-based source formatting
 - `highlighter.js`: compiler-side token scope mapping
 - `astro-integration.js`: frontmatter, Astro Markdown rendering, generated
@@ -30,6 +31,13 @@ consumes the public formatter and owns TextMate grammar and editing commands.
 - MDR is Markdown-like but does not accept HTML tags as required authoring
   syntax.
 - `*text*` is a term definition and renders as `<dfn>`, never italic.
+- A build rejects duplicate `*text*` terms across or within pages, assigns
+  page-local `defineN` ids, and writes a term-to-page-fragment dictionary.
+- Plain text matching a known term is linked automatically. Overlapping terms
+  use longest-match-first; definitions, existing links, code, math, and headings
+  are excluded.
+- `[label](*term)` links an arbitrary label to a known definition and is a build
+  error when the term is unknown.
 - `-` is unordered and `+` is ordered; indentation represents nested lists.
 - Code spans and fences suppress MDR interpretation.
 - Code-fence recognition is shared by compilation, math, directives,

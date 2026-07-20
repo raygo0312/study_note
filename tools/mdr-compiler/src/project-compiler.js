@@ -3,6 +3,7 @@ const path = require('node:path');
 const { compile } = require('./compiler');
 const { parseFrontmatter } = require('./frontmatter');
 const { resolveDocument } = require('./tag-definitions');
+const { buildTermDictionary } = require('./term-dictionary');
 
 const IGNORED_DIRECTORIES = new Set(['.git', 'node_modules', 'dist']);
 
@@ -69,14 +70,31 @@ function compileProject(projectDirectory, options = {}) {
     assets.push(...copyPublicDirectory(path.join(root, 'public'), outputRoot));
   }
 
-  for (const { relativePage, outputRelativePath } of pageOutputs) {
-    const outputPath = path.join(outputRoot, outputRelativePath);
-    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+  const documents = pageOutputs.map(({ relativePage, outputRelativePath }) => {
     const sourcePath = path.join(pagesRoot, relativePage);
     const document = resolveDocument(sourcePath, undefined, { pagesRoot });
     const { body } = parseFrontmatter(document.source);
+    return { relativePage, outputRelativePath, sourcePath, document, body };
+  });
+  const termDictionary = buildTermDictionary(documents.map(({ body, outputRelativePath, sourcePath }) => ({
+    source: body,
+    href: `/${outputRelativePath.replaceAll(path.sep, '/')}`,
+    sourcePath,
+  })));
+  fs.mkdirSync(outputRoot, { recursive: true });
+  fs.writeFileSync(path.join(outputRoot, 'definitions.json'), `${JSON.stringify(
+    Object.fromEntries(termDictionary.terms.map((term) => [term, termDictionary.entries[term].href])),
+    null,
+    2,
+  )}\n`);
+
+  for (const { outputRelativePath, document, body } of documents) {
+    const outputPath = path.join(outputRoot, outputRelativePath);
+    fs.mkdirSync(path.dirname(outputPath), { recursive: true });
     fs.writeFileSync(outputPath, `${compile(body, {
       tagDefinitions: document.definitions,
+      termDictionary,
+      termIdState: { next: 0 },
     })}\n`);
     files.push(outputRelativePath);
   }

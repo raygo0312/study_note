@@ -25,6 +25,24 @@ test('matches block tags with an omitted div name', () => {
   assert.ok(new RegExp(shorthand.begin).test(':::.panel#main'));
   assert.ok(new RegExp(shorthand.begin).test(':::#main'));
   assert.equal(new RegExp(shorthand.begin).test(':::'), false);
+  assert.equal(shorthand.beginCaptures['2'].name, 'entity.name.tag.html');
+  assert.equal(shorthand.beginCaptures['3'].name,
+    'entity.other.attribute-name.class.css');
+});
+
+test('separates tag and class colors for generic and section tags', () => {
+  const tag = grammar.repository.tag;
+  assert.ok(new RegExp(tag.begin).test(':::div.you'));
+  assert.equal(tag.beginCaptures['2'].name, 'entity.name.tag.html');
+  assert.equal(tag.beginCaptures['3'].name, 'entity.name.tag.html');
+  assert.equal(tag.beginCaptures['4'].name, 'entity.other.attribute-name.class.css');
+
+  const section = grammar.repository.section;
+  assert.ok(new RegExp(section.begin).test(':::section.ex'));
+  assert.equal(section.beginCaptures['2'].name, 'entity.name.tag.html');
+  assert.equal(section.beginCaptures['3'].name, 'entity.name.tag.html');
+  assert.equal(section.beginCaptures['4'].name,
+    'entity.other.attribute-name.class.css');
 });
 
 test('keeps the TextMate void-tag list aligned with the compiler', () => {

@@ -1,5 +1,6 @@
 const { parse } = require('./parser');
 const { PROTECTED_MATH_ASTERISK, PROTECTED_MATH_SLASH, transformMath } = require('./math');
+const { renderLinkedText, resolveTermHref } = require('./term-dictionary');
 
 function escapeHtml(value) {
   return value.replace(/[&<>"']/g, (character) => ({
@@ -28,23 +29,32 @@ function renderAttributes(node, options, includeArguments = true) {
   return attributes.map(([name, value]) => ` ${name}="${escapeHtml(value)}"`).join('');
 }
 
-function renderInline(nodes, options = {}) {
+function renderInline(nodes, options = {}, allowTermLinks = true) {
   return nodes.map((node) => {
     switch (node.type) {
       case 'text':
-        return escapeHtml(node.value);
-      case 'strong':
-        return `<dfn>${renderInline(node.children, options)}</dfn>`;
+        return allowTermLinks ? renderLinkedText(
+          node.value,
+          options.termDictionary,
+          escapeHtml,
+          (term, href) => `<a href="${escapeHtml(href)}">${escapeHtml(term)}</a>`,
+        ) : escapeHtml(node.value);
+      case 'strong': {
+        const state = options.termIdState || (options.termIdState = { next: 0 });
+        return `<dfn id="define${state.next++}">${renderInline(node.children, options, false)}</dfn>`;
+      }
       case 'code':
-        return `<code>${renderInline(node.children, options)}</code>`;
+        return `<code>${renderInline(node.children, options, false)}</code>`;
       case 'escape':
         return escapeHtml(node.value);
       case 'line-break':
         return '<br>';
-      case 'link':
-        return `<a href="${escapeHtml(node.destination)}">${renderInline(node.children, options)}</a>`;
+      case 'link': {
+        const href = resolveTermHref(node.destination, options.termDictionary);
+        return `<a href="${escapeHtml(href)}">${renderInline(node.children, options, false)}</a>`;
+      }
       case 'inline-tag':
-        return `<${node.name}${renderAttributes(node, options, false)}>${renderInline(node.children, options)}</${node.name}>`;
+        return `<${node.name}${renderAttributes(node, options, false)}>${renderInline(node.children, options, allowTermLinks)}</${node.name}>`;
       default:
         throw new Error(`Unknown inline node: ${node.type}`);
     }
@@ -79,7 +89,7 @@ function render(ast, options = {}) {
         if (node.level < 1 || node.level > 6) {
           throw new Error(`Invalid heading level: ${node.level}`);
         }
-        return `<h${node.level}>${renderInline(node.children, options)}</h${node.level}>`;
+        return `<h${node.level}>${renderInline(node.children, options, false)}</h${node.level}>`;
       case 'paragraph':
         {
           const meaningful = node.children.filter((child) =>

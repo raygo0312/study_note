@@ -8,13 +8,13 @@
       "begin": "(:)([a-z][a-z0-9-]*)?((?:[.#][a-zA-Z_][\\w-]*)*)(\\[)",
       "end": "(\\])",
       "beginCaptures": {
-        "1": { "name": "entity.name.tag.mdr" },
-        "2": { "name": "entity.name.tag.mdr" },
-        "3": { "name": "entity.other.attribute-name.mdr" },
-        "4": { "name": "punctuation.definition.tag.mdr" }
+        "1": { "name": "entity.name.tag.html" },
+        "2": { "name": "entity.name.tag.html" },
+        "3": { "name": "entity.other.attribute-name.class.css" },
+        "4": { "name": "entity.name.tag.html" }
       },
       "endCaptures": {
-        "1": { "name": "punctuation.definition.tag.mdr" }
+        "1": { "name": "entity.name.tag.html" }
       },
       "patterns": [
         { "include": "text.html.markdown" }

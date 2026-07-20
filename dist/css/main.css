@@ -460,6 +460,11 @@ iframe {
   margin-top: -1em
 }
 
+.me>p,
+.you>p {
+  text-indent: 0;
+}
+
 /* 数式 */
 .MathJax {
   padding: 0.1em 0.25em;

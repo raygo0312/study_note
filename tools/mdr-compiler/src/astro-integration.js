@@ -10,37 +10,49 @@ const { lexInline } = require('./lexer');
 const { parseInline } = require('./parser');
 const { parseFrontmatter } = require('./frontmatter');
 const { matchCodeFence, splitSourceLines } = require('./source-syntax');
+const { buildTermDictionary, renderLinkedText, resolveTermHref } = require('./term-dictionary');
 
 const TAG_END_PATTERN = /^\s*:::[ \t]*$/;
 const LIST_ITEM_PATTERN = /^[ \t]*[+-][ \t]+/;
 const isMdrSourceFile = (file) => file.endsWith('.mdr') || file.endsWith('.mdrdef');
 
-function transformInlineNodes(nodes, insideHtml = false) {
+function transformInlineNodes(nodes, insideHtml = false, options = {}, allowTermLinks = true) {
   const output = [];
   for (const node of nodes) {
     if (node.type === 'text') {
-      output.push(insideHtml ? escapeHtml(node.value) : node.value);
+      output.push(allowTermLinks ? renderLinkedText(
+        node.value,
+        options.termDictionary,
+        insideHtml ? escapeHtml : (value) => value,
+        insideHtml
+          ? (term, href) => `<a href="${escapeHtml(href)}">${escapeHtml(term)}</a>`
+          : (term, href) => `[${term}](${href})`,
+        { skipMath: true },
+      ) : (insideHtml ? escapeHtml(node.value) : node.value));
     } else if (node.type === 'escape') {
       output.push(insideHtml ? escapeHtml(node.value) : `\\${node.value}`);
     } else if (node.type === 'strong') {
-      output.push(`<dfn>${transformInlineNodes(node.children, true)}</dfn>`);
+      output.push(`<dfn id="define${options.termIdState.next++}">${
+        transformInlineNodes(node.children, true, options, false)
+      }</dfn>`);
     } else if (node.type === 'code') {
       const value = node.children.map((child) => child.value).join('');
       output.push(insideHtml ? `<code>${escapeHtml(value)}</code>` : `\`${value}\``);
     } else if (node.type === 'line-break') {
       output.push('<br>');
     } else if (node.type === 'link') {
-      const label = transformInlineNodes(node.children, insideHtml);
+      const label = transformInlineNodes(node.children, insideHtml, options, false);
+      const destination = resolveTermHref(node.destination, options.termDictionary);
       output.push(insideHtml
-        ? `<a href="${escapeHtml(node.destination)}">${label}</a>`
-        : `[${label}](${node.destination})`);
+        ? `<a href="${escapeHtml(destination)}">${label}</a>`
+        : `[${label}](${destination})`);
     } else if (node.type === 'inline-tag') {
       const attributes = [
         node.classes.length ? ` class="${escapeHtml(node.classes.join(' '))}"` : '',
         node.id ? ` id="${escapeHtml(node.id)}"` : '',
       ].join('');
       output.push(`<${node.name}${attributes}>${
-        transformInlineNodes(node.children, true)
+        transformInlineNodes(node.children, true, options, allowTermLinks)
       }</${node.name}>`);
     } else {
       throw new Error(`Unknown inline node: ${node.type}`);
@@ -49,8 +61,9 @@ function transformInlineNodes(nodes, insideHtml = false) {
   return output.join('');
 }
 
-function transformInlineMdr(line) {
-  return transformInlineNodes(parseInline(lexInline(line, 0, 1, 1)));
+function transformInlineMdr(line, options = {}) {
+  const normalized = options.termIdState ? options : { ...options, termIdState: { next: 0 } };
+  return transformInlineNodes(parseInline(lexInline(line, 0, 1, 1)), false, normalized);
 }
 
 function findBlockTagEnd(lines, start) {
@@ -72,17 +85,20 @@ function findBlockTagEnd(lines, start) {
   return -1;
 }
 
-function transformMarkdownLine(line, state) {
+function transformMarkdownLine(line, state, options, allowTermLinks = true) {
   const fence = matchCodeFence(line, state.inFence);
   if (fence) {
     state.inFence = !state.inFence;
     return line;
   }
   if (state.inFence) return line;
-  return transformInlineMdr(transformMathLine(line, { markdown: true, protectMdr: true }));
+  const transformed = transformMathLine(line, { markdown: true, protectMdr: true });
+  return transformInlineNodes(parseInline(lexInline(transformed, 0, 1, 1)),
+    false, options, allowTermLinks);
 }
 
 function transformMdrToMarkdown(source, options = {}) {
+  const renderOptions = { ...options, termIdState: { next: 0 } };
   const { body } = parseFrontmatter(source);
   const lines = splitSourceLines(body).map(({ text }) => text);
   const output = [];
@@ -92,20 +108,20 @@ function transformMdrToMarkdown(source, options = {}) {
     const line = lines[index];
     const fence = matchCodeFence(line, state.inFence);
     if (state.inFence || fence) {
-      output.push(transformMarkdownLine(line, state));
+      output.push(transformMarkdownLine(line, state, renderOptions));
       continue;
     }
     const tag = parseBlockTagStart(line);
     if (tag) {
       if (tag.void) {
-        output.push(compile(line, options));
+        output.push(compile(line, renderOptions));
         continue;
       }
       const end = findBlockTagEnd(lines, index);
       if (end === -1) {
         throw new Error(`Unclosed tag ${tag.descriptor.name} at ${index + 1}:1`);
       }
-      output.push(compile(lines.slice(index, end + 1).join('\n'), options));
+      output.push(compile(lines.slice(index, end + 1).join('\n'), renderOptions));
       output.push('');
       index = end;
       continue;
@@ -114,13 +130,13 @@ function transformMdrToMarkdown(source, options = {}) {
     if (LIST_ITEM_PATTERN.test(line)) {
       let end = index + 1;
       while (end < lines.length && LIST_ITEM_PATTERN.test(lines[end])) end += 1;
-      output.push(compile(lines.slice(index, end).join('\n'), options));
+      output.push(compile(lines.slice(index, end).join('\n'), renderOptions));
       if (end < lines.length && lines[end].trim() !== '') output.push('');
       index = end - 1;
       continue;
     }
 
-    output.push(transformMarkdownLine(line, state));
+    output.push(transformMarkdownLine(line, state, renderOptions, !/^\s*#{1,6}\s/.test(line)));
   }
 
   if (state.inFence) throw new Error('Unclosed code fence');
@@ -133,6 +149,10 @@ function routePattern(relativePage) {
   if (normalized === 'index') return '/';
   if (normalized.endsWith('/index')) return `/${normalized.slice(0, -6)}`;
   return `/${normalized}`;
+}
+
+function routeFileHref(pattern) {
+  return pattern === '/' ? '/index.html' : `${pattern}.html`;
 }
 
 function jsonAttribute(value, fallback) {
@@ -185,15 +205,30 @@ async function generatePages(root, pagesDirectory, markdownProcessor) {
   // recreate that directory during startup after the integration hook runs.
   const generatedRoot = path.join(root, '.mdr-generated');
   fs.rmSync(generatedRoot, { recursive: true, force: true });
-  const generated = [];
-  for (const { relativePage, pattern } of pages) {
+  fs.mkdirSync(generatedRoot, { recursive: true });
+  const documents = pages.map(({ relativePage, pattern }) => {
     const sourcePath = path.join(pagesRoot, relativePage);
+    const document = resolveDocument(sourcePath, undefined, { pagesRoot });
+    const parsed = parseFrontmatter(document.source);
+    return { relativePage, pattern, sourcePath, document, ...parsed };
+  });
+  const termDictionary = buildTermDictionary(documents.map(({ body, pattern, sourcePath }) => ({
+    source: body,
+    href: routeFileHref(pattern),
+    sourcePath,
+  })));
+  fs.writeFileSync(path.join(generatedRoot, 'definitions.json'), `${JSON.stringify(
+    Object.fromEntries(termDictionary.terms.map((term) => [term, termDictionary.entries[term].href])),
+    null,
+    2,
+  )}\n`);
+  const generated = [];
+  for (const { relativePage, pattern, sourcePath, attributes, body, document } of documents) {
     const generatedRelative = relativePage.replace(/\.mdr$/, '');
     const generatedPath = path.join(generatedRoot, `${generatedRelative}.astro`);
-    const document = resolveDocument(sourcePath, undefined, { pagesRoot });
-    const { attributes, body } = parseFrontmatter(document.source);
     const markdown = transformMdrToMarkdown(body, {
       tagDefinitions: document.definitions,
+      termDictionary,
     });
     const rendered = await markdownProcessor.render(markdown, {
       fileURL: pathToFileURL(sourcePath),
@@ -244,6 +279,7 @@ module.exports = {
   transformInlineMdr,
   transformMdrToMarkdown,
   routePattern,
+  routeFileHref,
   createGeneratedPage,
   escapeAstroStaticHtml,
   isMdrSourceFile,
