@@ -37,12 +37,10 @@
 
   /* Content hierarchy */
   --color-heading: #3f7d7d;
-  --color-axiom: #ad5d72;
-  --color-definition: #c69a25;
-  --color-theorem: #6f9448;
-  --color-problem: #6979a8;
-  --color-example: #c27642;
-  --color-lemma: #806a9b;
+  --color-axiom: #b64a4a;
+  --color-definition: #dbaa17;
+  --color-theorem: #78b943;
+  --color-example: #63a9bb;
 
   /* Shared geometry and motion */
   --border-default: thin solid var(--color-text);
@@ -80,16 +78,16 @@ header {
   padding: 10px;
 }
 
-.header-main > nav,
-.header-main > nav a:any-link {
+.header-main>nav,
+.header-main>nav a:any-link {
   color: var(--color-white);
 }
 
-.header-main > nav {
+.header-main>nav {
   margin: 0.6rem 0 0;
 }
 
-.header-main > nav a:hover {
+.header-main>nav a:hover {
   background-color: rgb(from var(--color-white) r g b / 0.16);
 }
 
@@ -176,7 +174,7 @@ h4 {
   margin-top: 20px;
 }
 
-section > h4:first-child {
+section>h4:first-child {
   margin-top: 0;
 }
 
@@ -190,18 +188,18 @@ p {
 }
 
 /* Page-level prose carries the explanation between semantic callout boxes. */
-main > p {
+main>p {
   margin: 0.9rem 0.5rem 1.1rem;
   font-size: 1.05em;
   line-height: 1.9;
 }
 
-main > :is(ul, ol) {
+main> :is(ul, ol) {
   margin-block: 1rem 1.5rem;
   line-height: 1.75;
 }
 
-main > h2:first-child {
+main>h2:first-child {
   margin-top: 0.5rem;
 }
 
@@ -248,10 +246,10 @@ section {
 
   position: relative;
   margin: 20px 5px;
-  border: var(--section-color) solid thin;
-  border-radius: var(--radius-panel);
+  border: 0;
+  border-left: 3px solid var(--section-color);
   padding: 3em 5px 5px;
-  background-color: rgb(from var(--section-color) r g b / 0.1);
+  background-color: rgb(from var(--section-color) r g b / 0.05);
 }
 
 section::before {
@@ -261,7 +259,6 @@ section::before {
   left: 0;
   box-sizing: border-box;
   width: 100%;
-  border-radius: calc(var(--radius-panel) - 1px) calc(var(--radius-panel) - 1px) 0 0;
   padding: 5px;
   background-color: rgb(from var(--section-color) r g b / 0.28);
   font-family: var(--font-ui);
@@ -319,7 +316,7 @@ details[open] {
   box-shadow: 0 4px 12px rgb(from var(--color-black) r g b / 0.12);
 }
 
-details > summary {
+details>summary {
   display: flex;
   align-items: center;
   gap: 0.75rem;
@@ -333,11 +330,11 @@ details > summary {
   list-style: none;
 }
 
-details > summary::-webkit-details-marker {
+details>summary::-webkit-details-marker {
   display: none;
 }
 
-details > summary::after {
+details>summary::after {
   content: "＋";
   display: grid;
   flex: 0 0 1.65em;
@@ -351,25 +348,25 @@ details > summary::after {
   font-weight: 400;
 }
 
-details[open] > summary {
+details[open]>summary {
   border-bottom: 1px solid rgb(from var(--details-color) r g b / 0.18);
   background-color: rgb(from var(--details-color) r g b / 0.11);
 }
 
-details[open] > summary::after {
+details[open]>summary::after {
   content: "−";
 }
 
-main details > summary + * {
-  margin-top: 0.85rem;
+main details[open]>summary {
+  margin-bottom: 0.75rem;
 }
 
-main details > :not(summary) {
+main details> :not(summary) {
   margin-right: 1rem;
   margin-left: 1rem;
 }
 
-main details > :last-child {
+main details> :last-child {
   margin-bottom: 0.9rem;
 }
 
@@ -385,7 +382,7 @@ main details > :last-child {
   font-family: var(--font-ui);
 }
 
-.header-tools > details {
+.header-tools>details {
   position: static;
   margin: 0;
   border: 0;
@@ -400,11 +397,11 @@ main details > :last-child {
   transition: none;
 }
 
-.header-tools > details:first-child {
+.header-tools>details:first-child {
   border-left: 0;
 }
 
-.header-tools > details[open] {
+.header-tools>details[open] {
   margin: 0;
   background-color: var(--color-white);
   box-shadow: none;
@@ -412,7 +409,7 @@ main details > :last-child {
   transform: none;
 }
 
-.header-tools > details > summary {
+.header-tools>details>summary {
   position: relative;
   justify-content: center;
   border: 0;
@@ -424,7 +421,7 @@ main details > :last-child {
   text-align: center;
 }
 
-.header-tools > details > summary::after {
+.header-tools>details>summary::after {
   content: none;
 }
 
@@ -445,11 +442,11 @@ main details > :last-child {
   font-family: var(--font-body);
 }
 
-.header-details-content > :first-child {
+.header-details-content> :first-child {
   margin-top: 0;
 }
 
-.header-details-content > :last-child {
+.header-details-content> :last-child {
   margin-bottom: 0;
 }
 
@@ -459,7 +456,7 @@ main details > :last-child {
     grid-template-columns: 1fr;
   }
 
-  .header-tools > details {
+  .header-tools>details {
     border-left: 0;
   }
 }
@@ -680,7 +677,7 @@ iframe {
   margin: 2.5em auto 2em 3em;
 }
 
-.you + .me {
+.you+.me {
   margin-top: -1.5em;
 }
 
@@ -689,11 +686,11 @@ iframe {
   text-align: left;
 }
 
-.me + .you {
+.me+.you {
   margin-top: -1em;
 }
 
-:is(.me, .you) > p {
+:is(.me, .you)>p {
   text-indent: 0;
 }
 
@@ -711,7 +708,7 @@ iframe {
   background: var(--color-brand);
 }
 
-.remark + ol {
+.remark+ol {
   list-style: upper-alpha;
 }
 
