@@ -190,6 +190,7 @@ const hasMermaid = /class=(["']).*?\bmermaid\b.*?\1/.test(contentHtml);
 const hasPanzoom = /class=(["']).*?\bpanzoom\b.*?\1/.test(contentHtml);
 const hasMath = /\$[\s\S]+?\$|\\\(|\\\[/.test(rawContent);
 const hasCodeBlock = /<pre\b[^>]*class=(["'])[^"']*\bastro-code\b/.test(contentHtml);
+const hasHeaderTools = tocRoot.length > 0 || terms.length > 0 || hasChat;
 
 const pageTitle = `学問の鎖｜${title}`;
 ---
@@ -242,51 +243,65 @@ const pageTitle = `学問の鎖｜${title}`;
   </head>
   <body>
     <header>
-      <img src={withBase("/favicon/title.svg")} alt="学問の鎖のロゴ" id="logo" />
-      <h1>{title}</h1>
-      {breadcrumbs.length > 0 && (
-        <nav aria-label="パンくず">
-          {breadcrumbs.map((crumb) => (
-            <>
-              <a href={withBase(crumb.href)}>{crumb.label}</a>{" / "}
-            </>
-          ))}
-        </nav>
-      )}
-      {tocRoot.length > 0 && (
-        <details>
-          <summary>目次</summary>
-          <ul>
-            {tocRoot.map(function renderItem(item) {
-              return (
-                <li>
-                  <a href={item.href} class="tocLink">{item.label}</a>
-                  {item.children.length > 0 && <ul>{item.children.map(renderItem)}</ul>}
-                </li>
-              );
-            })}
-          </ul>
-        </details>
-      )}
-      {terms.length > 0 && (
-        <details>
-          <summary>定義される用語</summary>
-          {terms.map((term, index) => (
-            <>
-              {index > 0 && "，"}
-              <a href={term.href} class="tocLink">{term.label}</a>
-            </>
-          ))}
-        </details>
-      )}
-      {hasChat && (
-        <details>
-          <summary>設定</summary>
-          <label>
-            <input type="checkbox" data-chat-toggle checked />
-            会話を表示
-          </label>
-        </details>
+      <div class="header-main">
+        <div class="header-title">
+          <img src={withBase("/favicon/title.svg")} alt="学問の鎖のロゴ" id="logo" />
+          <h1>{title}</h1>
+        </div>
+        {breadcrumbs.length > 0 && (
+          <nav aria-label="パンくず">
+            {breadcrumbs.map((crumb) => (
+              <>
+                <a href={withBase(crumb.href)}>{crumb.label}</a>{" / "}
+              </>
+            ))}
+          </nav>
+        )}
+      </div>
+      {hasHeaderTools && (
+        <div class="header-tools" aria-label="ページツール">
+          {tocRoot.length > 0 && (
+            <details name="page-tools">
+              <summary>目次</summary>
+              <nav class="header-details-content" aria-label="目次">
+                <ul>
+                  {tocRoot.map(function renderItem(item) {
+                    return (
+                      <li>
+                        <a href={item.href} class="tocLink">{item.label}</a>
+                        {item.children.length > 0 && <ul>{item.children.map(renderItem)}</ul>}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+            </details>
+          )}
+          {terms.length > 0 && (
+            <details name="page-tools">
+              <summary>定義される用語</summary>
+              <nav class="header-details-content" aria-label="用語">
+                {terms.map((term, index) => (
+                  <>
+                    {index > 0 && "，"}
+                    <a href={term.href} class="tocLink">{term.label}</a>
+                  </>
+                ))}
+              </nav>
+            </details>
+          )}
+          {hasChat && (
+            <details name="page-tools">
+              <summary>設定</summary>
+              <div class="header-details-content">
+                <label>
+                  <input type="checkbox" data-chat-toggle checked />
+                  会話を表示
+                </label>
+              </div>
+            </details>
+          )}
+        </div>
       )}
     </header>
     <main>

@@ -26,6 +26,8 @@
   --color-brand: #91c0c0;
   --color-accent: #176b6b;
   --color-accent-soft: #d6e8e8;
+  --color-header: #1268a8;
+  --color-header-border: #0b4778;
   --color-link-visited: #65527a;
   --color-focus: #da3c41;
   --color-toggle: #6b8e23;
@@ -34,19 +36,19 @@
   --color-code-failure: #e06c75;
 
   /* Content hierarchy */
-  --color-heading-2: #96858f;
-  --color-heading-3: #c09f80;
+  --color-heading: #3f7d7d;
   --color-axiom: #ad5d72;
   --color-definition: #c69a25;
   --color-theorem: #6f9448;
   --color-problem: #6979a8;
-  --color-example: #4d8494;
+  --color-example: #c27642;
   --color-lemma: #806a9b;
 
   /* Shared geometry and motion */
   --border-default: thin solid var(--color-text);
   --border-accent: thin solid var(--color-accent);
   --radius-small: 0.2em;
+  --radius-panel: 8px;
   --transition-default: 0.5s;
 }
 
@@ -68,10 +70,27 @@ body {
 }
 
 header {
-  border-bottom: var(--border-default);
-  padding: 10px;
-  background-color: var(--color-brand);
+  border-bottom: 3px solid var(--color-header-border);
+  padding: 0;
+  background-color: var(--color-header);
   font-family: var(--font-heading);
+}
+
+.header-main {
+  padding: 10px;
+}
+
+.header-main > nav,
+.header-main > nav a:any-link {
+  color: var(--color-white);
+}
+
+.header-main > nav {
+  margin: 0.6rem 0 0;
+}
+
+.header-main > nav a:hover {
+  background-color: rgb(from var(--color-white) r g b / 0.16);
 }
 
 main {
@@ -105,28 +124,60 @@ footer {
  * Content typography
  * -------------------------------------------------------------------------- */
 h1 {
-  margin: 0 5em;
+  margin: 0;
+  color: var(--color-white);
   font-family: var(--font-heading);
-  text-shadow: 1px 1px 3px var(--color-surface-muted);
+  text-align: center;
+  text-shadow: 1px 1px 3px rgb(from var(--color-black) r g b / 0.45);
+}
+
+.header-title {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.5em;
+  margin: 0.5rem clamp(1rem, 4vw, 3rem) 1rem;
+}
+
+@media (max-width: 700px) {
+  .header-title {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 }
 
 h2 {
-  margin-top: 40px;
-  border-left: var(--color-heading-2) solid thick;
-  padding-left: 10px;
-  background-color: rgb(from var(--color-heading-2) r g b / 0.3);
+  margin: 3.5rem 0 1.25rem;
+  padding: 0.45em 0.65em;
+  border-radius: var(--radius-panel);
+  color: var(--color-white);
+  background-color: var(--color-heading);
+  font-size: clamp(1.65rem, 2.2vw, 2.2rem);
+  line-height: 1.4;
+  scroll-margin-top: 1rem;
 }
 
 h3 {
-  margin-top: 30px;
-  border-bottom: var(--color-heading-3) solid medium;
-  border-left: var(--color-heading-3) solid thick;
-  padding-left: 5px;
+  margin: 2.75rem 0 1rem;
+  border: 1px solid rgb(from var(--color-heading) r g b / 0.38);
+  border-radius: var(--radius-panel);
+  padding: 0.4em 0.75em;
+  color: var(--color-heading);
+  background-color: rgb(from var(--color-heading) r g b / 0.14);
+  font-size: clamp(1.3rem, 1.6vw, 1.65rem);
+  line-height: 1.45;
+  scroll-margin-top: 1rem;
 }
 
 h4 {
   margin: 0;
   margin-top: 20px;
+}
+
+section > h4:first-child {
+  margin-top: 0;
 }
 
 :is(h2, h3, h4) {
@@ -136,6 +187,22 @@ h4 {
 p {
   text-indent: 1em;
   margin: 0;
+}
+
+/* Page-level prose carries the explanation between semantic callout boxes. */
+main > p {
+  margin: 0.9rem 0.5rem 1.1rem;
+  font-size: 1.05em;
+  line-height: 1.9;
+}
+
+main > :is(ul, ol) {
+  margin-block: 1rem 1.5rem;
+  line-height: 1.75;
+}
+
+main > h2:first-child {
+  margin-top: 0.5rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -182,7 +249,7 @@ section {
   position: relative;
   margin: 20px 5px;
   border: var(--section-color) solid thin;
-  border-left-width: 5px;
+  border-radius: var(--radius-panel);
   padding: 3em 5px 5px;
   background-color: rgb(from var(--section-color) r g b / 0.1);
 }
@@ -194,9 +261,10 @@ section::before {
   left: 0;
   box-sizing: border-box;
   width: 100%;
-  border-bottom: var(--section-color) solid thin;
+  border-radius: calc(var(--radius-panel) - 1px) calc(var(--radius-panel) - 1px) 0 0;
   padding: 5px;
   background-color: rgb(from var(--section-color) r g b / 0.28);
+  font-family: var(--font-ui);
   font-weight: bold;
 }
 
@@ -234,33 +302,166 @@ section.lem {
  * Disclosure panels
  * -------------------------------------------------------------------------- */
 details {
-  margin: 5px;
-  border: var(--border-accent);
-  background-color: rgb(from var(--color-surface) r g b / 0.3);
+  --details-color: var(--section-color, var(--color-accent));
+
+  margin: 0.75rem 0;
+  border: 1px solid var(--details-color);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  background-color: rgb(from var(--color-white) r g b / 0.38);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 details[open] {
-  margin-bottom: 10px;
-  box-shadow: 5px 10px 3px rgb(from var(--color-black) r g b / 0.5);
-  transform: translateY(-4px) translateX(-2px);
+  border-color: var(--details-color);
+  box-shadow: 0 4px 12px rgb(from var(--color-black) r g b / 0.12);
 }
 
-details + details {
-  margin-top: -7px;
-}
-
-details + details[open] {
-  margin-top: -3px;
-}
-
-details summary {
-  padding: 5px 10px;
+details > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.85rem;
+  color: var(--details-color);
+  background-color: rgb(from var(--details-color) r g b / 0.07);
   font-family: var(--font-ui);
-  font-size: 1.1em;
+  font-size: 1.05em;
+  font-weight: 600;
+  cursor: pointer;
+  list-style: none;
 }
 
-details[open] summary {
-  border-bottom: var(--border-accent);
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary::after {
+  content: "＋";
+  display: grid;
+  flex: 0 0 1.65em;
+  place-items: center;
+  height: 1.65em;
+  margin-left: auto;
+  border-radius: 50%;
+  background-color: rgb(from var(--details-color) r g b / 0.16);
+  color: var(--details-color);
+  font-size: 0.85em;
+  font-weight: 400;
+}
+
+details[open] > summary {
+  border-bottom: 1px solid rgb(from var(--details-color) r g b / 0.18);
+  background-color: rgb(from var(--details-color) r g b / 0.11);
+}
+
+details[open] > summary::after {
+  content: "−";
+}
+
+main details > summary + * {
+  margin-top: 0.85rem;
+}
+
+main details > :not(summary) {
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+main details > :last-child {
+  margin-bottom: 0.9rem;
+}
+
+/* Header page tools open as a mega dropdown without increasing header height. */
+.header-tools {
+  position: relative;
+  z-index: 20;
+  display: grid;
+  grid-auto-columns: 1fr;
+  grid-auto-flow: column;
+  width: 100%;
+  margin: 0;
+  font-family: var(--font-ui);
+}
+
+.header-tools > details {
+  position: static;
+  margin: 0;
+  border: 0;
+  border-top: 1px solid rgb(from var(--color-white) r g b / 0.4);
+  border-left: 1px solid rgb(from var(--color-white) r g b / 0.3);
+  border-radius: 0;
+  overflow: visible;
+  background-color: rgb(from var(--color-black) r g b / 0.12);
+  box-shadow: none;
+  color: var(--color-white);
+  transform: none;
+  transition: none;
+}
+
+.header-tools > details:first-child {
+  border-left: 0;
+}
+
+.header-tools > details[open] {
+  margin: 0;
+  background-color: var(--color-white);
+  box-shadow: none;
+  color: var(--color-header-border);
+  transform: none;
+}
+
+.header-tools > details > summary {
+  position: relative;
+  justify-content: center;
+  border: 0;
+  padding: 0.65rem 0.8rem;
+  color: inherit;
+  background-color: transparent;
+  font-size: 0.95em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.header-tools > details > summary::after {
+  content: none;
+}
+
+.header-details-content {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  left: 0;
+  display: block;
+  max-height: min(65vh, 36rem);
+  border: 1px solid rgb(from var(--color-header) r g b / 0.3);
+  border-radius: var(--radius-panel);
+  padding: 0.8rem 1rem 1rem;
+  overflow: auto;
+  background-color: rgb(from var(--color-white) r g b / 0.98);
+  box-shadow: 0 8px 24px rgb(from var(--color-black) r g b / 0.28);
+  color: var(--color-text);
+  font-family: var(--font-body);
+}
+
+.header-details-content > :first-child {
+  margin-top: 0;
+}
+
+.header-details-content > :last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 500px) {
+  .header-tools {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+  }
+
+  .header-tools > details {
+    border-left: 0;
+  }
 }
 
 /* --------------------------------------------------------------------------
@@ -521,7 +722,19 @@ iframe {
 
 #logo {
   position: absolute;
+  top: 50%;
+  left: 0;
   height: 2.5em;
+  transform: translateY(-50%);
+  filter: brightness(0) invert(1);
+}
+
+@media (max-width: 700px) {
+  #logo {
+    position: static;
+    align-self: flex-start;
+    transform: none;
+  }
 }
 
 .mermaid {
