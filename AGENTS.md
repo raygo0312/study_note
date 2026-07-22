@@ -53,8 +53,6 @@ they require.
 - `src/pages/**/tags.mdrdef`: hierarchical tag definitions, loaded from the
   pages root through each page's directory with lower directories taking priority
 - `.mdr-generated`: temporary generated `.astro` output; ignored
-- `dist`: generated build output; do not edit manually or commit as part of
-  source work unless the user explicitly requests generated deployment output
 
 ## Implemented MDR Syntax
 
@@ -62,8 +60,8 @@ they require.
 - Paragraphs separated by existing blank lines
 - Term definitions: `*term*` compiles to `<dfn>`; MDR has no italic meaning
 - Builds collect every unique `*term*` into `definitions.json`, assign stable
-  `defineN` ids per page, auto-link plain-text matches with longest terms first,
-  and resolve `[label](*term)` dictionary references.
+  `defineN` ids per page, and resolve `[term]` and `[label](*term)` dictionary
+  references. Unbracketed plain text is never linked automatically.
 - Links: `[label](destination)`
 - Escapes: `\*`, `\$`, and other MDR punctuation
 - Inline and fenced code: backticks and triple backticks

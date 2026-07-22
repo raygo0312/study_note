@@ -96,7 +96,7 @@ function lexInline(text, offset, line, column) {
       }
     }
 
-    if (text[cursor] === '[') {
+    if (text[cursor] === '[' && text[cursor - 1] !== '\\' && text[cursor - 1] !== '\uE000') {
       const labelEnd = findClosing(cursor, '[', ']');
       if (labelEnd >= 0 && text[labelEnd + 1] === '(') {
         const destinationEnd = findClosing(labelEnd + 1, '(', ')');
@@ -114,6 +114,19 @@ function lexInline(text, offset, line, column) {
           textStart = cursor;
           continue;
         }
+      }
+      if (labelEnd > cursor + 1) {
+        flushText(cursor);
+        const label = text.slice(cursor + 1, labelEnd);
+        tokens.push(token(TokenType.Link, text.slice(cursor, labelEnd + 1),
+          offset + cursor, offset + labelEnd + 1, line, column + cursor, {
+            destination: `*${label}`,
+            definitionReference: true,
+            children: lexInline(label, offset + cursor + 1, line, column + cursor + 1),
+          }));
+        cursor = labelEnd + 1;
+        textStart = cursor;
+        continue;
       }
     }
 

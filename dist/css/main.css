@@ -3,34 +3,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
 
 :root {
-  --serif: "Noto Serif JP";
-  --sans: "Noto Sans JP";
-  --code: "Moralerspace Neon", "Monaspace Neon", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  --heading: "Shippori Mincho B1";
-  --border: var(--black) solid thin;
-  --accentborder: var(--main) solid thin;
-  --white: #f0f0f0;
-  --gray: #dddddd;
-  --black: #333333;
-  --background: #9099a2;
-  --menu: #555555;
-  --main: #91c0c0;
-  --h2: #96858f;
-  --h3: #c09f80;
-  --axm: #e2d2d2;
-  --def: #e3e2b4;
-  --thm: #c4db9a;
-  --prob: #bfc1d7;
-  --ex: #9fb1b5;
-  --lem: #ffffff;
+  /* Typography */
+  --font-body: "Noto Serif JP";
+  --font-ui: "Noto Sans JP";
+  --font-heading: "Shippori Mincho B1";
+  --font-code: "Moralerspace Neon", "Monaspace Neon", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+
+  /* Neutral surfaces and text */
+  --color-text: #333333;
+  --color-text-muted: #737373;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-surface: #f0f0f0;
+  --color-surface-muted: #dddddd;
+  --color-page-background: #9099a2;
+  --color-border-control: #0c0c0d;
+  --color-border-input: #1b2538;
+  --color-border-table: #666666;
+  --color-table-heading: #778ca3;
+
+  /* Brand and interaction */
+  --color-brand: #91c0c0;
+  --color-accent: #176b6b;
+  --color-accent-soft: #d6e8e8;
+  --color-link-visited: #65527a;
+  --color-focus: #da3c41;
+  --color-toggle: #6b8e23;
+  --color-code-text: #d6deeb;
+  --color-code-success: #98c379;
+  --color-code-failure: #e06c75;
+
+  /* Content hierarchy */
+  --color-heading-2: #96858f;
+  --color-heading-3: #c09f80;
+  --color-axiom: #ad5d72;
+  --color-definition: #c69a25;
+  --color-theorem: #6f9448;
+  --color-problem: #6979a8;
+  --color-example: #4d8494;
+  --color-lemma: #806a9b;
+
+  /* Shared geometry and motion */
+  --border-default: thin solid var(--color-text);
+  --border-accent: thin solid var(--color-accent);
+  --radius-small: 0.2em;
+  --transition-default: 0.5s;
 }
 
-/* 文書構造 */
+/* --------------------------------------------------------------------------
+ * Document shell
+ * -------------------------------------------------------------------------- */
 body {
-  color: var(--black);
   margin: 0;
-  background-color: var(--background);
-  font-family: var(--serif);
+  color: var(--color-text);
+  background-color: var(--color-page-background);
+  font-family: var(--font-body);
   line-break: strict;
 }
 
@@ -41,18 +68,18 @@ body {
 }
 
 header {
-  border-bottom: var(--border);
+  border-bottom: var(--border-default);
   padding: 10px;
-  background-color: var(--main);
-  font-family: var(--heading);
+  background-color: var(--color-brand);
+  font-family: var(--font-heading);
 }
 
 main {
   margin: auto;
-  border: var(--border);
+  border: var(--border-default);
   padding: 10px;
   min-height: 100vh;
-  background-color: var(--white);
+  background-color: var(--color-surface);
 }
 
 @media (max-width: 500px) {
@@ -69,37 +96,41 @@ main {
 }
 
 footer {
-  border-top: var(--border);
-  color: var(--white);
-  background-color: var(--black);
+  border-top: var(--border-default);
+  color: var(--color-surface);
+  background-color: var(--color-text);
 }
 
+/* --------------------------------------------------------------------------
+ * Content typography
+ * -------------------------------------------------------------------------- */
 h1 {
-  font-family: var(--heading);
-  text-shadow: 1px 1px 3px var(--gray);
   margin: 0 5em;
+  font-family: var(--font-heading);
+  text-shadow: 1px 1px 3px var(--color-surface-muted);
 }
 
 h2 {
   margin-top: 40px;
-  border-left: var(--h2) solid thick;
+  border-left: var(--color-heading-2) solid thick;
   padding-left: 10px;
-  background-color: rgb(from var(--h2) r g b / 0.3);
-  font-family: var(--sans);
+  background-color: rgb(from var(--color-heading-2) r g b / 0.3);
 }
 
 h3 {
   margin-top: 30px;
-  border-bottom: var(--h3) solid medium;
-  border-left: var(--h3) solid thick;
+  border-bottom: var(--color-heading-3) solid medium;
+  border-left: var(--color-heading-3) solid thick;
   padding-left: 5px;
-  font-family: var(--sans);
 }
 
 h4 {
   margin: 0;
   margin-top: 20px;
-  font-family: var(--sans);
+}
+
+:is(h2, h3, h4) {
+  font-family: var(--font-ui);
 }
 
 p {
@@ -107,225 +138,227 @@ p {
   margin: 0;
 }
 
-/* 意味付きテキスト */
-
-/* リンク */
+/* --------------------------------------------------------------------------
+ * Links and semantic text
+ * -------------------------------------------------------------------------- */
 a:link {
-  text-decoration: underline;
-  color: var(--black);
+  color: var(--color-accent);
+  text-decoration-line: underline;
+  text-decoration-color: rgb(from var(--color-accent) r g b / 0.55);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.16em;
 }
 
 a:visited {
-  color: var(--black);
+  color: var(--color-link-visited);
 }
 
 a:hover {
-  text-decoration: none;
+  border-radius: 0.15em;
+  background-color: var(--color-accent-soft);
+  text-decoration-color: currentColor;
 }
 
 a:active {
-  color: var(--white);
+  color: var(--color-text);
+  background-color: var(--color-brand);
 }
 
-/* 定義の用語 */
 dfn {
   font-weight: bold;
   font-style: normal;
 }
 
-/* 定義、定理、例などのセクション */
+/* --------------------------------------------------------------------------
+ * Semantic sections
+ *
+ * A section type only supplies its label and color. The shared rules own all
+ * layout and decoration, so adding another type requires one declaration.
+ * -------------------------------------------------------------------------- */
 section {
-  padding: 5px;
+  --section-color: var(--color-accent);
+  --section-label: "";
+
   position: relative;
-  padding-top: 3em;
   margin: 20px 5px;
+  border: var(--section-color) solid thin;
+  border-left-width: 5px;
+  padding: 3em 5px 5px;
+  background-color: rgb(from var(--section-color) r g b / 0.1);
 }
 
 section::before {
+  content: var(--section-label) attr(data-label);
   position: absolute;
-  box-sizing: border-box;
-  font-weight: bold;
-  padding: 5px;
-  width: 100%;
   top: 0;
   left: 0;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: var(--section-color) solid thin;
+  padding: 5px;
+  background-color: rgb(from var(--section-color) r g b / 0.28);
+  font-weight: bold;
 }
 
 section.def {
-  border: var(--def) solid thin;
-  background-color: rgb(from var(--def) r g b / 0.3);
-}
-
-section.def::before {
-  background-color: var(--def);
-  content: "定義： " attr(data-label);
+  --section-color: var(--color-definition);
+  --section-label: "定義： ";
 }
 
 section.axm {
-  border: var(--axm) solid thin;
-  background-color: rgb(from var(--axm) r g b / 0.3);
-}
-
-section.axm::before {
-  background-color: var(--axm);
-  content: "公理： " attr(data-label);
+  --section-color: var(--color-axiom);
+  --section-label: "公理： ";
 }
 
 section.thm {
-  border: var(--thm) solid thin;
-  background-color: rgb(from var(--thm) r g b / 0.3);
+  --section-color: var(--color-theorem);
+  --section-label: "定理： ";
 }
 
-section.thm::before {
-  background-color: var(--thm);
-  content: "定理： " attr(data-label);
+section.prob {
+  --section-color: var(--color-problem);
+  --section-label: "問題： ";
 }
 
 section.ex {
-  border: var(--ex) solid thin;
-  background-color: rgb(from var(--ex) r g b / 0.3);
-}
-
-section.ex::before {
-  background-color: var(--ex);
-  content: "例： " attr(data-label);
+  --section-color: var(--color-example);
+  --section-label: "例： ";
 }
 
 section.lem {
-  border: var(--lem) solid thin;
-  background-color: rgb(from var(--lem) r g b / 0.3);
+  --section-color: var(--color-lemma);
+  --section-label: "補題： ";
 }
 
-section.lem::before {
-  background-color: var(--lem);
-  content: "補題： " attr(data-label);
-}
-
-
-/* 折りたたみ */
+/* --------------------------------------------------------------------------
+ * Disclosure panels
+ * -------------------------------------------------------------------------- */
 details {
   margin: 5px;
-  border: var(--accentborder);
-  background-color: rgb(from var(--white) r g b / 0.3);
+  border: var(--border-accent);
+  background-color: rgb(from var(--color-surface) r g b / 0.3);
 }
 
 details[open] {
   margin-bottom: 10px;
-  box-shadow: 5px 10px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 5px 10px 3px rgb(from var(--color-black) r g b / 0.5);
   transform: translateY(-4px) translateX(-2px);
 }
 
-details+details {
+details + details {
   margin-top: -7px;
 }
 
-details+details[open] {
+details + details[open] {
   margin-top: -3px;
 }
 
 details summary {
   padding: 5px 10px;
-  font-family: var(--sans);
+  font-family: var(--font-ui);
   font-size: 1.1em;
 }
 
 details[open] summary {
-  border-bottom: var(--accentborder);
+  border-bottom: var(--border-accent);
 }
 
-/* ボタン */
+/* --------------------------------------------------------------------------
+ * Controls
+ * -------------------------------------------------------------------------- */
 button {
-  text-align: center;
-  text-decoration: none;
   width: 120px;
   margin: auto;
+  border: 2px solid var(--color-accent);
   padding: 5px;
+  color: var(--color-accent);
   font-weight: bold;
-  border: 2px solid var(--main);
-  color: var(--main);
-  transition: 0.5s;
+  text-align: center;
+  text-decoration: none;
+  transition: var(--transition-default);
 }
 
 button:hover {
-  background-color: var(--main);
-  color: white;
+  color: var(--color-white);
+  background-color: var(--color-accent);
 }
 
 input {
-  border: 1px solid #0c0c0d4d;
-  color: #737373;
-  display: inline-block;
+  border: 1px solid rgb(from var(--color-border-control) r g b / 0.3);
   margin: 0 4px;
+  color: var(--color-text-muted);
+  display: inline-block;
 }
 
-/* テキスト入力 */
 input[type="text"] {
   position: relative;
-  width: auto;
-  margin: 40px 0;
-  font: 15px/1.6 sans-serif;
   box-sizing: border-box;
   width: 100%;
-  padding: 0.3em;
-  color: #000000;
-  border: 1px solid #1b2538;
+  margin: 40px 0;
+  border: 1px solid var(--color-border-input);
   border-radius: 4px;
-  transition: 0.5s;
+  padding: 0.3em;
+  color: var(--color-black);
+  font: 15px/1.6 sans-serif;
+  transition: var(--transition-default);
 }
 
 input:focus {
-  border: 1px solid #da3c41;
-  box-shadow: 0 0 5px 1px rgba(218, 60, 65, .5);
+  border-color: var(--color-focus);
+  box-shadow: 0 0 5px 1px rgb(from var(--color-focus) r g b / 0.5);
   outline: none;
 }
 
-/* チェックボックス */
 input[type="checkbox"] {
   appearance: none;
-  padding: 0.5px;
-  background-color: #0c0c0d1a;
-  border-radius: 8px;
-  height: 16px;
   width: 32px;
+  height: 16px;
   margin: 0.5em;
+  border-radius: 8px;
+  padding: 0.5px;
+  background-color: rgb(from var(--color-border-control) r g b / 0.1);
 }
 
 input[type="checkbox"]:hover {
-  background-color: #0c0c0d33;
-  border-color: #0c0c0d7f;
+  border-color: rgb(from var(--color-border-control) r g b / 0.5);
+  background-color: rgb(from var(--color-border-control) r g b / 0.2);
 }
 
 input[type="checkbox"]:active {
-  background-color: #0c0c0d4d;
+  background-color: rgb(from var(--color-border-control) r g b / 0.3);
 }
 
 input[type="checkbox"]:focus {
-  box-shadow: 0 0 0 2px #6b8e23aa, 0 0 0 4px #6b8e2355;
+  box-shadow:
+    0 0 0 2px rgb(from var(--color-toggle) r g b / 0.67),
+    0 0 0 4px rgb(from var(--color-toggle) r g b / 0.33);
 }
 
 input[type="checkbox"]:checked {
-  background-color: #6b8e23;
-  border-color: #6b8e23;
+  border-color: var(--color-toggle);
+  background-color: var(--color-toggle);
 }
 
 input[type="checkbox"]::before {
-  background-color: currentColor;
-  border-radius: 6px;
   content: "";
   display: inline-block;
-  height: 12px;
-  margin-left: 1px;
-  margin-top: 1px;
-  transition: margin-left .2s cubic-bezier(.07, .95, 0, 1);
   width: 12px;
+  height: 12px;
+  margin-top: 1px;
+  margin-left: 1px;
+  border-radius: 6px;
+  background-color: currentColor;
+  transition: margin-left 0.2s cubic-bezier(0.07, 0.95, 0, 1);
 }
 
 input[type="checkbox"]:checked::before {
-  background-color: #ffffff;
+  background-color: var(--color-white);
   margin-left: 17px;
 }
 
-/* テーブル */
+/* --------------------------------------------------------------------------
+ * Tabular and definition data
+ * -------------------------------------------------------------------------- */
 table {
   width: 100%;
   text-align: center;
@@ -333,19 +366,16 @@ table {
   border-spacing: 0;
 }
 
+:is(th, td) {
+  padding: 10px;
+  border: solid 1px var(--color-border-table);
+}
+
 th {
-  padding: 10px;
-  background: #778ca3;
-  border: solid 1px #666666;
-  color: #ffffff;
+  color: var(--color-white);
+  background: var(--color-table-heading);
 }
 
-td {
-  padding: 10px;
-  border: solid 1px #666666;
-}
-
-/* 定義リスト */
 dl {
   display: grid;
   grid-template-columns: max-content auto;
@@ -360,6 +390,9 @@ dd {
   margin: 0;
 }
 
+/* --------------------------------------------------------------------------
+ * Code blocks
+ * -------------------------------------------------------------------------- */
 .code-block-wrapper {
   position: relative;
 }
@@ -369,7 +402,7 @@ pre.astro-code {
 }
 
 pre.astro-code code {
-  font-family: var(--code);
+  font-family: var(--font-code);
   font-size: 1em;
 }
 
@@ -380,18 +413,18 @@ pre.astro-code code {
   z-index: 1;
   width: auto;
   margin: 0;
-  border: 1px solid rgb(255 255 255 / 0.2);
+  border: 1px solid rgb(from var(--color-white) r g b / 0.2);
   border-radius: 4px;
   padding: 0.35em;
-  background: rgb(0 0 0 / 0.45);
-  color: #d6deeb;
+  background: rgb(from var(--color-black) r g b / 0.45);
+  color: var(--color-code-text);
   line-height: 0;
   transition: none;
 }
 
 .code-copy-button:hover {
-  background: rgb(255 255 255 / 0.14);
-  color: #ffffff;
+  color: var(--color-white);
+  background: rgb(from var(--color-white) r g b / 0.14);
 }
 
 .code-copy-button svg {
@@ -403,22 +436,27 @@ pre.astro-code code {
 }
 
 .code-copy-button.is-copied {
-  color: #98c379;
+  color: var(--color-code-success);
 }
 
 .code-copy-button.is-failed {
-  color: #e06c75;
+  color: var(--color-code-failure);
 }
 
-/* 外部リソース */
+/* --------------------------------------------------------------------------
+ * Embedded resources
+ * -------------------------------------------------------------------------- */
 iframe {
   width: 100%;
   height: 600px;
   border: none;
 }
 
-/* チャット */
+/* --------------------------------------------------------------------------
+ * Conversation bubbles
+ * -------------------------------------------------------------------------- */
 .you::before {
+  content: "";
   position: absolute;
   top: -0.5em;
   left: -3em;
@@ -426,75 +464,66 @@ iframe {
   height: 2.5em;
   background: url("../favicon/cleanness-teacher.png") no-repeat;
   background-size: contain;
-  content: "";
+}
+
+:is(.you, .me) {
+  position: relative;
+  width: fit-content;
+  max-width: 70%;
+  border-radius: 1em;
+  padding: 0.1em 0.3em 0.1em 0.5em;
+  background: var(--color-surface-muted);
 }
 
 .you {
-  width: fit-content;
-  position: relative;
   margin: 2.5em auto 2em 3em;
-  border-radius: 1em;
-  padding: 0.1em 0.5em;
-  padding-right: 0.3em;
-  max-width: 70%;
-  background: var(--gray);
 }
 
-.you+.me {
-  margin-top: -1.5em
+.you + .me {
+  margin-top: -1.5em;
 }
 
 .me {
-  width: fit-content;
-  position: relative;
   margin: 2em 1em 2em auto;
-  border-radius: 1em;
-  padding: 0.1em 0.5em;
-  padding-right: 0.3em;
-  max-width: 70%;
-  background: var(--gray);
   text-align: left;
 }
 
-.me+.you {
-  margin-top: -1em
+.me + .you {
+  margin-top: -1em;
 }
 
-.me>p,
-.you>p {
+:is(.me, .you) > p {
   text-indent: 0;
 }
 
-/* 数式 */
+/* --------------------------------------------------------------------------
+ * Content-specific utilities
+ * -------------------------------------------------------------------------- */
 .MathJax {
   padding: 0.1em 0.25em;
   overflow-x: auto;
   overflow-y: hidden;
 }
 
-/* 見出しラベル */
 .remark {
-  background: var(--main);
-  border-radius: 0.2em;
+  border-radius: var(--radius-small);
+  background: var(--color-brand);
 }
 
-.remark+ol {
+.remark + ol {
   list-style: upper-alpha;
 }
 
-/* ネストされたセクション */
 .nest {
-  border: var(--border);
+  border: var(--border-default);
   border-right: none;
 }
 
-/* ロゴ */
 #logo {
   position: absolute;
   height: 2.5em;
 }
 
-/* Mermaid */
 .mermaid {
   text-align: center;
 }

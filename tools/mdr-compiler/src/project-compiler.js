@@ -3,7 +3,7 @@ const path = require('node:path');
 const { compile } = require('./compiler');
 const { parseFrontmatter } = require('./frontmatter');
 const { resolveDocument } = require('./tag-definitions');
-const { buildTermDictionary } = require('./term-dictionary');
+const { buildTermDictionary, relativizeTermDictionary } = require('./term-dictionary');
 
 const IGNORED_DIRECTORIES = new Set(['.git', 'node_modules', 'dist']);
 
@@ -78,7 +78,7 @@ function compileProject(projectDirectory, options = {}) {
   });
   const termDictionary = buildTermDictionary(documents.map(({ body, outputRelativePath, sourcePath }) => ({
     source: body,
-    href: `/${outputRelativePath.replaceAll(path.sep, '/')}`,
+    href: outputRelativePath.replaceAll(path.sep, '/'),
     sourcePath,
   })));
   fs.mkdirSync(outputRoot, { recursive: true });
@@ -91,9 +91,13 @@ function compileProject(projectDirectory, options = {}) {
   for (const { outputRelativePath, document, body } of documents) {
     const outputPath = path.join(outputRoot, outputRelativePath);
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
+    const pageTermDictionary = relativizeTermDictionary(
+      termDictionary,
+      outputRelativePath.replaceAll(path.sep, '/'),
+    );
     fs.writeFileSync(outputPath, `${compile(body, {
       tagDefinitions: document.definitions,
-      termDictionary,
+      termDictionary: pageTermDictionary,
       termIdState: { next: 0 },
     })}\n`);
     files.push(outputRelativePath);

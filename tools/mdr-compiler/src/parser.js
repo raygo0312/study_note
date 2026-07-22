@@ -31,11 +31,13 @@ function parseInline(tokens, hardBreakAtEnd = false) {
       children.push({ type: 'escape', value: current.value });
     } else if (current.type === TokenType.Link) {
       flush();
-      children.push({
+      const link = {
         type: 'link',
         destination: current.destination,
         children: parseInline(current.children),
-      });
+      };
+      if (current.definitionReference) link.definitionReference = true;
+      children.push(link);
     } else if (current.type === TokenType.InlineTag) {
       flush();
       children.push({

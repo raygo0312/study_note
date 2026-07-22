@@ -1,6 +1,9 @@
 const { parse } = require('./parser');
-const { PROTECTED_MATH_ASTERISK, PROTECTED_MATH_SLASH, transformMath } = require('./math');
-const { renderLinkedText, resolveTermHref } = require('./term-dictionary');
+const {
+  PROTECTED_MATH_ASTERISK, PROTECTED_MATH_CLOSE_BRACKET,
+  PROTECTED_MATH_OPEN_BRACKET, PROTECTED_MATH_SLASH, transformMath,
+} = require('./math');
+const { resolveTermHref } = require('./term-dictionary');
 
 function escapeHtml(value) {
   return value.replace(/[&<>"']/g, (character) => ({
@@ -33,12 +36,7 @@ function renderInline(nodes, options = {}, allowTermLinks = true) {
   return nodes.map((node) => {
     switch (node.type) {
       case 'text':
-        return allowTermLinks ? renderLinkedText(
-          node.value,
-          options.termDictionary,
-          escapeHtml,
-          (term, href) => `<a href="${escapeHtml(href)}">${escapeHtml(term)}</a>`,
-        ) : escapeHtml(node.value);
+        return escapeHtml(node.value);
       case 'strong': {
         const state = options.termIdState || (options.termIdState = { next: 0 });
         return `<dfn id="define${state.next++}">${renderInline(node.children, options, false)}</dfn>`;
@@ -124,7 +122,9 @@ function compile(source, options = {}) {
     protectMdr: true,
   })), options)
     .replaceAll(PROTECTED_MATH_SLASH, '\\')
-    .replaceAll(PROTECTED_MATH_ASTERISK, '*');
+    .replaceAll(PROTECTED_MATH_ASTERISK, '*')
+    .replaceAll(PROTECTED_MATH_OPEN_BRACKET, '[')
+    .replaceAll(PROTECTED_MATH_CLOSE_BRACKET, ']');
 }
 
 module.exports = { compile, escapeHtml, render };

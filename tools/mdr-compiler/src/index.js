@@ -9,7 +9,9 @@ const { transformMath, transformMathLine } = require('./math');
 const { findImportRoot, parseDefinitions, resolveDocument, stripDirectives } = require('./tag-definitions');
 const { parseArguments, parseBlockTagStart, parseDescriptor } = require('./tag-syntax');
 const { parseFrontmatter } = require('./frontmatter');
-const { buildTermDictionary, extractTerms, renderLinkedText, resolveTermHref } = require('./term-dictionary');
+const {
+  buildTermDictionary, extractTerms, relativizeTermDictionary, resolveTermHref,
+} = require('./term-dictionary');
 
 module.exports = {
   TokenType, lex, parse, compile, escapeHtml, render,
@@ -18,5 +20,5 @@ module.exports = {
   format, formatAst, highlight, scopes,
   findImportRoot, parseDefinitions, resolveDocument, stripDirectives,
   parseArguments, parseBlockTagStart, parseDescriptor, parseFrontmatter,
-  buildTermDictionary, extractTerms, renderLinkedText, resolveTermHref,
+  buildTermDictionary, extractTerms, relativizeTermDictionary, resolveTermHref,
 };

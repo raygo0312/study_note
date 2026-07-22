@@ -20,6 +20,15 @@ test('matches inline tags with any number of class and id modifiers', () => {
   assert.equal(new RegExp(inlineTag.begin).exec(':[text]')[0], ':[');
 });
 
+test('highlights bare definition links but not escaped brackets', () => {
+  const definitionLink = inlineGrammar.patterns.find(({ name }) =>
+    name === 'meta.link.definition.mdr');
+  const pattern = new RegExp(definitionLink.match);
+  assert.ok(pattern.test('[論理体系]'));
+  assert.equal(pattern.test('\\[論理体系\\]'), false);
+  assert.equal(pattern.test('[表示](target.html)'), false);
+});
+
 test('matches block tags with an omitted div name', () => {
   const shorthand = grammar.repository['div-shorthand'];
   assert.ok(new RegExp(shorthand.begin).test(':::.panel#main'));

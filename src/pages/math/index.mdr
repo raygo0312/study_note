@@ -8,7 +8,7 @@ breadcrumbs:
 :::details
   :summary[各ページの関係]
 
-  :div.mermaid.panzoom[graph TB; mathmatics-introduction[数学とは]; click mathmatics-introduction href "math/mathmatics-introduction.html"; logical-formula[論理式]; click logical-formula href "math/logical-formula.html"; proof[証明]; click proof href "math/proof.html"; logical-formula-extension[論理式の拡張]; click logical-formula-extension href "math/logical-formula-extension.html"; natural-deduction[自然演繹]; click natural-deduction href "math/natural-deduction.html"; ZFC-axioms[ZFC公理系]; click ZFC-axioms href "math/ZFC-axioms.html"; order[順序]; click order href "math/order.html"; mathmatics-introduction --> logical-formula; logical-formula --> proof; proof --> logical-formula-extension; logical-formula-extension --> natural-deduction; natural-deduction --> ZFC-axioms; ZFC-axioms --> order]
+  :div.mermaid.panzoom[graph TB; mathmatics-introduction\[数学とは\]; click mathmatics-introduction href "math/mathmatics-introduction.html"; logical-formula\[論理式\]; click logical-formula href "math/logical-formula.html"; proof\[証明\]; click proof href "math/proof.html"; logical-formula-extension\[論理式の拡張\]; click logical-formula-extension href "math/logical-formula-extension.html"; natural-deduction\[自然演繹\]; click natural-deduction href "math/natural-deduction.html"; ZFC-axioms\[ZFC公理系\]; click ZFC-axioms href "math/ZFC-axioms.html"; order\[順序\]; click order href "math/order.html"; mathmatics-introduction --> logical-formula; logical-formula --> proof; proof --> logical-formula-extension; logical-formula-extension --> natural-deduction; natural-deduction --> ZFC-axioms; ZFC-axioms --> order]
 :::
 
 ## 数理論理学

@@ -36,6 +36,15 @@
       }
     },
     {
+      "name": "meta.link.definition.mdr",
+      "match": "(?<!\\\\)(\\[)([^\\]\\n]+)(\\])(?!\\()",
+      "captures": {
+        "1": { "name": "punctuation.definition.link.begin.markdown" },
+        "2": { "name": "markup.underline.link.markdown" },
+        "3": { "name": "punctuation.definition.link.end.markdown" }
+      }
+    },
+    {
       "name": "constant.character.escape.markdown",
       "match": "\\\\[\\\\`*{}\\[\\]()#+\\-.!_$:>/]"
     },

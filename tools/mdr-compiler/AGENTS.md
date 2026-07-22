@@ -33,9 +33,8 @@ consumes the public formatter and owns TextMate grammar and editing commands.
 - `*text*` is a term definition and renders as `<dfn>`, never italic.
 - A build rejects duplicate `*text*` terms across or within pages, assigns
   page-local `defineN` ids, and writes a term-to-page-fragment dictionary.
-- Plain text matching a known term is linked automatically. Overlapping terms
-  use longest-match-first; definitions, existing links, code, math, and headings
-  are excluded.
+- `[term]` links that label to its same-named dictionary definition. Plain text
+  is never linked automatically; literal brackets use `\[` and `\]` escapes.
 - `[label](*term)` links an arbitrary label to a known definition and is a build
   error when the term is unknown.
 - `-` is unordered and `+` is ordered; indentation represents nested lists.

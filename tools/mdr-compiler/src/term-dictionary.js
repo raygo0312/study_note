@@ -1,3 +1,4 @@
+const path = require('node:path');
 const { parse } = require('./parser');
 const { transformMath } = require('./math');
 
@@ -50,38 +51,6 @@ function buildTermDictionary(pages) {
   };
 }
 
-function renderLinkedText(value, dictionary, renderText, renderLink, { skipMath = false } = {}) {
-  if (!dictionary?.terms?.length || !value) return renderText(value);
-  const mathPattern = /\\\\\([\s\S]*?\\\\\)|\\\\\[[\s\S]*?\\\\\]/g;
-  let output = '';
-  let cursor = 0;
-  const renderPlain = (text) => {
-    let result = '';
-    let offset = 0;
-    while (offset < text.length) {
-      const term = dictionary.terms.find((candidate) => text.startsWith(candidate, offset));
-      if (!term) {
-        let end = offset + 1;
-        while (end < text.length
-          && !dictionary.terms.some((candidate) => text.startsWith(candidate, end))) end += 1;
-        result += renderText(text.slice(offset, end));
-        offset = end;
-        continue;
-      }
-      result += renderLink(term, dictionary.entries[term].href);
-      offset += term.length;
-    }
-    return result;
-  };
-  if (!skipMath) return renderPlain(value);
-  for (const match of value.matchAll(mathPattern)) {
-    output += renderPlain(value.slice(cursor, match.index));
-    output += renderText(match[0]);
-    cursor = match.index + match[0].length;
-  }
-  return output + renderPlain(value.slice(cursor));
-}
-
 function resolveTermHref(destination, dictionary) {
   if (!destination.startsWith('*')) return destination;
   const term = destination.slice(1);
@@ -90,4 +59,25 @@ function resolveTermHref(destination, dictionary) {
   return entry.href;
 }
 
-module.exports = { buildTermDictionary, extractTerms, renderLinkedText, resolveTermHref };
+function relativizeTermDictionary(dictionary, fromFile) {
+  const entries = {};
+  const fromDirectory = path.posix.dirname(fromFile.replaceAll(path.sep, '/'));
+  for (const term of dictionary.terms) {
+    const entry = dictionary.entries[term];
+    const [targetFile, fragment] = entry.href.split('#', 2);
+    let relative = path.posix.relative(fromDirectory, targetFile.replace(/^\//, ''));
+    if (!relative.startsWith('.')) relative = `./${relative}`;
+    entries[term] = {
+      ...entry,
+      href: `${relative}${fragment === undefined ? '' : `#${fragment}`}`,
+    };
+  }
+  return { entries, terms: dictionary.terms };
+}
+
+module.exports = {
+  buildTermDictionary,
+  extractTerms,
+  relativizeTermDictionary,
+  resolveTermHref,
+};

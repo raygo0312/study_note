@@ -3,14 +3,19 @@ const path = require('node:path');
 const { fileURLToPath, pathToFileURL } = require('node:url');
 const { findMdrFiles } = require('./project-compiler');
 const { compile, escapeHtml } = require('./compiler');
-const { PROTECTED_MATH_ASTERISK, transformMathLine } = require('./math');
+const {
+  PROTECTED_MATH_ASTERISK, PROTECTED_MATH_CLOSE_BRACKET,
+  PROTECTED_MATH_OPEN_BRACKET, transformMathLine,
+} = require('./math');
 const { resolveDocument } = require('./tag-definitions');
 const { parseBlockTagStart } = require('./tag-syntax');
 const { lexInline } = require('./lexer');
 const { parseInline } = require('./parser');
 const { parseFrontmatter } = require('./frontmatter');
 const { matchCodeFence, splitSourceLines } = require('./source-syntax');
-const { buildTermDictionary, renderLinkedText, resolveTermHref } = require('./term-dictionary');
+const {
+  buildTermDictionary, relativizeTermDictionary, resolveTermHref,
+} = require('./term-dictionary');
 
 const TAG_END_PATTERN = /^\s*:::[ \t]*$/;
 const LIST_ITEM_PATTERN = /^[ \t]*[+-][ \t]+/;
@@ -20,15 +25,7 @@ function transformInlineNodes(nodes, insideHtml = false, options = {}, allowTerm
   const output = [];
   for (const node of nodes) {
     if (node.type === 'text') {
-      output.push(allowTermLinks ? renderLinkedText(
-        node.value,
-        options.termDictionary,
-        insideHtml ? escapeHtml : (value) => value,
-        insideHtml
-          ? (term, href) => `<a href="${escapeHtml(href)}">${escapeHtml(term)}</a>`
-          : (term, href) => `[${term}](${href})`,
-        { skipMath: true },
-      ) : (insideHtml ? escapeHtml(node.value) : node.value));
+      output.push(insideHtml ? escapeHtml(node.value) : node.value);
     } else if (node.type === 'escape') {
       output.push(insideHtml ? escapeHtml(node.value) : `\\${node.value}`);
     } else if (node.type === 'strong') {
@@ -141,7 +138,10 @@ function transformMdrToMarkdown(source, options = {}) {
 
   if (state.inFence) throw new Error('Unclosed code fence');
 
-  return output.join('\n').replaceAll(PROTECTED_MATH_ASTERISK, '*');
+  return output.join('\n')
+    .replaceAll(PROTECTED_MATH_ASTERISK, '*')
+    .replaceAll(PROTECTED_MATH_OPEN_BRACKET, '[')
+    .replaceAll(PROTECTED_MATH_CLOSE_BRACKET, ']');
 }
 
 function routePattern(relativePage) {
@@ -151,8 +151,8 @@ function routePattern(relativePage) {
   return `/${normalized}`;
 }
 
-function routeFileHref(pattern) {
-  return pattern === '/' ? '/index.html' : `${pattern}.html`;
+function routeFilePath(pattern) {
+  return pattern === '/' ? 'index.html' : `${pattern.replace(/^\//, '')}.html`;
 }
 
 function jsonAttribute(value, fallback) {
@@ -214,7 +214,7 @@ async function generatePages(root, pagesDirectory, markdownProcessor) {
   });
   const termDictionary = buildTermDictionary(documents.map(({ body, pattern, sourcePath }) => ({
     source: body,
-    href: routeFileHref(pattern),
+    href: routeFilePath(pattern),
     sourcePath,
   })));
   fs.writeFileSync(path.join(generatedRoot, 'definitions.json'), `${JSON.stringify(
@@ -226,9 +226,10 @@ async function generatePages(root, pagesDirectory, markdownProcessor) {
   for (const { relativePage, pattern, sourcePath, attributes, body, document } of documents) {
     const generatedRelative = relativePage.replace(/\.mdr$/, '');
     const generatedPath = path.join(generatedRoot, `${generatedRelative}.astro`);
+    const pageTermDictionary = relativizeTermDictionary(termDictionary, routeFilePath(pattern));
     const markdown = transformMdrToMarkdown(body, {
       tagDefinitions: document.definitions,
-      termDictionary,
+      termDictionary: pageTermDictionary,
     });
     const rendered = await markdownProcessor.render(markdown, {
       fileURL: pathToFileURL(sourcePath),
@@ -279,7 +280,7 @@ module.exports = {
   transformInlineMdr,
   transformMdrToMarkdown,
   routePattern,
-  routeFileHref,
+  routeFilePath,
   createGeneratedPage,
   escapeAstroStaticHtml,
   isMdrSourceFile,
