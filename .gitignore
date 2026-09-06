@@ -4,3 +4,14 @@ node_modules
 tools/mdr-compiler/node_modules
 tools/mdr-vscode/dist
 tools/mdr-vscode/*.vsix
+
+# Local AI assistant instructions and workspace settings
+AGENTS.md
+CLAUDE.md
+GEMINI.md
+.codex
+.codex/
+.claude/
+.cursor/
+.aider*
+.github/copilot-instructions.md

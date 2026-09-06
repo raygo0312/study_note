@@ -1,0 +1,133 @@
+/* Shared, code-authored teaching diagrams. Theme tokens come from main.css. */
+.concept-diagram {
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  padding: 1.25rem;
+  background-color: var(--color-surface-sunken);
+  box-shadow: var(--shadow-sm);
+  font-family: var(--font-ui);
+  text-align: center;
+}
+
+.concept-diagram p {
+  margin: 0;
+  text-indent: 0;
+}
+
+.diagram-title {
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--color-heading);
+  font-size: 1.05rem;
+}
+
+.definition-equation,
+.diagram-flow {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.diagram-box,
+.diagram-step {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  padding: 0.85rem 1rem;
+  background-color: var(--color-surface);
+}
+
+.diagram-box small {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.diagram-box>p {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.diagram-box>span {
+  display: block;
+  font-size: 0.88rem;
+}
+
+.diagram-accent {
+  border-color: var(--color-brand);
+  background-color: var(--color-accent-soft);
+}
+
+.diagram-warning {
+  border-color: var(--color-axiom);
+  background-color: rgb(from var(--color-axiom) r g b / 0.09);
+}
+
+.diagram-connector,
+.diagram-arrow {
+  display: flex;
+  flex: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+.diagram-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.diagram-flow>p {
+  display: flex;
+  width: 100%;
+  align-items: stretch;
+  gap: 0.75rem;
+}
+
+@media (max-width: 650px) {
+  .definition-equation,
+  .diagram-flow,
+  .diagram-flow>p {
+    flex-direction: column;
+  }
+
+  .diagram-comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .diagram-arrow {
+    transform: rotate(90deg);
+  }
+}
+
+.mermaid {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.panzoom-viewport {
+  position: relative;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.panzoom-viewport>.mermaid {
+  margin: 0;
+}
+
+.mermaid p {
+  text-indent: 0;
+}

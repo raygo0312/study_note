@@ -1,8 +1,9 @@
-const checkbox = document.querySelector<HTMLInputElement>("[data-chat-toggle]");
+const checkbox = document.querySelector("[data-chat-toggle]");
 
-if (checkbox) {
-  const updateChatDisplay = (checked: boolean) => {
-    document.querySelectorAll<HTMLElement>(".you, .me").forEach((content) => {
+if (checkbox instanceof HTMLInputElement) {
+  const updateChatDisplay = (checked) => {
+    document.querySelectorAll(".you, .me").forEach((content) => {
+      if (!(content instanceof HTMLElement)) return;
       content.style.display = checked ? "block" : "none";
     });
   };

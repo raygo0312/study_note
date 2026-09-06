@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="ja" data-section="programming"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜プログラミング</title><link rel="icon" type="image/png" href="./favicon/icon.png"><link rel="stylesheet" href="./css/main.css"></head> <body> <header> <div class="header-main"> <div class="header-title"> <img src="./favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>プログラミング</h1> </div> </div> <div class="header-sticky-bar"> <nav aria-label="パンくず">  <a href="./index.html">ホーム</a> /  </nav>  <input type="checkbox" id="header-menu-toggle" class="header-menu-toggle"> <label for="header-menu-toggle" class="header-menu-btn" aria-label="メニューを開く"> <span></span><span></span><span></span> </label>  </div> <div class="header-tools" aria-label="ページツール"> <details name="page-tools"> <summary>目次</summary> <nav class="header-details-content" aria-label="目次"> <ul> <li> <a href="#競技プログラミング" class="tocLink">競技プログラミング</a> <ul><li> <a href="#rust-ライブラリ" class="tocLink">Rust ライブラリ</a>  </li><li> <a href="#よく使う処理" class="tocLink">よく使う処理</a>  </li></ul> </li> </ul> </nav> </details>   </div> <div class="reading-progress" aria-hidden="true"></div> </header> <main>  <p>プログラミングに関して学んだことをまとめている．</p> <h2 id="競技プログラミング">競技プログラミング</h2> <p>AtCoder向けの競技プログラミングで使用するアルゴリズムやライブラリをまとめている．言語は主にRustを対象としており，各種データ構造やアルゴリズムの使い方，実装例，計算量などを整理している．</p> <h3 id="rust-ライブラリ">Rust ライブラリ</h3> <h4 id="標準ライブラリ">標準ライブラリ</h4> <ul> <li><a href="./programming/integer-overflow.html">整数オーバーフロー</a></li> <li><a href="./programming/vector.html">可変配列 Vec</a></li> <li><a href="./programming/">仮想配列 BTreeMap</a></li> </ul> <h4 id="atcoderライブラリ">AtCoderライブラリ</h4> <ul> <li><a href="./programming/union-find.html">Union Find</a></li> </ul> <h3 id="よく使う処理">よく使う処理</h3> <ul> <li><a href="./programming/adjacent-direction-search.html">隣接方向探索</a></li> </ul>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>     <script type="module">const updateProgress = () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+  document.documentElement.style.setProperty("--reading-progress", String(Math.min(1, Math.max(0, ratio))));
+};
+
+updateProgress();
+window.addEventListener("scroll", updateProgress, { passive: true });
+window.addEventListener("resize", updateProgress);
+</script> <script type="module">// The mobile header sticks with a negative top offset so that the title block
+// scrolls out of view and only the breadcrumb bar stays pinned. The offset is
+// the title's height, which varies with the title text, so it is measured here.
+// The "is-stuck" class marks the state where the bar has reached the top edge,
+// which is what turns the header background translucent.
+// --header-height feeds --scroll-offset, so anchor targets land below the
+// pinned header instead of underneath it.
+const header = document.querySelector("header");
+const bar = document.querySelector(".header-sticky-bar");
+
+if (header && bar) {
+  let titleHeight = 0;
+
+  const updateStuck = () => {
+    header.classList.toggle("is-stuck", window.scrollY > titleHeight);
+  };
+
+  const updateOffset = () => {
+    // Both rects shift together while stuck, so this distance stays correct.
+    const offset = bar.getBoundingClientRect().top - header.getBoundingClientRect().top;
+    titleHeight = Math.max(0, Math.round(offset));
+    document.documentElement.style.setProperty("--header-title-height", `${titleHeight}px`);
+    document.documentElement.style.setProperty("--header-height", `${Math.round(header.offsetHeight)}px`);
+    updateStuck();
+  };
+
+  updateOffset();
+  window.addEventListener("scroll", updateStuck, { passive: true });
+  window.addEventListener("resize", updateOffset);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(updateOffset);
+  }
+}
+</script>   </body></html>

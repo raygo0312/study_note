@@ -1,4 +1,4 @@
-const detailsList = document.querySelectorAll<HTMLDetailsElement>("details");
+const detailsList = document.querySelectorAll("details");
 let lastToggleTime = 0;
 
 detailsList.forEach((details) => {
@@ -7,7 +7,7 @@ detailsList.forEach((details) => {
     if (now - lastToggleTime < 1000) return;
 
     lastToggleTime = now;
-    const iframes = details.querySelectorAll<HTMLIFrameElement>("iframe");
+    const iframes = details.querySelectorAll("iframe");
 
     if (details.open) {
       iframes.forEach((iframe) => {

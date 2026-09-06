@@ -4,8 +4,8 @@ title: Union Find
 breadcrumbs:
   - href: /index.html
     label: ホーム
-  - href: /competitive-programming.html
-    label: 競技プログラミング
+  - href: /programming.html
+    label: プログラミング
 ---
 
 AtCoderライブラリのUnion Find（Disjoint Set Union）についてまとめる．Union Findは、要素をいくつかのグループに分けるデータ構造で、グループの結合や同一グループかの判定などを効率的に行うことができる．

@@ -4,8 +4,8 @@ title: 方向探索
 breadcrumbs:
   - href: /index.html
     label: ホーム
-  - href: /competitive-programming.html
-    label: 競技プログラミング
+  - href: /programming.html
+    label: プログラミング
 ---
 
 マスの隣接するマスを探索する際の方法を紹介する．

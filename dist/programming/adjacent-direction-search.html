@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="ja"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜方向探索</title><link rel="icon" type="image/png" href="../favicon/icon.png"><link rel="stylesheet" href="../css/main.css"></head> <body> <header> <div class="header-main"> <div class="header-title"> <img src="../favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>方向探索</h1> </div> <nav aria-label="パンくず">  <a href="../index.html">ホーム</a> /  <a href="../competitive-programming.html">競技プログラミング</a> /  </nav> </div> <div class="header-tools" aria-label="ページツール"> <details name="page-tools"> <summary>目次</summary> <nav class="header-details-content" aria-label="目次"> <ul> <li> <a href="#8方向" class="tocLink">8方向</a>  </li> </ul> </nav> </details>   </div> </header> <main>  <p>マスの隣接するマスを探索する際の方法を紹介する．</p> <h2 id="8方向">8方向</h2> <p>8方向の探索をし，有効なマスの配列を返す関数．</p> <pre class="astro-code one-dark-pro" style="background-color:#282c34;color:#abb2bf; overflow-x: auto;" tabindex="0" data-language="rust"><code><span class="line"><span style="color:#C678DD">fn</span><span style="color:#61AFEF"> neighbors8</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">i</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">j</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">h</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">w</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">) -> </span><span style="color:#E5C07B">Vec</span><span style="color:#ABB2BF">&#x3C;(</span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">)> &#123;</span></span>
+<!DOCTYPE html><html lang="ja" data-section="programming"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜方向探索</title><link rel="icon" type="image/png" href="../favicon/icon.png"><link rel="stylesheet" href="../css/main.css"></head> <body> <header> <div class="header-main"> <div class="header-title"> <img src="../favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>方向探索</h1> </div> </div> <div class="header-sticky-bar"> <nav aria-label="パンくず">  <a href="../index.html">ホーム</a> /  <a href="../programming.html">プログラミング</a> /  </nav>  <input type="checkbox" id="header-menu-toggle" class="header-menu-toggle"> <label for="header-menu-toggle" class="header-menu-btn" aria-label="メニューを開く"> <span></span><span></span><span></span> </label>  </div> <div class="header-tools" aria-label="ページツール"> <details name="page-tools"> <summary>目次</summary> <nav class="header-details-content" aria-label="目次"> <ul> <li> <a href="#8方向" class="tocLink">8方向</a>  </li> </ul> </nav> </details>   </div> <div class="reading-progress" aria-hidden="true"></div> </header> <main>  <p>マスの隣接するマスを探索する際の方法を紹介する．</p> <h2 id="8方向">8方向</h2> <p>8方向の探索をし，有効なマスの配列を返す関数．</p> <pre class="astro-code one-dark-pro" style="background-color:#282c34;color:#abb2bf; overflow-x: auto;" tabindex="0" data-language="rust"><code><span class="line"><span style="color:#C678DD">fn</span><span style="color:#61AFEF"> neighbors8</span><span style="color:#ABB2BF">(</span><span style="color:#E06C75">i</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">j</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">h</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">w</span><span style="color:#ABB2BF">: </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">) -> </span><span style="color:#E5C07B">Vec</span><span style="color:#ABB2BF">&#x3C;(</span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">, </span><span style="color:#E5C07B">usize</span><span style="color:#ABB2BF">)> &#123;</span></span>
 <span class="line"><span style="color:#C678DD">  let</span><span style="color:#E06C75"> dir</span><span style="color:#56B6C2"> =</span><span style="color:#ABB2BF"> [</span></span>
 <span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">0</span><span style="color:#ABB2BF">),</span></span>
 <span class="line"><span style="color:#ABB2BF">    (</span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">, </span><span style="color:#D19A66">1</span><span style="color:#ABB2BF">),</span></span>
@@ -17,7 +17,50 @@
 <span class="line"><span style="color:#ABB2BF">    &#125;</span></span>
 <span class="line"><span style="color:#ABB2BF">  &#125;</span></span>
 <span class="line"><span style="color:#E06C75">  res</span></span>
-<span class="line"><span style="color:#ABB2BF">&#125;</span></span></code></pre>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer> <script>
+<span class="line"><span style="color:#ABB2BF">&#125;</span></span></code></pre>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>     <script type="module">const updateProgress = () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+  document.documentElement.style.setProperty("--reading-progress", String(Math.min(1, Math.max(0, ratio))));
+};
+
+updateProgress();
+window.addEventListener("scroll", updateProgress, { passive: true });
+window.addEventListener("resize", updateProgress);
+</script> <script type="module">// The mobile header sticks with a negative top offset so that the title block
+// scrolls out of view and only the breadcrumb bar stays pinned. The offset is
+// the title's height, which varies with the title text, so it is measured here.
+// The "is-stuck" class marks the state where the bar has reached the top edge,
+// which is what turns the header background translucent.
+// --header-height feeds --scroll-offset, so anchor targets land below the
+// pinned header instead of underneath it.
+const header = document.querySelector("header");
+const bar = document.querySelector(".header-sticky-bar");
+
+if (header && bar) {
+  let titleHeight = 0;
+
+  const updateStuck = () => {
+    header.classList.toggle("is-stuck", window.scrollY > titleHeight);
+  };
+
+  const updateOffset = () => {
+    // Both rects shift together while stuck, so this distance stays correct.
+    const offset = bar.getBoundingClientRect().top - header.getBoundingClientRect().top;
+    titleHeight = Math.max(0, Math.round(offset));
+    document.documentElement.style.setProperty("--header-title-height", `${titleHeight}px`);
+    document.documentElement.style.setProperty("--header-height", `${Math.round(header.offsetHeight)}px`);
+    updateStuck();
+  };
+
+  updateOffset();
+  window.addEventListener("scroll", updateStuck, { passive: true });
+  window.addEventListener("resize", updateOffset);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(updateOffset);
+  }
+}
+</script> <script>
         document.querySelectorAll("pre.astro-code").forEach((codeBlock) => {
           const wrapper = document.createElement("div");
           wrapper.className = "code-block-wrapper";

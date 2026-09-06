@@ -1,8 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
+@import url('./diagrams.css');
 
 :root {
+  color-scheme: light;
+
   /* Typography */
   --font-body: "Noto Serif JP";
   --font-ui: "Noto Sans JP";
@@ -10,46 +13,116 @@
   --font-code: "Moralerspace Neon", "Monaspace Neon", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
 
   /* Neutral surfaces and text */
-  --color-text: #333333;
-  --color-text-muted: #737373;
+  --color-text: #1c2530;
+  --color-text-muted: #5d6b7c;
   --color-black: #000000;
   --color-white: #ffffff;
-  --color-surface: #f0f0f0;
-  --color-surface-muted: #dddddd;
-  --color-page-background: #9099a2;
+  --color-surface: #ffffff;
+  --color-surface-muted: #eef2f7;
+  --color-surface-sunken: #f6f8fb;
+  --color-page-background: #e7ecf3;
+  --color-border: #d8dfe9;
   --color-border-control: #0c0c0d;
-  --color-border-input: #1b2538;
-  --color-border-table: #666666;
-  --color-table-heading: #778ca3;
+  --color-border-input: #c3cddb;
+  --color-border-table: #e0e6ef;
+  --color-table-heading: #eef2f7;
 
   /* Brand and interaction */
-  --color-brand: #91c0c0;
-  --color-accent: #176b6b;
-  --color-accent-soft: #d6e8e8;
-  --color-header: #1268a8;
-  --color-header-border: #0b4778;
-  --color-link-visited: #65527a;
-  --color-focus: #da3c41;
-  --color-toggle: #6b8e23;
+  --color-brand: #14b8a6;
+  --color-accent: #0e7c74;
+  --color-accent-strong: #0b5f59;
+  --color-accent-soft: #dcf1ee;
+  /* Own tokens so the bubbles stay independent of the shared surface colours.
+     Hues follow each character's hair: ash grey for the teacher, pink for the
+     student. */
+  --color-chat-you: #eef2f7;
+  --color-chat-me: #f1dcdf;
+  /* Fallback; the real value comes from the section themes below. */
+  --color-header: #04191c;
+  --color-focus: #14b8a6;
+  --color-toggle: #14b8a6;
   --color-code-text: #d6deeb;
   --color-code-success: #98c379;
   --color-code-failure: #e06c75;
 
   /* Content hierarchy */
-  --color-heading: #3f7d7d;
-  --color-axiom: #b64a4a;
-  --color-definition: #dbaa17;
-  --color-theorem: #78b943;
-  --color-problem: #6f86ce;
-  --color-example: #63a9bb;
-  --color-lemma: #996abd;
+  --color-heading: #0e7c74;
+  --color-axiom: #d1544f;
+  --color-definition: #c9910c;
+  --color-theorem: #3f9e57;
+  --color-example: #3d8ecb;
+  --color-problem: #b06fd0;
+  --color-lemma: #5b7fd4;
 
   /* Shared geometry and motion */
-  --border-default: thin solid var(--color-text);
-  --border-accent: thin solid var(--color-accent);
-  --radius-small: 0.2em;
-  --radius-panel: 8px;
-  --transition-default: 0.5s;
+  --border-default: 1px solid var(--color-border);
+  --border-accent: 1px solid var(--color-accent);
+  --radius-small: 0.35rem;
+  --radius-panel: 12px;
+  --radius-card: 18px;
+  --shadow-sm: 0 1px 2px rgb(from var(--color-black) r g b / 0.05);
+  --shadow-md: 0 6px 18px -8px rgb(from var(--color-black) r g b / 0.28);
+  --shadow-lg: 0 24px 60px -28px rgb(from var(--color-black) r g b / 0.42);
+  --transition-default: 0.18s cubic-bezier(0.2, 0.8, 0.3, 1);
+  --fade-top-right: linear-gradient(255deg, transparent 0%, var(--color-header) 100%);
+  /* How far an anchor target must clear the pinned header. The whole header
+     stays on screen here, so its full height applies. js/sticky-header.js
+     measures --header-height; the fallback covers the script not running. */
+  --scroll-offset: calc(var(--header-height, 9.5rem) + 1rem);
+}
+
+/* --------------------------------------------------------------------------
+ * Header themes
+ *
+ * data-section is set by BaseLayout from the first path segment. Each theme
+ * owns a base colour and a pattern file under public/patterns.
+ *
+ * Adding a section takes three edits:
+ *   1. add its directory name to `themedSections` in BaseLayout.astro
+ *   2. put its pattern in public/patterns
+ *   3. add a :root[data-section="..."] block here
+ * Anything not listed falls back to the "other" theme.
+ *
+ * Patterns come from Hero Patterns (https://heropatterns.com/), downloaded as
+ * plain SVG. Each file's single `fill` is set a little lighter than its base
+ * colour, which is what makes the pattern read; editing that one attribute
+ * recolours a theme, so no uncoloured copy is kept anywhere. Hero Patterns is
+ * CC BY 4.0, so keep attribution in mind when adding new ones.
+ * -------------------------------------------------------------------------- */
+:root[data-section="math"] {
+  --color-header: #000324;
+  --texture-header: url("../patterns/math.svg");
+}
+
+:root[data-section="programming"] {
+  --color-header: #021f11;
+  --texture-header: url("../patterns/programming.svg");
+}
+
+:root[data-section="other"] {
+  --color-header: #000000;
+  --texture-header: url("../patterns/other.svg");
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 /* --------------------------------------------------------------------------
@@ -59,65 +132,146 @@ body {
   margin: 0;
   color: var(--color-text);
   background-color: var(--color-page-background);
+  background-image:
+    radial-gradient(60rem 30rem at 12% -8%, rgb(from var(--color-brand) r g b / 0.14), transparent 60%),
+    radial-gradient(48rem 26rem at 92% 4%, rgb(from var(--color-example) r g b / 0.12), transparent 62%);
+  background-attachment: fixed;
   font-family: var(--font-body);
+  font-size: clamp(15px, calc(14px + 0.2vw), 16.5px);
   line-break: strict;
+  -webkit-font-smoothing: antialiased;
 }
 
-@media (max-width: 800px) {
-  body {
-    font-size: 12px;
-  }
-}
-
+/* The texture spans the whole header; .header-tools paints over its own strip
+   so the pattern stops before the tab row. The fade layer is listed first,
+   which puts it on top of the texture. */
 header {
-  border-bottom: 3px solid var(--color-header-border);
-  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 30;
   background-color: var(--color-header);
-  font-family: var(--font-heading);
+  background-image: var(--fade-top-right), var(--texture-header);
+}
+
+/* Sits along the bottom edge of the sticky header and rides along with it.
+   Width tracks how far the page has been read; only the leading edge fades. */
+.reading-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 40;
+  width: calc(var(--reading-progress, 0) * 100%);
+  height: 3px;
+  background-image: linear-gradient(90deg,
+      var(--color-brand) 0,
+      var(--color-brand) max(0px, calc(100% - 3rem)),
+      transparent 100%);
+  pointer-events: none;
 }
 
 .header-main {
-  padding: 10px;
+  padding: 0.5rem 1rem 0.25rem;
 }
 
-.header-main>nav,
-.header-main>nav a:any-link {
+.header-menu-toggle {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header-menu-btn {
+  display: none;
+  position: absolute;
+  top: 0.6rem;
+  right: 0.75rem;
+  width: 2.2rem;
+  height: 2.2rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  cursor: pointer;
+}
+
+.header-menu-btn span {
+  width: 1.1rem;
+  height: 2px;
+  background-color: rgb(from var(--color-white) r g b / 0.6);
+  border-radius: 999px;
+}
+
+.header-menu-toggle:checked~.header-menu-btn span {
+  background-color: rgb(from var(--color-white) r g b / 0.9);
+}
+
+/* position anchors the absolutely placed hamburger button. */
+.header-sticky-bar {
+  position: relative;
+  min-height: 2.2rem;
+  padding: 0 1rem;
+}
+
+.header-sticky-bar>nav,
+.header-sticky-bar>nav a:any-link {
+  color: rgb(from var(--color-white) r g b / 0.72);
+}
+
+.header-sticky-bar>nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.1rem;
+  margin: 0 0 0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
+}
+
+.header-sticky-bar>nav a:any-link {
+  border-radius: 999px;
+  padding: 0.15em 0.6em;
+  text-decoration: none;
+  transition: background-color var(--transition-default), color var(--transition-default);
+}
+
+.header-sticky-bar>nav a:hover {
   color: var(--color-white);
-}
-
-.header-main>nav {
-  margin: 0.6rem 0 0;
-}
-
-.header-main>nav a:hover {
-  background-color: rgb(from var(--color-white) r g b / 0.16);
+  background-color: rgb(from var(--color-white) r g b / 0.14);
 }
 
 main {
-  margin: auto;
+  margin: clamp(1rem, 3vw, 2.5rem) auto;
   border: var(--border-default);
-  padding: 10px;
-  min-height: 100vh;
+  border-radius: var(--radius-card);
+  padding: clamp(1rem, 3vw, 2.75rem);
+  min-height: 60vh;
   background-color: var(--color-surface);
+  box-shadow: var(--shadow-lg);
 }
 
-@media (max-width: 500px) {
+@media (max-width: 700px) {
   main {
-    padding: 2px;
+    margin-inline: 0.5rem;
+    border-radius: var(--radius-panel);
+    padding: 1rem 0.85rem;
   }
 }
 
 @media (min-width: 1200px) {
   main {
-    width: 1200px;
-    margin: auto;
+    width: min(1120px, calc(100% - 4rem));
   }
 }
 
 footer {
   border-top: var(--border-default);
-  color: var(--color-surface);
-  background-color: var(--color-text);
+  padding: 1.5rem 1rem 2rem;
+  color: var(--color-text-muted);
+  background-color: transparent;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  text-align: center;
+  letter-spacing: 0.04em;
 }
 
 /* --------------------------------------------------------------------------
@@ -127,53 +281,129 @@ h1 {
   margin: 0;
   color: var(--color-white);
   font-family: var(--font-heading);
+  font-size: clamp(1.35rem, 2.6vw, 2rem);
   text-align: center;
-  text-shadow: 1px 1px 3px rgb(from var(--color-black) r g b / 0.45);
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 18px rgb(from var(--color-black) r g b / 0.5);
 }
 
+/* position anchors the absolutely placed logo. */
 .header-title {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 2.5em;
-  margin: 0.5rem clamp(1rem, 4vw, 3rem) 1rem;
+  min-height: 2.75em;
+  margin: 0.35rem clamp(1rem, 4vw, 3rem) 0.6rem;
 }
 
 @media (max-width: 700px) {
+
+  /* The header stays sticky, but pinned high enough that the title block sits
+     above the viewport once scrolled. Only the bar below it stays visible.
+     --header-title-height is measured by js/sticky-header.js. */
+  header {
+    top: calc(-1 * var(--header-title-height, 5rem));
+  }
+
+  /* Only the bar covers content here, so the title's height comes back off. */
+  :root {
+    --scroll-offset: calc(var(--header-height, 9.5rem) - var(--header-title-height, 5rem) + 1rem);
+  }
+
+  /* Solid at the top of the page, translucent once the bar is pinned. The
+     texture is dropped because its fade layer is opaque, which would otherwise
+     cancel the translucency. By then the textured title is off-screen anyway. */
+  header.is-stuck {
+    background-color: rgb(from var(--color-header) r g b / 0.55);
+    background-image: none;
+  }
+
+  /* Carries the same translucency as the header it sits under. */
+  .reading-progress {
+    opacity: 0.55;
+  }
+
+  /* An open menu drops the translucency so it reads against the page. */
+  header.is-stuck:has(.header-menu-toggle:checked) {
+    background-color: var(--color-header);
+  }
+
+  header:has(.header-menu-toggle:checked) .reading-progress {
+    opacity: 1;
+  }
+
   .header-title {
-    align-items: stretch;
+    align-items: center;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.6rem;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .header-menu-btn {
+    display: flex;
+  }
+
+  .header-sticky-bar {
+    min-height: 3.2rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .header-sticky-bar>nav {
+    margin: 0;
+    padding-right: 2.6rem;
   }
 }
 
 h2 {
-  margin: 3.5rem 0 1.25rem;
-  padding: 0.45em 0.65em;
-  border-radius: var(--radius-panel);
-  color: var(--color-white);
-  background-color: var(--color-heading);
-  font-size: clamp(1.65rem, 2.2vw, 2.2rem);
+  margin: 3rem 0 1rem;
+  border-left: thick solid var(--color-heading);
+  border-radius: 0;
+  padding: 0.2em 0.5em 0.2em 10px;
+  color: var(--color-text);
+  box-shadow: var(--shadow-md);
+  font-size: clamp(1.5rem, 2.1vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: 0.01em;
   line-height: 1.4;
-  scroll-margin-top: 1rem;
+  scroll-margin-top: var(--scroll-offset);
 }
 
 h3 {
-  margin: 2.75rem 0 1rem;
-  border: 1px solid rgb(from var(--color-heading) r g b / 0.38);
-  border-radius: var(--radius-panel);
-  padding: 0.4em 0.75em;
+  margin: 2.5rem 0 0.75rem;
+  border: 0;
+  border-radius: 0;
+  padding: 0 0 0.35rem;
   color: var(--color-heading);
-  background-color: rgb(from var(--color-heading) r g b / 0.14);
-  font-size: clamp(1.3rem, 1.6vw, 1.65rem);
-  line-height: 1.45;
-  scroll-margin-top: 1rem;
+  background-color: transparent;
+  box-shadow: inset 0 -2px 0 rgb(from var(--color-heading) r g b / 0.25);
+  font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.5;
+  scroll-margin-top: var(--scroll-offset);
 }
 
 h4 {
-  margin: 0;
-  margin-top: 20px;
+  margin: 1.75rem 0 0.5rem;
+  color: var(--color-text);
+  font-size: 1.05em;
+  font-weight: 700;
+  line-height: 1.5;
+}
+
+h4::before {
+  content: "";
+  display: inline-block;
+  width: 0.4em;
+  height: 0.4em;
+  margin-right: 0.55em;
+  border-radius: 50%;
+  background-color: var(--section-color, var(--color-heading));
+  transform: translateY(-0.12em);
 }
 
 section>h4:first-child {
@@ -182,6 +412,7 @@ section>h4:first-child {
 
 :is(h2, h3, h4) {
   font-family: var(--font-ui);
+  text-wrap: balance;
 }
 
 p {
@@ -191,49 +422,89 @@ p {
 
 /* Page-level prose carries the explanation between semantic callout boxes. */
 main>p {
-  margin: 0.9rem 0.5rem 1.1rem;
-  font-size: 1.05em;
-  line-height: 1.9;
+  margin: 0.9rem 0 1.2rem;
+  font-size: 1.02em;
+  line-height: 2;
 }
 
 main> :is(ul, ol) {
-  margin-block: 1rem 1.5rem;
-  line-height: 1.75;
+  margin-block: 1rem 1.75rem;
+  padding-left: 1.4em;
+  line-height: 1.95;
+}
+
+main> :is(ul, ol)>li::marker {
+  color: var(--color-accent);
 }
 
 main>h2:first-child {
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+hr {
+  height: 1px;
+  margin: 2.5rem 0;
+  border: 0;
+  background-image: linear-gradient(90deg, transparent, var(--color-border), transparent);
+}
+
+blockquote {
+  margin: 1.5rem 0;
+  border-left: 3px solid var(--color-border);
+  padding: 0.4rem 0 0.4rem 1rem;
+  color: var(--color-text-muted);
 }
 
 /* --------------------------------------------------------------------------
  * Links and semantic text
  * -------------------------------------------------------------------------- */
-a:link {
-  color: var(--color-accent);
+/* Links take the colour of the text around them; the underline is what marks
+   them as links, so it carries the accent instead. */
+a:any-link {
+  border-radius: var(--radius-small);
+  color: inherit;
   text-decoration-line: underline;
   text-decoration-color: rgb(from var(--color-accent) r g b / 0.55);
   text-decoration-thickness: 0.08em;
-  text-underline-offset: 0.16em;
-}
-
-a:visited {
-  color: var(--color-link-visited);
+  text-underline-offset: 0.2em;
+  transition: color var(--transition-default), background-color var(--transition-default), text-decoration-color var(--transition-default);
 }
 
 a:hover {
-  border-radius: 0.15em;
+  color: var(--color-accent-strong);
   background-color: var(--color-accent-soft);
   text-decoration-color: currentColor;
 }
 
 a:active {
-  color: var(--color-text);
-  background-color: var(--color-brand);
+  color: var(--color-white);
+  background-color: var(--color-accent);
 }
 
+:where(a, button, summary, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-small);
+}
+
+/* No underline: that belongs to links now. Colour and weight mark a term. */
+/* Marked typographically, not by colour: gothic inside the mincho body text.
+   Keeps full text contrast and shares no visual cue with links. */
 dfn {
-  font-weight: bold;
+  font-family: var(--font-ui);
+  font-weight: 700;
   font-style: normal;
+  letter-spacing: 0.02em;
+  scroll-margin-top: var(--scroll-offset);
+}
+
+code:not(pre code) {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-small);
+  padding: 0.1em 0.4em;
+  background-color: var(--color-surface-sunken);
+  font-family: var(--font-code);
+  font-size: 0.9em;
 }
 
 /* --------------------------------------------------------------------------
@@ -247,11 +518,14 @@ section {
   --section-label: "";
 
   position: relative;
-  margin: 20px 5px;
-  border: 0;
+  margin: 1.75rem 0;
+  border: 1px solid rgb(from var(--section-color) r g b / 0.28);
   border-left: 3px solid var(--section-color);
-  padding: 3em 5px 5px;
+  border-radius: 0 var(--radius-panel) var(--radius-panel) 0;
+  padding: 3.2rem 1.1rem 1.1rem;
+  overflow: hidden;
   background-color: rgb(from var(--section-color) r g b / 0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 section::before {
@@ -259,12 +533,15 @@ section::before {
   position: absolute;
   top: 0;
   left: 0;
-  box-sizing: border-box;
   width: 100%;
-  padding: 5px;
-  background-color: rgb(from var(--section-color) r g b / 0.28);
+  padding: 0.55rem 1.1rem;
+  border-bottom: 1px solid rgb(from var(--section-color) r g b / 0.2);
+  background-color: rgb(from var(--section-color) r g b / 0.14);
+  color: var(--section-color);
   font-family: var(--font-ui);
-  font-weight: bold;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
 }
 
 section.def {
@@ -303,33 +580,39 @@ section.lem {
 details {
   --details-color: var(--section-color, var(--color-accent));
 
-  margin: 0.75rem 0;
-  border: 1px solid var(--details-color);
+  margin: 1rem 0;
+  border: 1px solid rgb(from var(--details-color) r g b / 0.3);
   border-radius: var(--radius-panel);
   overflow: hidden;
-  background-color: rgb(from var(--color-white) r g b / 0.38);
+  background-color: var(--color-surface-sunken);
+  box-shadow: var(--shadow-sm);
   transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    border-color var(--transition-default),
+    box-shadow var(--transition-default);
 }
 
 details[open] {
-  border-color: var(--details-color);
-  box-shadow: 0 4px 12px rgb(from var(--color-black) r g b / 0.12);
+  border-color: rgb(from var(--details-color) r g b / 0.5);
+  box-shadow: var(--shadow-md);
 }
 
 details>summary {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.65rem 0.85rem;
+  padding: 0.7rem 0.95rem;
   color: var(--details-color);
-  background-color: rgb(from var(--details-color) r g b / 0.07);
+  background-color: rgb(from var(--details-color) r g b / 0.06);
   font-family: var(--font-ui);
-  font-size: 1.05em;
-  font-weight: 600;
+  font-size: 0.98em;
+  font-weight: 700;
   cursor: pointer;
   list-style: none;
+  transition: background-color var(--transition-default);
+}
+
+details>summary:hover {
+  background-color: rgb(from var(--details-color) r g b / 0.12);
 }
 
 details>summary::-webkit-details-marker {
@@ -337,30 +620,30 @@ details>summary::-webkit-details-marker {
 }
 
 details>summary::after {
-  content: "＋";
-  display: grid;
-  flex: 0 0 1.65em;
-  place-items: center;
-  height: 1.65em;
+  content: "";
+  flex: 0 0 0.55em;
+  width: 0.55em;
+  height: 0.55em;
   margin-left: auto;
-  border-radius: 50%;
-  background-color: rgb(from var(--details-color) r g b / 0.16);
-  color: var(--details-color);
-  font-size: 0.85em;
-  font-weight: 400;
+  margin-right: 0.25em;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  border-radius: 1px;
+  transform: rotate(45deg) translate(-0.1em, -0.1em);
+  transition: transform var(--transition-default);
 }
 
 details[open]>summary {
   border-bottom: 1px solid rgb(from var(--details-color) r g b / 0.18);
-  background-color: rgb(from var(--details-color) r g b / 0.11);
+  background-color: rgb(from var(--details-color) r g b / 0.1);
 }
 
 details[open]>summary::after {
-  content: "−";
+  transform: rotate(-135deg) translate(-0.1em, -0.1em);
 }
 
 main details[open]>summary {
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.85rem;
 }
 
 main details> :not(summary) {
@@ -369,7 +652,7 @@ main details> :not(summary) {
 }
 
 main details> :last-child {
-  margin-bottom: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 /* Header page tools open as a mega dropdown without increasing header height. */
@@ -381,21 +664,32 @@ main details> :last-child {
   grid-auto-flow: column;
   width: 100%;
   margin: 0;
+  border-top: 1px solid rgb(from var(--color-white) r g b / 0.12);
+  /* Opaque so the header texture never bleeds into the tab row. */
+  background-color: var(--color-header);
   font-family: var(--font-ui);
+}
+
+@media (max-width: 700px) {
+  .header-tools {
+    display: none;
+  }
+
+  header:has(.header-menu-toggle:checked) .header-tools {
+    display: grid;
+  }
 }
 
 .header-tools>details {
   position: static;
   margin: 0;
   border: 0;
-  border-top: 1px solid rgb(from var(--color-white) r g b / 0.4);
-  border-left: 1px solid rgb(from var(--color-white) r g b / 0.3);
+  border-left: 1px solid rgb(from var(--color-white) r g b / 0.12);
   border-radius: 0;
   overflow: visible;
-  background-color: rgb(from var(--color-black) r g b / 0.12);
+  background-color: transparent;
   box-shadow: none;
-  color: var(--color-white);
-  transform: none;
+  color: rgb(from var(--color-white) r g b / 0.8);
   transition: none;
 }
 
@@ -405,43 +699,84 @@ main details> :last-child {
 
 .header-tools>details[open] {
   margin: 0;
-  background-color: var(--color-white);
+  background-color: rgb(from var(--color-white) r g b / 0.12);
   box-shadow: none;
-  color: var(--color-header-border);
-  transform: none;
+  color: var(--color-white);
 }
 
 .header-tools>details>summary {
   position: relative;
   justify-content: center;
+  gap: 0.5rem;
   border: 0;
-  padding: 0.65rem 0.8rem;
+  padding: 0.6rem 0.8rem;
   color: inherit;
   background-color: transparent;
-  font-size: 0.95em;
+  font-size: 0.85rem;
   font-weight: 700;
+  letter-spacing: 0.04em;
   text-align: center;
 }
 
+.header-tools>details>summary:hover {
+  color: var(--color-white);
+  background-color: rgb(from var(--color-white) r g b / 0.08);
+}
+
 .header-tools>details>summary::after {
-  content: none;
+  content: "";
+  flex: 0 0 0.4em;
+  width: 0.4em;
+  height: 0.4em;
+  margin: 0;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translateY(-0.1em);
+}
+
+.header-tools>details[open]>summary::after {
+  transform: rotate(-135deg) translateY(-0.1em);
 }
 
 .header-details-content {
   position: absolute;
-  top: calc(100% + 0.5rem);
-  right: 0;
-  left: 0;
+  top: calc(100% + 0.65rem);
+  right: 0.5rem;
+  left: 0.5rem;
   display: block;
   max-height: min(65vh, 36rem);
-  border: 1px solid rgb(from var(--color-header) r g b / 0.3);
-  border-radius: var(--radius-panel);
-  padding: 0.8rem 1rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: 1rem 1.25rem 1.25rem;
   overflow: auto;
-  background-color: rgb(from var(--color-white) r g b / 0.98);
-  box-shadow: 0 8px 24px rgb(from var(--color-black) r g b / 0.28);
+  background-color: rgb(from var(--color-surface) r g b / 0.97);
+  box-shadow: var(--shadow-lg);
   color: var(--color-text);
   font-family: var(--font-body);
+  animation: header-dropdown-in 0.18s cubic-bezier(0.2, 0.8, 0.3, 1);
+}
+
+@keyframes header-dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.4rem);
+  }
+}
+
+.header-details-content ul {
+  margin: 0;
+  padding-left: 1.1em;
+  list-style: none;
+}
+
+.header-details-content li {
+  margin: 0.15rem 0;
+}
+
+.header-details-content a.tocLink {
+  display: inline-block;
+  padding: 0.15em 0.4em;
+  text-decoration: none;
 }
 
 .header-details-content> :first-child {
@@ -452,6 +787,18 @@ main details> :last-child {
   margin-bottom: 0;
 }
 
+.chat-toggle-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  cursor: pointer;
+}
+
+.chat-toggle-label>input[type="checkbox"] {
+  flex: none;
+  margin: 0;
+}
+
 @media (max-width: 500px) {
   .header-tools {
     grid-auto-flow: row;
@@ -460,6 +807,7 @@ main details> :last-child {
 
   .header-tools>details {
     border-left: 0;
+    border-top: 1px solid rgb(from var(--color-white) r g b / 0.12);
   }
 }
 
@@ -467,71 +815,86 @@ main details> :last-child {
  * Controls
  * -------------------------------------------------------------------------- */
 button {
-  width: 120px;
+  width: auto;
+  min-width: 8rem;
   margin: auto;
-  border: 2px solid var(--color-accent);
-  padding: 5px;
-  color: var(--color-accent);
-  font-weight: bold;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.5em 1.25em;
+  color: var(--color-white);
+  background-color: var(--color-accent);
+  box-shadow: var(--shadow-sm), inset 0 1px 0 rgb(from var(--color-white) r g b / 0.25);
+  font-family: var(--font-ui);
+  font-weight: 700;
   text-align: center;
   text-decoration: none;
-  transition: var(--transition-default);
+  cursor: pointer;
+  transition: transform var(--transition-default), box-shadow var(--transition-default), filter var(--transition-default);
 }
 
 button:hover {
   color: var(--color-white);
-  background-color: var(--color-accent);
+  background-color: transparent;
+  box-shadow: var(--shadow-md);
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
 }
 
 input {
-  border: 1px solid rgb(from var(--color-border-control) r g b / 0.3);
+  border: 1px solid var(--color-border-input);
   margin: 0 4px;
-  color: var(--color-text-muted);
+  color: var(--color-text);
   display: inline-block;
 }
 
 input[type="text"] {
   position: relative;
-  box-sizing: border-box;
   width: 100%;
-  margin: 40px 0;
+  margin: 1.5rem 0;
   border: 1px solid var(--color-border-input);
-  border-radius: 4px;
-  padding: 0.3em;
-  color: var(--color-black);
-  font: 15px/1.6 sans-serif;
-  transition: var(--transition-default);
+  border-radius: 999px;
+  padding: 0.7em 1.1em;
+  color: var(--color-text);
+  background-color: var(--color-surface-sunken);
+  box-shadow: var(--shadow-sm);
+  font: inherit;
+  font-family: var(--font-ui);
+  transition: border-color var(--transition-default), box-shadow var(--transition-default);
+}
+
+input[type="text"]::placeholder {
+  color: var(--color-text-muted);
 }
 
 input:focus {
   border-color: var(--color-focus);
-  box-shadow: 0 0 5px 1px rgb(from var(--color-focus) r g b / 0.5);
+  box-shadow: 0 0 0 4px rgb(from var(--color-focus) r g b / 0.18);
   outline: none;
 }
 
 input[type="checkbox"] {
   appearance: none;
-  width: 32px;
-  height: 16px;
+  width: 34px;
+  height: 18px;
   margin: 0.5em;
-  border-radius: 8px;
-  padding: 0.5px;
-  background-color: rgb(from var(--color-border-control) r g b / 0.1);
+  border: 1px solid var(--color-border-input);
+  border-radius: 999px;
+  padding: 1px;
+  background-color: var(--color-surface-muted);
+  cursor: pointer;
+  transition: background-color var(--transition-default), border-color var(--transition-default);
 }
 
 input[type="checkbox"]:hover {
-  border-color: rgb(from var(--color-border-control) r g b / 0.5);
-  background-color: rgb(from var(--color-border-control) r g b / 0.2);
-}
-
-input[type="checkbox"]:active {
-  background-color: rgb(from var(--color-border-control) r g b / 0.3);
+  border-color: var(--color-text-muted);
 }
 
 input[type="checkbox"]:focus {
-  box-shadow:
-    0 0 0 2px rgb(from var(--color-toggle) r g b / 0.67),
-    0 0 0 4px rgb(from var(--color-toggle) r g b / 0.33);
+  box-shadow: 0 0 0 4px rgb(from var(--color-toggle) r g b / 0.22);
 }
 
 input[type="checkbox"]:checked {
@@ -541,19 +904,18 @@ input[type="checkbox"]:checked {
 
 input[type="checkbox"]::before {
   content: "";
-  display: inline-block;
-  width: 12px;
-  height: 12px;
-  margin-top: 1px;
-  margin-left: 1px;
-  border-radius: 6px;
-  background-color: currentColor;
-  transition: margin-left 0.2s cubic-bezier(0.07, 0.95, 0, 1);
+  display: block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+  box-shadow: var(--shadow-sm);
+  transition: margin-left var(--transition-default), background-color var(--transition-default);
 }
 
 input[type="checkbox"]:checked::before {
   background-color: var(--color-white);
-  margin-left: 17px;
+  margin-left: 16px;
 }
 
 /* --------------------------------------------------------------------------
@@ -561,29 +923,48 @@ input[type="checkbox"]:checked::before {
  * -------------------------------------------------------------------------- */
 table {
   width: 100%;
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-border-table);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
   text-align: center;
-  border-collapse: collapse;
+  border-collapse: separate;
   border-spacing: 0;
+  font-family: var(--font-ui);
+  font-size: 0.95em;
 }
 
 :is(th, td) {
-  padding: 10px;
-  border: solid 1px var(--color-border-table);
+  padding: 0.7rem 0.9rem;
+  border: 0;
+  border-bottom: 1px solid var(--color-border-table);
+}
+
+tr:last-child :is(th, td) {
+  border-bottom: 0;
 }
 
 th {
-  color: var(--color-white);
+  color: var(--color-text);
   background: var(--color-table-heading);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+tbody tr:hover td {
+  background-color: rgb(from var(--color-brand) r g b / 0.06);
 }
 
 dl {
   display: grid;
   grid-template-columns: max-content auto;
-  column-gap: 0.5em;
+  column-gap: 0.75em;
+  row-gap: 0.2em;
 }
 
 dt {
-  font-weight: bold;
+  color: var(--color-accent);
+  font-weight: 700;
 }
 
 dd {
@@ -595,41 +976,62 @@ dd {
  * -------------------------------------------------------------------------- */
 .code-block-wrapper {
   position: relative;
+  margin: 1.5rem 0;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
 }
 
 pre.astro-code {
-  padding: 1em;
+  margin: 0;
+  padding: 1.1em 1.2em;
+  overflow-x: auto;
 }
 
 pre.astro-code code {
   font-family: var(--font-code);
-  font-size: 1em;
+  font-size: 0.95em;
+  line-height: 1.7;
 }
 
 .code-copy-button {
   position: absolute;
-  top: 0.45em;
-  right: 0.45em;
+  top: 0.5em;
+  right: 0.5em;
   z-index: 1;
   width: auto;
+  min-width: 0;
   margin: 0;
-  border: 1px solid rgb(from var(--color-white) r g b / 0.2);
-  border-radius: 4px;
-  padding: 0.35em;
-  background: rgb(from var(--color-black) r g b / 0.45);
+  border: 1px solid rgb(from var(--color-white) r g b / 0.16);
+  border-radius: 8px;
+  padding: 0.4em;
+  background: rgb(from var(--color-black) r g b / 0.4);
+  background-image: none;
+  box-shadow: none;
   color: var(--color-code-text);
   line-height: 0;
-  transition: none;
+  opacity: 0;
+  transition: opacity var(--transition-default), background-color var(--transition-default), color var(--transition-default);
+}
+
+.code-block-wrapper:hover .code-copy-button,
+.code-copy-button:focus-visible,
+.code-copy-button.is-copied,
+.code-copy-button.is-failed {
+  opacity: 1;
 }
 
 .code-copy-button:hover {
   color: var(--color-white);
-  background: rgb(from var(--color-white) r g b / 0.14);
+  background: rgb(from var(--color-white) r g b / 0.16);
+  filter: none;
+  transform: none;
 }
 
 .code-copy-button svg {
-  width: 1.15rem;
-  height: 1.15rem;
+  width: 1.1rem;
+  height: 1.1rem;
   fill: none;
   stroke: currentColor;
   stroke-width: 1.8;
@@ -649,7 +1051,8 @@ pre.astro-code code {
 iframe {
   width: 100%;
   height: 600px;
-  border: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-panel);
 }
 
 /* --------------------------------------------------------------------------
@@ -658,38 +1061,67 @@ iframe {
 .you::before {
   content: "";
   position: absolute;
-  top: -0.5em;
-  left: -3em;
-  width: 2.5em;
-  height: 2.5em;
-  background: url("../favicon/cleanness-teacher.png") no-repeat;
-  background-size: contain;
+  top: -0.4em;
+  left: -3.2em;
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 50%;
+  background: url("../favicon/teacher.webp") no-repeat center / contain;
+  box-shadow: var(--shadow-sm);
 }
 
+.me::before {
+  content: "";
+  position: absolute;
+  top: -0.4em;
+  right: -3.2em;
+  width: 2.6em;
+  height: 2.6em;
+  border-radius: 50%;
+  background: url("../favicon/student.webp") no-repeat center / contain;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Shape only; each speaker sets its own colour below. */
 :is(.you, .me) {
   position: relative;
   width: fit-content;
   max-width: 70%;
-  border-radius: 1em;
-  padding: 0.1em 0.3em 0.1em 0.5em;
-  background: var(--color-surface-muted);
+  border-radius: 1.1em;
+  padding: 0.6em 0.95em;
+  box-shadow: var(--shadow-sm);
 }
 
 .you {
-  margin: 2.5em auto 2em 3em;
+  margin: 2.5em auto 2em 3.4em;
+  border-top-left-radius: 0.3em;
+  background: var(--color-chat-you);
 }
 
 .you+.me {
   margin-top: -1.5em;
 }
 
+/* Tinted rather than saturated: as quiet as .you, but a different hue. */
 .me {
-  margin: 2em 1em 2em auto;
+  margin: 2em 3.4em 2em auto;
+  border-top-right-radius: 0.3em;
+  background: var(--color-chat-me);
   text-align: left;
 }
 
 .me+.you {
   margin-top: -1em;
+}
+
+/* The same speaker continuing: one icon per turn, and a tighter gap so the
+   bubbles read as one utterance rather than two. */
+:is(.you+.you, .me+.me)::before {
+  content: none;
+}
+
+:is(.you+.you, .me+.me) {
+  margin-top: -1.75em;
 }
 
 :is(.me, .you)>p {
@@ -706,8 +1138,14 @@ iframe {
 }
 
 .remark {
-  border-radius: var(--radius-small);
-  background: var(--color-brand);
+  display: inline-block;
+  border-radius: 999px;
+  padding: 0.1em 0.7em;
+  color: var(--color-accent-strong);
+  background: rgb(from var(--color-brand) r g b / 0.18);
+  font-family: var(--font-ui);
+  font-size: 0.9em;
+  font-weight: 700;
 }
 
 .remark+ol {
@@ -717,29 +1155,23 @@ iframe {
 .nest {
   border: var(--border-default);
   border-right: none;
+  border-radius: var(--radius-panel) 0 0 var(--radius-panel);
 }
 
 #logo {
   position: absolute;
   top: 50%;
   left: 0;
-  height: 2.5em;
+  height: 2.4em;
   transform: translateY(-50%);
-  filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1) drop-shadow(0 2px 8px rgb(from var(--color-black) r g b / 0.5));
 }
 
 @media (max-width: 700px) {
   #logo {
     position: static;
     align-self: flex-start;
+    height: 1.5em;
     transform: none;
   }
-}
-
-.mermaid {
-  text-align: center;
-}
-
-.mermaid p {
-  text-indent: 0;
 }

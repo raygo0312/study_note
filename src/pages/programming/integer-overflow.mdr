@@ -4,8 +4,8 @@ title: 整数オーバーフロー
 breadcrumbs:
   - href: /index.html
     label: ホーム
-  - href: /competitive-programming.html
-    label: 競技プログラミング
+  - href: /programming.html
+    label: プログラミング
 ---
 
 Rustにおいて，オーバーフローやアンダーフロー(以下，まとめてオーバーフローと呼ぶ)が発生する可能性のある演算に対し，明示的な挙動を指定できるメソッドを紹介する．

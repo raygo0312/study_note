@@ -1,10 +1,12 @@
 ---
 import { decodeNamedCharacterReference } from "decode-named-character-reference";
 import { typst2tex } from "tex2typst";
-import chatToggleScriptUrl from "../scripts/chat-toggle.ts?url";
-import lazyIframeScriptUrl from "../scripts/lazy-iframe.ts?url";
-import mermaidScriptUrl from "../scripts/mermaid.ts?url";
-import panzoomScriptUrl from "../scripts/panzoom.ts?url";
+import chatToggleScript from "../scripts/chat-toggle.ts?raw";
+import lazyIframeScript from "../scripts/lazy-iframe.ts?raw";
+import mermaidScript from "../scripts/mermaid.ts?raw";
+import panzoomScript from "../scripts/panzoom.ts?raw";
+import readingProgressScript from "../scripts/reading-progress.ts?raw";
+import stickyHeaderScript from "../scripts/sticky-header.ts?raw";
 
 interface Breadcrumb {
   href: string;
@@ -192,11 +194,19 @@ const hasMath = /\$[\s\S]+?\$|\\\(|\\\[/.test(rawContent);
 const hasCodeBlock = /<pre\b[^>]*class=(["'])[^"']*\bastro-code\b/.test(contentHtml);
 const hasHeaderTools = tocRoot.length > 0 || terms.length > 0 || hasChat;
 
+// 先頭のパスセグメントでセクションを決め、ヘッダーの配色を切り替える。
+// 該当しないページ（トップ・参考文献・用語検索など）はすべて other 扱い。
+const themedSections = ["math", "programming"];
+const basePath = import.meta.env.BASE_URL.replace(/\/$/, "");
+const sectionPath = Astro.url.pathname.slice(basePath.length) || "/";
+const firstSegment = sectionPath.match(/^\/([^/.]+)/)?.[1] ?? "";
+const section = themedSections.includes(firstSegment) ? firstSegment : "other";
+
 const pageTitle = `学問の鎖｜${title}`;
 ---
 
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="ja" data-section={section}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -204,8 +214,6 @@ const pageTitle = `学問の鎖｜${title}`;
     <link rel="icon" type="image/png" href={withBase("/favicon/icon.png")} />
     <link rel="stylesheet" href={withBase("/css/main.css")} />
     {extraScripts.map((script) => <script type="module" src={withBase(script.src)}></script>)}
-    {hasMermaid && <script type="module" src={withBase(mermaidScriptUrl)}></script>}
-    {hasPanzoom && <script type="module" src={withBase(panzoomScriptUrl)}></script>}
     {hasMath && (
       <script is:inline>
         window.MathJax = {
@@ -238,8 +246,6 @@ const pageTitle = `学問の鎖｜${title}`;
       </script>
     )}
     {hasMath && <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>}
-    {hasIframe && <script type="module" src={withBase(lazyIframeScriptUrl)}></script>}
-    {hasChat && <script type="module" src={withBase(chatToggleScriptUrl)}></script>}
   </head>
   <body>
     <header>
@@ -248,16 +254,28 @@ const pageTitle = `学問の鎖｜${title}`;
           <img src={withBase("/favicon/title.svg")} alt="学問の鎖のロゴ" id="logo" />
           <h1>{title}</h1>
         </div>
-        {breadcrumbs.length > 0 && (
-          <nav aria-label="パンくず">
-            {breadcrumbs.map((crumb) => (
-              <>
-                <a href={withBase(crumb.href)}>{crumb.label}</a>{" / "}
-              </>
-            ))}
-          </nav>
-        )}
       </div>
+      {(breadcrumbs.length > 0 || hasHeaderTools) && (
+        <div class="header-sticky-bar">
+          {breadcrumbs.length > 0 && (
+            <nav aria-label="パンくず">
+              {breadcrumbs.map((crumb) => (
+                <>
+                  <a href={withBase(crumb.href)}>{crumb.label}</a>{" / "}
+                </>
+              ))}
+            </nav>
+          )}
+          {hasHeaderTools && (
+            <>
+              <input type="checkbox" id="header-menu-toggle" class="header-menu-toggle" />
+              <label for="header-menu-toggle" class="header-menu-btn" aria-label="メニューを開く">
+                <span></span><span></span><span></span>
+              </label>
+            </>
+          )}
+        </div>
+      )}
       {hasHeaderTools && (
         <div class="header-tools" aria-label="ページツール">
           {tocRoot.length > 0 && (
@@ -283,7 +301,7 @@ const pageTitle = `学問の鎖｜${title}`;
               <nav class="header-details-content" aria-label="用語">
                 {terms.map((term, index) => (
                   <>
-                    {index > 0 && "，"}
+                    {index > 0 && " "}
                     <a href={term.href} class="tocLink">{term.label}</a>
                   </>
                 ))}
@@ -294,7 +312,7 @@ const pageTitle = `学問の鎖｜${title}`;
             <details name="page-tools">
               <summary>設定</summary>
               <div class="header-details-content">
-                <label>
+                <label class="chat-toggle-label">
                   <input type="checkbox" data-chat-toggle checked />
                   会話を表示
                 </label>
@@ -303,11 +321,18 @@ const pageTitle = `学問の鎖｜${title}`;
           )}
         </div>
       )}
+      <div class="reading-progress" aria-hidden="true"></div>
     </header>
     <main>
       <Fragment set:html={contentHtml} />
     </main>
     <footer>Copyright © raygo All Rights Reserved since 2016.</footer>
+    {hasMermaid && <script type="module" is:inline set:html={mermaidScript}></script>}
+    {hasPanzoom && <script type="module" is:inline set:html={panzoomScript}></script>}
+    {hasIframe && <script type="module" is:inline set:html={lazyIframeScript}></script>}
+    {hasChat && <script type="module" is:inline set:html={chatToggleScript}></script>}
+    <script type="module" is:inline set:html={readingProgressScript}></script>
+    <script type="module" is:inline set:html={stickyHeaderScript}></script>
     {hasCodeBlock && (
       <script is:inline>
         document.querySelectorAll("pre.astro-code").forEach((codeBlock) => {

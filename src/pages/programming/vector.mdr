@@ -4,8 +4,8 @@ title: 可変配列 Vec
 breadcrumbs:
   - href: /index.html
     label: ホーム
-  - href: /competitive-programming.html
-    label: 競技プログラミング
+  - href: /programming.html
+    label: プログラミング
 ---
 
 Rustにおける，可変配列`Vec`の操作について紹介する．
