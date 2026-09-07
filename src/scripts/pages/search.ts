@@ -1,4 +1,4 @@
-import { mathSections } from "../data/mathIndex";
+import { siteSections, sitePages } from "../../data/pages";
 
 type SearchResult = {
   url: string;
@@ -73,7 +73,52 @@ const renderResults = async (results: SearchResult[]) => {
   await renderMathJax();
 };
 
-const fileList = mathSections.flatMap((section) => section.pages.map((page) => page.href));
+// セクションの絞り込み。チェックが付いているものだけを検索対象にする。
+const sectionFilter = document.getElementById("sectionFilter");
+
+const buildSectionFilter = () => {
+  if (!sectionFilter) return;
+
+  for (const { id, label: text } of siteSections) {
+    const label = document.createElement("label");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.value = id;
+    checkbox.checked = true;
+    label.appendChild(checkbox);
+    label.appendChild(document.createTextNode(text));
+    sectionFilter.appendChild(label);
+
+    // 分野の索引ページへ行けるようにする。チェックの操作とは別の要素にして、
+    // ラベルを押したときにトグルが切り替わる挙動を保つ。
+    const link = document.createElement("a");
+    link.href = `${id}.html`;
+    link.textContent = "索引";
+    link.className = "filter-link";
+    sectionFilter.appendChild(link);
+  }
+
+  // 分野が増えるほど個別に切り替えるのが面倒になるので、一括操作を添える。
+  for (const [text, checked] of [["すべて選択", true], ["すべて解除", false]] as const) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "filter-action";
+    button.textContent = text;
+    button.addEventListener("click", () => {
+      for (const input of sectionFilter.querySelectorAll("input")) input.checked = checked;
+    });
+    sectionFilter.appendChild(button);
+  }
+};
+
+const selectedSections = (): string[] => {
+  if (!sectionFilter) return siteSections.map((section) => section.id);
+
+  const checked = sectionFilter.querySelectorAll<HTMLInputElement>("input:checked");
+  return [...checked].map((input) => input.value);
+};
+
+buildSectionFilter();
 
 const fetchTitle = async (url: string): Promise<string> => {
   try {
@@ -90,7 +135,10 @@ const search = async (keyword: string) => {
 
   const results: SearchResult[] = [];
 
-  for (const file of fileList) {
+  const sections = new Set(selectedSections());
+  const targets = sitePages.filter((page) => sections.has(page.section));
+
+  for (const { href: file } of targets) {
     const text = await fetchText(file);
     const previews = searchWordInText(text, keyword);
     if (previews.length === 0) continue;

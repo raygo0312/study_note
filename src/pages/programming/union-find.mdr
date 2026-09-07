@@ -1,14 +1,25 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-title: Union Find
+title: 素集合データ構造 Dsu
 breadcrumbs:
   - href: /index.html
     label: ホーム
   - href: /programming.html
-    label: プログラミング
+    label: 情報技術
 ---
 
-AtCoderライブラリのUnion Find（Disjoint Set Union）についてまとめる．Union Findは、要素をいくつかのグループに分けるデータ構造で、グループの結合や同一グループかの判定などを効率的に行うことができる．
+AtCoder Libraryの`Dsu`は，互いに重ならない集合を管理する素集合データ構造である．要素どうしの集合を結合し，同じ集合に属するかを判定できる．Union Findとも呼ばれる．
+
+## メソッド一覧
+
+- `Dsu::new(n)`：`0..n`をそれぞれ単独の集合として初期化する．
+- `merge(a, b)`：`a`と`b`が属する集合を結合し，結合後の代表元を返す．
+- `same(a, b)`：`a`と`b`が同じ集合に属するかを返す．
+- `leader(a)`：`a`が属する集合の代表元を返す．
+- `size(a)`：`a`が属する集合の要素数を返す．
+- `groups()`：すべての集合を`Vec<Vec<usize>>`で返す．
+
+`merge`，`same`，`leader`，`size`のならし計算量は$O(alpha(n))$，`groups`は$O(n)$である．$alpha(n)$は逆Ackermann関数であり，実用上はほぼ定数として扱える．
 
 ## 基本的な使い方
 
@@ -16,16 +27,18 @@ AtCoderライブラリのUnion Find（Disjoint Set Union）についてまとめ
 use ac_library::Dsu;
 
 fn main() {
-    let mut uf = Dsu::new(5);
+    let mut dsu = Dsu::new(5);
 
-    uf.merge(0, 1);
-    uf.merge(1, 2);
+    dsu.merge(0, 1);
+    dsu.merge(1, 2);
 
-    println!("{}", uf.same(0, 2)); // true
-    println!("{}", uf.same(0, 3)); // false
+    assert!(dsu.same(0, 2));
+    assert!(!dsu.same(0, 3));
+    assert_eq!(dsu.size(0), 3);
 
-    println!("{}", uf.size(0)); // 3
-
-    println!("{:?}", uf.groups()); // [[0, 1, 2], [3], [4]]
+    let groups = dsu.groups();
+    println!("{groups:?}");
 }
 ```
+
+`leader`が返す代表元や，`groups`内の集合と要素の順序には依存しないこと．

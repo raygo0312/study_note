@@ -49,7 +49,17 @@ function renderInline(nodes, options = {}, allowTermLinks = true) {
         return '<br>';
       case 'link': {
         const href = resolveTermHref(node.destination, options.termDictionary);
-        return `<a href="${escapeHtml(href)}">${renderInline(node.children, options, false)}</a>`;
+        let label = renderInline(node.children, options, false);
+        // ラベルを省いたリンクは、宛先ページのタイトルで補う。手で書いた見出しが
+        // ページ側の変更に置いていかれるのを防ぐ。
+        if (label === '') {
+          const title = options.pageTitles?.[href];
+          if (title === undefined) {
+            throw new Error(`Link with no label must point at a known page: ${node.destination}`);
+          }
+          label = escapeHtml(title);
+        }
+        return `<a href="${escapeHtml(href)}">${label}</a>`;
       }
       case 'inline-tag':
         return `<${node.name}${renderAttributes(node, options, false)}>${renderInline(node.children, options, allowTermLinks)}</${node.name}>`;
@@ -78,16 +88,43 @@ function renderPlainInline(nodes) {
   }).join('');
 }
 
+// Astro が使っていた github-slugger と同じ結果になるよう、記号を落として
+// 空白をハイフンに変え、小文字へ揃える。日本語はそのまま残る。
+function headingId(html) {
+  return html
+    .replace(/<[^>]+>/g, '')
+    .trim()
+    .toLowerCase()
+    .replace(/[\u2000-\u206f\u2e00-\u2e7f\u3001\u3002\u30fb'!"#$%&()*+,./:;<=>?@[\]^`{|}~]/g, '')
+    .replace(/\s+/g, '-');
+}
+
+function uniqueHeadingId(base, options) {
+  if (!base) return base;
+  const used = options.usedHeadingIds ?? (options.usedHeadingIds = new Map());
+  const seen = used.get(base) ?? 0;
+  used.set(base, seen + 1);
+  return seen === 0 ? base : `${base}-${seen}`;
+}
+
 function render(ast, options = {}) {
   if (ast.type !== 'document') throw new Error('Expected a document AST');
 
   return ast.children.map((node) => {
     switch (node.type) {
-      case 'heading':
+      case 'heading': {
         if (node.level < 1 || node.level > 6) {
           throw new Error(`Invalid heading level: ${node.level}`);
         }
-        return `<h${node.level}>${renderInline(node.children, options, false)}</h${node.level}>`;
+        const inner = renderInline(node.children, options, false);
+        // 見出しの id は本文から作る。目次とページ内リンクがこれを指す。
+        // 同じ見出しが二度出たら連番を足し、リンク先が一意になるようにする。
+        // 目次が拾うのは h2 と h3 なので、id もそこだけに振る。
+        const id = node.level === 2 || node.level === 3
+          ? uniqueHeadingId(headingId(inner), options)
+          : '';
+        return `<h${node.level}${id ? ` id="${escapeHtml(id)}"` : ''}>${inner}</h${node.level}>`;
+      }
       case 'paragraph':
         {
           const meaningful = node.children.filter((child) =>
@@ -98,6 +135,10 @@ function render(ast, options = {}) {
         }
         return `<p>${renderInline(node.children, options)}</p>`;
       case 'code-block': {
+        // 着色済みの HTML があればそれを使う。highlightCodeBlocks を通していない
+        // 場合（同期呼び出し）は、素の pre/code へ落とす。
+        const highlighted = options.highlightedCode?.get(node);
+        if (highlighted) return highlighted;
         const className = node.info ? ` class="language-${escapeHtml(node.info)}"` : '';
         return `<pre><code${className}>${escapeHtml(node.value)}</code></pre>`;
       }
@@ -116,15 +157,20 @@ function render(ast, options = {}) {
   }).join('\n');
 }
 
-function compile(source, options = {}) {
-  return render(parse(transformMath(source, {
-    protectDelimiters: true,
-    protectMdr: true,
-  })), options)
+function parseSource(source) {
+  return parse(transformMath(source, { protectDelimiters: true, protectMdr: true }));
+}
+
+function restoreMath(html) {
+  return html
     .replaceAll(PROTECTED_MATH_SLASH, '\\')
     .replaceAll(PROTECTED_MATH_ASTERISK, '*')
     .replaceAll(PROTECTED_MATH_OPEN_BRACKET, '[')
     .replaceAll(PROTECTED_MATH_CLOSE_BRACKET, ']');
 }
 
-module.exports = { compile, escapeHtml, render };
+function compile(source, options = {}) {
+  return restoreMath(render(parseSource(source), options));
+}
+
+module.exports = { compile, escapeHtml, parseSource, render, restoreMath };

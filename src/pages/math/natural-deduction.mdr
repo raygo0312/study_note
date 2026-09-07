@@ -65,7 +65,7 @@ $arrow.r row.r$は$A$ならば$B$である．すなわち，$A$が成り立つ�
 
   :::details
     :summary[読み]
-      $A$より，$dots$，よって$B$．ゆえに$A arrow.r B$．
+    $A$より，$dots$，よって$B$．ゆえに$A arrow.r B$．
   :::
 
   #### $arrow.r "E"$
@@ -74,7 +74,7 @@ $arrow.r row.r$は$A$ならば$B$である．すなわち，$A$が成り立つ�
 
   :::details
     :summary[読み]
-      $A arrow.r B$が成り立つから，$A$．ゆえに$B$．
+    $A arrow.r B$が成り立つから，$A$．ゆえに$B$．
   :::
 :::
 

@@ -5,8 +5,12 @@ breadcrumbs:
   - href: /index.html
     label: ホーム
 scripts:
-  - ../scripts/search.ts
+  - ../scripts/pages/search.ts
 ---
+
+公開中のページから，入力した語を含む箇所を検索する．検索結果には，語が使われているページとその前後の文章が表示される．
+
+:div#sectionFilter[]
 :::input#searchInput text 検索したい用語を入力
 :button#searchButton[検索]
 :div#results[]

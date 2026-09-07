@@ -101,3 +101,36 @@ test('preserves the source line ending and final newline', () => {
   const source = '# Heading\r\n\r\nBody\r\n';
   assert.equal(format(source), source);
 });
+
+test('indents a wrapped paragraph line by its block depth only', () => {
+  const source = [
+    ':::.outer',
+    '  :::.inner',
+    '    :small[被定義項]',
+    '    :strong[正三角形]',
+    '  :::',
+    ':::',
+  ].join('\n');
+  assert.equal(format(source), source);
+});
+
+test('reindents a wrapped paragraph line that drifted deeper', () => {
+  const drifted = [
+    ':::.outer',
+    '  :::.inner',
+    '    :small[被定義項]',
+    '                  :strong[正三角形]',
+    '  :::',
+    ':::',
+  ].join('\n');
+  const expected = [
+    ':::.outer',
+    '  :::.inner',
+    '    :small[被定義項]',
+    '    :strong[正三角形]',
+    '  :::',
+    ':::',
+  ].join('\n');
+  assert.equal(format(drifted), expected);
+  assert.equal(format(expected), expected);
+});

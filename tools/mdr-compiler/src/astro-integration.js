@@ -2,7 +2,8 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { fileURLToPath, pathToFileURL } = require('node:url');
 const { findMdrFiles } = require('./project-compiler');
-const { compile, escapeHtml } = require('./compiler');
+const { compile, escapeHtml, parseSource, render, restoreMath } = require('./compiler');
+const { highlightCodeBlocks } = require('./code-highlight');
 const {
   PROTECTED_MATH_ASTERISK, PROTECTED_MATH_CLOSE_BRACKET,
   PROTECTED_MATH_OPEN_BRACKET, transformMathLine,
@@ -38,8 +39,17 @@ function transformInlineNodes(nodes, insideHtml = false, options = {}, allowTerm
     } else if (node.type === 'line-break') {
       output.push('<br>');
     } else if (node.type === 'link') {
-      const label = transformInlineNodes(node.children, insideHtml, options, false);
+      let label = transformInlineNodes(node.children, insideHtml, options, false);
       const destination = resolveTermHref(node.destination, options.termDictionary);
+      // ラベルを省いたリンクは、宛先ページのタイトルで補う。手で書いた見出しが
+      // ページ側の変更に置いていかれるのを防ぐ。
+      if (label === '') {
+        const title = options.pageTitles?.[destination];
+        if (title === undefined) {
+          throw new Error(`Link with no label must point at a known page: ${node.destination}`);
+        }
+        label = insideHtml ? escapeHtml(title) : title;
+      }
       output.push(insideHtml
         ? `<a href="${escapeHtml(destination)}">${label}</a>`
         : `[${label}](${destination})`);
@@ -58,91 +68,6 @@ function transformInlineNodes(nodes, insideHtml = false, options = {}, allowTerm
   return output.join('');
 }
 
-function transformInlineMdr(line, options = {}) {
-  const normalized = options.termIdState ? options : { ...options, termIdState: { next: 0 } };
-  return transformInlineNodes(parseInline(lexInline(line, 0, 1, 1)), false, normalized);
-}
-
-function findBlockTagEnd(lines, start) {
-  let depth = 1;
-  let inFence = false;
-  for (let index = start + 1; index < lines.length; index += 1) {
-    const line = lines[index];
-    const fence = matchCodeFence(line, inFence);
-    if (fence) {
-      inFence = !inFence;
-      continue;
-    }
-    if (inFence) continue;
-    const tag = parseBlockTagStart(line);
-    if (tag && !tag.void) depth += 1;
-    else if (TAG_END_PATTERN.test(line)) depth -= 1;
-    if (depth === 0) return index;
-  }
-  return -1;
-}
-
-function transformMarkdownLine(line, state, options, allowTermLinks = true) {
-  const fence = matchCodeFence(line, state.inFence);
-  if (fence) {
-    state.inFence = !state.inFence;
-    return line;
-  }
-  if (state.inFence) return line;
-  const transformed = transformMathLine(line, { markdown: true, protectMdr: true });
-  return transformInlineNodes(parseInline(lexInline(transformed, 0, 1, 1)),
-    false, options, allowTermLinks);
-}
-
-function transformMdrToMarkdown(source, options = {}) {
-  const renderOptions = { ...options, termIdState: { next: 0 } };
-  const { body } = parseFrontmatter(source);
-  const lines = splitSourceLines(body).map(({ text }) => text);
-  const output = [];
-  const state = { inFence: false };
-
-  for (let index = 0; index < lines.length; index += 1) {
-    const line = lines[index];
-    const fence = matchCodeFence(line, state.inFence);
-    if (state.inFence || fence) {
-      output.push(transformMarkdownLine(line, state, renderOptions));
-      continue;
-    }
-    const tag = parseBlockTagStart(line);
-    if (tag) {
-      if (tag.void) {
-        output.push(compile(line, renderOptions));
-        continue;
-      }
-      const end = findBlockTagEnd(lines, index);
-      if (end === -1) {
-        throw new Error(`Unclosed tag ${tag.descriptor.name} at ${index + 1}:1`);
-      }
-      output.push(compile(lines.slice(index, end + 1).join('\n'), renderOptions));
-      output.push('');
-      index = end;
-      continue;
-    }
-
-    if (LIST_ITEM_PATTERN.test(line)) {
-      let end = index + 1;
-      while (end < lines.length && LIST_ITEM_PATTERN.test(lines[end])) end += 1;
-      output.push(compile(lines.slice(index, end).join('\n'), renderOptions));
-      if (end < lines.length && lines[end].trim() !== '') output.push('');
-      index = end - 1;
-      continue;
-    }
-
-    output.push(transformMarkdownLine(line, state, renderOptions, !/^\s*#{1,6}\s/.test(line)));
-  }
-
-  if (state.inFence) throw new Error('Unclosed code fence');
-
-  return output.join('\n')
-    .replaceAll(PROTECTED_MATH_ASTERISK, '*')
-    .replaceAll(PROTECTED_MATH_OPEN_BRACKET, '[')
-    .replaceAll(PROTECTED_MATH_CLOSE_BRACKET, ']');
-}
 
 function routePattern(relativePage) {
   const normalized = relativePage.replaceAll(path.sep, '/').replace(/\.mdr$/, '');
@@ -187,7 +112,20 @@ function createGeneratedPage({ sourcePath, generatedPath, html, attributes }) {
   return `---\n${imports.join('\n')}\n---\n${pageTemplate}\n`;
 }
 
-async function generatePages(root, pagesDirectory, markdownProcessor) {
+// リンクは現在ページからの相対パスで書かれるので、辞書の側を合わせる。
+function relativizePageTitles(pageTitles, fromFile) {
+  const fromDirectory = path.posix.dirname(fromFile.replaceAll(path.sep, '/'));
+  const entries = {};
+  for (const [href, title] of pageTitles) {
+    let relative = path.posix.relative(fromDirectory, href.replace(/^\//, ''));
+    if (!relative.startsWith('.')) relative = `./${relative}`;
+    entries[relative] = title;
+    entries[href] = title;
+  }
+  return entries;
+}
+
+async function generatePages(root, pagesDirectory, codeTheme) {
   const pagesRoot = path.resolve(root, pagesDirectory);
   if (!fs.existsSync(pagesRoot)) return [];
   const pages = findMdrFiles(pagesRoot).map((relativePage) => ({
@@ -222,26 +160,37 @@ async function generatePages(root, pagesDirectory, markdownProcessor) {
     null,
     2,
   )}\n`);
+  // 宛先からタイトルを引く辞書。用語辞書と同じく全ページを見てから各ページを描く。
+  const pageTitles = new Map(documents
+    .filter(({ attributes }) => typeof attributes?.title === 'string' && attributes.title !== '')
+    .map(({ pattern, attributes }) => [routeFilePath(pattern), attributes.title]));
   const generated = [];
   for (const { relativePage, pattern, sourcePath, attributes, body, document } of documents) {
     const generatedRelative = relativePage.replace(/\.mdr$/, '');
     const generatedPath = path.join(generatedRoot, `${generatedRelative}.astro`);
     const pageTermDictionary = relativizeTermDictionary(termDictionary, routeFilePath(pattern));
-    const markdown = transformMdrToMarkdown(body, {
+    // MDR だけで HTML まで組み立てる。見出し・リスト・段落はタグへの置き換えで
+    // 足り、コードフェンスは Shiki を直接呼ぶので、Markdown 処理系は要らない。
+    const renderOptions = {
       tagDefinitions: document.definitions,
       termDictionary: pageTermDictionary,
-    });
-    const rendered = await markdownProcessor.render(markdown, {
-      fileURL: pathToFileURL(sourcePath),
-      frontmatter: attributes,
-    });
+      pageTitles: relativizePageTitles(pageTitles, routeFilePath(pattern)),
+    };
+    const ast = parseSource(body);
+    renderOptions.highlightedCode = await highlightCodeBlocks(ast, { theme: codeTheme });
+    const html = restoreMath(render(ast, renderOptions));
     fs.mkdirSync(path.dirname(generatedPath), { recursive: true });
     fs.writeFileSync(generatedPath, createGeneratedPage({
-      sourcePath, generatedPath, html: rendered.code, attributes,
+      sourcePath, generatedPath, html, attributes,
     }));
     generated.push({ pattern, entrypoint: generatedPath });
   }
-  return generated;
+  // ページの一覧はクライアント script でも使うので、タイトルを添えて返す。
+  const catalog = documents.map(({ relativePage, attributes }) => ({
+    path: relativePage.split(path.sep).join('/'),
+    title: typeof attributes?.title === 'string' ? attributes.title : '',
+  }));
+  return { routes: generated, catalog };
 }
 
 function mdr(options = {}) {
@@ -251,12 +200,16 @@ function mdr(options = {}) {
     hooks: {
       'astro:config:setup': async ({ config, injectRoute, updateConfig, logger }) => {
         const root = fileURLToPath(config.root);
-        const { createMarkdownProcessor } = await import('@astrojs/markdown-remark');
-        const markdownProcessor = await createMarkdownProcessor(config.markdown);
-        const registerPages = () => generatePages(root, pagesDirectory, markdownProcessor);
-        for (const page of await registerPages()) injectRoute(page);
+        const codeTheme = config.markdown?.shikiConfig?.theme || 'one-dark-pro';
+        const { routes, catalog } = await generatePages(root, pagesDirectory, codeTheme);
+        for (const route of routes) injectRoute(route);
         updateConfig({
           vite: {
+            define: {
+              // ページの一覧をクライアント script へ渡す。パスとタイトルだけなので、
+              // `.mdr` の中身がバンドルへ持ち込まれることはない。
+              __MDR_PAGES__: JSON.stringify(catalog),
+            },
             plugins: [{
               name: 'mdr-astro-hmr',
               async handleHotUpdate(context) {
@@ -277,8 +230,6 @@ module.exports = {
   mdr,
   default: mdr,
   parseFrontmatter,
-  transformInlineMdr,
-  transformMdrToMarkdown,
   routePattern,
   routeFilePath,
   createGeneratedPage,

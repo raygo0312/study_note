@@ -5,39 +5,44 @@ breadcrumbs:
   - href: /index.html
     label: ホーム
   - href: /programming.html
-    label: プログラミング
+    label: 情報技術
 ---
 
-Rustにおいて，オーバーフローやアンダーフロー(以下，まとめてオーバーフローと呼ぶ)が発生する可能性のある演算に対し，明示的な挙動を指定できるメソッドを紹介する．
-それぞれの処理に対して，各演算が定義されている．
+Rustの整数型には，演算結果が型の範囲を超えたときの挙動を明示するメソッドがある．以下では，上限を超える場合と下限を下回る場合をまとめてオーバーフローと呼ぶ．
 
-## checked
-checkedは，オーバーフロー時にNoneを返すOption型である．
+メソッド名の`add`は，必要な演算に応じて`sub`や`mul`などへ置き換えられる．
+
+## `checked_*`
+
+演算結果を`Option`で返す．オーバーフローしなければ`Some(結果)`，すれば`None`となる．
 
 ```rust
 assert_eq!(16u8.checked_add(16), Some(32));
 assert_eq!(16u8.checked_mul(16), None);
 ```
 
-## wrapping
-wrappingは，オーバーフロー時にあふれた桁を無視した結果を返す．
+## `wrapping_*`
+
+型の範囲を法として回り込んだ結果を返す．
 
 ```rust
-assert_eq!(0u8.wrapping_sub(1), !0);
+assert_eq!(0u8.wrapping_sub(1), 255);
 assert_eq!(16u8.wrapping_mul(16), 0);
 ```
 
-## overflowing
-overflowingは，wrappingの結果とオーバーフローの有無をタプルで返す．
+## `overflowing_*`
+
+回り込んだ結果と，オーバーフローしたかを示す`bool`をタプルで返す．
 
 ```rust
 assert_eq!(16u8.overflowing_add(16), (32, false));
-assert_eq!(0u8.overflowing_sub(1), (!0, true));
+assert_eq!(0u8.overflowing_sub(1), (255, true));
 assert_eq!(16u8.overflowing_mul(16), (0, true));
 ```
 
-## saturating
-saturatingは，オーバーフロー時に最大値または最小値を返す．
+## `saturating_*`
+
+結果が型の範囲を超える場合，その型の最大値または最小値で止める．
 
 ```rust
 assert_eq!(0u8.saturating_sub(1), 0);

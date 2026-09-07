@@ -1,37 +1,58 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-title: 方向探索
+title: 隣接マス探索
 breadcrumbs:
   - href: /index.html
     label: ホーム
   - href: /programming.html
-    label: プログラミング
+    label: 情報技術
 ---
 
-マスの隣接するマスを探索する際の方法を紹介する．
+`h`行`w`列の盤面で，マス`(i, j)`に隣接する有効な座標を列挙する．範囲外の座標は返さない．
+
+## 4方向
+
+上下左右に隣接するマスを返す．
+
+```rust
+fn neighbors4(i: usize, j: usize, h: usize, w: usize) -> Vec<(usize, usize)> {
+    const DIRS: [(usize, usize); 4] = [(1, 0), (0, 1), (usize::MAX, 0), (0, usize::MAX)];
+
+    DIRS.iter()
+        .filter_map(|&(di, dj)| {
+            let ni = i.wrapping_add(di);
+            let nj = j.wrapping_add(dj);
+            (ni < h && nj < w).then_some((ni, nj))
+        })
+        .collect()
+}
+```
 
 ## 8方向
-8方向の探索をし，有効なマスの配列を返す関数．
+
+上下左右と斜めに隣接するマスを返す．
 
 ```rust
 fn neighbors8(i: usize, j: usize, h: usize, w: usize) -> Vec<(usize, usize)> {
-  let dir = [
-    (1, 0),
-    (1, 1),
-    (0, 1),
-    (!0, 1),
-    (!0, 0),
-    (!0, !0),
-    (0, !0),
-    (1, !0),
-  ];
-  let mut res = Vec::new();
-  for (di, dj) in dir {
-    let (ni, nj) = (i.wrapping_add(di), j.wrapping_add(dj));
-    if ni < h && nj < w {
-      res.push((ni, nj));
-    }
-  }
-  res
+    const DIRS: [(usize, usize); 8] = [
+        (1, 0),
+        (1, 1),
+        (0, 1),
+        (usize::MAX, 1),
+        (usize::MAX, 0),
+        (usize::MAX, usize::MAX),
+        (0, usize::MAX),
+        (1, usize::MAX),
+    ];
+
+    DIRS.iter()
+        .filter_map(|&(di, dj)| {
+            let ni = i.wrapping_add(di);
+            let nj = j.wrapping_add(dj);
+            (ni < h && nj < w).then_some((ni, nj))
+        })
+        .collect()
 }
 ```
+
+`usize::MAX`を`wrapping_add`で加えると，座標から`1`を引く動作になる．`0`から引いた場合は大きな値へ回り込むため，`ni < h && nj < w`の判定で範囲外として除外できる．

@@ -65,3 +65,73 @@ test('keeps the TextMate void-tag list aligned with the compiler', () => {
     assert.ok(pattern.test(`:::${name}`), `TextMate grammar is missing ${name}`);
   }
 });
+
+test('lets block tags nest inside one another', () => {
+  const blockRules = ['section', 'div-shorthand', 'tag'];
+  for (const rule of blockRules) {
+    const includes = grammar.repository[rule].patterns.map(({ include }) => include);
+    for (const nested of ['#void-tag', '#section', '#div-shorthand', '#tag']) {
+      assert.ok(
+        includes.includes(nested),
+        `${rule} must allow ${nested} so a nested ::: keeps its own scope`,
+      );
+    }
+  }
+});
+
+test('defines MDR syntax on its own instead of delegating to Markdown', () => {
+  const json = JSON.stringify(grammar) + JSON.stringify(inlineGrammar);
+  assert.equal(json.includes('text.html.markdown'), false,
+    'MDR is its own language; including the Markdown grammar lets its multi-line '
+    + 'paragraph and indented-code rules swallow the ::: lines that follow');
+
+  for (const rule of ['heading', 'list', 'fenced-code']) {
+    assert.ok(grammar.repository[rule], `${rule} must be covered by MDR itself`);
+  }
+  for (const scope of ['section', 'div-shorthand', 'tag']) {
+    const includes = grammar.repository[scope].patterns.map(({ include }) => include);
+    for (const rule of ['#heading', '#list', '#fenced-code']) {
+      assert.ok(includes.includes(rule), `${scope} must also allow ${rule}`);
+    }
+  }
+});
+
+test('keeps the closing ] available to an inline tag', () => {
+  const stealsBrackets = inlineGrammar.patterns.some(({ name, match }) =>
+    name === 'text.plain.mdr' && match && match.includes(']'));
+  assert.equal(stealsBrackets, false,
+    'a top level rule matching ] wins over the inline tag end pattern, '
+    + 'so the tag never closes and swallows the following lines');
+});
+
+test('leaves bracket contents and heading text unstyled', () => {
+  const named = (rule, group) => (rule.captures || {})[group]?.name;
+
+  const heading = grammar.repository.heading;
+  assert.equal(named(heading, '3'), undefined, 'heading text must take no colour');
+  assert.equal(heading.name.startsWith('markup.heading'), false,
+    'markup.heading is styled by themes, so the whole line would take a colour');
+
+  const links = inlineGrammar.patterns.filter(({ match }) => match && match.includes('(\\['));
+  assert.ok(links.length > 0);
+  for (const link of links) {
+    assert.equal(named(link, '2'), undefined, 'the label inside [] must take no colour');
+    assert.equal(named(link, '5'), undefined, 'the target inside () must take no colour');
+  }
+
+  assert.equal(JSON.stringify(inlineGrammar).includes('underline'), false,
+    'link scopes that themes underline must not be used');
+});
+
+test('colours what sits between identical delimiters', () => {
+  const code = inlineGrammar.patterns.find(({ match }) => match && match.startsWith('(?<![\\\\`])(`)'));
+  assert.equal(code.captures['2'].name, 'markup.inline.raw.string.markdown',
+    'a pair of identical delimiters shows its extent only through the content, '
+    + 'and this scope also keeps the injection out of inline code');
+
+  const term = inlineGrammar.patterns.find(({ match }) => match && match.startsWith('(?<![\\\\*])(\\*)'));
+  assert.equal(term.captures['2'].name, 'markup.bold.markdown');
+
+  assert.ok(inlineGrammar.injectionSelector.includes('-markup.inline.raw'),
+    'inline code must stay free of MDR syntax');
+});

@@ -47,7 +47,10 @@ function formatBlock(node) {
     case 'heading':
       return `${'#'.repeat(node.level)} ${formatInline(node.children)}`;
     case 'paragraph':
-      return formatInline(node.children).trim();
+      // trim() only reaches the paragraph's outer edges. A wrapped line keeps
+      // the source indentation that follows its newline, and the enclosing tags
+      // would indent it again on every run, so drop it per line as well.
+      return formatInline(node.children).trim().replace(/\n[ \t]+/g, '\n');
     case 'code-block':
       return `\`\`\`${node.info}\n${node.value}\n\`\`\``;
     case 'ordered-list':

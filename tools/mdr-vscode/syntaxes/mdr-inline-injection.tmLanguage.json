@@ -8,40 +8,67 @@
       "begin": "(:)([a-z][a-z0-9-]*)?((?:[.#][a-zA-Z_][\\w-]*)*)(\\[)",
       "end": "(\\])",
       "beginCaptures": {
-        "1": { "name": "entity.name.tag.html" },
-        "2": { "name": "entity.name.tag.html" },
-        "3": { "name": "entity.other.attribute-name.class.css" },
-        "4": { "name": "entity.name.tag.html" }
+        "1": {
+          "name": "entity.name.tag.html"
+        },
+        "2": {
+          "name": "entity.name.tag.html"
+        },
+        "3": {
+          "name": "entity.other.attribute-name.class.css"
+        },
+        "4": {
+          "name": "entity.name.tag.html"
+        }
       },
       "endCaptures": {
-        "1": { "name": "entity.name.tag.html" }
+        "1": {
+          "name": "entity.name.tag.html"
+        }
       },
-      "patterns": [
-        { "include": "text.html.markdown" }
-      ]
+      "patterns": []
     },
     {
       "match": "(?<![\\\\`])(`)(?!`)([^`\\n]*)(?<!`)(`)(?!`)",
       "captures": {
-        "1": { "name": "comment.line.mdr" },
-        "2": { "name": "text.plain.mdr" },
-        "3": { "name": "comment.line.mdr" }
+        "1": {
+          "name": "comment.line.mdr"
+        },
+        "2": {
+          "name": "markup.inline.raw.string.markdown"
+        },
+        "3": {
+          "name": "comment.line.mdr"
+        }
       }
     },
     {
       "match": "(?<!\\\\)(\\[)([^\\]\\n]+)(\\])(\\()([^)\\s\\n]+)(\\))",
       "captures": {
-        "2": { "name": "text.plain.mdr" },
-        "5": { "name": "entity.other.attribute-name.id.css markup.underline.mdr" }
+        "1": {
+          "name": "punctuation.definition.link.begin.markdown"
+        },
+        "3": {
+          "name": "punctuation.definition.link.end.markdown"
+        },
+        "4": {
+          "name": "punctuation.definition.link.begin.markdown"
+        },
+        "6": {
+          "name": "punctuation.definition.link.end.markdown"
+        }
       }
     },
     {
       "name": "meta.link.definition.mdr",
       "match": "(?<!\\\\)(\\[)([^\\]\\n]+)(\\])(?!\\()",
       "captures": {
-        "1": { "name": "punctuation.definition.link.begin.markdown" },
-        "2": { "name": "markup.underline.link.markdown" },
-        "3": { "name": "punctuation.definition.link.end.markdown" }
+        "1": {
+          "name": "punctuation.definition.link.begin.markdown"
+        },
+        "3": {
+          "name": "punctuation.definition.link.end.markdown"
+        }
       }
     },
     {
@@ -49,15 +76,17 @@
       "match": "\\\\[\\\\`*{}\\[\\]()#+\\-.!_$:>/]"
     },
     {
-      "name": "text.plain.mdr",
-      "match": "[()\\[\\]]"
-    },
-    {
       "match": "(?<![\\\\*])(\\*)([^*\\n]+?)(?<!\\\\)(\\*)(?!\\*)",
       "captures": {
-        "1": { "name": "markup.bold.markdown" },
-        "2": { "name": "markup.bold.markdown" },
-        "3": { "name": "markup.bold.markdown" }
+        "1": {
+          "name": "markup.bold.markdown"
+        },
+        "2": {
+          "name": "markup.bold.markdown"
+        },
+        "3": {
+          "name": "markup.bold.markdown"
+        }
       }
     },
     {
@@ -65,13 +94,19 @@
       "begin": "(?<![\\\\$])(\\$)(?!\\$)",
       "end": "(?<![\\\\$])(\\$)(?!\\$)",
       "beginCaptures": {
-        "1": { "name": "string.other.math.delimiter.mdr" }
+        "1": {
+          "name": "string.other.math.delimiter.mdr"
+        }
       },
       "endCaptures": {
-        "1": { "name": "string.other.math.delimiter.mdr" }
+        "1": {
+          "name": "string.other.math.delimiter.mdr"
+        }
       },
       "patterns": [
-        { "include": "source.typst#math" }
+        {
+          "include": "source.typst#math"
+        }
       ]
     }
   ]

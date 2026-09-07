@@ -16,7 +16,12 @@
     "README.md"
   ],
   "type": "commonjs",
-  "keywords": ["mdr", "markdown", "compiler", "static-site-generator"],
+  "keywords": [
+    "mdr",
+    "markdown",
+    "compiler",
+    "static-site-generator"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/raygo0312/study_note.git",
@@ -27,6 +32,7 @@
     "test": "node --test"
   },
   "dependencies": {
-    "tex2typst": "^0.6.0"
+    "tex2typst": "^0.6.0",
+    "shiki": "^4.0.2"
   }
 }

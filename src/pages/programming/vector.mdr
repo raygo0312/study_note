@@ -5,47 +5,80 @@ breadcrumbs:
   - href: /index.html
     label: ホーム
   - href: /programming.html
-    label: プログラミング
+    label: 情報技術
 ---
 
-Rustにおける，可変配列`Vec`の操作について紹介する．
+Rustの可変長配列`Vec<T>`でよく使う操作をまとめる．
 
 ## 基本的な使い方
+
 ### 初期化
-Vecは，`Vec::new()`や`vec![]`マクロを使用して宣言・初期化できる．
+
+空の`Vec`，値を並べた`Vec`，同じ値を指定個数だけ持つ`Vec`を作る．
 
 ```rust
-let v = Vec::new();
-let v = vec![1, 2, 3];
+let empty: Vec<i32> = Vec::new();
+let values = vec![1, 2, 3];
+let zeros = vec![0; 5];
 ```
 
 ### 要素へのアクセス
-Vecの要素には，インデックスを使用してアクセスできる．
+
+`v[i]`は範囲外ならパニックする．`get(i)`は範囲外なら`None`を返す．
+
 ```rust
 let v = vec![1, 2, 3];
 assert_eq!(v[0], 1);
+assert_eq!(v.get(2), Some(&3));
+assert_eq!(v.get(3), None);
 ```
 
-### Vecの要素の追加，削除
-Vecに要素を追加するには，`push`メソッドを使用する．
+### 末尾への追加・削除
+
+`push`は末尾へ追加し，`pop`は末尾の要素を`Option`で取り出す．
+
 ```rust
 let mut v = Vec::new();
 v.push(1);
 v.push(2);
-v.push(3);
-assert_eq!(v, vec![1, 2, 3]);
-v.pop();
-assert_eq!(v, vec![1, 2]);
+assert_eq!(v.pop(), Some(2));
+assert_eq!(v, vec![1]);
 ```
 
-## 便利なメソッド
-### concat
-Vecを連結するには，`concat`メソッドを使用する．
+### 長さと空判定
+
+```rust
+let v = vec![1, 2, 3];
+assert_eq!(v.len(), 3);
+assert!(!v.is_empty());
+```
+
+## 並べ替え・検索
+
+```rust
+let mut v = vec![3, 1, 2, 2];
+v.sort_unstable();
+assert_eq!(v, vec![1, 2, 2, 3]);
+
+v.dedup();
+assert_eq!(v, vec![1, 2, 3]);
+
+assert_eq!(v.binary_search(&2), Ok(1));
+assert_eq!(v.binary_search(&4), Err(3));
+```
+
+`binary_search`を使う前に，配列を昇順に並べておく必要がある．重複する値がある場合，一致するどの位置が返るかは規定されていない．
+
+## 連結
+
+複数の配列の要素を新しい`Vec`へコピーする．
+
 ```rust
 let v1 = vec![1, 2];
 let v2 = vec![3, 4];
 let v3 = vec![5];
-let v = [v1, v2, v3].concat();
+let v = [v1.as_slice(), v2.as_slice(), v3.as_slice()].concat();
 assert_eq!(v, vec![1, 2, 3, 4, 5]);
 ```
-`v1`と`v2`は所有権を移動することに注意する．
+
+この例ではスライスを連結しているため，`v1`，`v2`，`v3`の所有権は移動しない．

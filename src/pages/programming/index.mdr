@@ -1,29 +1,28 @@
 ---
 layout: ../../layouts/BaseLayout.astro
-title: プログラミング
+title: 情報技術
 breadcrumbs:
   - href: /index.html
     label: ホーム
 ---
 
-プログラミングに関して学んだことをまとめている．
+プログラミング，AI，そのほかの情報技術について学んだことをまとめている．内容に応じて，仕組みの説明，実践的な使い方，再利用できるコードなどを掲載する．
 
 ## 競技プログラミング
 
-AtCoder向けの競技プログラミングで使用するアルゴリズムやライブラリをまとめている．言語は主にRustを対象としており，各種データ構造やアルゴリズムの使い方，実装例，計算量などを整理している．
+競技中に必要な情報をすぐ探し，コードをそのまま利用できることを重視している．現在は主にAtCoderとRustを扱う．
 
 ### Rust ライブラリ
 
 #### 標準ライブラリ
 
-- [整数オーバーフロー](./programming/integer-overflow.html)
-- [可変配列 Vec](./programming/vector.html)
-- [仮想配列 BTreeMap](./programming/)
+- [](./programming/integer-overflow.html)
+- [](./programming/vector.html)
 
-#### AtCoderライブラリ
+#### AtCoder Library
 
-- [Union Find](./programming/union-find.html)
+- [](./programming/union-find.html)
 
 ### よく使う処理
 
-- [隣接方向探索](./programming/adjacent-direction-search.html)
+- [](./programming/adjacent-direction-search.html)

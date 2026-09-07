@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1&display=swap');
 @import url('./diagrams.css');
+@import url('./pronunciation.css');
 
 :root {
   color-scheme: light;
@@ -919,6 +920,57 @@ input[type="checkbox"]:checked::before {
 }
 
 /* --------------------------------------------------------------------------
+ * Search filter
+ * -------------------------------------------------------------------------- */
+#sectionFilter {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.9rem;
+  margin: 0 0 1rem;
+}
+
+/* The toggle is 18px tall and inline by default, so the text next to it lands
+   on the text baseline instead of the toggle's centre. */
+#sectionFilter label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-ui);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+#sectionFilter input[type="checkbox"] {
+  margin: 0;
+}
+
+.filter-link {
+  margin-left: -0.5rem;
+  font-family: var(--font-ui);
+  font-size: 0.78rem;
+}
+
+/* Lighter than a page button: these sit beside the toggles, not below prose. */
+.filter-action {
+  min-width: 0;
+  margin: 0;
+  border: var(--border-default);
+  padding: 0.2em 0.7em;
+  color: var(--color-text-muted);
+  background: none;
+  box-shadow: none;
+  font-size: 0.82rem;
+  font-weight: 400;
+}
+
+.filter-action:hover {
+  color: var(--color-accent-strong);
+  border-color: var(--color-accent);
+  background: none;
+}
+
+/* --------------------------------------------------------------------------
  * Tabular and definition data
  * -------------------------------------------------------------------------- */
 table {
@@ -1126,6 +1178,15 @@ iframe {
 
 :is(.me, .you)>p {
   text-indent: 0;
+}
+
+/* Every bubble dimension is in em, so this one value scales the whole chat:
+   text, padding, avatar and the gaps between turns. */
+@media (max-width: 700px) {
+
+  :is(.you, .me) {
+    font-size: 0.88em;
+  }
 }
 
 /* --------------------------------------------------------------------------

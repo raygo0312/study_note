@@ -2,44 +2,67 @@
   "name": "MDR (Markdown)",
   "scopeName": "source.mdr",
   "patterns": [
-    { "include": "#import-directive" },
-    { "include": "#tag-directive" },
-    { "include": "#fenced-code-rust" },
-    { "include": "#void-tag" },
-    { "include": "#section" },
-    { "include": "#div-shorthand" },
-    { "include": "#tag" },
-    { "include": "text.html.markdown" }
+    {
+      "include": "#tag-directive"
+    },
+    {
+      "include": "#fenced-code-rust"
+    },
+    {
+      "include": "#void-tag"
+    },
+    {
+      "include": "#section"
+    },
+    {
+      "include": "#div-shorthand"
+    },
+    {
+      "include": "#tag"
+    },
+    {
+      "include": "#fenced-code"
+    },
+    {
+      "include": "#heading"
+    },
+    {
+      "include": "#list"
+    }
   ],
   "repository": {
-    "import-directive": {
-      "name": "meta.directive.import.mdr",
-      "match": "^(\\s*)(@import)(\\s+)([\"'])([^\"']+)(\\4)\\s*$",
-      "captures": {
-        "2": { "name": "keyword.control.directive.import.mdr" },
-        "4": { "name": "string.quoted.mdr" },
-        "5": { "name": "string.quoted.mdr" },
-        "6": { "name": "string.quoted.mdr" }
-      }
-    },
     "tag-directive": {
       "name": "meta.directive.tag.mdr",
       "begin": "^(\\s*)(@tag)(\\s+)([a-z][a-z0-9-]*)(\\()",
       "end": "(?=$)",
       "beginCaptures": {
-        "2": { "name": "keyword.control.directive.tag.mdr" },
-        "4": { "name": "entity.name.tag.mdr" },
-        "5": { "name": "punctuation.definition.parameters.begin.mdr" }
+        "2": {
+          "name": "keyword.control.directive.tag.mdr"
+        },
+        "4": {
+          "name": "entity.name.tag.mdr"
+        },
+        "5": {
+          "name": "punctuation.definition.parameters.begin.mdr"
+        }
       },
       "patterns": [
         {
           "match": "[a-zA-Z_:][\\w:.-]*",
           "captures": {
-            "0": { "name": "entity.other.attribute-name.mdr" }
+            "0": {
+              "name": "entity.other.attribute-name.mdr"
+            }
           }
         },
-        { "name": "punctuation.separator.parameters.mdr", "match": "," },
-        { "name": "punctuation.definition.parameters.end.mdr", "match": "\\)" }
+        {
+          "name": "punctuation.separator.parameters.mdr",
+          "match": ","
+        },
+        {
+          "name": "punctuation.definition.parameters.end.mdr",
+          "match": "\\)"
+        }
       ]
     },
     "fenced-code-rust": {
@@ -47,12 +70,20 @@
       "name": "markup.fenced_code.block.markdown",
       "end": "(^|\\G)(\\2|\\s{0,3})(\\3)\\s*$",
       "beginCaptures": {
-        "3": { "name": "comment.line.mdr" },
-        "4": { "name": "fenced_code.block.language.markdown" },
-        "5": { "name": "fenced_code.block.language.attributes.markdown" }
+        "3": {
+          "name": "comment.line.mdr"
+        },
+        "4": {
+          "name": "fenced_code.block.language.markdown"
+        },
+        "5": {
+          "name": "fenced_code.block.language.attributes.markdown"
+        }
       },
       "endCaptures": {
-        "3": { "name": "comment.line.mdr" }
+        "3": {
+          "name": "comment.line.mdr"
+        }
       },
       "patterns": [
         {
@@ -60,7 +91,9 @@
           "while": "(^|\\G)(?!\\s*([`~]{3,})\\s*$)",
           "contentName": "meta.embedded.block.rust",
           "patterns": [
-            { "include": "source.rust" }
+            {
+              "include": "source.rust"
+            }
           ]
         }
       ]
@@ -69,9 +102,15 @@
       "name": "meta.tag.void.mdr",
       "match": "^(\\s*)(:::)(area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)((?:[.#][a-zA-Z_][\\w-]*)*)(?:\\s+([^\\n]+))?$",
       "captures": {
-        "2": { "name": "entity.name.tag.html" },
-        "3": { "name": "entity.name.tag.html" },
-        "4": { "name": "entity.other.attribute-name.class.css" }
+        "2": {
+          "name": "entity.name.tag.html"
+        },
+        "3": {
+          "name": "entity.name.tag.html"
+        },
+        "4": {
+          "name": "entity.other.attribute-name.class.css"
+        }
       }
     },
     "section": {
@@ -79,17 +118,49 @@
       "begin": "^(\\s*)(:::)(section)((?:[.#][a-zA-Z_][\\w-]*)*)(?:\\s+([^\\n]+))?$",
       "end": "^(\\s*)(:::)\\s*$",
       "beginCaptures": {
-        "2": { "name": "entity.name.tag.html" },
-        "3": { "name": "entity.name.tag.html" },
-        "4": { "name": "entity.other.attribute-name.class.css" },
-        "5": { "name": "markup.bold.markdown" }
+        "2": {
+          "name": "entity.name.tag.html"
+        },
+        "3": {
+          "name": "entity.name.tag.html"
+        },
+        "4": {
+          "name": "entity.other.attribute-name.class.css"
+        },
+        "5": {
+          "name": "markup.bold.markdown"
+        }
       },
       "endCaptures": {
-        "2": { "name": "entity.name.tag.html" }
+        "2": {
+          "name": "entity.name.tag.html"
+        }
       },
       "patterns": [
-        { "include": "#fenced-code-rust" },
-        { "include": "text.html.markdown" }
+        {
+          "include": "#fenced-code-rust"
+        },
+        {
+          "include": "#void-tag"
+        },
+        {
+          "include": "#section"
+        },
+        {
+          "include": "#div-shorthand"
+        },
+        {
+          "include": "#tag"
+        },
+        {
+          "include": "#fenced-code"
+        },
+        {
+          "include": "#heading"
+        },
+        {
+          "include": "#list"
+        }
       ]
     },
     "div-shorthand": {
@@ -97,15 +168,43 @@
       "begin": "^(\\s*)(:::)((?:[.#][a-zA-Z_][\\w-]*)+)(?:\\s+([^\\n]+))?$",
       "end": "^(\\s*)(:::)\\s*$",
       "beginCaptures": {
-        "2": { "name": "entity.name.tag.html" },
-        "3": { "name": "entity.other.attribute-name.class.css" }
+        "2": {
+          "name": "entity.name.tag.html"
+        },
+        "3": {
+          "name": "entity.other.attribute-name.class.css"
+        }
       },
       "endCaptures": {
-        "2": { "name": "entity.name.tag.html" }
+        "2": {
+          "name": "entity.name.tag.html"
+        }
       },
       "patterns": [
-        { "include": "#fenced-code-rust" },
-        { "include": "text.html.markdown" }
+        {
+          "include": "#fenced-code-rust"
+        },
+        {
+          "include": "#void-tag"
+        },
+        {
+          "include": "#section"
+        },
+        {
+          "include": "#div-shorthand"
+        },
+        {
+          "include": "#tag"
+        },
+        {
+          "include": "#fenced-code"
+        },
+        {
+          "include": "#heading"
+        },
+        {
+          "include": "#list"
+        }
       ]
     },
     "tag": {
@@ -113,17 +212,84 @@
       "begin": "^(\\s*)(:::)([a-z][a-z0-9-]*)((?:[.#][a-zA-Z_][\\w-]*)*)(?:\\s+([^\\n]+))?$",
       "end": "^(\\s*)(:::)\\s*$",
       "beginCaptures": {
-        "2": { "name": "entity.name.tag.html" },
-        "3": { "name": "entity.name.tag.html" },
-        "4": { "name": "entity.other.attribute-name.class.css" }
+        "2": {
+          "name": "entity.name.tag.html"
+        },
+        "3": {
+          "name": "entity.name.tag.html"
+        },
+        "4": {
+          "name": "entity.other.attribute-name.class.css"
+        }
       },
       "endCaptures": {
-        "2": { "name": "entity.name.tag.html" }
+        "2": {
+          "name": "entity.name.tag.html"
+        }
       },
       "patterns": [
-        { "include": "#fenced-code-rust" },
-        { "include": "text.html.markdown" }
+        {
+          "include": "#fenced-code-rust"
+        },
+        {
+          "include": "#void-tag"
+        },
+        {
+          "include": "#section"
+        },
+        {
+          "include": "#div-shorthand"
+        },
+        {
+          "include": "#tag"
+        },
+        {
+          "include": "#fenced-code"
+        },
+        {
+          "include": "#heading"
+        },
+        {
+          "include": "#list"
+        }
       ]
+    },
+    "heading": {
+      "name": "meta.heading.mdr",
+      "match": "^(#{1,6})(\\s+)(.*)$",
+      "captures": {
+        "1": {
+          "name": "punctuation.definition.heading.markdown"
+        }
+      }
+    },
+    "list": {
+      "name": "markup.list.mdr",
+      "match": "^(\\s*)([-+])(\\s+)",
+      "captures": {
+        "2": {
+          "name": "punctuation.definition.list.begin.markdown"
+        }
+      }
+    },
+    "fenced-code": {
+      "name": "markup.fenced_code.block.markdown",
+      "begin": "(^|\\G)(\\s*)(`{3,}|~{3,})\\s*([^`\\n]*)$",
+      "end": "(^|\\G)(\\s*)(\\3)\\s*$",
+      "beginCaptures": {
+        "3": {
+          "name": "comment.line.mdr"
+        },
+        "4": {
+          "name": "fenced_code.block.language.markdown"
+        }
+      },
+      "endCaptures": {
+        "3": {
+          "name": "comment.line.mdr"
+        }
+      },
+      "contentName": "markup.raw.block.mdr"
     }
   }
 }

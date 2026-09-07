@@ -4,50 +4,54 @@ title: 数学
 breadcrumbs:
   - href: /index.html
     label: ホーム
+scripts:
+  - ../../scripts/pages/math/index.ts
 ---
-:::details
-  :summary[各ページの関係]
+数学について学んだ内容を，分野ごとに整理している．
 
-  :div.mermaid.panzoom[graph TB; mathmatics-introduction\[数学とは\]; click mathmatics-introduction href "math/mathmatics-introduction.html"; logical-formula\[論理式\]; click logical-formula href "math/logical-formula.html"; proof\[証明\]; click proof href "math/proof.html"; logical-formula-extension\[論理式の拡張\]; click logical-formula-extension href "math/logical-formula-extension.html"; natural-deduction\[自然演繹\]; click natural-deduction href "math/natural-deduction.html"; ZFC-axioms\[ZFC公理系\]; click ZFC-axioms href "math/ZFC-axioms.html"; order\[順序\]; click order href "math/order.html"; mathmatics-introduction --> logical-formula; logical-formula --> proof; proof --> logical-formula-extension; logical-formula-extension --> natural-deduction; natural-deduction --> ZFC-axioms; ZFC-axioms --> order]
+:::details
+  :summary[公開中のページと学習順序]
+  :div.mermaid.panzoom#graph[]
 :::
 
 ## 数理論理学
 
-数理論理学はメタ数学(数学それ自身)に対して研究する分野である．
+数理論理学は，数学で用いる言語や推論，公理系などを数学的な対象として研究する分野である．
 
 ### 数学の入門
 
-数学を勉強するにあたって，知っておきたい基礎的な知識を紹介する．入門に最低限な知識のみを紹介しているため，形式化や詳しい用語を省略している部分もある．
+数学を学ぶうえで必要となる基礎的な考え方を，初めて読む人に向けて紹介する．厳密な形式化に進む前の入門として，細かな用語や議論を一部省略している．以下のページは，上から順に読み進められる．
 
-- [数学とは](math/mathmatics-introduction.html)
-- [論理式](math/logical-formula.html)
-- [証明](math/proof.html)
-- [論理式の拡張](math/logical-formula-extension.html)
-- [自然演繹](math/natural-deduction.html)
-- [ZFC公理系](math/ZFC-axioms.html)
-- [順序](math/order.html)
+:ul#introduction-to-mathematics[]
 
 ### 数学基礎論
 
-### モデル理論
+数学の基礎にある公理や証明，数学的対象の構成を研究する．集合論，証明論，モデル理論，計算可能性理論などが含まれる．
+
+### 論理体系
 
 - 命題論理
-- 述語論理
-- 高階述語論理
+- 一階述語論理
+- 高階論理
 - 様相論理
 
 ### 証明論
 
-- ヒルベルト流
+- ヒルベルト流の証明体系
+- 自然演繹
 - シークエント計算
-- ゲンチェン流
+- 不完全性定理
+
+### モデル理論
+
+形式言語の式に数学的な意味を与える構造と，その構造で式が成り立つ条件を研究する．
 
 ### 理論計算機科学
 
-- 言語
+- 形式言語
 - オートマトン
-- チューリングマシン
-- 不完全性定理
+- 計算可能性
+- :ruby.person-name[Turing:rt[チューリング]]機械
 - $lambda$計算
 - 型付き$lambda$計算
 

@@ -45,7 +45,7 @@ test('groups consecutive text lines into one paragraph', () => {
     '<h1>見出し</h1>',
     '<p>一行目\n二行目</p>',
     '<p>三行目</p>',
-    '<h2>次の見出し</h2>',
+    '<h2 id="次の見出し">次の見出し</h2>',
   ].join('\n'));
 });
 
@@ -171,4 +171,45 @@ test('does not validate tag-like text inside a code fence', () => {
 test('compiles inline tags nested more than one level', () => {
   assert.equal(compile(':ruby[:span[Hilbert:rt[ヒルベルト]]]'),
     '<ruby><span>Hilbert<rt>ヒルベルト</rt></span></ruby>');
+});
+
+test('fills an empty link label with the target page title', () => {
+  const options = {
+    pageTitles: { './math/proof.html': '証明' },
+  };
+  assert.equal(
+    compile('[](./math/proof.html)\n', options),
+    '<p><a href="./math/proof.html">証明</a></p>',
+  );
+});
+
+test('keeps a label that the author wrote', () => {
+  const options = {
+    pageTitles: { './math/proof.html': '証明' },
+  };
+  assert.equal(
+    compile('[別の表示](./math/proof.html)\n', options),
+    '<p><a href="./math/proof.html">別の表示</a></p>',
+  );
+});
+
+test('rejects an empty link label pointing outside the site', () => {
+  assert.throws(
+    () => compile('[](./missing.html)\n', { pageTitles: {} }),
+    /Link with no label must point at a known page/,
+  );
+});
+
+test('gives h2 and h3 an id built from their text', () => {
+  assert.equal(compile('## 順序集合\n'), '<h2 id="順序集合">順序集合</h2>');
+  assert.equal(compile('### Rust ライブラリ\n'), '<h3 id="rust-ライブラリ">Rust ライブラリ</h3>');
+  // 目次が拾うのは h2 と h3 だけなので、それ以外には振らない。
+  assert.equal(compile('#### 推論A\n'), '<h4>推論A</h4>');
+});
+
+test('numbers a heading id that appears twice', () => {
+  assert.equal(
+    compile('## 外延性公理\n\n### 外延性公理\n'),
+    '<h2 id="外延性公理">外延性公理</h2>\n<h3 id="外延性公理-1">外延性公理</h3>',
+  );
 });
