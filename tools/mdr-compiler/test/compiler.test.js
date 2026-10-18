@@ -213,3 +213,22 @@ test('numbers a heading id that appears twice', () => {
     '<h2 id="外延性公理">外延性公理</h2>\n<h3 id="外延性公理-1">外延性公理</h3>',
   );
 });
+
+test('does not wrap a run of inline tags in a paragraph', () => {
+  // summary や div は p の中に置けないので、タグだけが並ぶ行は p で包まない。
+  assert.equal(
+    compile(':::details\n  :summary[題]\n  :div.a#g[]\n:::\n'),
+    '<details>\n<summary>題</summary>\n<div class="a" id="g"></div>\n</details>',
+  );
+  // 地の文が混ざる場合は今まで通り段落にする。
+  assert.equal(compile('本文に:span[強調]を含む\n'), '<p>本文に<span>強調</span>を含む</p>');
+});
+
+test('lifts a leading inline tag out of the paragraph that follows it', () => {
+  // 空行を挟まずに :summary[...] の次の行から本文を書くと一つの段落になるが、
+  // summary は p の中に置けない。
+  assert.equal(
+    compile(':::details\n  :summary[読み]\n  本文が続く\n:::\n'),
+    '<details>\n<summary>読み</summary>\n<p>\n  本文が続く</p>\n</details>',
+  );
+});

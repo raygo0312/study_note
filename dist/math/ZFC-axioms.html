@@ -64,7 +64,7 @@ x \in a \triangle b &amp; \Longleftrightarrow x \in (a \setminus b) \cup (b \set
 \forall x \exists y \forall z, z \in y &amp; \leftrightarrow \exists w (w \in x \land G(w, z)), \\ \forall x \exists y \forall z, z \in y &amp; \leftrightarrow \exists w(w \in x \land F(w) \land w = z), \\ \forall x \exists y \forall z, z \in y &amp; \leftrightarrow z \in x \land F(z). \
 \end&#123;aligned&#125;\] 分出公理が導けた．</p> </details> <p> 空集合公理，冪集合，置換公理\(\Longrightarrow\)対公理．</p> <details> <summary>証明</summary> <p> \(c : \Longleftrightarrow \mathscr&#123;P&#125;(\mathscr&#123;P&#125;(0)) = \&#123;0, 1\&#125;\)とすると，空集合公理と冪集合から存在する．\(F(x, y) : \Longleftrightarrow x = 0 \land y = a \lor x = 1 \land y = b\)とすると\(F\)は論理関数式である．置換公理より， \[\begin&#123;aligned&#125;
 \forall x \exists y \forall z, z \in y &amp; \leftrightarrow \exists w (w \in x \land (w = 0 \land z = a \lor w = 1 \land z = b)), \\ \forall x \exists y \forall z, z \in y &amp; \leftrightarrow 0 \in x \land z = a \lor 1 \in x \land z = b, \\ \exists y \forall z, z \in y &amp; \leftrightarrow 0 \in c \land z = a \lor 1 \in c \land z = b, \\ \exists y \forall z, z \in y &amp; \leftrightarrow z = a \lor z = b, \\ \forall x y \exists z \forall w, w \in z &amp; \leftrightarrow w = x \lor w = \y. \
-\end&#123;aligned&#125;\] 対公理が導けた．</p> </details> <p> 無限公理，分出公理\(\Longrightarrow\)空集合公理．</p> <details> <summary>証明</summary> <p> 1は無限公理より存在する．このとき，\(0 = \&#123;x \in 1 \mid(|) x \not = x\&#125;\)が成り立ち，これは分出公理より存在する．</p> </details> </section>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>     <script type="module">const updateProgress = () => {
+\end&#123;aligned&#125;\] 対公理が導けた．</p> </details> <p> 無限公理，分出公理\(\Longrightarrow\)空集合公理．</p> <details> <summary>証明</summary> <p> 1は無限公理より存在する．このとき，\(0 = \&#123;x \in 1 \mid(|) x \not = x\&#125;\)が成り立ち，これは分出公理より存在する．</p> </details> </section>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>       <script type="module">const updateProgress = () => {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
   document.documentElement.style.setProperty("--reading-progress", String(Math.min(1, Math.max(0, ratio))));
@@ -107,4 +107,4 @@ if (header && bar) {
     document.fonts.ready.then(updateOffset);
   }
 }
-</script>   </body></html>
+</script>  </body> </html>

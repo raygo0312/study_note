@@ -327,6 +327,9 @@ const pageTitle = `学問の鎖｜${title}`;
       <Fragment set:html={contentHtml} />
     </main>
     <footer>Copyright © raygo All Rights Reserved since 2016.</footer>
+    {/* Page scripts come first: they may build the markup that the renderers
+        below then act on, and module scripts run in document order. */}
+    <slot name="page-scripts" />
     {hasMermaid && <script type="module" is:inline set:html={mermaidScript}></script>}
     {hasPanzoom && <script type="module" is:inline set:html={panzoomScript}></script>}
     {hasIframe && <script type="module" is:inline set:html={lazyIframeScript}></script>}
@@ -374,6 +377,5 @@ const pageTitle = `学問の鎖｜${title}`;
         });
       </script>
     )}
-    <slot name="page-scripts" />
   </body>
 </html>

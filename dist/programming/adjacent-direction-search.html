@@ -27,7 +27,7 @@
 <span class="line"><span style="color:#ABB2BF">            (</span><span style="color:#E06C75">ni</span><span style="color:#56B6C2"> &#x3C;</span><span style="color:#E06C75"> h</span><span style="color:#56B6C2"> &#x26;&#x26;</span><span style="color:#E06C75"> nj</span><span style="color:#56B6C2"> &#x3C;</span><span style="color:#E06C75"> w</span><span style="color:#ABB2BF">).</span><span style="color:#61AFEF">then_some</span><span style="color:#ABB2BF">((</span><span style="color:#E06C75">ni</span><span style="color:#ABB2BF">, </span><span style="color:#E06C75">nj</span><span style="color:#ABB2BF">))</span></span>
 <span class="line"><span style="color:#ABB2BF">        &#125;)</span></span>
 <span class="line"><span style="color:#ABB2BF">        .</span><span style="color:#61AFEF">collect</span><span style="color:#ABB2BF">()</span></span>
-<span class="line"><span style="color:#ABB2BF">&#125;</span></span></code></pre> <p><code>usize::MAX</code>を<code>wrapping_add</code>で加えると，座標から<code>1</code>を引く動作になる．<code>0</code>から引いた場合は大きな値へ回り込むため，<code>ni &lt; h &amp;&amp; nj &lt; w</code>の判定で範囲外として除外できる．</p>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>     <script type="module">const updateProgress = () => {
+<span class="line"><span style="color:#ABB2BF">&#125;</span></span></code></pre> <p><code>usize::MAX</code>を<code>wrapping_add</code>で加えると，座標から<code>1</code>を引く動作になる．<code>0</code>から引いた場合は大きな値へ回り込むため，<code>ni &lt; h &amp;&amp; nj &lt; w</code>の判定で範囲外として除外できる．</p>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>       <script type="module">const updateProgress = () => {
   const scrollable = document.documentElement.scrollHeight - window.innerHeight;
   const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
   document.documentElement.style.setProperty("--reading-progress", String(Math.min(1, Math.max(0, ratio))));
@@ -108,4 +108,4 @@ if (header && bar) {
 
           wrapper.appendChild(button);
         });
-      </script>  </body></html>
+      </script> </body> </html>

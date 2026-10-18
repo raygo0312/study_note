@@ -2,5 +2,6 @@
   "liveServer.settings.port": 5501,
   "[mdr]": {
     "editor.defaultFormatter": "raygo0312.mdr-language-support"
-  }
+  },
+  "remote.autoForwardPortsFallback": 0
 }

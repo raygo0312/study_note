@@ -1,0 +1,237 @@
+---
+layout: ../../layouts/BaseLayout.astro
+title: イテレータ Iterator
+breadcrumbs:
+  - href: /index.html
+    label: ホーム
+  - href: /programming.html
+    label: 情報技術
+---
+
+Rustの`Iterator`は，値を順に取り出すためのトレイトである．配列の走査だけでなく，値の変換，条件による絞り込み，合計などを組み合わせて書ける．ここでは基本的な仕組みと，競技プログラミングでもよく使う操作をまとめる．[可変配列 Vec](./vector.html)の基本操作と，参照・所有権の初歩を前提とする．
+
+## nextで一つずつ取り出す
+
+*イテレータ*とは，内部の状態を更新しながら値を順に取り出せる仕組みである．Rustでは`Iterator`トレイトで表し，取り出す値の型を`Item`，次の値を取り出す操作を`next`で定める．
+
+```rust
+let values = vec![10, 20, 30];
+let mut iter = values.iter();
+
+assert_eq!(iter.next(), Some(&10));
+assert_eq!(iter.next(), Some(&20));
+assert_eq!(iter.next(), Some(&30));
+assert_eq!(iter.next(), None);
+```
+
+`next`の戻り値は`Option<Self::Item>`である．`Some(value)`は値を取り出せたこと，`None`は今回の呼び出しでは値がないことを表す．`next`は状態を進めるので，上の例では`iter`を`mut`にする．`iter()`から取り出すものは値への参照であるため，結果は`Some(10)`ではなく`Some(&10)`となる．
+
+通常の配列や範囲のイテレータは，終端に到達すると以後も`None`を返す．ただし，`Iterator`全般には，一度`None`を返した後に再び`Some`を返す実装も許されている．`fuse()`を使うと，最初の`None`以後は必ず`None`になる．
+
+### forとの関係
+
+`for`は，対象を`IntoIterator`トレイトの`into_iter`でイテレータに変換し，`next`が`None`を返すまで繰り返す．`Vec`自体とイテレータは別のものであり，`IntoIterator`は両者をつなぐ役割を持つ．
+
+```rust
+let values = vec![10, 20, 30];
+let mut total = 0;
+for value in &values {
+    total += *value;
+}
+assert_eq!(total, 60);
+assert_eq!(values.len(), 3);
+```
+
+`for value in &values`では`Vec`を共有参照で借用するため，ループの後も`values`を利用できる．
+
+## iter・iter_mut・into_iterの使い分け
+
+`Vec<T>`では，取り出した値をどう扱うかに応じて次の三つを使い分ける．
+
+- `iter()`：`&T`を取り出す．元の要素を読み取る．
+- `iter_mut()`：`&mut T`を取り出す．元の要素を書き換える．
+- `into_iter()`：`Vec<T>`を所有する値に対して呼ぶと，`T`を取り出す．`Vec`の所有権を移動する．
+
+```rust
+let mut values = vec![1, 2, 3];
+
+let total: i32 = values.iter().copied().sum();
+assert_eq!(total, 6);
+
+for value in values.iter_mut() {
+    *value *= 2;
+}
+assert_eq!(values, vec![2, 4, 6]);
+
+let doubled: Vec<i32> = values.into_iter().map(|x| x * 2).collect();
+assert_eq!(doubled, vec![4, 8, 12]);
+// valuesの所有権は移動したため，ここからvaluesは使えない．
+```
+
+`copied()`は，`&T`の列を`T`の列に変える．`T: Copy`が必要であり，整数などで使える．`String`のように`Copy`でない型を複製したい場合は，`T: Clone`を要求する`cloned()`を使う．複製が不要なら，参照のまま処理すればよい．
+
+`into_iter()`の意味は，呼び出す対象の型によって決まる．たとえば`(&values).into_iter()`なら共有参照からの変換となり，元の`Vec`の所有権は移動しない．
+
+## 変換と絞り込み
+
+### map・filter・collect
+
+`map`は各要素を変換し，`filter`は条件を満たす要素だけを残す．`collect`は，取り出した値を`Vec`などのコレクションにまとめる．
+
+```rust
+let values = vec![1, 2, 3, 4, 5];
+let result: Vec<i32> = values
+    .iter()
+    .copied()
+    .filter(|&x| x % 2 == 0)
+    .map(|x| x * 10)
+    .collect();
+
+assert_eq!(result, vec![20, 40]);
+```
+
+`|x| x * 10`は，`x`を受け取って`x * 10`を返すクロージャである．`filter`のクロージャは要素への参照を受け取る．この例では`copied()`の後の要素型が`i32`なので，`|&x|`で参照の中の値を取り出している．`map`のクロージャは要素そのものを受け取るため，`|x|`でよい．
+
+`collect`は複数の型を作れるので，ここでは左辺に`Vec<i32>`を指定した．`collect::<Vec<_>>()`と書いて収集先を指定することもできる．
+
+### 必要になるまで処理しない
+
+`map`や`filter`のように，元のイテレータから別のイテレータを作る操作を*イテレータアダプタ*という．これらは通常，作成しただけでは要素を処理しない．`next`，`for`，`collect`，`sum`などによって値が要求されたときに処理を進める．この性質を*遅延評価*という．
+
+上の例では，`filter`の結果を中間の`Vec`に保存することなく，必要な要素を順に`map`へ渡す．次の図は値の変化を示しており，各段階で配列を作ることを意味しない．
+
+:::.concept-diagram
+  :strong.title[偶数だけを10倍して集める]
+  :::.flow
+    :::.box
+      :small[入力]
+      :code[1, 2, 3, 4, 5]
+    :::
+    :span.connector[→]
+    :::.box
+      :small[filter]
+      :code[2, 4]
+    :::
+    :span.connector[→]
+    :::.box
+      :small[map]
+      :code[20, 40]
+    :::
+    :span.connector[→]
+    :::.box.accent
+      :small[collect]
+      :code[Vecに格納]
+    :::
+  :::
+:::
+
+:::.me
+  `map`まで書いたら、もう全部10倍になってると思ってた！
+:::
+
+:::.you
+  そこで作ったのは「取り出すときに10倍する」という手順なんだね。結果が欲しいときは、`collect`や`sum`までつなげよう
+:::
+
+## よく使う操作
+
+### 合計・個数・最小値・最大値
+
+```rust
+let values = vec![3, 1, 4, 1, 5];
+assert_eq!(values.iter().copied().sum::<i32>(), 14);
+assert_eq!(values.iter().filter(|&&x| x > 2).count(), 3);
+assert_eq!(values.iter().copied().min(), Some(1));
+assert_eq!(values.iter().copied().max(), Some(5));
+
+let empty: Vec<i32> = vec![];
+assert_eq!(empty.iter().copied().sum::<i32>(), 0);
+assert_eq!(empty.iter().copied().min(), None);
+```
+
+`min`・`max`は空の場合に`None`を返す．`sum`も整数型の範囲を超えることがあるので，[整数のオーバーフロー](./integer-overflow.html)に注意する．上の`filter`では要素型が`&i32`であり，判定にはさらに参照が渡るため，`|&&x|`としている．
+
+### 番号を付ける・二つの列を組にする
+
+```rust
+let values = vec![10, 20, 30];
+let indexed: Vec<_> = values.iter().copied().enumerate().collect();
+assert_eq!(indexed, vec![(0, 10), (1, 20), (2, 30)]);
+
+let a = vec![1, 2, 3];
+let b = vec![10, 20];
+let sums: Vec<_> = a.iter().zip(b.iter()).map(|(&x, &y)| x + y).collect();
+assert_eq!(sums, vec![11, 22]);
+```
+
+`enumerate()`は，その位置から取り出した要素に`0`から始まる`usize`の番号を付ける．`filter`の後に使うと，絞り込み後の番号になる．元の位置を残したい場合は`enumerate`の後に`filter`を使う．`zip`は二つの列を組にし，短い方が尽きたところで終了する．
+
+### 一部を取り出す・逆順にする
+
+```rust
+let values = vec![10, 20, 30, 40, 50];
+let part: Vec<_> = values.iter().copied().skip(1).take(2).collect();
+assert_eq!(part, vec![20, 30]);
+
+let reversed: Vec<_> = values.iter().rev().copied().collect();
+assert_eq!(reversed, vec![50, 40, 30, 20, 10]);
+
+let first_five: Vec<_> = (0..).take(5).collect();
+assert_eq!(first_five, vec![0, 1, 2, 3, 4]);
+```
+
+`skip(n)`は先頭の`n`個を飛ばし，`take(n)`は最大`n`個を取り出す．`rev()`は後ろからも取り出せる`DoubleEndedIterator`に対して使える．すべてのイテレータで使えるわけではない．`0..`のように終わりのない列も作れるが，全体を`collect`しようとすると終わらないため，`take`などで取り出す範囲を制限する．
+
+### 検索と条件判定
+
+```rust
+let values = vec![1, 3, 4, 6];
+assert_eq!(values.iter().copied().find(|&x| x % 2 == 0), Some(4));
+assert_eq!(values.iter().position(|&x| x % 2 == 0), Some(2));
+assert!(values.iter().any(|&x| x > 5));
+assert!(!values.iter().all(|&x| x % 2 == 0));
+```
+
+`find`は最初に条件を満たす要素を，`position`はその番号を返す．どちらも見つからなければ`None`となる．`any`は一つでも条件を満たすか，`all`はすべてが条件を満たすかを判定する．これらは結果が決まった時点で処理を止める．空の列では`any`は`false`，`all`は`true`となる．
+
+### foldで値をまとめる
+
+`fold(初期値, クロージャ)`は，ここまでの結果と次の要素から新しい結果を作る操作を繰り返す．合計以外の集計にも使える．
+
+```rust
+let values = vec![2, 3, 4];
+let total = values.iter().fold(0, |acc, &x| acc + x);
+assert_eq!(total, 9);
+```
+
+この例では結果が`0 → 2 → 5 → 9`と変化する．単純な合計なら`sum`を使う方が意図を伝えやすい．
+
+## イテレータは途中まで進めると元に戻らない
+
+`next`や検索などで取り出した要素は，そのイテレータからは再び取り出せない．`nth(n)`も，現在の位置から`n`個を飛ばして次の一つを取り出す操作であり，配列の添字アクセスとは異なる．
+
+```rust
+let values = vec![10, 20, 30, 40];
+let mut iter = values.iter();
+assert_eq!(iter.nth(1), Some(&20));
+assert_eq!(iter.next(), Some(&30));
+assert_eq!(iter.next(), Some(&40));
+```
+
+`collect`や`sum`は呼び出したイテレータの所有権を受け取るため，その変数を続けて使うことはできない．元の配列を残してあるなら，`values.iter()`で新しいイテレータを作って最初から走査できる．途中の状態を残して一部だけ収集する場合は，`by_ref()`で可変参照を渡す．
+
+```rust
+let mut iter = 0..5;
+let first: Vec<_> = iter.by_ref().take(2).collect();
+let rest: Vec<_> = iter.collect();
+assert_eq!(first, vec![0, 1]);
+assert_eq!(rest, vec![2, 3, 4]);
+```
+
+## 公式資料
+
+Rust標準ライブラリの`std::iter`，`Iterator`，`IntoIterator`の資料で，詳細な仕様やほかのメソッドを確認できる．
+
+- `std::iter`：`https://doc.rust-lang.org/std/iter/index.html`
+- `Iterator`：`https://doc.rust-lang.org/std/iter/trait.Iterator.html`
+- `IntoIterator`：`https://doc.rust-lang.org/std/iter/trait.IntoIterator.html`

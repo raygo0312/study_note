@@ -32,6 +32,14 @@ function renderAttributes(node, options, includeArguments = true) {
   return attributes.map(([name, value]) => ` ${name}="${escapeHtml(value)}"`).join('');
 }
 
+// p の中に置ける要素。これ以外が行頭に来たら段落の外へ出す。
+const PHRASING_TAGS = new Set([
+  'a', 'abbr', 'b', 'bdi', 'bdo', 'br', 'cite', 'code', 'data', 'dfn', 'em', 'i',
+  'kbd', 'mark', 'q', 'rp', 'rt', 'ruby', 's', 'samp', 'small', 'span', 'strong',
+  'sub', 'sup', 'time', 'u', 'var', 'wbr', 'img', 'picture', 'input', 'label',
+  'select', 'textarea', 'button', 'output', 'progress', 'meter',
+]);
+
 function renderInline(nodes, options = {}, allowTermLinks = true) {
   return nodes.map((node) => {
     switch (node.type) {
@@ -129,8 +137,31 @@ function render(ast, options = {}) {
         {
           const meaningful = node.children.filter((child) =>
             child.type !== 'text' || child.value.trim() !== '');
-          if (meaningful.length === 1 && meaningful[0].type === 'inline-tag') {
-            return renderInline(meaningful, options);
+          // インラインタグだけが並ぶ段落は、それ自体が要素の列なので p で
+          // 包まない。summary と div のように、p の中に置けないものが続く。
+          // 単独のタグはそれ自体が要素なので包まない。複数並ぶ場合は、p に
+          // 入れられないものが混じるときだけ分ける。
+          const onlyTags = meaningful.length > 0
+            && meaningful.every((child) => child.type === 'inline-tag');
+          if (onlyTags && (meaningful.length === 1
+            || meaningful.some((child) => !PHRASING_TAGS.has(child.name)))) {
+            return meaningful.map((child) => renderInline([child], options)).join('\n');
+          }
+          // p の中に置けない要素が行頭に来る形も分ける。空行を挟まずに
+          // :summary[...] の次の行から本文を書いたときにこうなる。
+          const leading = [];
+          let rest = node.children;
+          while (rest.length > 0) {
+            const [first, ...others] = rest;
+            if (first.type === 'inline-tag' && !PHRASING_TAGS.has(first.name)) {
+              leading.push(first); rest = others; continue;
+            }
+            if (first.type === 'text' && first.value.trim() === '') { rest = others; continue; }
+            break;
+          }
+          if (leading.length > 0 && rest.length > 0) {
+            const head = leading.map((child) => renderInline([child], options)).join('\n');
+            return `${head}\n<p>${renderInline(rest, options)}</p>`;
           }
         }
         return `<p>${renderInline(node.children, options)}</p>`;
