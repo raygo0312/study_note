@@ -1,0 +1,36 @@
+/* Status cards authored in daily/food-reviews.mdr. */
+.food-event,
+.food-review-status {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: .7rem 1.2rem;
+  font-family: var(--font-ui);
+}
+.food-event dt,
+.food-review-status dt { font-weight: 700; color: var(--color-text-muted); }
+.food-event dd,
+.food-review-status dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.food-event p,
+.food-review-status p { margin: 0; }
+.food-review {
+  margin-block: 1.4rem;
+  padding: clamp(1rem, 3vw, 1.8rem);
+  border: var(--border-default);
+  border-inline-start: 4px solid var(--color-accent);
+  border-radius: var(--radius-panel);
+  background: var(--color-surface-sunken);
+}
+.food-review h3 { margin-top: 0; }
+.food-review > p { font-size: .9em; overflow-wrap: anywhere; }
+.food-review-badge {
+  display: inline-block;
+  padding: .1rem .65rem;
+  border: var(--border-default);
+  border-radius: 999px;
+  background: var(--color-surface);
+  font-size: .85em;
+}
+@media (max-width: 420px) {
+  .food-event, .food-review-status { grid-template-columns: 1fr; gap: .35rem; }
+  .food-event dd, .food-review-status dd { margin-bottom: .6rem; }
+}

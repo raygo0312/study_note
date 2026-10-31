@@ -1,0 +1,13 @@
+---
+layout: ../../layouts/BaseLayout.astro
+title: 日常
+breadcrumbs:
+  - href: /index.html
+    label: ホーム
+---
+
+食べたものや買ったものなど，日常で気になったことと感想を残す．
+
+## 食べたもの
+
+- [](./daily/food-reviews.html)

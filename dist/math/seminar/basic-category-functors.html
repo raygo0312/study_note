@@ -1,0 +1,72 @@
+<!DOCTYPE html><html lang="ja" data-section="math"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜関手：圏の間の対応とその例</title><link rel="icon" type="image/png" href="../../favicon/icon.png"><link rel="stylesheet" href="../../css/main.css"><script>
+        window.MathJax = {
+          loader: {
+            load: ["[tex]/physics", "[XyJax]/xypic.js", "[tex]/bussproofs"],
+            paths: { XyJax: "https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/" }
+          },
+          startup: {
+            typeset: false,
+            pageReady: () => MathJax.startup.defaultPageReady().then(() => MathJax.typesetPromise())
+          },
+          tex: {
+            tags: "ams",
+            packages: {
+              "[+]": ["physics", "xypic", "bussproofs"]
+            },
+            macros: {
+              abs: ["\\left|#1\\right|", 1],
+              coloneq: [":="],
+              entail: ["\\vDash"],
+              prove: ["\\vdash"],
+              xor: ["\\veebar"]
+            }
+          },
+          chtml: {
+            scale: 1,
+            mtextInheritFont: true
+          }
+        };
+      </script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head> <body> <header> <div class="header-main"> <div class="header-title"> <img src="../../favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>関手：圏の間の対応とその例</h1> </div> </div> <div class="header-sticky-bar"> <nav aria-label="パンくず">  <a href="../../index.html">ホーム</a> /  <a href="../../math.html">数学</a> /  </nav>  <input type="checkbox" id="header-menu-toggle" class="header-menu-toggle"> <label for="header-menu-toggle" class="header-menu-btn" aria-label="メニューを開く"> <span></span><span></span><span></span> </label>  </div> <div class="header-tools" aria-label="ページツール"> <details name="page-tools"> <summary>目次</summary> <nav class="header-details-content" aria-label="目次"> <ul> <li> <a href="#関手の定義" class="tocLink">関手の定義</a> <ul><li> <a href="#合成を保つ" class="tocLink">合成を保つ</a>  </li><li> <a href="#恒等射を保つ" class="tocLink">恒等射を保つ</a>  </li></ul> </li><li> <a href="#忘却関手" class="tocLink">忘却関手</a>  </li><li> <a href="#自由関手" class="tocLink">自由関手</a> <ul><li> <a href="#自由群" class="tocLink">自由群</a>  </li><li> <a href="#自由可換環" class="tocLink">自由可換環</a>  </li><li> <a href="#自由線型空間" class="tocLink">自由線型空間</a>  </li></ul> </li><li> <a href="#位相空間から代数的構造を取り出す" class="tocLink">位相空間から代数的構造を取り出す</a> <ul><li> <a href="#基本群" class="tocLink">基本群</a>  </li><li> <a href="#ホモロジー群" class="tocLink">ホモロジー群</a>  </li></ul> </li><li> <a href="#方程式の解集合も関手になる" class="tocLink">方程式の解集合も関手になる</a>  </li> </ul> </nav> </details> <details name="page-tools"> <summary>定義される用語</summary> <nav class="header-details-content" aria-label="用語"> <a href="#define0" class="tocLink">関手</a>  <a href="#define1" class="tocLink">忘却関手</a>  <a href="#define2" class="tocLink">自由関手</a>  <a href="#define3" class="tocLink">自由群</a>  <a href="#define4" class="tocLink">自由線型空間</a>  </nav> </details>  </div> <div class="reading-progress" aria-hidden="true"></div> </header> <main>  <p>『ベーシック圏論 普遍性からの速習コース』本文20ページ後半〜25ページの要約．前提：<a href="./basic-category-categories.html">圏：対象と射，圏の構成</a>．</p> <h2 id="関手の定義">関手の定義</h2> <p><dfn id="define0">関手</dfn>\(F: \mathcal&#123;C&#125; \rightarrow \mathcal&#123;D&#125;\)は，圏の対象と射を，合成と恒等射を保って別の圏へ対応させるものである．</p> <ul> <li>各対象\(A\)に，対象\(F(A)\)を対応させる．</li> <li>各射\(f: A \rightarrow B\)に，射\(F(f): F(A) \rightarrow F(B)\)を対応させる．</li> </ul> <p>これらの対応は，次の二つの条件を満たす．</p> <section class="def"> <h3 id="合成を保つ">合成を保つ</h3> <p> 合成可能な\(f, g\)について，</p> <p> \[F(g \circ f) = F(g) \circ F(f).\]</p> <h3 id="恒等射を保つ">恒等射を保つ</h3> <p> 各対象\(A\)について，</p> <p> \[F(1_A) = 1_&#123;F(A)&#125;.\]</p> </section> <p>対象の対応だけを指定しても，関手を定義したことにはならない．射をどこへ送るかを指定し，二つの条件を確認する必要がある．これにより，元の圏の可換図式を移した図式も可換になる．</p> <p>関手\(F: \mathcal&#123;C&#125; \rightarrow \mathcal&#123;D&#125;\)と\(G: \mathcal&#123;D&#125; \rightarrow \mathcal&#123;E&#125;\)は，対象と射の対応をそれぞれ続けて適用して合成できる．また，対象と射をそのまま返す恒等関手がある．圏と関手にも，対象と射のときと同様の構造が現れるが，すべての圏を一度に扱う際には集まりの大きさに注意が必要である．</p> <h2 id="忘却関手">忘却関手</h2> <p><dfn id="define1">忘却関手</dfn>は，対象がもつ構造や性質の一部を忘れる関手の呼び名である．これは個々の関手の特徴を表す言葉であり，一つの形式的定義を指すものではない．</p> <p>代表例は\(U: \text&#123;Grp&#125; \rightarrow \text&#123;Set&#125;\)である．群\(G\)をその元の集合\(U(G)\)へ送り，群準同型写像\(f\)を，集合間の写像としての同じ\(f\)へ送る．写像の合成と恒等写像は変わらないため，関手の条件を満たす．</p> <p>同様に，環や線型空間からその元の集合を取り出す関手がある．すべての構造を忘れる必要はなく，環から加法のアーベル群だけを取り出す\(\text&#123;Ring&#125; \rightarrow \text&#123;Ab&#125;\)も例である．また，\(\text&#123;Ab&#125; \rightarrow \text&#123;Grp&#125;\)という包含関手では，群の演算を残したまま可換性という性質を忘れる．</p> <h2 id="自由関手">自由関手</h2> <p><dfn id="define2">自由関手</dfn>は，集合をもとに，指定された種類の代数的構造を自由に作る関手である．ここで「自由」とは，その構造の公理から必要になる関係以外の関係を付け加えないことを意味する．この範囲では具体例を扱い，普遍性による特徴付けは後に譲る．</p> <h3 id="自由群">自由群</h3> <p>集合\(S\)上の<dfn id="define3">自由群</dfn>\(F(S)\)では，\(S\)の元とその形式的な逆元からなる有限の語を考える．隣り合う\(s s^&#123;-1&#125;\)や\(s^&#123;-1&#125; s\)を消去して得られる簡約語で元を表せる．積は語を連結して簡約することで定まり，単位元は空の語である．</p> <p>写像\(f: S \rightarrow T\)から，各文字\(s\)を\(f(s)\)に置き換える群準同型写像</p> <p>\[F(f): F(S) \rightarrow F(T)\]</p> <p>を得る．たとえば\(S = \&#123;a, b\&#125;\)，\(T = \&#123;t\&#125;\)で\(f(a) = f(b) = t\)なら，\(a b^&#123;-1&#125;\)は\(t t^&#123;-1&#125; = 1\)へ送られる．対象上の構成とこの射上の対応を合わせて，関手\(F: \text&#123;Set&#125; \rightarrow \text&#123;Grp&#125;\)になる．</p> <h3 id="自由可換環">自由可換環</h3> <p>集合\(S\)上の自由可換環は，整数係数で，各\(s \in S\)に対応する変数をもつ多項式環として作れる．変数が無限個あっても，一つの多項式に現れる変数や項は有限個である．</p> <p>写像\(f: S \rightarrow T\)には，各変数\(x_s\)を\(x_&#123;f(s)&#125;\)に置き換える環準同型写像を対応させる．これにより，\(\text&#123;Set&#125;\)から可換環の圏\(\text&#123;CRing&#125;\)への関手を得る．</p> <h3 id="自由線型空間">自由線型空間</h3> <p>体\(k\)を固定する．集合\(S\)を基底とする<dfn id="define4">自由線型空間</dfn>\(F(S)\)の元は，形式的な有限線型結合</p> <p>\[\sum_&#123;s \in S&#125; \lambda_s s\]</p> <p>で表される．係数\(\lambda_s \in k\)は，有限個を除いて\(0\)である．加法とスカラー倍は係数ごとに計算する．</p> <p>厳密には，\(F(S)\)を有限台の関数\(\lambda: S \rightarrow k\)の集合として定義できる．有限台とは，\(\lambda(s) \not = 0\)となる\(s\)が有限個しかないことをいう．</p> <p>\[(\lambda + \mu)(s) = \lambda(s) + \mu(s), \quad (c \lambda)(s) = c \lambda(s).\]</p> <p>写像\(f: S \rightarrow T\)には，基底の元\(s\)を基底の元\(f(s)\)へ送る線型写像を対応させる．</p> <p>\[F(f)(\sum_&#123;s \in S&#125; \lambda_s s) = \sum_&#123;s \in S&#125; \lambda_s f(s).\]</p> <p>同じ\(f(s)\)へ送られる項は係数を足し合わせる．元の和は有限個の項しかもたないため，この対応は確かに有限線型結合を与える．これにより関手\(F: \text&#123;Set&#125; \rightarrow \text&#123;Vect&#125;_k\)を得る．</p> <h2 id="位相空間から代数的構造を取り出す">位相空間から代数的構造を取り出す</h2> <p>位相空間を群などへ移して調べるのが，代数的位相幾何学の基本的な考え方の一つである．ここでも，空間だけでなく連続写像に対する対応が重要になる．</p> <h3 id="基本群">基本群</h3> <p>基点付き位相空間\((X, x)\)に基本群\(\pi_1(X, x)\)を対応させる．基点を保つ連続写像\(f: (X, x) \rightarrow (Y, y)\)は，ループに\(f\)を合成することにより群準同型写像</p> <p>\[f_*: \pi_1(X, x) \rightarrow \pi_1(Y, y)\]</p> <p>を誘導する．誘導写像は\((g \circ f)_* = g_* \circ f_*\)と\((1_X)_* = 1_&#123;\pi_1(X, x)&#125;\)を満たす．したがって，基本群は基点付き位相空間の圏\(\text&#123;Top&#125;_*\)から\(\text&#123;Grp&#125;\)への関手である．一般には基点の指定を省略できない．</p> <h3 id="ホモロジー群">ホモロジー群</h3> <p>各非負整数\(n\)について，位相空間\(X\)に\(n\)次ホモロジー群\(H_n(X)\)を対応させる関手</p> <p>\[H_n: \text&#123;Top&#125; \rightarrow \text&#123;Ab&#125;\]</p> <p>がある．連続写像はホモロジー群の間の準同型写像を誘導する．この範囲では，群そのものの構成より，対象と射の両方に対応があることが要点である．</p> <h2 id="方程式の解集合も関手になる">方程式の解集合も関手になる</h2> <p>整数係数の多項式方程式を固定し，可換環\(A\)ごとに，その環の元による解の集合\(F(A)\)を考える．</p> <p>環準同型写像\(f: A \rightarrow B\)は，加法・乗法・単位元を保つので，解の各成分に\(f\)を適用すれば\(B\)における解を得る．たとえば固定した方程式\(x^2 + y^2 = 1\)について，</p> <p>\[F(A) = \&#123;(x, y) \in A \times A | x^2 + y^2 = 1\&#125;, \quad F(f)(x, y) = (f(x), f(y))\]</p> <p>とする．この対応は合成と恒等射を保ち，関手\(F: \text&#123;CRing&#125; \rightarrow \text&#123;Set&#125;\)になる．関手は，数学的構造を忘れたり作ったりするだけでなく，環を変えたときに解集合がどう移るかも記述する．</p>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>       <script type="module">const updateProgress = () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+  document.documentElement.style.setProperty("--reading-progress", String(Math.min(1, Math.max(0, ratio))));
+};
+
+updateProgress();
+window.addEventListener("scroll", updateProgress, { passive: true });
+window.addEventListener("resize", updateProgress);
+</script> <script type="module">// The mobile header sticks with a negative top offset so that the title block
+// scrolls out of view and only the breadcrumb bar stays pinned. The offset is
+// the title's height, which varies with the title text, so it is measured here.
+// The "is-stuck" class marks the state where the bar has reached the top edge,
+// which is what turns the header background translucent.
+// --header-height feeds --scroll-offset, so anchor targets land below the
+// pinned header instead of underneath it.
+const header = document.querySelector("header");
+const bar = document.querySelector(".header-sticky-bar");
+
+if (header && bar) {
+  let titleHeight = 0;
+
+  const updateStuck = () => {
+    header.classList.toggle("is-stuck", window.scrollY > titleHeight);
+  };
+
+  const updateOffset = () => {
+    // Both rects shift together while stuck, so this distance stays correct.
+    const offset = bar.getBoundingClientRect().top - header.getBoundingClientRect().top;
+    titleHeight = Math.max(0, Math.round(offset));
+    document.documentElement.style.setProperty("--header-title-height", `${titleHeight}px`);
+    document.documentElement.style.setProperty("--header-height", `${Math.round(header.offsetHeight)}px`);
+    updateStuck();
+  };
+
+  updateOffset();
+  window.addEventListener("scroll", updateStuck, { passive: true });
+  window.addEventListener("resize", updateOffset);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(updateOffset);
+  }
+}
+</script>  </body> </html>

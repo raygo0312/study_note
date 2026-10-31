@@ -68,3 +68,12 @@ scripts:
 ## 離散数学
 
 ## 数値計算
+
+## ゼミ資料
+
+### ベーシック圏論 普遍性からの速習コース
+
+本文11〜25ページの要約．
+
+- [圏：対象と射，圏の構成](math/seminar/basic-category-categories.html)
+- [関手：圏の間の対応とその例](math/seminar/basic-category-functors.html)
