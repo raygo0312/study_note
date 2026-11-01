@@ -25,32 +25,12 @@ function activate(context) {
       }
     },
   });
-  const indentListItem = vscode.commands.registerCommand('mdr.indentListItem', async () => {
-    const editor = activeMdrEditor();
-    if (!editor) return;
-
-    const lines = [...new Set(editor.selections.map((selection) => selection.active.line))];
-    const listLines = lines.filter((line) =>
-      EMPTY_LIST_ITEM_PATTERN.test(editor.document.lineAt(line).text));
-    if (listLines.length === 0) return;
-
-    await editor.edit((editBuilder) => {
-      for (const line of listLines) {
-        editBuilder.insert(new vscode.Position(line, 0), '  ');
-      }
-    });
-  });
-
   const updateEmptyListContext = () => {
     const editor = activeMdrEditor();
     const selection = editor?.selection;
     const line = selection ? editor.document.lineAt(selection.active.line) : undefined;
-    const isEmptyListLine = Boolean(editor
-      && selection.isEmpty
-      && EMPTY_LIST_ITEM_PATTERN.test(line.text));
-    const isEmptyListItem = isEmptyListLine
-      && selection.active.character === line.text.length;
-    void vscode.commands.executeCommand('setContext', 'mdr.emptyListLine', isEmptyListLine);
+    const isEmptyListLine = Boolean(editor && selection.isEmpty && EMPTY_LIST_ITEM_PATTERN.test(line.text));
+    const isEmptyListItem = isEmptyListLine && selection.active.character === line.text.length;
     void vscode.commands.executeCommand('setContext', 'mdr.emptyListItem', isEmptyListItem);
   };
 
@@ -76,7 +56,6 @@ function activate(context) {
   updateEmptyListContext();
   context.subscriptions.push(
     provider,
-    indentListItem,
     removeEmptyListItem,
     activeEditorListener,
     selectionListener,

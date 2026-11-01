@@ -1,13 +1,15 @@
 ---
 layout: ../../../layouts/BaseLayout.astro
-title: 関手：圏の間の対応とその例
+title: 1-2 関手：圏の間の対応とその例
 breadcrumbs:
   - href: /index.html
     label: ホーム
   - href: /math.html
     label: 数学
+  - href: /math/basic-category.html
+    label: ベーシック圏論
 ---
-『ベーシック圏論 普遍性からの速習コース』本文20ページ後半〜25ページの要約．前提：[圏：対象と射，圏の構成](./basic-category-categories.html)．
+『ベーシック圏論 普遍性からの速習コース』本文20ページ後半〜25ページの要約．前提：[圏：対象と射，圏の構成](./section-1.html)．
 
 ## 関手の定義
 

@@ -1,5 +1,7 @@
 node_modules
-.astro
+/.astro/*
+!/.astro/content.d.ts
+!/.astro/types.d.ts
 .mdr-generated
 tools/mdr-compiler/node_modules
 tools/mdr-vscode/dist

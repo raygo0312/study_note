@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="ja" data-section="programming"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜5．通信時間の練習問題</title><link rel="icon" type="image/png" href="../../favicon/icon.png"><link rel="stylesheet" href="../../css/main.css"><script>
+        window.MathJax = {
+          loader: {
+            load: ["[tex]/physics", "[XyJax]/xypic.js", "[tex]/bussproofs"],
+            paths: { XyJax: "https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/" }
+          },
+          startup: {
+            typeset: false,
+            pageReady: () => MathJax.startup.defaultPageReady().then(() => MathJax.typesetPromise())
+          },
+          tex: {
+            tags: "ams",
+            packages: {
+              "[+]": ["physics", "xypic", "bussproofs"]
+            },
+            macros: {
+              abs: ["\\left|#1\\right|", 1],
+              coloneq: [":="],
+              compose: ["\\circ"],
+              entail: ["\\vDash"],
+              ob: "\\mathrm{ob}",
+              prove: ["\\vdash"],
+              xor: ["\\veebar"]
+            }
+          },
+          chtml: {
+            scale: 1,
+            mtextInheritFont: true
+          }
+        };
+      </script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head> <body> <header> <div class="header-main"> <div class="header-title"> <img src="../../favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>5．通信時間の練習問題</h1> </div> </div> <div class="header-sticky-bar"> <nav aria-label="パンくず">  <a href="../../index.html">ホーム</a> /  <a href="../../programming.html">情報技術</a> /  <a href="../network.html">通信速度とダウンロード時間</a> /  </nav>  <input type="checkbox" id="header-menu-toggle" class="header-menu-toggle"> <label for="header-menu-toggle" class="header-menu-btn" aria-label="メニューを開く"> <span></span><span></span><span></span> </label>  </div> <div class="header-tools" aria-label="ページツール"> <details name="page-tools"> <summary>目次</summary> <nav class="header-details-content" aria-label="目次"> <ul> <li> <a href="#解くときの順序" class="tocLink">解くときの順序</a>  </li><li> <a href="#問1：バイトとビット" class="tocLink">問1：バイトとビット</a>  </li><li> <a href="#問2：遅い区間が入れ替わる" class="tocLink">問2：遅い区間が入れ替わる</a>  </li><li> <a href="#問3：効率から時間まで" class="tocLink">問3：効率から時間まで</a>  </li><li> <a href="#問4：回線を速くするとどうなるか" class="tocLink">問4：回線を速くするとどうなるか</a>  </li><li> <a href="#自分の言葉で説明する" class="tocLink">自分の言葉で説明する</a>  </li> </ul> </nav> </details>   </div> <div class="reading-progress" aria-hidden="true"></div> </header> <main>  <h2 id="解くときの順序">解くときの順序</h2> <p>まず自分で解き，下の解説と照合する．各問ともMは\(10^6\)，速度は一定とし，制御情報などの影響は指定された伝送効率に含める．それ以外の制約や遅延は無視する．</p> <ol> <li>各区間の実効速度を求める．</li> <li>最も遅い区間を選ぶ．</li> <li>ファイル容量と速度の単位をそろえる．</li> <li>容量を速度で割り，必要なら秒を分へ直す．</li> </ol> <h2 id="問1：バイトとビット">問1：バイトとビット</h2> <p>実効速度40Mビット/秒の経路で，150Mバイトを転送する．何秒かかるか．</p> <details> <summary>解答と解説</summary> <p> 150Mバイトは，\(150 \times 8 = 1200\)より1200Mビットである．\(\frac&#123;1200&#125;&#123;40&#125; = 30\)なので，答えは30秒．バイト/秒に直すなら，毎秒5Mバイトで150Mバイトを送る計算になる．</p> </details> <h2 id="問2：遅い区間が入れ替わる">問2：遅い区間が入れ替わる</h2> <p>LANの公称速度が100Mビット/秒，伝送効率が80%，FTTHの実効速度が60Mビット/秒である．300Mバイトのダウンロードには何秒かかるか．</p> <details> <summary>解答と解説</summary> <p> LANの実効速度は80Mビット/秒である．今回はFTTHの60Mビット/秒の方が遅いため，こちらを使う．\(300 \times \frac&#123;8&#125;&#123;60&#125; = 40\)より，答えは40秒．LANが常にボトルネックになるわけではない．</p> </details> <h2 id="問3：効率から時間まで">問3：効率から時間まで</h2> <p>LANの公称速度が200Mビット/秒，伝送効率が75%，外部回線の実効速度が120Mビット/秒である．900Mバイトの転送には何分かかるか．</p> <details> <summary>解答と解説</summary> <p> LANの実効速度は\(200 \times 0.75 = 150\)より150Mビット/秒．外部回線の120Mビット/秒が全体を制限する．容量は7200Mビットなので，\(\frac&#123;7200&#125;&#123;120&#125; = 60\)秒，すなわち1分である．</p> </details> <h2 id="問4：回線を速くするとどうなるか">問4：回線を速くするとどうなるか</h2> <p>第4章の条件で，FTTHの実効速度だけを90Mビット/秒から180Mビット/秒に変える．540Mバイトの転送時間は半分になるか．</p> <details> <summary>解答と解説</summary> <p> 半分にはならない．LANの実効速度は80Mビット/秒のままなので，全体の実効速度も変わらない．時間は引き続き54秒，約0.9分である．最も遅い区間が変わらなければ，ほかの区間だけを高速化しても，このモデルでの所要時間は変わらない．</p> </details> <h2 id="自分の言葉で説明する">自分の言葉で説明する</h2> <p>計算できたら，「なぜ8倍するのか」「なぜ二つの速度の小さい方を使うのか」「なぜ区間ごとの時間を足さないのか」を説明してみよう．迷う部分があれば，<a href="./units.html">単位</a>，<a href="./path.html">通信経路</a>，<a href="./throughput.html">実効速度</a>に戻って確かめる．</p> <p><a href="./download-time.html">前：問題の解法</a> ／ <a href="../network.html">学習案内</a></p>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>       <script type="module">const updateProgress = () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+  document.documentElement.style.setProperty("--reading-progress", String(Math.min(1, Math.max(0, ratio))));
+};
+
+updateProgress();
+window.addEventListener("scroll", updateProgress, { passive: true });
+window.addEventListener("resize", updateProgress);
+</script> <script type="module">// The mobile header sticks with a negative top offset so that the title block
+// scrolls out of view and only the breadcrumb bar stays pinned. The offset is
+// the title's height, which varies with the title text, so it is measured here.
+// The "is-stuck" class marks the state where the bar has reached the top edge,
+// which is what turns the header background translucent.
+// --header-height feeds --scroll-offset, so anchor targets land below the
+// pinned header instead of underneath it.
+const header = document.querySelector("header");
+const bar = document.querySelector(".header-sticky-bar");
+
+if (header && bar) {
+  let titleHeight = 0;
+
+  const updateStuck = () => {
+    header.classList.toggle("is-stuck", window.scrollY > titleHeight);
+  };
+
+  const updateOffset = () => {
+    // Both rects shift together while stuck, so this distance stays correct.
+    const offset = bar.getBoundingClientRect().top - header.getBoundingClientRect().top;
+    titleHeight = Math.max(0, Math.round(offset));
+    document.documentElement.style.setProperty("--header-title-height", `${titleHeight}px`);
+    document.documentElement.style.setProperty("--header-height", `${Math.round(header.offsetHeight)}px`);
+    updateStuck();
+  };
+
+  updateOffset();
+  window.addEventListener("scroll", updateStuck, { passive: true });
+  window.addEventListener("resize", updateOffset);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(updateOffset);
+  }
+}
+</script>  </body> </html>

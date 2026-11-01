@@ -1,0 +1,44 @@
+<!DOCTYPE html><html lang="ja" data-section="programming"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜2．LANからインターネットまでの通信経路</title><link rel="icon" type="image/png" href="../../favicon/icon.png"><link rel="stylesheet" href="../../css/main.css"></head> <body> <header> <div class="header-main"> <div class="header-title"> <img src="../../favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>2．LANからインターネットまでの通信経路</h1> </div> </div> <div class="header-sticky-bar"> <nav aria-label="パンくず">  <a href="../../index.html">ホーム</a> /  <a href="../../programming.html">情報技術</a> /  <a href="../network.html">通信速度とダウンロード時間</a> /  </nav>  <input type="checkbox" id="header-menu-toggle" class="header-menu-toggle"> <label for="header-menu-toggle" class="header-menu-btn" aria-label="メニューを開く"> <span></span><span></span><span></span> </label>  </div> <div class="header-tools" aria-label="ページツール"> <details name="page-tools"> <summary>目次</summary> <nav class="header-details-content" aria-label="目次"> <ul> <li> <a href="#経路を読む" class="tocLink">経路を読む</a>  </li><li> <a href="#機器の役割と，問題の計算条件" class="tocLink">機器の役割と，問題の計算条件</a>  </li><li> <a href="#なぜ区間ごとの転送時間を足さないのか" class="tocLink">なぜ区間ごとの転送時間を足さないのか</a>  </li> </ul> </nav> </details> <details name="page-tools"> <summary>定義される用語</summary> <nav class="header-details-content" aria-label="用語"> <a href="#define0" class="tocLink">LAN</a>  <a href="#define1" class="tocLink">ルータ</a>  <a href="#define2" class="tocLink">FTTH</a>  <a href="#define3" class="tocLink">ONU</a>  </nav> </details>  </div> <div class="reading-progress" aria-hidden="true"></div> </header> <main>  <h2 id="経路を読む">経路を読む</h2> <p><dfn id="define0">LAN</dfn>（Local Area Network）は，家庭や学校，事業所など，限られた範囲の機器を接続するネットワークである．有線でも無線でも構成できる．提示された問題では，PCが100Mビット/秒のLANに接続されている．</p> <p><dfn id="define1">ルータ</dfn>は，異なるネットワークの間でデータを中継する機器である．家庭向けのブロードバンドルータは，インターネットへの接続に使われ，無線LANなどの機能を兼ねることもある．</p> <p><dfn id="define2">FTTH</dfn>（Fiber To The Home）は，利用者の住宅まで光ファイバを引き込む接続方式である．<dfn id="define3">ONU</dfn>（Optical Network Unit）は，光回線の終端で光信号と電気信号の変換などを行う装置である．機能が一体化した機器もあるが，ここでは問題図のように別々の装置として扱う．</p> <div class="concept-diagram"> <strong class="title">問題で扱う接続の順序</strong> <div class="flow"> <div class="box"> <p> <strong>PC</strong> <small>LANで接続</small></p> </div> <span class="connector">↔</span> <div class="box"> <strong>ブロードバンドルータ</strong> </div> <span class="connector">↔</span> <div class="box"> <p> <strong>ONU</strong> <small>FTTHで外部に接続</small></p> </div> <span class="connector">↔</span> <div class="box"> <strong>インターネット</strong> </div> </div> </div> <p>図は接続関係を表す．ダウンロードするファイルのデータは，インターネット側からONU，ルータ，LANを通ってPCへ届く．</p> <h2 id="機器の役割と，問題の計算条件">機器の役割と，問題の計算条件</h2> <p>装置名が並んでいても，それぞれについて別の計算が必要とは限らない．この問題で速度の数値が与えられているのは，LANとFTTHである．ルータでの処理時間や制御情報は考えず，インターネット側も十分に高速とする指定がある．</p> <p>したがって，計算ではLANとFTTHの実効速度を比較する．ONUやルータの速度を推測して，新しい制約を付け加える必要はない．</p> <h2 id="なぜ区間ごとの転送時間を足さないのか">なぜ区間ごとの転送時間を足さないのか</h2> <p>長いファイルは小さな単位に分けて転送される．ある部分をLANからPCへ送っている間にも，次の部分をFTTHから受け取れる．ファイル全体がONUへ届くまで待ってから，次の区間へ送り始めるわけではない．</p> <p>このように区間が並行して働く場合，長時間の転送速度は最も遅い区間で制限される．最初のデータが届くまでの遅延や機器の待ち時間は別の要素だが，今回の概算では無視する．</p> <p><a href="./units.html">前：単位</a> ／ <a href="../network.html">学習案内</a> ／ <a href="./throughput.html">次：伝送効率と実効速度</a></p>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>       <script type="module">const updateProgress = () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+  document.documentElement.style.setProperty("--reading-progress", String(Math.min(1, Math.max(0, ratio))));
+};
+
+updateProgress();
+window.addEventListener("scroll", updateProgress, { passive: true });
+window.addEventListener("resize", updateProgress);
+</script> <script type="module">// The mobile header sticks with a negative top offset so that the title block
+// scrolls out of view and only the breadcrumb bar stays pinned. The offset is
+// the title's height, which varies with the title text, so it is measured here.
+// The "is-stuck" class marks the state where the bar has reached the top edge,
+// which is what turns the header background translucent.
+// --header-height feeds --scroll-offset, so anchor targets land below the
+// pinned header instead of underneath it.
+const header = document.querySelector("header");
+const bar = document.querySelector(".header-sticky-bar");
+
+if (header && bar) {
+  let titleHeight = 0;
+
+  const updateStuck = () => {
+    header.classList.toggle("is-stuck", window.scrollY > titleHeight);
+  };
+
+  const updateOffset = () => {
+    // Both rects shift together while stuck, so this distance stays correct.
+    const offset = bar.getBoundingClientRect().top - header.getBoundingClientRect().top;
+    titleHeight = Math.max(0, Math.round(offset));
+    document.documentElement.style.setProperty("--header-title-height", `${titleHeight}px`);
+    document.documentElement.style.setProperty("--header-height", `${Math.round(header.offsetHeight)}px`);
+    updateStuck();
+  };
+
+  updateOffset();
+  window.addEventListener("scroll", updateStuck, { passive: true });
+  window.addEventListener("resize", updateOffset);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(updateOffset);
+  }
+}
+</script>  </body> </html>

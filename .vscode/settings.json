@@ -1,5 +1,7 @@
 {
   "liveServer.settings.port": 5501,
+  "liveServer.settings.NoBrowser": false,
+  "liveServer.settings.donotShowInfoMsg": false,
   "[mdr]": {
     "editor.defaultFormatter": "raygo0312.mdr-language-support"
   },

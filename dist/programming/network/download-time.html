@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="ja" data-section="programming"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>学問の鎖｜4．540Mバイトのダウンロード時間を求める</title><link rel="icon" type="image/png" href="../../favicon/icon.png"><link rel="stylesheet" href="../../css/main.css"><script>
+        window.MathJax = {
+          loader: {
+            load: ["[tex]/physics", "[XyJax]/xypic.js", "[tex]/bussproofs"],
+            paths: { XyJax: "https://cdn.jsdelivr.net/gh/sonoisa/XyJax-v3@3.0.1/build/" }
+          },
+          startup: {
+            typeset: false,
+            pageReady: () => MathJax.startup.defaultPageReady().then(() => MathJax.typesetPromise())
+          },
+          tex: {
+            tags: "ams",
+            packages: {
+              "[+]": ["physics", "xypic", "bussproofs"]
+            },
+            macros: {
+              abs: ["\\left|#1\\right|", 1],
+              coloneq: [":="],
+              compose: ["\\circ"],
+              entail: ["\\vDash"],
+              ob: "\\mathrm{ob}",
+              prove: ["\\vdash"],
+              xor: ["\\veebar"]
+            }
+          },
+          chtml: {
+            scale: 1,
+            mtextInheritFont: true
+          }
+        };
+      </script><script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script></head> <body> <header> <div class="header-main"> <div class="header-title"> <img src="../../favicon/title.svg" alt="学問の鎖のロゴ" id="logo"> <h1>4．540Mバイトのダウンロード時間を求める</h1> </div> </div> <div class="header-sticky-bar"> <nav aria-label="パンくず">  <a href="../../index.html">ホーム</a> /  <a href="../../programming.html">情報技術</a> /  <a href="../network.html">通信速度とダウンロード時間</a> /  </nav>  <input type="checkbox" id="header-menu-toggle" class="header-menu-toggle"> <label for="header-menu-toggle" class="header-menu-btn" aria-label="メニューを開く"> <span></span><span></span><span></span> </label>  </div> <div class="header-tools" aria-label="ページツール"> <details name="page-tools"> <summary>目次</summary> <nav class="header-details-content" aria-label="目次"> <ul> <li> <a href="#問題の条件" class="tocLink">問題の条件</a>  </li><li> <a href="#1．経路全体の実効速度を求める" class="tocLink">1．経路全体の実効速度を求める</a>  </li><li> <a href="#2．データ量の単位をそろえる" class="tocLink">2．データ量の単位をそろえる</a>  </li><li> <a href="#3．データ量を速度で割る" class="tocLink">3．データ量を速度で割る</a>  </li><li> <a href="#4．秒から分に直す" class="tocLink">4．秒から分に直す</a>  </li><li> <a href="#別の単位で確かめる" class="tocLink">別の単位で確かめる</a>  </li><li> <a href="#間違いやすい計算を点検する" class="tocLink">間違いやすい計算を点検する</a>  </li> </ul> </nav> </details>  <details name="page-tools"> <summary>設定</summary> <div class="header-details-content"> <label class="chat-toggle-label"> <input type="checkbox" data-chat-toggle checked>
+会話を表示
+</label> </div> </details> </div> <div class="reading-progress" aria-hidden="true"></div> </header> <main>  <h2 id="問題の条件">問題の条件</h2> <p>提示画像にある平成28年春期・問32の通信時間の問題を扱う．問題文の条件を整理すると，次のようになる．</p> <ul> <li>PCが接続するLAN：100Mビット/秒，伝送効率80%．</li> <li>FTTH：実効速度90Mビット/秒．</li> <li>ファイル：540Mバイト．</li> <li>制御情報，ルータの遅延時間などは考えない．</li> <li>インターネット側は十分に高速とする．</li> </ul> <p>求めるのは，ダウンロードにかかる時間を分で表した概算である．Mは容量でも速度でも\(10^6\)として扱う．</p> <h2 id="1．経路全体の実効速度を求める">1．経路全体の実効速度を求める</h2> <p>LANの実効速度は，\(100 \times 0.8 = 80\)より80Mビット/秒である．FTTHの90Mビット/秒と比較すると，LANの方が遅い．したがって，ファイルの転送に使う速度は80Mビット/秒となる．</p> <h2 id="2．データ量の単位をそろえる">2．データ量の単位をそろえる</h2> <p>速度がビット/秒なので，ファイル容量もビットに直す．1バイトは8ビットである．</p> <p>\[540 \times 8 = 4320\]</p> <p>ファイル容量は4320Mビットである．</p> <h2 id="3．データ量を速度で割る">3．データ量を速度で割る</h2> <p>速さが一定なら，必要な時間は次の式で求められる．</p> <p>\[\text&#123;時間&#125; = \frac&#123;\text&#123;データ量&#125;&#125;&#123;\text&#123;実効速度&#125;&#125;\]</p> <p>\[\frac&#123;4320&#125;&#123;80&#125; = 54\]</p> <p>MビットをMビット/秒で割っているので，答えの単位は秒である．したがって54秒かかる．</p> <h2 id="4．秒から分に直す">4．秒から分に直す</h2> <p>1分は60秒なので，秒で得た値を60で割る．</p> <p>\[\frac&#123;54&#125;&#123;60&#125; = 0.9\]</p> <p>答えは約0.9分である．画像には選択肢がないため，選択肢の番号ではなく数値で答える．</p> <div class="concept-diagram"> <strong class="title">計算のつながり</strong> <div class="flow"> <div class="box"> <p> <strong>540Mバイト</strong> <small>8倍する</small></p> </div> <span class="connector">→</span> <div class="box"> <p> <strong>4320Mビット</strong> <small>80Mビット/秒で割る</small></p> </div> <span class="connector">→</span> <div class="box"> <p> <strong>54秒</strong> <small>60で割ると0.9分</small></p> </div> </div> </div> <h2 id="別の単位で確かめる">別の単位で確かめる</h2> <p>80Mビット/秒を8で割ると，10Mバイト/秒となる．540Mバイトを毎秒10Mバイトずつ受け取るので，\(\frac&#123;540&#125;&#123;10&#125; = 54\)秒である．データ量をビットへ直しても，速度をバイト/秒へ直しても，同じ結果となる．</p> <div class="me"> <p> 1秒に10Mバイトなら，540Mバイトで54秒。これなら量の感じがつかめる！</p> </div> <div class="you"> <p> その確かめ方も使えるね。最後に「何分か」と聞かれているところまで確認しよう</p> </div> <h2 id="間違いやすい計算を点検する">間違いやすい計算を点検する</h2> <ul> <li>540を80で割る：バイトとビットがそろっていない．</li> <li>4320を90で割る：LANの制限を見落としている．</li> <li>90に0.8を掛ける：LANの効率をFTTHに適用している．</li> <li>LANとFTTHの転送時間を足す：区間が並行して転送する条件と合わない．</li> <li>54分と答える：速度の「毎秒」に対応する時間は秒である．</li> </ul> <p>実環境では，通信相手の速度，ほかの利用者との共有，混雑などによって所要時間が変わる．0.9分は，問題で指定された単純化の下での答えである．</p> <p><a href="./throughput.html">前：実効速度</a> ／ <a href="../network.html">学習案内</a> ／ <a href="./practice.html">次：練習問題</a></p>  </main> <footer>Copyright © raygo All Rights Reserved since 2016.</footer>      <script type="module">const checkbox = document.querySelector("[data-chat-toggle]");
+
+if (checkbox instanceof HTMLInputElement) {
+  const updateChatDisplay = (checked) => {
+    document.querySelectorAll(".you, .me").forEach((content) => {
+      if (!(content instanceof HTMLElement)) return;
+      content.style.display = checked ? "block" : "none";
+    });
+  };
+
+  updateChatDisplay(checkbox.checked);
+  checkbox.addEventListener("change", () => {
+    updateChatDisplay(checkbox.checked);
+  });
+}
+</script> <script type="module">const updateProgress = () => {
+  const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+  const ratio = scrollable > 0 ? window.scrollY / scrollable : 0;
+  document.documentElement.style.setProperty("--reading-progress", String(Math.min(1, Math.max(0, ratio))));
+};
+
+updateProgress();
+window.addEventListener("scroll", updateProgress, { passive: true });
+window.addEventListener("resize", updateProgress);
+</script> <script type="module">// The mobile header sticks with a negative top offset so that the title block
+// scrolls out of view and only the breadcrumb bar stays pinned. The offset is
+// the title's height, which varies with the title text, so it is measured here.
+// The "is-stuck" class marks the state where the bar has reached the top edge,
+// which is what turns the header background translucent.
+// --header-height feeds --scroll-offset, so anchor targets land below the
+// pinned header instead of underneath it.
+const header = document.querySelector("header");
+const bar = document.querySelector(".header-sticky-bar");
+
+if (header && bar) {
+  let titleHeight = 0;
+
+  const updateStuck = () => {
+    header.classList.toggle("is-stuck", window.scrollY > titleHeight);
+  };
+
+  const updateOffset = () => {
+    // Both rects shift together while stuck, so this distance stays correct.
+    const offset = bar.getBoundingClientRect().top - header.getBoundingClientRect().top;
+    titleHeight = Math.max(0, Math.round(offset));
+    document.documentElement.style.setProperty("--header-title-height", `${titleHeight}px`);
+    document.documentElement.style.setProperty("--header-height", `${Math.round(header.offsetHeight)}px`);
+    updateStuck();
+  };
+
+  updateOffset();
+  window.addEventListener("scroll", updateStuck, { passive: true });
+  window.addEventListener("resize", updateOffset);
+
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(updateOffset);
+  }
+}
+</script>  </body> </html>

@@ -1,0 +1,15 @@
+---
+layout: ../../../layouts/BaseLayout.astro
+title: ベーシック圏論
+breadcrumbs:
+  - href: /index.html
+    label: ホーム
+  - href: /math.html
+    label: 数学
+---
+『ベーシック圏論 普遍性からの速習コース』を読み進めるための勉強資料．各節の内容や疑問を整理し，学んだことをノートにまとめる前の記録として残す．
+
+## 第1章
+
+- [1-1 圏：対象と射，圏の構成](./basic-category/section1-1.html) — pp.11-20
+- [1-2 関手：圏の間の対応とその例](./basic-category/section1-2.html) — pp.20-32

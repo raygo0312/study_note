@@ -4,7 +4,6 @@
 
 - シンタックスハイライト
 - Format Document（`Shift+Alt+F` / `⇧⌥F`）
-- `-`/`+`リスト行でのTabインデント
 
 VSCode標準のMarkdownにはドキュメントフォーマッタが含まれていないため、
 フォーマッタはMDRコンパイラのMarkdown互換formatterを使用します。MDRの

@@ -56,20 +56,11 @@
     ],
     "commands": [
       {
-        "command": "mdr.indentListItem",
-        "title": "MDR: Indent List Item"
-      },
-      {
         "command": "mdr.removeEmptyListItem",
         "title": "MDR: Remove Empty List Item"
       }
     ],
     "keybindings": [
-      {
-        "command": "mdr.indentListItem",
-        "key": "tab",
-        "when": "editorTextFocus && editorLangId == mdr && mdr.emptyListLine && !editorHasSelection && !inSnippetMode && !suggestWidgetVisible"
-      },
       {
         "command": "mdr.removeEmptyListItem",
         "key": "enter",
